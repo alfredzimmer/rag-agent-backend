@@ -1,0 +1,598 @@
+{
+  "generated_at": "2025-11-13T15:46:09.864214",
+  "total_pdfs_processed": 3,
+  "pdfs": [
+    {
+      "pdf_name": "IEEE Std 902-1998 .pdf",
+      "total_chunks": 236,
+      "num_clusters": 9
+    },
+    {
+      "pdf_name": "NO_OCR.pdf",
+      "total_chunks": 0,
+      "num_clusters": 0
+    },
+    {
+      "pdf_name": "sample.pdf",
+      "total_chunks": 8,
+      "num_clusters": 2
+    }
+  ],
+  "total_clusters": 11,
+  "detailed_results": [
+    {
+      "pdf_name": "IEEE Std 902-1998 .pdf",
+      "pdf_path": "documents/IEEE Std 902-1998 .pdf",
+      "processed_at": "2025-11-13T15:46:08.426602",
+      "total_chunks": 236,
+      "num_clusters": 9,
+      "contexts": [
+        {
+          "cluster_id": 2,
+          "chunks": [
+            {
+              "content": "In the past, the methods that electrical personnel followed to protect themselves were lumped\ninto a term called _clearance procedures._ In some cases, clearance simply meant permission to\nwork on a particular system, whether it was energized or not. In other cases, clearance meant\ntaking measures to ensure that equipment is de-energized, and to reinforce those measures\nwith formal safeguards against altering that de-energized status for as long as clearance is\nrequired. The latter use of the word clearance is closer to the hazardous energy control\nrequirements in place today. The term clearance is falling out of use in modern electrical\nsafety terminology because it does not mean safety. Clearance (for work) is deÞned in\n29 CFR 1910.269 as Òauthorization to perform speciÞed work or permission to enter a\nrestricted area.Ó Today, for safety purposes, the phrase Òestablish an electrically safe work\nSAFE ELECTRICAL WORK PRACTICES Std 902-1998\nconditionÓ is preferred. An electrically safe work condition is deÞned in Part II of NFPA 70E1995. Section 2-3.1.3 of that document states\nÒAn electrically safe work condition shall be achieved and veriÞed by the following pro\ncess:\na) Determine all possible sources of electrical supply to the speciÞc equipment.\nCheck applicable up-to-date drawings, diagrams, and identiÞcation tags.\nb) After properly interrupting the load current, open the disconnecting device(s) for\neach source.\nc) Where it is possible, visually verify that all blades of the disconnecting devices are\nfully open, or that drawout type circuit breakers are withdrawn to the fully disconnected position.\nd) Apply lockout/tagout devices in accordance with a documented and established\npolicy.\ne) Use an adequately rated voltage detector to test each phase conductor or circuit\npart to verify that it is de-energized. Before and after each test, determine that the\nvoltage detector is operating satisfactorily.\nf) Where the possibility of induced voltages or stored electrical energy exists, ground\nthe phase conductors or circuit parts before touching them. Where it could be reasonably anticipated that the conductors or circuit parts being de-energized could\ncontact other exposed energized conductors or circuit parts, apply ground connecting devices rated for the available fault duty.Ó\nWhen nondrawout, molded-case circuit breakers are being used as the disconnecting device\nmentioned in item b), visual veriÞcation of an open circuit, as suggested in item c), cannot be\nmade. One technique that could be used to verify true opening is to have a voltmeter, or other\nvoltage-indicating device, safely applied somewhere away from the breaker enclosure itself\non the load side of the breaker before the breaker is opened. Always try to place the voltmeter\nat a point where exposure to energized conductors is minimized. Then, have someone watch\nthe meter as the breaker is being opened. Simultaneous opening of the breaker and disappearance of voltage is generally a good indicator of disconnection. If that canÕt be done, the next\nbest way is to measure load-side voltage (using safe practices and appropriate protective and\ntest equipment), remove the meter, open the breaker, and measure again immediately. With\nmultiple pole systems, all load-side poles should be veriÞed to have voltage prior to\ndisconnection. Again, apply a voltmeter to one of the poles. After the breaker is opened and\nthe Þrst pole is veriÞed, move the meter, as safely and quickly as possible, to verify deenergization of the other poles.\n**CAUTION**\n1ÑMake sure to always test the functionality of the voltmeter after any verification for the absence\nof voltage.\n2ÑFlash protection may be needed during these operations, depending upon the results of the hazard/risk analysis..\nWorking on or near electrical equipment without establishing the electrically safe work condition discussed in the preceding paragraph is taking the risk of having an electrical incident,\ninjury, or fatality. Sometimes, such risks are necessary due to the nature of the task or the\nfacility. Taking time to evaluate such risks and use the appropriate precautionary measures is\nalso necessary.\nA good basic rule to follow can be stated as follows:\n_All electrical circuit conductors, bare or insulated, are assumed to be energized until proven_\n_otherwise. They shall be de-energized, locked out, and tested for the absence of voltage_\n_before working on them or near them. Work on or near electrical circuit conductors and cir-_\n_cuit parts may only be performed by trained and qualiÞed personnel who have been autho-_\n_rized to do the work, using appropriate safe practices, personal protective equipment, tools,_\n_and test equipment._\nOf course, from a practical standpoint, there is a need to have exceptions to this basic rule.\nFor example, taking a voltage measurement is a common task during which a person is\nexposed to bare energized electrical conductors. Electrical safety measures for such exceptions should be thought about well in advance of any work, and made a part of the electrical\nsafe practices procedures. Included in these measures should be a hazard/risk analysis, as\nexplained in 10.3, and approval from appropriate levels of supervision and management.",
+              "metadata": {
+                "Header 1": "**Chapter 10** **Safe electrical work practices**",
+                "Header 2": "**10.4 Working on or near de-energized equipment**",
+                "Header 3": "**10.4.1 Establishing an electrically safe work condition**"
+              },
+              "index": 187
+            },
+            {
+              "content": "The human body can exist in only a relatively narrow temperature range that is close to normal blood temperature, which is around 36.5 °C (97.7 °F). Survival much below this level\nrequires insulation with clothing. Temperatures that are slightly above this level can be compensated for by perspiration. Studies show that at skin temperature as low as 44 °C (110 °F),\nthe body temperature equilibrium mechanism begins to break down in about 6 h. Cell damage\ncan occur beyond 6 h at that temperature. Between 44 °C (110 °F) and 51 °C (124 °F), the\nrate of cell destruction doubles for each 1 °C (1.8 °F) temperature rise. Above 51 °C (124 °F),\nthe rate is extremely rapid. At 70 °C (158 °F), only a 1 s duration is sufÞcient to cause total\ncell destruction.",
+              "metadata": {
+                "Header 1": "**Chapter 7** **Introduction to electrical safety**",
+                "Header 2": "**7.2 Exposure to electrical hazards**",
+                "Header 3": "**7.2.2 Burns from contact, arcs, or ßashes**",
+                "Header 4": "**7.2.2.4 Effect of temperature on human tissue and clothing**"
+              },
+              "index": 97
+            },
+            {
+              "content": "Examples of protective systems that serve to warn personnel of impending hazards include\na) Signs and placards;\nb) Fences and other physical barriers;\nc) Marking tape for underground lines;\nd) Attendants.",
+              "metadata": {
+                "Header 1": "**Chapter 11** **Protective equipment, tools, and methods**",
+                "Header 2": "**11.4 Protective methods**",
+                "Header 3": "**11.4.2 Alerting techniques**"
+              },
+              "index": 220
+            },
+            {
+              "content": "Ground fault circuit interrupters (GFCI) sense when electric current ßows through a person,\nand prevent serious injury by isolating power to the circuit within milliseconds. Although\nthey were initially required only for use where portable tools, appliances, or equipment could\nbe used in damp or wet locations, the expanded application of GFCIs offers a signiÞcant level\nof shock prevention to any use of temporary extension cords or portable tools and equipment.",
+              "metadata": {
+                "Header 1": "**Chapter 11** **Protective equipment, tools, and methods**",
+                "Header 2": "**11.3 Other protective equipment**",
+                "Header 3": "**11.3.4 Ground fault circuit interrupters**"
+              },
+              "index": 217
+            },
+            {
+              "content": "The integrity of equipment grounding is essential to personnel safety. Grounding is discussed\nin more detail in 9.2.7 and 10.4.3. Grounding is a primary protective method for protecting\npeople from shock hazards that could exist in poorly grounded or ungrounded metallic raceways, equipment housing, or enclosures. The design and installation of equipment grounding\nis detailed in Article 250 of the National Electric Code¨ (NEC¨) (NFPA 70-1996) [B8].",
+              "metadata": {
+                "Header 1": "**Chapter 11** **Protective equipment, tools, and methods**",
+                "Header 2": "**11.4 Protective methods**",
+                "Header 3": "**11.4.1 Grounding of equipment**"
+              },
+              "index": 219
+            }
+          ],
+          "size": 45,
+          "coherence": 0.5074477796272547
+        },
+        {
+          "cluster_id": 5,
+          "chunks": [
+            {
+              "content": "A shopping center was being enlarged and new switch units were being added to a 480 V metalclad substation power center. A new vertical bus was added to an existing vertical section to\naccommodate new switch units. The bolts attaching the vertical bus to the riser from the main\nhorizontal bus were installed so that the threaded ends were toward the back of the switch unit.\nNot only that, but the bolts were about 2.54 cm (1 in) longer than required to secure the bus to\nthe riser. The net result was that the bolt ends were only about 0.16 cm (1/16 in) back of the new\nswitch enclosure. An electrician and a helper were inserting a 400 A, 600 V fuse in a new fusible switch. In pressing the fuse into the fuse mounting, the box was deßected back into shorttime contact with the bolt ends. This initiated a power fault of about 100 kA rms. The electrician was seriously burned by the infrared radiation from the arc, and his clothes were ignited\nby the molten copper droplets expelled from the arc. He was propelled backwards by approximately 2670 N (600 lbf) of pressure on his chest from the fault, falling against the front of\nanother section of switchgear that was 2.74 m (9 ft) from the one he had been working on. The\nhelper, who had been watching him at the open door of the switch enclosure, was propelled\nbackward about 7.5 m (25 ft), completing two backward somersaults before ending up against\na wall. He was not injured, and hurried back to the electrician, helping him up and extinguishing the ßames of his clothes. A calculation indicated that the electrician had been propelled\nbackwards nearly 0.6 m (2 ft) in 0.1 s, which substantially reduced the radiation burning.",
+              "metadata": {
+                "Header 1": "**Chapter 7** **Introduction to electrical safety**",
+                "Header 2": "**7.3 Case histories**",
+                "Header 3": "**7.3.1 Incidents resulting in injury**",
+                "Header 4": "**7.3.1.14 Case no. 14Ñburns and blast**"
+              },
+              "index": 116
+            },
+            {
+              "content": "Two painters were using an aluminum extension ladder to paint a metal light pole. One\nworker was standing on the ladder painting, and his coworker was on the ground holding the\nladder. The ladder slipped away from the pole and contacted a 12 460 V overhead power line\nwhich was very near the pole. Both painters were electrocuted.",
+              "metadata": {
+                "Header 1": "**Chapter 7** **Introduction to electrical safety**",
+                "Header 2": "**7.3 Case histories**",
+                "Header 3": "**7.3.1 Incidents resulting in injury**",
+                "Header 4": "**7.3.1.19 Case no. 19Ñdouble electrocutions**"
+              },
+              "index": 121
+            },
+            {
+              "content": "A fast food restaurant worker was kneeling on the ßoor to insert the male plug of a portable\nelectric toaster into a 120 V, 20 A receptacle that was mounted in a grounded metal enclosure\nwith a cover. The ßoor was wet because it had been recently mopped. As the worker held the\ncover open with his left hand, and began to insert the male plug into the receptacle outlet, his\nindex Þnger apparently touched the energized prong of the plug. The victim was found convulsing, and he died shortly afterwards.",
+              "metadata": {
+                "Header 1": "**Chapter 7** **Introduction to electrical safety**",
+                "Header 2": "**7.3 Case histories**",
+                "Header 3": "**7.3.1 Incidents resulting in injury**",
+                "Header 4": "**7.3.1.18 Case no. 18Ñelectrocution**"
+              },
+              "index": 120
+            },
+            {
+              "content": "The electric arc is widely recognized as a very high-level source of heat. Common uses are\narc welding, electric arc furnaces, and even electric cauterizing of wounds to seal against\ninfection while deeper parts are healing. The temperatures at the metal terminals are extraordinarily high, being reliably reported at 20 000 °K (about 35 000 °F). One investigator reports\ntemperatures as high as 34 000 °K (about 61 000 °F), and special types of arcs can reach\n50 000 °K (about 90 000 °F). The only higher temperature source known on earth is the laser,\nwhich can produce 100 000 °K (about 180 000 °F).\nThe intermediate (plasma) part of the arc, i.e., the portion away from the terminals, is\nreported as having a temperature of 13 000 °K (about 23 500 °F). In comparison, the surface\ntemperature of the sun is about 5000 °K (9000 °F), so the terminal and plasma portions are\n4 and 2.5 times, respectively, as hot as the sunÕs surface. The temperature below the surface\nof the sun is, of course, much higher; it is approximated at 10 000 000 °K (18 000 000 °F) at\nthe center.",
+              "metadata": {
+                "Header 1": "**Chapter 7** **Introduction to electrical safety**",
+                "Header 2": "**7.2 Exposure to electrical hazards**",
+                "Header 3": "**7.2.2 Burns from contact, arcs, or ßashes**",
+                "Header 4": "**7.2.2.2 The arc as a heat source**"
+              },
+              "index": 95
+            },
+            {
+              "content": "A construction electrician was assigned to a job installing wiring for lighting Þxtures in a\n208 Y/120 V system. The job was already partially completed. The electrician was told by the\nforeman that everything was Òdead.Ó The Òhome runÓ was already installed, and those wires\nwere protruding from a junction box. The electrician was on a ladder and began to remove the\ninsulation from the home run wires using Òwire skinnersÓ with one hand. His other hand was\nholding the wires, but was also in contact with the box. He was not wearing gloves, and\nreceived a severe shock causing him to fall from the ladder. Fortunately, he received only\nminor bruises from the fall. He later said, ÒI should have checked myself to see that it was\nreally dead.Ó",
+              "metadata": {
+                "Header 1": "**Chapter 7** **Introduction to electrical safety**",
+                "Header 2": "**7.3 Case histories**",
+                "Header 3": "**7.3.1 Incidents resulting in injury**",
+                "Header 4": "**7.3.1.2 Case no. 2Ñshock**"
+              },
+              "index": 104
+            }
+          ],
+          "size": 33,
+          "coherence": 0.5724233152020991
+        },
+        {
+          "cluster_id": 7,
+          "chunks": [
+            {
+              "content": "The second part of the electrical safety policy states that Òall work involving electrical energy\nshall be performed in a safe manner.Ó This statement would include such things as\na) General policy about avoiding work on energized electrical equipment;\nb) Work authorization;\nc) Standards;\nd) Use of safe practices and procedures;\ne) Oversight groups;\nf) Safety training and qualiÞcations of personnel;\ng) Safety audits and self-assessments of personnel activities;\nh) A technical authority to respond to questions or concerns regarding safe work practices in operations and maintenance.\nAgain, these concerns should be written into ofÞcial company documentation.\nSafe electrical work practices are perhaps the most important part of the whole electrical\nsafety program. It is a fact that most injuries and fatalities are a result of the actions of people\nas opposed to workplace conditions. Electrical safety principles (see Whelan and Floyd [B3])\nshould be identiÞed and taught to employees. These principles are\nPlan every job.\nAnticipate unexpected events.\nUse the right tool for the job.\nUse procedures as tools.\nIsolate the equipment.\nIdentify the hazard.\nÑ Minimize the hazard.\nProtect the person.\nAssess peopleÕs abilities.\nAudit these principles.\nEstablish administrative controls in the form of policy, required procedures, and guidelines to\ndirect the activities of personnel whose assignments are such that they could very easily\nbecome exposed to electrical hazards. Before any work is performed, there should be a hazard/risk analysis, work authorization, and a job-brieÞng that focuses heavily on safety. See\nChapter 10 for details on this important subject.\nESTABLISHING AN ELECTRICAL SAFETY PROGRAM Std 902-1998",
+              "metadata": {
+                "Header 1": "**Chapter 8** **Establishing an electrical safety program**",
+                "Header 2": "**8.4 Content of program**",
+                "Header 3": "**8.4.3 Electrical safety policy**",
+                "Header 4": "**8.4.3.2 Implementing safe electrical work practices**"
+              },
+              "index": 147
+            },
+            {
+              "content": "In summary, electrical hazards exist, and will continue to exist, in our world of ever-increasing technology. In order to prevent injury and loss of life, everyone should learn to recognize\nthe electrical hazards associated with their respective workplaces and job assignments, and\nknow how to take appropriate precautions to avoid injury. This chapter has covered the kinds\nof injuries that can occur and some true examples of incidents. Remembering these incidents,\nand telling friends and associates about them, may instill in someone the awareness and discipline that could someday save a life.\nThere are a lot of reasons why everyone should receive some level of electrical safety training. Familiarity with the OSHA regulations, the NFPA electrical codes and standards, and the\nIEEE standards can increase safety awareness for all electrical employees, and perhaps may\nsave an employee or friend from injury or death.",
+              "metadata": {
+                "Header 1": "**Chapter 7** **Introduction to electrical safety**",
+                "Header 2": "**7.5 Summary**"
+              },
+              "index": 135
+            },
+            {
+              "content": "As was mentioned in Chapter 8, there are Þve objectives of the electrical safety program. This\nchapter discusses the objective of providing workplace facilities that are safe from exposure\nto electrical hazards.\nWhen electrical installations are properly designed, installed, and maintained, workplace\nconditions should be such that they will not be the cause of an electrical shock, burn, or blast.\nWell-designed enclosures and proper clearances protect employees under normal and most\nabnormal operating conditions. Proper maintenance of electrical equipment can reestablish\nthe initial safe condition as the equipment ages. It should always be remembered, however,\nthat when it is necessary for personnel to enter electrical equipment enclosures, many of the\nprotective barriers that the design and initial installation have provided may have to be\nremoved. In these cases, electrical safe practices that are appropriate to the task should be\nused. (See Chapter 10.)\nThe two major documents that carry the force of law relative to electrical design, installation,\nand maintenance requirements in the U.S. are extremely important toward establishing an\nelectrically safe workplace. As was mentioned in Chapter 7, the Þrst is the Occupational\nSafety and Health Administration (OSHA) regulations; in particular, 29 CFR 1910, [1]\nSubpart S, pertaining to general industry; 29 CFR 1910, Subpart R, pertaining to special\nindustries; and 29 CFR 1926, Subpart K, pertaining to the construction industry. There are\nalso some other subparts that contain requirements related to electrical work. The second\nmajor document is the National Electrical Code¨ (NEC¨) (NFPA 70-1996), which carries\nthe force of law only when it is adopted by a governing entity. Practically all governing bodies in the U.S., and even some other countries, have adopted the NEC.\nThere are many other good references that cover safe design and installation of electrical\nequipment and systems. It would be difÞcult to mention them all. Included among them,\nhowever, are the _IEEE Color Book_ series (of which this book is one), NFPA 70E-1995, and\nthe National Electrical Safety Code¨ (NESC¨) (Accredited Standards Committee C2-1997).\nNFPA 70E-1995 was created to serve the needs of OSHA. Part I of NFPA 70E-1995 has speciÞcally identiÞed those parts of the NEC that are directly associated with employee safety in\nthe workplace. It duplicates those parts of the NEC that can be safely inspected while electrical equipment is energized. Although the information in NFPA 70E-1995 cannot be used\nalone in lieu of other requirements of the NEC, NFPA 70E-1995 does highlight design and\ninstallation considerations that are safety-related. In addition, NFPA 70E-1995 contains\nPart II, Safety-Related Work Practices; Part III, Safety-Related Maintenance Requirements;\nand Part IV, Special Requirements.\n1Information on references can be found in 9.7.\nIt is not the intention of this chapter to repeat, in detail, the safety-related design, installation,\nand maintenance information that is already found in other recognized regulations, codes,\nand standards. This chapter will, however, give an overview of how to Þnd and use the helpful\ninformation found in those documents.",
+              "metadata": {
+                "Header 1": "**Chapter 9** **Providing and maintaining electrically safe facilities**",
+                "Header 2": "**9.1 General discussion**"
+              },
+              "index": 157
+            },
+            {
+              "content": "Before a sports team goes into any game, the coaches prepare a game plan designed to beat\nthe opponent. If all members of the team perform according to the plan, the team has a much\nbetter chance of winning. An electrical safety program is much like that game plan. It is a\nplan designed so that neither workplace conditions, nor the actions of people, expose personnel unnecessarily to electrical hazards. Establishing an electrical safety program, and making\nsure that employees follow it, can mean Òwinning the gameÓ against accidental injury or\ndeath due to electrical incidents.\nFor all of the reasons mentioned in 7.4, an employer should develop and implement some\nform of an electrical safety program to give overall safety directions for facility activities\nrelated to electrical work.",
+              "metadata": {
+                "Header 1": "**Chapter 8** **Establishing an electrical safety program**",
+                "Header 2": "**8.1 General discussion**"
+              },
+              "index": 138
+            },
+            {
+              "content": "The second reason for practicing electrical safety is the fact that safety makes good business\nsense. The Òbottom lineÓ of most businesses is to keep costs down and earn proÞts. If serious\nelectrical injury, death, or property damage occurs at a particular company facility as a result\nof unsafe acts or unsafe conditions, it costs that company large amounts of money and aggravation in both tangible and intangible ways. Consider the possible costs of the following\nitems:\na) Time lost by the injured employee;\nb) Medical bills;\nc) Time lost by supervisors and managers trying to Þnd out what really happened;\nd) Time lost and aggravation caused by answering many questions from all directions;\ne) Time lost by supervisors and managers writing reports;\nf) Time lost by other employees sympathizing and discussing the accident;\ng) Lost production quantity or quality;\nh) Loss of test and research data if unexpected electrical outages result;\ni) Possible increase in insurance rates;\nj) Possibility of lawsuits by the injured, or the family, claiming negligence;\nk) Possible intervention and Þnes by a law enforcing agency such as OSHA;\nl) Payment for any necessary outside consultants;\nm) Time lost escorting investigators;\nn) Discomfort of explaining ÒwhyÓ to the family of the victim;\no) Lowered morale of fellow employees if employer is thought to be negligent;\np) Replacement or repair costs of damaged equipment;\nq) General disruption of the normal operating routine;\nr) Mistrust by customers of a company with a poor safety record.\nINTRODUCTION TO ELECTRICAL SAFETY Std 902-1998\nSome of the above costs are difÞcult to put a value on, but they are real. The cost of one serious incident could be more than the cost of establishing and maintaining a good electrical\nsafety program for several years. In the long run, the safe way is the least expensive way to\nrun a business.",
+              "metadata": {
+                "Header 1": "**Chapter 7** **Introduction to electrical safety**",
+                "Header 2": "**7.4 Reasons for practicing electrical safety**",
+                "Header 3": "**7.4.2 Business considerations**"
+              },
+              "index": 130
+            }
+          ],
+          "size": 30,
+          "coherence": 0.6075028611080929
+        },
+        {
+          "cluster_id": 8,
+          "chunks": [
+            {
+              "content": "This chapter shall be used in conjunction with the following publications. If the following\npublications are superseded by an approved revision, the revision shall apply.\nAccredited Standards Committee C2-1997, National Electrical Safety Code¨ (NESC¨). [2]\nCFR 29 Part 1910, Occupational Safety and Health Standards. [3]\nCFR 29 Part 1926, Safety and Health Regulations for Construction.\nIEEE Std 80-1986 (Reaff 1991), IEEE Guide for Safety in AC Substation Grounding. [4]\n2The NESC is available from the Institute of Electrical and Electronics Engineers, 445 Hoes Lane, P.O. Box 1331,\nPiscataway, NJ 08855-1331, USA (http://www.standards.ieee.org/).\n3CFR publications are available from the Superintendent of Documents, U.S. Government Printing OfÞce, P.O. Box\n37082, Washington, DC 20013-7082, USA.\n4IEEE publications are available from the Institute of Electrical and Electronics Engineers, 445 Hoes Lane, P.O. Box\n1331, Piscataway, NJ 08855-1331, USA (http://www.standards.ieee.org/).\nPROVIDING AND MAINTAINING ELECTRICALLY SAFE FACILITIES Std 902-1998\nIEEE Std 142-1991, IEEE Recommended Practice for Grounding of Industrial and Commercial Power Systems ( _IEEE Green Book_ ).\nIEEE 1100-1992, IEEE Recommended Practice for Powering and Grounding Sensitive Electronic Equipment ( _IEEE Emerald Book_ ).\nNFPA 70-1996, National Electrical Code¨ (NEC¨). [5]\nNFPA 70B-1998, Recommended Practice for Electrical Equipment Maintenance. [6]\nNFPA 70E-1995, Standard for Electrical Safety Requirements for Employee Workplaces.",
+              "metadata": {
+                "Header 1": "**Chapter 9** **Providing and maintaining electrically safe facilities**",
+                "Header 2": "**9.7 References**"
+              },
+              "index": 171
+            },
+            {
+              "content": "AHJ authority having jurisdiction\nCPR cardiopulmonary resuscitation\nNEC National Electrical Code¨\nNFPA National Fire Protection Association\nOSHA Occupational Safety and Health Administration",
+              "metadata": {
+                "Header 1": "**Chapter 8** **Establishing an electrical safety program**",
+                "Header 2": "**8.1 General discussion**",
+                "Header 3": "**8.1.1 Acronyms and abbreviations**"
+              },
+              "index": 139
+            },
+            {
+              "content": "For the purposes of this guide, the following terms and deÞnitions apply. IEEE Std 100-1996 [2]\nshould be referenced for terms not deÞned in this subclause.",
+              "metadata": {
+                "Header 1": "**Chapter 5** **Maintenance strategies**",
+                "Header 2": "**5.2 DeÞnitions and acronyms**",
+                "Header 3": "**5.2.1 DeÞnitions**"
+              },
+              "index": 40
+            },
+            {
+              "content": "The following is an alphabetical listing of the groups that provide procedures and speciÞcations for electrical testing and maintenance:\na) American National Standards Institute (ANSI);\nb) American Society for Testing and Materials (ASTM);\nc) Association of Edison Illuminating Companies (AEIC);\nd) Institute of Electrical and Electronics Engineers (IEEE);\ne) Insulated Cable Engineers Association (ICEA);\nf) InterNational Electrical Testing Association (NETA);\ng) National Electrical Manufacturers Association (NEMA);\nh) National Fire Protection Association (NFPA);\ni) Occupational Safety and Health Administration (OSHA).",
+              "metadata": {
+                "Header 1": "**Chapter 6** **Maintenance testing overview**",
+                "Header 2": "**6.7 Testing procedures and speciÞcations**",
+                "Header 3": "**6.7.1 Sources of electrical equipment testing and maintenance information**"
+              },
+              "index": 86
+            },
+            {
+              "content": "Additional information may be found in the following sources:\n[B1] _Guide to Industrial Electric Power Distribution_ . Compiled by the editors of _ElectriÞed_\n_Industry_, Chicago, IL: B. J. Martin Co.\n[B2] ÒThe Electric Power System,Ó _Plant Engineering_, Oct. 15, 1981.\n2IEEE publications are available from the Institute of Electrical and Electronics Engineers, 445 Hoes Lane, P.O. Box\n1331, Piscataway, NJ 08855-1331, USA (http://www.standards.ieee.org/).",
+              "metadata": {
+                "Header 1": "**Chapter 2** **Operating diagrams**",
+                "Header 2": "**2.5 Bibliography**"
+              },
+              "index": 13
+            }
+          ],
+          "size": 29,
+          "coherence": 0.6166908862006315
+        },
+        {
+          "cluster_id": 4,
+          "chunks": [
+            {
+              "content": "To be successful, a preventive maintenance program shall have the backing of management.\nThere should be the belief that operating proÞt is increased through the judicious spending of\nmaintenance dollars. Financial issues should be considered when evaluating the need for continuous electrical power. These factors will help to dictate the level of importance that a facility places on a preventive maintenance program. The cost of downtime or lost production,\nand how that can be minimized through effective maintenance, also should be considered.\nA complete survey of the plant should be performed. This survey should include a listing of\nall electrical equipment and systems. The equipment should be listed in a prioritized fashion\nin order to distinguish those systems or pieces of equipment that are most critical to the operation. The survey should also include a review of the status of drawings, manuals, maintenance logs, safety and operating procedures, and training and other appropriate records. It\nshould be recognized that the survey itself can be a formidable task. It is likely that power\noutages may be required in order to complete the survey. The gathering of documentation is\nimportant. This includes not only the drawings of the facilities, but also all the documentation\nthat is normally provided by the manufacturer of the equipment. The manufacturerÕs manuals\nshould include recommended maintenance procedures, wiring diagrams, bills of materials,\nassembly and operating instructions, and troubleshooting recommendations.\nNext, the necessary procedures for maintaining each item on the list should be developed.\nNFPA 70B-1994 [B3] and NETA MTS-1993 [B2] are valuable resources that provide much\nof this information. Procedures should also be developed that integrate the equipment into\nsystems. People that are capable of performing the procedures should be selected and trained.\nAt some level of technical performance, it may be desirable to contract parts of the maintenance program to qualiÞed outside Þrms, particularly those functions that require special test\nequipment to perform.\nFinally, a process shall be developed to administer the program. This process may be manual\nor software-based. There are many commercially available systems with varying levels of\nsophistication.\nConsideration also shall be given to some of the less technical parts of the process. Pre-maintenance considerations might include the logistics of getting equipment in and out of the area\nto be maintained, general safety procedures, procedures to be followed in the event of an\nemergency, and record-keeping that has to be accomplished ahead of the maintenance activity, as well as follow-up maintenance, special lighting needs, and equipment-speciÞc safety\nprecautions. In addition, an ongoing task is that of keeping access to electrical equipment free\nfrom being blocked by stored materials, such as spare parts. Record keeping and maintenance\nfollow-up activities also shall be considered.",
+              "metadata": {
+                "Header 1": "**Chapter 5** **Maintenance strategies**",
+                "Header 2": "**5.3 Preventive maintenance**",
+                "Header 3": "**5.3.3 Creating an EPM program**"
+              },
+              "index": 50
+            },
+            {
+              "content": "during normal equipment operations in order to detect incipient weaknesses or impending\nfailures.",
+              "metadata": {
+                "Header 1": "**Chapter 5** **Maintenance strategies**",
+                "Header 2": "**5.2 DeÞnitions and acronyms**",
+                "Header 3": "**5.2.1 DeÞnitions**",
+                "Header 4": "5.2.1.4 predictive maintenance: The practice of conducting diagnostic tests and inspections"
+              },
+              "index": 44
+            },
+            {
+              "content": "lishes initial preventive maintenance requirements or optimizes existing preventive maintenance requirements for equipment based upon the consequences of equipment failure. The\nfailure consequences are determined by the application of the equipment in an operating\nsystem.",
+              "metadata": {
+                "Header 1": "**Chapter 5** **Maintenance strategies**",
+                "Header 2": "**5.2 DeÞnitions and acronyms**",
+                "Header 3": "**5.2.1 DeÞnitions**",
+                "Header 4": "5.2.1.6 reliability-centered maintenance (RCM): A systematic methodology that estab"
+              },
+              "index": 46
+            },
+            {
+              "content": "Maintenance testing is an important procedure that is used to detect deÞciencies in electrical\nequipment before the equipment fails in service, often catastrophically. The very nature of\nelectricity creates this need for testing. In normal operation, electrical equipment transports\nand utilizes energy. When a problem arises, such as an overload or a short circuit, the system\nshould detect the problem and isolate it in a safe manner. The only way to know if the protective system works before it is needed is through testing. By simulating the various failure\nmodes with nondestructive test methods, deÞciencies in the system can be located and corrected. Then when the system is called upon to operate in a fault condition, testing helps to\nensure that it does its job properly and safely.\nElectrical equipment is used in a variety of categories with respect to energy. Power ßow\nstarts with generation equipment. Next, electrical equipment such as transmission and distribution lines, power cables, and bus structures are used to transport energy. Other equipment,\nsuch as transformers, rectiÞers, and converters, will change the form of the energy in some\nmanner. A fourth category of equipment is used to detect and isolate problems. This includes\nthe sensing devices, such as protective relays, along with the interrupting devices, such as circuit breakers, switches, or fuses. The Þnal category of equipment utilizes the energy to perform work in such forms as motors, solenoids, or electric heaters.\nMaintenance testing needs may vary with each of these categories. Keep in mind that the\npurpose of maintenance testing is to determine if the equipment will continue to properly perform its function. In many cases, the testing consists of simulating different operating\nconditions and evaluating how the equipment responds.",
+              "metadata": {
+                "Header 1": "**Chapter 6** **Maintenance testing overview**",
+                "Header 2": "**6.1 Introduction**"
+              },
+              "index": 60
+            },
+            {
+              "content": "When equipment fails, it is important to understand the reason why. Failure analysis, when\ndone properly, locates the root cause of the failure. This is important in order to take the necessary steps to prevent similar failures in the future. Failure analysis involves an effort to\nreconstruct, at least mentally, the conditions that existed prior to failure and the events that\nled to the nature of the failure. It is through this process that the root cause can be determined.\nThere are engineers that specialize in forensic and failure analysis. These people, through\ntheir experience, are generally able to recognize failure patterns and to draw accurate conclusions much more readily than the untrained person. This is a specialty that is generally contracted when Þrms do not have that capability in-house.",
+              "metadata": {
+                "Header 1": "**Chapter 5** **Maintenance strategies**",
+                "Header 2": "**5.4 Fundamentals of electrical equipment maintenance**",
+                "Header 3": "**5.4.3 Failure analysis**"
+              },
+              "index": 56
+            }
+          ],
+          "size": 26,
+          "coherence": 0.4950314799705959
+        },
+        {
+          "cluster_id": 6,
+          "chunks": [
+            {
+              "content": "A well designed and constructed power system will not provide a safe and reliable operation\nunless it is properly managed. Any electrical power distribution system, from the smallest\nsystem to the largest and most complex system, needs to be managed. As systems become\nlarger in size and complexity, the problems of system management increase, thereby requiring more time and attention from the system-operating personnel.\nGood design, proper installation, quality assurance, and sound operating and maintenance\nprograms provide the basic foundation for the safe and reliable operation of industrial electric\npower systems. A plant engineer who is faced with the task of improving the plantÕs electric\npower system performance, however, will likely Þnd that programs to reduce human error are\nmore cost-effective than system modiÞcations or additional preventive maintenance. In fact,\ngiven good design and a sound maintenance program, the inherent system reliability can only\nbe achieved by the reduction of operating error.\nThe operation of an electric power system should also address the problem of human errors.\nThe following examples should be considered:\nFollowing a severe thunderstorm, a plant shift supervisor made a walk-through\ninspection of the plantÕs primary distribution switchgear. Upon seeing a red light for\neach circuit breaker, he immediately tripped each circuit breaker in order to obtain a\ngreen-light indication. Because he incorrectly thought that the red light meant\nÒopen,Ó he shut down the entire plant.\nOne of a plantÕs two steam boilers was down for annual inspection and maintenance.\nAn electrician who was assigned to make a modiÞcation to the boiler control circuit\nerroneously began working on the operating boiler control circuit and shut down the\noperating boiler.\nAn investigation of a 15 kV outdoor bus duct fault revealed that production personnel\nroutinely turned off outside lighting at the beginning of the day shift by switching off\ncircuit breakers in a 120 V distribution panel. The bus duct heater circuit was incorrectly identiÞed, and was being switched off with the lighting circuits.\nIt is a natural tendency to blame equipment for failures, rather than human error. The bus duct\nfault in the last example could have been classiÞed as an equipment failure; however, the\nprime cause was improper operation (human error) of the bus duct heaters.\nMost plant electrical outages that clearly are not due to equipment failure, lightning, or utility\ndisturbances can be prevented by making an objective investigation of the potential for outages and by following these guidelines:\na) Document the system and identify the equipment.\nb) Plan switching operations in detail.\nc) Secure equipment from unintentional operation.\nd) Clearly deÞne operating responsibility and adhere to it rigidly. System operation can\nand should be managed.\nEffective managers of a power system will consider load distribution, system integrity, power\nfactor, system protection coordination, and operating economics. Each of these areas is discussed in this chapter, thus showing how all of these considerations relate to each other. No\narea of industrial and commercial power system management is independent of the other.",
+              "metadata": {
+                "Header 1": "**Chapter 3** **System management**",
+                "Header 2": "**3.1 Introduction**"
+              },
+              "index": 14
+            },
+            {
+              "content": "A Òprotective deviceÓ is generally referred to as any piece of equipment whose primary function is to detect an electrical abnormality or failure, such as an overload or fault, and to automatically initiate the removal of the problem. A fuse, for example, senses excessive current\nßow and ÒblowsÓ to interrupt the ßow of current. Some relays would be classiÞed as ÒprotectiveÓ while other relays would be classiÞed as ÒcontrolÓ or Òalarm,Ó depending on what action\nthe relay initiates. A relay would be considered a protective relay if it trips open a circuit\nbreaker, switch, or motor contactor when an electrical fault occurs. A relay that operates a\nlight or an annunciator, on the other hand, would not normally be considered a protective\nrelay, but would be considered an alarm relay.\nThe most common types of protective devices are protective relays, fuses, and circuit breakers with integral trip units. Fuses and most low-voltage circuit breakers are self-contained,\nwhere the sensing and operating devices are all in a common housing. Medium- and high\nMAINTENANCE TESTING OVERVIEW Std 902-1998\nvoltage circuit breakers, motor starters, and spring-loaded switches have separate protective\ndevices, such as relays, that work together as a system to perform the overall protective function. Typically, protective relays sense voltage and/or current and operate a circuit breaker,\nmotor starter, or spring-loaded switch when a predetermined level of voltage, current, power,\nfrequency, etc., is reached.",
+              "metadata": {
+                "Header 1": "**Chapter 6** **Maintenance testing overview**",
+                "Header 2": "**6.3 Protective device testing**"
+              },
+              "index": 69
+            },
+            {
+              "content": "It is the responsibility of the serving utility company to switch for isolation of the utility\npower supply prior to the service point to any facility. The utility shall supply to the facility\nowner or the ownerÕs representative(s) a point at which to padlock the service disconnect or\nprovide some other means of service isolation control.\nIt is also the primary responsibility of the serving utility company to protect the service from\npossible disturbances or damage from outside inßuences. The serving utility shall also protect\nits service equipment from access by unauthorized personnel.",
+              "metadata": {
+                "Header 1": "**Chapter 4** **System control responsibilities and clearing procedures**",
+                "Header 2": "**4.4 Utility responsibilities**"
+              },
+              "index": 35
+            },
+            {
+              "content": "During maintenance shutdowns or during construction tie-in activity, the area around distribution equipment can become congested with materials and personnel. The protection of\nnearby operating equipment from accidental operation should be addressed. In redundant\nsystems, such as primary selective or secondary selective distribution arrangements, a portion\nof the system may be energized while the equipment adjacent to it is serviced.  In this situation, the two pieces of equipment should be individually barricaded, with personnel access\nstrictly controlled during the periods of maintenance or construction. No exposure should\nexist that would allow personnel to accidentally bump against a control switch or protective\nrelay.",
+              "metadata": {
+                "Header 1": "**Chapter 3** **System management**",
+                "Header 2": "**3.3 System integrity**",
+                "Header 3": "**3.3.3 Congested construction/maintenance activity**"
+              },
+              "index": 19
+            },
+            {
+              "content": "Power-factor correction, by the addition of capacitors at the facility service point, reduces\npower-factor charges from the serving utility. This, however, does not release any capacity of\nthe load-side distribution system. Power-factor correction, closer to the loads, reduces currents in the main feeder conductors. This reduces the system losses, reduces power-factor\nbilling charges, releases circuit capacity, and improves voltage regulation. The release of circuit capacity may be used to avoid costly system expansion projects by allowing additional\ncircuit loading.",
+              "metadata": {
+                "Header 1": "**Chapter 3** **System management**",
+                "Header 2": "**3.6 Operating economics**",
+                "Header 3": "**3.6.2 Power-factor correction**"
+              },
+              "index": 28
+            }
+          ],
+          "size": 25,
+          "coherence": 0.4947870315546547
+        },
+        {
+          "cluster_id": 0,
+          "chunks": [
+            {
+              "content": "The most common method of testing insulation integrity is to apply a dc voltage and measure\nthe leakage current. The insulation resistance is then determined by dividing the voltage by\nthe current. There are many commercially available test instruments that have speciÞc voltage\noutputs and provide the readings directly in ohms. This is referred to as Òinsulation resistance\ntesting,Ó and frequently as ÒMegger testingÓ or ÒMeggering.Ó\nFor low-voltage equipment, common test voltages are 100 V, 250 V, 500 V, and 1000 V. Test\ninstruments are also available that have test voltages of 2500 V, 5000 V, and 10 000 V for use\non medium-voltage equipment. For most testing beyond 10 000 V, the test equipment no\nlonger has a Þxed output voltage. This is considered Òhigh-potentialÓ testing, commonly\ncalled Òhi-potÓ testing; and the voltage is continuously adjustable so that it can be ramped up\nslowly. The leakage current is usually measured directly when hi-pot testing is being performed, since the voltage is no longer Þxed and getting a direct readout in ohms would be\nmore difÞcult.\nBasic electrical theory helps explain how dc insulation resistance testing works and what\ninformation it provides. A capacitor can be deÞned as a device for storing electrical charge\nthat consists of two conductors separated by an insulator. From this deÞnition, it can be seen\nthat many electrical components, such as cables, bus bars, motor windings, and transformer\nwindings, have capacitance to ground, since the conductors of these items are separated from\nground by an insulating medium. The amount of capacitance is determined by the sizes of the\nconductors, their proximity to each other, and the electrical properties of the insulation. When\ndc voltage is applied between the conductor and ground, the capacitor that is formed by the\nMAINTENANCE TESTING OVERVIEW Std 902-1998\nbus, cable, etc., and ground charges up. Once this charging is completed, the remaining dc\ncurrent (called Òleakage currentÓ) that is ßowing is due to the dc resistance of the insulation.\nBy dividing the voltage by the leakage current, the value of the insulation resistance is\nobtained. It is common practice to measure the insulation resistance over a speciÞc interval\n(to allow the capacitance to charge) and then record the Þnal reading.",
+              "metadata": {
+                "Header 1": "**Chapter 6** **Maintenance testing overview**",
+                "Header 2": "**6.2 Insulation tests**",
+                "Header 3": "**6.2.1 DC tests**"
+              },
+              "index": 63
+            },
+            {
+              "content": "Analytical tests address speciÞc aspects of a piece of equipment or system under test. The\ntests are usually more specialized to the equipment under evaluation and may utilize test\nequipment that is designed for that speciÞc test.",
+              "metadata": {
+                "Header 1": "**Chapter 6** **Maintenance testing overview**",
+                "Header 2": "**6.4 Analytical tests**"
+              },
+              "index": 73
+            },
+            {
+              "content": "Time-travel analysis is primarily performed on medium- and high-voltage circuit breakers.\nThe test consists of plotting the voltage that is applied to the trip coil (or close coil for closing\ntests) and the movement of the breaker mechanism vs. time with a high-speed recorder such\nas a light beam oscillograph. The plot is then analyzed to determine opening (or closing)\nspeed and contact bounce, which may be critical in the proper operation of the breaker. These\ntests can also be used to determine if the contacts of each phase opened (or closed) simultaneously.",
+              "metadata": {
+                "Header 1": "**Chapter 6** **Maintenance testing overview**",
+                "Header 2": "**6.4 Analytical tests**",
+                "Header 3": "**6.4.4 Time-travel analysis**"
+              },
+              "index": 77
+            },
+            {
+              "content": "CT current transformer\nDLA dielectric loss angle\nhi-pot high potential\nPT potential transformer\nRCM reliability-centered maintenance\nTTR transformer turns ratio\nVT voltage transformer",
+              "metadata": {
+                "Header 1": "**Chapter 6** **Maintenance testing overview**",
+                "Header 2": "**6.1 Introduction**",
+                "Header 3": "**6.1.1 Acronyms and abbreviations**"
+              },
+              "index": 61
+            },
+            {
+              "content": "Motor surge comparison testing addresses the problem of insufÞcient test voltage to Þnd the\nweak insulation between turns by utilizing a high-voltage pulse. Two identical high-voltage\npulses are introduced into two windings of a motor. The propagation of the pulse through one\nwinding is compared to the propagation of the identical pulse through the winding next to it.\nAn oscilloscope (usually built into the surge tester) is used to look at the traces and to compare them. The patterns should be identical (or very nearly so) and can appear as one trace\n(two superimposed traces) if both windings are good. A turn-to-turn failure (or a failure to\nground) is indicated by two distinctly different traces appearing on the oscilloscope.\nMotor surge comparison testing has been used by motor winding shops for many years. There\nare now portable models that are available for Þeld testing. Motor surge comparison testing\nhas proven to be a valuable tool in detecting the early stages of a winding failure, both from\nthe standpoint of preventing an unexpected failure during operation and preventing a catastrophic failure of the motor so it can be repaired instead of needing to be replaced.",
+              "metadata": {
+                "Header 1": "**Chapter 6** **Maintenance testing overview**",
+                "Header 2": "**6.4 Analytical tests**",
+                "Header 3": "**6.4.3 Motor surge comparison testing**"
+              },
+              "index": 76
+            }
+          ],
+          "size": 20,
+          "coherence": 0.4925424215249506
+        },
+        {
+          "cluster_id": 1,
+          "chunks": [
+            {
+              "content": "Safety one-line diagrams are made to show all the sources of electrical energy in an electrical\npower system. They are designed for the electrically safe operation of a power system only,\nand should have the following characteristics:\nPROTECTIVE EQUIPMENT, TOOLS, AND METHODS Std 902-1998\na) _Clarity_ . The drawings should be easy to read in poor lighting conditions. Clarity\nshould have priority over geographical location. If clarity requires that the systems be\nshown on two sheets, then that is the way it should be. The reason for this drawing is\nsafety so the drawing shall be clear and legible.\nb) _Correctness_ . If the safety one-line drawing is not going to be kept correct, then it\nshould not be made. There should be a system in the organization to keep the drawing\ncorrect, and to issue it to people who are authorized to do switching. These people\nshall be trained in the proper switching procedures.\nc) _Component identiÞcation_ . All power system components should be clearly identiÞed\non the drawing, as well as on the components themselves. Components are such\nthings as switches, circuit breakers, cables, transformers, substations, potential transformers, etc. The components shall have only one identiÞcation, and it should be on\nboth the drawing and the equipment itself. Engraved plastic signs or any means that\ndo not fade with time are satisfactory. The identiÞcation signs should be large enough\nto be read at a distance and should not be painted over. They should be on all sides of\nthe equipment being identiÞed and placed where there can be no question that the\ncomponent is indeed what the sign says it is. Any special warning such as ÒThis is not\na load break deviceÓ is acceptable, as long as the procedures are not on the identiÞcation sign. The purpose of this sign is to identify a component of a power system; it is\nnot a substitute for trained people or a procedure manual. Short, alphanumeric designations are better than operating names. Avoid geographical descriptions (e.g., what\ndo you call the Ònorth acid pumpÓ when another pump is placed north of it?). Avoid\nchanging designations.\nd) _Up-to-date, legible, and accessible_ . The control of the diagram should include the\ndestruction of the outdated drawings. A framed drawing on the substation wall is an\nexcellent idea, as long as it is kept current and is replaced when it becomes faded or\nillegible. Drawings do fade with time, and the drawing should be legible under poor\nlighting conditions.",
+              "metadata": {
+                "Header 1": "**Chapter 11** **Protective equipment, tools, and methods**",
+                "Header 2": "**11.5 Drawings and other documentation**",
+                "Header 3": "**11.5.1 Safety electrical one-line diagrams**"
+              },
+              "index": 223
+            },
+            {
+              "content": "A site plan usually is a necessary accompaniment to the single-line diagram for a complete\ndescription and mapping of the industrial and commercial electric distribution system. The\nlocations of the major components of the system are usually easy to visualize; however, circuit routing is difÞcult to comprehend without a site plan.\nSite plans are important for a number of reasons, all of which could affect the operation of the\nindustrial plant or commercial complex at some time. If a major catastrophe such as Þre,\nßood, or storm damage should occur, a site plan would be an important tool if the distribution\nsystem were to be reconstructed. The expansion and/or rearrangement of an electrical distribution system could be extremely difÞcult without accurate records of the location of existing\nsystem components. The site plan can be important for identifying the proximity of electrical\nsystem components to other maintenance work that may be taking place.",
+              "metadata": {
+                "Header 1": "**Chapter 2** **Operating diagrams**",
+                "Header 2": "**2.3 Plan (equipment location plan)**"
+              },
+              "index": 11
+            },
+            {
+              "content": "For a large facility that has regularly changing conditions on its electrical distribution system,\na mimic bus-type, single-line diagram is very useful. This type of single-line diagram could\nbe a fairly simple pegboard arrangement with movable circuit symbols and tapes in several\ncolors to identify voltage levels; or it could be a light-indicating board that indicates remote\nswitch position via telemeter information and includes load ßow data. Modern systems may\nhave this data displayed on a computer monitor.",
+              "metadata": {
+                "Header 1": "**Chapter 2** **Operating diagrams**",
+                "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
+                "Header 3": "**2.2.3 Special single-line diagrams**"
+              },
+              "index": 8
+            },
+            {
+              "content": "Operating diagrams are the road maps to the operation and maintenance of an industrial or\ncommercial power system. The diagrams can be considered as the primary tool for work on a\npower system. Without the guidance that is provided by the information contained on these\nsystem diagrams, the operation and maintenance of an industrial or commercial complex\nwould be extremely difÞcult and potentially unsafe.\nVendorÕs drawings and instruction manuals, plant drawings, maintenance histories, spare\nparts lists, standard operating procedures, and other documents should be systematically Þled\nand readily available to the personnel who are involved in system operation. A plantÕs core\ndistribution system may have a life of 30 or more years. Complete, up-to-date equipment documentation is essential not only for supporting routine daily activity, but also for the successful implementation of system expansion or modiÞcation. System documentation should\ninclude simpliÞed one-line drawings that show only power sources, transformers, voltage levels, major loads, disconnecting devices, switches, and breakers. These drawings are essential\nfor the planning and illustration of operation activity. A master Þle should be kept in which all\nrevisions are noted and the drawings are subsequently updated because there may be several\ncopies or Þles of essential drawings that depict the plant. The use of computer-aided drafting\nsystems may expedite the process.\nThe drawings and the equipment identiÞcations should agree. Frequently, equipment identiÞcation is incomplete and poorly located. Staff reliance on such documents may result in\nerrors, if a system is not in place to ensure accuracy. Disconnecting means, switch operators,\ncircuit breaker control switches, circuit breakers, push buttons, motors, and other devices\nshould have complete stand-alone identiÞcation nameplates attached in immediate full view\n(i.e., ÒFDR 12, Sub. 3Ó vs. ÒFDR 12Ó for a switch control handle). IdentiÞcation should be\nunique and afÞxed to all associated apparatus. The location of the identiÞcation nameplate\ncan be as critical as the accuracy of the nameplate.\nCritical process operations have been accidentally shut down because circuit breakers in panelboards were not properly identiÞed. The identiÞcation of circuits during commissioning\nshould always be veriÞed. A mandatory policy requiring the regular review and updating of\npanelboard schedules should be instituted.\nNo standard diagram or type of diagram that is available can sufÞce for all industrial plants or\ncommercial complexes. No standard electric distribution system is adaptable to all industrial\nplants because two plants rarely have the same requirements. This chapter outlines the types\nof diagrams and information that are available to map any distribution system. Consistency is\nan important factor, however, in keeping diagrams readable and understandable.",
+              "metadata": {
+                "Header 1": "**Chapter 2** **Operating diagrams**",
+                "Header 2": "**2.1 Introduction**"
+              },
+              "index": 4
+            },
+            {
+              "content": "Panel schedules are not one-line diagrams by deÞnition, but they often fulÞll the same purpose. Low-voltage lighting and power panel schedules should be maintained as well as all\nother electrical distribution system diagrams, since they may be used in lieu of the one-line\ndiagram.",
+              "metadata": {
+                "Header 1": "**Chapter 2** **Operating diagrams**",
+                "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
+                "Header 3": "**2.2.4 Schedules**"
+              },
+              "index": 10
+            }
+          ],
+          "size": 16,
+          "coherence": 0.5906514483271638
+        },
+        {
+          "cluster_id": 3,
+          "chunks": [
+            {
+              "content": "Any lockout/tagout program should require that disconnect switches, circuit breakers, fuse\nholders, etc., be locked out and identiÞed with a warning tag to indicate that the status of the\nequipment is not to be altered. Preferably, locking and tagging should be done by a qualiÞed\nelectrician, in conjunction with operations personnel, to ensure not only that the proper\ndisconnecting means have been opened, but also that all the required operations have been\nperformed. Such a policy ensures smooth, safe shutdown and restart.\nRequiring that all locking and tagging operations be performed by qualiÞed electricians,\nhowever, is unjustiÞed in many types of manufacturing industries. This situation is especially\nSAFE ELECTRICAL WORK PRACTICES Std 902-1998\ntrue in light manufacturing industries because many jobs performed by nonelectrical personnel are of brief duration, and are on equipment that can be effectively made safe in a simple,\nstraightforward fashion. With proper training, nonelectrical personnel can safely execute\nmany simple lockout/tagouts.\nSpecial instruction is essential for nonelectrical employees who are authorized to execute\nelectrical lockout/tagouts. It is especially important to provide speciÞc instructions in\nelectrical safety procedures, emphasize practices to be avoided, and call attention to speciÞc\noperations that do not effectively yield an electrically safe work condition.\nEmployees who are expected to execute lockout/tagouts should be issued a supply of\npadlocks and warning tags. If the lockout/tagout program allows or requires nonelectrical\npersonnel to execute electrical lockout/tagouts, it should stipulate that assistance from the\nplantÕs electrical department be enlisted any time there is doubt as to what constitutes proper\nlockout/tagout.",
+              "metadata": {
+                "Header 1": "**Chapter 10** **Safe electrical work practices**",
+                "Header 2": "**10.4 Working on or near de-energized equipment**",
+                "Header 3": "**10.4.2 Hazardous energy control (lockout/tagout program)**",
+                "Header 4": "**10.4.2.3 Padlocks and warning tags**"
+              },
+              "index": 191
+            },
+            {
+              "content": "A lockout/tagout program should include provisions for issuing formal documentation\n(sometimes called a permit) to ensure that controls are in effect and cannot be removed until\nthere is assurance that all personnel are no longer exposed to hazards. At Þrst thought, it\nmight appear that the ideal program would rigidly require that no work ever be undertaken on\nany equipment unless a permit is in effect. Such an inßexible policy would not only be\nunrealistic from an efÞciency standpoint, but could create hazards equal to or greater than\nthose that the program is intended to minimize. Immediate action may be necessary in an\nemergency. There may not be time to procure a formal permit. Therefore, the lockout/tagout\nprogram should include a provision that some small, noncomplex, or emergency jobs can utilize an individual nondocumented lockout/tagout. Conditions under which a nondocumented\nlockout/tagout can be used are given in 29 CFR 1910.147.\nTo be effective, a lockout/tagout program should be written in speciÞc, rather than general,\nterms. Including unrealistic requirements or wording that is difÞcult to understand could\ndamage the credibility of the program. A key element in the success of any lockout/tagout\nprogram is employee awareness that no violation of the program is acceptable.\nA workable lockout/tagout program, then, is one that acknowledges reality without compromising safety. The program should not obstruct or delay work, but should provide an orderly\nmethod for expediting effective lockout/tagout.",
+              "metadata": {
+                "Header 1": "**Chapter 10** **Safe electrical work practices**",
+                "Header 2": "**10.4 Working on or near de-energized equipment**",
+                "Header 3": "**10.4.2 Hazardous energy control (lockout/tagout program)**",
+                "Header 4": "**10.4.2.1 A realistic approach to lockout/tagout**"
+              },
+              "index": 189
+            },
+            {
+              "content": "All padlocks issued to an individual should be commonly keyed, but it is imperative that no\ntwo persons be issued padlock sets that can be operated by the same key. Designated\nsupervisors can retain master keys for all padlocks. A documented procedure within the\nlockout/tagout program should clearly deÞne the details for removing a lock and/or a tag\nwhen the person who installed them is not available. Personnel shall be trained on the use of\nsuch a procedure. The procedure shall include\na) An attempt to locate the person who installed the lockout/tagout device;\nb) VeriÞcation that the person is not at the facility where the work is being done;\nc) An attempt to contact the person, wherever he/she is, to inform him/her that the lock\nwill be removed;\nd) A method to guarantee that the person is informed, before returning to work at that\nfacility, that their lock/tag has been removed.",
+              "metadata": {
+                "Header 1": "**Chapter 10** **Safe electrical work practices**",
+                "Header 2": "**10.4 Working on or near de-energized equipment**",
+                "Header 3": "**10.4.2 Hazardous energy control (lockout/tagout program)**",
+                "Header 4": "**10.4.2.5 Personalized padlocks**"
+              },
+              "index": 193
+            },
+            {
+              "content": "The following is a list of points to consider when drafting an electrical lockout/tagout pro\ngram:\na) The plantÕs lockout/tagout program should consist of two parts. The Þrst part should\ncover general considerations. The second part should cover speciÞc procedures that\napply to documented or nondocumented lockout/tagouts.\nb) Terms should be used in the same context in which they are used in the system. DeÞnitions should be provided for lockout/tagout, lockout/tagout program, lockout/tagout\nprocedure, lockout/tagout permit, released, restored, locked out, tagged, disconnecting\nmeans/disconnect switch, qualiÞed, authorized, affected, and whatever other terms are\nappropriate in a particular facility.\nc) No two crews working under different supervisors should be permitted to work under\nthe same lockout/tagout permit. Each crew leader should secure a separate (redundant) permit.\nd) Steps should be taken to eliminate the possibility that temporary grounding leads\nmight be overlooked when energy is restored. Grounding leads should be issued only\nwith a permit that identiÞes each set of leads by a distinctive number.\ne) The lockout/tagout procedure should include detailed provisions for the lockout/\ntagout, grounding, and bleeding of capacitors and other stored energy devices.\nf) The procedure should indicate that lockout/tagout alone does not necessarily indicate\nsafety. All of the steps in establishing an electrically safe work condition should be\napplied.\ng) Procedures for removing padlocks with a master key should be rigidly controlled. If\nthe person who attached the padlock is absent from work, the steps in 10.4.2.5 shall\nbe followed. If a time-card system exists in a facility, a suggested practice is to\nremove the employeeÕs time card from the rack and substitute an ofÞcial card\ninforming them that their clearance has been abrogated and that they are to report\nimmediately to a designated supervisor for brieÞng.\nh) Provisions should be made for transferring lockout/tagouts from one person to\nanother for work that must carry over from one shift to the next. The lockout/tagout\nprogram should provide for a written transfer procedure.",
+              "metadata": {
+                "Header 1": "**Chapter 10** **Safe electrical work practices**",
+                "Header 2": "**10.4 Working on or near de-energized equipment**",
+                "Header 3": "**10.4.2 Hazardous energy control (lockout/tagout program)**",
+                "Header 4": "**10.4.2.12 Other points to consider**"
+              },
+              "index": 200
+            },
+            {
+              "content": "In general, the lockout/tagout procedure should require that the equipment covered by the\nlockout/tagout permit not be altered unless the entire permit is closed out. Some types of\nwork, however, require that equipment be operated to determine if the job is completed\nproperly. For example, an employee balancing a large fan might be required to enter the fan\nhousing repeatedly to attach balance weights, and the fan might be operated after each\nattempt at balance to obtain a vibration reading.\nIn such cases, it is permitted to remove the lockout/tagout devices temporarily and then\nreplace them without going through all of the paperwork and approvals again. The need for\nSAFE ELECTRICAL WORK PRACTICES Std 902-1998\nthe temporary release should be documented in the initial paperwork. In addition, everyone\non the job shall be made aware at the beginning of the job, in the job brieÞng, that a temporary release will be employed. The physical actions of a temporary release are the same as if\npersons were removing their lockout/tagout devices permanently. Those persons who have to\nreturn to working on that job after the temporary release shall reapply their lockout/tagout\ndevices before resuming any work.",
+              "metadata": {
+                "Header 1": "**Chapter 10** **Safe electrical work practices**",
+                "Header 2": "**10.4 Working on or near de-energized equipment**",
+                "Header 3": "**10.4.2 Hazardous energy control (lockout/tagout program)**",
+                "Header 4": "**10.4.2.7 Temporary release of lockout/tagout permit**"
+              },
+              "index": 195
+            }
+          ],
+          "size": 12,
+          "coherence": 0.6537063279511339
+        }
+      ],
+      "raw_chunks_count": 236
+    },
+    {
+      "pdf_name": "NO_OCR.pdf",
+      "pdf_path": "documents/NO_OCR.pdf",
+      "processed_at": "2025-11-13T15:46:08.449460",
+      "total_chunks": 0,
+      "num_clusters": 0,
+      "contexts": [],
+      "raw_chunks_count": 0
+    },
+    {
+      "pdf_name": "sample.pdf",
+      "pdf_path": "documents/sample.pdf",
+      "processed_at": "2025-11-13T15:46:09.863712",
+      "total_chunks": 8,
+      "num_clusters": 2,
+      "contexts": [
+        {
+          "cluster_id": 1,
+          "chunks": [
+            {
+              "content": "The single-line diagram may be used in a number of important ways in operating and maintaining an industrial or commercial power distribution system. Frequently, the single-line diagram, with all of the listed information, becomes too crowded for information to be used\neffectively in some of the operating activities. In those instances, it is wise to produce a set of\nsingle-line diagrams, with each different diagram in the set containing the pertinent information that is required for a particular activity or set of activities. Some of the needs for special\nsingle-line diagrams are\na) _Switching functions_ . When the primary use of the diagram is to provide information to\nsystem operators for switching in order to isolate portions for maintenance or for load\ncontrol, then only the data required to make the decisions necessary for system switching are included on the diagram. Sometimes, when the distribution system is complex,\na separate version of the single-line diagram in block form is more usable than a complete single-line diagram. This may be identified as a “system operating diagram.”\nb) _Load flow control_ . This diagram is used exclusively for load flow control. It only\nincludes the data that show system component capacities and other data that pertain\nto load flow.\nc) _Relaying and relay logic diagrams_ . These single-line diagrams are used to describe the\nsystem protective relay systems. These diagrams are used particularly as logic and tripping diagrams that may contain a unique language used only to depict the sequence of\nrelay or system protective component operation under various fault conditions.\nd) _Impedance diagram_ . This is a single-line diagram that shows the system input impedance and the impedance of all system components in which the impedance of each\ncircuit branch is maintained for system short-circuit analysis. This diagram should\ninclude all reactance data on large rotating apparatus or the equivalent data for groups\nof machines.",
+              "metadata": {
+                "Header 1": "**Chapter 2** **Operating diagrams**",
+                "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
+                "Header 3": "**2.2.2 Uses of the single-line diagram**"
+              },
+              "index": 3
+            },
+            {
+              "content": "Panel schedules are not one-line diagrams by definition, but they often fulfill the same purpose. Low-voltage lighting and power panel schedules should be maintained as well as all\nother electrical distribution system diagrams, since they may be used in lieu of the one-line\ndiagram.",
+              "metadata": {
+                "Header 1": "**Chapter 2** **Operating diagrams**",
+                "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
+                "Header 3": "**2.2.4 Schedules**"
+              },
+              "index": 6
+            },
+            {
+              "content": "A site plan usually is a necessary accompaniment to the single-line diagram for a complete\ndescription and mapping of the industrial and commercial electric distribution system. The\nlocations of the major components of the system are usually easy to visualize; however, circuit routing is difficult to comprehend without a site plan.\nSite plans are important for a number of reasons, all of which could affect the operation of the\nindustrial plant or commercial complex at some time. If a major catastrophe such as fire,\nflood, or storm damage should occur, a site plan would be an important tool if the distribution\nsystem were to be reconstructed. The expansion and/or rearrangement of an electrical distribution system could be extremely difficult without accurate records of the location of existing\nsystem components. The site plan can be important for identifying the proximity of electrical\nsystem components to other maintenance work that may be taking place.",
+              "metadata": {
+                "Header 1": "**Chapter 2** **Operating diagrams**",
+                "Header 2": "**2.3 Plan (equipment location plan)**"
+              },
+              "index": 7
+            },
+            {
+              "content": "Operating diagrams are the road maps to the operation and maintenance of an industrial or\ncommercial power system. The diagrams can be considered as the primary tool for work on a\npower system. Without the guidance that is provided by the information contained on these\nsystem diagrams, the operation and maintenance of an industrial or commercial complex\nwould be extremely difficult and potentially unsafe.\nVendor’s drawings and instruction manuals, plant drawings, maintenance histories, spare\nparts lists, standard operating procedures, and other documents should be systematically filed\nand readily available to the personnel who are involved in system operation. A plant’s core\ndistribution system may have a life of 30 or more years. Complete, up-to-date equipment documentation is essential not only for supporting routine daily activity, but also for the successful implementation of system expansion or modification. System documentation should\ninclude simplified one-line drawings that show only power sources, transformers, voltage levels, major loads, disconnecting devices, switches, and breakers. These drawings are essential\nfor the planning and illustration of operation activity. A master file should be kept in which all\nrevisions are noted and the drawings are subsequently updated because there may be several\ncopies or files of essential drawings that depict the plant. The use of computer-aided drafting\nsystems may expedite the process.\nThe drawings and the equipment identifications should agree. Frequently, equipment identification is incomplete and poorly located. Staff reliance on such documents may result in\nerrors, if a system is not in place to ensure accuracy. Disconnecting means, switch operators,\ncircuit breaker control switches, circuit breakers, push buttons, motors, and other devices\nshould have complete stand-alone identification nameplates attached in immediate full view\n(i.e., “FDR 12, Sub. 3” vs. “FDR 12” for a switch control handle). Identification should be\nunique and affixed to all associated apparatus. The location of the identification nameplate\ncan be as critical as the accuracy of the nameplate.\nCritical process operations have been accidentally shut down because circuit breakers in panelboards were not properly identified. The identification of circuits during commissioning\nshould always be verified. A mandatory policy requiring the regular review and updating of\npanelboard schedules should be instituted.\nNo standard diagram or type of diagram that is available can suffice for all industrial plants or\ncommercial complexes. No standard electric distribution system is adaptable to all industrial\nplants because two plants rarely have the same requirements. This chapter outlines the types\nof diagrams and information that are available to map any distribution system. Consistency is\nan important factor, however, in keeping diagrams readable and understandable.",
+              "metadata": {
+                "Header 1": "**Chapter 2** **Operating diagrams**",
+                "Header 2": "**2.1 Introduction**"
+              },
+              "index": 0
+            },
+            {
+              "content": "A reliable single-line diagram of an industrial or commercial electrical power distribution\nsystem is an invaluable tool. It is also called a one-line diagram. The single-line diagram indicates, by single lines and standard symbols, the course and component parts of an electric circuit or system of circuits. The symbols that are commonly used in one-line diagrams are\ndefined in IEEE Std 315-1975. [1]\nThe single-line diagram is a road map of the distribution system that traces the flow of power\ninto and through the system. The single-line drawing identifies the points at which power is,\nor can be, supplied into the system and at which power should be disconnected in order to\nclear, or isolate, any portion of the system.",
+              "metadata": {
+                "Header 1": "**Chapter 2** **Operating diagrams**",
+                "Header 2": "**2.2 Single-line diagram (one-line diagram)**"
+              },
+              "index": 1
+            }
+          ],
+          "size": 6,
+          "coherence": 0.6492052242901003
+        },
+        {
+          "cluster_id": 0,
+          "chunks": [
+            {
+              "content": "For a large facility that has regularly changing conditions on its electrical distribution system,\na mimic bus-type, single-line diagram is very useful. This type of single-line diagram could\nbe a fairly simple pegboard arrangement with movable circuit symbols and tapes in several\ncolors to identify voltage levels; or it could be a light-indicating board that indicates remote\nswitch position via telemeter information and includes load flow data. Modern systems may\nhave this data displayed on a computer monitor.",
+              "metadata": {
+                "Header 1": "**Chapter 2** **Operating diagrams**",
+                "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
+                "Header 3": "**2.2.3 Special single-line diagrams**"
+              },
+              "index": 4
+            },
+            {
+              "content": "A switching simulator can be very useful for verifying the effects of any set of switching\noperations. Low-voltage toggle switches are substituted for circuit breakers and disconnect\nswitches. Signal lamps indicate whether a circuit path has been omitted in the switching\nsequence, thereby offering the system operator a check on the switching plan prior to performing switching on the distribution system.\nInteractive computer programs have been developed to provide the same system modeling as\nin the electrified-system one-line diagram. These programs can be rapidly manipulated to test\nany planned switching of an industrial plant’s power system. They can be used to check a\nproposed set of switching instructions and, in some cases, to print a set of instructions to be\nused in the field.",
+              "metadata": {
+                "Header 1": "**Chapter 2** **Operating diagrams**",
+                "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
+                "Header 3": "**2.2.3 Special single-line diagrams**",
+                "Header 4": "**2.2.3.1 Switching simulator**"
+              },
+              "index": 5
+            }
+          ],
+          "size": 2,
+          "coherence": 0.6176855871571394
+        }
+      ],
+      "raw_chunks_count": 8
+    }
+  ]
+}
