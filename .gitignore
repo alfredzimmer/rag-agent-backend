@@ -1,3 +1,4 @@
 .env
 .venv
-.DS_Storevenv/
+.DS_Store
+venv/
