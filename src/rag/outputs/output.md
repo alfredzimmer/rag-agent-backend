@@ -3,7 +3,7 @@
 **Breakers Used in Industrial and**
 **Commercial Power Systems**
 # **Chapter 1** **Overview**
-**1.1 Scope**
+## **1.1 Scope**
 This recommended practice provides information for selecting the proper circuit breaker
 for a particular application. This recommended practice helps the application engineer
 specify the type of circuit breaker, ratings, trip functions, accessories, acceptance tests,
@@ -14,7 +14,7 @@ components. Guidelines are given for coordinating combinations of line-side and 
 operation can be verified and maintained.
 This recommended practice does not cover the selection and application of circuit
 breakers such as marine circuit breakers and definite purpose circuit breakers.
-**1.2 Two classifications of breakers**
+## **1.2 Two classifications of breakers**
 There are two main classifications of low-voltage circuit breakers: molded-case circuit
 breakers and low-voltage power circuit breakers. Within the molded-case circuit breaker
 classification, there is another type of circuit breaker called the insulated-case circuit
@@ -62,7 +62,7 @@ circuit breakers. When the circuit breaker is removed from its enclosure, the cu
 replacement purposes. Electromechanical trip units were used in the circuit breakers prior
 to the early 1970s. However, electronic trip units are used in new LVPCBs and are
 available as upgrades for older units.
-**1.3 Description of a molded-case circuit breaker**
+## **1.3 Description of a molded-case circuit breaker**
 Figure 1-1 is a cutaway view of a typical MCCB. Letters are used to indicate the various
 elements of the circuit breaker, with a description listed in the legend. This typical circuit
 1Information on references can be found in 1.7.
@@ -80,7 +80,7 @@ intermediate position, it must be manually moved slightly past the OFF position 
 the mechanism. Instructions for resetting a particular circuit breaker after it trips should be
 marked on the circuit breaker and/or indicated on the equipment where the circuit breaker
 is installed.
-**1.4 Description of a low-voltage power circuit breaker**
+## **1.4 Description of a low-voltage power circuit breaker**
 Figure 1-2 is a view of a partially disassembled, manually operated, drawout LVPCB. The
 open construction permits access to the circuit-breaker parts for maintenance and parts
 replacement. Numbers are used to indicate the various elements of the circuit breaker. A
@@ -110,7 +110,7 @@ Reprinted with permission from Seimens Energy & Automation, Inc.
 **Figure 1-2—Low-voltage ac power circuit braker-drawout type**
 **(shown partially disassembled to show internal features)**
 Authorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.
-**1.5 Document organization**
+## **1.5 Document organization**
 This recommended practice is organized in the following manner:
 _Chapter 2: Definitions, acronyms, and abbreviations_
 All of the major terms used in this recommended practice are defined in this chapter. For a
@@ -203,7 +203,7 @@ due to excessive use. In addition, the performance characteristics of other comp
 the breaker, such as contact pressure springs, may be degraded for some other reason such
 as overheating. This chapter discusses proper maintenance procedures and schedules that
 should be followed to maintain reliable operation.
-**1.6 Summary**
+## **1.6 Summary**
 This recommended practice identifies the differences between the two classifications of
 low-voltage circuit breakers and provides information for selecting the best one for a
 particular situation. In addition, this recommended practice gives information for applying
@@ -211,7 +211,7 @@ circuit breakers at different locations in the power system and for protecting s
 components. Guidelines are also given for coordinating combinations of line-side and
 load-side devices. Acceptance testing and maintenance guidelines are given so that
 reliable operation can be verified and maintained.
-**1.7 Normative references**
+## **1.7 Normative references**
 The following referenced documents are indispensable for the application of this
 recommended practice. For dated references, only the edition cited applies. For undated
 references, the latest edition of the referenced document (including any amendments)
@@ -234,7 +234,7 @@ NFPA 70-2005, National Electrical Code [®] (NEC [®] ). [6]
 UL 489-2002, Molded-Case Circuit Breakers, Molded-Case Switches and Circuit-Breaker
 Enclosures. [7]
 UL 1558-1999, Metal-Enclosed Low-Voltage Power Circuit Breaker Switchgear.
-**1.8 Bibliography**
+## **1.8 Bibliography**
 [B1] IEEE 100, _The Authoritative Dictionary of IEEE Standards Terms_, Seventh Edition.
 New York: Institute of Electrical and Electronics Engineers, Inc.
 [B2] IEEE Std 141 [™] -1993, IEEE Recommended Practice for Electric Power Distribution
@@ -252,7 +252,7 @@ Park, P.O. Box 9101, Quincy, MA 02269-9101, USA (http://www.nfpa.org/).
 Authorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.
 Authorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.
 # **Chapter 2** **Definitions, acronyms, and abbreviations**
-**2.1 Definitions**
+## **2.1 Definitions**
 For the purposes of this document, the following terms and definitions apply. _The_
 _Authoritative Dictionary of IEEE Standards Terms_ [B1] [1] should be referenced for terms
 not defined in this clause.
@@ -329,7 +329,7 @@ disconnecting means to open all ungrounded conductors of the faulted circuit. Th
 protection is provided at current levels less than those required to protect conductors from
 damage through the operation of a supply circuit overcurrent device. (adapted from the
 NEC)
-**2.1.19** _**I**_ _**[2]**_ _**t:**_ An expression related to the energy available as a result of current flow,
+### 2.1.19 I [2] t: An expression related to the energy available as a result of current flow,
 meaningful only for adiabatic conditions. With respect to circuit breakers, the expression
 refers to the _I_ _[2]_ _t_ between the initiation of fault current and the clearing of the circuit. The
 defining equation is _I_ _[2]_ _t_ = _I_ _[2]_ _(t)_ _dt_ over the stated period, in units of amperes-squared
@@ -444,7 +444,7 @@ is above the overload pickup setting.
 ### 2.1.52 short-time delay phase or ground trip element: A direct-acting trip device
 element that functions with a purposely delayed action (measured in milliseconds).
 (adapted from IEEE Std C37.100-1992)
-**2.1.53** short-time pickup: The current at which the short-time delay function is initiated.
+### 2.1.53 short-time pickup: The current at which the short-time delay function is initiated.
 (adapted from UL 489- 2002)
 ### 2.1.54 short-time rating: A rating applied to a circuit breaker that, for reason of system
 coordination, causes tripping of the circuit breaker to be delayed beyond the time when
@@ -486,7 +486,7 @@ units of two or more circuit breakers connected in series on multiple levels. By
 intercommunication between the short-time delay and/or ground fault elements, the one
 nearest the fault trips with minimum time delay while signaling the supply-side circuitbreaker(s) to delay for a predetermined period. _Syn:_ **zone interlocking; selective**
 **interlocking.**
-**2.2 Acronyms and abbreviations**
+## **2.2 Acronyms and abbreviations**
 ### 2.2.1 40 °C: Designates a circuit-breaker that is acceptable for use in ambient
 temperatures up to 40 °C.
 ### 2.2.2 AIC: Amperes interrupting capacity. Maximum current a protective device is
@@ -509,7 +509,7 @@ circuit breaker is acceptable.
 intensity discharge lighting loads.
 ### 2.2.7 SWD: Switching duty. Designates compliance with requirements for circuit
 breakers used as switches on fluorescent lighting circuits as indicated in Section 24083(D) of the NEC.
-**2.3 Normative references**
+## **2.3 Normative references**
 The following referenced documents are indispensable for the application of this standard.
 For dated references, only the edition cited applies. For undated references, the latest
 edition of the referenced document (including any amendments) applies.
@@ -519,7 +519,7 @@ NFPA 70-2005, National Electrical Code [®] (NEC [®] ). [6]
 UL 489-2002, Molded-Case Circuit Breakers, Molded-Case Switches, and CircuitBreaker Enclosures. [7]
 UL 1087-1993, Molded-Case Switches.
 UL Molded-Case Circuit Breaker Marking Guide, 1996.
-**2.4 Bibliography**
+## **2.4 Bibliography**
 [B1] IEEE 100, _The Authoritative Dictionary of IEEE Standards Terms_, Seventh Edition.
 New York: Institute of Electrical and Electronics Engineers, Inc.
 [B2] _UL Recognized Component Directory,_ 2002.

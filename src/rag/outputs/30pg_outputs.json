@@ -8,15 +8,17 @@
   {
     "chunk_id": 1,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.1 Scope**"
     },
-    "content": "**1.1 Scope**\nThis recommended practice provides information for selecting the proper circuit breaker\nfor a particular application. This recommended practice helps the application engineer\nspecify the type of circuit breaker, ratings, trip functions, accessories, acceptance tests,\nand maintenance requirements. It also discusses circuit breakers for special applications,\ne.g., instantaneous only and switches. In addition, it provides information for applying",
-    "char_count": 461
+    "content": "This recommended practice provides information for selecting the proper circuit breaker\nfor a particular application. This recommended practice helps the application engineer\nspecify the type of circuit breaker, ratings, trip functions, accessories, acceptance tests,\nand maintenance requirements. It also discusses circuit breakers for special applications,\ne.g., instantaneous only and switches. In addition, it provides information for applying",
+    "char_count": 447
   },
   {
     "chunk_id": 2,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.1 Scope**"
     },
     "content": "and maintenance requirements. It also discusses circuit breakers for special applications,\ne.g., instantaneous only and switches. In addition, it provides information for applying\ncircuit breakers at different locations in the power system and for protecting specific\ncomponents. Guidelines are given for coordinating combinations of line-side and loadside devices. Acceptance testing and maintenance guidelines are provided so that reliable\noperation can be verified and maintained.",
     "char_count": 483
@@ -24,159 +26,179 @@
   {
     "chunk_id": 3,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.1 Scope**"
     },
-    "content": "operation can be verified and maintained.\nThis recommended practice does not cover the selection and application of circuit\nbreakers such as marine circuit breakers and definite purpose circuit breakers.\n**1.2 Two classifications of breakers**\nThere are two main classifications of low-voltage circuit breakers: molded-case circuit\nbreakers and low-voltage power circuit breakers. Within the molded-case circuit breaker\nclassification, there is another type of circuit breaker called the insulated-case circuit",
-    "char_count": 510
+    "content": "operation can be verified and maintained.\nThis recommended practice does not cover the selection and application of circuit\nbreakers such as marine circuit breakers and definite purpose circuit breakers.",
+    "char_count": 203
   },
   {
     "chunk_id": 4,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.2 Two classifications of breakers**"
     },
-    "content": "breakers and low-voltage power circuit breakers. Within the molded-case circuit breaker\nclassification, there is another type of circuit breaker called the insulated-case circuit\nbreaker. The construction and characteristics of these three types will be discussed.\nThroughout the balance of this recommended practice, these devices will be referred to as\nfollows:\n— MCCB: molded-case circuit breaker\n— ICCB: insulated-case circuit breaker\nLVPCB: low-voltage power circuit breaker",
-    "char_count": 479
+    "content": "There are two main classifications of low-voltage circuit breakers: molded-case circuit\nbreakers and low-voltage power circuit breakers. Within the molded-case circuit breaker\nclassification, there is another type of circuit breaker called the insulated-case circuit\nbreaker. The construction and characteristics of these three types will be discussed.\nThroughout the balance of this recommended practice, these devices will be referred to as\nfollows:\n— MCCB: molded-case circuit breaker",
+    "char_count": 487
   },
   {
     "chunk_id": 5,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.2 Two classifications of breakers**"
     },
-    "content": "follows:\n— MCCB: molded-case circuit breaker\n— ICCB: insulated-case circuit breaker\nLVPCB: low-voltage power circuit breaker\nEach one of these circuit breakers has different design characteristics and, in many cases,\ndifferent application requirements.\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.\nThis recommended practice compares the different types of circuit breakers so that the",
-    "char_count": 487
+    "content": "Throughout the balance of this recommended practice, these devices will be referred to as\nfollows:\n— MCCB: molded-case circuit breaker\n— ICCB: insulated-case circuit breaker\nLVPCB: low-voltage power circuit breaker\nEach one of these circuit breakers has different design characteristics and, in many cases,\ndifferent application requirements.\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.",
+    "char_count": 490
   },
   {
     "chunk_id": 6,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.2 Two classifications of breakers**"
     },
-    "content": "This recommended practice compares the different types of circuit breakers so that the\npower systems engineer can decide which one is best suited for a particular application. In\naddition, it discusses ratings, such as overload, short-time, and interrupting capabilities.\nProtection requirements depend on the circuit breaker location in the power system as well\nas the type of equipment that is being protected. Examples for different types of",
-    "char_count": 444
+    "content": "different application requirements.\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.\nThis recommended practice compares the different types of circuit breakers so that the\npower systems engineer can decide which one is best suited for a particular application. In\naddition, it discusses ratings, such as overload, short-time, and interrupting capabilities.",
+    "char_count": 455
   },
   {
     "chunk_id": 7,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.2 Two classifications of breakers**"
     },
-    "content": "Protection requirements depend on the circuit breaker location in the power system as well\nas the type of equipment that is being protected. Examples for different types of\nequipment and circuit locations are discussed in this recommended practice.\nMCCBs are tested and rated in accordance with UL 489-2002. [1] Their current-carrying\nparts, mechanisms, and trip devices are completely contained within a molded case of\ninsulating material. The cover and base of smaller MCCBs are designed so that the",
-    "char_count": 501
+    "content": "power systems engineer can decide which one is best suited for a particular application. In\naddition, it discusses ratings, such as overload, short-time, and interrupting capabilities.\nProtection requirements depend on the circuit breaker location in the power system as well\nas the type of equipment that is being protected. Examples for different types of\nequipment and circuit locations are discussed in this recommended practice.",
+    "char_count": 433
   },
   {
     "chunk_id": 8,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.2 Two classifications of breakers**"
     },
-    "content": "parts, mechanisms, and trip devices are completely contained within a molded case of\ninsulating material. The cover and base of smaller MCCBs are designed so that the\nMCCBs cannot be opened for maintenance purposes. The main contacts of MCCBs\ncannot be removed; however, some MCCBs are available with field-installable\naccessories. MCCBs are available in stationary or plug-in construction with circuitbreaker enclosures that can be flush or surface mounted. They are available in a large",
-    "char_count": 488
+    "content": "as the type of equipment that is being protected. Examples for different types of\nequipment and circuit locations are discussed in this recommended practice.\nMCCBs are tested and rated in accordance with UL 489-2002. [1] Their current-carrying\nparts, mechanisms, and trip devices are completely contained within a molded case of\ninsulating material. The cover and base of smaller MCCBs are designed so that the\nMCCBs cannot be opened for maintenance purposes. The main contacts of MCCBs",
+    "char_count": 486
   },
   {
     "chunk_id": 9,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.2 Two classifications of breakers**"
     },
-    "content": "accessories. MCCBs are available in stationary or plug-in construction with circuitbreaker enclosures that can be flush or surface mounted. They are available in a large\nnumber of continuous-current and interrupting ratings. The smaller continuous-current\nratings are equipped with thermal-magnetic or magnetic only trip units. Larger sizes are\nalso available with thermal-magnetic or electronic (static) trip devices.\nICCBs are also tested and rated in accordance with UL 489-2002. As with MCCBs, ICCB",
-    "char_count": 502
+    "content": "insulating material. The cover and base of smaller MCCBs are designed so that the\nMCCBs cannot be opened for maintenance purposes. The main contacts of MCCBs\ncannot be removed; however, some MCCBs are available with field-installable\naccessories. MCCBs are available in stationary or plug-in construction with circuitbreaker enclosures that can be flush or surface mounted. They are available in a large\nnumber of continuous-current and interrupting ratings. The smaller continuous-current",
+    "char_count": 489
   },
   {
     "chunk_id": 10,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.2 Two classifications of breakers**"
     },
-    "content": "also available with thermal-magnetic or electronic (static) trip devices.\nICCBs are also tested and rated in accordance with UL 489-2002. As with MCCBs, ICCB\ncurrent-carrying parts, mechanisms, and trip units are contained within a molded case of\ninsulating material. The case is designed so that it can be opened for inspection of contacts\nand arc chutes and for limited maintenance. Most manufacturers offer designs that permit",
-    "char_count": 429
+    "content": "number of continuous-current and interrupting ratings. The smaller continuous-current\nratings are equipped with thermal-magnetic or magnetic only trip units. Larger sizes are\nalso available with thermal-magnetic or electronic (static) trip devices.\nICCBs are also tested and rated in accordance with UL 489-2002. As with MCCBs, ICCB\ncurrent-carrying parts, mechanisms, and trip units are contained within a molded case of",
+    "char_count": 421
   },
   {
     "chunk_id": 11,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.2 Two classifications of breakers**"
     },
-    "content": "insulating material. The case is designed so that it can be opened for inspection of contacts\nand arc chutes and for limited maintenance. Most manufacturers offer designs that permit\nreplacement of accessories, and some designs permit replacement of the main contacts.\nICCBs are available in both stationary and drawout construction. They are generally\ncharacterized by a stored energy mechanism, larger frame sizes, and higher short-time\nwithstand ratings than MCCBs. Electronic trip units are standard.",
-    "char_count": 504
+    "content": "ICCBs are also tested and rated in accordance with UL 489-2002. As with MCCBs, ICCB\ncurrent-carrying parts, mechanisms, and trip units are contained within a molded case of\ninsulating material. The case is designed so that it can be opened for inspection of contacts\nand arc chutes and for limited maintenance. Most manufacturers offer designs that permit\nreplacement of accessories, and some designs permit replacement of the main contacts.",
+    "char_count": 441
   },
   {
     "chunk_id": 12,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.2 Two classifications of breakers**"
     },
-    "content": "characterized by a stored energy mechanism, larger frame sizes, and higher short-time\nwithstand ratings than MCCBs. Electronic trip units are standard.\nLVPCBs are tested and rated according to the following standards:\n— ANSI C37.16-2000\n— ANSI C37.17-1997\nANSI C37.50-1989 (R2000)\n— IEEE Std C37.13 [™] -1990\n— UL 1558-1999\nLVPCBs are generally characterized by physically large frame sizes, drawout\nconstruction, and the highest short-time withstand ratings of all the types of low-voltage",
-    "char_count": 490
+    "content": "and arc chutes and for limited maintenance. Most manufacturers offer designs that permit\nreplacement of accessories, and some designs permit replacement of the main contacts.\nICCBs are available in both stationary and drawout construction. They are generally\ncharacterized by a stored energy mechanism, larger frame sizes, and higher short-time\nwithstand ratings than MCCBs. Electronic trip units are standard.\nLVPCBs are tested and rated according to the following standards:\n— ANSI C37.16-2000",
+    "char_count": 495
   },
   {
     "chunk_id": 13,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.2 Two classifications of breakers**"
+    },
+    "content": "withstand ratings than MCCBs. Electronic trip units are standard.\nLVPCBs are tested and rated according to the following standards:\n— ANSI C37.16-2000\n— ANSI C37.17-1997\nANSI C37.50-1989 (R2000)\n— IEEE Std C37.13 [™] -1990\n— UL 1558-1999\nLVPCBs are generally characterized by physically large frame sizes, drawout\nconstruction, and the highest short-time withstand ratings of all the types of low-voltage",
+    "char_count": 404
+  },
+  {
+    "chunk_id": 14,
+    "headers": {
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.2 Two classifications of breakers**"
     },
     "content": "— UL 1558-1999\nLVPCBs are generally characterized by physically large frame sizes, drawout\nconstruction, and the highest short-time withstand ratings of all the types of low-voltage\ncircuit breakers. When the circuit breaker is removed from its enclosure, the currentcarrying parts and operating parts are accessible for inspection, maintenance, and\nreplacement purposes. Electromechanical trip units were used in the circuit breakers prior",
     "char_count": 440
   },
   {
-    "chunk_id": 14,
-    "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
-    },
-    "content": "replacement purposes. Electromechanical trip units were used in the circuit breakers prior\nto the early 1970s. However, electronic trip units are used in new LVPCBs and are\navailable as upgrades for older units.\n**1.3 Description of a molded-case circuit breaker**\nFigure 1-1 is a cutaway view of a typical MCCB. Letters are used to indicate the various\nelements of the circuit breaker, with a description listed in the legend. This typical circuit\n1Information on references can be found in 1.7.",
-    "char_count": 496
-  },
-  {
     "chunk_id": 15,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.2 Two classifications of breakers**"
     },
-    "content": "elements of the circuit breaker, with a description listed in the legend. This typical circuit\n1Information on references can be found in 1.7.\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.\nOVERVIEW Std 1015-2006\nbreaker operates using an over-center toggle, quick-make-quick-break mechanism. This\nmechanism is operated manually to the ON (closed) and OFF (open) positions using the",
-    "char_count": 483
+    "content": "replacement purposes. Electromechanical trip units were used in the circuit breakers prior\nto the early 1970s. However, electronic trip units are used in new LVPCBs and are\navailable as upgrades for older units.",
+    "char_count": 211
   },
   {
     "chunk_id": 16,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.3 Description of a molded-case circuit breaker**"
+    },
+    "content": "Figure 1-1 is a cutaway view of a typical MCCB. Letters are used to indicate the various\nelements of the circuit breaker, with a description listed in the legend. This typical circuit\n1Information on references can be found in 1.7.\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.\nOVERVIEW Std 1015-2006\nbreaker operates using an over-center toggle, quick-make-quick-break mechanism. This",
+    "char_count": 487
+  },
+  {
+    "chunk_id": 17,
+    "headers": {
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.3 Description of a molded-case circuit breaker**"
     },
     "content": "OVERVIEW Std 1015-2006\nbreaker operates using an over-center toggle, quick-make-quick-break mechanism. This\nmechanism is operated manually to the ON (closed) and OFF (open) positions using the\nhandle. The quick-make-quick-break action ensures that the speed at which the breaker\ncontacts are open or closed is independent of the speed at which the handle is moved. This\ntoggle mechanism is also trip-free, which means that the circuit breaker cannot be",
     "char_count": 452
   },
   {
-    "chunk_id": 17,
+    "chunk_id": 18,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.3 Description of a molded-case circuit breaker**"
     },
     "content": "contacts are open or closed is independent of the speed at which the handle is moved. This\ntoggle mechanism is also trip-free, which means that the circuit breaker cannot be\nprevented from tripping by holding or locking the handle in the ON position. When the\ncircuit breaker trips open automatically, the handle will assume either an intermediate\nposition between ON and OFF or the OFF position. If the handle moves to the",
     "char_count": 423
   },
   {
-    "chunk_id": 18,
-    "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
-    },
-    "content": "circuit breaker trips open automatically, the handle will assume either an intermediate\nposition between ON and OFF or the OFF position. If the handle moves to the\nintermediate position, it must be manually moved slightly past the OFF position to reset\nthe mechanism. Instructions for resetting a particular circuit breaker after it trips should be\nmarked on the circuit breaker and/or indicated on the equipment where the circuit breaker\nis installed.\n**1.4 Description of a low-voltage power circuit breaker**",
-    "char_count": 511
-  },
-  {
     "chunk_id": 19,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.3 Description of a molded-case circuit breaker**"
     },
-    "content": "marked on the circuit breaker and/or indicated on the equipment where the circuit breaker\nis installed.\n**1.4 Description of a low-voltage power circuit breaker**\nFigure 1-2 is a view of a partially disassembled, manually operated, drawout LVPCB. The\nopen construction permits access to the circuit-breaker parts for maintenance and parts\nreplacement. Numbers are used to indicate the various elements of the circuit breaker. A",
-    "char_count": 427
+    "content": "circuit breaker trips open automatically, the handle will assume either an intermediate\nposition between ON and OFF or the OFF position. If the handle moves to the\nintermediate position, it must be manually moved slightly past the OFF position to reset\nthe mechanism. Instructions for resetting a particular circuit breaker after it trips should be\nmarked on the circuit breaker and/or indicated on the equipment where the circuit breaker\nis installed.",
+    "char_count": 452
   },
   {
     "chunk_id": 20,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.4 Description of a low-voltage power circuit breaker**"
     },
-    "content": "open construction permits access to the circuit-breaker parts for maintenance and parts\nreplacement. Numbers are used to indicate the various elements of the circuit breaker. A\ndescription of each element is listed in the legend. The following description of the\noperation of the circuit breaker starts with the open position. The circuit breaker condition\n“open” is indicated on the face of the circuit breaker. To close the circuit breaker, a spring",
-    "char_count": 451
+    "content": "Figure 1-2 is a view of a partially disassembled, manually operated, drawout LVPCB. The\nopen construction permits access to the circuit-breaker parts for maintenance and parts\nreplacement. Numbers are used to indicate the various elements of the circuit breaker. A\ndescription of each element is listed in the legend. The following description of the\noperation of the circuit breaker starts with the open position. The circuit breaker condition",
+    "char_count": 444
   },
   {
     "chunk_id": 21,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.4 Description of a low-voltage power circuit breaker**"
     },
-    "content": "operation of the circuit breaker starts with the open position. The circuit breaker condition\n“open” is indicated on the face of the circuit breaker. To close the circuit breaker, a spring\nmechanism must be charged. The springs are charged by pulling down and releasing the\nmanual spring charging handle. The spring condition “charged” is indicated on the face of",
-    "char_count": 363
+    "content": "description of each element is listed in the legend. The following description of the\noperation of the circuit breaker starts with the open position. The circuit breaker condition\n“open” is indicated on the face of the circuit breaker. To close the circuit breaker, a spring\nmechanism must be charged. The springs are charged by pulling down and releasing the\nmanual spring charging handle. The spring condition “charged” is indicated on the face of",
+    "char_count": 449
   },
   {
     "chunk_id": 22,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.4 Description of a low-voltage power circuit breaker**"
     },
     "content": "mechanism must be charged. The springs are charged by pulling down and releasing the\nmanual spring charging handle. The spring condition “charged” is indicated on the face of\nthe circuit breaker. The circuit breaker is manually closed by depressing the close (pushto-close) hood. The circuit breaker condition “closed” is indicated on the face of the\ncircuit breaker. The circuit breaker is opened manually by depressing the open (push-totrip) lever or automatically by the operation of the trip unit.",
     "char_count": 501
@@ -184,7 +206,8 @@
   {
     "chunk_id": 23,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.4 Description of a low-voltage power circuit breaker**"
     },
     "content": "circuit breaker. The circuit breaker is opened manually by depressing the open (push-totrip) lever or automatically by the operation of the trip unit.\nThe drawout circuit breaker has three separate positions: “CONNECT,” “TEST,” and\n“DISCONNECT.” A racking crank is used to move the drawout circuit breaker to each\nposition in the circuit breaker compartment. The circuit breaker's contacts are only\nconnected to the external power circuit in the connected position. If the circuit breaker is",
     "char_count": 491
@@ -192,7 +215,8 @@
   {
     "chunk_id": 24,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.4 Description of a low-voltage power circuit breaker**"
     },
     "content": "position in the circuit breaker compartment. The circuit breaker's contacts are only\nconnected to the external power circuit in the connected position. If the circuit breaker is\nclosed in the TEST position, there is no effect to the external power circuit. Interlocking\nprevents moving a closed circuit breaker between these positions or closing it in other than\nthe CONNECT or TEST position. Further interlocking prevents inserting circuit breakers",
     "char_count": 449
@@ -200,7 +224,8 @@
   {
     "chunk_id": 25,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.4 Description of a low-voltage power circuit breaker**"
     },
     "content": "prevents moving a closed circuit breaker between these positions or closing it in other than\nthe CONNECT or TEST position. Further interlocking prevents inserting circuit breakers\nof the wrong frame size into a compartment. Primary disconnects and optional secondary\ndisconnects automatically complete the power circuit in the CONNECT position and\ncontrol circuits in the CONNECT and TEST positions, respectively.",
     "char_count": 413
@@ -208,7 +233,8 @@
   {
     "chunk_id": 26,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.4 Description of a low-voltage power circuit breaker**"
     },
     "content": "disconnects automatically complete the power circuit in the CONNECT position and\ncontrol circuits in the CONNECT and TEST positions, respectively.\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.\nReprinted with permission from Square D Company.\n**Figure 1-1—Cutaway view of a typical MCCB**",
     "char_count": 389
@@ -216,7 +242,8 @@
   {
     "chunk_id": 27,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.4 Description of a low-voltage power circuit breaker**"
     },
     "content": "Reprinted with permission from Square D Company.\n**Figure 1-1—Cutaway view of a typical MCCB**\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.\nOVERVIEW Std 1015-2006\nReprinted with permission from Seimens Energy & Automation, Inc.\n**Figure 1-2—Low-voltage ac power circuit braker-drawout type**\n**(shown partially disassembled to show internal features)**",
     "char_count": 455
@@ -224,23 +251,26 @@
   {
     "chunk_id": 28,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.4 Description of a low-voltage power circuit breaker**"
     },
-    "content": "Reprinted with permission from Seimens Energy & Automation, Inc.\n**Figure 1-2—Low-voltage ac power circuit braker-drawout type**\n**(shown partially disassembled to show internal features)**\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.\n**1.5 Document organization**\nThis recommended practice is organized in the following manner:\n_Chapter 2: Definitions, acronyms, and abbreviations_",
-    "char_count": 485
+    "content": "Reprinted with permission from Seimens Energy & Automation, Inc.\n**Figure 1-2—Low-voltage ac power circuit braker-drawout type**\n**(shown partially disassembled to show internal features)**\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.",
+    "char_count": 337
   },
   {
     "chunk_id": 29,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.5 Document organization**"
     },
-    "content": "**1.5 Document organization**\nThis recommended practice is organized in the following manner:\n_Chapter 2: Definitions, acronyms, and abbreviations_\nAll of the major terms used in this recommended practice are defined in this chapter. For a\nlisting of additional electrical definitions, refer to _The Authoritative Dictionary of IEEE_\n_Standards Terms_ [B1] [2] and IEEE Std C37.100 [™] -1992.\n_Chapter 3: Rating and testing_\nThis chapter summarizes the application requirements of recognized low-voltage circuit",
-    "char_count": 511
+    "content": "This recommended practice is organized in the following manner:\n_Chapter 2: Definitions, acronyms, and abbreviations_\nAll of the major terms used in this recommended practice are defined in this chapter. For a\nlisting of additional electrical definitions, refer to _The Authoritative Dictionary of IEEE_\n_Standards Terms_ [B1] [2] and IEEE Std C37.100 [™] -1992.\n_Chapter 3: Rating and testing_\nThis chapter summarizes the application requirements of recognized low-voltage circuit",
+    "char_count": 481
   },
   {
     "chunk_id": 30,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.5 Document organization**"
     },
     "content": "_Standards Terms_ [B1] [2] and IEEE Std C37.100 [™] -1992.\n_Chapter 3: Rating and testing_\nThis chapter summarizes the application requirements of recognized low-voltage circuit\nbreaker standards. For more details on a particular application, the engineer is encouraged\nto refer to the complete standard for amplification and a more complete discussion.\nBy understanding the differences in standards, an engineer can make a better decision",
     "char_count": 439
@@ -248,7 +278,8 @@
   {
     "chunk_id": 31,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.5 Document organization**"
     },
     "content": "to refer to the complete standard for amplification and a more complete discussion.\nBy understanding the differences in standards, an engineer can make a better decision\nabout which type of breaker should be used for a particular application. In addition,\nSection 110.3(B) from the National Electrical Code [®] (NEC [®] ) (NFPA 70-2005) requires\nthat a circuit breaker be applied according to the information listed in the standards. Thus,",
     "char_count": 439
@@ -256,7 +287,8 @@
   {
     "chunk_id": 32,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.5 Document organization**"
     },
     "content": "Section 110.3(B) from the National Electrical Code [®] (NEC [®] ) (NFPA 70-2005) requires\nthat a circuit breaker be applied according to the information listed in the standards. Thus,\nit is important that the engineer know and understand the standards so that proper\napplication procedures are followed.\n_Chapter 4: Specific applications_\nThis chapter provides a systematic procedure for selecting and applying MCCBs, ICCBs,\nand LVPCBs at various locations in a power system. The applications covered in Chapter",
     "char_count": 511
@@ -264,7 +296,8 @@
   {
     "chunk_id": 33,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.5 Document organization**"
     },
     "content": "This chapter provides a systematic procedure for selecting and applying MCCBs, ICCBs,\nand LVPCBs at various locations in a power system. The applications covered in Chapter\n4 are as follows:\n— Service entrances\nMains (buses and busway, feeder and branch protective devices, and line-side\ntransformers)\n— Bus ties\nFeeders and branch circuits (cable and busway)\n— Circuit breakers in series combinations\nMotors (individual and grouped)\n— Transformers\nCapacitors and capacitor banks\n— Generators",
     "char_count": 492
@@ -272,7 +305,8 @@
   {
     "chunk_id": 34,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.5 Document organization**"
     },
     "content": "— Bus ties\nFeeders and branch circuits (cable and busway)\n— Circuit breakers in series combinations\nMotors (individual and grouped)\n— Transformers\nCapacitors and capacitor banks\n— Generators\nSwitchboards and panelboards\n— Motor control centers and starters\n2The numbers in brackets correspond to those of the Bibliography in 1.8.\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.\nOVERVIEW Std 1015-2006",
     "char_count": 500
@@ -280,7 +314,8 @@
   {
     "chunk_id": 35,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.5 Document organization**"
     },
     "content": "Authorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.\nOVERVIEW Std 1015-2006\n_Chapter 5: Selective coordination of low-voltage circuit breakers with other protective_\n_devices_\nThis chapter explains how to coordinate different combinations of devices and provides\ntypical settings. Conflicting objectives normally occur between protection and selective",
     "char_count": 446
@@ -288,7 +323,8 @@
   {
     "chunk_id": 36,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.5 Document organization**"
     },
     "content": "_devices_\nThis chapter explains how to coordinate different combinations of devices and provides\ntypical settings. Conflicting objectives normally occur between protection and selective\ncoordination. The objective of protection is to minimize the damage by removing the\noverload or short circuit as quickly as possible. However, the objective of selective\ncoordination is to disconnect a minimum amount of equipment from the power system.",
     "char_count": 438
@@ -296,7 +332,8 @@
   {
     "chunk_id": 37,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.5 Document organization**"
     },
     "content": "overload or short circuit as quickly as possible. However, the objective of selective\ncoordination is to disconnect a minimum amount of equipment from the power system.\nCoordination is obtained by selecting the appropriate type of circuit breaker, trip\ncharacteristics, and trip settings so that only the circuit breaker closest to the overload or\nshort-circuit condition clears the problem.\nTo obtain selective coordination over the entire range of available short-circuit current,",
     "char_count": 482
@@ -304,7 +341,8 @@
   {
     "chunk_id": 38,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.5 Document organization**"
     },
     "content": "short-circuit condition clears the problem.\nTo obtain selective coordination over the entire range of available short-circuit current,\ndelayed operation of the line-side circuit breaker is necessary to allow the load-side circuit\nbreaker to clear a fault. The additional time delay of the line-side device can increase the\nextent of the damage to circuit components. However, it is often necessary to make a\ncompromise in protection to obtain coordination, within the limits of the National Electric",
     "char_count": 499
@@ -312,7 +350,8 @@
   {
     "chunk_id": 39,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.5 Document organization**"
     },
     "content": "extent of the damage to circuit components. However, it is often necessary to make a\ncompromise in protection to obtain coordination, within the limits of the National Electric\nCode (NFPA 70-2005) and ANSI protection requirements. Coordination between devices\nis often sacrificed when continuity of service and/or equipment damage and associated\ncost are not critical.\n_Chapter 6: Fused and special-purpose circuit breakers_\nThis chapter discusses application of the following special-purpose circuit breakers:",
     "char_count": 510
@@ -320,7 +359,8 @@
   {
     "chunk_id": 40,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.5 Document organization**"
     },
     "content": "cost are not critical.\n_Chapter 6: Fused and special-purpose circuit breakers_\nThis chapter discusses application of the following special-purpose circuit breakers:\nInstantaneous trip only\nMine duty\nCurrent limiting\n— Molded-case switch\nIntegrally fused\nCircuit breaker and ground fault circuit interrupters\nArc-fault circuit interrupters\nSupplementary protectors\n_Chapter 7: Acceptance and maintenance requirements._\nThis chapter is divided into the following two time periods:",
     "char_count": 478
@@ -328,7 +368,8 @@
   {
     "chunk_id": 41,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.5 Document organization**"
     },
     "content": "Arc-fault circuit interrupters\nSupplementary protectors\n_Chapter 7: Acceptance and maintenance requirements._\nThis chapter is divided into the following two time periods:\nAcceptance testing that should be performed _before_ placing a circuit breaker into\nservice\nMaintenance guidelines that should be followed _after_ a circuit breaker is placed\ninto service\nAcceptance testing and maintenance are required to ensure that the circuit breaker will",
     "char_count": 446
@@ -336,7 +377,8 @@
   {
     "chunk_id": 42,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.5 Document organization**"
     },
     "content": "service\nMaintenance guidelines that should be followed _after_ a circuit breaker is placed\ninto service\nAcceptance testing and maintenance are required to ensure that the circuit breaker will\nperform satisfactorily to the full extent of the manufacturer's ratings. In addition, proper\nmaintenance is required for continued, reliable operation. Also discussed briefly are\ntesting and maintenance for insulated case circuit breakers, molded-case switches, and",
     "char_count": 457
@@ -344,7 +386,8 @@
   {
     "chunk_id": 43,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.5 Document organization**"
     },
     "content": "maintenance is required for continued, reliable operation. Also discussed briefly are\ntesting and maintenance for insulated case circuit breakers, molded-case switches, and\nground fault circuit interrupters. Annex 7A and Annex 7B provide sample data record\nsheets for recording circuit breaker test information and results.\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.",
     "char_count": 471
@@ -352,7 +395,8 @@
   {
     "chunk_id": 44,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.5 Document organization**"
     },
     "content": "Authorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.\nA circuit breaker may be damaged during shipment, or defective components may be\npresent; therefore, acceptance testing should be performed prior to placing it in service.\nAcceptance testing of circuit breakers is the initial testing on a breaker before it is placed\ninto service to verify that the circuit breaker will perform properly. This chapter provides",
     "char_count": 507
@@ -360,7 +404,8 @@
   {
     "chunk_id": 45,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.5 Document organization**"
     },
     "content": "Acceptance testing of circuit breakers is the initial testing on a breaker before it is placed\ninto service to verify that the circuit breaker will perform properly. This chapter provides\ninstructions for performing and documenting test results. Some acceptance test criteria\ndiscussed are insulation resistance, electrical operations at selected settings, mechanical\noperation, and auxiliary functions. Acceptance test data sheets are provided.",
     "char_count": 445
@@ -368,7 +413,8 @@
   {
     "chunk_id": 46,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.5 Document organization**"
     },
     "content": "discussed are insulation resistance, electrical operations at selected settings, mechanical\noperation, and auxiliary functions. Acceptance test data sheets are provided.\nMaintenance procedures are important to power system reliability and safety. Proper\nmaintenance will improve confidence that the circuit breakers will operate properly when\ncalled on to interrupt an overload or fault condition. The operating performance of a",
     "char_count": 428
@@ -376,7 +422,8 @@
   {
     "chunk_id": 47,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.5 Document organization**"
     },
     "content": "maintenance will improve confidence that the circuit breakers will operate properly when\ncalled on to interrupt an overload or fault condition. The operating performance of a\ncircuit breaker may deteriorate with time due to contamination by pollutants in the\natmosphere, excessive use, or lack of operation for a prolonged duration. Welding in the\nmain contact may occur during a short circuit if the contacts are in a deteriorated condition",
     "char_count": 441
@@ -384,7 +431,8 @@
   {
     "chunk_id": 48,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.5 Document organization**"
     },
     "content": "atmosphere, excessive use, or lack of operation for a prolonged duration. Welding in the\nmain contact may occur during a short circuit if the contacts are in a deteriorated condition\ndue to excessive use. In addition, the performance characteristics of other components in\nthe breaker, such as contact pressure springs, may be degraded for some other reason such\nas overheating. This chapter discusses proper maintenance procedures and schedules that\nshould be followed to maintain reliable operation.",
     "char_count": 501
@@ -392,31 +440,35 @@
   {
     "chunk_id": 49,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.6 Summary**"
     },
-    "content": "as overheating. This chapter discusses proper maintenance procedures and schedules that\nshould be followed to maintain reliable operation.\n**1.6 Summary**\nThis recommended practice identifies the differences between the two classifications of\nlow-voltage circuit breakers and provides information for selecting the best one for a\nparticular situation. In addition, this recommended practice gives information for applying\ncircuit breakers at different locations in the power system and for protecting specific",
-    "char_count": 509
+    "content": "This recommended practice identifies the differences between the two classifications of\nlow-voltage circuit breakers and provides information for selecting the best one for a\nparticular situation. In addition, this recommended practice gives information for applying\ncircuit breakers at different locations in the power system and for protecting specific\ncomponents. Guidelines are also given for coordinating combinations of line-side and",
+    "char_count": 439
   },
   {
     "chunk_id": 50,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.6 Summary**"
     },
-    "content": "particular situation. In addition, this recommended practice gives information for applying\ncircuit breakers at different locations in the power system and for protecting specific\ncomponents. Guidelines are also given for coordinating combinations of line-side and\nload-side devices. Acceptance testing and maintenance guidelines are given so that\nreliable operation can be verified and maintained.\n**1.7 Normative references**\nThe following referenced documents are indispensable for the application of this",
-    "char_count": 508
+    "content": "circuit breakers at different locations in the power system and for protecting specific\ncomponents. Guidelines are also given for coordinating combinations of line-side and\nload-side devices. Acceptance testing and maintenance guidelines are given so that\nreliable operation can be verified and maintained.",
+    "char_count": 306
   },
   {
     "chunk_id": 51,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.7 Normative references**"
     },
-    "content": "reliable operation can be verified and maintained.\n**1.7 Normative references**\nThe following referenced documents are indispensable for the application of this\nrecommended practice. For dated references, only the edition cited applies. For undated\nreferences, the latest edition of the referenced document (including any amendments)\napplies.\nANSI C37.16-2000, American National Standard Low-Voltage Power Circuit Breakers\nand AC Power Circuit Protectors-Preferred Ratings, Related Requirements, and",
-    "char_count": 499
+    "content": "The following referenced documents are indispensable for the application of this\nrecommended practice. For dated references, only the edition cited applies. For undated\nreferences, the latest edition of the referenced document (including any amendments)\napplies.\nANSI C37.16-2000, American National Standard Low-Voltage Power Circuit Breakers\nand AC Power Circuit Protectors-Preferred Ratings, Related Requirements, and\nApplication Recommendations. [3]",
+    "char_count": 452
   },
   {
     "chunk_id": 52,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.7 Normative references**"
     },
     "content": "applies.\nANSI C37.16-2000, American National Standard Low-Voltage Power Circuit Breakers\nand AC Power Circuit Protectors-Preferred Ratings, Related Requirements, and\nApplication Recommendations. [3]\nANSI C37.17-1997, American National Standard for Trip Devices for AC and General\nPurpose DC Low Voltage Power Circuit Breakers.\n3ANSI publications are available from the Sales Department, American National Standards Institute, 25 West\n43rd Street, 4th Floor, New York, NY 10036, USA (http://www.ansi.org/).",
     "char_count": 505
@@ -424,7 +476,8 @@
   {
     "chunk_id": 53,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.7 Normative references**"
     },
     "content": "3ANSI publications are available from the Sales Department, American National Standards Institute, 25 West\n43rd Street, 4th Floor, New York, NY 10036, USA (http://www.ansi.org/).\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.\nOVERVIEW Std 1015-2006\nANSI C37.50-1989 (R2000), American National Standard for Switchgear-Low-Voltage\nAC Power Circuit Breakers Used in Enclosures-Test Procedures.",
     "char_count": 491
@@ -432,7 +485,8 @@
   {
     "chunk_id": 54,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.7 Normative references**"
     },
     "content": "OVERVIEW Std 1015-2006\nANSI C37.50-1989 (R2000), American National Standard for Switchgear-Low-Voltage\nAC Power Circuit Breakers Used in Enclosures-Test Procedures.\nIEEE Std C37.13-1990 (R1995), IEEE Standard for Low-Voltage AC Power Circuit\nBreakers Used in Enclosures. [4, 5]\nIEEE Std C37.100-1992, (R2001) IEEE Standard Definitions for Power Switchgear.\nNFPA 70-2005, National Electrical Code [®] (NEC [®] ). [6]\nUL 489-2002, Molded-Case Circuit Breakers, Molded-Case Switches and Circuit-Breaker",
     "char_count": 499
@@ -440,55 +494,62 @@
   {
     "chunk_id": 55,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.7 Normative references**"
     },
-    "content": "NFPA 70-2005, National Electrical Code [®] (NEC [®] ). [6]\nUL 489-2002, Molded-Case Circuit Breakers, Molded-Case Switches and Circuit-Breaker\nEnclosures. [7]\nUL 1558-1999, Metal-Enclosed Low-Voltage Power Circuit Breaker Switchgear.\n**1.8 Bibliography**\n[B1] IEEE 100, _The Authoritative Dictionary of IEEE Standards Terms_, Seventh Edition.\nNew York: Institute of Electrical and Electronics Engineers, Inc.\n[B2] IEEE Std 141 [™] -1993, IEEE Recommended Practice for Electric Power Distribution",
-    "char_count": 495
+    "content": "NFPA 70-2005, National Electrical Code [®] (NEC [®] ). [6]\nUL 489-2002, Molded-Case Circuit Breakers, Molded-Case Switches and Circuit-Breaker\nEnclosures. [7]\nUL 1558-1999, Metal-Enclosed Low-Voltage Power Circuit Breaker Switchgear.",
+    "char_count": 233
   },
   {
     "chunk_id": 56,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.8 Bibliography**"
     },
-    "content": "New York: Institute of Electrical and Electronics Engineers, Inc.\n[B2] IEEE Std 141 [™] -1993, IEEE Recommended Practice for Electric Power Distribution\nfor Industrial Plants _(IEEE Red Book_ _[™]_ _)_ .\n[B3] IEEE Std 242 [™] -2001, IEEE Recommended Practice for Protection and Coordination\nof Industrial and Commercial Power Systems _(IEEE Buff Book_ _[™]_ _)._\n4 IEEE publications are available from the Institute of Electrical and Electronics Engineers, 445 Hoes Lane,",
-    "char_count": 471
+    "content": "[B1] IEEE 100, _The Authoritative Dictionary of IEEE Standards Terms_, Seventh Edition.\nNew York: Institute of Electrical and Electronics Engineers, Inc.\n[B2] IEEE Std 141 [™] -1993, IEEE Recommended Practice for Electric Power Distribution\nfor Industrial Plants _(IEEE Red Book_ _[™]_ _)_ .\n[B3] IEEE Std 242 [™] -2001, IEEE Recommended Practice for Protection and Coordination\nof Industrial and Commercial Power Systems _(IEEE Buff Book_ _[™]_ _)._",
+    "char_count": 450
   },
   {
     "chunk_id": 57,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.8 Bibliography**"
     },
-    "content": "of Industrial and Commercial Power Systems _(IEEE Buff Book_ _[™]_ _)._\n4 IEEE publications are available from the Institute of Electrical and Electronics Engineers, 445 Hoes Lane,\nPiscataway, NJ 08855-1331, USA (http://standards/ieee.org/).\n5The IEEE standards or products referred to in this clause are trademarks of the Institute of Electrical and\nElectronics Engineers, Inc.\n6 NFPA publications are available from Publications Sales, National Fire Protection Association, 1 Batterymarch",
-    "char_count": 490
+    "content": "[B3] IEEE Std 242 [™] -2001, IEEE Recommended Practice for Protection and Coordination\nof Industrial and Commercial Power Systems _(IEEE Buff Book_ _[™]_ _)._\n4 IEEE publications are available from the Institute of Electrical and Electronics Engineers, 445 Hoes Lane,\nPiscataway, NJ 08855-1331, USA (http://standards/ieee.org/).\n5The IEEE standards or products referred to in this clause are trademarks of the Institute of Electrical and\nElectronics Engineers, Inc.",
+    "char_count": 465
   },
   {
     "chunk_id": 58,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.8 Bibliography**"
     },
-    "content": "Electronics Engineers, Inc.\n6 NFPA publications are available from Publications Sales, National Fire Protection Association, 1 Batterymarch\nPark, P.O. Box 9101, Quincy, MA 02269-9101, USA (http://www.nfpa.org/).\n7UL standards are available from Global Engineering Documents, 15 Inverness Way East, Englewood, Colorado\n80112, USA (http://global.ihs.com/).\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.",
-    "char_count": 502
+    "content": "Piscataway, NJ 08855-1331, USA (http://standards/ieee.org/).\n5The IEEE standards or products referred to in this clause are trademarks of the Institute of Electrical and\nElectronics Engineers, Inc.\n6 NFPA publications are available from Publications Sales, National Fire Protection Association, 1 Batterymarch\nPark, P.O. Box 9101, Quincy, MA 02269-9101, USA (http://www.nfpa.org/).\n7UL standards are available from Global Engineering Documents, 15 Inverness Way East, Englewood, Colorado",
+    "char_count": 487
   },
   {
     "chunk_id": 59,
     "headers": {
-      "Header 1": "**Chapter 1** **Overview**"
+      "Header 1": "**Chapter 1** **Overview**",
+      "Header 2": "**1.8 Bibliography**"
     },
-    "content": "80112, USA (http://global.ihs.com/).\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.",
-    "char_count": 332
+    "content": "Park, P.O. Box 9101, Quincy, MA 02269-9101, USA (http://www.nfpa.org/).\n7UL standards are available from Global Engineering Documents, 15 Inverness Way East, Englewood, Colorado\n80112, USA (http://global.ihs.com/).\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.",
+    "char_count": 510
   },
   {
     "chunk_id": 60,
     "headers": {
-      "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**"
+      "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**"
     },
-    "content": "**2.1 Definitions**\nFor the purposes of this document, the following terms and definitions apply. _The_\n_Authoritative Dictionary of IEEE Standards Terms_ [B1] [1] should be referenced for terms\nnot defined in this clause.",
-    "char_count": 222
+    "content": "For the purposes of this document, the following terms and definitions apply. _The_\n_Authoritative Dictionary of IEEE Standards Terms_ [B1] [1] should be referenced for terms\nnot defined in this clause.",
+    "char_count": 202
   },
   {
     "chunk_id": 61,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.1 adjustable: (as applied to circuit breakers) A qualifying term indicating that the"
     },
     "content": "circuit breaker can be set to trip at various values of current, time, or both, within a\npredetermined range. [adapted from the National Electrical Code [®] (NEC [®] ) (NFPA 702005)] [2]",
@@ -498,6 +559,7 @@
     "chunk_id": 62,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.2 alarm switch: An auxiliary switch that actuates a signaling device upon the"
     },
     "content": "automatic opening of the circuit breaker with which it is associated.",
@@ -507,6 +569,7 @@
     "chunk_id": 63,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.3 auxiliary switch: A switch that is mechanically operated by the main switching"
     },
     "content": "device for signaling, interlocking, or other purposes.\nNOTE—Auxiliary switch contacts are classified as a, b, aa, bb, LC, etc., for the purpose of\nspecifying definite contact positions with respect to the main device. [3]",
@@ -516,6 +579,7 @@
     "chunk_id": 64,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.4 available short-circuit current: (at a given point in a circuit) The maximum current"
     },
     "content": "that the power system can deliver through a given circuit to any negligible-impedance\nshort circuit applied at the given point, or at any other point that will cause the highest\ncurrent to flow through the given point. _See also:_ **prospective fault current** .",
@@ -525,6 +589,7 @@
     "chunk_id": 65,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.5 circuit breaker: A device designed to open and close a circuit by nonautomatic"
     },
     "content": "means, and to open the circuit automatically on a predetermined overcurrent without\ndamage to itself when properly applied within its rating. [adapted from the NEC] _Syn:_\n**low-voltage circuit breaker** .",
@@ -534,6 +599,7 @@
     "chunk_id": 66,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.6 continuous load: A load where the maximum current is expected to continue for 3"
     },
     "content": "hours or more. [adapted from the NEC]",
@@ -543,6 +609,7 @@
     "chunk_id": 67,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.7 coordination: The selection and/or setting of protective devices to provide"
     },
     "content": "protection of system components and to provide selectivity when a short circuit or other\nabnormality occurs.",
@@ -552,6 +619,7 @@
     "chunk_id": 68,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.8 current-limiting circuit breaker: A circuit breaker that does not use a fusible"
     },
     "content": "element and that when operating within its current-limiting range limits the let-through _I_ _[2]_ _t_\n1The numbers in brackets correspond to those of the bibliography in 2.4.\n2Information on references can be found in 2.3.\n3Notes in text, tables, and figures are given for information only and do not contain requirements needed to\nimplement the standard.\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.",
@@ -561,6 +629,7 @@
     "chunk_id": 69,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.8 current-limiting circuit breaker: A circuit breaker that does not use a fusible"
     },
     "content": "implement the standard.\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.\nto a value less than the _I_ _[2]_ _t_ of a 1/2 cycle wave of the symmetrical prospective current.\n(adapted from UL 489-2002) _See also:_ **current-limiting overcurrent protective device.**",
@@ -570,6 +639,7 @@
     "chunk_id": 70,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.9 current-limiting overcurrent protective device: A device that, when interrupting"
     },
     "content": "currents in its current-limiting range, reduces the current flowing in the faulted circuit to a\nmagnitude substantially less than that obtainable in the same circuit if the device were\nreplaced with a solid conductor having comparable impedance. (adapted from the NEC)\n_See also:_ **current-limiting circuit breaker** .",
@@ -579,6 +649,7 @@
     "chunk_id": 71,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.10 drawout-mounted circuit breaker: An assembly of a circuit breaker together"
     },
     "content": "with a supporting structure so constructed that the breaker is supported and can be moved\nbetween the main circuit connected and the disconnected positions without unbolting\nconnections or mounting supports. The stationary portion of the drawout assembly\nincludes self-supporting primary circuit terminals and may include an interlocking means\nthat permits movement of the breaker between the main circuit connected and the\ndisconnected positions only when the breaker contacts are in the open position. (adapted",
@@ -588,6 +659,7 @@
     "chunk_id": 72,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.10 drawout-mounted circuit breaker: An assembly of a circuit breaker together"
     },
     "content": "that permits movement of the breaker between the main circuit connected and the\ndisconnected positions only when the breaker contacts are in the open position. (adapted\nfrom UL 489-2002)",
@@ -597,6 +669,7 @@
     "chunk_id": 73,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.11 dynamic impedance: The arc impedance introduced into a circuit by the opening of"
     },
     "content": "the circuit-breaker contacts during current interruption. (adapted from NEMA AB 1-1993)",
@@ -606,6 +679,7 @@
     "chunk_id": 74,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.12 electrical operator: A controlling device that is used to open, close, and reset a"
     },
     "content": "circuit breaker. (adapted from UL 489-2002)\nNOTE—The term _motor operator_ is sometimes used when the operating device is a motor.",
@@ -615,6 +689,7 @@
     "chunk_id": 75,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.13 electronic trip unit: A self-contained portion of a circuit breaker that senses the"
     },
     "content": "condition of the circuit breaker electronically and that actuates the mechanism that opens\nthe circuit breaker contacts automatically.\nNOTE—Where the term _electronic trip unit_ is used in this book, the alternate terms _solid state trip_\n_unit_ and _static trip unit_ are commonly used in literature.",
@@ -624,6 +699,7 @@
     "chunk_id": 76,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.14 frame: As applied to circuit breakers, that portion of an interchangeable trip unit"
     },
     "content": "circuit breaker remaining when the interchangeable trip unit is removed. (adapted from\nUL 489-2002)",
@@ -633,6 +709,7 @@
     "chunk_id": 77,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.15 frame size: A term applied to a group of circuit breakers of similar physical"
     },
     "content": "configuration. Frame size is expressed in amperes and corresponds to the largest ampere\nrating available in the group. The same frame size designation may be applied to more\nthan one group of circuit breakers. (adapted from UL 489-2002)",
@@ -642,6 +719,7 @@
     "chunk_id": 78,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.16 ground-fault delay: An intentional time delay in the tripping of a circuit breaker"
     },
     "content": "when a ground fault occurs. (adapted from NEMA AB 1-1993)",
@@ -651,6 +729,7 @@
     "chunk_id": 79,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.17 ground-fault pickup: The nominal value of the ground fault current at which the"
     },
     "content": "ground fault delay function is initiated. (adapted from UL 489-2002)\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.\nDEFINITIONS, ACRONYMS, AND ABBREVIATIONS Std 1015-2006",
@@ -660,24 +739,27 @@
     "chunk_id": 80,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.18 ground-fault protection of equipment: A system intended to provide protection"
     },
-    "content": "of equipment from damaging line-to-ground fault currents by operating to cause a\ndisconnecting means to open all ungrounded conductors of the faulted circuit. This\nprotection is provided at current levels less than those required to protect conductors from\ndamage through the operation of a supply circuit overcurrent device. (adapted from the\nNEC)\n**2.1.19** _**I**_ _**[2]**_ _**t:**_ An expression related to the energy available as a result of current flow,",
-    "char_count": 461
+    "content": "of equipment from damaging line-to-ground fault currents by operating to cause a\ndisconnecting means to open all ungrounded conductors of the faulted circuit. This\nprotection is provided at current levels less than those required to protect conductors from\ndamage through the operation of a supply circuit overcurrent device. (adapted from the\nNEC)",
+    "char_count": 348
   },
   {
     "chunk_id": 81,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
-      "Header 3": "2.1.18 ground-fault protection of equipment: A system intended to provide protection"
+      "Header 2": "**2.1 Definitions**",
+      "Header 3": "2.1.19 I [2] t: An expression related to the energy available as a result of current flow,"
     },
-    "content": "NEC)\n**2.1.19** _**I**_ _**[2]**_ _**t:**_ An expression related to the energy available as a result of current flow,\nmeaningful only for adiabatic conditions. With respect to circuit breakers, the expression\nrefers to the _I_ _[2]_ _t_ between the initiation of fault current and the clearing of the circuit. The\ndefining equation is _I_ _[2]_ _t_ = _I_ _[2]_ _(t)_ _dt_ over the stated period, in units of amperes-squared\nseconds. (adapted from UL 489-2002)",
-    "char_count": 459
+    "content": "meaningful only for adiabatic conditions. With respect to circuit breakers, the expression\nrefers to the _I_ _[2]_ _t_ between the initiation of fault current and the clearing of the circuit. The\ndefining equation is _I_ _[2]_ _t_ = _I_ _[2]_ _(t)_ _dt_ over the stated period, in units of amperes-squared\nseconds. (adapted from UL 489-2002)",
+    "char_count": 341
   },
   {
     "chunk_id": 82,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.20 instantaneous pickup: The nominal value of current at which an adjustable circuit"
     },
     "content": "breaker is set to trip instantaneously. (adapted from UL 489-2002)",
@@ -687,6 +769,7 @@
     "chunk_id": 83,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.21 instantaneous trip: (as applied to circuit breakers) A qualifying term indicating"
     },
     "content": "that no delay is purposely introduced in the tripping action of the circuit breaker. (adapted\nfrom the NEC)",
@@ -696,6 +779,7 @@
     "chunk_id": 84,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.22 instantaneous-trip-only circuit breaker: A circuit breaker intended to provide"
     },
     "content": "short-circuit protection only. Although acting instantaneously under short-circuit\nconditions, instantaneous trip breakers shall be permitted to include a transient damping\naction to ride through initial motor transients. (adapted from UL 489-2002)",
@@ -705,6 +789,7 @@
     "chunk_id": 85,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.23 insulated-case circuit breaker (ICCB): A circuit breaker that is assembled as an"
     },
     "content": "integral unit in a supporting and enclosing housing of insulating material and with a stored\nenergy mechanism.",
@@ -714,6 +799,7 @@
     "chunk_id": 86,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.24 integrally-fused circuit breaker: A circuit breaker in which coordinated fuses are"
     },
     "content": "connected in series with the release (trip) elements of the circuit breaker and are mounted\nwithin the housing of the circuit breaker. (adapted from NEMA AB 1-1993)",
@@ -723,6 +809,7 @@
     "chunk_id": 87,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.25 interrupting rating: The highest current at rated voltage that a device is intended"
     },
     "content": "to interrupt under standard test conditions. (adapted from the NEC)",
@@ -732,6 +819,7 @@
     "chunk_id": 88,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.26 inverse time: (as applied to circuit breakers) A qualifying term indicating that"
     },
     "content": "there is purposely introduced a delay in the tripping action of the circuit breaker, which\ndelay decreases as the magnitude of the current increases. (adapted from the NEC)",
@@ -741,6 +829,7 @@
     "chunk_id": 89,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.27 Ip: See: peak current . 2.1.28 long-time delay: An intentional time delay in the overload tripping of an"
     },
     "content": "adjustable circuit breakers inverse time characteristic. (adapted from UL 489-2002)",
@@ -750,6 +839,7 @@
     "chunk_id": 90,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.29 long-time pickup: The current at which the long-time delay function is initiated."
     },
     "content": "(adapted from UL 489-2002)\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.",
@@ -759,6 +849,7 @@
     "chunk_id": 91,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.30 low-voltage power circuit breaker (LVPCB): A mechanical switching device,"
     },
     "content": "capable of making, carrying, and breaking currents under normal circuit conditions and\nmaking and carrying for a specified time and breaking currents under specified abnormal\ncircuit conditions such as those of short circuit. Rated 1000 V ac or below, or 300 V dc\nand below, but not including molded-case circuit breakers. (adapted from IEEE Std\nC37.100 [™] -1992)",
@@ -768,6 +859,7 @@
     "chunk_id": 92,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.31 molded-case circuit breaker (MCCB): A circuit breaker that is assembled as an"
     },
     "content": "integral unit in a supporting and enclosing housing of insulating material. (adapted from\nUL 489-2002 and IEEE Std C37.100-1992)",
@@ -777,6 +869,7 @@
     "chunk_id": 93,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.32 molded-case switch: A device designed to open and close a circuit by"
     },
     "content": "nonautomatic means, assembled as an integral unit in a supportive and enclosed housing\nof insulating material. _Syn:_ **nonautomatic switch** (deprecated). (adapted from UL 4892002 and UL 1087-1993)",
@@ -786,6 +879,7 @@
     "chunk_id": 94,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.33 overcurrent: Any current in excess of the rated current of equipment or the"
     },
     "content": "ampacity of a conductor. It may result from overload, short circuit, or ground fault.\n(adapted from the NEC) _See also:_ **overload** .",
@@ -795,6 +889,7 @@
     "chunk_id": 95,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.34 overload: Operation of equipment in excess of normal, full-load rating or of a"
     },
     "content": "conductor in excess of rated ampacity that, when it persists for a sufficient length of time,\nwould cause damage or dangerous overheating. A fault, such as a short circuit or ground\nfault, is not an overload. (adapted from the NEC) _See also:_ **overcurrent** .",
@@ -804,6 +899,7 @@
     "chunk_id": 96,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.35 panelboard: A single panel or group of panel units designed for assembly in the"
     },
     "content": "form of a single panel, including buses and automatic overcurrent devices, and equipped\nwith or without switches for the control of light, heat, or power circuits; designed to be\nplaced in a cabinet or cutout box placed in or against a wall, partition, or other support;\nand accessible only from the front. (adapted from the NEC) _See also:_ **switchboard** .",
@@ -813,6 +909,7 @@
     "chunk_id": 97,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.36 peak current: The maximum instantaneous current that flows in a circuit,"
     },
     "content": "designated Ip. (adapted from UL 489- 2002)",
@@ -822,6 +919,7 @@
     "chunk_id": 98,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.37 peak let-through current: The highest current flowing in the circuit after the"
     },
     "content": "inception of the fault that the circuit breaker and the protected system must withstand,\nexpressed as an instantaneous rather than a root-mean-square (rms) value.",
@@ -831,6 +929,7 @@
     "chunk_id": 99,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.38 pickup: The root-mean-square (rms) current at which a circuit breaker tripping"
     },
     "content": "function is initiated. (adapted from NEMA AB 1-1993)",
@@ -840,6 +939,7 @@
     "chunk_id": 100,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.39 prospective fault current: The current that would flow during a short circuit if the"
     },
     "content": "circuit breaker and the wires used for its connection were replaced by a solid conductor of\nnegligible impedance. (adapted from UL 489-2002) _See also:_ **available short-circuit**\n**current** .",
@@ -849,6 +949,7 @@
     "chunk_id": 101,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.40 rated short-time withstand current: (A) The maximum root-mean-square (rms)"
     },
     "content": "total current that a circuit breaker can carry momentarily without electrical, thermal, or\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.\nDEFINITIONS, ACRONYMS, AND ABBREVIATIONS Std 1015-2006\nmechanical damage or permanent deformation. The current shall be the rms value,\nincluding the dc component, at the major peak of the maximum cycle as determined from",
@@ -858,6 +959,7 @@
     "chunk_id": 102,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.40 rated short-time withstand current: (A) The maximum root-mean-square (rms)"
     },
     "content": "mechanical damage or permanent deformation. The current shall be the rms value,\nincluding the dc component, at the major peak of the maximum cycle as determined from\nthe envelope of the current wave during a given test time interval. (adapted from IEEE Std\nC37.100-1992) **(B)** That value of current assigned by the manufacturer that the device can\ncarry without damage to itself, under prescribed conditions. (adapted from NEMA AB 11993) _Syn:_ **withstand rating; short-time rating** .",
@@ -867,6 +969,7 @@
     "chunk_id": 103,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.41 rating plug: An interchangeable module of an electronic trip unit that, together"
     },
     "content": "with the sensor, sets the current rating range of the circuit breaker. For example, a 1200 A\nframe may contain an 800 A sensor, fixing the maximum rating that can be configured for\nthe unit at 800 A adjustable by the following kind of settings. By installing a 600 A rating\nplug, the adjustable rating is correspondingly 600 A multiplied by the long-time pickup\nadjustment [i.e., the long-time pickup may be adjusted to “0.9,” and the ampere rating or\nsetting is (0.9 × 600 A) = 540 A]",
@@ -876,6 +979,7 @@
     "chunk_id": 104,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.42 release: A device, mechanically connected within the circuit breaker, that initiates"
     },
     "content": "the tripping function of a circuit-breaker. (adapted from NEMA AB 1-1993)",
@@ -885,6 +989,7 @@
     "chunk_id": 105,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.43 root-mean-square (rms) sensing: A term commonly used to indicate the sensing"
     },
     "content": "of root-mean-square (rms) value current rather than instantaneous or peak values, as by a\ncircuit-breaker trip unit.",
@@ -894,6 +999,7 @@
     "chunk_id": 106,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.44 selective coordination: See: coordination; selectivity . 2.1.45 selectivity: A general term describing the interrelated performance of relays and"
     },
     "content": "breakers and other protective devices; complete selectivity being obtained when a\nminimum amount of equipment is removed from service for isolation of a fault or other\nabnormality. (adapted from IEEE Std C37.100-1992) _See also:_ **coordination** .",
@@ -903,6 +1009,7 @@
     "chunk_id": 107,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.46 sensor: (as applied to a circuit-breaker with an electronic trip unit) A current"
     },
     "content": "sensing element such as a current transformer within a circuit-breaker frame. The sensor\nwill have a current rating less than or equal to the frame size and will provide the sensing\nfunction for a specific group of current ratings within the frame size.",
@@ -912,6 +1019,7 @@
     "chunk_id": 108,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.47 series rating: The interrupting rating of a tested combination of a line-side (main)"
     },
     "content": "overcurrent protective device and a load-side (branch) circuit-breaker in which the\ninterrupting rating of the combination is greater than the interrupting rating of the branch\ncircuit-breaker. The interrupting rating of the series combination does not exceed the\ninterrupting rating of the main overcurrent protective device. _Syn:_ **series-connected**\n**rating** .\nNOTE—See _UL Recognized Component Directory,_ 2002 [B2].",
@@ -921,6 +1029,7 @@
     "chunk_id": 109,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.48 setting: (of a circuit breaker) The value of current, time, or both at which an"
     },
     "content": "adjustable circuit-breaker is set to trip. (adapted from the NEC)\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.",
@@ -930,6 +1039,7 @@
     "chunk_id": 110,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.49 short circuit: An abnormal connection (including an arc) of relatively low"
     },
     "content": "impedance, whether made accidentally or intentionally, between two points of different\npotential. (adapted from IEEE Std C37.100-1992)",
@@ -939,6 +1049,7 @@
     "chunk_id": 111,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.50 short-time current: The current carried by a device, an assembly, or a bus for a"
     },
     "content": "specified short-time interval. (adapted from IEEE Std C37.100-1992) _See also:_ **rated**\n**short-time withstand current; short-time rating** .",
@@ -948,6 +1059,7 @@
     "chunk_id": 112,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.51 short-time delay: An intentional time delay in the tripping of a circuit-breaker that"
     },
     "content": "is above the overload pickup setting.",
@@ -957,198 +1069,235 @@
     "chunk_id": 113,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.52 short-time delay phase or ground trip element: A direct-acting trip device"
     },
-    "content": "element that functions with a purposely delayed action (measured in milliseconds).\n(adapted from IEEE Std C37.100-1992)\n**2.1.53** short-time pickup: The current at which the short-time delay function is initiated.\n(adapted from UL 489- 2002)",
-    "char_count": 242
+    "content": "element that functions with a purposely delayed action (measured in milliseconds).\n(adapted from IEEE Std C37.100-1992)",
+    "char_count": 119
   },
   {
     "chunk_id": 114,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
+      "Header 3": "2.1.53 short-time pickup: The current at which the short-time delay function is initiated."
+    },
+    "content": "(adapted from UL 489- 2002)",
+    "char_count": 27
+  },
+  {
+    "chunk_id": 115,
+    "headers": {
+      "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.54 short-time rating: A rating applied to a circuit breaker that, for reason of system"
     },
     "content": "coordination, causes tripping of the circuit breaker to be delayed beyond the time when\ntripping would be caused by an instantaneous element. (adapted from UL 489-2002) _See_\n_also:_ **rated short-time withstand current; short-time current** .",
     "char_count": 243
   },
   {
-    "chunk_id": 115,
+    "chunk_id": 116,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.55 shunt trip device: A trip mechanism energized by a source of voltage that may be"
     },
     "content": "derived either from the main circuit or from an independent source. (adapted from UL\n489-2002)",
     "char_count": 94
   },
   {
-    "chunk_id": 116,
+    "chunk_id": 117,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.56 stored-energy operation: Operation by means of energy stored in the mechanism"
     },
     "content": "before the completion of the operation and sufficient to complete it under predetermined\nconditions. (adapted from IEEE Std C37.100-1992)",
     "char_count": 137
   },
   {
-    "chunk_id": 117,
+    "chunk_id": 118,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.57 switchboard: A large, single-panel, frame or assembly of panels on which are"
     },
     "content": "mounted, on the face, back, or both, switches, overcurrent and other protective devices,\nbuses, and usually instruments. Switchboards are generally accessible from the rear as\nwell as from the front and are not intended to be installed in cabinets. (adapted from the\nNEC) _See also:_ **panelboard** .",
     "char_count": 300
   },
   {
-    "chunk_id": 118,
+    "chunk_id": 119,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.58 switchgear: A general term covering switching and interrupting devices and their"
     },
     "content": "combination with associated control, metering, protective and regulating devices; also,\nassemblies of these devices with associated interconnections, accessories, enclosures, and\nsupporting structures used primarily in connection with the generation, transmission,\ndistribution, and conversion of electric power. (adapted from IEEE Std C37.100-1992)",
     "char_count": 349
   },
   {
-    "chunk_id": 119,
+    "chunk_id": 120,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.59 transient recovery voltage (TRV): The voltage transient that occurs across the"
     },
     "content": "terminals of a pole of a switching device upon interruption of the current. (adapted from\nIEEE Std C37.100-1992)\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.\nDEFINITIONS, ACRONYMS, AND ABBREVIATIONS Std 1015-2006",
     "char_count": 315
   },
   {
-    "chunk_id": 120,
+    "chunk_id": 121,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.60 tripping: The opening of a circuit breaker by actuation of the release mechanism."
     },
     "content": "(adapted from UL 489- 2002)",
     "char_count": 27
   },
   {
-    "chunk_id": 121,
+    "chunk_id": 122,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.61 trip unit: A self-contained portion of a circuit breaker that actuates the mechanism"
     },
     "content": "that opens the circuit-breaker contacts automatically. (adapted from UL 489- 2002)\nNOTE—The terms _trip device_ and _tripping device_ are used in literature as alternative terms for trip\nunit.",
     "char_count": 192
   },
   {
-    "chunk_id": 122,
+    "chunk_id": 123,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
       "Header 3": "2.1.62 undervoltage trip device: A trip mechanism that causes a circuit-breaker to open"
     },
     "content": "automatically if the voltage across the terminals of the trip coil falls below a\npredetermined value. (adapted from UL 489- 2002) _Syn:_ **undervoltage release** .",
     "char_count": 163
   },
   {
-    "chunk_id": 123,
-    "headers": {
-      "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
-      "Header 3": "2.1.63 withstand current: See: rated short-time withstand current . 2.1.64 withstand rating: See: rated short-time withstand current . 2.1.65 zone selective interlocking: A function provided for rapid clearing while retaining"
-    },
-    "content": "coordination. The function is a communication interconnection between the electronic trip\nunits of two or more circuit breakers connected in series on multiple levels. By means of\nintercommunication between the short-time delay and/or ground fault elements, the one\nnearest the fault trips with minimum time delay while signaling the supply-side circuitbreaker(s) to delay for a predetermined period. _Syn:_ **zone interlocking; selective**\n**interlocking.**\n**2.2 Acronyms and abbreviations**",
-    "char_count": 493
-  },
-  {
     "chunk_id": 124,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.1 Definitions**",
+      "Header 3": "2.1.63 withstand current: See: rated short-time withstand current . 2.1.64 withstand rating: See: rated short-time withstand current . 2.1.65 zone selective interlocking: A function provided for rapid clearing while retaining"
+    },
+    "content": "coordination. The function is a communication interconnection between the electronic trip\nunits of two or more circuit breakers connected in series on multiple levels. By means of\nintercommunication between the short-time delay and/or ground fault elements, the one\nnearest the fault trips with minimum time delay while signaling the supply-side circuitbreaker(s) to delay for a predetermined period. _Syn:_ **zone interlocking; selective**\n**interlocking.**",
+    "char_count": 458
+  },
+  {
+    "chunk_id": 125,
+    "headers": {
+      "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.2 Acronyms and abbreviations**",
       "Header 3": "2.2.1 40 °C: Designates a circuit-breaker that is acceptable for use in ambient"
     },
     "content": "temperatures up to 40 °C.",
     "char_count": 25
   },
   {
-    "chunk_id": 125,
+    "chunk_id": 126,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.2 Acronyms and abbreviations**",
       "Header 3": "2.2.2 AIC: Amperes interrupting capacity. Maximum current a protective device is"
     },
     "content": "capable of interrupting, namely, its interrupting rating. May be found in manufacturer's\nliterature. Also see **AIR** .",
     "char_count": 119
   },
   {
-    "chunk_id": 126,
+    "chunk_id": 127,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.2 Acronyms and abbreviations**",
       "Header 3": "2.2.3 AIR: Amperes interrupting rating. Shortened term marked on some small circuit"
     },
     "content": "breakers with the interrupting rating.",
     "char_count": 38
   },
   {
-    "chunk_id": 127,
+    "chunk_id": 128,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.2 Acronyms and abbreviations**",
       "Header 3": "2.2.4 CTL: A Class CTL circuit breaker, because of its size or configuration in"
     },
     "content": "conjunction with the physical means provided in Class CTL panelboards, prevents more\ncircuit-breaker poles from being installed than the number for which the assembly is\ndesigned and rated. A Class CTL panelboard is a circuit-limited lighting and appliance\npanelboard as referenced in Sections 408.14 to 408.16 of the NEC. Both half-size and fullsized circuit breakers may be installed.",
     "char_count": 386
   },
   {
-    "chunk_id": 128,
+    "chunk_id": 129,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.2 Acronyms and abbreviations**",
       "Header 3": "2.2.5 HACR: Heating, air conditioning, and refrigeration. Designates compliance with the"
     },
     "content": "special requirements of Section 430-53(C)(3) of the NEC, as listed for group installation\nfor use with heating, air conditioning, and refrigeration equipment. A circuit breaker with\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.\nthis marking is suitable only for use with equipment marked to indicate that an HACR\ncircuit breaker is acceptable.",
     "char_count": 445
   },
   {
-    "chunk_id": 129,
+    "chunk_id": 130,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.2 Acronyms and abbreviations**",
       "Header 3": "2.2.6 HID: High-intensity discharge. Indicates construction suitable for switching high"
     },
     "content": "intensity discharge lighting loads.",
     "char_count": 35
   },
   {
-    "chunk_id": 130,
-    "headers": {
-      "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
-      "Header 3": "2.2.7 SWD: Switching duty. Designates compliance with requirements for circuit"
-    },
-    "content": "breakers used as switches on fluorescent lighting circuits as indicated in Section 24083(D) of the NEC.\n**2.3 Normative references**\nThe following referenced documents are indispensable for the application of this standard.\nFor dated references, only the edition cited applies. For undated references, the latest\nedition of the referenced document (including any amendments) applies.\nIEEE Std C37.100-1992 (R2001), IEEE Standard Definitions for Power Switchgear. [4]",
-    "char_count": 466
-  },
-  {
     "chunk_id": 131,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.2 Acronyms and abbreviations**",
       "Header 3": "2.2.7 SWD: Switching duty. Designates compliance with requirements for circuit"
     },
-    "content": "edition of the referenced document (including any amendments) applies.\nIEEE Std C37.100-1992 (R2001), IEEE Standard Definitions for Power Switchgear. [4]\nNEMA AB l-1993, Molded Case Circuit Breakers and Molded Case Switches. [5]\nNFPA 70-2005, National Electrical Code [®] (NEC [®] ). [6]\nUL 489-2002, Molded-Case Circuit Breakers, Molded-Case Switches, and CircuitBreaker Enclosures. [7]\nUL 1087-1993, Molded-Case Switches.\nUL Molded-Case Circuit Breaker Marking Guide, 1996.\n**2.4 Bibliography**",
-    "char_count": 496
+    "content": "breakers used as switches on fluorescent lighting circuits as indicated in Section 24083(D) of the NEC.",
+    "char_count": 103
   },
   {
     "chunk_id": 132,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
-      "Header 3": "2.2.7 SWD: Switching duty. Designates compliance with requirements for circuit"
+      "Header 2": "**2.3 Normative references**"
     },
-    "content": "UL 1087-1993, Molded-Case Switches.\nUL Molded-Case Circuit Breaker Marking Guide, 1996.\n**2.4 Bibliography**\n[B1] IEEE 100, _The Authoritative Dictionary of IEEE Standards Terms_, Seventh Edition.\nNew York: Institute of Electrical and Electronics Engineers, Inc.\n[B2] _UL Recognized Component Directory,_ 2002.\n4IEEE publications are available from the Institute of Electrical and Electronics Engineers, 445 Hoes Lane,\nPiscataway, NJ 08855- 1331, USA (http://standards/ieee.org/).",
-    "char_count": 480
+    "content": "The following referenced documents are indispensable for the application of this standard.\nFor dated references, only the edition cited applies. For undated references, the latest\nedition of the referenced document (including any amendments) applies.\nIEEE Std C37.100-1992 (R2001), IEEE Standard Definitions for Power Switchgear. [4]\nNEMA AB l-1993, Molded Case Circuit Breakers and Molded Case Switches. [5]\nNFPA 70-2005, National Electrical Code [®] (NEC [®] ). [6]",
+    "char_count": 467
   },
   {
     "chunk_id": 133,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
-      "Header 3": "2.2.7 SWD: Switching duty. Designates compliance with requirements for circuit"
+      "Header 2": "**2.3 Normative references**"
     },
-    "content": "4IEEE publications are available from the Institute of Electrical and Electronics Engineers, 445 Hoes Lane,\nPiscataway, NJ 08855- 1331, USA (http://standards/ieee.org/).\n5NEMA publications are available from Global Engineering Documents, 15 Inverness Way East, Englewood,\nCO 80112, USA (http:// global.ihs.com/).\n6NFPA publications are available from Publications Sales, National Fire Protection Association, 1 Batterymarch\nPark, P.O. Box 9101, Quincy, MA 02269-9101, USA (http://www.nfpa.org/).",
-    "char_count": 495
+    "content": "NEMA AB l-1993, Molded Case Circuit Breakers and Molded Case Switches. [5]\nNFPA 70-2005, National Electrical Code [®] (NEC [®] ). [6]\nUL 489-2002, Molded-Case Circuit Breakers, Molded-Case Switches, and CircuitBreaker Enclosures. [7]\nUL 1087-1993, Molded-Case Switches.\nUL Molded-Case Circuit Breaker Marking Guide, 1996.",
+    "char_count": 321
   },
   {
     "chunk_id": 134,
     "headers": {
       "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
-      "Header 3": "2.2.7 SWD: Switching duty. Designates compliance with requirements for circuit"
+      "Header 2": "**2.4 Bibliography**"
     },
-    "content": "6NFPA publications are available from Publications Sales, National Fire Protection Association, 1 Batterymarch\nPark, P.O. Box 9101, Quincy, MA 02269-9101, USA (http://www.nfpa.org/).\n7UL standards are available from Global Engineering Documents, 15 Inverness Way East, Englewood, Colorado\n80112, USA (http://global.ihs.com/).\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.",
+    "content": "[B1] IEEE 100, _The Authoritative Dictionary of IEEE Standards Terms_, Seventh Edition.\nNew York: Institute of Electrical and Electronics Engineers, Inc.\n[B2] _UL Recognized Component Directory,_ 2002.\n4IEEE publications are available from the Institute of Electrical and Electronics Engineers, 445 Hoes Lane,\nPiscataway, NJ 08855- 1331, USA (http://standards/ieee.org/).\n5NEMA publications are available from Global Engineering Documents, 15 Inverness Way East, Englewood,",
     "char_count": 473
+  },
+  {
+    "chunk_id": 135,
+    "headers": {
+      "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.4 Bibliography**"
+    },
+    "content": "Piscataway, NJ 08855- 1331, USA (http://standards/ieee.org/).\n5NEMA publications are available from Global Engineering Documents, 15 Inverness Way East, Englewood,\nCO 80112, USA (http:// global.ihs.com/).\n6NFPA publications are available from Publications Sales, National Fire Protection Association, 1 Batterymarch\nPark, P.O. Box 9101, Quincy, MA 02269-9101, USA (http://www.nfpa.org/).\n7UL standards are available from Global Engineering Documents, 15 Inverness Way East, Englewood, Colorado",
+    "char_count": 493
+  },
+  {
+    "chunk_id": 136,
+    "headers": {
+      "Header 1": "**Chapter 2** **Definitions, acronyms, and abbreviations**",
+      "Header 2": "**2.4 Bibliography**"
+    },
+    "content": "Park, P.O. Box 9101, Quincy, MA 02269-9101, USA (http://www.nfpa.org/).\n7UL standards are available from Global Engineering Documents, 15 Inverness Way East, Englewood, Colorado\n80112, USA (http://global.ihs.com/).\nAuthorized licensed use limited to: Nanyang Technological University. Downloaded on December 2, 2008 at 00:13 from IEEE Xplore. Restrictions apply.",
+    "char_count": 362
   }
 ]
