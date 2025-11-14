@@ -30,7 +30,7 @@ class DatasetSynthesizer:
         documents_dir: str = "documents",
         outputs_dir: str = "outputs",
         header_detector=IEEEHeaderDetector,
-        remove_headers_footers_func=IEEE_remove_headers_footers
+        remove_headers_footers_func=IEEE_remove_headers_footers,
     ):
         """
         Initialize the DatasetSynthesizer.
@@ -40,6 +40,8 @@ class DatasetSynthesizer:
             outputs_dir: Path to directory for saving outputs
             header_detector: Function/class to detect headers in PDFs
             remove_headers_footers_func: Function to remove headers/footers
+            chunk_size: Size of text chunks for splitting
+            chunk_overlap: Overlap between consecutive chunks
         """
         self.documents_dir = pathlib.Path(documents_dir)
         self.outputs_dir = pathlib.Path(outputs_dir)
@@ -62,12 +64,13 @@ class DatasetSynthesizer:
         pdf_files = list(self.documents_dir.glob("*.pdf"))
         return sorted(pdf_files)
 
-    def process_pdf(self, pdf_path: pathlib.Path) -> dict:
+    def process_pdf(self, pdf_path: pathlib.Path, save_chunks: bool = False) -> dict:
         """
         Process a single PDF file: extract, chunk, and generate clusters.
 
         Args:
             pdf_path: Path to the PDF file
+            save_chunks: Whether to save raw chunks for debugging
 
         Returns:
             Dictionary containing processing results
@@ -79,9 +82,13 @@ class DatasetSynthesizer:
         chunks = split_pdf(
             str(pdf_path),
             self.header_detector,
-            self.remove_headers_footers_func
+            self.remove_headers_footers_func,
         )
         print(f"  - Extracted {len(chunks)} chunks")
+
+        # Save raw chunks if requested for debugging
+        if save_chunks and chunks:
+            self._save_raw_chunks(pdf_path, chunks)
 
         # Step 2: Generate clustered contexts
         # TODO: Add more clustering methods and parameters in future
@@ -115,7 +122,8 @@ class DatasetSynthesizer:
         chunks_per_cluster: int = 5,
         diversity_weight: float = 0.3,
         save_individual: bool = True,
-        save_combined: bool = True
+        save_combined: bool = True,
+        save_chunks: bool = False
     ) -> list[dict]:
         """
         Process all PDFs in the documents directory and generate clustered contexts.
@@ -127,6 +135,7 @@ class DatasetSynthesizer:
             diversity_weight: Balance between centrality and diversity
             save_individual: Save results for each PDF separately
             save_combined: Save combined results for all PDFs
+            save_chunks: Save raw chunks for debugging
 
         Returns:
             List of processing results for each PDF
@@ -146,7 +155,7 @@ class DatasetSynthesizer:
         # Process each PDF
         for pdf_path in pdf_files:
             try:
-                result = self.process_pdf(pdf_path)
+                result = self.process_pdf(pdf_path, save_chunks=save_chunks)
                 all_results.append(result)
 
                 # Save individual PDF results if requested
@@ -163,6 +172,32 @@ class DatasetSynthesizer:
             self._save_combined_results(all_results)
 
         return all_results
+
+    def _save_raw_chunks(self, pdf_path: pathlib.Path, chunks: list) -> None:
+        """Save raw chunks for debugging visualization."""
+        pdf_name = pdf_path.stem
+        output_file = self.outputs_dir / f"{pdf_name}_raw_chunks.json"
+
+        # Format chunks for easy visualization
+        formatted_chunks = []
+        for i, chunk in enumerate(chunks):
+            chunk_data = {
+                "chunk_id": i,
+                "content": chunk.page_content,
+                "metadata": chunk.metadata,
+                "char_count": len(chunk.page_content),
+                "word_count": len(chunk.page_content.split())
+            }
+            formatted_chunks.append(chunk_data)
+
+        output = {
+            "pdf_name": pdf_path.name,
+            "total_chunks": len(formatted_chunks),
+            "chunks": formatted_chunks
+        }
+
+        output_file.write_text(json.dumps(output, indent=2, ensure_ascii=False))
+        print(f"  - Raw chunks saved to: {output_file}")
 
     def _save_pdf_result(self, result: dict) -> None:
         """Save processing result for a single PDF."""
@@ -231,25 +266,28 @@ class DatasetSynthesizer:
 def main():
     """
     Main function for testing the synthesize_dataset module.
+    Includes debug output for split chunks visualization.
     """
     print("=" * 70)
-    print("Dataset Synthesizer - Testing Mode")
+    print("Dataset Synthesizer - Testing Mode (with Debug Output)")
     print("=" * 70)
 
-    # Initialize synthesizer
+    # Initialize synthesizer with configurable chunk parameters
     synthesizer = DatasetSynthesizer(
-        documents_dir="documents",
-        outputs_dir="outputs"
+        documents_dir="src/extraction/documents",
+        outputs_dir="src/extraction/outputs",
     )
 
     # Process all PDFs and generate clustered contexts
+    # Set save_chunks=True to output raw chunks for debugging
     results = synthesizer.process_all_pdfs(
         n_clusters=None,  # Auto-determine
         method="kmeans",
         chunks_per_cluster=5,
         diversity_weight=0.3,
         save_individual=True,
-        save_combined=True
+        save_combined=True,
+        save_chunks=True  # Enable debug output for split chunks
     )
 
     # Print summary
@@ -260,6 +298,9 @@ def main():
     print(f"Total clusters generated: {sum(r['num_clusters'] for r in results)}")
     print(f"Total chunks processed: {sum(r['total_chunks'] for r in results)}")
     print("\nOutputs saved to: outputs/")
+    print("  - *_raw_chunks.json: Split chunks for debugging/visualization")
+    print("  - *_clustered_contexts.json: Clustered contexts")
+    print("  - all_pdfs_*.json: Combined results")
     print("=" * 70)
 
 
