@@ -60,14 +60,14 @@ def load_chunk_file(path: str) -> list[Document]:
             "char_count": chunk["char_count"],
             **chunk.get("headers", {}),
         }
-        docs.append(Document(page_content=chunk["content"], metadata=metadata))
+        documents.append(Document(page_content=chunk["content"], metadata=metadata))
 
     return documents
 
 if __name__ == "__main__":
     chunk_file = os.getenv(
         "CHUNK_FILE",
-        "src/extraction/outputs/sample_chunks.json",
+        "outputs/30pg_outputs.json",
     )
     documents = load_chunk_file(chunk_file)
 
