@@ -1,4 +1,5 @@
 import pymupdf
+import os
 # import pymupdf.layout
 import pymupdf4llm
 import pathlib
@@ -24,25 +25,27 @@ def load_pdf_as_markdown(file: str, HeaderDetector, remove_headers_footers_func)
 
 def split_pdf(file: str, HeaderDetector, remove_headers_footers_func) -> list[Document]:
     """
-    Split a PDF file into chunks.
+    Split the markdown conversion of a PDF file into chunks with size requirements.
     """
     markdown = load_pdf_as_markdown(file, HeaderDetector, remove_headers_footers_func)
     markdown_splitter = MarkdownHeaderTextSplitter(
         headers_to_split_on=[("#", "Header 1"), ("##", "Header 2"), ("###", "Header 3"), ("####", "Header 4")]
     )
-    raw_splits = markdown_splitter.split_text(markdown)
-    
-    pathlib.Path("src/rag/outputs/output.md").write_bytes(markdown.encode())
+    markdown_splits = markdown_splitter.split_text(markdown)
 
+    filename = os.path.basename(file)          # "{filename}.pdf"
+    name_without_ext = os.path.splitext(filename)[0] # "{filename}"
+    
+    pathlib.Path(f"src/rag/outputs/{name_without_ext}.md").write_bytes(markdown.encode())
     
     # split raw_splits again with chunk size constraints
     chunk_size = 512
     chunk_overlap = 200
-    chunk_size_splitter = RecursiveCharacterTextSplitter(
+    sized_splitter = RecursiveCharacterTextSplitter(
         chunk_size=chunk_size, chunk_overlap=chunk_overlap
     )
 
-    sized_splits = chunk_size_splitter.split_documents(raw_splits)
+    sized_splits = sized_splitter.split_documents(markdown_splits)
 
     return sized_splits
 
@@ -77,8 +80,12 @@ if __name__ == "__main__":
     chunks = split_pdf(FILE_PATH, IEEEHeaderDetector, IEEE_remove_headers_footers)
     formatted_list = format_splits_as_list(chunks)
 
+
     # Optional: Save to JSON file
+
+    filename = os.path.basename(FILE_PATH)          # "{filename}.pdf"
+    name_without_ext = os.path.splitext(filename)[0] # "{filename}"
     import json
-    output_file = pathlib.Path("src/rag/outputs/30pg_outputs.json")
+    output_file = pathlib.Path(f"src/rag/outputs/{name_without_ext}.json")
     output_file.write_text(json.dumps(formatted_list, indent=2, ensure_ascii=False))
     print(f"\nSaved {len(formatted_list)} chunks to {output_file}")
