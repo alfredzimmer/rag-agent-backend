@@ -9,7 +9,7 @@ Assumes db client is qdrant instance
   When implementing this method ->
   hybrid is assumed to run dense + SPLADE sparse vector queries respectively
   k is the number of results to be fetched in each category
-  return type is a pair of results : dense + sparse
+  return type is a pair of lists of ScorePoint obj from Qdrant : dense + sparse
 """
 def hybrid_retrieve(text, client, k = 50):
 
