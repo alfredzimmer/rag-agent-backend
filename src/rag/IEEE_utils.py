@@ -48,7 +48,7 @@ class IEEEHeaderDetector:
         # Inclusion Rules 
         
         # LEVEL 1: Chapter Title (e.g., "Chapter 2" or "Operating diagrams")
-        if 16 >= size and size >= 14 and is_bold:
+        if 16 >= size and size >= 13.5 and is_bold:
             return "# "
 
         # LEVEL 2: Main Heading (e.g., "2.1 Introduction", "3.4 Power factor")
