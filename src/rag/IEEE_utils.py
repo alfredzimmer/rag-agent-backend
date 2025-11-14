@@ -12,7 +12,7 @@ class IEEEHeaderDetector:
     
     def __init__(self):
         # Regex to find numbered sections like "2.1" or "3.3.4"
-        self.number_pattern = re.compile(r"^\d+(\.\d+)+\s+")
+        self.number_pattern = re.compile(r"^\d+(\.\d+)+\s*")
         
         # Regex to find chapter titles like "Chapter 2"
         self.chapter_pattern = re.compile(r"^Chapter \d+", re.IGNORECASE)
@@ -52,17 +52,17 @@ class IEEEHeaderDetector:
             return "# "
 
         # LEVEL 2: Main Heading (e.g., "2.1 Introduction", "3.4 Power factor")
-        if 14 > size and size >= 12 and is_bold and self.number_pattern.match(text):
+        if 14 > size and size >= 10.5 and is_bold and self.number_pattern.match(text):
              # Check how many dots to be sure
              if text.count('.') == 1:
                 return "## "
 
         # LEVEL 3: Subheading (e.g., "3.3.3 Congested...", "3.3.4 Operating")
-        if 12 > size and size >= 10 and is_bold and self.number_pattern.match(text):
+        if 12 > size and size >= 9.5 and is_bold and self.number_pattern.match(text):
             if text.count('.') == 2:
                 return "### "
 
-        if 12 > size and size >= 10 and is_bold and self.number_pattern.match(text):
+        if 12 > size and size >= 9.5 and is_bold and self.number_pattern.match(text):
             if text.count('.') >= 3:
                 return "#### "
                 
