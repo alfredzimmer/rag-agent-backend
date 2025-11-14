@@ -96,11 +96,8 @@ def main():
     pdf_name = pathlib.Path(pdf_file).stem
     output_file = pathlib.Path(f"src/extraction/outputs/{pdf_name}_debug_chunks.json")
 
-    output_data = {
-        "pdf_file": pdf_file,
-        "total_chunks": len(chunks),
-        "chunks": chunks
-    }
+    output_data = { "chunks": {i: {"metadata": doc.metadata, "content": doc.page_content.strip(), "char_count": len(doc.page_content), "word_count": len(doc.page_content.split())} for i, doc in enumerate(chunks)} }
+    
 
     output_file.write_text(json.dumps(output_data, indent=2, ensure_ascii=False))
 

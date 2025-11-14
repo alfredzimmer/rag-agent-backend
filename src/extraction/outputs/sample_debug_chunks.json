@@ -1,275 +1,65 @@
 {
-  "pdf_file": "src/extraction/documents/sample.pdf",
-  "chunk_size": 512,
-  "chunk_overlap": 0,
-  "total_chunks": 28,
-  "statistics": {
-    "total_characters": 11114,
-    "total_words": 1716,
-    "avg_chars_per_chunk": 396.93,
-    "avg_words_per_chunk": 61.29
-  },
-  "chunks": [
-    {
-      "chunk_id": 0,
+  "chunks": {
+    "0": {
       "metadata": {
         "Header 1": "**Chapter 2** **Operating diagrams**",
         "Header 2": "**2.1 Introduction**"
       },
-      "content": "Operating diagrams are the road maps to the operation and maintenance of an industrial or\ncommercial power system. The diagrams can be considered as the primary tool for work on a\npower system. Without the guidance that is provided by the information contained on these\nsystem diagrams, the operation and maintenance of an industrial or commercial complex\nwould be extremely difficult and potentially unsafe.\nVendor’s drawings and instruction manuals, plant drawings, maintenance histories, spare",
-      "char_count": 496,
-      "word_count": 74
+      "content": "Operating diagrams are the road maps to the operation and maintenance of an industrial or\ncommercial power system. The diagrams can be considered as the primary tool for work on a\npower system. Without the guidance that is provided by the information contained on these\nsystem diagrams, the operation and maintenance of an industrial or commercial complex\nwould be extremely difficult and potentially unsafe.\nVendor’s drawings and instruction manuals, plant drawings, maintenance histories, spare\nparts lists, standard operating procedures, and other documents should be systematically filed\nand readily available to the personnel who are involved in system operation. A plant’s core\ndistribution system may have a life of 30 or more years. Complete, up-to-date equipment documentation is essential not only for supporting routine daily activity, but also for the successful implementation of system expansion or modification. System documentation should\ninclude simplified one-line drawings that show only power sources, transformers, voltage levels, major loads, disconnecting devices, switches, and breakers. These drawings are essential\nfor the planning and illustration of operation activity. A master file should be kept in which all\nrevisions are noted and the drawings are subsequently updated because there may be several\ncopies or files of essential drawings that depict the plant. The use of computer-aided drafting\nsystems may expedite the process.\nThe drawings and the equipment identifications should agree. Frequently, equipment identification is incomplete and poorly located. Staff reliance on such documents may result in\nerrors, if a system is not in place to ensure accuracy. Disconnecting means, switch operators,\ncircuit breaker control switches, circuit breakers, push buttons, motors, and other devices\nshould have complete stand-alone identification nameplates attached in immediate full view\n(i.e., “FDR 12, Sub. 3” vs. “FDR 12” for a switch control handle). Identification should be\nunique and affixed to all associated apparatus. The location of the identification nameplate\ncan be as critical as the accuracy of the nameplate.\nCritical process operations have been accidentally shut down because circuit breakers in panelboards were not properly identified. The identification of circuits during commissioning\nshould always be verified. A mandatory policy requiring the regular review and updating of\npanelboard schedules should be instituted.\nNo standard diagram or type of diagram that is available can suffice for all industrial plants or\ncommercial complexes. No standard electric distribution system is adaptable to all industrial\nplants because two plants rarely have the same requirements. This chapter outlines the types\nof diagrams and information that are available to map any distribution system. Consistency is\nan important factor, however, in keeping diagrams readable and understandable.",
+      "char_count": 2930,
+      "word_count": 423
     },
-    {
-      "chunk_id": 1,
-      "metadata": {
-        "Header 1": "**Chapter 2** **Operating diagrams**",
-        "Header 2": "**2.1 Introduction**"
-      },
-      "content": "parts lists, standard operating procedures, and other documents should be systematically filed\nand readily available to the personnel who are involved in system operation. A plant’s core\ndistribution system may have a life of 30 or more years. Complete, up-to-date equipment documentation is essential not only for supporting routine daily activity, but also for the successful implementation of system expansion or modification. System documentation should",
-      "char_count": 457,
-      "word_count": 65
-    },
-    {
-      "chunk_id": 2,
-      "metadata": {
-        "Header 1": "**Chapter 2** **Operating diagrams**",
-        "Header 2": "**2.1 Introduction**"
-      },
-      "content": "include simplified one-line drawings that show only power sources, transformers, voltage levels, major loads, disconnecting devices, switches, and breakers. These drawings are essential\nfor the planning and illustration of operation activity. A master file should be kept in which all\nrevisions are noted and the drawings are subsequently updated because there may be several\ncopies or files of essential drawings that depict the plant. The use of computer-aided drafting\nsystems may expedite the process.",
-      "char_count": 505,
-      "word_count": 74
-    },
-    {
-      "chunk_id": 3,
-      "metadata": {
-        "Header 1": "**Chapter 2** **Operating diagrams**",
-        "Header 2": "**2.1 Introduction**"
-      },
-      "content": "The drawings and the equipment identifications should agree. Frequently, equipment identification is incomplete and poorly located. Staff reliance on such documents may result in\nerrors, if a system is not in place to ensure accuracy. Disconnecting means, switch operators,\ncircuit breaker control switches, circuit breakers, push buttons, motors, and other devices\nshould have complete stand-alone identification nameplates attached in immediate full view",
-      "char_count": 456,
-      "word_count": 62
-    },
-    {
-      "chunk_id": 4,
-      "metadata": {
-        "Header 1": "**Chapter 2** **Operating diagrams**",
-        "Header 2": "**2.1 Introduction**"
-      },
-      "content": "(i.e., “FDR 12, Sub. 3” vs. “FDR 12” for a switch control handle). Identification should be\nunique and affixed to all associated apparatus. The location of the identification nameplate\ncan be as critical as the accuracy of the nameplate.\nCritical process operations have been accidentally shut down because circuit breakers in panelboards were not properly identified. The identification of circuits during commissioning\nshould always be verified. A mandatory policy requiring the regular review and updating of",
-      "char_count": 511,
-      "word_count": 76
-    },
-    {
-      "chunk_id": 5,
-      "metadata": {
-        "Header 1": "**Chapter 2** **Operating diagrams**",
-        "Header 2": "**2.1 Introduction**"
-      },
-      "content": "panelboard schedules should be instituted.\nNo standard diagram or type of diagram that is available can suffice for all industrial plants or\ncommercial complexes. No standard electric distribution system is adaptable to all industrial\nplants because two plants rarely have the same requirements. This chapter outlines the types\nof diagrams and information that are available to map any distribution system. Consistency is\nan important factor, however, in keeping diagrams readable and understandable.",
-      "char_count": 500,
-      "word_count": 72
-    },
-    {
-      "chunk_id": 6,
+    "1": {
       "metadata": {
         "Header 1": "**Chapter 2** **Operating diagrams**",
         "Header 2": "**2.2 Single-line diagram (one-line diagram)**"
       },
-      "content": "A reliable single-line diagram of an industrial or commercial electrical power distribution\nsystem is an invaluable tool. It is also called a one-line diagram. The single-line diagram indicates, by single lines and standard symbols, the course and component parts of an electric circuit or system of circuits. The symbols that are commonly used in one-line diagrams are\ndefined in IEEE Std 315-1975. [1]\nThe single-line diagram is a road map of the distribution system that traces the flow of power",
-      "char_count": 498,
-      "word_count": 80
+      "content": "A reliable single-line diagram of an industrial or commercial electrical power distribution\nsystem is an invaluable tool. It is also called a one-line diagram. The single-line diagram indicates, by single lines and standard symbols, the course and component parts of an electric circuit or system of circuits. The symbols that are commonly used in one-line diagrams are\ndefined in IEEE Std 315-1975. [1]\nThe single-line diagram is a road map of the distribution system that traces the flow of power\ninto and through the system. The single-line drawing identifies the points at which power is,\nor can be, supplied into the system and at which power should be disconnected in order to\nclear, or isolate, any portion of the system.",
+      "char_count": 728,
+      "word_count": 120
     },
-    {
-      "chunk_id": 7,
-      "metadata": {
-        "Header 1": "**Chapter 2** **Operating diagrams**",
-        "Header 2": "**2.2 Single-line diagram (one-line diagram)**"
-      },
-      "content": "into and through the system. The single-line drawing identifies the points at which power is,\nor can be, supplied into the system and at which power should be disconnected in order to\nclear, or isolate, any portion of the system.",
-      "char_count": 229,
-      "word_count": 40
-    },
-    {
-      "chunk_id": 8,
+    "2": {
       "metadata": {
         "Header 1": "**Chapter 2** **Operating diagrams**",
         "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
         "Header 3": "**2.2.1 Characteristics of an accurate diagram**"
       },
-      "content": "The following characteristics should help to ensure accuracy as well as ease of interpretation:\na) _Keep it simple_ . A fundamental single-line diagram should be made up of short,\nstraight lines and components, similar to the manner in which a block diagram is\ndrawn. It should be relatively easy to get the overall picture of the whole electrical\nsystem. All, or as much as possible, of the system should be kept to one sheet. If the",
-      "char_count": 434,
-      "word_count": 76
+      "content": "The following characteristics should help to ensure accuracy as well as ease of interpretation:\na) _Keep it simple_ . A fundamental single-line diagram should be made up of short,\nstraight lines and components, similar to the manner in which a block diagram is\ndrawn. It should be relatively easy to get the overall picture of the whole electrical\nsystem. All, or as much as possible, of the system should be kept to one sheet. If the\nsystem is very large, and more than one sheet is necessary, then the break should be\nmade at voltage levels or at distribution centers.\nb) _Maintain relative geographic relations_ . In many cases, it is possible to superimpose a\nform of the one-line diagram onto the facility plot plan. This is very helpful toward a\nquick understanding of the location of the system’s major components for operating\npurposes. It may, however, be more difficult to comprehend the overall system operation from this drawing. Such a drawing could be used for relatively simple systems.\nFor more complex systems, however, it should be used in addition to the fundamental\nsingle-line diagram.\nc) _Maintain the approximate relative positions of components when producing the sin-_\n_gle-line diagram_ . The drawing should be as simple as possible and should be laid out\nin the same relationship as an operator would view the equipment. The diagram does\nnot need to show geographical relationships at the expense of simplicity.\nNOTE—A site plan with equipment locations may be required to accompany the single-line\ndiagram.\nd) _Avoid duplication_ . Each symbol, figure, and letter has a definite meaning. The reader\nshould be able to interpret each without any confusion. In this regard, equipment\nnames should be selected before publishing the document; then, these names should\nbe used consistently.\n1Information on references can be found in 2.4.\ne) _Show all known factors_ . All details shown on the diagram are important. Some of\nthose important details are as follows:\nManufacturers’ type designations and ratings of apparatus;\nRatios of current and potential transformers and taps to be used on multi-ratio\ntransformers;\nConnections of power transformer windings;\nCircuit breaker ratings in volts, amperes, and short-circuit interrupting rating;\nSwitch and fuse ratings in volts, amperes, and short-circuit interrupting rating;\nFunction of relays. Device functions used should be from IEEE Std C37.2-1991;\nRatings of motors, generators, and power transformers;\nNumber, size, and type of conductors;\nVoltage, phases, frequency, and phase rotation of all incoming circuits. The type\nof supply system (wye or delta, grounded or ungrounded) and the available\nshort-circuit currents should be indicated.\nf) _Future plans_ . When future plans are known, they should be shown on the diagram or\nexplained by notes.\ng) _Other considerations_ . Refer to IEEE Std 141-1993 for further discussion of singleline diagrams.",
+      "char_count": 2927,
+      "word_count": 461
     },
-    {
-      "chunk_id": 9,
-      "metadata": {
-        "Header 1": "**Chapter 2** **Operating diagrams**",
-        "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
-        "Header 3": "**2.2.1 Characteristics of an accurate diagram**"
-      },
-      "content": "system is very large, and more than one sheet is necessary, then the break should be\nmade at voltage levels or at distribution centers.\nb) _Maintain relative geographic relations_ . In many cases, it is possible to superimpose a\nform of the one-line diagram onto the facility plot plan. This is very helpful toward a\nquick understanding of the location of the system’s major components for operating",
-      "char_count": 399,
-      "word_count": 67
-    },
-    {
-      "chunk_id": 10,
-      "metadata": {
-        "Header 1": "**Chapter 2** **Operating diagrams**",
-        "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
-        "Header 3": "**2.2.1 Characteristics of an accurate diagram**"
-      },
-      "content": "purposes. It may, however, be more difficult to comprehend the overall system operation from this drawing. Such a drawing could be used for relatively simple systems.\nFor more complex systems, however, it should be used in addition to the fundamental\nsingle-line diagram.\nc) _Maintain the approximate relative positions of components when producing the sin-_\n_gle-line diagram_ . The drawing should be as simple as possible and should be laid out",
-      "char_count": 446,
-      "word_count": 70
-    },
-    {
-      "chunk_id": 11,
-      "metadata": {
-        "Header 1": "**Chapter 2** **Operating diagrams**",
-        "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
-        "Header 3": "**2.2.1 Characteristics of an accurate diagram**"
-      },
-      "content": "in the same relationship as an operator would view the equipment. The diagram does\nnot need to show geographical relationships at the expense of simplicity.\nNOTE—A site plan with equipment locations may be required to accompany the single-line\ndiagram.\nd) _Avoid duplication_ . Each symbol, figure, and letter has a definite meaning. The reader\nshould be able to interpret each without any confusion. In this regard, equipment\nnames should be selected before publishing the document; then, these names should",
-      "char_count": 508,
-      "word_count": 79
-    },
-    {
-      "chunk_id": 12,
-      "metadata": {
-        "Header 1": "**Chapter 2** **Operating diagrams**",
-        "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
-        "Header 3": "**2.2.1 Characteristics of an accurate diagram**"
-      },
-      "content": "be used consistently.\n1Information on references can be found in 2.4.\ne) _Show all known factors_ . All details shown on the diagram are important. Some of\nthose important details are as follows:\nManufacturers’ type designations and ratings of apparatus;\nRatios of current and potential transformers and taps to be used on multi-ratio\ntransformers;\nConnections of power transformer windings;\nCircuit breaker ratings in volts, amperes, and short-circuit interrupting rating;",
-      "char_count": 473,
-      "word_count": 69
-    },
-    {
-      "chunk_id": 13,
-      "metadata": {
-        "Header 1": "**Chapter 2** **Operating diagrams**",
-        "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
-        "Header 3": "**2.2.1 Characteristics of an accurate diagram**"
-      },
-      "content": "Switch and fuse ratings in volts, amperes, and short-circuit interrupting rating;\nFunction of relays. Device functions used should be from IEEE Std C37.2-1991;\nRatings of motors, generators, and power transformers;\nNumber, size, and type of conductors;\nVoltage, phases, frequency, and phase rotation of all incoming circuits. The type\nof supply system (wye or delta, grounded or ungrounded) and the available\nshort-circuit currents should be indicated.",
-      "char_count": 452,
-      "word_count": 65
-    },
-    {
-      "chunk_id": 14,
-      "metadata": {
-        "Header 1": "**Chapter 2** **Operating diagrams**",
-        "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
-        "Header 3": "**2.2.1 Characteristics of an accurate diagram**"
-      },
-      "content": "f) _Future plans_ . When future plans are known, they should be shown on the diagram or\nexplained by notes.\ng) _Other considerations_ . Refer to IEEE Std 141-1993 for further discussion of singleline diagrams.",
-      "char_count": 209,
-      "word_count": 35
-    },
-    {
-      "chunk_id": 15,
+    "3": {
       "metadata": {
         "Header 1": "**Chapter 2** **Operating diagrams**",
         "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
         "Header 3": "**2.2.2 Uses of the single-line diagram**"
       },
-      "content": "The single-line diagram may be used in a number of important ways in operating and maintaining an industrial or commercial power distribution system. Frequently, the single-line diagram, with all of the listed information, becomes too crowded for information to be used\neffectively in some of the operating activities. In those instances, it is wise to produce a set of",
-      "char_count": 369,
-      "word_count": 59
+      "content": "The single-line diagram may be used in a number of important ways in operating and maintaining an industrial or commercial power distribution system. Frequently, the single-line diagram, with all of the listed information, becomes too crowded for information to be used\neffectively in some of the operating activities. In those instances, it is wise to produce a set of\nsingle-line diagrams, with each different diagram in the set containing the pertinent information that is required for a particular activity or set of activities. Some of the needs for special\nsingle-line diagrams are\na) _Switching functions_ . When the primary use of the diagram is to provide information to\nsystem operators for switching in order to isolate portions for maintenance or for load\ncontrol, then only the data required to make the decisions necessary for system switching are included on the diagram. Sometimes, when the distribution system is complex,\na separate version of the single-line diagram in block form is more usable than a complete single-line diagram. This may be identified as a “system operating diagram.”\nb) _Load flow control_ . This diagram is used exclusively for load flow control. It only\nincludes the data that show system component capacities and other data that pertain\nto load flow.\nc) _Relaying and relay logic diagrams_ . These single-line diagrams are used to describe the\nsystem protective relay systems. These diagrams are used particularly as logic and tripping diagrams that may contain a unique language used only to depict the sequence of\nrelay or system protective component operation under various fault conditions.\nd) _Impedance diagram_ . This is a single-line diagram that shows the system input impedance and the impedance of all system components in which the impedance of each\ncircuit branch is maintained for system short-circuit analysis. This diagram should\ninclude all reactance data on large rotating apparatus or the equivalent data for groups\nof machines.",
+      "char_count": 1990,
+      "word_count": 314
     },
-    {
-      "chunk_id": 16,
-      "metadata": {
-        "Header 1": "**Chapter 2** **Operating diagrams**",
-        "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
-        "Header 3": "**2.2.2 Uses of the single-line diagram**"
-      },
-      "content": "single-line diagrams, with each different diagram in the set containing the pertinent information that is required for a particular activity or set of activities. Some of the needs for special\nsingle-line diagrams are\na) _Switching functions_ . When the primary use of the diagram is to provide information to\nsystem operators for switching in order to isolate portions for maintenance or for load",
-      "char_count": 397,
-      "word_count": 63
-    },
-    {
-      "chunk_id": 17,
-      "metadata": {
-        "Header 1": "**Chapter 2** **Operating diagrams**",
-        "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
-        "Header 3": "**2.2.2 Uses of the single-line diagram**"
-      },
-      "content": "control, then only the data required to make the decisions necessary for system switching are included on the diagram. Sometimes, when the distribution system is complex,\na separate version of the single-line diagram in block form is more usable than a complete single-line diagram. This may be identified as a “system operating diagram.”\nb) _Load flow control_ . This diagram is used exclusively for load flow control. It only\nincludes the data that show system component capacities and other data that pertain",
-      "char_count": 511,
-      "word_count": 82
-    },
-    {
-      "chunk_id": 18,
-      "metadata": {
-        "Header 1": "**Chapter 2** **Operating diagrams**",
-        "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
-        "Header 3": "**2.2.2 Uses of the single-line diagram**"
-      },
-      "content": "to load flow.\nc) _Relaying and relay logic diagrams_ . These single-line diagrams are used to describe the\nsystem protective relay systems. These diagrams are used particularly as logic and tripping diagrams that may contain a unique language used only to depict the sequence of\nrelay or system protective component operation under various fault conditions.",
-      "char_count": 357,
-      "word_count": 55
-    },
-    {
-      "chunk_id": 19,
-      "metadata": {
-        "Header 1": "**Chapter 2** **Operating diagrams**",
-        "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
-        "Header 3": "**2.2.2 Uses of the single-line diagram**"
-      },
-      "content": "d) _Impedance diagram_ . This is a single-line diagram that shows the system input impedance and the impedance of all system components in which the impedance of each\ncircuit branch is maintained for system short-circuit analysis. This diagram should\ninclude all reactance data on large rotating apparatus or the equivalent data for groups\nof machines.",
-      "char_count": 352,
-      "word_count": 55
-    },
-    {
-      "chunk_id": 20,
+    "4": {
       "metadata": {
         "Header 1": "**Chapter 2** **Operating diagrams**",
         "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
         "Header 3": "**2.2.3 Special single-line diagrams**"
       },
-      "content": "For a large facility that has regularly changing conditions on its electrical distribution system,\na mimic bus-type, single-line diagram is very useful. This type of single-line diagram could\nbe a fairly simple pegboard arrangement with movable circuit symbols and tapes in several\ncolors to identify voltage levels; or it could be a light-indicating board that indicates remote\nswitch position via telemeter information and includes load flow data. Modern systems may",
-      "char_count": 468,
-      "word_count": 70
+      "content": "For a large facility that has regularly changing conditions on its electrical distribution system,\na mimic bus-type, single-line diagram is very useful. This type of single-line diagram could\nbe a fairly simple pegboard arrangement with movable circuit symbols and tapes in several\ncolors to identify voltage levels; or it could be a light-indicating board that indicates remote\nswitch position via telemeter information and includes load flow data. Modern systems may\nhave this data displayed on a computer monitor.",
+      "char_count": 516,
+      "word_count": 78
     },
-    {
-      "chunk_id": 21,
-      "metadata": {
-        "Header 1": "**Chapter 2** **Operating diagrams**",
-        "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
-        "Header 3": "**2.2.3 Special single-line diagrams**"
-      },
-      "content": "have this data displayed on a computer monitor.",
-      "char_count": 47,
-      "word_count": 8
-    },
-    {
-      "chunk_id": 22,
+    "5": {
       "metadata": {
         "Header 1": "**Chapter 2** **Operating diagrams**",
         "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
         "Header 3": "**2.2.3 Special single-line diagrams**",
         "Header 4": "**2.2.3.1 Switching simulator**"
       },
-      "content": "A switching simulator can be very useful for verifying the effects of any set of switching\noperations. Low-voltage toggle switches are substituted for circuit breakers and disconnect\nswitches. Signal lamps indicate whether a circuit path has been omitted in the switching\nsequence, thereby offering the system operator a check on the switching plan prior to performing switching on the distribution system.\nInteractive computer programs have been developed to provide the same system modeling as",
-      "char_count": 495,
-      "word_count": 74
+      "content": "A switching simulator can be very useful for verifying the effects of any set of switching\noperations. Low-voltage toggle switches are substituted for circuit breakers and disconnect\nswitches. Signal lamps indicate whether a circuit path has been omitted in the switching\nsequence, thereby offering the system operator a check on the switching plan prior to performing switching on the distribution system.\nInteractive computer programs have been developed to provide the same system modeling as\nin the electrified-system one-line diagram. These programs can be rapidly manipulated to test\nany planned switching of an industrial plant’s power system. They can be used to check a\nproposed set of switching instructions and, in some cases, to print a set of instructions to be\nused in the field.",
+      "char_count": 793,
+      "word_count": 124
     },
-    {
-      "chunk_id": 23,
-      "metadata": {
-        "Header 1": "**Chapter 2** **Operating diagrams**",
-        "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
-        "Header 3": "**2.2.3 Special single-line diagrams**",
-        "Header 4": "**2.2.3.1 Switching simulator**"
-      },
-      "content": "in the electrified-system one-line diagram. These programs can be rapidly manipulated to test\nany planned switching of an industrial plant’s power system. They can be used to check a\nproposed set of switching instructions and, in some cases, to print a set of instructions to be\nused in the field.",
-      "char_count": 297,
-      "word_count": 50
-    },
-    {
-      "chunk_id": 24,
+    "6": {
       "metadata": {
         "Header 1": "**Chapter 2** **Operating diagrams**",
         "Header 2": "**2.2 Single-line diagram (one-line diagram)**",
@@ -279,35 +69,14 @@
       "char_count": 283,
       "word_count": 44
     },
-    {
-      "chunk_id": 25,
+    "7": {
       "metadata": {
         "Header 1": "**Chapter 2** **Operating diagrams**",
         "Header 2": "**2.3 Plan (equipment location plan)**"
       },
-      "content": "A site plan usually is a necessary accompaniment to the single-line diagram for a complete\ndescription and mapping of the industrial and commercial electric distribution system. The\nlocations of the major components of the system are usually easy to visualize; however, circuit routing is difficult to comprehend without a site plan.\nSite plans are important for a number of reasons, all of which could affect the operation of the",
-      "char_count": 430,
-      "word_count": 69
-    },
-    {
-      "chunk_id": 26,
-      "metadata": {
-        "Header 1": "**Chapter 2** **Operating diagrams**",
-        "Header 2": "**2.3 Plan (equipment location plan)**"
-      },
-      "content": "industrial plant or commercial complex at some time. If a major catastrophe such as fire,\nflood, or storm damage should occur, a site plan would be an important tool if the distribution\nsystem were to be reconstructed. The expansion and/or rearrangement of an electrical distribution system could be extremely difficult without accurate records of the location of existing\nsystem components. The site plan can be important for identifying the proximity of electrical",
-      "char_count": 466,
-      "word_count": 72
-    },
-    {
-      "chunk_id": 27,
-      "metadata": {
-        "Header 1": "**Chapter 2** **Operating diagrams**",
-        "Header 2": "**2.3 Plan (equipment location plan)**"
-      },
-      "content": "system components to other maintenance work that may be taking place.",
-      "char_count": 69,
-      "word_count": 11
+      "content": "A site plan usually is a necessary accompaniment to the single-line diagram for a complete\ndescription and mapping of the industrial and commercial electric distribution system. The\nlocations of the major components of the system are usually easy to visualize; however, circuit routing is difficult to comprehend without a site plan.\nSite plans are important for a number of reasons, all of which could affect the operation of the\nindustrial plant or commercial complex at some time. If a major catastrophe such as fire,\nflood, or storm damage should occur, a site plan would be an important tool if the distribution\nsystem were to be reconstructed. The expansion and/or rearrangement of an electrical distribution system could be extremely difficult without accurate records of the location of existing\nsystem components. The site plan can be important for identifying the proximity of electrical\nsystem components to other maintenance work that may be taking place.",
+      "char_count": 967,
+      "word_count": 152
     }
-  ]
+  }
 }

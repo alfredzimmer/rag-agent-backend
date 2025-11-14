@@ -2,7 +2,7 @@ from typing import Optional, Literal
 from langchain_core.documents import Document
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.cluster import KMeans, DBSCAN
+from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 
 from embeddings import embed_chunks
@@ -30,7 +30,7 @@ def _determine_optimal_clusters(embeddings: np.ndarray, max_clusters: int = 10, 
     best_n_clusters = min_clusters
 
     for n_clusters in range(min_clusters, max_clusters + 1):
-        kmeans = KMeans(n_clusters=n_clusters, random_state=42, n_init=10)
+        kmeans = KMeans(n_clusters=n_clusters, random_state=42, n_init='auto')
         labels = kmeans.fit_predict(embeddings)
         score = silhouette_score(embeddings, labels)
 
@@ -44,8 +44,7 @@ def _determine_optimal_clusters(embeddings: np.ndarray, max_clusters: int = 10, 
 def _cluster_embeddings(
     embeddings: list[list[float]],
     n_clusters: Optional[int] = None,
-    method: Literal["kmeans", "dbscan"] = "kmeans",
-    eps: float = 0.3
+    method: Literal["kmeans"] = "kmeans"
 ) -> tuple[np.ndarray, np.ndarray]:
     """
     Cluster embeddings using specified method.
@@ -53,11 +52,10 @@ def _cluster_embeddings(
     Args:
         embeddings: List of embedding vectors
         n_clusters: Number of clusters (if None, auto-determine for kmeans)
-        method: Clustering method ('kmeans' or 'dbscan')
-        eps: Epsilon parameter for DBSCAN
+        method: Clustering method ('kmeans')
 
     Returns:
-        Tuple of (cluster_labels, cluster_centers or None)
+        Tuple of (cluster_labels, cluster_centers)
     """
     embeddings_array = np.array(embeddings)
 
@@ -65,23 +63,10 @@ def _cluster_embeddings(
         if n_clusters is None:
             n_clusters = _determine_optimal_clusters(embeddings_array)
 
-        kmeans = KMeans(n_clusters=n_clusters, random_state=42, n_init=10)
+        kmeans = KMeans(n_clusters=n_clusters, random_state=42, n_init='auto')
         labels = kmeans.fit_predict(embeddings_array)
         centers = kmeans.cluster_centers_
         return labels, centers
-
-    elif method == "dbscan":
-        dbscan = DBSCAN(eps=eps, min_samples=2, metric='cosine')
-        labels = dbscan.fit_predict(embeddings_array)
-        # For DBSCAN, compute centers manually
-        unique_labels = set(labels)
-        centers = []
-        for label in unique_labels:
-            if label == -1:  # Noise points
-                continue
-            cluster_points = embeddings_array[labels == label]
-            centers.append(cluster_points.mean(axis=0))
-        return labels, np.array(centers) if centers else None
 
     else:
         raise ValueError(f"Unknown clustering method: {method}")
@@ -168,45 +153,59 @@ def _get_representative_chunks_from_cluster(
 def generate_clustered_contexts(
     chunks: list[Document],
     n_clusters: Optional[int] = None,
-    method: Literal["kmeans", "dbscan"] = "kmeans",
+    method: Literal["kmeans", "none"] = "kmeans",
     chunks_per_cluster: int = 5,
     diversity_weight: float = 0.3,
-    min_cluster_size: int = 2,
-    eps: float = 0.3
+    min_cluster_size: int = 2
 ) -> list[dict]:
     """
     Generate contexts by clustering document embeddings and selecting representative chunks.
 
     This creates diverse contexts for synthetic data generation by:
-    1. Clustering similar document chunks together
+    1. Clustering similar document chunks together (if method != 'none')
     2. Selecting representative samples from each cluster
     3. Balancing centrality (representativeness) and diversity within clusters
 
     Args:
         chunks: List of Document chunks to cluster
         n_clusters: Number of clusters (None for auto-determination with kmeans)
-        method: Clustering method ('kmeans' or 'dbscan')
-        chunks_per_cluster: Number of chunks to select per cluster
-        diversity_weight: Balance between centrality (0) and diversity (1)
-        min_cluster_size: Minimum cluster size to include
-        eps: Epsilon parameter for DBSCAN clustering
+        method: Clustering method ('kmeans' or 'none'). 'none' returns original chunks without clustering
+        chunks_per_cluster: Number of chunks to select per cluster (ignored if method='none')
+        diversity_weight: Balance between centrality (0) and diversity (1) (ignored if method='none')
+        min_cluster_size: Minimum cluster size to include (ignored if method='none')
 
     Returns:
         List of contexts, each containing:
-            - cluster_id: Cluster identifier
-            - chunks: Representative chunks from the cluster
-            - size: Total number of chunks in cluster
-            - coherence: Average similarity within cluster
+            - cluster_id: Cluster identifier (or chunk index if method='none')
+            - chunks: Representative chunks from the cluster (or single chunk if method='none')
+            - size: Total number of chunks in cluster (always 1 if method='none')
+            - coherence: Average similarity within cluster (always 1.0 if method='none')
     """
     if not chunks:
         return []
+
+    # If method is 'none', return original chunks without clustering or embeddings
+    if method == "none":
+        contexts = []
+        for i, chunk in enumerate(chunks):
+            contexts.append({
+                'cluster_id': i,
+                'chunks': [{
+                    'content': chunk.page_content,
+                    'metadata': chunk.metadata,
+                    'index': i
+                }],
+                'size': 1,
+                'coherence': 1.0
+            })
+        return contexts
 
     # Get embeddings
     content, metadata, embeddings = embed_chunks(chunks)
     embeddings_array = np.array(embeddings)
 
     # Cluster embeddings
-    labels, centers = _cluster_embeddings(embeddings, n_clusters, method, eps)
+    labels, centers = _cluster_embeddings(embeddings, n_clusters, method)
 
     # Generate contexts for each cluster
     contexts = []
