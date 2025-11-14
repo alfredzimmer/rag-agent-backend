@@ -1,9 +1,20 @@
 from transformers import AutoModelForMaskedLM, AutoTokenizer
 import torch
 import numpy as np
+from FlagEmbedding import FlagModel
+
 
 """
-  Uses SPLADE naver/splade-v3 model
+  Uses Qwen/Embedding-0.6B
+  returns a numpy array
+"""
+def compute_dense_vec(text):
+  dense_model = FlagModel("Qwen/Qwen3-Embedding-0.6B", use_fp16=True)
+  emb = dense_model.encode([text], batch_size=1, normalize_embeddins=True)
+  return emb[0]
+
+"""
+Uses SPLADE naver/splade-v3 model
   Implemented from template on QDRANT 
   https://qdrant.tech/articles/sparse-vectors/#computing-the-sparse-vector
   returns indices, values that will be used by QDRANT sparse search
