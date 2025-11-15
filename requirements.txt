@@ -38,6 +38,7 @@ filelock==3.20.0
     #   huggingface-hub
     #   torch
     #   transformers
+FlagEmbedding==1.3.5
 flatbuffers==25.9.23
     # via onnxruntime
 fsspec==2025.10.0

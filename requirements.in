@@ -28,6 +28,7 @@ annotated-doc
 
 huggingface-hub
 hf-xet
+FlagEmbedding
 
 python-dotenv
 PyYAML
