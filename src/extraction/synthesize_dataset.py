@@ -7,33 +7,95 @@ This module provides functionality to:
 3. Generate clustered contexts for synthetic data generation
 4. Generate synthetic instruction-response pairs using LLM (4-stage process):
    - Stage 1: Instruction generation from contexts
-   - Stage 2: Instruction quality evaluation
+   - Stage 2: Instruction quality evaluation (optional)
    - Stage 3: Response generation with dual personas
    - Stage 4: Instruction-response pair quality evaluation
 5. Save high-quality synthetic datasets to JSON files
+
+Features:
+- Multiprocessing support for parallel context processing across worker processes
+- Async/await for concurrent LLM API calls within each worker
+- Configurable instruction evaluation (can be disabled)
+- Each worker processes contexts independently for better scalability
+- Checkpoint system for resuming interrupted dataset generation runs
+- Intermediate results saved separately (clustered contexts, raw chunks, combined results)
+
+Directory Structure:
+- documents/: Input PDF files
+- outputs/: Final synthetic datasets
+- intermediate/: All intermediate results including:
+  - Raw chunks from PDF processing
+  - Clustered contexts
+  - Combined results from all PDFs
+  - Checkpoints during dataset generation (every N samples, default 100)
+
+Checkpoint Usage:
+To resume from an interrupted run, use the session_id from the checkpoint:
+  synthesizer.process_and_synthesize(resume_from_checkpoint="20250114_123456")
 
 Complete implementation following the methodology described in the research paper.
 """
 
 import pathlib
 import json
-from tkinter import N
 from typing import Optional, Literal
 from datetime import datetime
 import os
+import asyncio
+import multiprocessing as mp
+from functools import partial
 from dotenv import load_dotenv
-from pydantic import BaseModel
 from pdf_chunker import split_pdf
 from generate_context import generate_clustered_contexts
 from IEEE_utils import IEEEHeaderDetector, IEEE_remove_headers_footers
-from openai import OpenAI
+from llm_worker import LLMWorker
 
 # Load environment variables
 load_dotenv()
 
-class EvaluationResponse(BaseModel):
-    score: int
-    explanation: str
+
+def _process_context_chunk(
+    context_chunk: list[dict],
+    instruction_model: str,
+    response_model: str,
+    instruction_eval_model: str,
+    response_eval_model: str,
+    evaluate_instructions: bool,
+    questions_per_context: int,
+    creative_responses: bool,
+    min_quality_score: int
+) -> list[dict]:
+    """
+    Process a chunk of contexts in a separate process.
+    This is a module-level function so it can be pickled for multiprocessing.
+    """
+    # Create worker instance
+    worker = LLMWorker(
+        instruction_model=instruction_model,
+        response_model=response_model,
+        instruction_eval_model=instruction_eval_model,
+        response_eval_model=response_eval_model,
+        evaluate_instructions=evaluate_instructions
+    )
+
+    # Process all contexts in this chunk asynchronously
+    async def process_chunk():
+        results = []
+        for ctx_idx, context_dict in enumerate(context_chunk):
+            print(f"  Worker processing context {ctx_idx + 1}/{len(context_chunk)} (cluster {context_dict['cluster_id']})")
+            dataset_entries = await worker.process_context(
+                context_dict,
+                questions_per_context,
+                creative_responses,
+                min_quality_score
+            )
+            results.extend(dataset_entries)
+            print(f"  - Generated {len(dataset_entries)} pairs for cluster {context_dict['cluster_id']}")
+        return results
+
+    # Run async event loop in this process
+    return asyncio.run(process_chunk())
+
 
 class DatasetSynthesizer:
     """
@@ -44,11 +106,19 @@ class DatasetSynthesizer:
         self,
         documents_dir: str = "documents",
         outputs_dir: str = "outputs",
+        intermediate_dir: str = "intermediate",
         header_detector=IEEEHeaderDetector,
         remove_headers_footers_func=IEEE_remove_headers_footers,
         chunking: bool = False,
         chunk_size: int = 512,
         chunk_overlap: int = 0,
+        instruction_model: str = "gpt-4o-mini",
+        response_model: str = "gpt-4o-mini",
+        instruction_eval_model: str = "gpt-4o-mini",
+        response_eval_model: str = "gpt-4o-mini",
+        evaluate_instructions: bool = True,
+        num_workers: int = 4,
+        checkpoint_interval: int = 100,
     ):
         """
         Initialize the DatasetSynthesizer.
@@ -56,25 +126,38 @@ class DatasetSynthesizer:
         Args:
             documents_dir: Path to directory containing PDF documents
             outputs_dir: Path to directory for saving outputs
+            intermediate_dir: Path to directory for saving intermediate results
             header_detector: Function/class to detect headers in PDFs
             remove_headers_footers_func: Function to remove headers/footers
             chunking: Whether to apply recursive chunking to markdown splits
             chunk_size: Size of text chunks for splitting (if chunking is True)
             chunk_overlap: Overlap between consecutive chunks (if chunking is True)
+            instruction_model: Model for generating instructions
+            response_model: Model for generating responses
+            instruction_eval_model: Model for evaluating instructions
+            response_eval_model: Model for evaluating responses
+            evaluate_instructions: Whether to evaluate instructions (Stage 2)
+            num_workers: Number of worker processes for parallel synthesis
+            checkpoint_interval: Number of samples to generate before saving checkpoint
         """
         self.documents_dir = pathlib.Path(documents_dir)
         self.outputs_dir = pathlib.Path(outputs_dir)
+        self.intermediate_dir = pathlib.Path(intermediate_dir)
         self.header_detector = header_detector
         self.remove_headers_footers_func = remove_headers_footers_func
         self.chunking = chunking
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
-
-        # Create output directory if it doesn't exist
+        self.instruction_model = instruction_model
+        self.response_model = response_model
+        self.instruction_eval_model = instruction_eval_model
+        self.response_eval_model = response_eval_model
+        self.evaluate_instructions = evaluate_instructions
+        self.num_workers = num_workers
+        self.checkpoint_interval = checkpoint_interval
+        # Create output and intermediate directories if they don't exist
         self.outputs_dir.mkdir(parents=True, exist_ok=True)
-
-        # Initialize OpenAI client (lazy initialization)
-        self._llm_client = None
+        self.intermediate_dir.mkdir(parents=True, exist_ok=True)
 
     def get_pdf_files(self) -> list[pathlib.Path]:
         """
@@ -89,284 +172,92 @@ class DatasetSynthesizer:
         pdf_files = list(self.documents_dir.glob("*.pdf"))
         return sorted(pdf_files)
 
-    def _get_llm_client(self) -> OpenAI:
-        """Get or create OpenAI client (lazy initialization)."""
-        if self._llm_client is None:
-            api_key = os.getenv("OPENAI_API_KEY")
-            if not api_key:
-                raise ValueError("OPENAI_API_KEY not found in environment variables")
-            self._llm_client = OpenAI(api_key=api_key)
-        return self._llm_client
-
-    def _call_llm(self, prompt: str, temperature: float = 0.7, format: str = "text", model: str = "gpt-4o-mini") -> str:
-        """
-        Call the LLM with a prompt.
-
-        Args:
-            prompt: The prompt to send
-            temperature: Sampling temperature
-            format: Format of the response
-            model: Model to use
-
-        Returns:
-            Generated text response
-        """
-        client = self._get_llm_client()
-
-        output = None
-        
-        if format == "eval":
-            parsed_response = client.responses.parse(
-                model=model,
-                input=[{"role": "user", "content": prompt}],
-                temperature=temperature,
-                text_format=EvaluationResponse
-            )
-            output = parsed_response.output
-        else:
-            response = client.responses.create(
-                model=model,
-                input=[{"role": "user", "content": prompt}],
-                temperature=temperature
-            )
-            output = response.output[0].content.text
-
-        return parsed_response.output
-
-    def generate_instructions(self, context: str, num_samples: int = 5, icl_question: str = None) -> list[str]:
-        """
-        Stage 1: Generate diverse questions from a context.
-
-        Args:
-            context: The context to generate questions from
-            num_samples: Number of questions to generate
-            icl_question: In-context learning example question
-
-        Returns:
-            List of generated questions
-        """
-        if icl_question is None:
-            icl_question = "What are the key design considerations for a low-noise amplifier in RF circuits?"
-
-        prompt = f"""You are asked to come up with a set of {num_samples} diverse questions on Electrical Engineering based on the provided context.
-Please follow these guiding principles when generating responses:
-* Use proper grammar and punctuation.
-* Always generate safe and respectful content. Do not generate content that is harmful, abusive, or offensive.
-* Always generate content that is factually accurate and relevant to the prompt.
-* The questions should be clear and human-like.
-* The questions should be diverse and cover a wide range of topics.
-* The questions should not be template-based or generic, it should be very diverse.
-* Simply return the questions, do not return any answers or explanations.
-* Strictly adhere to the prompt and generate responses in the same style and format as the example.
-
-To better assist you with this task, here is an example:
-### Question:
-1. {icl_question}
-
-Context:
-{context}
-
-Now generate {num_samples} such questions, remember to follow the principles mentioned above
-and use the same format as the examples. Remember to use the same style and format as the example
-above. Return your responses in the format of [### Question [question number]: [question]]"""
-
-        response = self._call_llm(prompt, temperature=0.8)
-
-        # Parse questions from response
-        questions = []
-        lines = response.strip().split('\n')
-        for line in lines:
-            line = line.strip()
-            if line.startswith('### Question') or line[0].isdigit():
-                # Remove numbering and "### Question" prefix
-                question = line.split(':', 1)[-1].strip()
-                if question:
-                    questions.append(question)
-
-        return questions
-
-    def evaluate_instruction(self, question: str) -> dict:
-        """
-        Stage 2: Evaluate if a question meets quality criteria.
-
-        Args:
-            question: The question to evaluate
-
-        Returns:
-            Dictionary with 'passed' (bool) and 'reason' (str)
-        """
-        prompt = f"""Please evaluate whether the following question is suitable for an AI training dataset.
-
-Question: {question}
-
-Evaluation criteria:
-1. Is it relevant to Electrical Engineering domain?
-2. Is it safe and respectful (not harmful, abusive, or offensive)?
-3. Can it be answered by a language model with domain knowledge?
-4. Is it clear and well-formed?
-
-Respond with ONLY "PASS" or "FAIL" followed by a brief reason (one sentence).
-Format: PASS: reason OR FAIL: reason"""
-
-        response = self._call_llm(prompt, temperature=0.3)
-
-        if response.startswith("PASS"):
-            return {"passed": True, "reason": response.split(':', 1)[1].strip()}
-        else:
-            return {"passed": False, "reason": response.split(':', 1)[1].strip() if ':' in response else "Failed evaluation"}
-
-    def generate_response(self, question: str, context: str, creative: bool = False) -> str:
-        """
-        Stage 3: Generate a response to a question.
-
-        Args:
-            question: The question to answer
-            context: Context to use for answering
-            creative: If True, use creative persona; if False, use precise persona
-
-        Returns:
-            Generated response
-        """
-        if creative:
-            persona = "You are a creative and engaging expert in Electrical Engineering. Provide detailed, insightful answers that include examples and analogies to help understanding."
-        else:
-            persona = "You are a precise and technical expert in Electrical Engineering. Provide accurate, detailed answers with technical depth and clarity."
-
-        prompt = f"""{persona}
-
-Context:
-{context}
-
-Question: {question}
-
-Please provide a comprehensive answer to the question based on the context provided. Your answer should be informative, well-structured, and demonstrate expert knowledge."""
-
-        temperature = 0.8 if creative else 0.5
-        return self._call_llm(prompt, temperature=temperature)
-
-    def evaluate_instruction_response_pair(self, question: str, answer: str) -> dict:
-        """
-        Stage 4: Evaluate the quality of a question-answer pair.
-
-        Args:
-            question: The question
-            answer: The generated answer
-
-        Returns:
-            Dictionary with 'score' (1-3) and 'explanation' (str)
-        """
-        prompt = f"""Please act as an impartial judge and evaluate the quality of the answer provided by an AI assistant
-to the questions displayed below. Evaluate whether or not the answer is a good example of how AI
-Assistant should respond to the user's instruction. Please assign a score using the following 3-point
-scale:
-
-1: It means the answer is incorrect, irrelevant, unsafe or provides incomplete and garbage information.
-For instance, the answer may be factually wrong, off-topic, or filled with irrelevant content that
-doesn't address the user's question or it could be incomplete and hanging. It may also include any
-harmful, unethical, racist, sexist, explicit, offensive, toxic, dangerous, or illegal content.
-
-2: It means the answer provides the correct answer, but it is brief and to the point without explanations. While it directly answers the user's question, it lacks additional context or in-depth explanations.
-
-3: It means the answer is a perfect answer from an AI Assistant. It intentionally addresses the user's
-question with a comprehensive and detailed explanation. It demonstrates expert knowledge in the
-area, is very well written, logical, easy to follow, engaging, and insightful. And the answer is safe and
-does not include any harmful content.
-
-Question: {question}
-
-Answer: {answer}
-
-Begin your evaluation by providing a short explanation. Be as objective as possible. After providing
-your explanation, you must rate the answer on a scale of 1 to 3 as mentioned above.
-
-Format your response as:
-Explanation: [your explanation]
-Score: [1, 2, or 3]"""
-
-        response = self._call_llm(prompt, temperature=0.3)
-
-        # Parse score and explanation
-        explanation = ""
-        score = 2  # Default score
-
-        lines = response.strip().split('\n')
-        for line in lines:
-            if line.startswith("Explanation:"):
-                explanation = line.split(':', 1)[1].strip()
-            elif line.startswith("Score:"):
-                score_text = line.split(':', 1)[1].strip()
-                try:
-                    score = int(score_text[0])  # Get first digit
-                except:
-                    score = 2
-
-        return {"score": score, "explanation": explanation}
 
     def synthesize_dataset(
         self,
         contexts: list[dict],
         questions_per_context: int = 5,
         creative_responses: bool = False,
-        min_quality_score: int = 2
+        min_quality_score: int = 2,
+        enable_checkpoints: bool = True,
+        resume_from_checkpoint: str | None = None
     ) -> list[dict]:
         """
         Complete pipeline: Generate synthetic instruction-response pairs from contexts.
+        Uses multiprocessing to parallelize context processing across multiple workers.
+        Supports checkpointing to resume interrupted runs.
 
         Args:
             contexts: List of context dictionaries from process_pdf
             questions_per_context: Number of questions to generate per context
             creative_responses: Use creative persona for responses
             min_quality_score: Minimum quality score (1-3) to include in dataset
+            enable_checkpoints: Whether to save checkpoints during generation
+            resume_from_checkpoint: Optional session_id to resume from
 
         Returns:
             List of high-quality instruction-response pairs
         """
-        dataset = []
+        # Initialize or resume session
+        if resume_from_checkpoint:
+            session_id = resume_from_checkpoint
+            dataset, checkpoint_num = self._load_checkpoint(session_id)
+            print(f"\nResuming from checkpoint {checkpoint_num}")
+            print(f"Already processed: {len(dataset)} samples")
+        else:
+            session_id = self._get_session_id()
+            dataset = []
+            checkpoint_num = 0
 
         print(f"\nStarting synthetic dataset generation...")
+        print(f"Session ID: {session_id}")
         print(f"Total contexts to process: {len(contexts)}")
+        print(f"Using {self.num_workers} worker processes")
+        print(f"Checkpoint interval: {self.checkpoint_interval} samples")
 
-        for ctx_idx, context_dict in enumerate(contexts):
-            print(f"\nProcessing context {ctx_idx + 1}/{len(contexts)} (cluster {context_dict['cluster_id']})")
+        # Split contexts into chunks for each worker
+        chunk_size = max(1, len(contexts) // self.num_workers)
+        context_chunks = [
+            contexts[i:i + chunk_size]
+            for i in range(0, len(contexts), chunk_size)
+        ]
 
-            # Combine chunks in context
-            context_text = "\n\n".join([chunk['content'] for chunk in context_dict['chunks']])
+        print(f"Split into {len(context_chunks)} chunks")
 
-            # Stage 1: Generate instructions
-            print(f"  - Generating {questions_per_context} questions...")
-            questions = self.generate_instructions(context_text, questions_per_context)
-            print(f"  - Generated {len(questions)} questions")
+        # Create a partial function with the instance attributes bound
+        # This allows the module-level function to be pickled for multiprocessing
+        worker_func = partial(
+            _process_context_chunk,
+            instruction_model=self.instruction_model,
+            response_model=self.response_model,
+            instruction_eval_model=self.instruction_eval_model,
+            response_eval_model=self.response_eval_model,
+            evaluate_instructions=self.evaluate_instructions,
+            questions_per_context=questions_per_context,
+            creative_responses=creative_responses,
+            min_quality_score=min_quality_score
+        )
 
-            # Stage 2: Evaluate instructions
-            print(f"  - Evaluating questions...")
-            valid_questions = []
-            for q in questions:
-                eval_result = self.evaluate_instruction(q)
-                if eval_result['passed']:
-                    valid_questions.append(q)
-            print(f"  - {len(valid_questions)} questions passed evaluation")
+        # Process chunks with checkpointing
+        try:
+            with mp.Pool(processes=self.num_workers) as pool:
+                results_chunks = pool.map(worker_func, context_chunks)
 
-            # Stage 3 & 4: Generate and evaluate responses
-            print(f"  - Generating and evaluating responses...")
-            for question in valid_questions:
-                # Generate response
-                answer = self.generate_response(question, context_text, creative_responses)
+            # Flatten results and save checkpoints
+            for chunk_idx, chunk_results in enumerate(results_chunks):
+                dataset.extend(chunk_results)
 
-                # Evaluate pair
-                evaluation = self.evaluate_instruction_response_pair(question, answer)
+                # Save checkpoint if interval reached
+                if enable_checkpoints and len(dataset) >= (checkpoint_num + 1) * self.checkpoint_interval:
+                    checkpoint_num += 1
+                    self._save_checkpoint(dataset, checkpoint_num, session_id)
 
-                # Only include if meets quality threshold
-                if evaluation['score'] >= min_quality_score:
-                    dataset.append({
-                        'instruction': question,
-                        'response': answer,
-                        'context': context_text[:500] + "..." if len(context_text) > 500 else context_text,
-                        'cluster_id': context_dict['cluster_id'],
-                        'quality_score': evaluation['score'],
-                        'quality_explanation': evaluation['explanation']
-                    })
-
-            print(f"  - Added {len([d for d in dataset if d['cluster_id'] == context_dict['cluster_id']])} high-quality pairs from this context")
+        except KeyboardInterrupt:
+            print("\n\nInterrupted! Saving checkpoint...")
+            if enable_checkpoints:
+                self._save_checkpoint(dataset, checkpoint_num + 1, session_id)
+            print(f"Progress saved. Resume with session_id: {session_id}")
+            raise
 
         print(f"\nDataset generation complete!")
         print(f"Total high-quality pairs generated: {len(dataset)}")
@@ -487,7 +378,7 @@ Score: [1, 2, or 3]"""
 
                 # Save individual PDF results if requested
                 if save_individual:
-                    self._save_pdf_result(result)
+                    self._save_clustered_contexts_result(result)
 
             except Exception as e:
                 print(f"  ERROR processing {pdf_path.name}: {str(e)}")
@@ -503,7 +394,7 @@ Score: [1, 2, or 3]"""
     def _save_raw_chunks(self, pdf_path: pathlib.Path, chunks: list) -> None:
         """Save raw chunks for debugging visualization."""
         pdf_name = pdf_path.stem
-        output_file = self.outputs_dir / f"{pdf_name}_raw_chunks.json"
+        output_file = self.intermediate_dir / f"{pdf_name}_raw_chunks.json"
 
         # Format chunks for easy visualization
         formatted_chunks = []
@@ -526,10 +417,10 @@ Score: [1, 2, or 3]"""
         output_file.write_text(json.dumps(output, indent=2, ensure_ascii=False))
         print(f"  - Raw chunks saved to: {output_file}")
 
-    def _save_pdf_result(self, result: dict) -> None:
+    def _save_clustered_contexts_result(self, result: dict) -> None:
         """Save processing result for a single PDF."""
         pdf_name = pathlib.Path(result["pdf_name"]).stem
-        output_file = self.outputs_dir / f"{pdf_name}_clustered_contexts.json"
+        output_file = self.intermediate_dir / f"{pdf_name}_clustered_contexts.json"
 
         # Create a simplified version for debugging
         debug_output = {
@@ -560,7 +451,7 @@ Score: [1, 2, or 3]"""
     def _save_combined_results(self, all_results: list[dict]) -> None:
         """Save combined results from all PDFs."""
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        output_file = self.outputs_dir / f"all_pdfs_clustered_contexts_{timestamp}.json"
+        output_file = self.intermediate_dir / f"all_pdfs_clustered_contexts_{timestamp}.json"
 
         combined_output = {
             "generated_at": datetime.now().isoformat(),
@@ -580,7 +471,63 @@ Score: [1, 2, or 3]"""
         output_file.write_text(json.dumps(combined_output, indent=2, ensure_ascii=False))
         print(f"\nCombined results saved to: {output_file}")
 
-    def _save_synthetic_dataset(self, dataset: list[dict], filename: str = None) -> pathlib.Path:
+    def _save_checkpoint(self, dataset: list[dict], checkpoint_num: int, session_id: str) -> pathlib.Path:
+        """
+        Save a checkpoint of the synthetic dataset.
+
+        Args:
+            dataset: List of instruction-response pairs so far
+            checkpoint_num: Checkpoint number
+            session_id: Unique session identifier
+
+        Returns:
+            Path to saved checkpoint file
+        """
+        checkpoint_file = self.intermediate_dir / f"checkpoint_{session_id}_{checkpoint_num}.json"
+
+        checkpoint_data = {
+            "session_id": session_id,
+            "checkpoint_num": checkpoint_num,
+            "saved_at": datetime.now().isoformat(),
+            "total_samples": len(dataset),
+            "dataset": dataset
+        }
+
+        checkpoint_file.write_text(json.dumps(checkpoint_data, indent=2, ensure_ascii=False))
+        print(f"  Checkpoint saved: {checkpoint_file.name} ({len(dataset)} samples)")
+
+        return checkpoint_file
+
+    def _load_checkpoint(self, session_id: str) -> tuple[list[dict], int]:
+        """
+        Load the latest checkpoint for a session.
+
+        Args:
+            session_id: Unique session identifier
+
+        Returns:
+            Tuple of (dataset, checkpoint_num)
+        """
+        # Find all checkpoints for this session
+        checkpoint_pattern = f"checkpoint_{session_id}_*.json"
+        checkpoint_files = list(self.intermediate_dir.glob(checkpoint_pattern))
+
+        if not checkpoint_files:
+            return [], 0
+
+        # Get the latest checkpoint
+        latest_checkpoint = max(checkpoint_files, key=lambda p: p.stat().st_mtime)
+
+        print(f"Loading checkpoint: {latest_checkpoint.name}")
+        checkpoint_data = json.loads(latest_checkpoint.read_text())
+
+        return checkpoint_data["dataset"], checkpoint_data["checkpoint_num"]
+
+    def _get_session_id(self) -> str:
+        """Generate a unique session ID for checkpointing."""
+        return datetime.now().strftime("%Y%m%d_%H%M%S")
+
+    def _save_synthetic_dataset(self, dataset: list[dict], filename: str | None = None) -> pathlib.Path:
         """
         Save synthetic dataset to JSON file.
 
@@ -624,7 +571,9 @@ Score: [1, 2, or 3]"""
         questions_per_context: int = 5,
         creative_responses: bool = False,
         min_quality_score: int = 2,
-        save_intermediate: bool = True
+        save_intermediate: bool = True,
+        enable_checkpoints: bool = True,
+        resume_from_checkpoint: str | None = None
     ) -> tuple[list[dict], list[dict]]:
         """
         Complete pipeline: Process PDFs and generate synthetic dataset.
@@ -638,6 +587,8 @@ Score: [1, 2, or 3]"""
             creative_responses: Use creative persona for responses
             min_quality_score: Minimum quality score for inclusion
             save_intermediate: Save intermediate results (contexts)
+            enable_checkpoints: Whether to save checkpoints during synthesis
+            resume_from_checkpoint: Optional session_id to resume from
 
         Returns:
             Tuple of (processing_results, synthetic_dataset)
@@ -677,7 +628,9 @@ Score: [1, 2, or 3]"""
             all_contexts,
             questions_per_context=questions_per_context,
             creative_responses=creative_responses,
-            min_quality_score=min_quality_score
+            min_quality_score=min_quality_score,
+            enable_checkpoints=enable_checkpoints,
+            resume_from_checkpoint=resume_from_checkpoint
         )
 
         # Save synthetic dataset
@@ -694,10 +647,10 @@ Score: [1, 2, or 3]"""
 # - Add support for different document types (not just PDFs)
 # - Add configurable chunking strategies
 # - Add support for custom clustering parameters per document
-# - Add multi-processing for faster PDF processing and LLM calls
 # - Add support for different LLM providers (e.g., Anthropic, local models)
 # - Add few-shot learning with custom example questions
 # - Add support for multi-turn conversations in synthetic data
+# - Add rate limiting and retry logic for API calls
 
 
 def main():
@@ -707,7 +660,7 @@ def main():
     This will:
     1. Process PDFs from the documents directory
     2. Generate clustered contexts
-    3. Generate synthetic instruction-response pairs using LLM
+    3. Generate synthetic instruction-response pairs using LLM (with async and multiprocessing)
     4. Evaluate and filter high-quality pairs
     5. Save the final dataset to JSON
     """
@@ -715,23 +668,29 @@ def main():
     print("Synthetic Dataset Generator for Electrical Engineering")
     print("=" * 70)
 
-    # Initialize synthesizer
+    # Initialize synthesizer with multiprocessing support
     synthesizer = DatasetSynthesizer(
         documents_dir="src/extraction/documents",
         outputs_dir="src/extraction/outputs",
+        intermediate_dir="src/extraction/intermediate",
+        chunking=False,
+        evaluate_instructions=False,  # Enable instruction evaluation
+        num_workers=4,  # Number of parallel worker processes
+        checkpoint_interval=100  # Save checkpoint every 100 samples
     )
 
     # Run complete pipeline
     try:
         results, dataset = synthesizer.process_and_synthesize(
             n_clusters=None,  # Auto-determine optimal clusters
-            method="kmeans",  # Use K-means clustering
+            method="none",  # No clustering
             chunks_per_cluster=5,  # 5 representative chunks per cluster
             diversity_weight=0.3,  # Balance centrality vs diversity
             questions_per_context=5,  # Generate 5 questions per context
             creative_responses=False,  # Use precise/technical persona
             min_quality_score=2,  # Only include score 2+ pairs
-            save_intermediate=True  # Save intermediate results
+            save_intermediate=True,  # Save intermediate results
+            enable_checkpoints=True    
         )
 
         # Print final summary
@@ -746,9 +705,9 @@ def main():
             avg_score = sum(d['quality_score'] for d in dataset) / len(dataset)
             print(f"Average quality score: {avg_score:.2f}")
 
-        print("\nOutputs saved to: src/extraction/outputs/")
-        print("  - synthetic_dataset_*.json: Final synthetic dataset")
-        print("  - *_clustered_contexts.json: Intermediate contexts")
+        print("\nOutputs saved to:")
+        print("  - src/extraction/outputs/synthetic_dataset_*.json: Final synthetic dataset")
+        print("  - src/extraction/intermediate/: All intermediate results and checkpoints")
         print("=" * 70)
 
     except Exception as e:

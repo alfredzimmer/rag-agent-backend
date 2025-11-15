@@ -123,7 +123,7 @@ def _get_representative_chunks_from_cluster(
             # Diversity score (higher min distance to selected is better)
             if selected_indices:
                 distances_to_selected = [
-                    np.linalg.norm(cluster_embeddings[i] - embeddings[sel_idx])
+                    float(np.linalg.norm(cluster_embeddings[i] - embeddings[sel_idx]))
                     for sel_idx in selected_indices
                 ]
                 diversity_score = min(distances_to_selected)
