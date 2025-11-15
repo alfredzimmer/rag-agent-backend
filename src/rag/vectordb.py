@@ -1,14 +1,12 @@
 import json
 import os
 from pathlib import Path
+from uuid import uuid4
 from dotenv import load_dotenv
 
-from langchain_core.documents import Document
-from langchain_openai import OpenAIEmbeddings
+from qdrant_client import QdrantClient, models
 
-from qdrant_client import QdrantClient
-from qdrant_client.models import Distance, VectorParams
-from langchain_qdrant import QdrantVectorStore
+from modules.embedder import compute_dense_vec, compute_sparse_vec
 
 load_dotenv()
 
@@ -25,30 +23,34 @@ qdrant_client = QdrantClient(
     prefer_grpc=False,
 )
 
-embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
-vector_size = len(embeddings.embed_query("sample text"))
-
+DENSE_VECTOR_NAME = "text-dense"
+SPARSE_VECTOR_NAME = "text-sparse"
+VECTOR_SIZE = int(os.getenv("QDRANT_VECTOR_SIZE", "1024"))
 collection_name = os.getenv("QDRANT_COLLECTION", "test")
 
 # Ensure collection exists
 if not qdrant_client.collection_exists(collection_name):
-    print(f"Creating collection {collection_name} with size={vector_size}")
+    print(f"Creating collection {collection_name} with size={VECTOR_SIZE}")
     qdrant_client.create_collection(
         collection_name=collection_name,
-        vectors_config=VectorParams(size=vector_size, distance=Distance.COSINE),
+        vectors_config={
+            DENSE_VECTOR_NAME: models.VectorParams(
+                size=VECTOR_SIZE,
+                distance=models.Distance.COSINE,
+            )
+        },
+        sparse_vectors_config={
+            SPARSE_VECTOR_NAME: models.SparseVectorParams(
+                index=models.SparseIndexParams(on_disk=False)
+            )
+        },
     )
 else:
     print(f"Collection {collection_name} already exists")
 
-vector_store = QdrantVectorStore(
-    client=qdrant_client,
-    collection_name=collection_name,
-    embedding=embeddings,
-)
 
-
-def load_chunk_file(path: str) -> list[Document]:
-    """Convert a JSON chunk file into LangChain Documents."""
+def load_chunk_file(path: str) -> list[dict]:
+    """Convert a JSON chunk file into dicts with content + metadata."""
     chunk_path = Path(path)
     with chunk_path.open("r", encoding="utf-8") as fh:
         raw_chunks = json.load(fh)
@@ -60,9 +62,41 @@ def load_chunk_file(path: str) -> list[Document]:
             "char_count": chunk["char_count"],
             **chunk.get("headers", {}),
         }
-        documents.append(Document(page_content=chunk["content"], metadata=metadata))
+        documents.append({"page_content": chunk["content"], "metadata": metadata})
 
     return documents
+
+def add_documents(documents: list[dict]) -> None:
+    points: list[models.PointStruct] = []
+    for doc in documents:
+        content = doc["page_content"]
+        metadata = doc["metadata"]
+
+        dense_vector = compute_dense_vec(content)
+        indices, values = compute_sparse_vec(content)
+
+        point = models.PointStruct(
+            id=uuid4().hex,
+            vector={
+                DENSE_VECTOR_NAME: dense_vector,
+                SPARSE_VECTOR_NAME: models.SparseVector(
+                    indices=list(indices),
+                    values=list(values),
+                )
+            },
+            payload={
+                "metadata": metadata,
+                "page_content": content,
+            },
+        )
+        points.append(point)
+
+    if not points:
+        return
+
+    qdrant_client.upsert(collection_name=collection_name, points=points)
+
+
 
 if __name__ == "__main__":
     chunk_file = os.getenv(
@@ -74,6 +108,5 @@ if __name__ == "__main__":
     if not documents:
         raise ValueError(f"No documents parsed from {chunk_file}")
 
-    document_ids = vector_store.add_documents(documents=documents)
-
-    print(f"Stored {len(document_ids)} chunks from {chunk_file}")
+    add_documents(documents)
+    print(f"Stored {len(documents)} chunks from {chunk_file}")
