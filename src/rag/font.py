@@ -1,6 +1,6 @@
 import fitz  # PyMuPDF
 
-doc = fitz.open("public/IEEE Blue Book Std 1015-2006-13-30.pdf")
+doc = fitz.open("src/rag/public/IEEE Std 739-1995-166-168.pdf")
 
 for page_number, page in enumerate(doc, start=1):
     blocks = page.get_text("dict")["blocks"]

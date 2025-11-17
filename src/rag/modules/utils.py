@@ -2,7 +2,7 @@ from langchain_core.documents import Document
 
 """
 Convert ScoredPoint in Qdrant to Document in Langchain
-  Used after retrieval and before reranking
+  Used to process retrival data before reranking
 """
 def scoredpoint_to_document(sp):
   page_content = sp.payload.get("page_content", "")

@@ -28,6 +28,12 @@ def compute_sparse_vec(text: str):
 
 
 
+"""
+
+---------- The following use of SPLADE is discarded because no license for commercial use ---------
+
+"""
+
 # from transformers import AutoModelForMaskedLM, AutoTokenizer
 # import torch
 # import numpy as np

@@ -43,6 +43,6 @@ def hybrid_retrieve(text, client, k = 50):
   )
   
   
-  return result # -> [[ScoredPoint, ScoredPoint, ...], [ScoredPoint, ScoredPoint]]
+  return result # -> [[ScoredPoint, ScoredPoint, ...], [ScoredPoint, ScoredPoint, ...]]
 
 
