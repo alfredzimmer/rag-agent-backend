@@ -22,7 +22,6 @@ def compute_sparse_vec(text: str):
   sparse_output = _sparse_model.encode(text, return_dense=False, return_sparse=True, return_colbert_vecs=False)
 
   vec = sparse_output["lexical_weights"]
-  print(vec)
   indices = list(vec.keys())
   values = list(vec.values())
   return indices, values
