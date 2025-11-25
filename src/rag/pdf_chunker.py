@@ -29,7 +29,9 @@ def split_pdf(file: str, HeaderDetector, remove_headers_footers_func) -> list[Do
     """
     markdown = load_pdf_as_markdown(file, HeaderDetector, remove_headers_footers_func)
     markdown_splitter = MarkdownHeaderTextSplitter(
-        headers_to_split_on=[("#", "Header 1"), ("##", "Header 2"), ("###", "Header 3"), ("####", "Header 4")]
+        headers_to_split_on=[("#", "Header 1"), ("##", "Header 2"), 
+                             ("###", "Header 3"), ("####", "Header 4"),
+                             ("#####", "Header 5"),]
     )
     markdown_splits = markdown_splitter.split_text(markdown)
 
@@ -76,7 +78,7 @@ def format_splits_as_list(splits) -> list[dict]:
 
 # Debug testing
 if __name__ == "__main__":
-    FILE_PATH = "src/rag/public/IEEE Blue Book Std 1015-2006-13-30.pdf"
+    FILE_PATH = "src/rag/public/IEEE Std 739-1995-166-168.pdf"
     chunks = split_pdf(FILE_PATH, IEEEHeaderDetector, IEEE_remove_headers_footers)
     formatted_list = format_splits_as_list(chunks)
 

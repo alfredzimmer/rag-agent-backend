@@ -62,10 +62,16 @@ class IEEEHeaderDetector:
             if text.count('.') == 2:
                 return "### "
 
+        # LEVEL 4: 4.3.4.2 -> three dots
         if 12 > size and size >= 9.5 and is_bold and self.number_pattern.match(text):
-            if text.count('.') >= 3:
+            if text.count('.') == 3:
                 return "#### "
-                
+        
+        # LEVEL 5: 5.1.2.2.2
+        if 12 > size and size >= 9.5 and is_bold and self.number_pattern.match(text):
+            if text.count('.') >= 4:
+                return "##### "
+        
         return ""
 
 def IEEE_remove_headers_footers(markdown_text: str) -> str:

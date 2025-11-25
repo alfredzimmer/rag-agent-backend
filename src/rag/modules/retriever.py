@@ -1,6 +1,6 @@
 import os
 from qdrant_client import models 
-from rag.modules.embedder import compute_dense_vec, compute_sparse_vec
+from modules.embedder import compute_dense_vec, compute_sparse_vec
 
 COLLECTION_NAME = os.getenv("COLLECTION_NAME", "test")
 """
@@ -25,6 +25,7 @@ def hybrid_retrieve(text, client, k = 50):
           name = "text-dense",
           vector = dense_vec,
         ),
+        with_payload=True,
         limit = k,
       ),
       models.SearchRequest(
@@ -35,12 +36,13 @@ def hybrid_retrieve(text, client, k = 50):
             values = sparse_values,
           ),
         ),
+        with_payload=True,
         limit = k,
       ),
     ],
   )
   
   
-  return result # -> [[ScoredPoint, ScoredPoint, ...], [ScoredPoint, ScoredPoint]]
+  return result # -> [[ScoredPoint, ScoredPoint, ...], [ScoredPoint, ScoredPoint, ...]]
 
 
