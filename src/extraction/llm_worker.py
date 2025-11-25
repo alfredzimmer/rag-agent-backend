@@ -176,7 +176,9 @@ Format: PASS: reason OR FAIL: reason"""
         self,
         question: str,
         context: str,
-        creative: bool = False
+        creative: bool = False,
+        icl_question: Optional[str] = None,
+        icl_response: Optional[str] = None
     ) -> Optional[str]:
         """
         Stage 3: Generate a response to a question.
@@ -185,15 +187,29 @@ Format: PASS: reason OR FAIL: reason"""
             question: The question to answer
             context: Context to use for answering
             creative: If True, use creative persona; if False, use precise persona
+            icl_question: In-context learning example question
+            icl_response: In-context learning example response
 
         Returns:
             Generated response
         """
+
         if creative:
             persona = "You are a creative and engaging expert in Electrical Engineering. Provide detailed, insightful answers that include examples and analogies to help understanding."
         else:
             persona = "You are a precise and technical expert in Electrical Engineering. Provide accurate, detailed answers with technical depth and clarity."
+        
+        if icl_question is None:
+            icl_question = ""
+        if icl_response is None:
+            icl_response = """Computer power supplies are typically over rated. The nameplate will be for a server wth all the cpus it can take, max ram, and max disk drives. Even if this server has everything maxxed, suppliers typically oversize the power supply. So a server with a 1000w power suply probably hd a max draw of 700 to 800 watts. If it has dual power supplies, say two 1000w supplies, power draw will be no more than one supply because it is designed to run on one (so you can swap out a bad one). If both are working, power is split between them.
 
+Computers are typically not a continuous load. Yes, they can run 24/7, but they dont draw max power all the time. Load varies with processing and disk drive usage. I had many servers that would draw 2 to 3 amps on startup, settle down to 1 to 2 amps, and hit maybe 4 to 5 amps varying quite a bit while processing long jobs
+
+NEC 645 is an optional article. If you design the room to meet all the requirements, then you get some allowances that you normally cant do. For example, with a 645 compliant room, you can run DP rated power cords under a raised floor. To me, the benefits of 645 were never worth all the HVAC and other requirements, so I never used it. Plus I could never find power cords marked DP.
+
+So no, dont add anything for inrush as the breakers can ride through that, and I wouldnt even do a 125% factor. If you size per power supply rating, that will be plenty. You could use a PDU with a built in ammeter to watch it. I know I was surprised when I built server racks with those.
+"""
         prompt = f"""{persona}
 
 Context:
@@ -201,7 +217,14 @@ Context:
 
 Question: {question}
 
-Please provide a comprehensive answer to the question based on the context provided. Your answer should be informative, well-structured, and demonstrate expert knowledge."""
+To better assist you with this task, here is an example:
+### Question:
+{icl_question}
+### Answer:
+{icl_response}
+
+Please provide a comprehensive answer to the question based on the context provided. Your answer should demonstrate expert knowledge and be concise. You will reference the context directly in your answer.
+"""
 
         temperature = 0.8 if creative else 0.5
 
