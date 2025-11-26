@@ -33,3 +33,8 @@ torch
 transformers
 uvicorn[standard]
 websockets
+unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git
+trl<0.9.0
+peft
+accelerate
+bitsandbytes
