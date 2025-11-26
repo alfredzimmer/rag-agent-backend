@@ -79,7 +79,7 @@ def format_splits_as_list(splits) -> list[dict]:
 
 # Debug testing
 if __name__ == "__main__":
-    FILE_PATH = "src/rag/public/bcbc_2024.pdf"
+    FILE_PATH = "src/rag/public/NFPA-110-2019-9-24.pdf"
     chunks = split_pdf(FILE_PATH, HeaderDetector, remove_headers_footers)
     formatted_list = format_splits_as_list(chunks)
 

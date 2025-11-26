@@ -43,3 +43,5 @@ langchain-milvus
 pymilvus
 langchain_community
 deepeval
+langchain_classic
+langchain_ollama

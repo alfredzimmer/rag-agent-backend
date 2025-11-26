@@ -62,7 +62,6 @@ def load_chunk_file(path: str) -> list[Document]:
     return documents
 
 if __name__ == "__main__":
-    vector_store = get_vector_store()
     for filename in os.listdir("src/rag/outputs/2025"):
         if filename.endswith(".json"):
             chunk_file = os.path.join("src/rag/outputs/2025", filename)
