@@ -2,6 +2,7 @@ from langchain_core.documents import Document
 from langchain_openai import OpenAIEmbeddings
 import os
 from dotenv import load_dotenv
+from pydantic import SecretStr
 
 # Load environment variables from .env file
 load_dotenv()
@@ -22,7 +23,7 @@ def _get_embedding_model() -> OpenAIEmbeddings:
             )
         _embedding_model = OpenAIEmbeddings(
             model="text-embedding-3-large",
-            api_key=api_key
+            api_key=SecretStr(api_key)
         )
     return _embedding_model
 

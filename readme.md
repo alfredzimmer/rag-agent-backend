@@ -10,3 +10,6 @@ pip install pip-tools
 put the new library's name in requirements.in  
 pip-compile --upgrade  
 requirements.txt should be updated  
+
+# To train model using pytorch
+Please import pytorch-training-header.py at the beginnning of your module
