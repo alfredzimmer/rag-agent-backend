@@ -8,6 +8,17 @@ from pathlib import Path
 
 conn = connections.connect(host="127.0.0.1", port=19530)
 
+URI = "http://localhost:19530"
+
+vector_store = Milvus(
+    embedding_function=OllamaEmbeddings(model="qwen3-embedding:8b"),
+    builtin_function=BM25BuiltInFunction(output_field_names="sparse"),
+    connection_args={"uri": URI, "db_name": "milvus_demo"},
+    vector_field=["dense", "sparse"],
+    drop_old=False,
+    auto_id=True,
+)
+
 def create_db(db_name):
     try:
         existing_databases = db.list_database()
@@ -33,20 +44,6 @@ def create_db(db_name):
     except MilvusException as e:
         print(f"An error occurred: {e}")
 
-
-def get_vector_store():
-    URI = "http://localhost:19530"
-
-    vector_store = Milvus(
-        embedding_function=OllamaEmbeddings(model="qwen3-embedding:8b"),
-        builtin_function=BM25BuiltInFunction(output_field_names="sparse"),
-        connection_args={"uri": URI, "db_name": "milvus_demo"},
-        vector_field=["dense", "sparse"],
-        drop_old=False,
-        auto_id=True,
-    )
-
-    return vector_store
 
 def load_chunk_file(path: str) -> list[Document]:
     """Convert a JSON chunk file into dicts with content + metadata."""
