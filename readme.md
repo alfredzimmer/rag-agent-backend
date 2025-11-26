@@ -13,3 +13,9 @@ requirements.txt should be updated
 
 # To train model using pytorch
 Please import pytorch-training-header.py at the beginnning of your module
+
+# Deepeval commands
+```
+deepeval set-ollama [model_name]
+deepeval unset-ollama
+```

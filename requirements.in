@@ -24,7 +24,7 @@ pymupdf
 pymupdf4llm
 python-dotenv
 pyyaml
-qdrant-client
+qdrant-client<1.16.0
 requests
 scikit-learn
 scipy
@@ -34,9 +34,8 @@ transformers
 uvicorn[standard]
 websockets
 unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git
-trl<0.9.0
 peft
-accelerate
 bitsandbytes
 ollama
 python-docx
+deepeval

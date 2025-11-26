@@ -60,7 +60,7 @@ tools = [{
 messages = [
     {
         'role': 'system',
-        'content': 'You are a helpful assistant with access to a knowledge base. You must pull resources  the hybrid_RAG_retrieve tool to search for relevant information when needed to answer user questions. You can only use this tool once per turn.'
+        'content': 'You are a helpful assistant with access to a knowledge base. You must pull resources the hybrid_RAG_retrieve tool to search for relevant information when needed to answer user questions.'
     }
 ]
 
@@ -82,11 +82,11 @@ while True:
     
     # Stream the response
     response = ollama.chat(
-        model='qwen3:8b',
+        model='qwen3:30b-a3b-instruct-2507-q8_0',
         messages=messages,
         tools=tools,
         stream=True,
-        think=True,
+        think=False,
     )
     
     # Collect the full response
