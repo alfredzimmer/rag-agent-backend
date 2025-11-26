@@ -10,8 +10,11 @@ httpx[http2]
 huggingface-hub
 langchain
 langchain-community
+lanchain-classic
 langchain-openai
+langchain-ollama
 langchain-qdrant
+langchain-milvus
 langchain-text-splitters
 langgraph
 langgraph-checkpoint
@@ -36,10 +39,12 @@ transformers
 uvicorn[standard]
 websockets
 unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git
+trl
 peft
 bitsandbytes
 ollama
 python-docx
+pymilvus
 pypdf
 deepeval
 chromadb
