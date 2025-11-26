@@ -42,7 +42,7 @@ def get_vector_store():
         builtin_function=BM25BuiltInFunction(output_field_names="sparse"),
         connection_args={"uri": URI, "db_name": "milvus_demo"},
         vector_field=["dense", "sparse"],
-        drop_old=True,
+        drop_old=False,
         auto_id=True,
     )
 
