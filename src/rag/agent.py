@@ -13,7 +13,6 @@ from modules.reranker import rerank
 #         for doc in retrieved_docs
 #     )
 #     return serialized, retrieved_docs
-# test git
 
 def hybrid_RAG_retrieve(query: str):
     """
