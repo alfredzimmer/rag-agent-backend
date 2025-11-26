@@ -2,7 +2,7 @@ import os
 from qdrant_client import models 
 from modules.embedder import compute_dense_vec, compute_sparse_vec
 
-COLLECTION_NAME = os.getenv("COLLECTION_NAME", "test")
+COLLECTION_NAME = os.getenv("COLLECTION_NAME", "lectures")
 """
 Assumes db client is qdrant instance
   Text should be raw user query text like "Tell me the fault tolerance of xxx"

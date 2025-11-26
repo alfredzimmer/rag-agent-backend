@@ -6,6 +6,7 @@ import pathlib
 from langchain_text_splitters import MarkdownHeaderTextSplitter, RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
 from IEEE_utils import IEEEHeaderDetector, IEEE_remove_headers_footers
+from pdf_utils import HeaderDetector, remove_headers_footers
 
 def load_pdf_as_markdown(file: str, HeaderDetector, remove_headers_footers_func) -> str:
     """
@@ -41,8 +42,8 @@ def split_pdf(file: str, HeaderDetector, remove_headers_footers_func) -> list[Do
     pathlib.Path(f"src/rag/outputs/{name_without_ext}.md").write_bytes(markdown.encode())
     
     # split raw_splits again with chunk size constraints
-    chunk_size = 512
-    chunk_overlap = 200
+    chunk_size = 1024
+    chunk_overlap = 256
     sized_splitter = RecursiveCharacterTextSplitter(
         chunk_size=chunk_size, chunk_overlap=chunk_overlap
     )
@@ -78,8 +79,8 @@ def format_splits_as_list(splits) -> list[dict]:
 
 # Debug testing
 if __name__ == "__main__":
-    FILE_PATH = "src/rag/public/IEEE Std 739-1995-166-168.pdf"
-    chunks = split_pdf(FILE_PATH, IEEEHeaderDetector, IEEE_remove_headers_footers)
+    FILE_PATH = "src/rag/public/bcbc_2024.pdf"
+    chunks = split_pdf(FILE_PATH, HeaderDetector, remove_headers_footers)
     formatted_list = format_splits_as_list(chunks)
 
 

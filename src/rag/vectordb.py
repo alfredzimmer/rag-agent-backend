@@ -25,8 +25,8 @@ qdrant_client = QdrantClient(
 
 DENSE_VECTOR_NAME = "text-dense"
 SPARSE_VECTOR_NAME = "text-sparse"
-VECTOR_SIZE = int(os.getenv("QDRANT_VECTOR_SIZE", "1024"))
-collection_name = os.getenv("QDRANT_COLLECTION", "test")
+VECTOR_SIZE = int(os.getenv("QDRANT_VECTOR_SIZE", "4096"))
+collection_name = os.getenv("QDRANT_COLLECTION", "lectures")
 
 # Ensure collection exists
 if not qdrant_client.collection_exists(collection_name):
@@ -99,14 +99,14 @@ def add_documents(documents: list[dict]) -> None:
 
 
 if __name__ == "__main__":
-    chunk_file = os.getenv(
-        "CHUNK_FILE",
-        "outputs/30pg_outputs.json",
-    )
-    documents = load_chunk_file(chunk_file)
 
-    if not documents:
-        raise ValueError(f"No documents parsed from {chunk_file}")
+    for filename in os.listdir("src/rag/outputs/2025"):
+        if filename.endswith(".json"):
+            chunk_file = os.path.join("src/rag/outputs/2025", filename)
+            documents = load_chunk_file(chunk_file)
 
-    add_documents(documents)
-    print(f"Stored {len(documents)} chunks from {chunk_file}")
+            if not documents:
+                raise ValueError(f"No documents parsed from {chunk_file}")
+
+            add_documents(documents)
+            print(f"Stored {len(documents)} chunks from {chunk_file}")

@@ -1,16 +1,17 @@
 import numpy as np
+import ollama
 from FlagEmbedding import BGEM3FlagModel, FlagModel
 
-
-_dense_model = FlagModel("Qwen/Qwen3-Embedding-0.6B", use_fp16=True)
 _sparse_model = BGEM3FlagModel('BAAI/bge-m3')
-
 
 """Compute a dense embedding vector using Qwen3."""
 def compute_dense_vec(text: str):
-  emb = _dense_model.encode([text], batch_size=1)
+  single = ollama.embed(
+    model='qwen3-embedding:8b',
+    input=text
+  )
 
-  vec = emb[0]
+  vec = single['embeddings'][0]
   norm = np.linalg.norm(vec)
   if norm > 0:
     vec = vec / norm
