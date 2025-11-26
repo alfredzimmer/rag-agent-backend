@@ -24,7 +24,7 @@ pymupdf
 pymupdf4llm
 python-dotenv
 pyyaml
-qdrant-client
+qdrant-client<1.16.0
 requests
 scikit-learn
 scipy
@@ -42,3 +42,4 @@ python-docx
 langchain-milvus
 pymilvus
 langchain_community
+deepeval

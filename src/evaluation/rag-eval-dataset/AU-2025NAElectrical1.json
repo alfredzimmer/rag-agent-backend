@@ -1,0 +1,14 @@
+[
+    {
+        "inputs": {"question": "How are ongoing projects handled during North American code updates?"},
+        "outputs": {"answer": "Permitted projects before new codes take effect follow original standards. Projects in design phase must adopt new standards if effective, with 6-12 month transition periods."}
+    },
+    {
+        "inputs": {"question": "Why do North American contractors handle detailed design?"},
+        "outputs": {"answer": "Mainly due to unfamiliarity with local codes, and equipment manufacturers typically provide shop drawings. Southeast Asian projects rely more on contractors due to insufficient design institute depth."}
+    },
+    {
+        "inputs": {"question": "How to apply for a code variance?"},
+        "outputs": {"answer": "Registered institutions must submit written justification of infeasibility to authorities, proving no safety impact and prohibitively high modification costs."}
+    }
+]

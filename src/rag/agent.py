@@ -115,10 +115,7 @@ if __name__ == "__main__":
     SYSTEM_MESSAGE = """You are a helpful assistant with access to a knowledge base. 
     Use the hybrid_RAG_retrieve tool to search for relevant information when needed to answer user questions."""
 
-    print("RAG Agent started. Type 'exit' or 'quit' to end the conversation.\n")
-
-    # Initialize chat history
-    messages = [{"role": "system", "content": SYSTEM_MESSAGE}]
+     print("RAG Agent started. Type 'exit' or 'quit' to end the conversation.\n")
 
     # Continuous conversation loop
         while True:
