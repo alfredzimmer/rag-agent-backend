@@ -3,11 +3,13 @@
 
 accelerate
 annotated-doc
+docx2txt
 fastapi
 hf-xet
 httpx[http2]
 huggingface-hub
 langchain
+langchain-community
 langchain-openai
 langchain-qdrant
 langchain-text-splitters
@@ -38,4 +40,6 @@ peft
 bitsandbytes
 ollama
 python-docx
+pypdf
 deepeval
+chromadb
