@@ -33,3 +33,5 @@ torch
 transformers
 uvicorn[standard]
 websockets
+ollama
+python-docx
