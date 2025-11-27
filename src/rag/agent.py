@@ -5,8 +5,9 @@ from langchain_core.tools import tool
 from langchain_core.messages import HumanMessage, AIMessage, ToolMessage
 from langchain_core.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 
-from milvus import vector_store
-from modules.reranker import rerank
+
+from .milvus import vector_store
+from .modules.reranker import rerank
 
 
 @tool
