@@ -22,7 +22,7 @@ HEADER_CONFIGS = {
             },
             # Level 2: Main headings with one dot (e.g., "2.1 Introduction")
             {
-                "size_range": (10.5, 14),
+                "size_range": (10, 14),
                 "pattern": r"^\d+\.\d+",
                 "dot_count": 1,
                 "level": 2,
@@ -111,7 +111,7 @@ HEADER_CONFIGS = {
 FOOTER_CONFIGS = {
     "ieee": {
         "patterns": [
-            r"^\d+$",  # Page numbers
+            # r"^\d+$",  # Page numbers
             r"^Page \d+",
             r"^\d+ of \d+$",
             r"^Copyright.*IEEE.*All rights reserved\.?\s*\d*$",
@@ -127,7 +127,7 @@ FOOTER_CONFIGS = {
     },
     "nfpa": {
         "patterns": [
-            r"^\d+$",  # Page numbers
+            # r"^\d+$",  # Page numbers
             r"^Page \d+",
             r"^\d+ of \d+$",
             r"^Copyright.*NFPA",
@@ -288,9 +288,10 @@ def remove_headers_footers_configurable(markdown_text: str, config_name: str = "
             continue
         
         # Skip very short lines (likely artifacts), but preserve markdown headers
-        if (len(stripped) < config["min_line_length"] and 
-            stripped not in ['#', '##', '###', '####', '#####']):
-            continue
+        # if (len(stripped) < config["min_line_length"] and 
+        #     stripped not in ['#', '##', '###', '####', '#####']):
+        #     continue
+        # DISABLED BECAUSE IT REMOVES CONSTANTS IN FRACTIONS
         
         cleaned_lines.append(line)
     
@@ -446,7 +447,7 @@ def format_splits_as_list(splits) -> list[dict]:
 
 if __name__ == "__main__":
     # Example: Process NFPA document
-    FILE_PATH = "src/rag/public/IEEE Std 739-1995-166-168.pdf"
+    FILE_PATH = "src/rag/public/IEEE1584-2018-31-36.pdf"
     CONFIG = "ieee"  # Change to "ieee" for IEEE documents
     
     print(f"Processing {FILE_PATH} with config: {CONFIG}")
