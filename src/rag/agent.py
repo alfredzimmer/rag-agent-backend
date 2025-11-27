@@ -26,7 +26,7 @@ def hybrid_RAG_retrieve(query: str):
     retrieved_docs = vector_store.similarity_search(query, k=30)
 
     # Rerank the retrieved documents
-    k = 3
+    k = 1
     reranked_docs = rerank(query, retrieved_docs, k)
 
     # Generate serialized output
@@ -93,7 +93,7 @@ def agent_call(query: str):
         print(f"Error in agent_call: {e}")
         return [], f"Error: {str(e)}"
 
-    return all_retrieved_docs, final_response
+    return final_response, [doc.page_content for doc in all_retrieved_docs] 
 
 
 if __name__ == "__main__":

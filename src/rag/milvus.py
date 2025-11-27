@@ -5,7 +5,7 @@ from langchain_core.documents import Document
 import json
 import os
 from pathlib import Path
-from modules.sparse_embedder import SparseEmbedder
+from .modules.sparse_embedder import SparseEmbedder
 
 conn = connections.connect(host="127.0.0.1", port=19530)
 

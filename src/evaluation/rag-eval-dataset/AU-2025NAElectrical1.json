@@ -10,5 +10,21 @@
     {
         "input": "How to apply for a code variance?",
         "output": "Registered institutions must submit written justification of infeasibility to authorities, proving no safety impact and prohibitively high modification costs."
+    },
+    {
+        "input": "When do IEEE standards become mandatory?",
+        "output": "Only when referenced by mandatory documents like building/electrical codes. IEEE itself is academic and non-binding."
+    },
+    {
+        "input": "Requirements for fire-system integration with access control?",
+        "output": "Must be directly controlled by dedicated FARARM systems (not through BMS) to ensure emergency egress. Domestic and international codes share this requirement."
+    },
+    {
+        "input": "Jurisdictional boundaries of North American power utilities?",
+        "output": "They only manage incoming capacity and metering. User-side distribution follows NEC/CEC. Utility-owned substations fall under full utility jurisdiction"
+    },
+    {
+        "input": "Importance of RCDD certification?",
+        "output": "Essentialfor data center design, requiring a 280-question/5-hour exam and 45 continuing education credits every 3 years."
     }
 ]

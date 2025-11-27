@@ -51,7 +51,7 @@ def run_e2e_evals():
     dataset.add_goldens_from_json_file(
         file_path=str(dataset_path),
         input_key_name="input",
-        actual_output_key_name="output"
+        expected_output_key_name="output"
     )
 
     print(dataset.goldens[0])
@@ -59,6 +59,20 @@ def run_e2e_evals():
     test_cases = []
     for golden in dataset.goldens:
         res, text_chunks = agent_call(golden.input)
+        test_cases.append(LLMTestCase(
+            input=golden.input,
+            actual_output=str(res),
+            retrieval_context=text_chunks,
+            expected_output=golden.expected_output
+        ))
+        
+    evaluate(
+        test_cases=test_cases,
+        metrics=[faithfulness, relevancy, contextual_recall, contextual_relevance],
+        hyperparameters={
+            'model': 'gpt-4o-mini'
+        }
+    )
 
 if __name__ == "__main__":
     run_e2e_evals()
