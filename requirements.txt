@@ -15,7 +15,10 @@ accelerate==1.12.0
 aiohappyeyeballs==2.6.1
     # via aiohttp
 aiohttp==3.13.2
-    # via fsspec
+    # via
+    #   deepeval
+    #   fsspec
+    #   langchain-community
 aiosignal==1.4.0
     # via aiohttp
 annotated-doc==0.0.4
@@ -24,27 +27,49 @@ annotated-doc==0.0.4
     #   fastapi
 annotated-types==0.7.0
     # via pydantic
+anthropic==0.75.0
+    # via deepeval
 anyio==4.11.0
     # via
+    #   anthropic
+    #   google-genai
     #   httpx
     #   openai
     #   starlette
     #   watchfiles
 attrs==25.4.0
-    # via aiohttp
+    # via
+    #   aiohttp
+    #   jsonschema
+    #   referencing
+backoff==2.2.1
+    # via posthog
+bcrypt==5.0.0
+    # via chromadb
 bitsandbytes==0.48.2
     # via
     #   -r requirements.in
     #   unsloth
+build==1.3.0
+    # via chromadb
+cachetools==6.2.2
+    # via google-auth
 certifi==2025.11.12
     # via
     #   httpcore
     #   httpx
+    #   kubernetes
     #   requests
+    #   sentry-sdk
 charset-normalizer==3.4.4
     # via requests
-click==8.3.1
-    # via uvicorn
+chromadb==1.3.5
+    # via -r requirements.in
+click==8.2.2
+    # via
+    #   deepeval
+    #   typer
+    #   uvicorn
 coloredlogs==15.0.1
     # via onnxruntime
 cuda-bindings==12.9.4
@@ -53,19 +78,34 @@ cuda-pathfinder==1.3.2
     # via cuda-bindings
 cut-cross-entropy==25.1.1
     # via unsloth-zoo
+dataclasses-json==0.6.7
+    # via langchain-community
 datasets==4.3.0
     # via
     #   trl
     #   unsloth
     #   unsloth-zoo
+deepeval==3.7.2
+    # via -r requirements.in
 dill==0.4.0
     # via
     #   datasets
     #   multiprocess
 distro==1.9.0
-    # via openai
+    # via
+    #   anthropic
+    #   openai
+    #   posthog
 docstring-parser==0.17.0
-    # via tyro
+    # via
+    #   anthropic
+    #   tyro
+docx2txt==0.9
+    # via -r requirements.in
+durationpy==0.10
+    # via kubernetes
+execnet==2.1.2
+    # via pytest-xdist
 fastapi==0.122.0
     # via -r requirements.in
 filelock==3.20.0
@@ -86,8 +126,23 @@ fsspec[http]==2025.9.0
     #   datasets
     #   huggingface-hub
     #   torch
+google-auth==2.43.0
+    # via
+    #   google-genai
+    #   kubernetes
+google-genai==1.52.0
+    # via deepeval
+googleapis-common-protos==1.72.0
+    # via opentelemetry-exporter-otlp-proto-grpc
+greenlet==3.2.4
+    # via sqlalchemy
 grpcio==1.76.0
-    # via qdrant-client
+    # via
+    #   chromadb
+    #   deepeval
+    #   opentelemetry-exporter-otlp-proto-grpc
+    #   pymilvus
+    #   qdrant-client
 h11==0.16.0
     # via
     #   httpcore
@@ -111,12 +166,17 @@ httptools==0.7.1
 httpx[http2]==0.28.1
     # via
     #   -r requirements.in
+    #   anthropic
+    #   chromadb
     #   datasets
+    #   google-genai
     #   langgraph-sdk
     #   langsmith
     #   ollama
     #   openai
     #   qdrant-client
+httpx-sse==0.4.3
+    # via langchain-community
 huggingface-hub==0.36.0
     # via
     #   -r requirements.in
@@ -137,33 +197,65 @@ idna==3.11
     #   httpx
     #   requests
     #   yarl
+importlib-metadata==8.7.0
+    # via opentelemetry-api
+importlib-resources==6.5.2
+    # via chromadb
+iniconfig==2.3.0
+    # via pytest
 jinja2==3.1.6
-    # via torch
+    # via
+    #   deepeval
+    #   torch
 jiter==0.12.0
-    # via openai
+    # via
+    #   anthropic
+    #   openai
 joblib==1.5.2
     # via scikit-learn
 jsonpatch==1.33
     # via langchain-core
 jsonpointer==3.0.0
     # via jsonpatch
+jsonschema==4.25.1
+    # via chromadb
+jsonschema-specifications==2025.9.1
+    # via jsonschema
+kubernetes==34.1.0
+    # via chromadb
 langchain==1.1.0
+    # via -r requirements.in
+langchain-classic==1.0.0
+    # via
+    #   -r requirements.in
+    #   langchain-community
+langchain-community==0.4.1
     # via -r requirements.in
 langchain-core==1.1.0
     # via
     #   langchain
+    #   langchain-classic
+    #   langchain-community
+    #   langchain-milvus
+    #   langchain-ollama
     #   langchain-openai
     #   langchain-qdrant
     #   langchain-text-splitters
     #   langgraph
     #   langgraph-checkpoint
     #   langgraph-prebuilt
+langchain-milvus==0.3.0
+    # via -r requirements.in
+langchain-ollama==1.0.0
+    # via -r requirements.in
 langchain-openai==1.1.0
     # via -r requirements.in
 langchain-qdrant==1.1.0
     # via -r requirements.in
 langchain-text-splitters==1.0.0
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   langchain-classic
 langgraph==1.0.4
     # via
     #   -r requirements.in
@@ -181,14 +273,24 @@ langgraph-sdk==0.2.10
     # via
     #   -r requirements.in
     #   langgraph
-langsmith==0.4.48
+langsmith==0.4.49
     # via
     #   -r requirements.in
+    #   langchain-classic
+    #   langchain-community
     #   langchain-core
 lxml==6.0.2
     # via python-docx
+markdown-it-py==4.0.0
+    # via rich
 markupsafe==3.0.3
     # via jinja2
+marshmallow==3.26.1
+    # via dataclasses-json
+mdurl==0.1.2
+    # via markdown-it-py
+mmh3==5.2.0
+    # via chromadb
 mpmath==1.3.0
     # via sympy
 msgspec==0.20.0
@@ -199,6 +301,10 @@ multidict==6.7.0
     #   yarl
 multiprocess==0.70.16
     # via datasets
+mypy-extensions==1.1.0
+    # via typing-inspect
+nest-asyncio==1.6.0
+    # via deepeval
 networkx==3.6
     # via torch
 numpy==2.3.5
@@ -206,7 +312,9 @@ numpy==2.3.5
     #   -r requirements.in
     #   accelerate
     #   bitsandbytes
+    #   chromadb
     #   datasets
+    #   langchain-community
     #   onnxruntime
     #   pandas
     #   peft
@@ -255,30 +363,71 @@ nvidia-nvshmem-cu12==3.4.5
     # via torch
 nvidia-nvtx-cu12==12.8.90
     # via torch
+oauthlib==3.3.1
+    # via requests-oauthlib
 ollama==0.6.1
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   deepeval
+    #   langchain-ollama
 onnxruntime==1.24.0.dev20251031003
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   chromadb
 openai==2.8.1
     # via
     #   -r requirements.in
+    #   deepeval
     #   langchain-openai
+opentelemetry-api==1.38.0
+    # via
+    #   chromadb
+    #   deepeval
+    #   opentelemetry-exporter-otlp-proto-grpc
+    #   opentelemetry-sdk
+    #   opentelemetry-semantic-conventions
+opentelemetry-exporter-otlp-proto-common==1.38.0
+    # via opentelemetry-exporter-otlp-proto-grpc
+opentelemetry-exporter-otlp-proto-grpc==1.38.0
+    # via
+    #   chromadb
+    #   deepeval
+opentelemetry-proto==1.38.0
+    # via
+    #   opentelemetry-exporter-otlp-proto-common
+    #   opentelemetry-exporter-otlp-proto-grpc
+opentelemetry-sdk==1.38.0
+    # via
+    #   chromadb
+    #   deepeval
+    #   opentelemetry-exporter-otlp-proto-grpc
+    #   sentry-sdk
+opentelemetry-semantic-conventions==0.59b0
+    # via opentelemetry-sdk
 orjson==3.11.4
     # via
+    #   chromadb
     #   langgraph-sdk
     #   langsmith
+    #   pymilvus
 ormsgpack==1.12.0
     # via langgraph-checkpoint
+overrides==7.7.0
+    # via chromadb
 packaging==25.0
     # via
     #   accelerate
     #   bitsandbytes
+    #   build
     #   datasets
     #   huggingface-hub
     #   langchain-core
     #   langsmith
+    #   marshmallow
     #   onnxruntime
     #   peft
+    #   pytest
+    #   pytest-rerunfailures
     #   transformers
     #   unsloth
     #   unsloth-zoo
@@ -286,21 +435,33 @@ pandas==2.3.3
     # via
     #   -r requirements.in
     #   datasets
+    #   pymilvus
 peft==0.18.0
     # via
     #   -r requirements.in
     #   unsloth-zoo
 pillow==12.0.0
     # via unsloth-zoo
+pluggy==1.6.0
+    # via pytest
 portalocker==3.2.0
-    # via qdrant-client
+    # via
+    #   deepeval
+    #   qdrant-client
+posthog==5.4.0
+    # via
+    #   chromadb
+    #   deepeval
 propcache==0.4.1
     # via
     #   aiohttp
     #   yarl
 protobuf==6.33.1
     # via
+    #   googleapis-common-protos
     #   onnxruntime
+    #   opentelemetry-proto
+    #   pymilvus
     #   qdrant-client
     #   unsloth
     #   unsloth-zoo
@@ -312,32 +473,87 @@ psutil==7.1.3
     #   unsloth-zoo
 pyarrow==22.0.0
     # via datasets
+pyasn1==0.6.1
+    # via
+    #   pyasn1-modules
+    #   rsa
+pyasn1-modules==0.4.2
+    # via google-auth
+pybase64==1.4.2
+    # via chromadb
 pydantic==2.12.5
     # via
+    #   anthropic
+    #   chromadb
+    #   deepeval
     #   fastapi
+    #   google-genai
     #   langchain
+    #   langchain-classic
     #   langchain-core
     #   langchain-qdrant
     #   langgraph
     #   langsmith
     #   ollama
     #   openai
+    #   pydantic-settings
     #   qdrant-client
 pydantic-core==2.41.5
     # via pydantic
+pydantic-settings==2.12.0
+    # via
+    #   deepeval
+    #   langchain-community
+pyfiglet==1.0.4
+    # via deepeval
+pygments==2.19.2
+    # via
+    #   pytest
+    #   rich
+pymilvus==2.6.4
+    # via
+    #   -r requirements.in
+    #   langchain-milvus
 pymupdf==1.26.6
     # via
     #   -r requirements.in
     #   pymupdf4llm
 pymupdf4llm==0.2.4
     # via -r requirements.in
+pypdf==6.4.0
+    # via -r requirements.in
+pypika==0.48.9
+    # via chromadb
+pyproject-hooks==1.2.0
+    # via build
+pytest==9.0.1
+    # via
+    #   deepeval
+    #   pytest-asyncio
+    #   pytest-repeat
+    #   pytest-rerunfailures
+    #   pytest-xdist
+pytest-asyncio==1.3.0
+    # via deepeval
+pytest-repeat==0.9.4
+    # via deepeval
+pytest-rerunfailures==16.1
+    # via deepeval
+pytest-xdist==3.8.0
+    # via deepeval
 python-dateutil==2.9.0.post0
-    # via pandas
+    # via
+    #   kubernetes
+    #   pandas
+    #   posthog
 python-docx==1.2.0
     # via -r requirements.in
 python-dotenv==1.2.1
     # via
     #   -r requirements.in
+    #   deepeval
+    #   pydantic-settings
+    #   pymilvus
     #   uvicorn
 pytorch-triton==3.5.1+gitbfeb0668
     # via torch
@@ -347,8 +563,12 @@ pyyaml==6.0.3
     # via
     #   -r requirements.in
     #   accelerate
+    #   chromadb
     #   datasets
     #   huggingface-hub
+    #   kubernetes
+    #   langchain-classic
+    #   langchain-community
     #   langchain-core
     #   peft
     #   transformers
@@ -357,6 +577,10 @@ qdrant-client==1.15.1
     # via
     #   -r requirements.in
     #   langchain-qdrant
+referencing==0.37.0
+    # via
+    #   jsonschema
+    #   jsonschema-specifications
 regex==2025.11.3
     # via
     #   tiktoken
@@ -366,13 +590,33 @@ requests==2.32.5
     # via
     #   -r requirements.in
     #   datasets
+    #   deepeval
+    #   google-genai
     #   huggingface-hub
+    #   kubernetes
+    #   langchain-classic
+    #   langchain-community
     #   langsmith
+    #   posthog
+    #   requests-oauthlib
     #   requests-toolbelt
     #   tiktoken
     #   transformers
+requests-oauthlib==2.0.0
+    # via kubernetes
 requests-toolbelt==1.0.0
     # via langsmith
+rich==14.2.0
+    # via
+    #   chromadb
+    #   deepeval
+    #   typer
+rpds-py==0.29.0
+    # via
+    #   jsonschema
+    #   referencing
+rsa==4.9.1
+    # via google-auth
 safetensors==0.7.0
     # via
     #   accelerate
@@ -388,12 +632,24 @@ sentencepiece==0.2.1
     # via
     #   unsloth
     #   unsloth-zoo
+sentry-sdk==3.0.0a7
+    # via deepeval
+shellingham==1.5.4
+    # via typer
 six==1.17.0
-    # via python-dateutil
+    # via
+    #   kubernetes
+    #   posthog
+    #   python-dateutil
 sniffio==1.3.1
     # via
+    #   anthropic
     #   anyio
     #   openai
+sqlalchemy==2.0.44
+    # via
+    #   langchain-classic
+    #   langchain-community
 starlette==0.50.0
     # via fastapi
 sympy==1.14.0
@@ -401,9 +657,16 @@ sympy==1.14.0
     #   onnxruntime
     #   torch
 tabulate==0.9.0
-    # via pymupdf4llm
+    # via
+    #   deepeval
+    #   pymupdf4llm
 tenacity==9.1.2
-    # via langchain-core
+    # via
+    #   chromadb
+    #   deepeval
+    #   google-genai
+    #   langchain-community
+    #   langchain-core
 threadpoolctl==3.6.0
     # via scikit-learn
 tiktoken==0.12.0
@@ -411,7 +674,9 @@ tiktoken==0.12.0
     #   -r requirements.in
     #   langchain-openai
 tokenizers==0.22.1
-    # via transformers
+    # via
+    #   chromadb
+    #   transformers
 torch==2.10.0.dev20251124+cu128
     # via
     #   -r requirements.in
@@ -424,7 +689,9 @@ torchao==0.15.0.dev20251122+cu128
     # via unsloth-zoo
 tqdm==4.67.1
     # via
+    #   chromadb
     #   datasets
+    #   deepeval
     #   huggingface-hub
     #   openai
     #   peft
@@ -444,26 +711,46 @@ triton==3.5.1
     #   unsloth
     #   unsloth-zoo
 trl==0.24.0
-    # via unsloth-zoo
+    # via
+    #   -r requirements.in
+    #   unsloth-zoo
 typeguard==4.4.4
     # via tyro
+typer==0.20.0
+    # via
+    #   chromadb
+    #   deepeval
 typing-extensions==4.15.0
     # via
+    #   anthropic
+    #   chromadb
     #   fastapi
+    #   google-genai
     #   grpcio
     #   huggingface-hub
     #   langchain-core
     #   openai
+    #   opentelemetry-api
+    #   opentelemetry-exporter-otlp-proto-grpc
+    #   opentelemetry-sdk
+    #   opentelemetry-semantic-conventions
     #   pydantic
     #   pydantic-core
     #   python-docx
+    #   sqlalchemy
     #   torch
     #   typeguard
+    #   typer
+    #   typing-inspect
     #   typing-inspection
     #   tyro
     #   unsloth-zoo
+typing-inspect==0.9.0
+    # via dataclasses-json
 typing-inspection==0.4.2
-    # via pydantic
+    # via
+    #   pydantic
+    #   pydantic-settings
 tyro==0.10.0a6
     # via
     #   unsloth
@@ -474,22 +761,30 @@ unsloth[colab-new,triton] @ git+https://github.com/unslothai/unsloth.git
     # via -r requirements.in
 unsloth-zoo==2025.11.5
     # via unsloth
-urllib3==2.5.0
+urllib3==2.3.0
     # via
+    #   kubernetes
     #   qdrant-client
     #   requests
+    #   sentry-sdk
 uvicorn[standard]==0.38.0
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   chromadb
 uvloop==0.22.1
     # via uvicorn
 watchfiles==1.1.1
     # via uvicorn
+websocket-client==1.9.0
+    # via kubernetes
 websockets==15.0.1
     # via
     #   -r requirements.in
+    #   google-genai
     #   uvicorn
 wheel==0.45.1
     # via
+    #   deepeval
     #   unsloth
     #   unsloth-zoo
 xxhash==3.6.0
@@ -498,6 +793,8 @@ xxhash==3.6.0
     #   langgraph
 yarl==1.22.0
     # via aiohttp
+zipp==3.23.0
+    # via importlib-metadata
 zstandard==0.25.0
     # via langsmith
 

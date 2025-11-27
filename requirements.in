@@ -10,7 +10,7 @@ httpx[http2]
 huggingface-hub
 langchain
 langchain-community
-lanchain-classic
+langchain-classic
 langchain-openai
 langchain-ollama
 langchain-qdrant
