@@ -1,12 +1,23 @@
+import sys
+import os
+from pathlib import Path
+
+# Add parent directory to path to allow imports from rag module
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 from deepeval import evaluate
 from deepeval.test_case import LLMTestCase
 from deepeval.dataset import Golden
-from deepeval.metrics import FaithfulnessMetric, AnswerRelevancyMetric, ContextualRecallMetric, ContextualRelevancyMetric
+from deepeval.metrics import FaithfulnessMetric, AnswerRelevancyMetric, ContextualRecallMetric, ContextualRelevancyMetric, ContextualPrecisionMetric
 from deepeval.dataset import EvaluationDataset
 from ollama_deepeval_wrapper import OLLAMA_DEEPEVAL_WRAPPER
-from pathlib import Path
+
+# Import agent_call from agent.py
+from rag.agent import agent_call
+
 
 qwen_judge = OLLAMA_DEEPEVAL_WRAPPER(model_name="qwen3:30b-instruct")
+
 
 faithfulness = FaithfulnessMetric(
     threshold=0.7,
@@ -15,6 +26,12 @@ faithfulness = FaithfulnessMetric(
 )
 
 relevancy = AnswerRelevancyMetric(
+    threshold=0.7,
+    model=qwen_judge,
+    include_reason=True
+)
+
+contextual_precision = ContextualPrecisionMetric(
     threshold=0.7,
     model=qwen_judge,
     include_reason=True
@@ -41,12 +58,28 @@ def run_e2e_evals():
     dataset.add_goldens_from_json_file(
         file_path=str(dataset_path),
         input_key_name="input",
-        actual_output_key_name="output"
+        expected_output_key_name="output"
     )
+
+    print(dataset.goldens[0])
     
     test_cases = []
     for golden in dataset.goldens:
-        res, text_chunks = 
+        res, text_chunks = agent_call(golden.input)
+        test_cases.append(LLMTestCase(
+            input=golden.input,
+            actual_output=str(res),
+            retrieval_context=text_chunks,
+            expected_output=golden.expected_output
+        ))
+        
+    evaluate(
+        test_cases=test_cases,
+        metrics=[faithfulness, relevancy, contextual_recall, contextual_relevance],
+        hyperparameters={
+            'model': 'gpt-4o-mini'
+        }
+    )
 
 if __name__ == "__main__":
     run_e2e_evals()

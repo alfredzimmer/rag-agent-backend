@@ -5,8 +5,9 @@ from langchain_core.tools import tool
 from langchain_core.messages import HumanMessage, AIMessage, ToolMessage
 from langchain_core.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 
-from milvus import vector_store
-from modules.reranker import rerank
+
+from .milvus import vector_store
+from .modules.reranker import rerank
 
 
 @tool
@@ -25,15 +26,14 @@ def hybrid_RAG_retrieve(query: str):
     retrieved_docs = vector_store.similarity_search(query, k=30)
 
     # Rerank the retrieved documents
-    k = 3
-    reranked_docs = rerank(query, retrieved_docs, k)
+    k = 2
+    reranked_docs = list(rerank(query, retrieved_docs, k))
     
     # Generate serialized output
     serialized = "\n\n".join(
         (f"Source: {doc.metadata}\nContent: {doc.page_content}")
         for doc in reranked_docs
     )
-    print(serialized)
     return serialized, reranked_docs
 
 
@@ -93,7 +93,7 @@ def agent_call(query: str):
         print(f"Error in agent_call: {e}")
         return [], f"Error: {str(e)}"
 
-    return all_retrieved_docs, final_response
+    return final_response, [doc.page_content for doc in all_retrieved_docs] 
 
 
 if __name__ == "__main__":
