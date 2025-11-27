@@ -1,2 +1,1 @@
-# RAG modules package
 

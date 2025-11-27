@@ -8,7 +8,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from deepeval import evaluate
 from deepeval.test_case import LLMTestCase
 from deepeval.dataset import Golden
-from deepeval.metrics import FaithfulnessMetric, AnswerRelevancyMetric, ContextualRecallMetric, ContextualRelevancyMetric
+from deepeval.metrics import FaithfulnessMetric, AnswerRelevancyMetric, ContextualRecallMetric, ContextualRelevancyMetric, ContextualPrecisionMetric
 from deepeval.dataset import EvaluationDataset
 from ollama_deepeval_wrapper import OLLAMA_DEEPEVAL_WRAPPER
 
@@ -18,6 +18,7 @@ from rag.agent import agent_call
 
 qwen_judge = OLLAMA_DEEPEVAL_WRAPPER(model_name="qwen3:30b-instruct")
 
+
 faithfulness = FaithfulnessMetric(
     threshold=0.7,
     model=qwen_judge,
@@ -25,6 +26,12 @@ faithfulness = FaithfulnessMetric(
 )
 
 relevancy = AnswerRelevancyMetric(
+    threshold=0.7,
+    model=qwen_judge,
+    include_reason=True
+)
+
+contextual_precision = ContextualPrecisionMetric(
     threshold=0.7,
     model=qwen_judge,
     include_reason=True

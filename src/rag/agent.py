@@ -26,9 +26,9 @@ def hybrid_RAG_retrieve(query: str):
     retrieved_docs = vector_store.similarity_search(query, k=30)
 
     # Rerank the retrieved documents
-    k = 1
-    reranked_docs = rerank(query, retrieved_docs, k)
-
+    k = 2
+    reranked_docs = list(rerank(query, retrieved_docs, k))
+    
     # Generate serialized output
     serialized = "\n\n".join(
         (f"Source: {doc.metadata}\nContent: {doc.page_content}")

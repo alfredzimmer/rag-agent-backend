@@ -24,7 +24,11 @@
         "output": "They only manage incoming capacity and metering. User-side distribution follows NEC/CEC. Utility-owned substations fall under full utility jurisdiction"
     },
     {
-        "input": "Importance of RCDD certification?",
-        "output": "Essentialfor data center design, requiring a 280-question/5-hour exam and 45 continuing education credits every 3 years."
+        "input": "Importance of RCDD certification? Jurisdictional boundaries of North American power utilities?",
+        "output": "Essentialfor data center design, requiring a 280-question/5-hour exam and 45 continuing education credits every 3 years.They only manage incoming capacity and metering. User-side distribution follows NEC/CEC. Utility-owned substations fall under full utility jurisdiction"
+    },
+    {
+        "input": "Is Einstein a Mathematician or a musician?",
+        "output": "Einstein was a mathematician, not a musician."
     }
 ]
