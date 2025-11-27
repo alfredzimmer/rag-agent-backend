@@ -33,8 +33,6 @@ def hybrid_RAG_retrieve(query: str):
         (f"Source: {doc.metadata}\nContent: {doc.page_content}")
         for doc in reranked_docs
     )
-
-    print(f"\n[Retrieved {len(reranked_docs)} documents]")
     return serialized, reranked_docs
 
 
@@ -72,7 +70,6 @@ def agent_call(query: str):
             
             # Execute each tool call
             for tool_call in response.tool_calls:
-                print(f"[Calling tool: {tool_call['name']}]")
                 
                 # Execute the tool
                 serialized_context, docs = hybrid_RAG_retrieve.invoke(tool_call["args"])
