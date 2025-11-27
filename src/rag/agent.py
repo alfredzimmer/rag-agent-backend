@@ -27,12 +27,13 @@ def hybrid_RAG_retrieve(query: str):
     # Rerank the retrieved documents
     k = 3
     reranked_docs = rerank(query, retrieved_docs, k)
-
+    
     # Generate serialized output
     serialized = "\n\n".join(
         (f"Source: {doc.metadata}\nContent: {doc.page_content}")
         for doc in reranked_docs
     )
+    print(serialized)
     return serialized, reranked_docs
 
 
