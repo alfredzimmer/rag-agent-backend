@@ -44,12 +44,20 @@ HEADER_CONFIGS = {
                 "level": 4,
                 "truncate_at": ":"
             },
-            # Level 5: Four or more dots (e.g., "5.1.2.2.2")
+            # Level 5: Four dots (e.g., "5.1.2.2.2")
             {
                 "size_range": (9.5, 12),
                 "pattern": r"^\d+\.\d+\.\d+\.\d+\.\d+",
                 "dot_count": 4,
                 "level": 5,
+                "truncate_at": ":"
+            },
+            # Level 6: Five dots (e.g., "5.1.2.2.2.1")
+            {
+                "size_range": (9.5, 12),
+                "pattern": r"^\d+\.\d+\.\d+\.\d+\.\d+\.\d+",
+                "dot_count": 5,
+                "level": 6,
                 "truncate_at": ":"
             }
         ],
@@ -383,13 +391,9 @@ def split_pdf(file: str, config_name: str = "ieee") -> list[Document]:
     markdown_splitter = MarkdownHeaderTextSplitter(
         headers_to_split_on=[("#", "Header 1"), ("##", "Header 2"), 
                              ("###", "Header 3"), ("####", "Header 4"),
-                             ("#####", "Header 5"),]
+                             ("#####", "Header 5"), ("######", "Header 6")]
     )
     markdown_splits = markdown_splitter.split_text(markdown)
-
-    print("=== DEBUG: markdown_splits header metadata ===")
-    for d in markdown_splits[:10]:
-        print("META:", d.metadata, "LEN:", len(d.page_content))
     
     filename = os.path.basename(file)          # "{filename}.pdf"
     name_without_ext = os.path.splitext(filename)[0] # "{filename}"
@@ -442,7 +446,7 @@ def format_splits_as_list(splits) -> list[dict]:
 
 if __name__ == "__main__":
     # Example: Process NFPA document
-    FILE_PATH = "src/rag/public/IEEE Blue Book Std 1015-2006-13-30.pdf"
+    FILE_PATH = "src/rag/public/IEEE Std 739-1995-166-168.pdf"
     CONFIG = "ieee"  # Change to "ieee" for IEEE documents
     
     print(f"Processing {FILE_PATH} with config: {CONFIG}")
