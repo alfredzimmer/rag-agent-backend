@@ -4,7 +4,7 @@ from FlagEmbedding import BGEM3FlagModel
 
 
 class SparseEmbedder(BaseSparseEmbedding):  # inherit from BaseSparseEmbedding
-    def __init__(self, model_path): 
+    def __init__(self): 
         self.sparse_model = BGEM3FlagModel('BAAI/bge-m3', use_fp16=True)  # code to init or load model
 
     def embed_query(self, query: str) -> Dict[int, float]:
