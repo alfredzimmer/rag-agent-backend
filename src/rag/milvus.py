@@ -5,7 +5,7 @@ from langchain_core.documents import Document
 import json
 import os
 from pathlib import Path
-from modules.sparse_embedder import BGEEmbedder, SpladeEmbedder
+from .modules.sparse_embedder import BGEEmbedder, SpladeEmbedder
 
 conn = connections.connect(host="127.0.0.1", port=19530)
 
