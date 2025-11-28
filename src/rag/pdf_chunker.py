@@ -65,6 +65,10 @@ HEADER_CONFIGS = {
             "footer_zone": 0.88,  # Bottom 12% of page
             "header_zone": 0.08,  # Top 8% of page
             "min_header_size": 9
+        },
+        "margins": {
+            "top": 0.08,     # Exclude top 8% of page from content
+            "bottom": 0.08   # Exclude bottom 8% of page from content
         }
     },
     "nfpa": {
@@ -104,6 +108,10 @@ HEADER_CONFIGS = {
             "footer_zone": 0.88,
             "header_zone": 0.12,
             "min_header_size": 9
+        },
+        "margins": {
+            "top": 0.05,     # Exclude top 5% of page from content
+            "bottom": 0.08   # Exclude bottom 8% of page from content
         }
     }
 }
@@ -361,10 +369,26 @@ def load_pdf_as_markdown(file: str, config_name: str = "ieee") -> str:
     Returns:
         Markdown-formatted text
     """
+    if config_name not in HEADER_CONFIGS:
+        raise ValueError(f"Unknown config: {config_name}. Available: {list(HEADER_CONFIGS.keys())}")
+    
+    config = HEADER_CONFIGS[config_name]
+    margin_config = config.get("margins", {"top": 0, "bottom": 0})
+    
     with pymupdf.open(file) as doc:
+        # Get typical page height from first page to calculate absolute margins
+        first_page = doc[0]
+        page_height = first_page.rect.height
+        
+        # Calculate absolute margins in points
+        top_margin = page_height * margin_config.get("top", 0)
+        bottom_margin = page_height * margin_config.get("bottom", 0)
+        
+        # Pass margins as (left, top, right, bottom) to exclude header/footer zones
         chunks = pymupdf4llm.to_markdown(
             doc,
             hdr_info=ConfigurableHeaderDetector(config_name),
+            margins=(0, top_margin, 0, bottom_margin),
             show_progress=True
         )
         
@@ -417,7 +441,7 @@ def split_pdf(file: str, config_name: str = "ieee") -> list[Document]:
 # UTILITY FUNCTIONS
 # ============================================================================
 
-def format_splits_as_list(splits) -> list[dict]:
+def format_splits_as_list(splits, additional_metadata=None) -> list[dict]:
     """
     Format the markdown header splits into a well-structured list of dictionaries.
     
@@ -436,6 +460,10 @@ def format_splits_as_list(splits) -> list[dict]:
             "content": doc.page_content.strip(),
             "char_count": len(doc.page_content)
         }
+        
+        if additional_metadata:
+            split_data.update(additional_metadata)
+        
         formatted_splits.append(split_data)
     
     return formatted_splits
@@ -447,12 +475,12 @@ def format_splits_as_list(splits) -> list[dict]:
 
 if __name__ == "__main__":
     # Example: Process NFPA document
-    FILE_PATH = "src/rag/public/IEEE1584-2018-31-36.pdf"
+    FILE_PATH = "src/rag/public/IEEE Blue Book Std 1015-2006-13-30.pdf"
     CONFIG = "ieee"  # Change to "ieee" for IEEE documents
     
     print(f"Processing {FILE_PATH} with config: {CONFIG}")
     chunks = split_pdf(FILE_PATH, CONFIG)
-    formatted_list = format_splits_as_list(chunks)
+    formatted_list = format_splits_as_list(chunks) # can pass additional_metadata here
     
     # Save to JSON file
     filename = os.path.basename(FILE_PATH)          # "{filename}.pdf"
