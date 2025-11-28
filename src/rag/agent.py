@@ -1,53 +1,97 @@
-from typing import Union, List
+from typing import Union, List, Optional
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from langchain_ollama import ChatOllama
-from langchain_classic.agents import AgentExecutor, create_tool_calling_agent
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.tools import tool
+from dataclasses import dataclass
 from langchain_core.messages import HumanMessage, AIMessage, ToolMessage
-from langchain_core.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+from langchain_ollama import ChatOllama
+from langchain_core.tools import tool
 
+from .milvus import create_milvus_store
+from .modules.reranker import BGERanker
+from .modules.hyde import HyDEGenerator
 
-from .milvus import vector_store
-from .modules.reranker import rerank
+@dataclass
+class RAGConfig:
+    vector_store_type: str = "milvus"  
+    ranker_type: str = "bge"
+    dense_embedding_model: str = "qwen3-embedding:8b"
+    sparse_embedding_model: str = "splade" #[splade, bm25, bge]
+    llm_model: str = "qwen3:8b"
+    hyde: bool = True
 
+# Registry of component creators
+VECTOR_STORES = {
+    "milvus": create_milvus_store,
+}
 
-@tool
-def hybrid_RAG_retrieve(query: str):
-    """
-    Retrieve relevant context from the knowledge base using hybrid search and reranking.
-    
-    Args:
-        query: The search query to find relevant information
+RANKERS = {
+    "bge": BGERanker,
+}
+
+def create_rag_tool(vector_store, ranker, hyde_generator: Optional[HyDEGenerator]):
+    @tool
+    def hybrid_RAG_retrieve(query: str):
+        """
+        Retrieve relevant context from the knowledge base using hybrid search and reranking.
         
-    Returns:
-        Tuple of (Serialized context, List of documents)
-    """
-    # Retrieve documents using Milvus hybrid search (dense + sparse)
-    # The Milvus vector store handles hybrid search automatically
-    retrieved_docs = vector_store.similarity_search(query, k=30)
+        Args:
+            query: The search query to find relevant information
+            
+        Returns:
+            Tuple of (Serialized context, List of documents)
+        """
+        # Retrieve documents using Milvus hybrid search (dense + sparse)
+        inputText = hyde_generator.generate(query) if hyde_generator else query
+        print(f"Waiting for Embedding: {inputText[:100]}...") # Log first 100 chars
+        
+        vs = vector_store.get_vector_store()
+        retrieved_docs = vs.similarity_search(inputText, k=30)
 
-    # Rerank the retrieved documents
-    k = 2
-    reranked_docs = list(rerank(query, retrieved_docs, k))
+        # Rerank the retrieved documents
+        # The ranker is a BGERanker instance
+        k = 3
+        reranked_docs = ranker.rerank(query, retrieved_docs, k)
+
+        print(f"Reranked {len(reranked_docs)} docs")
+        print(f"Reranked docs: {reranked_docs}")
+        
+        # Generate serialized output
+        serialized = "\n\n".join(
+            (f"Source: {doc.metadata}\nContent: {doc.page_content}")
+            for doc in reranked_docs
+        )
+        return serialized, reranked_docs
+
+    return hybrid_RAG_retrieve
+
+def build_agent(config: RAGConfig):
+    # Get creator functions from registry
+    store_factory = VECTOR_STORES.get(config.vector_store_type)
+    ranker_factory = RANKERS.get(config.ranker_type)
     
-    # Generate serialized output
-    serialized = "\n\n".join(
-        (f"Source: {doc.metadata}\nContent: {doc.page_content}")
-        for doc in reranked_docs
-    )
-    return serialized, reranked_docs
+    if not store_factory or not ranker_factory:
+        raise ValueError("Invalid component type in config")
+        
+    vector_store = store_factory(config)
+    ranker = ranker_factory()
+    if(config.hyde):
+        hyde_generator = HyDEGenerator()
+    else:
+        hyde_generator = None
+    
+    # Create the tool with the specific components
+    rag_tool = create_rag_tool(vector_store, ranker, hyde_generator)
+    
+    llm = ChatOllama(model=config.llm_model, temperature=0)
+    llm_with_tools = llm.bind_tools([rag_tool])
+    
+    # Return the runnable/chain and the tool (so we can execute it manually if needed)
+    return llm_with_tools, rag_tool
 
-
-def agent_call(query: Union[str, List[str]]):
-    # Initialize the LLM with tool binding
-    llm = ChatOllama(
-        model="qwen3:8b",
-        temperature=0,
-    )
-
-    # Bind tools to the LLM
-    llm_with_tools = llm.bind_tools([hybrid_RAG_retrieve])
+def agent_call(query: Union[str, List[str]], config: RAGConfig = None):
+    # Initialize the agent and tool using the factory
+    if config is None:
+        config = RAGConfig()
+    llm_with_tools, rag_tool = build_agent(config)
 
     # System message
     SYSTEM_MESSAGE = """You are a helpful assistant with access to a knowledge base. 
@@ -99,7 +143,7 @@ def agent_call(query: Union[str, List[str]]):
             with ThreadPoolExecutor() as executor:
                 # Submit all tasks
                 future_to_task = {
-                    executor.submit(hybrid_RAG_retrieve.invoke, task[1]["args"]): task 
+                    executor.submit(rag_tool.invoke, task[1]["args"]): task 
                     for task in tool_tasks
                 }
                 
@@ -131,7 +175,7 @@ def agent_call(query: Union[str, List[str]]):
             # Step 3: Second batch call to LLM for those that used tools
             if second_pass_indices:
                 second_pass_messages = [all_messages[i] for i in second_pass_indices]
-                second_responses = llm.batch(second_pass_messages)
+                second_responses = llm_with_tools.batch(second_pass_messages)
                 
                 for idx, response in zip(second_pass_indices, second_responses):
                     final_responses[idx] = response.content
@@ -154,14 +198,9 @@ def agent_call(query: Union[str, List[str]]):
 
 
 if __name__ == "__main__":
-    # Initialize the LLM with tool binding
-    llm = ChatOllama(
-        model="qwen3:8b",
-        temperature=0,
-    )
-
-    # Bind tools to the LLM
-    llm_with_tools = llm.bind_tools([hybrid_RAG_retrieve])
+    # Initialize the agent
+    config = RAGConfig(sparse_embedding_model="bm25", hyde=False)
+    llm_with_tools, rag_tool = build_agent(config)
 
     # System message
     SYSTEM_MESSAGE = """You are a helpful assistant with access to a knowledge base. 
@@ -200,18 +239,18 @@ if __name__ == "__main__":
                     print(f"\n[Calling {tool_call['name']}...]")
                     
                     # Execute the tool
-                    tool_result = hybrid_RAG_retrieve.invoke(tool_call["args"])
+                    tool_result = rag_tool.invoke(tool_call["args"])
                     
                     # Add tool result to messages
                     messages.append(ToolMessage(
-                        content=tool_result,
+                        content=tool_result[0], # tool returns (serialized, docs), we need serialized for message
                         tool_call_id=tool_call["id"]
                     ))
                 
                 # Get final response with tool results (streaming)
                 print("Agent: ", end="", flush=True)
                 final_response = ""
-                for chunk in llm.stream(messages):
+                for chunk in llm_with_tools.stream(messages):
                     if chunk.content:
                         print(chunk.content, end="", flush=True)
                         final_response += chunk.content
@@ -221,7 +260,7 @@ if __name__ == "__main__":
             else:
                 # No tool call, just stream the response
                 full_response = ""
-                for chunk in llm.stream(messages):
+                for chunk in llm_with_tools.stream(messages):
                     if chunk.content:
                         print(chunk.content, end="", flush=True)
                         full_response += chunk.content
@@ -230,5 +269,7 @@ if __name__ == "__main__":
                 messages.append(AIMessage(content=full_response))
             
         except Exception as e:
+            import traceback
+            traceback.print_exc()
             print(f"\nError: {e}")
             print("Please try again.")
