@@ -1,0 +1,198 @@
+[
+    {
+        "input": "Why might a design institute reject shop drawings submitted by a contractor, and what is the basis for this rejection?",
+        "output": "A design institute might reject shop drawings if they do not meet the submission requirements outlined in the project specifications, which the contractor committed to during the bidding process."
+    },
+    {
+        "input": "What is the purpose of a CCM (Contemplated Change Notice) in construction projects, and when is it typically issued?",
+        "output": "A CCM (Contemplated Change Notice) is issued by the design institute when a site instruction results in an increase, decrease, or alteration to the contractor’s scope of work. It serves as a domestic change order, detailing the reasons and content of the change and requesting a quote from the contractor."
+    },
+    {
+        "input": "What happens after the contractor prepares a quote following receipt of the CCM, and how does it become a change order?",
+        "output": "After the contractor prepares a quote for the client following receipt of the CCM, the client forwards it to the design institute for review to assess its reasonableness. Once approved, the quote becomes a change order."
+    },
+    {
+        "input": "How does the lead time for large equipment in North America impact project scheduling, especially during periods like the pandemic?",
+        "output": "The lead time for large equipment in North America is typically around one year, and it was even longer during the pandemic, directly impacting and potentially delaying project schedules."
+    },
+    {
+        "input": "Why is technical support from suppliers important during the detail design phase for large or complex equipment?",
+        "output": "Technical support from suppliers is important during the detail design phase to clarify specific operational, performance, or application-related questions, ensuring equipment feasibility, especially when engineers encounter technical issues beyond their immediate expertise."
+    },
+    {
+        "input": "What is meant by 'Startup service during construction' in the context of manufacturing and electrical systems?",
+        "output": "Startup service during construction refers to the process of testing, commissioning, and verifying the proper operation of electrical systems and equipment after installation, typically performed by manufacturers or qualified technicians during the construction phase to ensure systems are safe and functional before handover."
+    },
+    {
+        "input": "What is the purpose of Startup services during construction, and why are they important for complex equipment?",
+        "output": "Startup services ensure proper operation of complex equipment right after activation, requiring on-site presence of suppliers or manufacturers for coordination and troubleshooting. They are important because many advanced systems need expert support during initial operation to function correctly, and contractors must account for these costs in their bids."
+    },
+    {
+        "input": "Why is it important for engineering designers to learn the basics of other disciplines like architecture or mechanical engineering?",
+        "output": "It helps them better understand others during coordination and avoid input or alignment conflicts."
+    },
+    {
+        "input": "What is the purpose of conducting a Lesson Learned session after completing a project, and how does peer review contribute to team improvement?",
+        "output": "The purpose of a Lesson Learned session is to summarize experiences and insights from a project to avoid repeating past mistakes in future projects. Peer review, especially involving experienced professionals from third-party companies, helps identify oversights and shortcomings, improving coordination and reducing issues across disciplines and with stakeholders."
+    },
+    {
+        "input": "Why is proper documentation important during project coordination, especially when changes occur?",
+        "output": "Proper documentation ensures that all changes are fully and accurately recorded for record-keeping, which supports transparency, accountability, and effective communication among stakeholders during project execution."
+    },
+    {
+        "input": "What roles were involved in the project described by the speaker, and what were their respective responsibilities?",
+        "output": "The project involved program architects who handled conceptual designs, architects who produced construction drawings, MEP teams responsible for mechanical, electrical, and plumbing systems, and teams focused on municipal engineering."
+    },
+    {
+        "input": "What were the main challenges faced during the theater project due to the involvement of multiple specialized consultants?",
+        "output": "The main challenge was coordinating communication and collaboration among the client, various consultants (including lighting, AV, structural, and rigging specialists), contractors, regulatory authorities, and equipment manufacturers, which made the coordination process quite complex."
+    },
+    {
+        "input": "What contributed to the project's success in terms of change orders and overall execution?",
+        "output": "The project's success was due to thorough design phase planning with adequate time and design fees, resulting in very few change orders (less than five percent) and seamless coordination among experienced stakeholders, leading to the project being completed within budget, on time, and with excellent quality."
+    },
+    {
+        "input": "What were the key issues that led to budget overruns and schedule delays in the Zhi Jiang Factory project in Vancouver?",
+        "output": "The project faced budget overruns and schedule delays because the client initiated the tender when the design was only 60-70% complete, the design team lacked professionalism, and numerous change orders emerged after construction began."
+    },
+    {
+        "input": "What were the main reasons for the project delays and cost overruns in the case study involving the inexperienced design team and poor coordination?",
+        "output": "The main reasons were the inexperience of the new design team, poor coordination between different disciplines, and inadequate collaboration among contractors during both design and construction phases."
+    },
+    {
+        "input": "What issue is highlighted regarding coordination between the electrical discipline and other disciplines?",
+        "output": "Poor coordination between the electrical discipline and other disciplines, as well as with other stakeholders, is highlighted."
+    },
+    {
+        "input": "What factors determine whether aluminum alloy cables can be used in low-voltage electrical projects in North America?",
+        "output": "The use of aluminum alloy cables in low-voltage projects in North America depends on adherence to established electrical codes and standards, such as those from the National Electrical Code (NEC), which specify acceptable conductor materials, ampacity ratings, and installation practices for aluminum alloy cables in specific applications."
+    },
+    {
+        "input": "What is the standard low-voltage level in domestic applications according to the text?",
+        "output": "The standard low-voltage level in domestic applications is 380 volts."
+    },
+    {
+        "input": "What type of conductor material is commonly used in residential electrical applications in China, and are there any fire-resistant alternatives available?",
+        "output": "Aluminum or aluminum alloy conductors are commonly used in residential applications in China, and some domestic manufacturers have developed fire-resistant flexible conductors that are being actively promoted."
+    },
+    {
+        "input": "Why did the speaker find the manufacturer's use of direct radiation into walls surprising when discussing overseas projects?",
+        "output": "The speaker found it surprising because, in North America, the direct radiation method into walls is not commonly used, making the overseas approach seem unconventional or shocking."
+    },
+    {
+        "input": "Why might a new product not be listed in North American specifications for use?",
+        "output": "Because it lacks a trial period or certification from an authorized body."
+    },
+    {
+        "input": "Why is poor coordination on construction projects considered a common issue, and what challenge does it create during the project lifecycle?",
+        "output": "Poor coordination is common because construction often begins before the drawings are fully complete, leading to repeated cycles of construction and demolition due to incomplete planning and client pressure for progress."
+    },
+    {
+        "input": "What is a major consequence of not finalizing formal drawings before construction begins, as illustrated in the text?",
+        "output": "It leads to discovering problems after completion, resulting in demolition and rework, which causes significant waste."
+    },
+    {
+        "input": "Why do people in North America not perceive the pace of development as slow despite it being significantly slower than in China?",
+        "output": "Because the deceleration is gradual, leading people to view the current pace as normal, even though it is much slower than China's rapid development."
+    },
+    {
+        "input": "What issue did the speaker observe regarding the quality of drawings in their work, and how were these issues typically resolved?",
+        "output": "The speaker observed that while the drawings produced in Canada were extremely detailed, they contained many big and small issues that were ultimately resolved by on-site construction teams."
+    },
+    {
+        "input": "What is the typical range of design fees in North America compared to China?",
+        "output": "In North America, design fees are typically 5% to 10% of the project cost, whereas in China, they range from 1% to 3%."
+    },
+    {
+        "input": "What kind of challenges do engineers in North America face that contribute to greater professional growth compared to their counterparts in China?",
+        "output": "Engineers in North America face constant attention to even minor issues and extensive paperwork, requiring broad knowledge in management, technology, coordination, cost control, and on-site construction, which fosters greater professional growth."
+    },
+    {
+        "input": "How long do design institutes in China typically allocate for television industry projects, according to the text?",
+        "output": "Thirty days."
+    },
+    {
+        "input": "How does the project timeline in North America compare to what was experienced in the past?",
+        "output": "In North America, projects now take about thirty days, which is significantly faster than the two months or more it used to take, and much quicker than the five months or more required for similar tasks in the past."
+    },
+    {
+        "input": "What should designers know when preparing a budget for a specific project, such as installing a switchboard?",
+        "output": "Designers should have a rough idea of the estimated man-hours required for the task, as well as basic market rates like equipment pricing and hourly labor costs, to prepare a feasible budget, though extreme accuracy is not necessary."
+    },
+    {
+        "input": "Who is typically responsible for calculating quantities like cable or pipeline lengths from engineering drawings in your design institute's practice?",
+        "output": "The responsibility falls on the contractors, not the design institute. We provide drawings without specifying routing details, and contractors measure and estimate these quantities themselves."
+    },
+    {
+        "input": "What is another term for a change order submitted to the design institute by a consultant?",
+        "output": "A variation."
+    },
+    {
+        "input": "What process should a contractor follow when dealing with a change order?",
+        "output": "The contractor should follow the established procedure, often referred to as 'going through the procedure,' which may involve detailed discussions and potential follow-up reviews."
+    },
+    {
+        "input": "What is the process for addressing a design issue that increases workload and requires additional cost in a construction project?",
+        "output": "First, submit an RFI to identify the issue and request clarification. If the issue is confirmed as a design error, the design institute issues a modification instruction. If the change increases workload, submit a quote for the additional work. The client and contractor negotiate the price until agreement is reached, and once approved, it becomes a change order."
+    },
+    {
+        "input": "Why is it important to have an approved change order before starting work for international contractors?",
+        "output": "Without an approved change order, international contractors will not begin the work, as it ensures proper documentation, clarification, and financial accountability, avoiding disputes and costly legal issues."
+    },
+    {
+        "input": "How far in advance should shop join drawings be submitted to the homeowners’ association for review during construction?",
+        "output": "As fast as possible."
+    },
+    {
+        "input": "What is the correct sequence of steps a contractor should follow after receiving the design package and signing the contract?",
+        "output": "After receiving the design package and signing the contract, the contractor should immediately use the technical drawings to prepare shop drawings, submit them to the design institute for approval, and only proceed with ordering after approval is granted."
+    },
+    {
+        "input": "What should be done immediately after signing the construction contract to ensure timely submission of shop drawings?",
+        "output": "Immediately contact the manufacturer or supplier, provide them with the design institute’s specifications, and request them to prepare the shop drawings as required by the design institute."
+    },
+    {
+        "input": "Who typically provides the technical specifications and dimensions for critical parts when acting as a contractor sourcing from a manufacturer?",
+        "output": "The manufacturer provides the technical specifications and dimensions for critical parts."
+    },
+    {
+        "input": "Why does a foreign design institute require the complete set of drawings rather than a preliminary version for review?",
+        "output": "Because they do not accept incremental reviews; they expect the full set of drawings upfront for comprehensive evaluation."
+    },
+    {
+        "input": "What competencies are required for MEP engineers to qualify for international projects, based on the experience shared by Professor Fan?",
+        "output": "To qualify for international MEP projects, engineers need strong technical expertise, proficiency in international standards (such as ASHRAE, ISO, and LEED), fluency in English, experience with global design software, and an understanding of cross-cultural collaboration and project management practices."
+    },
+    {
+        "input": "What are the requirements for an individual with an overseas engineering degree to become a licensed engineer in North America?",
+        "output": "An individual with an overseas engineering degree must have their education evaluated by a local engineering association. If their degree is not recognized, they may need to submit transcripts or take supplementary exams. Additionally, they need at least four years of work experience, including one year of local experience under the supervision of a Professional Engineer."
+    },
+    {
+        "input": "What is required for a company to undertake large-scale engineering consulting or design projects in this jurisdiction?",
+        "output": "A company must be registered, have licensed engineers on staff, and use a local company’s stamp and signature for large-scale projects."
+    },
+    {
+        "input": "What is the primary purpose of a RAG system in natural language processing?",
+        "output": "The primary purpose of a RAG (Retrieval-Augmented Generation) system is to enhance the accuracy and relevance of generated responses by retrieving relevant information from a knowledge base before generating a reply."
+    },
+    {
+        "input": "What was the primary difference in responsibilities between engineers in China and those in the current context, according to the text?",
+        "output": "In China, engineers primarily focused on drawing blueprints based on instructions from senior engineers, with little cross-disciplinary communication and no involvement beyond the design phase, unlike in the current context where responsibilities may involve more collaboration and broader engagement."
+    },
+    {
+        "input": "How is the design fee typically allocated for government or large-scale projects in this context, and how much would be allocated to construction-phase services if the total design fee is $10,000?",
+        "output": "The design fee is allocated as 60–65% for design work, 5% for bidding support, and 35% for construction-phase services. If the total design fee is $10,000, $3,500 would be allocated to construction-phase services."
+    },
+    {
+        "input": "What level of authority does a stamped engineer have on technical electrical matters in the described context compared to practices in China?",
+        "output": "In the described context, a stamped engineer has final say on technical electrical matters and no changes can be made without their signed approval, unlike in China where clients or authorities could demand changes on a whim even during construction without notification."
+    },
+    {
+        "input": "What is expected of a senior or principal engineer in terms of technical competence and responsibility?",
+        "output": "A senior or principal engineer is expected to have high competence in their discipline, manage technical or procedural aspects of projects, and be fully accountable for outcomes, requiring them to be rock-solid and capable of answering any question during client or site meetings."
+    },
+    {
+        "input": "Why do some young Chinese engineers in abroad hesitate to obtain their engineering licenses?",
+        "output": "They lack confidence due to limited on-site experience and fear of being asked to revise documents or handle complex issues, as they have fewer opportunities for practical training compared to their counterparts in China who typically gain experience through senior mentorship and extensive on-site exposure."
+    }
+]

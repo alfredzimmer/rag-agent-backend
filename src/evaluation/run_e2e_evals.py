@@ -1,5 +1,4 @@
 import sys
-import os
 from pathlib import Path
 
 # Add parent directory to path to allow imports from rag module
@@ -7,7 +6,6 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from deepeval import evaluate
 from deepeval.test_case import LLMTestCase
-from deepeval.dataset import Golden
 from deepeval.metrics import FaithfulnessMetric, AnswerRelevancyMetric, ContextualRecallMetric, ContextualRelevancyMetric, ContextualPrecisionMetric
 from deepeval.dataset import EvaluationDataset
 from ollama_deepeval_wrapper import OLLAMA_DEEPEVAL_WRAPPER
@@ -52,7 +50,7 @@ contextual_relevance = ContextualRelevancyMetric(
 def run_e2e_evals():
     # Get the absolute path to the dataset file
     script_dir = Path(__file__).parent
-    dataset_path = script_dir / 'rag-eval-dataset' / 'AU-2025NAElectrical1.json'
+    dataset_path = script_dir / 'rag-eval-goldens' / 'AU-2025NAElectrical1.json'
     
     dataset = EvaluationDataset()
     dataset.add_goldens_from_json_file(

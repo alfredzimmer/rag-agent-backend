@@ -1,0 +1,866 @@
+[
+  {
+    "chunk_id": 0,
+    "metadata": {},
+    "content": "Question: For dual power supply systems, does your approach focus more on municipal power as the primary source and also emphasize municipal power as the secondary source, or do you prioritize developing emergency power supplies?\n\nAnswer: In North America, most ordinary buildings and projects rarely have a secondary power source. There’s usually just one main power supply, supplemented by a backup or emergency power source.\n\nQuestion: Okay, so is the second power supply usually equipped with a UPS or a diesel generator?\n\nAnswer: Yes.\n\nQuestion: Okay, thank you, teacher.",
+    "char_count": 576
+  },
+  {
+    "chunk_id": 1,
+    "metadata": {},
+    "content": "Question:  \nOkay, so is the second power supply usually equipped with a UPS or a diesel generator?\n\nAnswer:  \nYes.\n\nQuestion:  \nOkay, thank you, teacher.\n\nAnswer:  \nThere is no dual power supply situation, but it’s uncommon for general projects. Dual power supplies are typically configured only for hospitals or particularly critical projects, but they are not mandatory requirements by the codes. Unlike in China or the former Soviet Union’s standards, where loads are divided into detailed categories like Class 1, Class 2, and Class 3, here they are only classified into ordinary loads and emergency loads, such as fire protection loads, critical loads, or Class 1 loads. Sometimes, hospitals adopt a wiring method combining dual power supplies with generators.\n\nQuestion:  \nOkay, thank you, teacher.\n\nAnswer:  \nYou’re welcome.\n\nAnswer:  \nYou’re welcome.",
+    "char_count": 858
+  },
+  {
+    "chunk_id": 2,
+    "metadata": {},
+    "content": "Question:  \nOkay, thank you, teacher.  \n\nAnswer:  \nYou’re welcome.  \n\nAnswer:  \nToday, we’ll mainly discuss some matters related to the construction process or the bidding process. Another topic we’ll cover is commissioning, which is particularly important overseas. Finally, we’ll talk about the process and procedures of project operation.  \n\nFirst, let’s discuss what needs to be done from the design institute’s perspective during the bidding process.  \n\nAnswer:  \nAfter you complete the initial design here, there will be a tender document. Once you help the client finalize the design drawings, it forms a package called Issue for Tender (IFT). Typically, this IFT signifies 100% completion of the design phase in our view.",
+    "char_count": 729
+  },
+  {
+    "chunk_id": 3,
+    "metadata": {},
+    "content": "The IFT usually includes two main categories of documents, and sometimes a third—the budget. The first is the drawings, the second is the specification, and the third is the cost estimate. However, the third is not present in all projects, while the first two are standard for most. This IFT package, comprising the drawings and specifications, is actually part of the contractual documents. In other words, it forms a core component of the engineering project contract because the drawings and specifications you produce ultimately serve as the primary technical and scope-of-work basis for the client’s public tender.",
+    "char_count": 619
+  },
+  {
+    "chunk_id": 4,
+    "metadata": {},
+    "content": "Before the IFT, there are several design phases, such as schematic design, design development, or construction documents. These may correspond to milestones like 33%, 66%, and 99% completion. At each stage, after completing the design, we conduct a review. The client provides feedback, and we incorporate their comments before moving to the next phase. By the time the IFT is issued, all parties generally agree that it’s ready for tender.\n\nTenders are typically published on public platforms, especially for government projects, which must be publicly tendered. Depending on the project’s scale and complexity, the bidding period may vary, but it usually lasts at least two to three weeks or a month. Large-scale projects may allow several months for bid preparation.",
+    "char_count": 769
+  },
+  {
+    "chunk_id": 5,
+    "metadata": {},
+    "content": "During the tender process, the IFT is combined with front-end contractual documents to form a complete bid package. However, the core components remain the drawings we designed and the specifications we wrote. After the tender is issued, a job showing or pre-bid meeting is arranged. In China, this is not the same as the pre-construction briefing (which happens after tender award and before construction). Instead, this meeting occurs at the start of the tender process, where the design institute and the client meet with bidding contractors.\n\nAnswer: The main purpose of the meeting is to meet everyone, explain the project’s primary scope of work and requirements, as well as the bidding process. As the design institute, our goal in attending this meeting is not to go through the entire project in detail but to provide a brief overview and answer questions on-site. However, all formal responses to questions will be provided in writing, which is called job showing.",
+    "char_count": 974
+  },
+  {
+    "chunk_id": 6,
+    "metadata": {},
+    "content": "After the meeting, everyone should review the drawings and specifications, and there will inevitably be questions raised. These questions are called RFIs (Request for Information). RFIs actually exist in three stages: 1. Design phase: If we, as the design institute, are unclear about something and ask the client, this is also an RFI; 2. Bidding process: If bidding contractors have questions or uncertainties about the drawings or specifications, they can ask—this is an RFI during the bidding process; 3. Construction phase: If contractors ask the client or design institute, this is also an RFI.",
+    "char_count": 599
+  },
+  {
+    "chunk_id": 7,
+    "metadata": {},
+    "content": "After receiving these RFIs from bidding contractors, the client will review them first. If they pertain to technical aspects, project requirements, or the scope of work, they will be forwarded to the design institute for a response. If they involve legal or other matters unrelated to the design institute’s work, the client will respond directly. RFI responses are also provided in writing, and this written document is called an addenda. Addenda are formal documents, numbered sequentially (1, 2, 3, 4…), as large projects may have many addenda. Once issued, they serve to clarify the scope of work or project requirements. Addenda become supplementary parts of the bid documents and are integral components of the complete bid package.",
+    "char_count": 738
+  },
+  {
+    "chunk_id": 8,
+    "metadata": {},
+    "content": "Question: After the bidding period ends and all bids are submitted, the client collects them, reviews them first, and then forwards them to the design institute. We evaluate them from a technical or contractor qualification perspective to determine which are better and which are less qualified, providing recommendations. This is called bidding evaluation. As consultants, we provide recommendations. Typically, the lowest-priced bid is selected, but for some government projects, the lowest price may not be the sole criterion—experience and qualifications may carry more weight.\n\nAnswer: Moreover, if your price is too high or too low, they might not even consider it. For example, if the government receives several bids, including one from an obscure contractor—while others bid around 1 million, this contractor offers 200,000—the government would immediately reject it, deeming the bidder lacking common sense and questioning their competence.",
+    "char_count": 950
+  },
+  {
+    "chunk_id": 9,
+    "metadata": {},
+    "content": "Question: However, in non-government or private projects, the lowest bid is usually selected. That said, qualifications still matter—they’ll investigate whether the company is reliable: “For such a major project, can we really entrust it to such a small firm?” This scrutiny exists even in private projects.\n\nGenerally, if all bids are comparable, the lowest-priced one wins. The bidding process itself doesn’t always guarantee finding the perfect fit.\n\nAnswer: Alternatively, there might be no bidders at all, which does happen. This scenario is relatively common, usually occurring in remote areas or when government projects impose overly stringent requirements. In such cases, there may be no bidders, or only a few who participate.",
+    "char_count": 736
+  },
+  {
+    "chunk_id": 10,
+    "metadata": {},
+    "content": "Government tender documents often require security clearance—meaning you must pass political vetting, or as we say in China, meet the political review standards. If after reviewing the bids, none meet this requirement, what then? If no qualified candidates exist, they may re-tender, essentially restarting the bidding process to see if it works out.\n\nThe project itself may have a limited budget, and the submitted bids far exceed the acceptable range. In that case, the client won’t award the project to these bidders. After some time, they’ll re-tender to see if there are any qualified candidates with acceptable prices. This is called re-tender, which is essentially the same as the previous process.\n\nOf course, there are other scenarios. For instance, if the client finds all bids too high—say, the budget is 1 million, but bids come in at 2 million—they might revise the design, scaling back the scope to fit the budget. This is another reason for re-tendering.",
+    "char_count": 969
+  },
+  {
+    "chunk_id": 11,
+    "metadata": {},
+    "content": "Assuming the first tender succeeds, the next step is preparing construction drawings, known as issue for construction (IFC). The IFC package is essentially the original issue for tender documents combined with addenda from the bidding process, merged into the final IFC set.\n\nTypically, providing such tender services requires experience, usually handled by mid- to senior-level professionals. At this bidding stage, our workload accounts for about 5% of the design fee. Domestic design institutes in China generally don’t participate in such tender services.\n\nIt’s generally not done domestically; there are bidding agency companies in the country that handle these related matters.\n\nProfessor Fan, I happened to want to ask about this as well. You just mentioned how our design institute assists the client with construction tendering. I’d like to inquire about the general process when they tender for consulting firms or design institutes in this regard.",
+    "char_count": 958
+  },
+  {
+    "chunk_id": 12,
+    "metadata": {},
+    "content": "Answer:  \nNow let’s talk about the services that the design institute provides during the construction process. From the perspective of the electrical engineering discipline, I’ll provide many concrete examples in this section.  \n\nBecause during the last training session for the Egyptian team, they raised many questions regarding this part. Additionally, they wanted to understand the specific practices of domestic design institutes during the construction process. If we are only contracted for the construction of overseas projects, from a technical perspective, the party we interact with most would be the design institute. That concludes all the content of this lecture, which we refer to as Construction Management.",
+    "char_count": 724
+  },
+  {
+    "chunk_id": 13,
+    "metadata": {},
+    "content": "Answer: In construction management, it’s not mandatory for the design institute to participate in every project. For instance, we’re rarely involved in small to medium-sized projects, as the owners typically handle this part themselves. However, for medium and large-scale projects, the design institute must participate.\n\nFrom the perspective of the design contract, it can be a lump sum, meaning an all-inclusive package. Another scenario is that the design phase is fully covered, but for construction management during the construction phase, a time and material approach might be adopted, charging by the hour. However, it’s usually more balanced to go with the lump, where the entire design package includes construction management.",
+    "char_count": 738
+  },
+  {
+    "chunk_id": 14,
+    "metadata": {},
+    "content": "In North America, a commonly used standard is the construction package, which is the construction contract signed between the owner and the contractor, all in standard versions. When working on government projects, we also need to prepare this contract. Of course, there are templates for these contracts, requiring only minor modifications to include project information, special requirements, and the scope of work. But only a very small portion of projects require our design institute to prepare this.\n\nThe construction management we refer to begins after the owner has handed the project over to a contractor, and we directly enter the construction phase. Once construction starts, the design institute sometimes needs to attend or even chair construction meetings, such as weekly or biweekly meetings, generally not exceeding biweekly intervals. Besides chairing the meetings, we also need to prepare and distribute meeting minutes.",
+    "char_count": 938
+  },
+  {
+    "chunk_id": 15,
+    "metadata": {},
+    "content": "Another major task is responding to technical and scope-related questions raised by the contractor during the construction phase. Typically, responses are in written form, ranging from simple text replies to including sketches or even directly issuing FC revisions to the original drawings, depending on the complexity of the RFI questions.\n\nAdditionally, after an RFI is answered, it might reveal unclear expressions, omissions, or impracticalities in our drawings. In such cases, we issue a Site Instruction to clarify or instruct the contractor to execute certain actions. This could include drawings, sketches, or purely textual content. It’s evident that an RFI can lead to a Site Instruction, but not all Site Instructions stem from RFIs. Some may be issued by the design institute or the owner to implement changes or address errors and omissions, resulting in modifications or on-site directives.",
+    "char_count": 904
+  },
+  {
+    "chunk_id": 16,
+    "metadata": {},
+    "content": "Answer:  \nIf this RFI and Site Instruction involve changes to the scope of work requirements, it will generate what we call a Contemplated Change Notice, which is a paperwork before the Change Order. This is prepared by the design institute.\n\nAnswer:  \nBasically, this document just outlines the scope of work requirements and then invites contractors to submit quotes. Once this is circulated, contractors will provide their quotes based on it. The quotes are then returned to the client, who forwards them to the design institute to assess whether the quotes are reasonable. If they are reasonable, the process moves to the next step, turning it into an actual Change Order. Sometimes, the design institute prepares this Change Order, but other times, the client prepares it themselves—this varies depending on the project and the client.",
+    "char_count": 840
+  },
+  {
+    "chunk_id": 17,
+    "metadata": {},
+    "content": "Another aspect is the payment process during construction. For example, contractors typically submit payments monthly. So, each month, the contractor submits a Progress Claim (or Billing) to the client. This isn’t just a simple invoice—it includes the invoice, a progress report, and additional documents like insurance certificates. After submission, the client forwards it to the design institute for review to determine whether the requested payment for that month is reasonable. If approved, the design institute issues a Certificate of Payment, and the client then processes the payment to the contractor based on these procedures. However, as I mentioned earlier, 10% is withheld from each payment. When is this withheld amount released to the contractor? It’s paid out 45 days after the Substantial Completion Letter is issued.",
+    "char_count": 834
+  },
+  {
+    "chunk_id": 18,
+    "metadata": {},
+    "content": "Question:  \nThroughout the construction process, depending on the project size or client requirements, the design institute may also conduct periodic on-site inspections and submit inspection reports. As the project nears completion, our design institute will conduct an on-site Substantial Completion Inspection, which signifies that the project is substantially finished with all major work completed. We will prepare a Certificate or Letter requiring signatures and official stamps, carrying legal weight.\n\nAnswer:  \nAs mentioned earlier, once issued, this Letter triggers two critical actions for the client:  \n1. The client can use this Letter to apply for an Occupancy Certificate from the municipal government. Before granting the permit, the municipality requires Substantial Completion Letters from relevant engineers or architects of each discipline.  \n2. For the contractor, upon issuance of this Letter, the client is obligated to release the full payment (excluding the Hold Back amount).",
+    "char_count": 1001
+  },
+  {
+    "chunk_id": 19,
+    "metadata": {},
+    "content": "Additionally, there is a Warranty agreement between the contractor and the client. The third document is the Warranty Letter, which also takes effect from the Substantial Date, making it equally crucial.\n\nThe Substantial Completion Letter may have regional variations in name—for example, it’s called Schedule CB in British Columbia—but the meaning remains the same. While we declare substantial completion, minor outstanding items that don’t impact the overall project may remain. In such cases, we prepare another document called the Deficiency List.\n\nNote that Substantial Completion typically mandates the full completion of fire safety systems. If fire safety work is unfinished, we will not issue the Letter. However, minor issues like lighting or outlets can be temporarily overlooked.",
+    "char_count": 792
+  },
+  {
+    "chunk_id": 20,
+    "metadata": {},
+    "content": "Note that Substantial Completion typically mandates the full completion of fire safety systems. If fire safety work is unfinished, we will not issue the Letter. However, minor issues like lighting or outlets can be temporarily overlooked.\n\nAlongside the Substantial Completion Letter, we provide the Deficiency List to the client, detailing pending minor items. The client then forwards it to the Contractor, urging prompt completion. Usually, the client motivates the Contractor to expedite these tasks, as 10% of the contract sum is withheld until resolution.\n\nThese deficiencies typically require the Contractor’s completion within 45 days, after which the client releases payment, marking the project’s near conclusion.\n\nThroughout this process, as the design institute…",
+    "char_count": 774
+  },
+  {
+    "chunk_id": 21,
+    "metadata": {},
+    "content": "Question: These deficiencies typically require the Contractor’s completion within 45 days, after which the client releases payment, marking the project’s near conclusion.\n\nAnswer: He can also choose whether or not to participate in this commissioning process. If the design institute is responsible for both design and commissioning, then they must participate. They will review the commissioning documents, including items such as pasting results, test results, reports, test plans, schedules, etc. They need to review all these materials.\n\nAfter 40 days, when all commissioning work is completed, the system equipment is functioning normally, and all deficiencies have been resolved, we conduct a final completion inspection. Then, we issue a report or certificate, and the process is essentially complete.",
+    "char_count": 808
+  },
+  {
+    "chunk_id": 22,
+    "metadata": {},
+    "content": "From the design institute’s perspective, the closing tasks also include preparing as-built drawings. These drawings are based on modifications marked in red by the contractor on-site. Additionally, there is the O&M manual.",
+    "char_count": 222
+  },
+  {
+    "chunk_id": 23,
+    "metadata": {},
+    "content": "This contractor submitted a ten over package to Party A, as we mentioned earlier. At this stage, the project is completely concluded. For this type of construction administration work, it’s commonly referred to as CA. Generally, CA requires experienced personnel, and only those with substantial experience in design institutes are qualified. Recent graduates or younger staff often can’t handle many on-site issues, so intermediate to senior personnel are needed. Typically, during the construction management phase, design fees account for 30% to 35% of the total cost. This operational approach may differ somewhat from China’s practices. In North America, there is no concept of a “supervisor”. The control over project progress, quality, and even payments is largely handled by the design institute. Therefore, in North America, design institutes effectively perform much of the supervisory work",
+    "char_count": 900
+  },
+  {
+    "chunk_id": 24,
+    "metadata": {},
+    "content": "The control over project progress, quality, and even payments is largely handled by the design institute. Therefore, in North America, design institutes effectively perform much of the supervisory work. However, there is a role called Construction Manager, where the client can hire someone to oversee construction and management—but not technical aspects. These are some key differences between North America and China.",
+    "char_count": 420
+  },
+  {
+    "chunk_id": 25,
+    "metadata": {},
+    "content": "说话人2: 00:26:44 - 00:27:58\n\nIts Paperwork Documentation is quite meticulous. Additionally, the processes are relatively detailed, consistently thorough throughout, so the quality is comparatively better. Of course, the timeline is also extended—it prioritizes safety as well as quality.\n\nThe entire operational approach is as follows: For a project, the client has a Project Manager, plus a social member (likely referring to a stakeholder representative), and a CM (Construction Manager). If commissioning is handled by a third party, that would be one tier—one company—along with the general contractor and other subcontractors.\n\nLarger contractors here also use more specialized software to manage construction. Right now, I’m referring to municipal, commercial, or civil engineering projects. For industrial projects, it follows the EPCM (Engineering, Procurement, and Construction Management) model.\n\nNext, let me show and explain how to conduct this Shop Go and Review.\n\n说话人2: 00:27:58 - 00:29:51",
+    "char_count": 1001
+  },
+  {
+    "chunk_id": 26,
+    "metadata": {},
+    "content": "Question: Next, let me show and explain how to conduct this Shop Go and Review.\n\nAnswer: From the design institute’s perspective, this is helpful for everyone. If you become contractors in the future, you’ll understand the design institute’s key concerns during Shop Drawing Review. Essentially, it mainly involves technical specifications for equipment and materials, such as systems like FARLAM and BIS, and actually includes system diagrams and detailed designs, covering aspects like Graphic Programming.\n\nShop Drawing Review primarily ensures that engineers verify contractors’ submissions before procurement. Otherwise, two issues may arise:\n1. Quality control becomes impossible, as contractors might arbitrarily order products from small manufacturers.\n2. Technical problems may occur, such as purchased items failing to fit during on-site installation.",
+    "char_count": 861
+  },
+  {
+    "chunk_id": 27,
+    "metadata": {},
+    "content": "Electrical Shop Drawings are more complex than architectural or structural ones. For architecture, it’s mostly about walls, windows, doors, or elevators, whereas mechanical and electrical systems involve more intricate equipment and systems, hence requiring more Shop Drawings. Our commissioning work mainly focuses on the Mechanical side.\n\nLet me explain how Shop Drawings are handled in North America and provide some examples. These are the Shop Drawing Documents that must be submitted, typically covering equipment and materials, with additional system requirements. For systems like Farlan and BIS, these Shop Drawings are obtained from suppliers or manufacturers, with contractors rarely preparing them themselves.\n\nThe North American approach differs from regions like the Middle East or Asia (e.g., Hong Kong), where specialized detailing companies exist. In contrast, North America has less need for such firms.",
+    "char_count": 921
+  },
+  {
+    "chunk_id": 28,
+    "metadata": {},
+    "content": "Question: The North American approach differs from regions like the Middle East or Asia (e.g., Hong Kong), where specialized detailing companies exist. In contrast, North America has less need for such firms.\n\nAnswer: The design depth for North America should be sufficient, so it doesn’t require further detailed design. As long as the contractor isn’t too inexperienced, the drawings we provide here can basically meet the construction requirements. Additionally, our designers here can promptly address any issues during the construction management process, ensuring construction quality and smooth progress. Therefore, there’s no need for any additional detailed design.",
+    "char_count": 674
+  },
+  {
+    "chunk_id": 29,
+    "metadata": {},
+    "content": "Here, the Shop Drawings are submitted directly by the contractor to the designer for review. Once approved, they can proceed with ordering. However, contractors here rarely prepare Shop Drawings themselves—except for BIS, FARM, or some low-voltage systems—and mostly rely on manufacturers and suppliers to prepare them. Examples include Louise Kohn, FAR Alarm, Security, and HT (Heat Trades). Heat Trades are less common in residential or commercial projects. As I mentioned earlier, they’re used for dry/wet sprinkler systems or wet sprinkler systems in unheated underground parking lots.\n\nIn Canada, for instance, some regions are very cold, and parking lots may have slopes. Snow accumulation or ice can cause slipping, so Heat Trades are used there. But Heat Trades are actually more prevalent in industrial applications, especially in places like Alberta’s oil fields, where there are extensive outdoor oil or gas pipelines, requiring a lot of Heat Trades.",
+    "char_count": 961
+  },
+  {
+    "chunk_id": 30,
+    "metadata": {},
+    "content": "Why is Shop Drawings review so important? It’s a critical step in North American project workflows, ensuring construction quality and preventing issues during execution. It involves three parties: manufacturers, contractors, and the design firm. The contractor doesn’t just submit Shop Drawings directly to the client and designer for approval—they also review them to ensure compliance. This three-tier verification (supplier/manufacturer, contractor, and design firm) guarantees quality and avoids potential disputes or unclear responsibilities.",
+    "char_count": 547
+  },
+  {
+    "chunk_id": 31,
+    "metadata": {},
+    "content": "The primary reviewers are the design firm’s engineers, who ensure that the materials and equipment to be installed meet design requirements. This results in excellent quality control. In contrast, back in China—including my previous experience—some manufacturers with close ties to clients might push through substandard or unsuitable equipment. But here, it’s rare. In all my time here, no manufacturer has tried to bribe me—at most, they might approach the company for a product launch presentation.\n\nAnother benefit of Shop Drawings review is what?",
+    "char_count": 551
+  },
+  {
+    "chunk_id": 32,
+    "metadata": {},
+    "content": "Question: Another benefit of Shop Drawings review is what?  \nAnswer: With this Shop Drawing, everyone can document it in the end, and the project will have a very good record—a complete package. Eventually, all these will be handed over to the owner, and the owner’s operations and maintenance department will have them. Once the project is completed in the future, if any issues arise in the infrastructure system, everything can be quickly located. Moreover, this package will include manufacturer information, contact details, and various other resources. If a problem occurs, you can directly refer to it, as it provides excellent documentation.",
+    "char_count": 649
+  },
+  {
+    "chunk_id": 33,
+    "metadata": {},
+    "content": "Another point is that, apart from future operations and maintenance, it also serves as a valuable resource during the commissioning process. For example, during commissioning, if you only have the drawings but lack the manufacturer’s manuals for the project equipment or certain systems, you won’t know how to proceed. Similarly, during installation, you’ll need the manufacturer’s installation guides and other relevant materials. Therefore, these documents are crucial during installation, commissioning, and ultimately, operations and maintenance.\n\nNow, let’s discuss what these Shop Drawings for the electrical discipline typically include. Generally speaking, they cover all electrical-related…",
+    "char_count": 699
+  },
+  {
+    "chunk_id": 34,
+    "metadata": {},
+    "content": "Answer: These equipment systems and materials, which actually include some software programming, all need to be submitted for engineers to review and ensure they meet the design requirements. Here we have equipment, systems, and some materials. For materials, for example, lighting fixtures, which are considered bulk materials, as well as some standard equipment like cables, conduit pipes, and many CableTree-related components. Conduit pipes and CableTree-related items must all be submitted here. What kind of conduit pipes you use, how they are connected, what the cable trays look like, what kind of wires and cables you use, what kind of lighting fixtures you use—all must be submitted. Items like these sockets, switches, including grounding wires and grounding electrodes, must all be submitted. These are the bulk materials. As for the main equipment, there are high and low voltage switchgear cabinets, including reactive power compensation.",
+    "char_count": 952
+  },
+  {
+    "chunk_id": 35,
+    "metadata": {},
+    "content": "Answer: Transformers, generators, as well as ATS, UPS, MCC, switchboards, devices like VFDs, disconnect switches, and metering equipment—all these need to be handed over. This is the Wonder System Design drawing, which involves…\n\nAnswer: This should not be secondary design or detailed design—it is the system design that the manufacturer should provide. This includes lighting control systems, fire alarm systems, heat trace, security, building automation systems (BAS), and sound masking. This might be common domestically, but I’m not sure if it’s actually used—at least, I haven’t seen it applied in China.",
+    "char_count": 610
+  },
+  {
+    "chunk_id": 36,
+    "metadata": {},
+    "content": "Sound masking is used in large office spaces where acoustic privacy is needed. For example, if one area is holding a meeting, the sound shouldn’t interfere with another area. We’ve designed this system for two projects—it’s a specialized acoustic absorption or sound management system. It’s more commonly used in government projects and large offices. There are also other specialized systems, which require the supplier to provide not just drawings but also software programming for control logic and graphics.",
+    "char_count": 511
+  },
+  {
+    "chunk_id": 37,
+    "metadata": {},
+    "content": "Question: Now, how do we conduct such reviews in North America? I’ll give detailed examples later, but here’s a general overview:  \nFirst, you must check whether the electrical equipment parameters match the design drawings—voltage, current, breaking capacity, and power factors should all align. Another issue is if I specify a certain manufacturer, but you provide a different one; or if I require a specific model, but you supply another; or if I need five units, but you deliver one or four—none of these are acceptable.",
+    "char_count": 524
+  },
+  {
+    "chunk_id": 38,
+    "metadata": {},
+    "content": "Regarding manufacturers and models, here’s how it works in North America: For government projects, we usually don’t specify a single manufacturer or model to maintain fairness and transparency. However, for private sector or other general projects, we can specify manufacturers—such as for generators or fire alarm systems. But even then, we typically don’t specify just one unless it’s the sole provider. If multiple options exist, we’ll list three approved manufacturers and include an “equivalent” clause to allow alternatives of similar quality.",
+    "char_count": 549
+  },
+  {
+    "chunk_id": 39,
+    "metadata": {},
+    "content": "Another aspect we review is special capacity—for example, whether switchgear or distribution panels have sufficient capacity per design requirements. If not, it’s non-compliant. Other checks include insulation levels, temperature (e.g., transformer temperature rise), noise levels for generators and transformers, material specifications (copper vs. aluminum), switch types (air-break vs. oil circuit breakers), and generator fuel types (diesel vs. natural gas). These are all critical considerations.",
+    "char_count": 501
+  },
+  {
+    "chunk_id": 40,
+    "metadata": {},
+    "content": "Answer: We need to confirm this physical dimension. For example, I’ve already selected the electrical room and arranged the equipment in a certain layout that fits. My switchgear is five meters long, but if you suddenly give me one that’s six or even eight meters long, it won’t fit, so it might be rejected. Of course, during the design phase, we’ll consider several similar manufacturers and design based on the largest dimensions among them. But if what you submit is significantly larger than that, it will definitely be rejected because it simply won’t fit.",
+    "char_count": 562
+  },
+  {
+    "chunk_id": 41,
+    "metadata": {},
+    "content": "Question: Another aspect is the wiring method for these switchgears and distribution panels—whether the cables enter from the top, bottom, or side—and how they are installed. For instance, suppose I have a transformer, but there’s no space left in the electrical room, so I specify that it needs to be hoisted and installed from the ceiling. If you insist on providing a floor-mounted unit that can’t be hoisted, that won’t work either. All these factors must be considered.\n\nSo, how do we handle these during the review? Well, we take their…\n\nAnswer: The submitted shop drawings must be meticulously cross-checked against our own drawings and specifications. For instance, these NEMA ratings—what we refer to as “electrical closers,” the enclosures for electrical equipment. If they are intended for outdoor use, they should be NEMA 4 (i.e., 4G). If the submission is for indoor-use NEMA 1 enclosures, that won’t suffice because they lack dustproof, waterproof, and corrosion-resistant properties.",
+    "char_count": 998
+  },
+  {
+    "chunk_id": 42,
+    "metadata": {},
+    "content": "Question: Similarly, for backup time, such as generator fuel tanks or valve-regulated batteries, the requirement is two hours. If only one hour is provided, it’s unacceptable. However, exceeding this requirement is perfectly fine. Additionally, compliance with regulatory authorities’ standards and other specific requirements must be ensured.\n\nHere’s an issue: Our electrical organization isn’t reviewed solely by electrical engineers. For matters involving multiple disciplines—like generators, which span two or three specialties—we must also submit generator drawings to mechanical engineers. They need to review aspects like ventilation systems, fuel or gas pipelines, and combustion.\n\nFor isolation switches tied to mechanical equipment, we coordinate with the mechanical team to determine who supplies them or whether the switches submitted by our electrical contractor match their equipment.\n\nFor such cases, we use a review stamp during drawing reviews to document approvals.",
+    "char_count": 984
+  },
+  {
+    "chunk_id": 43,
+    "metadata": {},
+    "content": "Question: For such cases, we use a review stamp during drawing reviews to document approvals.\n\nAnswer: The “Review Stamp” refers to a signature indicating that the drawing has been reviewed. There are several scenarios for this Review Stamp:\n\nReviewed/approved without comments: This means the drawing is completely fine and can proceed directly to ordering.\n\nReviewed/approved with comments: Here, there may be minor issues that aren’t critical. Notes or comments are provided, and once the changes are made accordingly, the drawing can proceed to ordering without resubmission.\n\nRejected with comments – resubmitted: This means the drawing fails to meet requirements, with significant issues or omissions that don’t comply with design standards. Specific problems will be pointed out, and a resubmission is required.",
+    "char_count": 818
+  },
+  {
+    "chunk_id": 44,
+    "metadata": {},
+    "content": "Rejected with comments – resubmitted: This means the drawing fails to meet requirements, with significant issues or omissions that don’t comply with design standards. Specific problems will be pointed out, and a resubmission is required.\n\nAdditionally, the Review Stamp includes a disclaimer. The design institute’s review does not mean they assume 100% risk or liability for the drawing’s approval. Their role is to ensure compliance with project design requirements. However, if issues arise during construction—such as equipment not fitting—while the review process checks general dimensions and interfaces, it doesn’t scrutinize every detail. In such cases, the contractor or supplier remains liable. The disclaimer specifies who reviewed the drawing and when.\n\nCommon review comments include:\n- Incorrect or missing information/files.\n- Inconsistencies or contradictions in the submission.\n- Non-compliance with design requirements (e.g., specifying replacements, adding a switch, or requiring resubmission).",
+    "char_count": 1013
+  },
+  {
+    "chunk_id": 45,
+    "metadata": {},
+    "content": "Common review comments include:\n- Incorrect or missing information/files.\n- Inconsistencies or contradictions in the submission.\n- Non-compliance with design requirements (e.g., specifying replacements, adding a switch, or requiring resubmission).\n\nThe Shop Drawing Revision and Review Log are also documented records.\n\nAnswer: This is a record we typically use to track shop drawing reviews. Normally, the shop drawings submitted by contractors actually involve both a submitter and a transmitter.\n\nSubmitter usually refers to the party submitting to a higher authority, someone with greater technical authority or capability than you.\n\nTransmitter typically involves file exchanges between peers, such as the Power Page (cover sheet). We might use transmitters with the client or contractors, and other disciplines may also use transmitters, but contractors may need to use submitters.",
+    "char_count": 887
+  },
+  {
+    "chunk_id": 46,
+    "metadata": {},
+    "content": "Transmitter typically involves file exchanges between peers, such as the Power Page (cover sheet). We might use transmitters with the client or contractors, and other disciplines may also use transmitters, but contractors may need to use submitters.\n\nThis review log is essentially a document, possibly in Excel or another format, recording how many times the same shop drawing was submitted, submission dates, review outcomes, etc. Usually, the client also requires this record, and the project itself needs it for future traceability.\n\nFor large-scale projects, the volume of shop drawings is enormous. Without proper documentation, it becomes difficult to locate them later. Additionally, when reviewing shop drawings, there are other considerations:\n\nSimpler shop drawings can be handled by someone with one or two years of experience after graduation.\n\nHowever, complex or critical equipment shop drawings are best reviewed by a senior.",
+    "char_count": 941
+  },
+  {
+    "chunk_id": 47,
+    "metadata": {},
+    "content": "Question: Simpler shop drawings can be handled by someone with one or two years of experience after graduation.\n\nHowever, complex or critical equipment shop drawings are best reviewed by a senior.\n\nDuring construction, we have many tasks to manage, and shop drawings often span multiple volumes, making it impossible to scrutinize every page. Only experienced personnel can quickly identify key content, such as:\n\nSome standard specifications, especially those related to manufacturer equipment or internal systems, don’t need review—only the parts relevant to design requirements matter.\n\nGenerally, reviewing shop drawings is fast, and the more experienced you are, the quicker it goes. A thick volume might take just a few hours, or even half an hour to skim through and pinpoint the essentials.\n\nThe key is to identify the sections requiring review rather than conducting a full inspection.",
+    "char_count": 894
+  },
+  {
+    "chunk_id": 48,
+    "metadata": {},
+    "content": "Question: The key is to identify the sections requiring review rather than conducting a full inspection.\n\nAnswer: Not only does the community hospital review, but sometimes the debugging company also reviews, yet they do not bear the risks or responsibilities, nor do they sign or stamp. This signing and stamping of shop drawings is different from the signing and stamping we usually do for our own drawings—in reality, we bear full responsibility, as those are the project’s drawings. For shop drawings, our role is merely to review.\n\nThis is how shop drawing review is done. To put it simply, let’s take a few different projects as examples (all of which I’ve worked on), one of which is…\n\nAnswer: It’s just a small renovation project, like a restaurant or clinic, where there’s basically no shop drawing—just some lights, sockets, and such. For these small projects, we don’t even conduct a shop drawing review.",
+    "char_count": 915
+  },
+  {
+    "chunk_id": 49,
+    "metadata": {},
+    "content": "说话人2: 00:49:27 - 00:51:03\n\nIt’s just a small renovation project, like a restaurant or clinic, where there’s basically no shop drawing—just some lights, sockets, and such. For these small projects, we don’t even conduct a shop drawing review.\n\nNow, what about medium-sized projects? If we take one on—for example, we once handled a government project involving a complete overhaul of the LORI automation system—the review had to be extremely detailed and time-consuming.\n\nFor even larger projects, like a major semiconductor plant or a large-scale industrial project, where investments typically exceed 1 billion, the timeline becomes much longer. Projects like these are comparable to, say, Egypt’s CBD project. For such cases, you’d need a dedicated team to prepare the shop drawings, and designers would also require a small team to handle on-site construction management, construction support, shop drawing review, and other paperwork.\n\nSo, different projects actually require varying approaches and workflows.",
+    "char_count": 1013
+  },
+  {
+    "chunk_id": 50,
+    "metadata": {},
+    "content": "Question: So, different projects actually require varying approaches and workflows.\n\nAlright, let’s move on and look at some real-world examples in construction management or shop drawing review to give you a basic idea. First, let’s talk about shop drawing review—this one’s actually a Siemens project, where we worked on a townhouse development, the main building.\n\nAnswer: At Wenhua, the main building project involves the use of some switchgear, distribution panels, and other equipment. This is the Shop Drawing they submitted.\n\nAnswer: This is our stamp. This Shop Draw is a cover letter, and this is the electrical contractor. Then, this Shop Draw is for us to approve—this is our review stamp.",
+    "char_count": 701
+  },
+  {
+    "chunk_id": 51,
+    "metadata": {},
+    "content": "Answer: This is our stamp. This Shop Draw is a cover letter, and this is the electrical contractor. Then, this Shop Draw is for us to approve—this is our review stamp.\n\nAnswer: This is actually a disclaimer. This is the reviewing company, this is the date, instructing you to review a transmitter. It is intended for suppliers and electrical contractors. Here is a summary list indicating which equipment shop drawings are for. You can see this is for a distribution panel, this is a meter center, and another should be a switchboard (also a distribution panel), along with an isolating switch. This is the drawing index for the shop drawings. Below are its technical specifications—you can see the name, data parameters, and here is the quantity. This is also the manufacturer’s specification. Then these are our columns, explaining that…",
+    "char_count": 839
+  },
+  {
+    "chunk_id": 52,
+    "metadata": {},
+    "content": "说话人2: 00:52:23 - 00:52:35\n\nIt means 100k would suffice, but they provided 200k. This highlight is marked in yellow, these are some of their choices.\n\n说话人2: 00:52:35 - 00:52:51\n\nThen these are also our comments, which are quite important because this is 22K, but we need 35K - the gap is significant, so we’re requesting it to be resubmitted. This is the shop drawing for the residential area here.\n\n说话人2: 00:52:52 - 00:53:15\n\nThe center of this distribution board means all these 20+ households are connected here, with each unit serving as an electricity meter for one household. This is the meter, and the wires come in like this, going up to supply power to each household’s meter. From the meter, the output goes to each household’s individual distribution panel. For example, this one shows 800, but while it’s rated for 800, we actually need 1200.",
+    "char_count": 853
+  },
+  {
+    "chunk_id": 53,
+    "metadata": {},
+    "content": "Question: So these are relatively significant issues, and we’ll just let them be resubmitted. This is its surface judgment—various drawings of the meter center, including things like wiring diagrams, which are highly interconnected. These things don’t need to be proposed by Congress at all; they come directly from manufacturers or suppliers. For example, the one just mentioned is definitely from a manufacturer, while this one might be from a supplier, but none of these are handled by contractors. Sometimes contractors do handle them, but mostly it’s the suppliers—that is, the subcontractors. So how do they submit these drawings?",
+    "char_count": 636
+  },
+  {
+    "chunk_id": 54,
+    "metadata": {},
+    "content": "说话人2: 00:53:24 - 00:54:30\n\nHe obtained our drawings and written documents, then made requests according to the requirements. This is the switchgear, and there are also issues with the switching capacity of these switchgears. These are some similar, relatively comparable drawings of the switchgear. This also shows some switch arrangements and wiring limitations of the switchgear. This is the accessory panel, including the switching details of the accessory panel and its larger system. Yes, this is an electrical soft drawing.\n\n说话人2: 00:54:31 - 00:55:19\n\nLet me explain a concept to everyone. For this example of soft drawing, we’ll use another instance to illustrate other paypal work in the construction management process.",
+    "char_count": 728
+  },
+  {
+    "chunk_id": 55,
+    "metadata": {},
+    "content": "Answer: Let me explain a concept to everyone. For this example of soft drawing, we’ll use another instance to illustrate other paypal work in the construction management process.\n\nStarting with AI, for example, this is a project—the school we worked on. I’ve shown you these drawings before, and they had some issues. Typically, this is called a request for information. Here, this is the company, the project, the date, and then this is the whole thing. It has some questions to ask, with these drawings attached. These drawings relate to those questions, essentially providing all the evidence. This is its RY. Of course, we might have replies, but I may not have those response materials. For instance, in the future.",
+    "char_count": 720
+  },
+  {
+    "chunk_id": 56,
+    "metadata": {},
+    "content": "Answer: When you’re able to perform the construction, if there are any issues, you should implement it this way and then submit a patch. This is R5, and then we’ll submit a side instruction and a CCN. Here, we have a CCN that needs to include a side instruction and a CCN. After its quotation package comes up, it will be accompanied by a summary. Actually, everyone, look—this is our CCN, and this is the side instruction we provided. We requested relocating the junction box. Based on what we sent, it will generate a quotation package—this is its quotation package.",
+    "char_count": 568
+  },
+  {
+    "chunk_id": 57,
+    "metadata": {},
+    "content": "说话人2: 00:56:08 - 00:56:35\n\nThis needs to go through our approval process to determine whether it meets the requirements. If approved, the client will issue a change order, which is a side instruction, referred to as CCN. Then, I’ll show you an example of meeting minutes, such as this construction meeting record. These meetings are actually convened by the GC (General Contractor), and the minutes include details like the meeting number and the date it was held.\n\n说话人2: 00:56:36 - 00:56:59\n\nThen when was this accounting record issued, who chaired it, who attended, and what was included. For example, the content discussed and who needs to follow up on these matters. Essentially, it means the tasks from the previous meeting have been completed—closed. Then, each meeting brings new items.\n\n说话人2: 00:57:00 - 00:57:21",
+    "char_count": 820
+  },
+  {
+    "chunk_id": 58,
+    "metadata": {},
+    "content": "说话人2: 00:57:00 - 00:57:21\n\nThe topics discussed in this meeting include security, technology, and the more general general business. Following that is candle over, here we have R5 side instruction, along with acquisition symptom review. After specifying which acquisition symptom review to follow up on, the final item is new business.\n\n说话人2: 00:57:22 - 00:57:51\n\nIt means this meeting has brought up some new issues that need to be discussed. If a problem has already been resolved, just check it off and cancel it for the next meeting. There are quite a few issues that need to be addressed—this makes for a well-rounded approach. This meeting’s minutes are very long, extremely long—that’s what meeting minutes are. Next, let’s take a look at the invoice; this is for the contractor.\n\n说话人2: 00:57:51 - 00:58:39",
+    "char_count": 813
+  },
+  {
+    "chunk_id": 59,
+    "metadata": {},
+    "content": "说话人2: 00:57:51 - 00:58:39\n\nThis is the Progress Claim for January. You’ll see the status of each trade (discipline). This is the total contract sum, along with the percentage already claimed for payment, or the portion that has been paid. It shows the amount claimed to date, along with the specific value of this claim. The remaining balance is also listed in great detail.\n\nEach item has a detailed description. It mentions the project’s change orders, with over twenty change orders to date. The original total contract sum…\n\n说话人2: 00:58:39 - 00:59:11\n\nThe Original Contract Amount was 2.6 million, and with this 100K change order, it reached 2.7 million. Currently, a total of 2.16 million has been charged, leaving approximately 540K that hasn’t been charged yet and hasn’t been billed to the client. As you can see here, this is a summary, and then there’s this 10% holdback.\n\n说话人2: 00:59:11 - 01:00:03",
+    "char_count": 908
+  },
+  {
+    "chunk_id": 60,
+    "metadata": {},
+    "content": "Answer: You can see this entry shows a charge of over 300,000, but it mentions a 10% holdback, which means 300,000 minus 30,000. So the actual invoice amount is 280,000.\n\nThen there’s an additional 5% TSD (tax) added here. After including this tax, it becomes the final payment the owner should make for this month’s construction work.\n\nThis is the total amount – this is for the TC (General Contractor). Below, we’ll need to attach all other trades like plumbing, HVAC, electrical, etc., each with their respective amounts. The top part is a summary – this is what their progress claim looks like.\n\nAnd below this is our certificate of payment – this is how the bill appears. Essentially, once I verify these figures, confirming whether the 2 million or other amounts are correct, that’s it. Finally,",
+    "char_count": 801
+  },
+  {
+    "chunk_id": 61,
+    "metadata": {},
+    "content": "And below this is our certificate of payment – this is how the bill appears. Essentially, once I verify these figures, confirming whether the 2 million or other amounts are correct, that’s it. Finally…\n\nAnswer: This client is using this as a basis to process payments to the contractor’s shop, discussing the progress claim and invoice. Below there’s also the inspection report—whose inspection report is it? It belongs to the regulatory authority.\n\nAnswer: This is CT Bernabe. This wasn’t sent by our engineers, it was issued by the Authority Having Jurisdiction (AHJ), stating this has already passed - that’s correct. Then what about our own? The engineer’s report should be here. For example, this is a very simple report.",
+    "char_count": 726
+  },
+  {
+    "chunk_id": 62,
+    "metadata": {},
+    "content": "Answer:  \nBelow is quite simple. This substantial competition report refers to the middle section—for example, this is No. 5. Review and inspection are the same thing, meaning this project. It includes the project number, who the client is, and then it’s handed over to the client. This part states who the contractor is, their address, the date the inspection was conducted, and when the report was issued. Then comes the report content, followed by some attached photos and on-site observations.",
+    "char_count": 497
+  },
+  {
+    "chunk_id": 63,
+    "metadata": {},
+    "content": "Answer: This is called an inspection report. For large projects, it might be conducted every two weeks or monthly, so there will be many reports; for small projects, it may only be done two or three times. What we just mentioned as substantial completion refers to the SUBSTANTIAL COMPLETION FIELD REVIEW REPORT, which essentially documents the completed work. This is the deficiency report, recording what remains unfinished. These reports include attached photos, like these unfinished items, all of which need updates. This is not yet the substantial completion letter.\n\nAnswer: Or the certificate, this is the letter, in this format. I’ve omitted all the other details, so it’s written like this, and it needs to be personally stamped. This is the certificate, or you could call it a letter.",
+    "char_count": 795
+  },
+  {
+    "chunk_id": 64,
+    "metadata": {},
+    "content": "Answer: The certificate, this is the letter, in this format. I’ve omitted all the other details, so it’s written like this, and it needs to be personally stamped. This is the certificate, or you could call it a letter.\n\nAnother one is this, which is essentially the fire alarm system. Every time, according to the local regulations and standards, as long as you make any changes to the reference system—whether it’s a reduction, addition, modification, or even just relocating it—you need to perform a verification again. Verification means confirming that the system is still functional. And who is responsible for doing this?\n\nAnswer: Actually, it’s a third party that conducts this verification, which follows a special format. The company is called Tomy Fire Alarm Verification. After completing the process, there will be a summary showing yes or no—whether it passed or not. Here you’ll also find the name and signature of the technician who performed the verification.",
+    "char_count": 975
+  },
+  {
+    "chunk_id": 65,
+    "metadata": {},
+    "content": "Answer:  \nThis document needs to be reviewed by our engineers.  \n\nWe will check if there are any issues. If problems are found, we’ll have it redone or require resubmission of the report. This will also be submitted to the regulatory authorities, involving lengthy procedures like the City Inspector process. So this forms a chain where each link has someone responsible. But as the engineer, you’re the signing engineer for this project, and the decision you need to make is: you have the authority to reject any non-compliant documents or construction that fails to meet requirements. What does this City Inspector actually do?",
+    "char_count": 629
+  },
+  {
+    "chunk_id": 66,
+    "metadata": {},
+    "content": "Answer: It initially approves your building permit. During the construction process, there are typically two inspections: one at the drywall or intermediate stage, called wrap in, and the other is the final inspection. For the inspection, on one hand, engineers need to provide documents, such as the substantial completion letter I mentioned; on the other hand, there are corresponding engineers and inspectors from the relevant authorities for each specialty. Only after they all pass the inspection will the City issue you an occupancy certificate, indicating that the municipal government has approved the project, and it is ready for use, which basically marks the end of the process.\n\nThat’s roughly the procedure. The documents I showed you are mostly about construction and bidding. There are many more details in the actual implementation, but due to time constraints, I won’t elaborate further.",
+    "char_count": 904
+  },
+  {
+    "chunk_id": 67,
+    "metadata": {},
+    "content": "Question: That’s roughly the procedure. The documents I showed you are mostly about construction and bidding. There are many more details in the actual implementation, but due to time constraints, I won’t elaborate further.\n\nAnswer: Hello Professor Fang, I’d like to ask about the cable tray adjustments during Shop Drawing Review. There might be some relocations, such as modifications to the routing layout. The precise final positions would be reflected in the contractor’s Shop Drawing Review documents, then approved by the designer—that’s the workflow.\n\nAnswer: Are you referring to relocating this cable tray, or something else?\n\nAnswer: The routing of cable trays should be coordinated with the pipeline integration based on the actual site conditions.",
+    "char_count": 760
+  },
+  {
+    "chunk_id": 68,
+    "metadata": {},
+    "content": "Answer:  \nAre you referring to relocating this cable tray, or something else?\n\nAnswer:  \nThe routing of cable trays should be coordinated with the pipeline integration based on the actual site conditions.\n\nAnswer:  \nMoving should be considered an on-site modification. You want to move it this way without charging him extra, but you still need to inform him and ask if this relocation is acceptable—he needs to approve it. This is standard procedure, no problem at all.\n\nAnswer:  \nThat is, at the level of our shop join diagram, move this one.\n\nAnswer:  \nThis can occur either before or after the submission of the shop drawing.",
+    "char_count": 629
+  },
+  {
+    "chunk_id": 69,
+    "metadata": {},
+    "content": "Question: That is, at the level of our shop join diagram, move this one.\n\nAnswer: This can occur either before or after the submission of the shop drawing.\n\nFirst Scenario: You haven’t submitted the shop drawing yet. Discovering issues at this stage is actually better—you can raise them via an RFI. If we identify that the cable tray routing needs adjustment, and the modification is reasonable and feasible, once approved by the engineer, you can proceed to submit the shop drawing based on the revised plan.\n\nSecond Scenario: You’ve already submitted the shop drawing but later discover an issue. If the engineer approves the change, your shop drawing may or may not need to be resubmitted.\n\nIt’s important to note whether the shop drawing you submitted is the cable tray layout plan or the cable tray product itself. If it’s the layout plan, resubmission is required; if it’s solely the product, resubmission is generally unnecessary.",
+    "char_count": 938
+  },
+  {
+    "chunk_id": 70,
+    "metadata": {},
+    "content": "Question: To put it plainly, if we’re only modifying some routing paths without moving the connected distribution box locations or altering the distribution box positions in the electrical rooms—simply changing the routing—the easiest approach is to revise the routing after submitting the Shop Drawing. However, we must notify and obtain approval before making any changes. No modifications can proceed without approval. Right—essentially, we need to send them a letter for approval before we can proceed. Correct? Yes.\n\nAnswer: Yes.",
+    "char_count": 534
+  },
+  {
+    "chunk_id": 71,
+    "metadata": {},
+    "content": "Answer: That’s true, but you don’t necessarily have to focus on designing your shop join. You can reflect it around sbuild—it depends on the engineer themselves. OK, if the engineer says you must resubmit, then you resubmit. If the engineer says you can reflect it in sbuild, then you do so.\n\nAnswer: You can report it to the engineering team again, then we can include this suggestion in the letter and submit it in the sbuild file. That’s fine, all of this is acceptable.\n\nAnswer: Uh-huh,\n\nAnswer:",
+    "char_count": 499
+  },
+  {
+    "chunk_id": 72,
+    "metadata": {},
+    "content": "You can report it to the engineering team again, then we can include this suggestion in the letter and submit it in the sbuild file. That’s fine, all of this is acceptable.\n\nQuestion:  \nThen this dimension will also be located within that building—meaning, where exactly it will be positioned. There’s another point—yes, one more thing—I’d like to ask the teacher: currently, how common are such EPC projects (engineering, procurement, and construction) domestically, especially compared to those in North America and other international markets? That is, projects combining construction and design.\n\nAnswer:  \nEPC projects, which I will discuss later, are mostly large-scale industrial projects such as power plants, mines, and oil & gas projects. These projects operate under the EPC model. However, EPC practices vary across regions, such as Europe, Asia, and North America. I will provide a detailed explanation in the final lesson.",
+    "char_count": 936
+  },
+  {
+    "chunk_id": 73,
+    "metadata": {},
+    "content": "Question:  \nThere’s one more question, Professor Fang. You mentioned earlier that our final drawings need to specify materials and dimensions, such as combining the instruction manual for the cabinet with the commercial transaction drawings. You made a suggestion: try to select some large-sized products where the dimensions are uncertain, to ensure sufficient usage. If there are cases where the dimensions turn out to be slightly smaller during later ordering, that’s also acceptable.\n\nAnswer:  \nBut mainly, it requires the internal dimensions to be small, so it should definitely fit, then there’s no problem. As long as the other performance indicators can still meet the requirements, then it’s fine.",
+    "char_count": 706
+  },
+  {
+    "chunk_id": 74,
+    "metadata": {},
+    "content": "Question: But mainly, it requires the internal dimensions to be small, so it should definitely fit, then there’s no problem. As long as the other performance indicators can still meet the requirements, then it’s fine.\n\nAnswer: However, the materials we submitted might not match this. In that case, which material are you referring to? The wires and cables? Take a distribution box as an example. What we submitted might be a distribution box with a brand label and fixed dimensions—length, width, height (height, width, depth). If it turns out to be too small after later production, do we need to resubmit the scaled drawings and documents for this part? Or do designers generally overlook this and not pay much attention to it?",
+    "char_count": 730
+  },
+  {
+    "chunk_id": 75,
+    "metadata": {},
+    "content": "Answer: He doesn’t really care about what’s inside the distribution box—things like the busbars or how the wiring is routed. He only cares about things like: this distribution box needs 50 circuits, 10 switches rated at 100 amps, and 5 switches rated at 20 amps. The overall dimensions of the distribution box and whether it can be installed in that location.\n\nAnswer: It can’t be bigger than that, but smaller than that. What I mean is, if there’s a slight discrepancy between the submitted documents and the final actual order, do we need to resubmit the documents for this part? No, here’s the thing now.",
+    "char_count": 607
+  },
+  {
+    "chunk_id": 76,
+    "metadata": {},
+    "content": "Answer: In North America, it works like this: Submitting Shop Drawing means you’ve already made your final decision. Before submitting the Shop Drawing, you should have communicated with manufacturers, selected one, and finalized your choice—otherwise, don’t submit the Shop Drawing. There’s no such thing as submitting Shop Drawings twice unless the first submission gets rejected, in which case you can submit a second time. If it’s not rejected, you should have already negotiated with that manufacturer or supplier.\n\nEspecially in North America, for suppliers of large companies like Siemens, they won’t prepare Shop Drawings for you unless you sign a contract with them. Only after signing the contract will they provide the Shop Drawing. This means: By the time you submit the Shop Drawing, you’ve already decided which supplier to use—you just haven’t executed the agreement yet.",
+    "char_count": 886
+  },
+  {
+    "chunk_id": 77,
+    "metadata": {},
+    "content": "You can’t submit the Shop Drawing and then switch to another supplier—that’s very rare in North America. The only exception is force majeure, like the original supplier going out of business. Under normal circumstances, you can’t change suppliers; whatever you submit is what gets installed. If you submit and then switch to another supplier for a resubmission, they’ll be very annoyed.\n\nQuestion:  \nAlright, alright, I don’t know.\n\nAnswer:  \nThank you, Professor Fan. Let’s continue discussing the topic of commissioning—specifically, the commissioning of the Loway system. In North America, they have a relatively standardized procedural workflow. Typically, projects require a dedicated commissioning process, and for medium to large projects, there must be a specialized commissioning company, referred to as a commissioning agent.",
+    "char_count": 835
+  },
+  {
+    "chunk_id": 78,
+    "metadata": {},
+    "content": "Question: This is neither the equipment manufacturer, nor the contractor, nor the engineer—it’s an independent third party, called a third-party commissioning agent.\n\nThis “commissioning” isn’t about personally adjusting or tweaking anything, as we might assume. Instead, it oversees all testing and commissioning activities for the entire project. If they aren’t doing the hands-on work, then what exactly is their role?\n\nAnswer: During the design phase, he prepares for future on-site commissioning by using various forms to establish the entire adjustment process, sequence, systems requiring commissioning, as well as standards and indicators for the degree of adjustment. This is his responsibility during the design phase.",
+    "char_count": 728
+  },
+  {
+    "chunk_id": 79,
+    "metadata": {},
+    "content": "In the construction phase, he also visits the site to monitor progress, though not as frequently as engineers. Particularly in the early construction stage, he needs to review construction drawings, confirm order status, and track all on-site modifications, including IFC drawings and change orders. These are his tasks during the early construction phase.\n\nAs construction nears completion in the later stages, with various equipment systems installed, he begins commissioning. Before starting, he holds a meeting to clarify each person’s responsibilities and the Commissioning Schedule—when to start, what to adjust first, and what follows.\n\nDuring actual commissioning, he directs a team of contractors, including the Electrical Contractor, Mechanical Contractor, Control Contractor, Fire Alarm Contractor, Sprinkler, Access Control System, and Elevator Contractors. He assigns tasks, verifies commissioning results, and even reviews reports such as the Fire Alarm Verification Report.",
+    "char_count": 988
+  },
+  {
+    "chunk_id": 80,
+    "metadata": {},
+    "content": "Question: He oversees the entire commissioning process, checks all test results, and finally compiles all commissioning documents and reports.\n\nAnswer: Put everything together and ultimately write a report to prepare a comprehensive package. This package is handed over to the Commissioning Authority/Agent, which is their responsibility. They don’t physically operate switches or check specific data—they don’t get hands-on. Instead, they must understand mechanical and electrical systems, know how each system operates, and be clear on what to adjust first and what comes next. In essence, those capable of commissioning must be highly skilled, even among the elite, with practical experience in how systems function, so the requirements are quite demanding.",
+    "char_count": 760
+  },
+  {
+    "chunk_id": 81,
+    "metadata": {},
+    "content": "This is the Commissioning Definition and Benefit. Additionally, there’s Where is Commissioning Needed? Another aspect is the norms and standards followed during commissioning, known as Applicable Codes & Standards. This explains why such an agent is needed, as I just described their role. Then there’s the Commissioning Schedule, which requires a pre-planned timeline. There’s also the Commissioning Fee, covering how the commissioning organization or company charges for their services. Finally, commissioning involves training the client’s operations and maintenance team upon project handover, referred to as Training. Essentially, commissioning is about verification and documentation.",
+    "char_count": 690
+  },
+  {
+    "chunk_id": 82,
+    "metadata": {},
+    "content": "Answer: Testing and commissioning are not the same. It’s more accurate to say commissioning encompasses all testing. Testing merely checks the functionality of individual equipment or systems and produces a report. Commissioning, however, is a holistic process: testing isn’t required during the design phase—it involves hands-on execution. Commissioning, on the other hand, isn’t limited to the hands-on phase; it begins at the design stage and continues until a complete commissioning package is finalized. This is the full workflow.",
+    "char_count": 535
+  },
+  {
+    "chunk_id": 83,
+    "metadata": {},
+    "content": "Commissioning in buildings differs somewhat from other fields. Building commissioning primarily focuses on equipment within the structure, while industrial commissioning is more complex and demanding—such as in oil, gas, or mining, where transition processes are intricate, sometimes involving explosion-proof measures or rapid transitions. Electrical commissioning in buildings is minimal because it’s straightforward: from the power source to the end load, flipping a switch to turn on the lights is often sufficient. At most, measuring lighting illuminance wraps it up—unlike testing fire alarms or elevator functionality, which is far more complicated. In English, this is called straightforward—simple and direct.",
+    "char_count": 718
+  },
+  {
+    "chunk_id": 84,
+    "metadata": {},
+    "content": "Mechanical systems, however, are trickier. For example, the interplay between air handlers, boilers, and chillers is complex. But there’s an advantage: compared to other industrial transition processes, building mechanical systems transition much slower, making adjustments easier. Here’s a rule of thumb: the faster the transition process (e.g., power systems), the harder it is to tune; the slower, the easier. Commissioning offers many benefits, such as…\n\nAnswer: During the design phase, if the Commissioning Agent can get involved, they can review the design from a commissioning perspective. This helps avoid certain Change Orders or conflicting issues at the design stage. Since commissioning personnel typically work on-site and have broad knowledge, they can provide suggestions to design engineers. This is one benefit.",
+    "char_count": 829
+  },
+  {
+    "chunk_id": 85,
+    "metadata": {},
+    "content": "Another benefit is that commissioning serves as quality control and quality assurance during the construction and completion phases. Proper commissioning—such as optimizing parameters for HVAC systems or building automation systems—can lead to energy savings. It ensures that installed systems function according to design and project requirements. Without commissioning, it’s impossible to know whether systems are operating correctly.\n\nAdditionally, commissioning aids in project management and coordination in certain aspects. With a dedicated commissioning Agent, the results of commissioning and testing can be documented, which is highly beneficial for future operation and maintenance.",
+    "char_count": 692
+  },
+  {
+    "chunk_id": 86,
+    "metadata": {},
+    "content": "Commissioning aids in project management and coordination in certain aspects. With a dedicated commissioning agent, the results of commissioning and testing can be documented, which is highly beneficial for future operation and maintenance.\n\nExisting buildings can also undergo commissioning. For example, buildings that have never been commissioned can have their system performance evaluated to identify areas for improvement, such as reducing energy consumption or lowering operational costs. Sometimes, existing buildings perform poorly—like having uneven temperatures (some rooms too cold, others too hot), making occupants uncomfortable. Re-commissioning can achieve a comfortable environment. For lighting, issues like rooms being too dim, too bright, or having glare can be identified and resolved through commissioning.",
+    "char_count": 828
+  },
+  {
+    "chunk_id": 87,
+    "metadata": {},
+    "content": "Question: There’s a term here called Retrospective Recommissioning, which refers to commissioning for existing buildings. Since there are fewer new public buildings in North America, most projects involve retrofitting, upgrading, or improving existing structures. Recommissioning essentially entails a comprehensive audit and analysis of an existing building’s systems, followed by proposed improvements, which may include system modifications or redesigns. Currently, some government projects undertake this due to sufficient funding, whereas private projects do so less frequently.\n\nAnswer: This newly constructed project definitely requires commissioning. Additionally, in North America, projects with LEED certification are quite popular. If applying for LEED certification, commissioning is mandatory, and beyond standard commissioning, LEED-specific commissioning must also be performed. More complex buildings certainly require commissioning.",
+    "char_count": 949
+  },
+  {
+    "chunk_id": 88,
+    "metadata": {},
+    "content": "As for the existing buildings we just mentioned, they may also need commissioning because it can bring significant benefits. Of course, the client must have the budget for it—government entities are relatively better in this regard. So, newly installed electrical or electromechanical equipment must undergo commissioning, even if it’s not part of a full-scale project, right?\n\nAnswer: Whenever there’s a change within my building—whether it’s replacing a supply unit, switching out a switchgear, or upgrading the FARLAM system—I have to conduct debugging. These are the application specifications and standards we follow, specifically the Canadian CSA standards.",
+    "char_count": 663
+  },
+  {
+    "chunk_id": 89,
+    "metadata": {},
+    "content": "Answer: You need to follow this, and ASHRAE also has such a commissioning standard, which is another standard. Then, BCA is a commissioning-related certification body that offers certificates and the like. It has manuals, as well as some samples and templates. These are not as strict or mandatory as design or installation specifications, usually just serving as guidelines. There are also some standards for testing.",
+    "char_count": 418
+  },
+  {
+    "chunk_id": 90,
+    "metadata": {},
+    "content": "Answer: For example, this one is for ATS, which is relatively important—it’s a government debugging standard and guideline. I’ll focus on NFPA 4 and 1001, which refer to integrated testing of fire protection systems. This involves comprehensive integrated testing that integrates elevators, positive pressure air supply and smoke exhaust, fire pumps, access control systems, and the FARLARM system. This integrated testing is not only required upon project completion but also mandated every five years in Canada. Once the project is completed, it must be conducted every five years—this falls under the commissioning agent’s responsibilities, as I mentioned earlier.\n\nAnswer: This integrated testing is not only required upon project completion but also mandated every five years in Canada. Once the project is completed, it must be conducted every five years—this falls under the commissioning agent’s responsibilities, as I mentioned earlier.",
+    "char_count": 945
+  },
+  {
+    "chunk_id": 91,
+    "metadata": {},
+    "content": "Answer: I won’t repeat what kind of work it does here. This means sometimes the commissioning agent needs certain certificates, like this one here. This certificate is issued by ASHRAE, and there’s also this CCP - the BCxP and CCP, which are called 35 commissioning professional certifications. But none of these are mandatory, and very few people have them. Our company has done many projects, and I’ve conducted numerous commissioning processes myself without these certificates - they’re not always necessary.\n\nGenerally speaking, consultants hold relatively higher status here. I respect consultants, and they can also perform commissioning. But not everyone is confident - if they lack relevant experience or knowledge, they can’t do it. There’s also 3rd party commissioning.",
+    "char_count": 780
+  },
+  {
+    "chunk_id": 92,
+    "metadata": {},
+    "content": "Answer: The progress of commissioning, or the Commissioning Schedule, usually follows the overall project timeline or depends on the progress of on-site construction and installation. Generally, when does it start? It begins when the project is substantially completed, with some equipment—almost all major equipment—already installed and operational. How long does it take? It varies by project. The larger and more complex the project, the longer the duration.\n\nOf course, commissioning must be nearly complete before occupants can move in. Therefore, the commissioning period typically falls between Substantial Completion and the move-in date. Commissioning also requires coordination with many parties. As mentioned earlier, the client must coordinate the start time; we need to communicate with the general contractor and subcontractors on-site to determine when to begin; additionally, they must be aware of the progress of each discipline and whether they are Ready for Commissioning.",
+    "char_count": 992
+  },
+  {
+    "chunk_id": 93,
+    "metadata": {},
+    "content": "Question: Furthermore, once Commissioning begins, you must coordinate with each discipline: which system to test today, which tomorrow, or whether to test multiple systems together later—all require collaboration. Additionally, during commissioning, you need to arrange for tools—such as computers, multimeters, and various specialized tools or instruments—which also requires coordination. Often, basic tools should be available from contractors, but some specialized ones may need to be prepared independently. The cost of commissioning typically accounts for about 3% to 5% of the total project budget.\n\nAnswer: So what does this mean? For a one-million-yuan project, debugging might cost around thirty to fifty or sixty thousand yuan. This cost also depends on the project type, the client’s financial situation, region, project scale or difficulty, and complexity—these factors all vary. But it generally falls within this range.",
+    "char_count": 934
+  },
+  {
+    "chunk_id": 94,
+    "metadata": {},
+    "content": "So who conducts this training?\n\nAnswer:",
+    "char_count": 39
+  },
+  {
+    "chunk_id": 95,
+    "metadata": {},
+    "content": "Question: The duration of training also varies—simple cases may take a few hours, while complex ones or those involving multiple systems may require one or two weeks or even longer.\n\nAnswer: Usually, this training is not conducted by the commissioning agent or engineers from the design institute, but by the system provider or the installation team. For example, if it’s a system from Honeywell, then Honeywell’s control contractor would handle it. For the electrical part, if it’s from Faram, the training might be done by Faram’s supplier, or by the electrical contractor or mechanical contractor. They provide the training, explaining the system’s features, how to perform trouble shooting, and how to operate it.\n\nQuestion: So who organizes this? Who ensures this gets done and coordinates it?\n\nAnswer: Typically, it’s the commissioning agent, the client’s project manager, or sometimes the client’s commissioning coordinator—they oversee the coordination.",
+    "char_count": 961
+  },
+  {
+    "chunk_id": 96,
+    "metadata": {},
+    "content": "Question: So who organizes this? Who ensures this gets done and coordinates it? Typically, it’s the commissioning agent, the client’s project manager, or sometimes the client’s commissioning coordinator—they oversee the coordination.\n\nThere’s a training log for this training, which is a record of who attended, the date it was conducted, and their signatures. That’s the training process. The operator training is actually quite targeted.\n\nAnswer: Earlier when I mentioned “generator,” this type of training usually refers to more complex systems like Ford Arm or BAS generator. These require maintenance or specialized knowledge to operate, which is what we call operator training. This includes how to operate and maintain the equipment, perform troubleshooting, and conduct routine inspections. Additionally, it covers whether the operations and maintenance team can resolve issues independently and how to handle emergencies. Another aspect is the duration of the warranty.",
+    "char_count": 978
+  },
+  {
+    "chunk_id": 97,
+    "metadata": {},
+    "content": "Question: Actually, this kind of training only covers basic operations and maintenance. What happens when truly unsolvable problems arise? As I mentioned earlier, there’s something called a service contract. For systems like Ford Arm, Splinker, generators, and BAS, many of these are handled by contractors. The installation and commissioning contractors or suppliers provide this service—they can be called in at any time within a year and are paid by the hour. So, if major or complex issues arise that can’t be resolved internally, they can be brought in.\n\nThis relates to commissioning, and we’ll go into more detail about it.",
+    "char_count": 630
+  },
+  {
+    "chunk_id": 98,
+    "metadata": {},
+    "content": "Question: This relates to commissioning, and we’ll go into more detail about it.  \nAnswer: Which equipment requires commissioning? What responsibilities and roles does each department or company undertake during the commissioning process? Additionally, what are the job responsibilities for commissioning? What commissioning-related documents need to be issued, such as reports, etc.? What information do we need to obtain from the client, design institute, and contractors? Below, we will discuss these topics.  \nAnswer: What systems and equipment require commissioning? Mechanical includes various air conditioning units, water pumps, boilers, fans, etc. Of course, there are also BuildingEnvelope, LifeSafety, and others. LifeSafety covers a broad scope and may involve multiple disciplines:  \nElectrical: emergency lighting, generators, etc.  \nMechanical: smoke control and exhaust systems, etc.  \nArchitecture: elevators, etc.  \nSpecial systems: energy-saving commissioning, etc.",
+    "char_count": 984
+  },
+  {
+    "chunk_id": 99,
+    "metadata": {},
+    "content": "Electrical: emergency lighting, generators, etc.\n\nMechanical: smoke control and exhaust systems, etc.\n\nArchitecture: elevators, etc.\n\nSpecial systems: energy-saving commissioning, etc.\n\nThe electrical portion includes various distribution boxes, switchgear, lighting, etc. Elevator commissioning is also quite specialized. BuildingEnvelope is primarily handled by domestic construction and involves exterior wall waterproofing, air leakage treatment, basement waterproofing, etc. Material selection in this area is also linked to building energy efficiency.\n\nIn summary, there are six major categories:\n1. Mechanical\n2. Electrical\n3. LifeSafety\n4. Elevator\n5. BuildingEnvelope\n6. Energy-saving commissioning",
+    "char_count": 707
+  },
+  {
+    "chunk_id": 100,
+    "metadata": {},
+    "content": "Question: In summary, there are six major categories: Mechanical, Electrical, LifeSafety, Elevator, BuildingEnvelope, and Energy-saving commissioning. Among these, Mechanical and Electrical have the most items, while LifeSafety is also highly important. Elevators are not optional but are used less frequently. For energy-saving commissioning, Mechanical systems cannot be commissioned for only winter or summer conditions—both Heating and cooling requirements must be considered.\n\nAnswer: During the cooling season, it has both heaters and chillers, so each component is being regulated. Additionally, the HVAC in the air conditioning system includes air balancing, as well as centralized cooling or heating systems, which we refer to as central heating and cooling—this is the mechanical part, encompassing BAS and other systems.",
+    "char_count": 831
+  },
+  {
+    "chunk_id": 101,
+    "metadata": {},
+    "content": "Question: As for fire protection, it typically refers to components like fire pumps and sprinklers. Then there’s plumbing, which covers domestic water supply and drainage. Both of these fall under LS (life safety), including systems like positive pressure air supply and smoke exhaust fans.\n\nFor equipment startup, some more complex systems and equipment actually require manufacturers to be on-site for setup, startup, and commissioning. For example, generators, ATS, and boilers generally need the manufacturer’s direct involvement because contractors lack the technical capability.\n\nThis seems a bit repetitive with the earlier part—SALAB should appear here. The electrical system mainly involves lighting and power distribution.",
+    "char_count": 732
+  },
+  {
+    "chunk_id": 102,
+    "metadata": {},
+    "content": "Question: This seems a bit repetitive with the earlier part—SALAB should appear here. The electrical system mainly involves lighting and power distribution. Including grounding, as well as Fire alarm, this is emergency lighting and power distribution, these are the LV systems or low-voltage systems. Then this and this are actually reports we need during the commissioning process, which have already been mentioned earlier. This elevator is energy-efficient, and this is also energy-efficient, all of which have been covered. Some regions may have special requirements, like these specific energy-saving requirements, which are particular to certain areas, not universal ones.\n\nAnswer: Now, let me explain the roles played by various parties during the commissioning process. First, the client (甲方)",
+    "char_count": 800
+  },
+  {
+    "chunk_id": 103,
+    "metadata": {},
+    "content": "Question: Now, let me explain the roles played by various parties during the commissioning process. First, the client  \n\nAnswer: If it’s a large client, they might have their own manager or specialist who understands commissioning. Such an expert may get involved but won’t participate in the actual commissioning process. They might oversee many commissioning items, and since they understand commissioning, their role is mainly to review and approve all documents from the commissioning agent, including reports, results, plans, etc. They can also choose to witness the commissioning—that is, to observe or participate in it—but they may opt not to. That’s the client’s role.",
+    "char_count": 677
+  },
+  {
+    "chunk_id": 104,
+    "metadata": {},
+    "content": "Question: As for the general contractor, I’ve listed a landlord here, which actually refers to an existing building where the landlord might play a role. So, the general contractor needs to coordinate various subcontractors below them, such as mechanical, electrical, control, or elevator subcontractors. In many overseas projects, there’s usually one general contractor who hires other companies as subcontractors. Their main job is to coordinate with these subcontractors and manage the various tests the subcontractors need to perform.\n\nAs for the engineer, if there’s a dedicated commissioning agent, they don’t need to do much work. They can choose to witness the commissioning or opt out. Usually, there’s a dedicated witness, so they’re not heavily involved. Their responsibility is more technical—for example, handling shop drawings, O&M manuals, issuing letters, or preparing deficiency lists.",
+    "char_count": 902
+  },
+  {
+    "chunk_id": 105,
+    "metadata": {},
+    "content": "Answer: His responsibilities include: convening and chairing commissioning meetings, distributing meeting minutes, and then preparing the commissioning schedule. Additionally, he must organize and supervise all commissioning-related activities. He is also responsible for reviewing and approving facility tests conducted by various contractors, compiling the results into a report. Furthermore, he needs to review and approve the O&M manual.\n\nHe must coordinate all commissioning activities with the client, general contractor, engineers, and other subcontractors. At the same time, he is required to prepare the final deliverable package, known as the final commissioning manual or package.",
+    "char_count": 691
+  },
+  {
+    "chunk_id": 106,
+    "metadata": {},
+    "content": "说话人2: 01:40:06 - 01:40:58\n\nThis should be a relatively detailed breakdown of the roles of each party. Sub-trade refers to the subcontractors who are responsible for conducting the actual tests, then submitting the test reports to the design institute—namely, the engineers and commissioning agent—for review and approval. They should provide manpower, including labor, equipment, and various tools. Additionally, they are also responsible for training.\n\nAs for the equipment or system vendor, their primary role is to handle start-up, especially for more expensive and complex equipment. Sometimes, they may also participate in commissioning and provide training.\n\nNow, let’s discuss the specific tasks involved in commissioning.\n\n说话人2: 01:40:58 - 01:41:43",
+    "char_count": 756
+  },
+  {
+    "chunk_id": 107,
+    "metadata": {},
+    "content": "Question: As well as what he needs to submit for debugging this technical document. As the commissioning agent, during the design phase, we must have this design document and also participate in design meetings. During the design\n\nAnswer: We need to prepare the commissioning plan, commissioning specifications, and various forms for commissioning, such as test procedures, which are the sequence of operations. As the commissioning agent, we also need to conduct reviews of drawings during the design phase.",
+    "char_count": 508
+  },
+  {
+    "chunk_id": 108,
+    "metadata": {},
+    "content": "Answer:  \nOnce the construction phase begins, we need to continuously update the commissioning plan and all commissioning documents, maintaining updates from the design phase through the construction phase. Since updates from other projects may impact commissioning, ongoing updates are necessary. During the construction phase, we attend weekly construction meetings. If commissioning-related issues arise, we respond to some RFIs, though such cases are relatively rare. We also lead commissioning meetings, which cover content similar to what was mentioned earlier.\n\nThe on-site commissioning process consists of several specific steps:  \n1. Installation Check: Verify whether installations align with the drawings.  \n2. Performance Testing: Conduct performance tests.  \n3. Integrated System Testing: Perform comprehensive system testing, as many systems are interconnected and require holistic evaluation.  \nAdditionally, seasonal testing must be considered, such as for HVAC systems.",
+    "char_count": 987
+  },
+  {
+    "chunk_id": 109,
+    "metadata": {},
+    "content": "说话人2: 01:42:55 - 01:43:39\n\nIt has both cooling and heating functions. We need to conduct tests during a cooling period. For example, when testing the cooling system in summer, we cannot simultaneously debug the winter heating system, so this factor usually needs to be considered. We must review all testing reports, then prepare a commissioning report, and also create a commissioning issue log. This is essentially the same as the division list prepared by engineers, except that one is for installation while this one is for commissioning. Next comes organizing training, reviewing O&M, and finally preparing a final commissioning document. These commissioning documents need to be prepared.\n\n说话人2: 01:43:40 - 01:44:19",
+    "char_count": 721
+  },
+  {
+    "chunk_id": 110,
+    "metadata": {},
+    "content": "Answer: We need a lot of these inputs, such as the client’s requirements, relevant specifications and standards for debugging as the basis, then the Design Package designed by engineers, the approved Shop Drawings, as well as the Testing Reports or results from various trades. All of these are compiled together to form the final Commissioning Package. Now, let’s talk about what Testing Reports are included.\n\nAnswer: This type of manufacturer’s testing report before leaving the factory mainly refers to complex systems such as fire alarm generators, air conditioning units, boilers, elevators, engines, and the like. Additionally, we need to integrate the inspection report conducted by the regulatory authorities.",
+    "char_count": 718
+  },
+  {
+    "chunk_id": 111,
+    "metadata": {},
+    "content": "There are also reports like air balance reports, hydrostatic tests, and sprinkler systems, each with their corresponding testing reports. For electrical aspects, there are fire alarm verification reports, as well as other reports such as those for elevators and energy efficiency.\n\nThe latter two are relatively rare and are only required when there are energy efficiency commissioning demands. In summary, we have handled many building commissioning projects and can manage mechanical, electrical, BAS (Building Automation System), and life safety systems.",
+    "char_count": 557
+  },
+  {
+    "chunk_id": 112,
+    "metadata": {},
+    "content": "Answer: The low voltage system, that’s all for this part. The debugging section is basically covered. Let me show you some templates or examples: one is the commissioning report, which can include who performed it? This is a template. What tests were conducted here, what were the results, what issues still exist, and what tasks need to be done. What else is included in the entire report? What tools were used for testing? This is a general template for the report. And this is a template for the commissioning issue log.",
+    "char_count": 523
+  },
+  {
+    "chunk_id": 113,
+    "metadata": {},
+    "content": "说话人2: 01:45:58 - 01:46:50\n\nIt is similar to a deficiency list and includes the following contents:\n- Project number, name, date\n- Consultant’s information\n- Our information as the commissioning agent\n- Testing company (mainly manufacturers and contractors)\n- General contractor information\n- Issue description: specific problem, location, responsible party\n- Issue status: open or resolved\n- Time information: issue raised time, estimated resolution time, actual resolution time\n- Resolver information\n- Comments\n- Signature of the commissioning agent\n- Signature of the dummy box\n\nThis is what the commissioning agent needs to complete after the project is finished.\n\n说话人2: 01:46:52 - 01:47:23",
+    "char_count": 694
+  },
+  {
+    "chunk_id": 114,
+    "metadata": {},
+    "content": "The debugging has been completed, and this letter needs to be issued. It is the same as the final completion or substantial completion letter issued by the engineer, except that the latter is from the perspective of construction design, while this one is issued from the commissioning perspective. This is a commissioning plan, which explains the purpose of commissioning, the process, and the tasks to be performed. It also includes what the coco party entails.\n\nWhat are their responsibilities? Which systems need to be debugged? What’s the situation with this commissioning meeting? Right, this is simply a commissioning plan. Okay.",
+    "char_count": 635
+  },
+  {
+    "chunk_id": 115,
+    "metadata": {},
+    "content": "Answer: What are their responsibilities? Which systems need to be debugged? What’s the situation with this commissioning meeting? Right, this is simply a commissioning plan. Okay.\n\nAnswer: That concludes the commissioning section. Does anyone have any questions? For the projects we’ve done domestically and overseas, is there a clear concept of commissioning, or is there a situation like abroad where the paperwork is more comprehensive?\n\nAnswer: There will also be debugging involved, but we can’t handle it ourselves—it’s all entrusted to specialized manufacturers or equipment suppliers, as this is included in their service package.",
+    "char_count": 638
+  },
+  {
+    "chunk_id": 116,
+    "metadata": {},
+    "content": "Question: There will also be debugging involved, but we can’t handle it ourselves—it’s all entrusted to specialized manufacturers or equipment suppliers, as this is included in their service package.\n\nAnswer: OK, what the manufacturer does is still called testing, not yet debugging or commissioning, which is different from the concept of commissioning in North America. They only perform testing on their own system or equipment. The real commissioning requires me to integrate everything holistically and complete a lot of paperwork. Essentially, it’s a form of supervision. Why is there something called third-party commissioning? It’s because I hire them to oversee these manufacturers or contractors, ensuring they truly complete this commissioning and testing to make the system operational and meet the design and project requirements. This is what commissioning is—it’s actually a step above mere testing, as it doesn’t refer solely to the testing of any specific system or equipment.",
+    "char_count": 993
+  },
+  {
+    "chunk_id": 117,
+    "metadata": {},
+    "content": "Question: But this is something we’re not really familiar with. When it comes to checking this, the commissioning part does fall within our scope of responsibility, but we have relatively little hands-on experience with the specific tasks. OK, so when it comes to quality control related to commissioning, how should we handle it? For example, if the client has high requirements and asks for a package, saying you’ve completed all the tests—do you have sign-offs? Are there detailed test reports and commissioning reports? Do you need to submit these kinds of documents?\n\nAnswer: This might need to be submitted. When commissioning is performed by a third party or our own team, a report must be submitted to the consultant for confirmation and signature. OK.",
+    "char_count": 760
+  },
+  {
+    "chunk_id": 118,
+    "metadata": {},
+    "content": "Question:  \nThis might need to be submitted. When commissioning is performed by a third party or our own team, a report must be submitted to the consultant for confirmation and signature. OK.  \n\nAnswer:  \nWhat can be done will be done, but not as comprehensively as required. Involvement is needed at every stage of the projects. For example, commissioning must be involved from the very beginning—starting with the design phase. Generally, involvement occurs during the later stages of design, specifically during detailed design. However, the commissioning agent themselves must also review what we call the BOD (basis of design). Typically, this happens during the later stages of design, when detailed design is underway. The requirements for commissioning personnel are quite high—they need to understand mechanical, electrical, and control systems, as well as the equipment itself. They must be knowledgeable in all aspects; otherwise, how can they carry out commissioning effectively?",
+    "char_count": 991
+  },
+  {
+    "chunk_id": 119,
+    "metadata": {},
+    "content": "说话人3:  \nYes, exactly. This thing is way too comprehensive.\n\n说话人2:  \nIt seems that domestically we’ve largely left this aspect to contractors to handle - what you see is what you get. Now that we’re aligning with international standards, in industries like building electrical systems, are there any forums, publications, or academic conferences discussing these matters? Or from design institutes, clients, or general contractors like China Construction Eighth Division - are there any trends or signs indicating efforts to strengthen awareness in this area?\n\nI personally believe there are, otherwise why would you be helping us with training? This precisely serves an educational purpose.\n\n说话人2:  \nJust now someone asked about these EPC matters,",
+    "char_count": 747
+  },
+  {
+    "chunk_id": 120,
+    "metadata": {},
+    "content": "Question: I personally believe there are, otherwise why would you be helping us with training? This precisely serves an educational purpose.\n\nAnswer: Just now someone asked about these EPC matters.\n\nAnswer: Now I’ll explain how this project operates in North America, how to run this project. From the bidding process all the way to the final completion, let me briefly outline its workflow. The first step is,\n\nAnswer: For these North American projects, we’ll first conduct an overview, then discuss Business Development, including how to secure projects and approach potential clients. If opportunities are identified, we’ll cover the bidding process; after winning a project, we’ll explain operational procedures. Time permitting, we’ll share some case studies. As for our electrical engineering responsibilities in a project, these are the key aspects—which everyone is already familiar with.",
+    "char_count": 896
+  },
+  {
+    "chunk_id": 121,
+    "metadata": {},
+    "content": "Answer: This part is mostly handled by mechanical engineers in North America, while the construction is managed by control contractors under mechanical contractors. Of course, although my own company is an electrical firm, I personally have experience in systems and controls in China, the U.S., and Canada. The projects I’ve worked on, such as control systems for chip factories, are extremely complex and large-scale. So after completing those projects, handling other ordinary Building Automation Systems (BAS) becomes very simple.\n\nThis project needs to be divided into several phases: Initially, there’s feasibility analysis, followed by design, bidding, construction, commissioning, and close-out—all of which are straightforward. There are various types of projects.",
+    "char_count": 773
+  },
+  {
+    "chunk_id": 122,
+    "metadata": {},
+    "content": "Answer:  \nAs some of you may know, this is another process. Initially, we identify an opportunity, then participate in the bidding, and finally win the contract. This primarily pertains to construction projects. As a contractor, one discovers the opportunity, bids for it, and upon winning, the project commences.\n\nThe first step of initiation involves obtaining various permits for the construction. For example, electrical work requires electrical permits, plumbing requires plumbing permits, and gas work requires gas permits. Only after securing these permits can we officially begin our work—construction.",
+    "char_count": 610
+  },
+  {
+    "chunk_id": 123,
+    "metadata": {},
+    "content": "When the construction is near completion, we undergo inspections. These include approvals from government agencies, regulatory authorities, engineers, and design institutes. If the inspections pass—which also involves commissioning—the project can then be completed and demobilized. Mobilization refers to entering the site, while demobilization means exiting. After this, the project shifts to coordination among stakeholders.\n\nFor electrical disciplines, coordination may be required with the client, general contractor, and subcontractors. The electrical team may also have its own subcontractors, such as low-voltage contractors for wall installations. Additionally, coordination is needed with design institute engineers, commissioning teams, regulatory bodies, and other construction teams, such as mechanical or control disciplines. These are all challenges we must address.",
+    "char_count": 881
+  },
+  {
+    "chunk_id": 124,
+    "metadata": {},
+    "content": "Electrical projects can vary greatly in scale—some are tiny, costing just a few hundred dollars, while others are multi-billion-dollar endeavors. For instance, large projects like Canada’s oil sands may reach around $10 billion per project. Of course, some projects in China are even larger. If electrical work accounts for 10–15% of the total, that still amounts to multi-billion-dollar sums. Typically, in North America, electrical construction accounts for about 10–15% of the total project cost, with industrial projects often having a higher proportion compared to residential or commercial projects.",
+    "char_count": 605
+  },
+  {
+    "chunk_id": 125,
+    "metadata": {},
+    "content": "In North America, to engage in construction, you must hold the appropriate licenses. Design requires design licenses, and construction requires construction licenses. These licenses apply to both individuals and companies. For example, you need licensed electricians and licensed electrical contractors, similar to design requirements. Once a project is secured, it involves project management, construction management, and not just execution—but also overseeing personnel, schedules, finances, and more. Safety, various licenses, insurance, and compliance with regulations are all critical aspects throughout the construction process.\n\nAnswer:",
+    "char_count": 644
+  },
+  {
+    "chunk_id": 126,
+    "metadata": {},
+    "content": "Answer: It must be done according to the design drawings. Now, let’s talk about how to approach this market development. It’s not called marketing—marketing is primarily about promotion, while business development is more about purposefully reaching out to potential clients. We have what’s called the public sector—the public sector refers to projects like infrastructure. In North America, there’s a fairly popular website called Merx.\n\nThe com website contains various government projects from the United States and Canada, and most of them are published there—essentially, the bidding documents are posted on the platform. Of course, if you want to download these documents, you need to become a member and pay an annual fee, which is around a few hundred dollars per year.",
+    "char_count": 777
+  },
+  {
+    "chunk_id": 127,
+    "metadata": {},
+    "content": "Besides this platform, there are many other bidding platforms, such as those for individual U.S. states and Canadian provinces—each has its own provincial-level platform. There are also commercial platforms that aggregate projects from schools, hospitals, and other institutions, allowing you to search for opportunities. Most of these projects are already published, so you can download the bidding documents and submit a bid if you meet the requirements; otherwise, there’s no need to waste time.\n\nMost of these platforms operate online and require membership with an annual fee. Projects are available at various levels—federal, provincial/state, and municipal government projects, among others.\n\nThere’s often a mechanism called standing offer or pre-qualified consultant/contractor. Because sometimes there are too many projects—if they were all open for public bidding, there could be hundreds of submissions, making the evaluation process overwhelming. So, they use standing offers or pre-qualification methods.",
+    "char_count": 1018
+  },
+  {
+    "chunk_id": 128,
+    "metadata": {},
+    "content": "This isn’t a specific project but rather an assessment of your qualifications. Anyone can submit a bid for this type, but it’s not an actual project—it’s a qualification bid. In your proposal, you need to introduce your design firm, personnel qualifications, project experience, expert teams, management capabilities, etc. After submission, they’ll select, say, 20 out of 100 applicants, and these 20 become prequalified consultants/contractors.\n\nFor most projects in the end…",
+    "char_count": 476
+  },
+  {
+    "chunk_id": 129,
+    "metadata": {},
+    "content": "说话人2: 02:00:41 - 02:03:12\n\nHe directly invites these prequalified vendors and won’t open the bidding to everyone. This way, the pressure of evaluating and reviewing bids is much reduced. A significant portion of projects operate this way, which applies to projects at all levels of government and some public projects, such as hospitals, schools, and education bureaus. They also have similar systems, which we call prequalified vendors or shortlists. If you want to secure more projects, this is actually a great method. Once you’re on this shortlist, you’ll frequently receive their bid invitations. After making the shortlist, since you’ve already met all other qualifications, it then comes down solely to price. Whoever offers the lowest price wins the bid. But relatively speaking, competing against so many others becomes easier—you just need to be the lowest bidder to secure the project. This is how government projects work.",
+    "char_count": 934
+  },
+  {
+    "chunk_id": 130,
+    "metadata": {},
+    "content": "Question: As for other types of projects, aside from bidding on public platforms, it relies on your connections and social resources. This includes your own marketing efforts, referrals from existing clients, or recommendations from peers. In short, social network is crucial here. However, in North America’s design industry, technical authority is also extremely important for winning projects. This is similar to China—if your company has technical authority or has completed renowned projects, it becomes much easier to win bids. For example, in recent years across Canadian provinces and cities, bidding wasn’t solely based on price. At one point, government projects allocated only 10% of the evaluation weight to price, with the rest focused on qualifications, experience, past projects, your team, company operations, and how you’d manage the project. So this aspect is very important.",
+    "char_count": 893
+  },
+  {
+    "chunk_id": 131,
+    "metadata": {},
+    "content": "Question: Now, let’s talk about the private sector—non-public construction projects. Here, you naturally need to build your network and meet more people. You can also place ads in media, with LinkedIn being the most commonly used platform here. For the Chinese community, there are WeChat groups or various associations established by Chinese professionals, such as engineering associations, architectural associations, renovation associations, and construction material associations. Another avenue is professional associations or organizations, like engineering societies. These associations regularly host events where you can meet people in the same industry.",
+    "char_count": 663
+  },
+  {
+    "chunk_id": 132,
+    "metadata": {},
+    "content": "Beyond that, potential project sources include clients, developers, builders, or general contractors. If you know people at design firms, you can also secure construction projects. They handle the design and may recommend you, providing leads to pursue. Referrals from friends are also common. Personally, much of my business comes from repeat clients or peer recommendations. I rarely actively cold-call or send solicitations anymore. Once your reputation or the trust you’ve built with others is established, they’ll keep coming back to you. In North America, professional relationships are straightforward—no need for gifts or lavish treatment. As long as you deliver good service, they’ll keep hiring you. Once trust is established, especially with Caucasian clients, it tends to last.",
+    "char_count": 789
+  },
+  {
+    "chunk_id": 133,
+    "metadata": {},
+    "content": "Another point is the system here. For example, with government projects, you might think of giving gifts or building relationships to secure work. But let me share an example: When I worked for a U.S. company, they mentioned that U.S. government officials couldn’t accept gifts worth more than $25—they wouldn’t even dare to dine with you. In Canada, I once bid on a government project and had lunch with two people—one was a collaborator, and the other was on the bid evaluation panel. I offered to pay for their meals, which wasn’t expensive—just an ordinary lunch. The evaluator said, “No, I can’t let you pay for me. I’ll cover my own bill.” So, the market dynamics here are entirely different from China. Especially with government entities, you need to understand what they value. What’s the key? You must align with their priorities—whether it’s transparency, qualifications, or trust—rather than relying on personal favors.",
+    "char_count": 931
+  },
+  {
+    "chunk_id": 134,
+    "metadata": {},
+    "content": "Answer: He hopes his work will be productive. So whether you’re a contractor or a consultant under his management, you need to find ways to minimize trouble for him. To minimize trouble, one way is to deliver your design or complete your construction on time, with guaranteed quality and quantity. There’s no other way—just make sure he has as little hassle as possible, and that you perform well. This way, he can relax, and his KPIs will look good in front of leadership. That’s what he needs. He doesn’t need gifts or sweet talk—that’s useless. What helps is solving practical problems for him and reducing his burden and troubles. This is different from China, a result of cultural and systemic differences.",
+    "char_count": 711
+  },
+  {
+    "chunk_id": 135,
+    "metadata": {},
+    "content": "Here are a few tips on how to secure this project. Of course, especially in the private sector, your bid price must be highly competitive. Additionally, you need a strong reputation, the ability to provide excellent service, high-quality construction and design, and the capacity to complete projects quickly and well—on time, within budget, and meeting all specifications. Good communication and coordination with other departments are also crucial.",
+    "char_count": 450
+  },
+  {
+    "chunk_id": 136,
+    "metadata": {},
+    "content": "This brings me to the situation in North America. I’ve mentioned before that the project timelines and costs between China and North America differ by at least a factor of five. In reality, Canada moves at an even slower pace. The work-life rhythm in North America is like this: the U.S. is much faster than Canada, so it’s more competitive. Within the U.S., the East Coast is faster than the West Coast, and the same goes for Canada—the East is quicker than the West. For example, in the U.S., if you email a company, they usually reply within an hour—sometimes in minutes, sometimes a few hours. In Canada, a fast reply might take a day, a slow one a few days, and sometimes even weeks. People here are accustomed to a slower pace.",
+    "char_count": 733
+  },
+  {
+    "chunk_id": 137,
+    "metadata": {},
+    "content": "We Chinese, however, tend to be more efficient and don’t operate at such a sluggish speed. Many Westerners here take vacations in the summer without caring how urgent your project is—they won’t answer calls or reply to emails. This actually creates opportunities for us Chinese or other minorities. If you respond quickly and complete projects fast, you’ll be in high demand, giving you a market edge. So here, quick response and fast project delivery are highly competitive advantages, allowing you to win more projects. Because many locals are just too slow—their efficiency, whether in construction or design, can’t compare.\n\nThere are other factors that can help you secure projects as well.\n\nAnswer:",
+    "char_count": 704
+  },
+  {
+    "chunk_id": 138,
+    "metadata": {},
+    "content": "Question:  \nThere are other factors that can help you secure projects as well.  \n\nAnswer:  \nThis kind of paperwork is really important. For example, when you’re working on other projects, if your paperwork isn’t done well, those foreigners—their mainstream society is already accustomed to having high-quality paperwork. Say you’re preparing a bid proposal—if theirs is beautifully done, and you just scribble something on two sheets of paper and hand it in, that’s completely unacceptable. Because foreign culture emphasizes appearances, while Chinese culture focuses on substance. If they see you doing things this way, they won’t even consider you. So when we operate here, we also need to make sure our paperwork and surface-level efforts are impeccable. Even if you excel in other areas, if these aspects aren’t up to par, they won’t consider you. It’s not about judging a book by its cover—it’s just how the culture works here.",
+    "char_count": 933
+  },
+  {
+    "chunk_id": 139,
+    "metadata": {},
+    "content": "Question: Of course, if you’re running a consulting or contractor company, you must establish credibility and a professional image—that’s crucial. You need to understand the psychology of different clients. What I mentioned earlier applies to government departments. But in the private sector—like developers, contractors, or builders—since the money is their own, they won’t ask for kickbacks. Besides good service, they want highly competitive pricing and extremely fast delivery. That’s what these private-sector clients are looking for. Earlier, I mentioned some aspects that make it easier to win bids.\n\nAnswer: So how exactly do we go about bidding here? There’s a specific mechanism in place. First, public bids usually involve a document called an RFP (Request for Proposal) or RFQ (Request for Qualification/Quotation). The client will post it on a public website. Of course, if you make it to their shortlist, that’s a different story—they’ll send it directly to you, but it’s still in the same format.",
+    "char_count": 1012
+  },
+  {
+    "chunk_id": 140,
+    "metadata": {},
+    "content": "Once you receive the RFP or RFQ, sometimes there’s a pre-bid event or pre-bid meeting—a gathering before the actual bid submission. Some are mandatory (you must attend to qualify), while others are merely recommended (you can still bid without attending).\n\nTypically, the RFQ/RFP will include the following:\n1. Details about the pre-bid event\n2. Project schedule—a rough timeline from design to construction completion\n3. Scope of work\n4. Required qualifications for bidding, such as insurance, licenses, or bonds\n5. The question period—when we, as consultants, can submit RFQs, with a set deadline\n6. Security requirements, referred to here as security clearance, mainly for government or sensitive projects\n7. Submission requirements for the bid, like page limits, content, and format",
+    "char_count": 786
+  },
+  {
+    "chunk_id": 141,
+    "metadata": {},
+    "content": "Bid documents are usually divided into two parts: technical and financial. The financial part is essentially the pricing, including the total cost and the hourly rates of personnel. This helps the client evaluate additional work if needed. The technical section covers your company’s background, team experience, past projects, project management approach, understanding of the project, plans, and proposed workflows. If the project is awarded to you, these details form the technical proposal, which can range from just 8–10 pages.\n\nThe document can be up to a hundred pages long. In the technical proposal, you are required to provide reference projects, meaning similar projects you’ve worked on before. You need to list detailed information about these projects, including project management details. Essentially, this means providing contact information for the clients you’ve previously collaborated with, so they can verify your claims. This is a mandatory section.",
+    "char_count": 972
+  },
+  {
+    "chunk_id": 142,
+    "metadata": {},
+    "content": "Question:  \nNext, you need to outline the team structure and roles, such as who the PM is, who the lead electrical engineer is, who the designer is, etc. There are also specific requirements for the proposal format, including page count, letter size, font, etc. Finally, there are instructions on submission methods, which nowadays are mostly done online.  \n\nAnswer:  \nAddendum and questions are the same thing. In our design phase, it’s called an RFI (Request for Information). If the RFP (Request for Proposal) is for the construction phase, it targets contractors; if it’s for the tender phase, the process is the same for both construction and design. This is about beating the procedure.",
+    "char_count": 692
+  },
+  {
+    "chunk_id": 143,
+    "metadata": {},
+    "content": "Question: Regarding how to read an RFP, I’d like to share some experience: sometimes an RFP is a large package, but only a few documents are actually useful. Most of it consists of boilerplate language or standard contract terms, which you can skip. The key sections to focus on are the project’s scope of work and the requirements for the proposal—these are the parts directly related to your agreed-upon proposal that need careful reading.\n\nAnswer: The first step is understanding how to read these tender documents, and the next step is the bidding process itself.",
+    "char_count": 567
+  }
+]

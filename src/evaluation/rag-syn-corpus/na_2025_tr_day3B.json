@@ -1,0 +1,188 @@
+[
+  {
+    "chunk_id": 0,
+    "metadata": {},
+    "content": "Question: Next we will discuss Building Automation Systems (BAS). In China the design of BAS may fall under either the mechanical or electrical engineering discipline. Based on my domestic work experience this responsibility is typically assumed by electrical engineers though at that time building automation technology was not yet fully developed despite having relatively mature foundational technologies.\n\nIn North America BAS is usually managed by mechanical engineers. However their limitation lies in insufficient understanding of the operational principles of control components as their expertise primarily focuses on the performance of mechanical systems and equipment. Therefore this field requires knowledge spanning both mechanical and electrical engineering disciplines.",
+    "char_count": 784
+  },
+  {
+    "chunk_id": 1,
+    "metadata": {},
+    "content": "Question: Although BAS is predominantly handled by mechanical engineers in North America, my company has also undertaken several BAS projects. My in-depth understanding of this field stems from multiple sources: first, exposure during architectural design work in China; second, specializing in building mechanical systems and their automation during my second master’s degree in North America; additionally, I participated in the entire process—from design to commissioning—of control systems for large-scale foreign-funded projects in China, accumulating substantial hands-on experience; finally, I also worked in BAS-related roles during my two years of employment in the U.S.",
+    "char_count": 679
+  },
+  {
+    "chunk_id": 2,
+    "metadata": {},
+    "content": "Building Automation Systems comprise multiple subsystems. In the 1980s and 1990s, attempts were made to integrate systems such as HVAC, lighting, elevators, and security, even proposing the concept of 3A Systems (Automation, Administration, and Alarm). However, in North America, BAS primarily focuses on HVAC control. While lighting systems have independent control systems that interface with BAS, fire protection systems always operate independently, and communication and security systems also largely remain separate.\n\nIn contrast, China has made more advanced progress in these areas, with significant improvements in recent years, resulting in larger project scales and greater quantities.",
+    "char_count": 696
+  },
+  {
+    "chunk_id": 3,
+    "metadata": {},
+    "content": "Question: This section of the course will introduce the current state of building automation systems in North America. It should be noted that compared with domestic systems, certain technologies may exhibit some lag. The course primarily focuses on the current development status of building automation systems in the North American region.\n\nAnswer: The system encompasses the entire process from overall design and construction to commissioning programming and final handover. Its history can be traced back to the 1980s. It involves numerous technical terms, such as PRC (Programmable Controller), IBS (Intelligent Building System), and HMI (Human-Machine Interface). The primary function of the system is to provide occupants with a comfortable, energy-efficient, and high-performance building environment.",
+    "char_count": 810
+  },
+  {
+    "chunk_id": 4,
+    "metadata": {},
+    "content": "However, the system still has certain limitations. For example, elevator control relies on its independent control system, while in fire emergencies, the FORRORM system takes over. The power distribution system (PDS) also cannot be fully integrated for the following reasons:\n1. Power distribution systems are typically supplied by manufacturers like Schneider or Siemens with complete monitoring control systems (MCS), forming an independent system alongside relay protection, instrumentation, and measurement devices. Their response time is extremely fast (millisecond-level).\n2. In contrast, HVAC systems respond more slowly, with temperature and humidity adjustments often taking tens of minutes to two hours to reach set values.",
+    "char_count": 733
+  },
+  {
+    "chunk_id": 5,
+    "metadata": {},
+    "content": "Regarding control equipment selection, power systems predominantly use PLCs (Programmable Logic Controllers), while HVAC systems employ DDCs (Direct Digital Controllers). There is a significant difference in cost and performance between the two, with DDCs being more economical. The central plant, as the core component, houses equipment such as chillers and boilers, which are controlled by PLCs rather than DDCs. DDCs are better suited for controlling terminal HVAC units.\n\nThe boiler automation system consists of components such as the central control server (Worker Station), DDC controllers, valves, dampers, actuators, transmitters, and various sensors, along with physical elements like wiring and conduits. Additionally, the system includes virtual components at the software level, such as control logic (SSSO, an abbreviation for Sequence of Operation), programming modules, human-machine interfaces (graphical interfaces), and communication protocols.",
+    "char_count": 963
+  },
+  {
+    "chunk_id": 6,
+    "metadata": {},
+    "content": "Question:  \nThe operation and maintenance department provides training, and the following is a general introduction. There are mainly two types by category.\n\nAnswer:  \nThere are two types of systems: proprietary systems and open systems. Currently, Qingjiang language primarily adopts open systems. The system architecture includes two modes: distributed and centralized unified control, which are suitable for large-scale building management. For small-scale projects, such as independent air conditioning units, the Standalone mode is typically used for local control. The scale of the system is measured by the number of input and output points—the more points there are, the larger the system scale, and the higher the cost accordingly.",
+    "char_count": 740
+  },
+  {
+    "chunk_id": 7,
+    "metadata": {},
+    "content": "BAS systems differ significantly from industrial control systems. BAS systems mainly involve the control of air conditioning and other auxiliary systems, with relatively singular functions. In contrast, industrial control systems are applied in more complex scenarios, covering fields such as mining, power, oil, and natural gas. Their control processes vary in speed, and they require extremely high system stability. If an industrial control system fails, it may lead to significant economic losses. Therefore, industrial control systems use industrial-grade equipment, which is more expensive, precise, and higher-performing than commercial-grade equipment. Additionally, industrial control logic is closely tied to industry-specific characteristics, and the needs of different factories vary.\n\nRegarding whether a project requires a BAS system, there are currently no mandatory regulations. The decision is usually made jointly by the owner and designers based on project requirements, budget, and expected goals.",
+    "char_count": 1017
+  },
+  {
+    "chunk_id": 8,
+    "metadata": {},
+    "content": "Question: Regarding whether a project requires a BAS system, there are currently no mandatory regulations. The decision is usually made jointly by the owner and designers based on project requirements, budget, and expected goals.\n\nAnswer: Below is the introduction to the design of the Royce Air System. This design requires coordination with the Mechanical Engineering discipline to determine the leading discipline for design responsibilities. In North America, when the Mechanical Engineering discipline is responsible for the Royce Air System design, we only need to provide a 120VAC power supply, while the remaining components are handled by the Mechanical Engineering team. However, most mechanical engineers are only familiar with equipment operation principles and performance parameters and are not proficient in details such as I/O point configuration, wiring connections, and controller settings, which becomes particularly evident during the construction and implementation phases.",
+    "char_count": 994
+  },
+  {
+    "chunk_id": 9,
+    "metadata": {},
+    "content": "The construction phase is typically managed by Control Contractors and System Integrators. These contractors are usually subcontractors of the Mechanical Contractor. The Mechanical Contractor is responsible for drafting system schematics, such as the layout of coils, Supply Fans, and Dampers in air handling units. These tasks are not within the expertise of electrical engineers, including the development of Sequences of Operation, valve selection (involving LUTE calculations, valve capacity calculations, pressure drop parameters, etc.), and damper design.",
+    "char_count": 561
+  },
+  {
+    "chunk_id": 10,
+    "metadata": {},
+    "content": "The primary responsibility of the Electrical Engineering discipline is to provide power for the BAS system based on the Mechanical Engineering team’s requirements, including power supply for the central control room and field devices. In North America, detailed design and Shop Drawing development are typically completed by Control Contractors and System Integrators. The Mechanical Contractor is responsible for creating schematics, defining Sequences of Operation, selecting valve and damper models, and annotating various control points (such as analog I/O and digital I/O) in the schematics. The Control Contractors and System Integrators then refine the design based on the preliminary drawings from the design institute until they reach the Shop Drawing level of detail.",
+    "char_count": 777
+  },
+  {
+    "chunk_id": 11,
+    "metadata": {},
+    "content": "Question: They still need to complete the programming work and configure the graphical interface in the central control system. Additionally, it includes numerous components such as valves, controllers, sensors, etc., all of which are part of the system integration package.\n\nAs part of the contract, the workload for system integration and detailed design is the most substantial. The design institute also imposes particularly meticulous requirements on contractors for this portion. Taking a chip fabrication plant as an example, due to the large-scale nature of the project and the involvement of multiple control processes, its complexity far exceeds that of typical projects.",
+    "char_count": 681
+  },
+  {
+    "chunk_id": 12,
+    "metadata": {},
+    "content": "In North American tradition, BAS design falls under the contractor’s responsibilities, and the documentation submitted for detailed design and system integration is subject to strict requirements in terms of quantity, detail, and depth, representing a significant workload. This serves as a key metric for evaluating the work.\n\nQuestion: At each stage, different roles play their respective parts. The client is responsible for supervision, the electrical engineer handles commissioning, while the control contractor undertakes a significant portion of the work. Lighting control systems typically possess independent functionality.\n\nAnswer: It has an interface with BIS, but the HVAC control system is not independently configured as a complete system and requires customized design based on the specific plans of the design institute.",
+    "char_count": 836
+  },
+  {
+    "chunk_id": 13,
+    "metadata": {},
+    "content": "Question:  \nIt has an interface with BIS, but the HVAC control system is not independently configured as a complete system and requires customized design based on the specific plans of the design institute.\n\nTypically, the power system is equipped with an independent monitoring system that can communicate with BIS but is only used for monitoring. The Fire Alarm system usually operates independently and has no direct connection with BIS, only sending alarm signals to BIS when triggered.\n\nThe Security system can be connected but relies on specific communication protocols. For example, some systems use the BACnet protocol, while others may use ModBus or proprietary interfaces. The Fire Alarm system neither supports ModBus nor is compatible with BACnet, communicating with the building automation system only through dry contact signals. Security systems from manufacturers like Honeywell use proprietary protocols and are also incompatible with BACnet.",
+    "char_count": 959
+  },
+  {
+    "chunk_id": 14,
+    "metadata": {},
+    "content": "With the development of the internet and 5G/6G technologies, communication system design has significantly diverged from traditional models, greatly impacting audio-visual and communication system designs. In contrast, the technological evolution of lighting, HVAC control, power distribution, Fire Alarm, and security systems has been relatively slow.\n\nThe elevator system can send signals to BIS via the Elevator Control Panel, but it is usually managed independently by the manufacturer’s proprietary control system, with non-compatible communication between the two achieved through dry contact signals. BIS only has input/output nodes and does not directly control elevator operation logic—this function is programmed by the elevator manufacturer through the Control Panel.",
+    "char_count": 778
+  },
+  {
+    "chunk_id": 15,
+    "metadata": {},
+    "content": "Question:  \nFour control methods were introduced, along with a less commonly used floating control. Primatur requires control parameters including temperature, humidity, pressure, flow rate, and sometimes position signals. For example, in air handling units or similar equipment, Dumpers require their on/off status to be determined. More precise control uses Position Switches to detect position signals.\n\nAnswer:  \nThese instruments include actuators, transducers, sensors, and switches. Sensors are used to measure analog signals, while switches only handle digital signals. Additionally, contactors or relays are used, primarily for controlling equipment with different voltage levels or high capacity.",
+    "char_count": 706
+  },
+  {
+    "chunk_id": 16,
+    "metadata": {},
+    "content": "Regarding electronic and pneumatic control, control loops come in various forms to constitute a complete closed-loop control. For example, adjusting valve openings to control room temperature is a closed-loop control, typically implemented using PID (Proportional-Integral-Derivative) control algorithms.\n\nControl loops mainly include the following types:\n1. ON/OFF control: The simplest switch control\n2. Analog/modulating control: Continuous analog control\n3. Floating control: Stepwise control via position signals\n4. Open-loop and closed-loop control: The difference lies in the presence or absence of feedback\n\nCurrently, BAS systems employ these control methods.\n\nThe system supports multiple communication protocols. In Building Automation Systems (BAS), the most commonly used are BACnet and TCP/IP Modbus. In the industrial sector, LONWORKS is more prevalent, though this protocol has seen declining usage over the past 20 years.",
+    "char_count": 938
+  },
+  {
+    "chunk_id": 17,
+    "metadata": {},
+    "content": "Question:  \nWith the advancement of wireless technology, wireless communication protocols are being increasingly adopted. Additionally, the system requires a database and a Human-Machine Interface (HMI). Modern automation systems widely employ open protocols to facilitate system integration.\n\nCurrently, the commonly used protocols in building automation systems include WiFi, Modbus, Bluetooth, BACnet, LONWORKS, among others, with TCP/IP protocol being the most widely applied. The system is capable of implementing various functionalities.\n\nThe same function can be achieved through hardware control circuits or software. For example, this is a simple schematic diagram of an air handling unit control system, including supply air, return air, exhaust air, and fresh air systems. The system is equipped with heating coils, cooling coils, filters, and various temperature, humidity, and pressure sensors. Different control logics are used to achieve set point control, which is a typical design solution.",
+    "char_count": 1007
+  },
+  {
+    "chunk_id": 18,
+    "metadata": {},
+    "content": "Question: The first step in construction commencement is for the controlling contractor to submit construction drawings, known as “submit.” After the engineer reviews and approves them, the contractor can proceed with ordering materials.",
+    "char_count": 237
+  },
+  {
+    "chunk_id": 19,
+    "metadata": {},
+    "content": "Question: The first step in construction commencement is for the controlling contractor to submit construction drawings, known as “submit.” After the engineer reviews and approves them, the contractor can proceed with ordering materials.\n\nAnswer: Field installation is typically carried out at a later stage, after major equipment such as electrical and mechanical devices are mostly in place, before small control devices can be installed.\n\nQuestion: This slide introduces commissioning work, primarily overseen by the Control Contractor and the Commissioning Agent. For large-scale projects, a third-party commissioning agent is usually engaged. The purpose of involving a third party is to ensure the control contractor does not engage in fraudulent practices during commissioning.",
+    "char_count": 784
+  },
+  {
+    "chunk_id": 20,
+    "metadata": {},
+    "content": "After commissioning is completed, the third-party commissioning agent must verify and confirm that the system functions properly. The design institute may choose to send personnel for on-site supervision or opt not to participate, as the third-party commissioning agent and control contractor can typically complete the work independently.\n\nSpecific testing is performed by the control contractor, while the commissioning agent is mainly responsible for guidance and supervision. Detailed content regarding commissioning work will be covered in a dedicated section later.\n\nThe owner’s representative may optionally participate in supervision, though generally, the commissioning agent is already capable of handling the tasks.",
+    "char_count": 726
+  },
+  {
+    "chunk_id": 21,
+    "metadata": {},
+    "content": "The owner’s representative may optionally participate in supervision, though generally, the commissioning agent is already capable of handling the tasks.\n\nDuring the design phase, the commissioning agent should be involved and provide input. For instance, some designers may not fully consider aspects related to commissioning and installation. Since the commissioning process is led by the commissioning agent, associated costs should be factored into project management.\n\nAdditionally, the opinions of the owner’s operations and maintenance department must be taken into account, as they will directly take over and operate the facility and may have specific requirements and suggestions. This slide elaborates on this content.",
+    "char_count": 729
+  },
+  {
+    "chunk_id": 22,
+    "metadata": {},
+    "content": "Question: During the commissioning process, QA/QC inspections will be conducted. After completing the turnover package, relevant documents must be submitted. These documents typically come in two forms: initially called shop drawings, and later referred to as close-out documents. While similar in nature, close-out documents include final outcomes such as product selections and design details.\n\nDuring commissioning, it’s common to encounter systems that are not yet ready. For example, air handling units may lack power supply, pneumatic valves may not be connected to air lines, water pipes may not be filled, or refrigerant systems may not be prepared—all of which can impact the commissioning schedule.\n\nAnswer: During the debugging phase, certain tools will be used, and these operations are relatively straightforward. The debugging process typically includes initial checks to identify issues, followed by instrument calibration.",
+    "char_count": 938
+  },
+  {
+    "chunk_id": 23,
+    "metadata": {},
+    "content": "Question: During the debugging phase, certain tools will be used, and these operations are relatively straightforward. The debugging process typically includes initial checks to identify issues, followed by instrument calibration.\n\nOnce the substantive debugging phase begins, adjustments to control loop parameters are required to ensure the system functions properly and reaches setpoints, such as stabilizing temperature at 22°C. Additionally, safety interlock mechanisms must be inspected.\n\nRelevant terminology includes: OAT (Operational Acceptance Testing), FAT (Functional Acceptance Testing), and HMI (Human-Machine Interface). System integration is also a critical aspect of debugging.",
+    "char_count": 694
+  },
+  {
+    "chunk_id": 24,
+    "metadata": {},
+    "content": "Question:  \nAfter debugging the interface issues with other systems, the project will enter the Close-Out Phase. The following tasks must be completed during this stage:  \n1. Submit a complete Turnover Package to the client;  \n2. Submit the final commissioning report;  \n3. Provide training for the client’s operations and maintenance department.  \n\nAnswer:  \nUnlike simpler systems such as lighting control, the Building Automation System (BAS) involves more complex control logic, incorporating graphical interfaces, various instruments, and multiple control methods. As a result, the training period is typically longer—large projects may require 1-2 weeks, while smaller projects still need 1-2 days.",
+    "char_count": 704
+  },
+  {
+    "chunk_id": 25,
+    "metadata": {},
+    "content": "Question: In North America, we compared several well-known BAS product manufacturers, and the relevant content has been basically introduced. Does anyone have any questions?",
+    "char_count": 173
+  },
+  {
+    "chunk_id": 26,
+    "metadata": {},
+    "content": "Question: In North America, we compared several well-known BAS product manufacturers, and the relevant content has been basically introduced. Does anyone have any questions?\n\nCurrently in China, who is responsible for designing Building Automation Systems? Is it the electrical discipline or the HVAC discipline? Nowadays, it is typically designed by the intelligent systems discipline, which is an emerging professional field. Designers in this discipline usually have electrical or mechanical backgrounds and are associated with structured cabling systems.\n\nAnswer: In addition, it also includes internet telephony and network equipment.\n\nQuestion: That’s still a weak major in the electrical field, right?\n\nAnswer: Could you please give an overview of your BAS system architecture? I’d like to understand how it differs from domestic systems, particularly whether it also uses 485 bus and Ethernet cables for connections.",
+    "char_count": 924
+  },
+  {
+    "chunk_id": 27,
+    "metadata": {},
+    "content": "Question: Could you please give an overview of your BAS system architecture? I’d like to understand how it differs from domestic systems, particularly whether it also uses 485 bus and Ethernet cables for connections.\n\nAnswer: The most common application method currently is that controllers and servers communicate using the TCP/IP protocol, while communication between controllers employs the BACnet protocol. As for communication between controllers and actuators or sensors, ordinary analog signal transmission methods are typically used.\n\nQuestion: For example, who puts forward the control requirements for elevators and ordinary fans or competitive exhaust fans?\n\nAnswer: The mechanical components of the elevator are typically the responsibility of the elevator manufacturer. The control system of the elevator is entirely managed by the manufacturer and requires no additional configuration.",
+    "char_count": 899
+  },
+  {
+    "chunk_id": 28,
+    "metadata": {},
+    "content": "The mechanical components of the elevator are typically the responsibility of the elevator manufacturer. The control system of the elevator is entirely managed by the manufacturer and requires no additional configuration.  \n\nUnder normal circumstances, the elevator operates according to standard procedures, and passengers only need to press the corresponding buttons. However, in emergency situations such as fires, the elevator must be controlled according to specific standards.  \n\nAnswer:  \nDoes the specification reflect this control requirement?  \n\nQuestion:  \nIt’s not that there are no standards at all, they’re just not mandatory. North America has a set of standards, but besides incorporating air conditioning automation systems as part of standard automation, what other components are included in domestic intelligent control systems?",
+    "char_count": 848
+  },
+  {
+    "chunk_id": 29,
+    "metadata": {},
+    "content": "Question: Some power distribution requirements will be incorporated into it. It is a unified BAS system, but only for display purposes.\n\nAnswer: Alternatively, adopt a simple control method, such as the system of the electric hotel itself, which does not employ standard automatic control. In the past, it was controlled solely through a primitive sensor, but now it will be integrated with other systems.\n\nQuestion: It is integrated into a DTC controller, with the upper end of the DTC controller connected to the smart device network, and uniformly transmitted wirelessly after consolidation.",
+    "char_count": 594
+  },
+  {
+    "chunk_id": 30,
+    "metadata": {},
+    "content": "Question: It is integrated into a DTC controller, with the upper end of the DTC controller connected to the smart device network, and uniformly transmitted wirelessly after consolidation.\n\nAnswer: These systems are typically decentralized. Especially in government office buildings, each department operates its own independent facilities. Only some residential communities or office buildings managed by property management companies adopt centralized systems. Additionally, local technology applications are relatively outdated, with new technology adoption progressing slowly. People still primarily focus on daily project operations.\n\nAnswer: This is the control system for a large-scale project, and its functions are relatively complex.",
+    "char_count": 742
+  }
+]

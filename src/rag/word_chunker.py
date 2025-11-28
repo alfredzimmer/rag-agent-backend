@@ -5,11 +5,13 @@ import os
 import pathlib
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
+from langchain_ollama import ChatOllama
 
+OLLAMA_MODEL = "qwen3:8b"
 
 def split_word(file: str) -> list[Document]:
     """
-    Split the markdown conversion of a PDF file into chunks with size requirements.
+    Split the markdown conversion of a DOC file into chunks with size requirements.
     """
     doc = DocxDocument(file)
     # Join all paragraphs into a single text with double newlines to preserve structure
@@ -44,19 +46,21 @@ def format_splits_as_list(splits) -> list[dict]:
     formatted_splits = []
 
     for i, doc in enumerate(splits):
+        sanitized_content = doc.page_content.strip()
         split_data = {
             "chunk_id": i,
             "metadata": doc.metadata,
-            "content": doc.page_content.strip(),
+            "content": sanitized_content,
             "char_count": len(doc.page_content)
         }
         formatted_splits.append(split_data)
 
     return formatted_splits
 
+
 # Debug testing
 if __name__ == "__main__":
-    FOLDER_PATH = "src/rag/public/2025/"
+    FOLDER_PATH = "/srv/shared-data/training-datasets/NA-trainings/2025/"
     for filename in os.listdir(FOLDER_PATH):
         if filename.endswith(".docx"):
             FILE_PATH = os.path.join(FOLDER_PATH, filename)
