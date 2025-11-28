@@ -5,15 +5,34 @@ from langchain_core.documents import Document
 import json
 import os
 from pathlib import Path
-
+from modules.sparse_embedder import BGEEmbedder, SpladeEmbedder
 
 conn = connections.connect(host="127.0.0.1", port=19530)
 
 URI = "http://localhost:19530"
 
+# vector_store = Milvus(
+#     embedding_function=OllamaEmbeddings(model="qwen3-embedding:8b"),
+#     collection_name="bm25",
+#     builtin_function=BM25BuiltInFunction(output_field_names="sparse"),
+#     connection_args={"uri": URI, "db_name": "milvus_demo"},
+#     vector_field=["dense", "sparse"],
+#     drop_old=False,
+#     auto_id=True,
+# )
+
+# vector_store = Milvus(
+#     embedding_function=[OllamaEmbeddings(model="qwen3-embedding:8b"), BGEEmbedder()],
+#     collection_name="bge",
+#     connection_args={"uri": URI, "db_name": "milvus_demo"},
+#     vector_field=["dense", "sparse"],
+#     drop_old=False,
+#     auto_id=True,
+# )
+
 vector_store = Milvus(
-    embedding_function=OllamaEmbeddings(model="qwen3-embedding:8b"),
-    builtin_function=BM25BuiltInFunction(output_field_names="sparse"),
+    embedding_function=[OllamaEmbeddings(model="qwen3-embedding:8b"), SpladeEmbedder()],
+    collection_name="splade",
     connection_args={"uri": URI, "db_name": "milvus_demo"},
     vector_field=["dense", "sparse"],
     drop_old=False,

@@ -48,3 +48,4 @@ pymilvus
 pypdf
 deepeval
 chromadb
+pymilvus[model]
