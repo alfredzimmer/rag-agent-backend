@@ -4,6 +4,9 @@ from FlagEmbedding import BGEM3FlagModel
 from pymilvus import model
 
 
+from threading import Lock
+
+
 class BGEEmbedder(BaseSparseEmbedding):  # inherit from BaseSparseEmbedding
     def __init__(self): 
         self.sparse_model = BGEM3FlagModel('BAAI/bge-m3', use_fp16=True)  # code to init or load model
@@ -28,9 +31,11 @@ class SpladeEmbedder(BaseSparseEmbedding):  # inherit from BaseSparseEmbedding
             model_name="naver/splade-cocondenser-selfdistil", 
             device="cpu"
         )
+        self.lock = Lock()
 
     def embed_query(self, query: str) -> Dict[int, float]:
-        sparse_output = self.sparse_model.encode_queries([query])
+        with self.lock:
+            sparse_output = self.sparse_model.encode_queries([query])
         # sparse_output is a CSR matrix. For a single query, it has shape (1, vocab_size).
         # We want to return a dictionary {token_id: weight}.
         row_idx, col_idx = sparse_output.nonzero()
@@ -38,7 +43,8 @@ class SpladeEmbedder(BaseSparseEmbedding):  # inherit from BaseSparseEmbedding
         return {int(idx): float(weight) for idx, weight in zip(col_idx, weights)}
 
     def embed_documents(self, texts: List[str]) -> List[Dict[int, float]]:
-        sparse_output = self.sparse_model.encode_documents(texts)
+        with self.lock:
+            sparse_output = self.sparse_model.encode_documents(texts)
         # sparse_output is a CSR matrix of shape (num_docs, vocab_size).
         # We need to convert each row into a dictionary.
         results = []

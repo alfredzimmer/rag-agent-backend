@@ -2,7 +2,10 @@
 
 from langchain_core.documents import Document
 from FlagEmbedding import FlagReranker
+from threading import Lock
+
 reranker = FlagReranker('BAAI/bge-reranker-v2-m3', use_fp16=True) # Setting use_fp16 to True speeds up computation with a slight performance degradation
+reranker_lock = Lock()
 
 def to_qa_pair(query: str, documents: list[Document]) -> list[list[str]]:
     qa_pair: list[list[str]] = []
@@ -19,7 +22,8 @@ def rerank(query: str, documents: list[Document], top_k: int | None = None) -> l
         return []
 
     qa_pair = to_qa_pair(query, documents)
-    scores = reranker.compute_score(qa_pair, normalize=True)
+    with reranker_lock:
+        scores = reranker.compute_score(qa_pair, normalize=True)
 
     scored_docs: list[Document] = []
     for doc, score in zip(documents, scores):
