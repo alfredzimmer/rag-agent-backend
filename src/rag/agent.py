@@ -1,13 +1,15 @@
-from typing import Union, List, Optional
+from typing import Union, List, Optional, Dict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
-from langchain_core.messages import HumanMessage, AIMessage, ToolMessage
+from langchain_core.messages import HumanMessage, AIMessage, ToolMessage, BaseMessage
 from langchain_ollama import ChatOllama
 from langchain_core.tools import tool
+import uuid
 
 from .milvus import create_milvus_store
 from .modules.reranker import BGERanker
 from .modules.hyde import HyDEGenerator
+from .session_storage import get_storage
 
 @dataclass
 class RAGConfig:
@@ -94,8 +96,9 @@ def agent_call(query: Union[str, List[str]], config: RAGConfig = None):
     llm_with_tools, rag_tool = build_agent(config)
 
     # System message
-    SYSTEM_MESSAGE = """You are a helpful assistant with access to a knowledge base. 
-    Use the hybrid_RAG_retrieve tool to search for relevant information when needed to answer user questions."""
+    SYSTEM_MESSAGE = """You are a helpful assistant with access to a specialized knowledge base. 
+    IMPORTANT: You MUST ALWAYS use the hybrid_RAG_retrieve tool FIRST before answering any question. 
+    Never rely solely on your general knowledge. Always check the knowledge base for relevant information."""
 
     # Normalize input to list
     is_batch = isinstance(query, list)
@@ -194,7 +197,189 @@ def agent_call(query: Union[str, List[str]], config: RAGConfig = None):
     if is_batch:
         return results
     else:
-        return results[0] 
+        return results[0]
+
+
+# ============================================================================
+# Session-based Continuous Conversation
+# ============================================================================
+
+def agent_chat(
+    query: str,
+    session_id: Optional[str] = None,
+    config: RAGConfig = None,
+    clear_history: bool = False
+) -> tuple[str, List[str], str]:
+    """Chat with the agent in a continuous conversation.
+    
+    This function maintains conversation history across multiple calls using session IDs.
+    Unlike agent_call which is stateless, this function stores message history on the server.
+    
+    Args:
+        query: The user's question
+        session_id: Optional session ID to continue a conversation. If None, creates new session.
+        config: RAG configuration (uses default if None)
+        clear_history: If True, clears the conversation history for this session
+        
+    Returns:
+        Tuple of (response, sources, session_id)
+        - response: The agent's response text
+        - sources: List of source document contents
+        - session_id: The session ID (new or existing)
+        
+    Example:
+        # Start new conversation
+        response, sources, session_id = agent_chat("What is machine learning?")
+        
+        # Continue conversation
+        response, sources, _ = agent_chat(
+            "Can you explain more?", 
+            session_id=session_id
+        )
+        
+        # Clear history and start fresh
+        response, sources, _ = agent_chat(
+            "New topic", 
+            session_id=session_id,
+            clear_history=True
+        )
+    """
+    # Initialize config
+    if config is None:
+        config = RAGConfig()
+    
+    # Get storage backend
+    storage = get_storage()
+    
+    # Create or retrieve session
+    if session_id is None:
+        session_id = str(uuid.uuid4())
+    
+    # Clear history if requested
+    if clear_history:
+        storage.delete_session(session_id)
+    
+    # Build agent
+    llm_with_tools, rag_tool = build_agent(config)
+    
+    # System message
+    SYSTEM_MESSAGE = """You are a helpful assistant with access to a specialized knowledge base. 
+    IMPORTANT: You MUST ALWAYS use the hybrid_RAG_retrieve tool FIRST before answering any question. 
+    Never rely solely on your general knowledge. Always check the knowledge base for relevant information."""
+    
+    # Get conversation history
+    messages = storage.load_session(session_id)
+    
+    # Add system message if this is the first message
+    if len(messages) == 0:
+        messages.append({"role": "system", "content": SYSTEM_MESSAGE})
+    
+    # Add user message
+    messages.append(HumanMessage(content=query))
+    
+    # Track retrieved docs
+    retrieved_docs = []
+    
+    try:
+        # Step 1: Get initial response from LLM
+        response = llm_with_tools.invoke(messages)
+        
+        # Step 2: Check if the model wants to use tools
+        if response.tool_calls:
+            # Add the assistant's response with tool calls
+            messages.append(response)
+            
+            # Execute each tool call
+            for tool_call in response.tool_calls:
+                print(f"[Calling {tool_call['name']}...]")
+                
+                # Execute the tool
+                serialized_context, docs = rag_tool.invoke(tool_call["args"])
+                retrieved_docs.extend(docs)
+                
+                # Add tool result to messages
+                messages.append(ToolMessage(
+                    content=serialized_context,
+                    tool_call_id=tool_call["id"]
+                ))
+            
+            # Get final response with tool results
+            final_response = llm_with_tools.invoke(messages)
+            messages.append(AIMessage(content=final_response.content))
+            
+            response_text = final_response.content
+        else:
+            # No tool call, just use the response
+            messages.append(AIMessage(content=response.content))
+            response_text = response.content
+        
+        # Update session storage
+        storage.save_session(session_id, messages)
+        
+        # Return response, sources, and session_id
+        return (
+            response_text,
+            [doc.page_content for doc in retrieved_docs],
+            session_id
+        )
+        
+    except Exception as e:
+        print(f"Error in agent_chat: {e}")
+        import traceback
+        traceback.print_exc()
+        return f"Error: {str(e)}", [], session_id
+
+
+def get_session_history(session_id: str) -> List[Dict]:
+    """Get the conversation history for a session.
+    
+    Args:
+        session_id: The session ID
+        
+    Returns:
+        List of message dictionaries with 'role' and 'content'
+    """
+    storage = get_storage()
+    messages = storage.load_session(session_id)
+    
+    if not messages:
+        return []
+    
+    history = []
+    for msg in messages:
+        if isinstance(msg, dict):
+            history.append(msg)
+        elif isinstance(msg, HumanMessage):
+            history.append({"role": "user", "content": msg.content})
+        elif isinstance(msg, AIMessage):
+            history.append({"role": "assistant", "content": msg.content})
+        elif isinstance(msg, ToolMessage):
+            history.append({"role": "tool", "content": msg.content})
+    
+    return history
+
+
+def clear_session(session_id: str) -> bool:
+    """Clear a conversation session.
+    
+    Args:
+        session_id: The session ID to clear
+        
+    Returns:
+        True if session was cleared, False if session didn't exist
+    """
+    storage = get_storage()
+    return storage.delete_session(session_id)
+
+
+def list_sessions() -> List[str]:
+    """List all active session IDs.
+    
+    Returns:
+        List of session IDs
+    """
+    storage = get_storage()
+    return storage.list_sessions() 
 
 
 if __name__ == "__main__":

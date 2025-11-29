@@ -49,3 +49,4 @@ pypdf
 deepeval
 chromadb
 pymilvus[model]
+redis
