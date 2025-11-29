@@ -1,0 +1,770 @@
+[
+  {
+    "chunk_id": 1,
+    "metadata": {},
+    "content": "Respected Professor Fan, distinguished leaders, colleagues, and participating design specialists, good morning. Today, we commence the first session of CSCEC8B Overseas Design Standards Training Series in an online format—the specialized training on U.S. standards for electrical design. This training is both a concrete action to implement the bureau’s overseas business strategy and a critical initiative to address gaps in overseas design capabilities and build a robust design support system.",
+    "char_count": 496
+  },
+  {
+    "chunk_id": 2,
+    "metadata": {},
+    "content": "On behalf of the Design Management Academy, I extend a warm welcome to all colleagues who have overcome time zone differences to attend this training. A special thanks to our instructor, Professor Fan Ziyu, joining us from Canada. Professor Fan is a registered electrical engineer in multiple Canadian provinces, a Tsinghua University graduate, and brings extensive experience from both Chinese design institutes and North American engineering projects. Despite the time zone challenge, Professor Fan will teach daily from 6 PM to 11 PM (local time). We deeply appreciate his dedication.",
+    "char_count": 587
+  },
+  {
+    "chunk_id": 3,
+    "metadata": {},
+    "content": "Today’s participants are all key members of CSCEC8B’s overseas design teams, including MEP chief engineers from Southeast Asia and North Africa regions, senior electrical designers, and young talents newly joining the overseas division. They understand the decisive impact of local-standard-compliant drawings and precise detailed designs on project cost, schedule, and quality—as well as the importance of effective communication with overseas clients and consultants.",
+    "char_count": 469
+  },
+  {
+    "chunk_id": 4,
+    "metadata": {},
+    "content": "The bureau officially issued the Implementation Plan for CSCEC8B’s Overseas Design Management Mechanism and System Development, aiming to address issues such as weak design philosophy, insufficient collaboration, and capability gaps in overseas projects. The plan establishes a management model of “strong headquarters support and robust project execution,” emphasizing design as the cornerstone of overseas project management. Through standardization, resource integration, and talent development, the plan seeks to transform design from a backend support role to a frontend driver, fostering deeper collaboration among design, procurement, and construction.",
+    "char_count": 659
+  },
+  {
+    "chunk_id": 5,
+    "metadata": {},
+    "content": "This electrical engineering training marks the beginning. Subsequently, we will invite seasoned overseas designers specializing in architecture, structural engineering, and plumbing/HVAC fields—especially those well-versed in Southeast Asian and North African regional standards—to conduct thematic training sessions. As outlined in the implementation plan, we will also establish a design consulting expert resource pool and progressively refine the categorized subcontractor resource database for design services.",
+    "char_count": 515
+  },
+  {
+    "chunk_id": 6,
+    "metadata": {},
+    "content": "To refine the competency model for overseas design professionals, we have compiled a unified Overseas Design Management Manual, aiming to provide clear work guidelines for everyone. Taking this opportunity, I would like to put forward several requirements for all participants of the training:\n\nFirst, I hope everyone can immerse themselves in learning, overcome the distractions of online training, listen attentively to each lecture, complete every in-class test diligently, and gain a deep understanding of the core standards and design essentials of American Standard Electrical.\n\nSecond, it is recommended to learn with questions in mind. Combine the electrical design challenges encountered in your own projects, seek guidance from Instructor Fan frequently, and transform doubts into practical solutions.",
+    "char_count": 811
+  },
+  {
+    "chunk_id": 7,
+    "metadata": {},
+    "content": "Second, it is recommended to learn with questions in mind. Combine the electrical design challenges encountered in your own projects, seek guidance from Instructor Fan frequently, and transform doubts into practical solutions.\n\nLastly, focus on future development. Not only should you master the technical standards, but also learn how to leverage your professional skills to engage in dialogue with overseas consultants, showcasing the technical expertise of Chinese engineers, and solidifying the design brand of China Construction Eighth Engineering Division in overseas markets.\n\nWe are honored to have Instructor Fan share his knowledge unreservedly. I hope everyone cherishes this learning opportunity. Wishing this training a complete success. Thank you all, and a special thanks to Instructor Fan.\n\nOkay, Professor Fan, let’s officially begin the teaching agenda.\n\nOkay, let’s begin now.",
+    "char_count": 895
+  },
+  {
+    "chunk_id": 8,
+    "metadata": {},
+    "content": "Thank you to Dean Zhu, General Manager Fan, as well as Shao Bo and Peng Zhen for the arrangements that gave me the opportunity to participate in this training. Seeing the names of so many experts, chief engineers, and institute directors on the training roster, I feel deeply honored to exchange ideas with all of you.",
+    "char_count": 318
+  },
+  {
+    "chunk_id": 9,
+    "metadata": {},
+    "content": "Two years ago, I was invited to conduct similar training for the Egypt team of China Construction Eighth Engineering Division. The content this time is similar to the previous session, but the duration has been shortened. Having worked and lived overseas for nearly 30 years, I have been employed at a design institute for six years since returning to China. Through online channels, I have witnessed the remarkable improvement in domestic design and construction standards.\n\nFrankly speaking, we have participated in numerous large-scale engineering projects. China’s infrastructure construction capabilities are among the best globally, having successfully delivered many massive and structurally complex projects. Whether in terms of construction scale, project speed, or technical difficulty, these achievements are hard for other countries to match. This also presents an opportunity for me to exchange insights with all of you.",
+    "char_count": 933
+  },
+  {
+    "chunk_id": 10,
+    "metadata": {},
+    "content": "Objectively speaking, North America’s building code system is indeed more mature, given its longer development history. However, there remains a noticeable gap in actual construction capabilities, as well as the execution capacity and efficiency of large-scale projects.\n\nIf there are no further questions, we will now begin the first lecture. Due to the extensive course content and limited time, I will strive to cover as much detail as possible. As this is the inaugural session, feedback is welcome at any time. Considering the schedule, we will refrain from in-class discussions on specific topics to avoid exceeding the allotted time.\n\nDean Zhu, President Can—does this arrangement seem appropriate?",
+    "char_count": 705
+  },
+  {
+    "chunk_id": 11,
+    "metadata": {},
+    "content": "Today we will begin the first lecture, which mainly introduces the electrical-related codes and standards in North America. Before that, I need to adjust the screen settings. It should be noted that the course I prepared for the Egyptian team consists of 15 lectures. I will follow the established sequence and have supplemented and improved the content based on previous feedback and the latest developments. This lecture is divided into three parts, with the first part focusing on introducing the North American electrical design code standards and their practical applications. First, we will explore the importance of electrical codes and standards application, which I believe everyone is already somewhat familiar with.",
+    "char_count": 726
+  },
+  {
+    "chunk_id": 12,
+    "metadata": {},
+    "content": "We will explore the importance of electrical codes and standards application, which everyone is already somewhat familiar with.\n\nNext, we will introduce the organizations responsible for developing these codes and standards in North America, and list the currently applied codes, standards, and regulations.\n\nThen, we will discuss the specific methods for applying these codes and standards, as well as coordination with the Authority Having Jurisdiction (AHJ) and inspection agencies.\n\nIf time permits, we will illustrate the practical application of codes and standards through two real-world case studies—including the Brockville fire alarm project I participated in.\n\nFinally, questions are welcome on today’s lecture content, as this session covers substantial information.",
+    "char_count": 778
+  },
+  {
+    "chunk_id": 13,
+    "metadata": {},
+    "content": "Everyone should pay attention to the importance of electrical codes and standards application. When carrying out construction projects abroad, it is usually necessary to apply for construction permits such as Building Permit or Development Permit, as well as Electrical Permit (electrical construction permit). Upon completion of construction, the project must also pass inspection by the relevant authorities. These processes are directly related to codes and standards. If the design or construction fails to comply with code requirements, the project will be rejected during inspection.",
+    "char_count": 589
+  },
+  {
+    "chunk_id": 14,
+    "metadata": {},
+    "content": "Following codes in design and construction can avoid future claims or at least minimize them. This is because overseas, if accidents occur due to design or construction issues, the owner has the right to file lawsuits for compensation. However, if everything is strictly executed according to codes, it becomes difficult to be held liable.\n\nMoreover, during construction and later operation and maintenance, designing in compliance with codes can prevent major safety hazards. Electrical engineering inherently carries certain risks, which electrical professionals are well aware of. Strict adherence to codes and standards in design and construction also reduces the need for later modifications. As we all know, any modification significantly increases design and construction costs. Standardized operations can effectively control costs while avoiding project delays.",
+    "char_count": 870
+  },
+  {
+    "chunk_id": 15,
+    "metadata": {},
+    "content": "Code compliance is also crucial for ensuring engineering quality. Fully adhering to standards at least guarantees that minimum quality requirements are met. This is the essence of the importance of codes and standards.\n\nNext, let’s introduce the main organizations responsible for establishing electrical codes in North America. First is the Institute of Electrical and Electronics Engineers (IEEE) in the United States.\n\nIt has established numerous industry standards, but these standards are not mandatory and fall under performance requirements (Performance Standard). However, once these standards are referenced by building codes or electrical codes, they become mandatory.\n\nISO covers a wide range of standards, but those related to building electrical or general electrical design are relatively few. In contrast, NFPA standards are more specific.",
+    "char_count": 854
+  },
+  {
+    "chunk_id": 16,
+    "metadata": {},
+    "content": "ISO covers a wide range of standards, but those related to building electrical or general electrical design are relatively few. In contrast, NFPA standards are more specific.\n\nThe Fire Protection Committee in the United States has established numerous fire-related codes and standards, making it a relatively important organization. Additionally, the American National Standards Institute (ANSI) has developed many mandatory national standards, equivalent to the country’s national standards.\n\nAnother key organization is the American Society of Heating, Refrigerating and Air-Conditioning Engineers (ASHRAE), whose standards are primarily applied in the air conditioning, refrigeration, and energy efficiency sectors, mainly involving HVAC fields. Currently, North America has also adopted many energy efficiency standards in the electrical engineering field, with several developed by ASHRAE, and these standards are gradually being incorporated into building codes.",
+    "char_count": 968
+  },
+  {
+    "chunk_id": 17,
+    "metadata": {},
+    "content": "Two other organizations, TIA and EIA, primarily develop standards related to communications. These standards are typically mandatory when communication systems have high requirements; otherwise, they are similar to IEEE standards.\n\nAnother standard, UL, mainly pertains to product standards. In the U.S., equipment imported from abroad often requires NCE or UL certification to ensure compliance with national standards. These products include electrical equipment, fire alarm systems, or lighting devices. In Canada, the corresponding certifications are CSA and ULC.\n\nFurthermore, FM certification is common in the fire protection sector. For example, fire alarm systems (such as FARM systems) often require FM certification. This certification is primarily for insurance purposes, as property insurance typically mandates that fire alarm systems have this certification. Therefore, in North America, fire alarm products usually carry FARM certification.",
+    "char_count": 955
+  },
+  {
+    "chunk_id": 18,
+    "metadata": {},
+    "content": "Canada’s building standards system is similar to that of the United States. CSA is equivalent to the U.S. ANSI, while ULC corresponds to the U.S. UL. In terms of building codes, the U.S. adopts the International Building Code (IBC), whereas Canada’s national building codes are developed by the National Research Council (NRC). Provinces adjust the national standards based on their specific conditions to form local codes. Provinces with stronger technical capabilities develop their own codes, while smaller provinces directly adopt the national standards.\n\nIn the electrical sector, Canada has utility companies such as Hydro One and BC Hydro. The Electrical Safety Authority is responsible for the approval of electrical equipment and the review of design drawings, which differs from the power authorities in charge of transmission.",
+    "char_count": 837
+  },
+  {
+    "chunk_id": 19,
+    "metadata": {},
+    "content": "Cities are responsible for issuing development permits and building permits. Applicants must submit drawings, and construction can only begin after obtaining the permits. Final inspections are conducted by safety authorities, covering safety-related disciplines such as electrical, plumbing, natural gas, and boilers. This means permit approval and final inspections are handled by different departments.\n\nCanada’s standards system largely follows U.S. standards but retains some unique national characteristics. As a result, the design processes in the U.S. and Canada are fundamentally similar, with only minor differences in the application and implementation of certain codes. The following section will introduce the specific standards in North America.",
+    "char_count": 758
+  },
+  {
+    "chunk_id": 20,
+    "metadata": {},
+    "content": "Some of the regulations and standards related to our electrical field. In the United States, the primary building code is the International Building Code (IBC 2024), whose main purpose is fire safety, while also covering aspects such as energy efficiency, environmental concerns, and drinking water. This code centers on safety and health.\n\nThe sections directly relevant to our electrical profession include fire alarm systems, emergency power systems, emergency lighting systems, as well as systems coordinated with elevators, smoke control systems, and access control.\n\nIn the U.S., the most important electrical code is the National Electrical Code (NFPA 70 2023), which sets the standards for electrical design and installation. Additionally, the NFPA 72 Fire Alarm Code (2025 edition) specifically addresses fire alarm systems, while NFPA 110 regulates the design and installation of emergency power systems.",
+    "char_count": 914
+  },
+  {
+    "chunk_id": 21,
+    "metadata": {},
+    "content": "NFPA 70E is a safety standard for electrical hazards, primarily targeting public spaces. It outlines requirements for preventing electric shock, including protective measures against hazards such as arc flash. This standard is not a design or installation code but rather specifies safety requirements for completed electrical systems.\n\nFinally, NFPA 780 is the lightning protection standard. Beyond those mentioned, the NFPA has many other codes relevant to our electrical profession.",
+    "char_count": 485
+  },
+  {
+    "chunk_id": 22,
+    "metadata": {},
+    "content": "NFPA 1 is the Fire Code. In overseas projects, NFPA 101 serves as the fire protection code for design and construction. NFPA 3 is not merely a fire alarm system standard but a commissioning standard covering the entire fire protection system, including subsystems such as fire alarm systems, sprinkler systems, elevators, and smoke control systems. NFPA 4 is a mandatory standard for integrated testing of fire alarm systems with other building fire protection systems, with the U.S. and Canada requiring implementation every 5 and 15 years, respectively, to ensure system functionality.",
+    "char_count": 587
+  },
+  {
+    "chunk_id": 23,
+    "metadata": {},
+    "content": "NFPA 90A covers the installation requirements for air conditioning systems, including the location and specifications for smoke detectors (Dark Smoke Detectors) within air ducts.",
+    "char_count": 178
+  },
+  {
+    "chunk_id": 24,
+    "metadata": {},
+    "content": "The NFPA-90A Standard covers the installation requirements for air conditioning systems, including the location and specifications for smoke detectors (Dark Smoke Detectors) within air ducts.\n\nThe NFPA-92 Standard is formulated for smoke control systems. If the project includes a commercial kitchen, such as those equipped with stoves or similar appliances, compliance with the NFPA-96 Standard is required, which has coordination requirements with fire alarm systems.\n\nNFPA-99 applies to hospital-type construction projects. NFPA-101 is the primary life safety code. Additionally, standards such as ASME A17.1 and CSA B44 must also be referenced.",
+    "char_count": 648
+  },
+  {
+    "chunk_id": 25,
+    "metadata": {},
+    "content": "NFPA-99 applies to hospital-type construction projects. NFPA-101 is the primary life safety code. Additionally, standards such as ASME A17.1 and CSA B44 must also be referenced.\n\nThis pertains to the design and installation codes for elevators and escalators, where the standards in the United States and Canada are largely aligned. Elevator safety requirements cover multiple aspects, including not only power supply and lighting but also specific provisions for fire alarm systems, such as meeting particular criteria at the top and bottom of elevator shafts. Additionally, fire emergency power systems must synchronize with elevator controllers during automatic switching, all of which are governed by relevant standards.",
+    "char_count": 724
+  },
+  {
+    "chunk_id": 26,
+    "metadata": {},
+    "content": "ANSI/ASHRAE/IES Standard 90.1 is a prominent building energy efficiency standard in North America in recent years, encompassing plumbing and electrical disciplines. The electrical section primarily specifies lighting and power usage standards, such as clear limits on lighting power density per square meter for different building types.\n\nIESNA Lighting Standards are not mandatory codes but provide recommended illuminance values for various building types, projects, and zones.\n\nANSI/TIA/EIA-568 and 569 are communication standards that respectively define the routing methods for communication cables within buildings and the installation requirements for conduit and cable trays. Furthermore, the standards specify detailed requirements for Communication Rooms, including air conditioning, access control, ventilation, temperature control, and cable routing regulations.\n\nThe final section addresses relevant Canadian standards and codes.",
+    "char_count": 942
+  },
+  {
+    "chunk_id": 27,
+    "metadata": {},
+    "content": "The final section addresses relevant Canadian standards and codes.\n\nFirst, Canada has the National Building Code and National Electrical Code. Additionally, there are fire alarm systems and their related standards.\n\nThe ULC Fire Alarm Standards are a series of regulations covering installation, commissioning, and specific requirements for various components. The three most important standards are:\n- CAN/ULC-S524-2024 (Installation and Design Standard)\n- CAN/ULC-S536-2024 (System Integration Testing Standard)\n- CAN/ULC-S537-2019 (Verification Standard After Project Completion)\n\nCSA-C282 focuses on the design and installation of emergency power systems. CSA-Z32 is specifically for electrical safety standards in special buildings like hospitals. CAN/ULC-1001 stipulates the testing requirements for fire alarm systems every five years.",
+    "char_count": 842
+  },
+  {
+    "chunk_id": 28,
+    "metadata": {},
+    "content": "The standard systems in the U.S. and Canada are largely aligned but differ in naming conventions. Generally, U.S. standards are more comprehensive, and many Canadian standards directly adopt U.S. regulations, such as those for fire sprinkler systems, communication systems, and energy efficiency standards. Furthermore, Canada has also adopted the Arc Flash Protection Standard (ARC Flash).\n\nDuring the design and construction phases, electrical safety may not be the primary consideration. However, it is imperative to ensure that electrical equipment does not endanger surrounding personnel in the event of a short circuit once the project is completed or the building is put into use. This is precisely what CSA Z462 Standard and IEEE 1584 Guide address.",
+    "char_count": 757
+  },
+  {
+    "chunk_id": 29,
+    "metadata": {},
+    "content": "Regarding arc flash protection requirements, I wonder if any of you have encountered such demands from clients in your projects. As previously mentioned, the standards for electrical equipment in elevators and escalators are essentially identical in the U.S. and Canada, differing only in name. Additionally, CAN/CSA-B72 pertains to lightning protection systems. The aforementioned standards are national codes, with nearly identical requirements in both the U.S. and Canada.\n\nIn addition to national standards, Canadian provinces have established their own building codes and electrical codes, which are modified based on the national building and electrical codes. Furthermore, cities have developed specific regulations according to local conditions, known as City Bylaws. If projects are not conducted in North America, these local regulations may be less relevant, with the primary focus being on the aforementioned national standards.",
+    "char_count": 940
+  },
+  {
+    "chunk_id": 30,
+    "metadata": {},
+    "content": "During project implementation, coordination with local power and communication authorities is also required, such as for service entrance methods. These utility companies have their own codes and standards, which must be strictly adhered to.",
+    "char_count": 241
+  },
+  {
+    "chunk_id": 31,
+    "metadata": {},
+    "content": "Beyond the above standards, the HWE system encompasses a wide range of standards relevant to our work, which will be detailed later. Additionally, there are other industrial standards applicable to specific sectors. For example, North America primarily adopts HWE standards, while regions like Europe and China generally follow International Electrotechnical Commission (IEC) standards. The American Petroleum Institute (API) standards apply to the petroleum industry, and ISA standards are specific to control equipment. The MG standards mainly pertain to motor manufacturing in North America and are production-oriented rather than design and construction standards. The NEMA (National Electrical Manufacturers Association) standards specify design and construction requirements for electrical equipment, including enclosure suitability for various environments (e.g., dry locations, outdoors, damp, or dust-proof). These standards will be explained in detail next.",
+    "char_count": 967
+  },
+  {
+    "chunk_id": 32,
+    "metadata": {},
+    "content": "Among these codes and standards, which ones are mandatory and must be complied with? This includes building codes, electrical codes, fire protection codes, standards and regulations for fire alarm systems, as well as safety-related requirements such as ArcFlash protection requirements. Among them, CSA-Z462 and NEC 70E are essentially the same content, just referred to differently in the US and Canada.\n\nWhen working on local projects in North America, city bylaws must also be followed. Additionally, the AHJ (Authority Having Jurisdiction), which can be agencies like the fire department or electrical authority, is responsible for building approvals, permit approvals, development approvals, and inspections.\n\nAll these codes primarily address safety requirements, including fire safety and structural safety, among others.\n\nIn addition, it also includes standards related to health and safety.",
+    "char_count": 899
+  },
+  {
+    "chunk_id": 33,
+    "metadata": {},
+    "content": "All these codes primarily address safety requirements, including fire safety and structural safety, among others.\n\nIn addition, it also includes standards related to health and safety.\n\nWe refer to this as performance standards, which are not mandatory. These standards represent certain technical performance requirements in the design process—indicators that need to be achieved from a technical standpoint. Such standards serve as guidelines, including industrial standards, design manuals, and conventional practices during construction or design.\n\nWe call this good practice, meaning proven feasible approaches based on experience. While not compulsory, it is advisable to meet these standards. IEEE provides detailed specifications for this, which we refer to as the Color Book, and this will be further explained in subsequent courses.",
+    "char_count": 842
+  },
+  {
+    "chunk_id": 34,
+    "metadata": {},
+    "content": "In North America, different codes apply to manufacturing versus design and construction. For example, in Canada, when manufacturing equipment such as switchgear, manufacturers follow Part One of the National Electrical Code, which guides design and construction, while Part Two applies to standards during the production process. These two parts are largely similar but also have some specific differences.\n\nNext, we will discuss the practical application of these codes and standards.\n\nFirst, we need to understand these codes and standards and know how to obtain them. As Dean Zhu mentioned, China Construction Eighth Engineering Division (CSCEC8D) is currently building a codes and standards database. These codes can be downloaded from the official websites of relevant institutions, but usually require payment. In Canada, some building codes are free, but the Electrical Code and other standards still need to be purchased.",
+    "char_count": 929
+  },
+  {
+    "chunk_id": 35,
+    "metadata": {},
+    "content": "For professionals engaged in electrical design and construction, mastering these codes is crucial. Designers must be thoroughly familiar with the codes, while construction personnel can follow the drawings without necessarily needing in-depth knowledge of all codes. However, they still require some understanding of construction-related aspects not covered in the design.\n\nOur clients only need a basic awareness of these codes, but if they can acquire more knowledge, it will facilitate project development and evaluation work. These codes and standards hold significant importance in the industry.\n\nWhen discussing the roles of different stakeholders, we can analogize standards and norms-setting organizations to legislative bodies like Congress. The enforcement departments, on the other hand, resemble courts or government agencies responsible for law enforcement.",
+    "char_count": 870
+  },
+  {
+    "chunk_id": 36,
+    "metadata": {},
+    "content": "In North America, building codes are typically updated every five to six years, while other codes are revised every three years. For large-scale projects, their construction timelines may span across code update cycles. To address this issue, code implementations usually include a transition period. For example, codes published in 2024 often do not become officially effective until 2025, when they are formally adopted by state, provincial, or municipal safety authorities. This transition period typically lasts six to twelve months to allow for discussion and feedback from stakeholders.",
+    "char_count": 592
+  },
+  {
+    "chunk_id": 37,
+    "metadata": {},
+    "content": "For projects already in the construction phase, if the new code has not yet taken effect during the design phase or when applying for building or electrical permits, the project will continue to comply with the original code, including during construction and final inspection. However, if the project is still in the design phase or the relevant permits have not been approved when the new code becomes effective, it must adhere to the new code requirements. This mechanism ensures a smooth transition during code updates.",
+    "char_count": 523
+  },
+  {
+    "chunk_id": 38,
+    "metadata": {},
+    "content": "In North America, including the United States and Canada, many clients import electrical equipment from Asia or other countries to reduce costs. However, both the U.S. and Canada mandate that imported equipment must comply with local certification standards. The U.S. has its own certification system, while Canada has its separate requirements. Certification can be conducted either after the equipment arrives or completed before export. The best approach is to obtain certification prior to export to avoid subsequent complications and additional expenses. Local certification is not only costly but also carries the risk of failure. We have extensive experience in this area.",
+    "char_count": 679
+  },
+  {
+    "chunk_id": 39,
+    "metadata": {},
+    "content": "For projects involving equipment imports from China or other countries, it is crucial to understand the specific certification requirements of the target country in advance to prevent project delays or cost overruns. Typically, certification between the U.S. and Canada is relatively straightforward, but equipment imported from Europe or Asia requires recertification by local authorities—a process that is cumbersome, time-consuming, expensive, and carries approval risks. Therefore, special attention must be paid to this issue when operating projects in other countries.\n\nAdditionally, North America’s electrical systems differ from China’s, such as operating at 60 Hz instead of the domestic 50 Hz. Parameters like voltage must also meet local standards. These are all technical considerations to keep in mind.",
+    "char_count": 815
+  },
+  {
+    "chunk_id": 40,
+    "metadata": {},
+    "content": "These regulations must be strictly enforced, but there are exceptions, which we refer to as “variance.” Typically, when on-site implementation of the regulations is not feasible, a variance can be applied for.\n\nThe application must be accompanied by a written explanation from a qualified institution or individual, such as the Design Management Institute. The competent authority is responsible for reviewing variance applications, which require the submission of relevant written materials, including completed forms or formal letters, signed and stamped. The review outcome may be either approved or denied.\n\nGenerally, variances are only approved when on-site implementation is unfeasible and does not pose significant risks to safety or other aspects. We have some experience in such projects and usually do not recommend modifying the regulations lightly unless the cost of full compliance is prohibitively high. In such cases, we can assist in handling the process.",
+    "char_count": 972
+  },
+  {
+    "chunk_id": 41,
+    "metadata": {},
+    "content": "During the construction process, if non-compliant situations arise, although the design phase has typically undergone review, violations identified during construction will prompt authorities (e.g., State/Provincial Safety Authority) to issue work stoppage orders. Hence, both design and construction phases must prioritize regulatory compliance.",
+    "char_count": 346
+  },
+  {
+    "chunk_id": 42,
+    "metadata": {},
+    "content": "With six years of experience in building electrical design in China, I previously worked at Northeast Design Institute. The current industry environment differs from our era—back then, regulatory adherence was less stringent, and not every code required strict enforcement. Domestic mechanisms were also incomplete, lacking systematic design review processes and final inspection procedures. Compared to international standards, Chinese codes exhibit gaps in granularity, with some project metrics ambiguously defined, leading designers, contractors, and inspectors to often adopt a “barely compliant” approach.\n\nLater, I will explore balancing project costs, timelines, and construction safety. Over-pursuing excessive standards (e.g., far exceeding code requirements) inevitably escalates costs, conflicting with developers’ or contractors’ goals of cost control and schedule compression. Thus, scientific coordination of these critical factors is essential during design.",
+    "char_count": 974
+  },
+  {
+    "chunk_id": 43,
+    "metadata": {},
+    "content": "In terms of code application, we have encountered some confusion or made mistakes in the past. When working on large-scale projects, it is common to hire specialized code consultants. These consultants are primarily experts in building codes, particularly complex regulations involving multiple disciplines such as fire safety codes. Their responsibilities include providing code review reports for large projects to ensure compliance with regulatory requirements, though their fees are relatively high.\n\nWithout code consultants, we need to regularly update our knowledge of codes and understand the latest regulatory requirements and their interrelationships. Currently, we are conducting training on the latest codes, with a focus on explaining the relationships between different codes.",
+    "char_count": 790
+  },
+  {
+    "chunk_id": 44,
+    "metadata": {},
+    "content": "In North America, large-scale projects typically employ code consultants. To my knowledge, China does not yet have specialized design institutes for this purpose, though there is a drawing review mechanism—it’s unclear whether this includes code reviews. Additionally, attention must be paid to local special requirements, and it is important to maintain contact with local municipal or safety management authorities to stay updated on new regulations published on their websites.\n\nWhen large companies undertake design work, they often hire third-party design institutes for drawing joint reviews to avoid design errors or omissions. During the design and installation construction process, quality control is particularly crucial to prevent project losses or delays. It’s important to note that code requirements may vary across different countries, regions, and even within different areas of the same country.",
+    "char_count": 913
+  },
+  {
+    "chunk_id": 45,
+    "metadata": {},
+    "content": "There are differences between regulatory and standard requirements. Taking North America and China as examples, North American regulations are more detailed and specific. In the application of battery standards, China’s domestic standards initially involve three types of verification calculations, each with significant differences in power supply methods compared to those in the U.S. and Canada.",
+    "char_count": 398
+  },
+  {
+    "chunk_id": 46,
+    "metadata": {},
+    "content": "The IPWE standard differs significantly from the IEC standards of the International Electrotechnical Commission, particularly in aspects such as fire pump activation and monitoring signals. There are also variations between U.S. and Canadian standards, with U.S. regulations being more comprehensive and stringent, especially in advancing energy efficiency. While Canadian and U.S. battery standards are generally similar, differences persist in areas such as ATS application and fire alarm requirements. Even within Canada and the U.S., provincial requirements vary—for example, Ontario emphasizes fire safety more heavily, while British Columbia prioritizes energy efficiency.",
+    "char_count": 678
+  },
+  {
+    "chunk_id": 47,
+    "metadata": {},
+    "content": "China’s regulatory design, construction, and implementation processes are highly stringent, with each step requiring compliance before proceeding. Regulatory authorities hold significant power, supported by well-established mechanisms and teams for enforcement. However, China’s regulatory requirements may not be as strict as those in North America, partly due to existing conditions and historical factors.",
+    "char_count": 408
+  },
+  {
+    "chunk_id": 48,
+    "metadata": {},
+    "content": "China’s standards were initially modeled after the former Soviet system. For example, as late as 2008, biochemical laboratory projects in Azerbaijan still used former Soviet standards, which were identical to China’s early Building Electrical Codes. Before the reform and opening-up, limited international exchange opportunities hindered updates to these standards. For instance, the Northeast Design Institute, responsible for drafting China’s national building electrical codes, was led by experts such as Li Tian and Li Xinglian, but at the time, there were few opportunities for collaboration with North American standards.",
+    "char_count": 627
+  },
+  {
+    "chunk_id": 49,
+    "metadata": {},
+    "content": "The standards continue to follow previous norms. Since the reform and opening-up, especially in recent years, with the increase in international exchanges and the development of the internet, I am not entirely clear about the specific details of domestic standards. I have a copy of the 2008 edition of the Electrical Code for Buildings at hand, but I haven’t reviewed subsequent versions yet—this is my initial impression, and the details will be explained in later courses. Additionally, the acceptance requirements in North America are relatively strict. We also maintain communication with foreign departments, such as telecommunications agencies like the Telecommunications Bureau.\n\nI will provide a detailed explanation later.  \nWhen communicating with the power department, it mainly involves meters and established protection requirements. Coordination with telecom companies like Rogers is relatively straightforward.",
+    "char_count": 926
+  },
+  {
+    "chunk_id": 50,
+    "metadata": {},
+    "content": "For the fire department, the interface of the fire alarm system needs to be coordinated. Building development permits require communication with the City Planning department, and streetlight requirements also need to be aligned with them. Additionally, electrical design drawings for certain areas must be submitted to the local ESA (Electrical Safety Authority) for review and approval.\n\nBelow are two completed project cases: one is a project for a hospital in Ontario.",
+    "char_count": 471
+  },
+  {
+    "chunk_id": 51,
+    "metadata": {},
+    "content": "The project involved an upgrade of the fire alarm system. Due to on-site constraints, full compliance with the code was not possible, leading to disagreements over its interpretation. The contractor and the client, particularly the client, reacted strongly—even preparing to sue the company I worked for at the time.\n\nLater, one of the chief editors of the Canadian Electrical Code, the very author of the code, provided a written clarification confirming that our approach was correct, thereby resolving the dispute. This case highlights the importance of accurately understanding codes; otherwise, it may result in financial losses, claims, and project delays.\n\nAdditionally, in the Vancouver area, a fellow Chinese compatriot was involved in the related work.",
+    "char_count": 762
+  },
+  {
+    "chunk_id": 52,
+    "metadata": {},
+    "content": "In the Vancouver area, a fellow Chinese compatriot was involved in the related work. He planned to organize a lantern exhibition, but the imported lighting fixtures failed to obtain the local CSA certification, resulting in significant financial expenditure—approximately 500,000 yuan was spent on re-certification. This not only delayed the project timeline but also caused additional economic losses. This was primarily due to a lack of understanding of local standards and regulations. The above are brief descriptions of two typical cases. Next, we will begin the second lecture.\n\nLecture Two. Before we begin, if anyone has any questions, I can briefly address them. In the previous lecture, we introduced the North American Electrical Design Code System, which is more detailed compared to domestic standards. However, it might be challenging to fully grasp in a short time, so gradual understanding is necessary.",
+    "char_count": 919
+  },
+  {
+    "chunk_id": 53,
+    "metadata": {},
+    "content": "Projects can be categorized into new construction projects and existing renovation projects. For Reconstruction Bureau No. 8, the focus is primarily on large-scale new construction projects, while renovation projects will not be elaborated upon here.",
+    "char_count": 250
+  },
+  {
+    "chunk_id": 54,
+    "metadata": {},
+    "content": "Project evaluation is conducted first, including building assessments, instructor reports, and feasibility studies for planning. Upon completion, multiple proposals are presented, outlining the advantages and disadvantages, construction timelines, and costs of each option. The design institute recommends the optimal solution for client approval. Once approved, the project proceeds to the detailed design phase.\n\nAfter design finalization, a building permit is applied for with municipal authorities. Upon permit approval, the bidding process begins. We assist by addressing technical questions, reviewing bids, and providing recommendations. Following this, the construction phase begins, during which we offer various support services to the client, with specific details to be provided later.",
+    "char_count": 797
+  },
+  {
+    "chunk_id": 55,
+    "metadata": {},
+    "content": "As construction nears completion, commissioning is required. Upon successful commissioning, the project is considered complete. The closing phase involves documentation and tasks that will be explained in detail later.\n\nProject types span various sectors, including government, industrial, commercial, sports venues, universities, residential housing, and hospitals. Electrical engineering consulting services include power distribution system design, among others.\n\nIn this lecture, I will not cover design aspects such as power plants, transmission lines, or hydroelectric stations. Our discussion will focus primarily on distribution systems, which is currently the main business area of China Construction Eighth Engineering Division.\n\nSpecifically, we will outline topics including power supply and distribution system design, lighting and control system design, among others. Additionally, we will briefly introduce related content such as security systems.",
+    "char_count": 963
+  },
+  {
+    "chunk_id": 56,
+    "metadata": {},
+    "content": "Specifically, we will outline topics including power supply and distribution system design, lighting and control system design, among others. Additionally, we will briefly introduce related content such as security systems. Including access control systems, CCTV surveillance, security alarm systems, public address systems, and audiovisual system design. Audiovisual system design has become less common nowadays, as technological advancements enable many functions to be achieved through networks, thus reducing its significance.",
+    "char_count": 531
+  },
+  {
+    "chunk_id": 57,
+    "metadata": {},
+    "content": "In addition, it also includes some special consulting service categories, such as energy-efficient design, power system analysis and calculation (Power Study), and special lighting design, including road lighting, sports venues, and theater lighting design.",
+    "char_count": 257
+  },
+  {
+    "chunk_id": 58,
+    "metadata": {},
+    "content": "There is also data center design, as well as instrumentation and control design in the industrial sector. During the design phase, the work is broken down into multiple sub-phases, each with specific tasks. The technical report section involves the preparation of relevant technical documentation.\n\nThis report is primarily compiled for renovation projects, with only a brief description provided here.\n\nBefore writing the report, it is necessary to collect technical documentation, including materials provided by the client and on-site survey data. The on-site survey should document the current conditions and existing issues.\n\nSubsequently, based on relevant standards and design concepts, the project should be analyzed, and solutions should be proposed. The proposal should include cost estimates, construction period assessments, and a comparison of the advantages and disadvantages of each option, ultimately leading to a recommended solution.",
+    "char_count": 951
+  },
+  {
+    "chunk_id": 59,
+    "metadata": {},
+    "content": "Once the report is completed, it should be submitted for review. Revisions should be made based on the client’s feedback before resubmission. Regarding the division of design phases, domestic design experience is used as an example.\n\nI typically start with preliminary design and then proceed to complete the construction drawing design. The phase division here is quite detailed:\n\nThe first stage is conceptual design or feasibility analysis, also known as the planning phase, accounting for approximately 10% to 15% of the design cost or workload. This is followed by the preliminary design phase, reaching about 33% design completion. Then comes the design development/detail design phase, completing around 66% of the design content. At this point, the building permit application must be submitted, with the design approximately 99% complete. After approval, the tender package (technical documents for bidding) will be prepared, marking 100% design completion.",
+    "char_count": 966
+  },
+  {
+    "chunk_id": 60,
+    "metadata": {},
+    "content": "During the bidding stage, competing contractors may raise questions, which will be addressed. These Q&A documents will serve as supplements to the tender documents. If modifications or additions are identified during the Q&A process, the final version will become the Issued for Construction (IFC) drawings. This outlines the general framework for electrical design phase division in North America.\n\nAs a design institute, we need to address relevant questions during the bidding phase and provide corresponding responses. Sometimes, the client may require us to conduct a review after receiving the tender documents, evaluating from a technical perspective and issuing opinions.\n\nDuring the construction phase, as an electrical design engineer or designer, the following tasks need to be completed:",
+    "char_count": 799
+  },
+  {
+    "chunk_id": 61,
+    "metadata": {},
+    "content": "During the construction phase, as an electrical design engineer or designer, the following tasks need to be completed:\n\nReview shop drawings: These detailed fabrication drawings are typically provided by contractors or suppliers. For example, two years ago when our team conducted training for the Egypt project, China Construction Eighth Division needed to provide detailed construction drawings based on the design scheme. The design institute is responsible for reviewing the shop drawings submitted by contractors to identify any conflicts.\n\nParticipate in construction meetings and conduct on-site inspections: The design institute needs to attend construction meetings and perform multiple on-site inspections at different construction stages. After completion of the inspection, an inspection report must be submitted to the client.",
+    "char_count": 839
+  },
+  {
+    "chunk_id": 62,
+    "metadata": {},
+    "content": "When design adjustments are required, modification notices must be issued. These changes may lead to additions or reductions in the project scope of work, thereby affecting adjustments to the contract amount.\n\nReview contractors’ progress claims: Contractors typically settle accounts monthly or according to agreed cycles. The design institute needs to review the settlement statements submitted by contractors, including invoices and completion reports, to confirm their reasonableness.\n\nIssue certificates of payment: The design institute must verify the project progress before issuing payment certificates.\n\nAll these tasks fall within the responsibilities of electrical engineers or designers at the design institute.",
+    "char_count": 723
+  },
+  {
+    "chunk_id": 63,
+    "metadata": {},
+    "content": "All these tasks fall within the responsibilities of electrical engineers or designers at the design institute.\n\nWhen modifications are required, the design institute must prepare a Change Control Notice (CCN). After issuing the CCN, the contractor must submit a quotation, and the design institute must review the reasonableness of the quote. If we act as the general contractor, we can prepare the quotation based on the design institute’s on-site instructions or change orders and inform the client that the additional work falls outside the original contract scope, requiring extra charges.",
+    "char_count": 593
+  },
+  {
+    "chunk_id": 64,
+    "metadata": {},
+    "content": "As the project nears completion, the design institute must conduct a Substantial Completion Inspection and final on-site acceptance, issuing the corresponding documentation. The Substantial Completion Inspection is critical, typically marking the project’s near completion. If the inspection fails and the Substantial Completion Certificate is not obtained, the contractor cannot receive the final payment. Another key function of this certificate is that the client or contractor can use it to apply for an Occupancy Certificate from the municipal government or relevant authorities, gaining approval to use the project facilities.",
+    "char_count": 632
+  },
+  {
+    "chunk_id": 65,
+    "metadata": {},
+    "content": "The design institute must participate in the commissioning process, either by supervising on-site or reviewing commissioning reports. It must also evaluate the Warranty Documents and Operation & Maintenance Manuals (O&M Manuals) provided by the contractor. Upon project completion, the contractor must compile all electrical equipment manuals, as-built drawings, approved construction drawings, and other documents into a comprehensive Turnover Package, including the warranty bond. This package must be reviewed and approved by the design institute. Furthermore, the design institute may also be responsible for preparing the as-built drawings.",
+    "char_count": 645
+  },
+  {
+    "chunk_id": 66,
+    "metadata": {},
+    "content": "During the construction phase, electrical design is a critical component. First, we need to clarify certain prerequisites, including the client’s requirements. The client may provide tender documents (RFQ or RFP), which are design tenders rather than construction tenders. Additionally, the client will have their own design standards or specifications.",
+    "char_count": 353
+  },
+  {
+    "chunk_id": 67,
+    "metadata": {},
+    "content": "At the same time, other disciplines such as architecture, plumbing, landscape lighting, and urban utilities will also present relevant requirements, many of which involve equipment or systems that require our provision of power or control support. Furthermore, compliance with all codes and standards (Building codes) related to electrical work, as well as the requirements of local authorities, is essential.\n\nSpecial requirements may include LEED certification, zero-carbon goals, or energy efficiency demands. These form the core requirements and conditions (AHJ Requirements) for our design. Only based on the above inputs can we proceed with the specific design work.\n\nWe can submit the following design technical documents as deliverables. For large-scale projects or renovation projects, these may include the Feasibility Study Report, Design Report, or Basis of Design (BOD). These documents are typically completed during the 10% to 15% stage of the project schedule.",
+    "char_count": 976
+  },
+  {
+    "chunk_id": 68,
+    "metadata": {},
+    "content": "Once the formal design phase begins, it involves different design stages, such as Schematic Design (SD), Design Development (DD), and Construction Documents (CD). These design deliverables serve various purposes: Building Permit (BP) is used for applying for construction permits, Issue for Tender (IFT) for bidding, Issue for Construction (IFC) for construction, and As-builts for as-built drawings. Typically, these three types of documents require confirmation and signatures from licensed engineers.",
+    "char_count": 503
+  },
+  {
+    "chunk_id": 69,
+    "metadata": {},
+    "content": "For large-scale projects, deliverables include drawings and specifications. The specifications are usually a thick document, where only the table of contents may be required at the 33% and 66% design stages, but the full text must be submitted at the 99% stage. Additionally, in North America, electrical engineers, other specialized engineers, and architects may need to provide the client with construction estimates. These estimates are usually prepared by the design consulting team (not the construction team) and, although their accuracy is limited, they serve as a basis for the client to apply for budgets or evaluate bids. Construction estimates are categorized into four levels: A, B, C, and D.",
+    "char_count": 704
+  },
+  {
+    "chunk_id": 70,
+    "metadata": {},
+    "content": "Different stages correspond to different work contents. During the reporting phase, Class D documents are typically involved; whereas in the bidding phase, the accuracy of Class BC documents ranges from approximately 69% to 99%, with Class A representing a more precise budget plan. For large-scale projects, budget engineers are sometimes specifically hired to handle this task.\n\nWhen applying for a building permit, in addition to drawings and specifications, various administrative approval documents must be prepared. Requirements vary by region and regulatory authority, and these need to be prepared in advance.\n\nDuring the bidding phase, bidders may raise technical questions requiring clarification, which are typically addressed by the design institute. The corresponding response documents are referred to as Addenda.",
+    "char_count": 827
+  },
+  {
+    "chunk_id": 71,
+    "metadata": {},
+    "content": "During the bidding phase, bidders may raise technical questions requiring clarification, which are typically addressed by the design institute. The corresponding response documents are referred to as Addenda.\n\nDocuments required during the construction phase include: CCN (Change Control Notice), site reports, site instructions, substantial completion certificates, and various payment certificates submitted by contractors to clients for progress payments.\n\nAt the project completion stage, documents such as As-built drawings need to be compiled. These are the main design documents required at each stage.\n\nThe following briefly outlines the differences in the design process compared to domestic practices:",
+    "char_count": 711
+  },
+  {
+    "chunk_id": 72,
+    "metadata": {},
+    "content": "The following briefly outlines the differences in the design process compared to domestic practices:\n\nFirst, it is necessary to communicate with the client to clarify design requirements. By reviewing relevant documents, the scope of work for the design phase is determined. In North America, the scope of work is clearly defined, and any additional modifications are considered changes; whereas domestically, a turnkey approach is typically adopted, which differs.",
+    "char_count": 465
+  },
+  {
+    "chunk_id": 73,
+    "metadata": {},
+    "content": "During the preliminary design phase, electrical load information must be collected, including:  \n1. Obtaining architectural floor plans from the client and other disciplines as background materials  \n2. Acquiring the location and capacity parameters of mechanical equipment  \n3. Exchanging information with other disciplines (data sharing), including communication rooms, door/window dimensions, fire protection requirements, and special requirements for HVAC controls  \n4. Coordinating with the power and telecommunications companies regarding the location and dimensions of electrical service entrances, as well as transformer placement, building substations, and other design aspects",
+    "char_count": 686
+  },
+  {
+    "chunk_id": 74,
+    "metadata": {},
+    "content": "After completing the electrical system load calculations, the following design tasks can be carried out:\n- Single-line diagram (SLD) design\n- Design of fire alarm systems (e.g., FAR Alarm), communication systems, and security systems (e.g., CCTV, BAS, etc.)\n- Electrical system analysis and calculations (including lighting calculations, generator sizing, short-circuit current calculations, power flow analysis, etc.) to validate the selection of electrical equipment and conductors\n\nOnce all system designs are finalized, the floor plan design can proceed.\n\nThese floor plans include the design of electrical, lighting, fire protection, and low-voltage systems, as well as the lightning protection and grounding scheme. Additionally, there are panel schedules for circuit distribution, and lighting fixture schedules or feeder schedules for lighting fixtures. Installation details are also part of the drawings.",
+    "char_count": 913
+  },
+  {
+    "chunk_id": 75,
+    "metadata": {},
+    "content": "During project implementation, multi-party coordination is involved, mainly including the following aspects:\n\nCoordination with the Owner: For renovation projects, on-site surveys are required to collect existing drawings and technical documents. At each design stage, owner review and approval are necessary, with design key points discussed in meetings to understand their special requirements.",
+    "char_count": 396
+  },
+  {
+    "chunk_id": 76,
+    "metadata": {},
+    "content": "Coordination with Utility Companies: The focus lies in technical alignment to ensure the design complies with relevant technical standards.\n\nCoordination with Equipment Suppliers: Equipment selection and supplier qualifications must be confirmed to assess compliance with project-specific requirements.\n\nInterdisciplinary Coordination: Cross-disciplinary conflicts may arise during collaboration, requiring timely communication for resolution.\n\nThe above coordination work is essentially a critical part of project quality control.\n\nIt is essential to adhere to all applicable norms, standards, and regulations while also meeting the client’s design requirements. For instance, during drafting, the client may have specific drafting standards. Additionally, best practices—optimal methods or designs—should be employed wherever possible in the design process.",
+    "char_count": 859
+  },
+  {
+    "chunk_id": 77,
+    "metadata": {},
+    "content": "Each project varies in circumstances and regional differences, making it essential to balance design quality, engineering budget, and project timelines. Overly detailed designs increase costs and extend schedules, while overly simplistic or shallow designs may compromise quality, leading to extensive modifications during construction or even rework.\n\nFor large-scale projects, conducting peer reviews—such as third-party design audits—is highly beneficial, though this depends on project specifics and budget availability. Equally important are internal cross-disciplinary reviews within the design institute, including both intra- and inter-disciplinary checks.\n\nTimely drawing submissions and systematic organization—categorized and archived by phase—are also necessary. Document management is particularly critical for major projects. Without robust documentation, frequent design changes or team member turnover can create chaos, making it difficult to identify the latest version.",
+    "char_count": 987
+  },
+  {
+    "chunk_id": 78,
+    "metadata": {},
+    "content": "What are the commonly used tools? First, regarding standards and specifications, we’ve already discussed them. For drafting tools, AutoCAD is typically used. Projects in North America tend to be smaller in scale, while those in China are larger. As a result, the battery engineering field uses AutoCAD less frequently, including limited use of Revit. For large-scale industrial plant projects, tools like SmartPlant or similar 3D architectural design software may be employed. The selection of drafting tools is quite diverse.",
+    "char_count": 526
+  },
+  {
+    "chunk_id": 79,
+    "metadata": {},
+    "content": "Battery-related computations primarily involve power system analysis. Commonly used software includes SKM ETAP and EasyPower, which perform load flow analysis, short-circuit current calculations, motor starting analysis, power system protection coordination, harmonic analysis, and arc flash analysis. Not every project requires all these calculations, but the relevant software can handle them.\n\nFor lighting calculations, AGI32 is widely used, along with free alternatives such as LitePro. For generator sizing, major manufacturers like Cummins and Caterpillar provide dedicated sizing software. High-voltage system grounding design requires specialized software, which is costly but produces detailed design reports, including electrode dimensions and layout plans.",
+    "char_count": 768
+  },
+  {
+    "chunk_id": 80,
+    "metadata": {},
+    "content": "Regarding design guidelines, the IEEE Color Books serve as an excellent reference. Other resources include the TDMM (Telecommunications Design Manual) and various design guides. Additional materials consist of manufacturer product manuals, templates (e.g., North America’s Master Specification Templates), and numerous reference books and guidelines. These topics will be explored in greater detail later.\n\nIn North America, working in electrical design requires specific professional qualifications. In the United States, this is called PE (Professional Engineer), which grants the authority to sign and seal documents; Canada also uses the title Professional Engineer, abbreviated as PE.",
+    "char_count": 689
+  },
+  {
+    "chunk_id": 81,
+    "metadata": {},
+    "content": "In recent years, certifications related to energy efficiency and environmental design were quite popular, though their prominence has declined. Additionally, the RCDD (Registered Communications Distribution Designer) certification, issued by BICSI in the U.S., focuses on communication system design and is a critical qualification for large-scale projects like data centers.\n\nFor data center projects, the PMP (Project Management Professional) certification is also common, primarily for project managers. Commissioning work involves specific certifications, some of which are legally mandated, while others are optional.\n\nBelow are qualifications related to professional technical societies: These associations not only establish standards but also offer membership benefits such as conference participation, book discounts, and technical seminars, significantly aiding career development.",
+    "char_count": 891
+  },
+  {
+    "chunk_id": 82,
+    "metadata": {},
+    "content": "In the first part of the second lesson, we will briefly introduce the relevant content.\n\nThis design concept serves as an extension of previous content, or rather, an elaboration from different perspectives.\n\nA good design should encompass the following aspects:  \n- First, clearly define the design scope of the project;  \n- Second, strictly adhere to contract terms in the design process;  \n- Additionally, an excellent design should clearly delineate the scope of construction work and meet the requirements of design specifications.",
+    "char_count": 536
+  },
+  {
+    "chunk_id": 83,
+    "metadata": {},
+    "content": "In North America, clearly defining the Scope of Work is a crucial issue. Design documents must precisely delineate the work content, such as whether fire protection systems are included. These terms need to be specified in detail when signing contracts.\n\nOptimizing designs requires considering multiple factors:\n\nDesigns should ensure constructability to avoid on-site implementation issues;\n\nSystem performance should be reasonably efficient while meeting energy-saving requirements;\n\nEase of future operation and maintenance must be considered;\n\nAmong various design options, choose those that both reduce costs and accelerate construction progress.\n\nIndustry experts are well aware of how to define design scope: it’s about clarifying the specific content and boundaries of design work.",
+    "char_count": 790
+  },
+  {
+    "chunk_id": 84,
+    "metadata": {},
+    "content": "In the early stages of a design project, we typically receive design tender documents, namely Request for Proposal (RFP) or Request for Quotation (RFQ). The appendices (Addendum) in these tender documents will serve as the basis for subsequent engineering design contracts. These design contents will also be clearly specified in the contract. However, during project execution, the client may request design changes, such as modifying the design scheme or adding system functionalities. Such changes are referred to as Change Orders, and we can apply for additional fees from the client accordingly.",
+    "char_count": 600
+  },
+  {
+    "chunk_id": 85,
+    "metadata": {},
+    "content": "If the electrical discipline is not involved as part of the intermediate design team in the project, the specific design drafting tasks will be undertaken by other teams. In such cases, it is necessary to consult the project manager and design lead to clarify responsibilities. In practical work, if frontline team members do not have a clear understanding of the scope of work, it may lead to additional workload. This aspect is often overlooked when working domestically.\n\nDifferent types of projects, such as retrofit/TI projects, new construction projects, and large industrial projects, have significant differences in scope definition and operational approaches. The specifics of these differences will be explained in detail later.",
+    "char_count": 738
+  },
+  {
+    "chunk_id": 86,
+    "metadata": {},
+    "content": "Jia Fang requires us to be responsible for 60% of these systems, while the remaining 40% fall outside our scope of work. There was no thunderstorm weather in North America on October 22nd, because as previously mentioned, the systems involved in each project vary.\n\nThe following introduces different design phases and project phases. For example, some projects only require the completion of a feasibility analysis report, while others may only need to proceed to the bidding stage.\n\nIf a project has a high budget but currently lacks sufficient funds, it may be temporarily suspended and resumed when additional funds become available. Furthermore, during the design and construction phases, it is necessary to clarify whether commissioning falls within the scope of work. Therefore, the scope of different design systems must be clearly defined.",
+    "char_count": 848
+  },
+  {
+    "chunk_id": 87,
+    "metadata": {},
+    "content": "The definition of different design stages and our considerations during the design process.\n\nIn North America, the operational approach for engineering projects differs from domestic practices. According to contract stipulations, we must strictly complete the corresponding percentage of work at each phase. For instance, if the client requires 60% design completion, we deliver exactly 60% rather than advancing prematurely to 90%. There are two reasons: first, it involves additional time costs; second, the design may undergo revisions, leading to resource waste. This constitutes a fundamental rule of local business operations.\n\nFurthermore, project payments are directly tied to work phases. Should the client terminate a project at any phase, the consulting party receives compensation only for completed work within that phase, with no remuneration for excess deliverables. This presents a marked contrast to China’s “lump-sum contract” convention.",
+    "char_count": 956
+  },
+  {
+    "chunk_id": 88,
+    "metadata": {},
+    "content": "Another notable distinction lies in change order management. The North American engineering consulting industry (design firms) strictly charges based on service hours, where any design modification incurs additional fees. This contrasts sharply with the domestic clients’ accustomed lump-sum contracting model. Our cross-border project experience demonstrates that such differences require mutual understanding between both parties.",
+    "char_count": 432
+  },
+  {
+    "chunk_id": 89,
+    "metadata": {},
+    "content": "If the design institute is responsible for the project design, a key point lies in clearly defining the scope of work for the construction project. This offers multiple advantages: If the drawings lack sufficient detail or are unclear, they will generate numerous issues during the bidding phase, requiring additional time to address. During the construction phase, incomplete drawings will lead to frequent queries from contractors, necessitating modifications and remedial actions, which will extend the schedule and increase costs.",
+    "char_count": 534
+  },
+  {
+    "chunk_id": 90,
+    "metadata": {},
+    "content": "High-quality design reduces change orders, saving construction costs and avoiding schedule delays. Based on experience, many change orders stem from poorly defined construction scopes. In the North American market, contractors often profit from change orders: during bidding, original contract prices from competing parties are similar, with the lowest bidder winning. If a contractor secures the project with a low bid, they may exploit ambiguities in the drawings to claim omitted items and demand additional payments during construction.",
+    "char_count": 540
+  },
+  {
+    "chunk_id": 91,
+    "metadata": {},
+    "content": "Additionally, substandard design may lead to claims or even legal disputes, negatively impacting the reputation of both the company and individuals involved. Therefore, meticulous and thorough design is crucial.\n\nIn fact, this involves the depth of specifications, standards, and the optimization of relevant regulations, similar to the form of a checklist.\n\nIt would be ideal if the relevant aspects of modern interests could comprehensively cover and interconnect. This is an issue. Is there overkill design? So-called overkill design refers to standards that are excessively high and actually unnecessary.\n\nHere we can introduce a concept—value engineering, which specifically focuses on optimizing designs by exploring areas for improvement. If certain design standards are unnecessarily high, they can be appropriately reduced to save on project costs.",
+    "char_count": 857
+  },
+  {
+    "chunk_id": 92,
+    "metadata": {},
+    "content": "Value engineering focuses on optimizing designs by identifying areas for improvement. If certain design standards are unnecessarily high, they can be appropriately reduced to lower project costs.\n\nFor example, are there equipment or system specifications that are oversized? Are there other opportunities to reduce costs? Could alternative solutions or approaches lower project expenses? For instance, in terms of energy efficiency, could different energy sources be used, such as natural gas instead of electricity? Although electricity is currently the primary choice, such considerations fall within the scope of design optimization worth exploring.",
+    "char_count": 652
+  },
+  {
+    "chunk_id": 93,
+    "metadata": {},
+    "content": "I have a question, Teacher Fan. Can you hear me? Yes, go ahead. Hello, Teacher Fan.",
+    "char_count": 83
+  },
+  {
+    "chunk_id": 94,
+    "metadata": {},
+    "content": "We’ve covered two lessons so far. Does anyone have any questions?\n\nHello, Teacher Fan, I have a question here, can you hear me? Yes, go ahead. Hello, Teacher Fan.\n\nDuring your previous explanation about the mandatory codes in Europe, America, and North America, you mentioned a list of relevant codes. I’d like to ask: Are these mandatory codes enforced in their entirety, or only certain clauses have mandatory requirements? Additionally, is there a specific authority responsible for reviewing whether our drawings comply with the mandatory requirements of these codes?\n\nFirst question: If it is a mandatory code, all provisions are mandatory without exception; there is no scenario where some provisions are mandatory while others are not.",
+    "char_count": 742
+  },
+  {
+    "chunk_id": 96,
+    "metadata": {},
+    "content": "During the construction phase, inspectors oversee compliance, involving two separate entities: one reviews drawings during the permit approval stage, while the other verifies construction adherence during inspections. Multiple inspections occur throughout construction, including coordination with utility providers for electrical inspections, underground utility inspections, power-on inspections, and rough-in inspections during wall wiring. A final inspection is required before the project is commissioned for use.\n\nIf mandatory codes are violated during the construction phase inspection, it is usually first suspended and then forced to make modifications. All modifications must be made and the construction and acceptance shall be carried out again in accordance with the specifications.",
+    "char_count": 795
+  },
+  {
+    "chunk_id": 97,
+    "metadata": {},
+    "content": "All modifications must be made and the construction and acceptance shall be carried out again in accordance with the specifications.\n\nProfessor Fan, there is another question: When you explained the design process, you mentioned that different design stages correspond to different levels of detail, such as 33%, 66%, and 100%. What do these percentages specifically correspond to in terms of drawing details? Are there any specific design documents that clearly define the details for 33%, 66%, or 100%?",
+    "char_count": 504
+  },
+  {
+    "chunk_id": 98,
+    "metadata": {},
+    "content": "In the RFP issued by Party A, the preliminary electrical design scheme is usually specified in detail, including load calculation, system diagrams, and other elements. Parameters such as incoming line capacity, wiring methods, and voltage levels must be clearly defined. Additionally, a design report must be submitted to elaborate on the specific design approach and methodology.\n\nTypically, only a conceptual design is required at this stage, with no need for detailed specifications or layout drawings. Due to time constraints, only a brief explanation is provided here.\n\nUnlike the domestic design process, U.S. standard electrical design involves a more granular division of stages. In China, the process is usually divided into only two phases: preliminary design and construction drawings, whereas the U.S. standard system includes additional intermediate stages between these two.",
+    "char_count": 888
+  },
+  {
+    "chunk_id": 99,
+    "metadata": {},
+    "content": "Currently, China is also in a similar primary stage, but the divisions are not as detailed. Domestically, construction drawings can basically directly guide on-site construction, and contractors do not need to do much further detailing or create their own drawings.\n\nHowever, in overseas projects, after obtaining the construction drawings, contractors still need to organize a large number of designers to further detail or draft the construction drawings. Is this because the depth of foreign construction drawings is insufficient, or are there legal or other factors and regulations to consider? Why do contractors need to bear such a heavy workload of detailing? Could you please explain this?",
+    "char_count": 697
+  },
+  {
+    "chunk_id": 100,
+    "metadata": {},
+    "content": "In fact, the contractor’s issues stemmed from problems that existed two years ago when we communicated with the Egyptian team. The main reason was insufficient familiarity with North American design codes, which led to significant time spent preparing relevant documents. North American design standards are more detailed compared to domestic ones, especially in construction drawing design.\n\nFrom an electrical engineering perspective, domestic construction drawings in China often lack detailed specifications. In contrast, North America adopts a standardized manual called the “Spec Book”, which contains comprehensive technical requirements. This difference stems from two primary reasons:",
+    "char_count": 693
+  },
+  {
+    "chunk_id": 101,
+    "metadata": {},
+    "content": "In North American electrical engineering, shop drawings are typically not prepared by general contractors or subcontractors. Electrical contractors often lack the necessary technical capabilities—they neither employ drafters nor possess specialized software. In practice, this responsibility falls on equipment manufacturers. For example, switchgear shop drawings are provided by the switchgear manufacturer rather than the contractor.\n\nTaking the Fire Alarm System as an example, its drawings are likewise not supplied by contractors. When products from brands such as Siemens or Johnson Controls are selected, all relevant shop drawings, including riser diagrams, are produced by the product suppliers.",
+    "char_count": 704
+  },
+  {
+    "chunk_id": 102,
+    "metadata": {},
+    "content": "The Low Voltage Control system presents a different scenario. Contractors specializing in this field are generally referred to as Control Contractors, who maintain dedicated engineering departments capable of independently creating drawings and performing detailed designs. Overall, within North America’s electrical engineering sector, with the exception of Low Voltage Control systems, most design development work is completed by equipment manufacturers.\n\nThe contractor is primarily responsible for the biochemical section, with relatively less design workload, as the design scheme is mainly provided by the manufacturer.\n\nYes.\n\nThank you, Professor Fan, for your answer. That concludes my questions.",
+    "char_count": 705
+  },
+  {
+    "chunk_id": 103,
+    "metadata": {},
+    "content": "Yes.\n\nThank you, Professor Fan, for your answer. That concludes my questions.\n\nHello, Professor Fan. I have another question: During the FC stage, which is the 100% design phase, the design unit has already provided the client and contractors with electrical calculations, including load calculations, short-circuit current calculations, electrical system analysis reports, and lightning protection/grounding reports. So, during the detailed design phase, is it still necessary to provide these contents?",
+    "char_count": 504
+  },
+  {
+    "chunk_id": 104,
+    "metadata": {},
+    "content": "In North America, there are typically two approaches to electrical studies for large-scale projects. Design institutes, acting as consultants, conduct preliminary estimations during the design phase, considering factors like power flow and short-circuit current when selecting conductor cross-sections and equipment. While design institutes provide single-line diagrams, they may not fully determine specific details, such as short-circuit current values.\n\nHowever, the actual brand of equipment selected (e.g., Siemens or ABB) can impact protection coordination and setting values. Therefore, contractors may need to perform a comprehensive calculation once the final equipment is chosen.",
+    "char_count": 689
+  },
+  {
+    "chunk_id": 105,
+    "metadata": {},
+    "content": "This is a possible scenario, but for calculations such as wind load and lightning protection—for instance, in lightning protection design where the height of lightning rods and the resistivity of grounding have already been determined and preliminary measurements have been conducted—I believe there is indeed no need for redundant work in this aspect.\n\nIt entirely depends on the requirements of the client and the design institute.\n\nIf the client is technically proficient, they will specify detailed requirements; if lacking relevant technical knowledge, they will rely entirely on the design institute to establish these requirements.",
+    "char_count": 638
+  },
+  {
+    "chunk_id": 106,
+    "metadata": {},
+    "content": "If the client is technically proficient, they will specify detailed requirements; if lacking relevant technical knowledge, they will rely entirely on the design institute to establish these requirements.\n\nIn large-scale projects in North America, clients typically require contractors to undertake certain portions of the work. Through these two lectures, I’ve observed differences in project execution models between the Middle East, South Asia, Southeast Asia, and North America. For example, Hong Kong designers often produce only preliminary construction drawings, heavily relying on contractors for detailed calculations. In North America, this practice is relatively uncommon.\n\nThe issue you raised reflects local-specific requirements, as North American projects generally do not assign extensive detailed design work to contractors unless it involves specialized fields.",
+    "char_count": 878
+  },
+  {
+    "chunk_id": 107,
+    "metadata": {},
+    "content": "Got it, thank you, Professor Fan.\n\nI believe these are some special requirements you’ve encountered outside of North America.\n\nYes, never done it in North America.\n\nIn North America, we do not require contractors to undertake extensive detailed design work. While they may specify certain local requirements, they are generally not involved in large-scale detailed design as you mentioned.\n\nNorth American contracts typically stipulate that contractors must strictly adhere to the design documents. If contractors have questions about the design, they will request detailed explanations from the design consultants through the RFI process. Contractors are usually unwilling and lack the capability to conduct independent design.\n\nOkay.\n\nI believe these are some special requirements you’ve encountered outside of North America.",
+    "char_count": 827
+  },
+  {
+    "chunk_id": 108,
+    "metadata": {},
+    "content": "Okay.\n\nOf course, given the large scale of the projects you undertake, you may encounter some challenges. This requires the team to possess strong technical capabilities, and may involve taking on some detailed design work.\n\nSome design institutes may not provide sufficient design depth, which is relatively common in Southeast Asia. As far as I know, some engineering companies in Hong Kong have this tradition, where the construction contractor takes on a significant portion of the project design work. However, the situation is different in North America.\n\nThis leads to another question. If the contractor takes on too much work, should they bear the corresponding design responsibilities?\n\nPlease note, this is absolutely critical.\n\nFirst, you need to complete the relevant documentation; second, you must ensure the documents are reviewed and signed. As a contractor, you do not have signing authority.",
+    "char_count": 910
+  },
+  {
+    "chunk_id": 109,
+    "metadata": {},
+    "content": "Please note, this is absolutely critical.\n\nFirst, you need to complete the relevant documentation; second, you must ensure the documents are reviewed and signed. As a contractor, you do not have signing authority.\n\nIf you proceed without approval and issues arise, the responsibility may fall on you. However, if you communicate in advance and obtain approval, you will ultimately be absolved of most liability.\n\nIf the review comments specify that the contractor is responsible for relevant matters, it falls within the contract scope.\n\nOkay, any other questions?\n\nI’d like to inquire whether the IEEE standards themselves don’t clearly specify which clauses are mandatory? In fact, the mandatory codes in North America are primarily based on NFPA and the standards we just mentioned, while other international projects follow IEC standards. Is that correct?",
+    "char_count": 859
+  },
+  {
+    "chunk_id": 110,
+    "metadata": {},
+    "content": "IEEE is a performance standard. The organization itself is an academic body without enforcement authority. In contrast, standards established by other organizations such as CSA or NC are mandatory. Only when IEEE standards are referenced by building codes, electrical codes, or other mandatory regulations do the cited portions acquire binding force.\n\nUnderstood.\n\nThe special terms in the quoted section are mandatory.\n\nUnderstood, so in fact NFPA and IEC are both considered prescriptive codes. If we need to find mandatory requirements, should we look for them within these codes?\n\nYou don’t need to sift through the extensive content of IIPA HPE, as the core regulations are primarily concentrated in the building codes. The building codes mainly stipulate when to use generators, emergency lighting, and fire alarm systems.",
+    "char_count": 828
+  },
+  {
+    "chunk_id": 111,
+    "metadata": {},
+    "content": "The core regulations are primarily concentrated in the building codes, which specify when to use generators, emergency lighting, and fire alarm systems. For instance, the building codes outline which types of buildings require fire alarm systems and the general equipment needed, such as smoke or heat detectors. While the building codes mandate that certain premises install specific equipment, the exact number of detectors required for a particular room is detailed in the Fire Alarm Code.",
+    "char_count": 492
+  },
+  {
+    "chunk_id": 112,
+    "metadata": {},
+    "content": "These mandatory regulations, such as building codes, electrical codes, and other standards (like fire alarm codes), explicitly cite requirements in their provisions. For example, if referencing the power supply design for fire protection systems, the code will direct you to the NFPA 20 standard, at which point the relevant clauses of that standard must be consulted.\n\nHowever, it should be noted that standards like NFPA may cover both electrical and plumbing aspects—only the sections relevant to electrical design need to be focused on.\n\nDear Professor,\n\nI would like to consult you on two questions:",
+    "char_count": 604
+  },
+  {
+    "chunk_id": 113,
+    "metadata": {},
+    "content": "Dear Professor,\n\nI would like to consult you on two questions:\n\nFirst, regarding electrical-related regulations, including the standards for power supply enterprises, the spacing requirements for switchgear, and the spacing for low-voltage cabinets, could you please provide a brief explanation?\n\nSecond, concerning intelligent system-related regulations, such as the standards for structured cabling systems, telephone systems, and access control systems, which specific codes should we refer to?\n\nI look forward to further discussing these matters with you.",
+    "char_count": 559
+  },
+  {
+    "chunk_id": 114,
+    "metadata": {},
+    "content": "I look forward to further discussing these matters with you.\n\nFirst, let’s discuss the initial issue: the division of responsibilities in the power sector. In North America, power utilities do not intervene in the internal electrical design of buildings. Customers only need to apply to the utility for the required capacity, such as a 1600A, 600V incoming service, and the utility is responsible for providing the service entrance and metering. Details like protective device coordination and surge arrester installation fall under NEC (National Electrical Code) or CEC (Canadian Electrical Code) jurisdiction—utilities are not bound by these codes but follow their own standards.",
+    "char_count": 681
+  },
+  {
+    "chunk_id": 115,
+    "metadata": {},
+    "content": "In overseas projects, particularly in North America and Southeast Asia, design parameters such as switchgear clearances must strictly comply with NEC or CEC. The domestic scenario differs. For example, in a Dalian project I participated in, the utility intervened in all design aspects, including switchgear selection, reflecting a blurred boundary of responsibilities domestically.\n\nFrom a professional standpoint, if switchgear is utility-owned, their technical requirements are justified; otherwise, compliance should follow professional standards such as building electrical design codes. While this division should theoretically be clear, practical implementation in domestic contexts may vary.\n\nThank you for your question. What I’d like to understand is at which stage our work intersects or interacts with the North American design team’s work.",
+    "char_count": 852
+  },
+  {
+    "chunk_id": 116,
+    "metadata": {},
+    "content": "Thank you for your question. What I’d like to understand is at which stage our work intersects or interacts with the North American design team’s work.\n\nFirst, it is necessary to clarify the specific numerical requirements for voltage and current. The system will be regulated based on these parameters.\n\nIf the substation needs to be installed indoors, its design is the responsibility of the client and must be submitted for review. The review content is limited to voltage and current parameters, metering methods, and protection coordination schemes. Internal design details, such as switchgear selection and spacing, are not within the scope of the review.\n\nIf the substation is owned by a utility company, i.e., a Utility Substation, it has full jurisdiction and investment rights. However, if it is a client-owned facility, the utility company has no authority to intervene in the specific design.\n\nOkay okay okay.",
+    "char_count": 921
+  },
+  {
+    "chunk_id": 117,
+    "metadata": {},
+    "content": "Okay okay okay.\n\nThis is the first question. The second question involves the relevant standards for low-voltage systems or access control systems.\n\nRegarding low-voltage standards, I just mentioned that communication systems have their own specifications, including cable laying methods, communication equipment room setup, grounding requirements, etc. The Royce control system does not have specific standards. As for security systems, North America adopts UL or ULC standards, but these are not mandatory and mainly depend on the client’s specific needs.\n\nIt is important to note that North American building codes explicitly state that access control systems must be interconnected with fire protection systems. This means that in the event of a fire or emergency evacuation, the access control system must ensure that people can escape from the outside, which is a critical requirement in building codes.",
+    "char_count": 909
+  },
+  {
+    "chunk_id": 118,
+    "metadata": {},
+    "content": "This requirement is reflected in both domestic and international standards.\n\nIf there are no other questions, we will proceed with the following content.\n\nYou mentioned there’s an interlocking relationship between the security system and the fire protection system, correct?\n\nYes.\n\nHowever, there is an issue: some of the projects we are currently undertaking, such as those in North Africa, follow American or European standards. These projects do not adopt the specialized fire alarm linkage systems commonly used domestically, but instead rely on Building Management Systems (BMS) for implementation.",
+    "char_count": 603
+  },
+  {
+    "chunk_id": 119,
+    "metadata": {},
+    "content": "The BMS system has several shortcomings in practical applications, particularly regarding reliability. According to reliability theory, the more components a system involves, the lower its overall reliability. For fire protection systems, strict regulations require that they be controlled by a dedicated FARARM system rather than through the BMS. This is especially critical in North America, where a failure in communication between the BMS and the FARARM system during a fire could result in delayed fire detection.\n\nMoreover, due to the complexity and number of components in the BMS, it may not reliably transmit specialized signals. In the event of a fire, access control should be directly managed by the FARARM system, not indirectly through the BMS.",
+    "char_count": 758
+  },
+  {
+    "chunk_id": 120,
+    "metadata": {},
+    "content": "Is it similar to the domestic fire alarm linkage system, where a central control unit operates according to preset linkage logic?\n\nAre you FARARM? When you mention the host, are you referring to FARARM’s host or the host of this Security system?\n\nIt might be FARARMOK.\n\nWhen a signal from FARARM is transmitted, the discussion at this point is usually more detailed. Regarding the specific content of the Security system, we will explain it in detail later and will not elaborate here. It is only necessary to clarify that the control of such access control systems in the event of a fire is entirely executed by FARARM and does not go through the BMS system.\n\nHello, can Teacher Fan make the wish come true?\n\nOkay.",
+    "char_count": 715
+  },
+  {
+    "chunk_id": 121,
+    "metadata": {},
+    "content": "Hello, I’d like to ask a small question. When designing overseas projects, we sometimes need to hire security consultants to prepare safety reports. Is this a client’s technical requirement or a common international practice?\n\nThe design of this Security System is typically divided into two parts, especially suitable for key government departments.\n\nThe first part is the Risk Assessment Report, which aims to evaluate the required security level for the facility and identify potential security risks. This report falls under the category of scheme analysis rather than detailed design. This part of the work should be completed by professional design institutes or qualified consulting firms.\n\nBased on this report, the design institute will proceed with subsequent detailed design work.",
+    "char_count": 791
+  },
+  {
+    "chunk_id": 122,
+    "metadata": {},
+    "content": "Based on this report, the design institute will proceed with subsequent detailed design work.\n\nYes, I’d like to inquire whether this report is required to be issued at the request of Party A, or if it must be submitted for all large-scale overseas projects.\n\nTypically, large-scale projects or important departments undertake this task, as its scale is too extensive for ordinary designs to handle. Clients often have this requirement, but it is neither fixed nor mandatory.\n\nOkay, thank you.\n\nThen what’s the problem?\n\nNext, we’ll quickly go through the remaining content. Can everyone see the PPT I’m sharing?\n\nSure, teacher.\n\nBefore the lunch break, with little time left, we’ll briefly cover the relevant aspects of North American electrical design.",
+    "char_count": 753
+  },
+  {
+    "chunk_id": 123,
+    "metadata": {},
+    "content": "Before the lunch break, with little time left, we’ll briefly cover the relevant aspects of North American electrical design.\n\nThese two reference books are HWE Color Book and Big C’s GuideHWE. As is well known, IEEE members are divided into different levels such as regular members and senior members. Today, we will focus on the HWE Color Book, which is published by the IEEE Standards Association (SA) and covers fields related to DI and control. This highly valuable series consists of 13 volumes, totaling over 6,000 pages.\n\nThis book set is available in print. Around the year 2000, I purchased it as a member for approximately $1,000 to $2,000, with members receiving a discount at that time.",
+    "char_count": 698
+  },
+  {
+    "chunk_id": 124,
+    "metadata": {},
+    "content": "This book set is available in print. Around the year 2000, I purchased it as a member for approximately $1,000 to $2,000, with members receiving a discount at that time.\n\nThe content is practical and rich in theory, making it an excellent reference. Although it was later adapted into a new edition, there were no significant differences in content. As power systems are a traditional industry, the fundamental theoretical principles remain largely unchanged except for the latest high-tech advancements, so the content of this book set has remained relatively stable.\n\nThis book series comes in 13 distinct colors, with each volume focusing on a different professional field. For instance, the Red Book primarily discusses power distribution systems, the Green Book covers grounding techniques, while the Gray Book specializes in power supply systems for commercial buildings.",
+    "char_count": 877
+  },
+  {
+    "chunk_id": 125,
+    "metadata": {},
+    "content": "The purple book is specifically dedicated to the calculation of short-circuit currents, while the brown book focuses on energy management, a topic that is less relevant to us.\n\nThe blue book provides comprehensive content, delving into the technical aspects of Disconnecting Relays (DR), with each section being highly specialized and voluminous.\n\nThe white book offers detailed explanations on the special power supply requirements for buildings such as hospitals.",
+    "char_count": 465
+  },
+  {
+    "chunk_id": 126,
+    "metadata": {},
+    "content": "The white book offers detailed explanations on the special power supply requirements for buildings such as hospitals.\n\nThe yellow book primarily covers operations, maintenance, and safety. This color-coded book emphasizes special considerations for electronic equipment. Additionally, this book has been renamed the 3000 Series, and more information can be found on the relevant website.\n\nIn addition to these Color Books, the content also involves design guidelines. Furthermore, there are some important standards, such as substation design and substation grounding, like the HUE80 Standard, which specifically elaborates on the design methods of substations, including details like grounding. Although these are not part of the Color Book series, they still fall under the category of standards. The Color Book itself is also one of the standards.\n\nThe above content is highly instructive and can be called the industry bible.",
+    "char_count": 929
+  },
+  {
+    "chunk_id": 127,
+    "metadata": {},
+    "content": "Next, I will introduce the shortcomings of a professional organization. The organization is called BICSI (Building Industry Consulting Services International), and its membership system requires joining to enjoy book purchase discounts and access industry-related information.",
+    "char_count": 276
+  },
+  {
+    "chunk_id": 128,
+    "metadata": {},
+    "content": "RCDD certification is essential for designing data centers in North America. Holding this certification allows one to lead the primary design work for data centers. Obtaining the certification is highly challenging. I passed the exam and earned the certification in 2008–2009. At that time, the exam lasted 5 hours and included 280 questions, with study materials spanning approximately 2,000 pages, covering nearly all low-voltage system knowledge, including functional requirements for fire alarm systems (but not the special requirements of life safety codes).",
+    "char_count": 563
+  },
+  {
+    "chunk_id": 129,
+    "metadata": {},
+    "content": "BICSI has published a series of professional books, including references like the BICSI Guide, covering areas such as low-voltage communications, fire alarm systems, security systems, and communication systems. The organization has also established many standards in the field of communications. These publications (both print and digital versions) serve as important reference materials for low-voltage engineers.",
+    "char_count": 414
+  }
+]
