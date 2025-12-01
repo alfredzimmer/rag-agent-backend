@@ -50,3 +50,4 @@ deepeval
 chromadb
 pymilvus[model]
 redis
+pydantic

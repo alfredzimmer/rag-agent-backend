@@ -5,6 +5,9 @@ from langchain_core.messages import HumanMessage, AIMessage, ToolMessage, BaseMe
 from langchain_ollama import ChatOllama
 from langchain_core.tools import tool
 import uuid
+from enum import Enum
+from pydantic import BaseModel, Field
+import asyncio
 
 from .milvus import create_milvus_store
 from .modules.reranker import BGERanker
@@ -19,6 +22,27 @@ class RAGConfig:
     sparse_embedding_model: str = "splade" #[splade, bm25, bge]
     llm_model: str = "qwen3:8b"
     hyde: bool = True
+
+class Status(Enum):
+   CREATED = "created"
+   RESPONSE = "response"
+   USAGE = "usage"
+   FUNCTION = "function"
+   COMPLETE = "complete"
+   CANCEL = "cancel"
+   ERROR = "error"
+
+class Metadata(BaseModel):
+   session_id: str = Field(..., description="Session ID")
+   input_tokens_used: int = Field(..., description="Number of input tokens used")
+   output_tokens_used: int = Field(..., description="Number of output tokens used")
+
+class ChatResponse(BaseModel):
+   status: Status
+   type: str = Field(..., description="The type of response")
+   content: str = Field(..., description="The content of the response")
+   metadata: Metadata = Field(..., description="Metadata about the response")
+
 
 # Registry of component creators
 VECTOR_STORES = {
@@ -204,130 +228,94 @@ def agent_call(query: Union[str, List[str]], config: RAGConfig = None):
 # Session-based Continuous Conversation
 # ============================================================================
 
-def agent_chat(
+async def agent_chat(
     query: str,
     session_id: Optional[str] = None,
     config: RAGConfig = None,
     clear_history: bool = False
-) -> tuple[str, List[str], str]:
-    """Chat with the agent in a continuous conversation.
-    
-    This function maintains conversation history across multiple calls using session IDs.
-    Unlike agent_call which is stateless, this function stores message history on the server.
-    
-    Args:
-        query: The user's question
-        session_id: Optional session ID to continue a conversation. If None, creates new session.
-        config: RAG configuration (uses default if None)
-        clear_history: If True, clears the conversation history for this session
-        
-    Returns:
-        Tuple of (response, sources, session_id)
-        - response: The agent's response text
-        - sources: List of source document contents
-        - session_id: The session ID (new or existing)
-        
-    Example:
-        # Start new conversation
-        response, sources, session_id = agent_chat("What is machine learning?")
-        
-        # Continue conversation
-        response, sources, _ = agent_chat(
-            "Can you explain more?", 
-            session_id=session_id
-        )
-        
-        # Clear history and start fresh
-        response, sources, _ = agent_chat(
-            "New topic", 
-            session_id=session_id,
-            clear_history=True
-        )
-    """
-    # Initialize config
+):
+
     if config is None:
         config = RAGConfig()
     
-    # Get storage backend
     storage = get_storage()
     
-    # Create or retrieve session
     if session_id is None:
         session_id = str(uuid.uuid4())
     
-    # Clear history if requested
     if clear_history:
         storage.delete_session(session_id)
     
-    # Build agent
     llm_with_tools, rag_tool = build_agent(config)
+
+    yield ChatResponse(status=Status.CREATED, type="chat.created", content="", metadata=Metadata(session_id=session_id, input_tokens_used=0, output_tokens_used=0))
     
-    # System message
+    input_tokens_used = 0
+    output_tokens_used = 0
+                    
     SYSTEM_MESSAGE = """You are a helpful assistant with access to a specialized knowledge base. 
     IMPORTANT: You MUST ALWAYS use the hybrid_RAG_retrieve tool FIRST before answering any question. 
     Never rely solely on your general knowledge. Always check the knowledge base for relevant information."""
     
-    # Get conversation history
     messages = storage.load_session(session_id)
     
     # Add system message if this is the first message
     if len(messages) == 0:
         messages.append({"role": "system", "content": SYSTEM_MESSAGE})
     
-    # Add user message
     messages.append(HumanMessage(content=query))
     
-    # Track retrieved docs
     retrieved_docs = []
     
     try:
-        # Step 1: Get initial response from LLM
         response = llm_with_tools.invoke(messages)
+        if response.usage_metadata:
+            input_tokens_used += response.usage_metadata.get("input_tokens", 0)
+            output_tokens_used += response.usage_metadata.get("output_tokens", 0)
         
-        # Step 2: Check if the model wants to use tools
         if response.tool_calls:
-            # Add the assistant's response with tool calls
             messages.append(response)
             
-            # Execute each tool call
             for tool_call in response.tool_calls:
                 print(f"[Calling {tool_call['name']}...]")
+                yield ChatResponse(status=Status.RESPONSE, type="response.function_call_arguments.done", content=f"{rag_tool.name}: {tool_call['args']}", metadata=Metadata(session_id=session_id, input_tokens_used=input_tokens_used, output_tokens_used=output_tokens_used))
                 
-                # Execute the tool
                 serialized_context, docs = rag_tool.invoke(tool_call["args"])
                 retrieved_docs.extend(docs)
                 
-                # Add tool result to messages
                 messages.append(ToolMessage(
                     content=serialized_context,
                     tool_call_id=tool_call["id"]
                 ))
-            
-            # Get final response with tool results
-            final_response = llm_with_tools.invoke(messages)
-            messages.append(AIMessage(content=final_response.content))
-            
-            response_text = final_response.content
-        else:
-            # No tool call, just use the response
-            messages.append(AIMessage(content=response.content))
-            response_text = response.content
+
+                yield ChatResponse(status=Status.FUNCTION, type="function", content=serialized_context, metadata=Metadata(session_id=session_id, input_tokens_used=input_tokens_used, output_tokens_used=output_tokens_used))
+
+
+        # Final response generation (streamed)
+        final_response = ""
+        for chunk in llm_with_tools.stream(messages):
+            if chunk.usage_metadata:
+                input_tokens_used += chunk.usage_metadata.get("input_tokens", 0)
+                output_tokens_used += chunk.usage_metadata.get("output_tokens", 0)
+            if chunk.content:
+                yield ChatResponse(status=Status.RESPONSE, type="response.output_text.delta", content=chunk.content, metadata=Metadata(session_id=session_id, input_tokens_used=input_tokens_used, output_tokens_used=output_tokens_used))
+                final_response += chunk.content
+        
+        messages.append(AIMessage(content=final_response))
+        response_text = final_response
+        yield ChatResponse(status=Status.RESPONSE, type="response.output_text.done", content=final_response, metadata=Metadata(session_id=session_id, input_tokens_used=input_tokens_used, output_tokens_used=output_tokens_used))
         
         # Update session storage
         storage.save_session(session_id, messages)
-        
-        # Return response, sources, and session_id
-        return (
-            response_text,
-            [doc.page_content for doc in retrieved_docs],
-            session_id
-        )
+
+        return
         
     except Exception as e:
         print(f"Error in agent_chat: {e}")
         import traceback
         traceback.print_exc()
-        return f"Error: {str(e)}", [], session_id
+        yield ChatResponse(status=Status.ERROR, type="error", content=str(e), metadata=Metadata(session_id=session_id, input_tokens_used=input_tokens_used, output_tokens_used=output_tokens_used))
+        return
 
 
 def get_session_history(session_id: str) -> List[Dict]:
@@ -360,101 +348,29 @@ def get_session_history(session_id: str) -> List[Dict]:
 
 
 def clear_session(session_id: str) -> bool:
-    """Clear a conversation session.
-    
-    Args:
-        session_id: The session ID to clear
-        
-    Returns:
-        True if session was cleared, False if session didn't exist
-    """
     storage = get_storage()
     return storage.delete_session(session_id)
 
 
 def list_sessions() -> List[str]:
-    """List all active session IDs.
-    
-    Returns:
-        List of session IDs
-    """
     storage = get_storage()
     return storage.list_sessions() 
 
 
+async def main():
+    query = input("Enter your query: ")
+    session_id = str(uuid.uuid4())
+    async for value in agent_chat(query, session_id=session_id):
+        if value.status == Status.RESPONSE:
+            if value.type == "response.output_text.delta":
+                print(value.content, end="")
+            elif value.type == "response.output_text.done":
+                print()
+            elif value.type == "response.function_call_arguments.done":
+                print(f"[Calling {value.content}...]")
+        else:
+            print(f"Received: {value}")
+    clear_session(session_id)
+
 if __name__ == "__main__":
-    # Initialize the agent
-    config = RAGConfig(sparse_embedding_model="bm25", hyde=False)
-    llm_with_tools, rag_tool = build_agent(config)
-
-    # System message
-    SYSTEM_MESSAGE = """You are a helpful assistant with access to a knowledge base. 
-    Use the hybrid_RAG_retrieve tool to search for relevant information when needed to answer user questions."""
-
-    # Initialize chat history
-    messages = [{"role": "system", "content": SYSTEM_MESSAGE}]
-
-    print("RAG Agent started. Type 'exit' or 'quit' to end the conversation.\n")
-
-    # Continuous conversation loop
-    while True:
-        user_input = input('\nYou: ')
-        
-        # Exit condition
-        if user_input.lower() in ['exit', 'quit', 'q']:
-            print("Goodbye!")
-            break
-                
-        # Add user message
-        messages.append(HumanMessage(content=user_input))
-        
-        print("Agent: ", end="", flush=True)
-        
-        try:
-            # Get response from LLM
-            response = llm_with_tools.invoke(messages)
-            
-            # Check if the model wants to use tools
-            if response.tool_calls:
-                # Add the assistant's response with tool calls
-                messages.append(response)
-                
-                # Execute each tool call
-                for tool_call in response.tool_calls:
-                    print(f"\n[Calling {tool_call['name']}...]")
-                    
-                    # Execute the tool
-                    tool_result = rag_tool.invoke(tool_call["args"])
-                    
-                    # Add tool result to messages
-                    messages.append(ToolMessage(
-                        content=tool_result[0], # tool returns (serialized, docs), we need serialized for message
-                        tool_call_id=tool_call["id"]
-                    ))
-                
-                # Get final response with tool results (streaming)
-                print("Agent: ", end="", flush=True)
-                final_response = ""
-                for chunk in llm_with_tools.stream(messages):
-                    if chunk.content:
-                        print(chunk.content, end="", flush=True)
-                        final_response += chunk.content
-                
-                print()  # New line
-                messages.append(AIMessage(content=final_response))
-            else:
-                # No tool call, just stream the response
-                full_response = ""
-                for chunk in llm_with_tools.stream(messages):
-                    if chunk.content:
-                        print(chunk.content, end="", flush=True)
-                        full_response += chunk.content
-                
-                print()  # New line
-                messages.append(AIMessage(content=full_response))
-            
-        except Exception as e:
-            import traceback
-            traceback.print_exc()
-            print(f"\nError: {e}")
-            print("Please try again.")
+    asyncio.run(main())
