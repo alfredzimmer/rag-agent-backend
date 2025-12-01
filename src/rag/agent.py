@@ -290,7 +290,6 @@ async def agent_chat(
 
                 yield ChatResponse(status=Status.FUNCTION, type="function", content=serialized_context, metadata=Metadata(session_id=session_id, input_tokens_used=input_tokens_used, output_tokens_used=output_tokens_used))
 
-
         # Final response generation (streamed)
         final_response = ""
         for chunk in llm_with_tools.stream(messages):
