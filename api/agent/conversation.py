@@ -30,7 +30,7 @@ class CreateSessionResponse(BaseModel):
     conversation_id: UUID = Field(..., description="The conversation ID")
 
 class ChatRequest(BaseModel):
-    input: str = Field(..., description="The question to ask the RAG system")
+    query: str = Field(..., description="The question to ask the RAG system")
     conversation_id: UUID = Field(..., description="The conversation ID")
 
 class ChatResponse(BaseModel):
@@ -46,7 +46,6 @@ class SessionHistoryResponse(BaseModel):
 class ClearSessionResponse(BaseModel):
     success: bool = Field(..., description="Whether the session was successfully cleared")
     message: str = Field(..., description="Status message")
-
 
 
 @router.get("/create")
@@ -67,14 +66,44 @@ async def create_session():
 @router.post("/chat", response_model=ChatResponse)
 async def chat_with_agent(request: ChatRequest, agent: RAGAgent = Depends(get_agent)):
     try:
-        responses = agent.chat(query=request.input, session_id=str(request.conversation_id))
-
+        responses = agent.chat(query=request.query, conversation_id=str(request.conversation_id))
         async def stream_response():
-            async for response in responses:
-                yield response.model_dump_json(indent=None)
-        
+            # async for response in responses:
+            #     yield response.model_dump_json(indent=None)
+            # Mock response
+            yield ChatResponse(
+                status=Status.RESPONSE,
+                type="response.created",
+                content="",
+                metadata=Metadata(session_id=str(request.conversation_id), tokens_used=0)
+            ).model_dump_json(indent=None)
+            yield ChatResponse(
+                status=Status.RESPONSE,
+                type="response.output_text.delta",
+                content="Hello, ",
+                metadata=Metadata(session_id=str(request.conversation_id), tokens_used=0)
+            ).model_dump_json(indent=None)
+            yield ChatResponse(
+                status=Status.RESPONSE,
+                type="response.output_text.delta",
+                content="World!",
+                metadata=Metadata(session_id=str(request.conversation_id), tokens_used=0)
+            ).model_dump_json(indent=None)
+            yield ChatResponse(
+                status=Status.RESPONSE,
+                type="response.output_text.delta",
+                content=f"Your question was: {request.query}",
+                metadata=Metadata(session_id=str(request.conversation_id), tokens_used=0)
+            ).model_dump_json(indent=None)
+            yield ChatResponse(
+                status=Status.COMPLETE,
+                type="response.completed",
+                content="",
+                metadata=Metadata(session_id=str(request.conversation_id), tokens_used=0)
+            ).model_dump_json(indent=None)
+
         return StreamingResponse(
-            stream_response(),
+            content=stream_response(),
             media_type="text/event-stream"
         )
     
