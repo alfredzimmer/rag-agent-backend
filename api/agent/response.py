@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 from typing import Optional, List
-from src.rag.agent import agent_call, RAGConfig
+from src.rag.agent import RAGAgent, RAGConfig
 import traceback 
 
 router = APIRouter(

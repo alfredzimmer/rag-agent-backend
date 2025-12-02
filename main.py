@@ -9,7 +9,7 @@ from src.rag.agent import RAGAgent, RAGConfig
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     print("Initializing agent...")
-    app.state.agent = RAGAgent(config=RAGConfig(), session_id="1")
+    app.state.agent = RAGAgent(config=RAGConfig())
     yield
     print("Cleaning up agent...")
     del app.state.agent
@@ -37,7 +37,7 @@ app.add_middleware(
 )
 
 app.include_router(conversation_router)
-app.include_router(response_router)
+# app.include_router(response_router)
 app.include_router(status_router)
 
 @app.get("/")
