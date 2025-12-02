@@ -64,9 +64,8 @@ RANKERS = {
 }
 
 class RAGAgent:
-    def __init__(self, config: RAGConfig, session_id: str):
+    def __init__(self, config: RAGConfig):
         self.config = config
-        self.session_id = session_id
         store_factory = VECTOR_STORES.get(config.vector_store_type)
         ranker_factory = RANKERS.get(config.ranker_type)
         
@@ -87,14 +86,14 @@ class RAGAgent:
         llm_with_tools = llm.bind_tools([rag_tool])
 
         workflow = create_agent_graph(llm_with_tools, rag_tool)
-                
+        
         # Create a connection pool that persists for the agent's lifecycle
         self.pool = ConnectionPool(conninfo=DB_URI, max_size=20, kwargs={"autocommit": True})
         self.checkpointer = PostgresSaver(self.pool)
         
         # Ensure tables exist
         self.checkpointer.setup()
-            
+
         self.agent = workflow.compile(checkpointer=self.checkpointer)
 
     def __del__(self):
@@ -105,13 +104,15 @@ class RAGAgent:
     async def chat(
         self,
         query: str,
+        session_id: str
     ):
-        config = {"configurable": {"thread_id": self.session_id}}
+        config = {"configurable": {"thread_id": session_id}}
         messages = [HumanMessage(content=query)]
         
         # Initialize state with token counts
         initial_state = {
             "messages": messages,
+            "interrupted": False,
             "input_tokens_used": 0,
             "output_tokens_used": 0
         }
@@ -311,11 +312,10 @@ def list_sessions() -> List[str]:
 
 
 async def main():
-    session_id = str(2)
     config = RAGConfig()
-    agent = RAGAgent(config, session_id=session_id)
+    agent = RAGAgent(config)
     query = input("Enter your query: ")
-    await agent.chat(query)
+    await agent.chat(query, session_id=str(2))
 
 if __name__ == "__main__":
     asyncio.run(main())

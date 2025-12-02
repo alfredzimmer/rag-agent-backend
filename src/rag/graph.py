@@ -19,8 +19,6 @@ class AgentState(TypedDict):
     output_tokens_used: int
 
 
-
-
 def create_agent_graph(llm_with_tools, rag_tool):
     """
     Create the LangGraph agent graph.
@@ -45,6 +43,8 @@ def create_agent_graph(llm_with_tools, rag_tool):
                         "Never rely solely on your general knowledge. Always check the knowledge base for relevant information."
             )
         ] + state["messages"]
+
+
         response = llm_with_tools.invoke(messages)
 
         return {
