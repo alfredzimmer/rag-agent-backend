@@ -177,7 +177,16 @@ class RAGAgent:
 
             if self.interrupted:
                 self.interrupted = False
-                break
+                yield ChatResponse(
+                    status=Status.CANCEL,
+                    type="chat.cancel", 
+                    content="", 
+                    metadata=Metadata(
+                        conversation_id=conversation_id,
+                        input_tokens_used=total_input_tokens,
+                        output_tokens_used=total_output_tokens)
+                )
+                return
             
             # chunk is a tuple: (message_chunk, metadata)
             # message_chunk contains individual tokens from the LLM
@@ -244,6 +253,7 @@ class RAGAgent:
 
     def interrupt(self):
         self.interrupted = True
+        return Status.CANCEL
 
             
 
@@ -434,7 +444,7 @@ async def main():
     query = input("Enter your query: ")
     
     # Stream responses
-    async for response in agent.chat(query, conversation_id=str(3)):
+    async for response in agent.chat(query, conversation_id=str(20)):
         print(f"[{response.status.value}] {response.type}: {response.content}")
         if response.status == Status.COMPLETE:
             print(f"\nFinal token usage - Input: {response.metadata.input_tokens_used}, Output: {response.metadata.output_tokens_used}")
