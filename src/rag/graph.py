@@ -35,6 +35,7 @@ def create_agent_graph(llm_with_tools, rag_tool):
     def agent_node(state: AgentState) -> AgentState:
         """
         Agent node: LLM decides what to do next.
+        Note: This uses invoke() for non-streaming. For streaming, we handle it in the agent.chat() method.
         """
         messages = [
             SystemMessage(
@@ -43,7 +44,6 @@ def create_agent_graph(llm_with_tools, rag_tool):
                         "Never rely solely on your general knowledge. Always check the knowledge base for relevant information."
             )
         ] + state["messages"]
-
 
         response = llm_with_tools.invoke(messages)
 
