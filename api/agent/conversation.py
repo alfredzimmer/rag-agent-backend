@@ -3,10 +3,9 @@ from pydantic import BaseModel, Field
 from typing import Optional, List, Dict
 import traceback
 
-from requests.models import Response
-
 from src.rag.agent import agent_chat, get_session_history, clear_session, RAGConfig
 from fastapi import HTTPException, APIRouter
+from fastapi.responses import StreamingResponse
 
 router = APIRouter(
     prefix="/api/agent/conversation"
@@ -25,10 +24,14 @@ class Metadata(BaseModel):
     tokens_used: int = Field(..., description="Number of tokens used")
 
 class ChatRequest(BaseModel):
-    query: str = Field(..., description="The question to ask the RAG system")
+    input: str = Field(..., description="The question to ask the RAG system")
     session_id: Optional[str] = Field(None, description="Session ID to continue a conversation. If None, creates new session.")
-    config: Optional[RAGConfig] = Field(None, description="Optional RAG configuration")
-    clear_history: Optional[bool] = Field(False, description="If True, clears conversation history for this session")
+
+class ChatResponse(BaseModel):
+    status: Status
+    type: str = Field(..., description="The type of response")
+    content: str = Field(..., description="The content of the response")
+    metadata: Metadata = Field(..., description="Metadata about the response")
 
 class SessionHistoryResponse(BaseModel):
     session_id: str = Field(..., description="The session ID")
@@ -38,24 +41,25 @@ class ClearSessionResponse(BaseModel):
     success: bool = Field(..., description="Whether the session was successfully cleared")
     message: str = Field(..., description="Status message")
 
-@router.post("/", response_model=ChatResponse)
+
+@router.post("/chat", response_model=ChatResponse)
 async def chat_with_agent(request: ChatRequest):
     try:
-        # Build config from request or use defaults
-        if request.config:
-            config = request.config
-        else:
-            config = RAGConfig()
         
         # Call the chat agent
-        response = agent_chat(
-            query=request.query,
-            session_id=request.session_id,
-            config=config,
-            clear_history=request.clear_history
+        responses = agent_chat(
+            query=request.input,
+            session_id=request.session_id
         )
+
+        async def stream_response():
+            async for response in responses:
+                yield response.model_dump_json(indent=None)
         
-        return response
+        return StreamingResponse(
+            stream_response(),
+            media_type="text/event-stream"
+        )
     
     except Exception as e:
         print(f"Error in chat_with_agent: {e}")
