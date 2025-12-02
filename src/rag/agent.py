@@ -99,7 +99,7 @@ class RAGAgent:
         self.checkpointer = checkpointer
         self.agent = workflow.compile(checkpointer=checkpointer)
 
-        self.interrupted = False
+        self.interrupted_ids = set()
 
     @classmethod
     async def create(cls, config: RAGConfig):
@@ -175,8 +175,8 @@ class RAGAgent:
         # Stream using messages mode - this streams LLM tokens as they're generated
         async for chunk in self.agent.astream(initial_state, config=config, stream_mode="messages"):
 
-            if self.interrupted:
-                self.interrupted = False
+            if self.is_interrupted(conversation_id):
+                self.interrupted_ids.remove(conversation_id)
                 yield ChatResponse(
                     status=Status.CANCEL,
                     type="chat.cancel", 
@@ -251,11 +251,12 @@ class RAGAgent:
             )
         )
 
-    def interrupt(self):
-        self.interrupted = True
-        return Status.CANCEL
+    def interrupt(self, conversation_id):
+        self.interrupted_ids.add(conversation_id)
+        return True
 
-            
+    def is_interrupted(self, conversation_id):
+        return conversation_id in self.interrupted_ids
 
 
 # def call(self, query: Union[str, List[str]]):
