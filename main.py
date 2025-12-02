@@ -12,7 +12,7 @@ async def lifespan(app: FastAPI):
     app.state.agent = RAGAgent(config=RAGConfig())
     yield
     print("Cleaning up agent...")
-    del app.state.agent
+    await app.state.agent.close()
 
 app = FastAPI(
     title="EC Master Agent API",

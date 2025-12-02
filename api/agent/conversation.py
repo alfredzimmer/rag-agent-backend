@@ -68,40 +68,9 @@ async def chat_with_agent(request: ChatRequest, agent: RAGAgent = Depends(get_ag
     try:
         responses = agent.chat(query=request.query, conversation_id=str(request.conversation_id))
         async def stream_response():
-            # async for response in responses:
-            #     yield response.model_dump_json(indent=None)
-            # Mock response
-            yield ChatResponse(
-                status=Status.RESPONSE,
-                type="response.created",
-                content="",
-                metadata=Metadata(session_id=str(request.conversation_id), tokens_used=0)
-            ).model_dump_json(indent=None)
-            yield ChatResponse(
-                status=Status.RESPONSE,
-                type="response.output_text.delta",
-                content="Hello, ",
-                metadata=Metadata(session_id=str(request.conversation_id), tokens_used=0)
-            ).model_dump_json(indent=None)
-            yield ChatResponse(
-                status=Status.RESPONSE,
-                type="response.output_text.delta",
-                content="World!",
-                metadata=Metadata(session_id=str(request.conversation_id), tokens_used=0)
-            ).model_dump_json(indent=None)
-            yield ChatResponse(
-                status=Status.RESPONSE,
-                type="response.output_text.delta",
-                content=f"Your question was: {request.query}",
-                metadata=Metadata(session_id=str(request.conversation_id), tokens_used=0)
-            ).model_dump_json(indent=None)
-            yield ChatResponse(
-                status=Status.COMPLETE,
-                type="response.completed",
-                content="",
-                metadata=Metadata(session_id=str(request.conversation_id), tokens_used=0)
-            ).model_dump_json(indent=None)
-
+            async for response in responses:
+                yield response.model_dump_json(indent=None)
+            
         return StreamingResponse(
             content=stream_response(),
             media_type="text/event-stream"
