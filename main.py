@@ -8,10 +8,11 @@ from src.rag.agent import RAGAgent, RAGConfig
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    print("Initializing agent...")
-    app.state.agent = RAGAgent(config=RAGConfig())
+    print("AGENT:     Initializing agent...")
+    config = RAGConfig()
+    app.state.agent = await RAGAgent.create(config)
     yield
-    print("Cleaning up agent...")
+    print("AGENT:     Cleaning up agent...")
     await app.state.agent.close()
 
 app = FastAPI(

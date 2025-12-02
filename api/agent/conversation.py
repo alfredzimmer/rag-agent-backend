@@ -1,6 +1,6 @@
 from enum import Enum
 from pydantic import BaseModel, Field
-from typing import Optional, List, Dict
+from typing import List, Dict
 import traceback
 from uuid import UUID, uuid4
 
@@ -39,6 +39,13 @@ class ChatResponse(BaseModel):
     content: str = Field(..., description="The content of the response")
     metadata: Metadata = Field(..., description="Metadata about the response")
 
+class InterruptRequest(BaseModel):
+    conversation_id: UUID = Field(..., description="The conversation ID")
+
+class InterruptResponse(BaseModel):
+    status: Status
+    content: str = Field(..., description="The content of the response")
+
 class SessionHistoryResponse(BaseModel):
     session_id: str = Field(..., description="The session ID")
     history: List[Dict[str, str]] = Field(..., description="Conversation history")
@@ -67,7 +74,6 @@ async def create_session():
 async def chat_with_agent(request: ChatRequest, agent: RAGAgent = Depends(get_agent)):
     try:
         responses = agent.chat(query=request.query, conversation_id=str(request.conversation_id))
-        print(request.conversation_id)
         async def stream_response():
             async for response in responses:
                 yield response.model_dump_json(indent=None)
@@ -84,6 +90,23 @@ async def chat_with_agent(request: ChatRequest, agent: RAGAgent = Depends(get_ag
             status_code=500,
             detail=f"Error processing chat: {str(e)}"
         )
+
+@router.post("/interrupt", response_model=InterruptResponse)
+async def interrupt_chat(request: InterruptRequest, agent: RAGAgent = Depends(get_agent)):
+    try:
+        agent.interrupt()
+        return InterruptResponse(
+            success=True,
+            message="Chat interrupted successfully"
+        )
+    except Exception as e:
+        print(f"Error in interrupt_chat: {e}")
+        traceback.print_exc()
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error interrupting chat: {str(e)}"
+        )
+
 
 
 @router.get("/history/{session_id}", response_model=SessionHistoryResponse)
