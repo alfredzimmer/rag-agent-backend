@@ -311,7 +311,7 @@ def list_sessions() -> List[str]:
 
 
 async def main():
-    session_id = str(uuid.uuid4())
+    session_id = str(2)
     config = RAGConfig()
     agent = RAGAgent(config, session_id=session_id)
     query = input("Enter your query: ")
