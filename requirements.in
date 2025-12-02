@@ -51,3 +51,4 @@ chromadb
 pymilvus[model]
 redis
 pydantic
+langgraph_checkpoint_postgres

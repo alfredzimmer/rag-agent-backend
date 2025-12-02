@@ -4,15 +4,25 @@ from dataclasses import dataclass
 from langchain_core.messages import HumanMessage, AIMessage, ToolMessage, BaseMessage
 from langchain_ollama import ChatOllama
 from langchain_core.tools import tool
+from psycopg_pool import ConnectionPool
+from langgraph.checkpoint.postgres import PostgresSaver
 import uuid
 from enum import Enum
 from pydantic import BaseModel, Field
 import asyncio
+import os
 
 from .milvus import create_milvus_store
 from .modules.reranker import BGERanker
 from .modules.hyde import HyDEGenerator
+from .graph import create_agent_graph
 from .session_storage import get_storage
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+DB_URI = "postgresql://agent_master:*181nosdunK@localhost:5432/agent_data"
 
 @dataclass
 class RAGConfig:
@@ -54,9 +64,9 @@ RANKERS = {
 }
 
 class RAGAgent:
-    def __init__(self, config: RAGConfig):
+    def __init__(self, config: RAGConfig, session_id: str):
         self.config = config
-        self.interrupted = False
+        self.session_id = session_id
         store_factory = VECTOR_STORES.get(config.vector_store_type)
         ranker_factory = RANKERS.get(config.ranker_type)
         
@@ -69,210 +79,160 @@ class RAGAgent:
             hyde_generator = HyDEGenerator()
         else:
             hyde_generator = None
-        
+
         # Create the tool with the specific components
-        self.rag_tool = create_rag_tool(vector_store, ranker, hyde_generator)
+        rag_tool = create_rag_tool(vector_store, ranker, hyde_generator)
         
         llm = ChatOllama(model=config.llm_model, temperature=0)
-        self.llm_with_tools = llm.bind_tools([self.rag_tool])
+        llm_with_tools = llm.bind_tools([rag_tool])
 
-
-    def call(self, query: Union[str, List[str]]):
-        # System message
-        SYSTEM_MESSAGE = """You are a helpful assistant with access to a specialized knowledge base. 
-        IMPORTANT: You MUST ALWAYS use the hybrid_RAG_retrieve tool FIRST before answering any question. 
-        Never rely solely on your general knowledge. Always check the knowledge base for relevant information."""
-
-        # Normalize input to list
-        is_batch = isinstance(query, list)
-        queries = query if is_batch else [query]
-
-        # Initialize chat histories for each query
-        all_messages = []
-        for q in queries:
-            all_messages.append([
-                {"role": "system", "content": SYSTEM_MESSAGE},
-                HumanMessage(content=q)
-            ])
-        
-        # Store retrieved docs for each query
-        batch_retrieved_docs = [[] for _ in queries]
-        final_responses = [""] * len(queries)
-        
-        try:
-            # Step 1: Initial batch call to LLM
-            responses = self.llm_with_tools.batch(all_messages)
-            
-            # Track which indices need a second pass (tool execution)
-            indices_to_process = []
-            
-            # Process initial responses
-            for i, response in enumerate(responses):
-                if response.tool_calls:
-                    # Add the assistant's response with tool calls
-                    all_messages[i].append(response)
-                    indices_to_process.append(i)
-                else:
-                    # No tool call, just get the response
-                    final_responses[i] = response.content
-
-            # Step 2: Execute tools for those that need it
-            if indices_to_process:
-                # Collect all tool calls that need execution
-                tool_tasks = []
-                for i in indices_to_process:
-                    response = responses[i]
-                    for tool_call in response.tool_calls:
-                        tool_tasks.append((i, tool_call))
+        workflow = create_agent_graph(llm_with_tools, rag_tool)
                 
-                # Execute tool calls in parallel
-                with ThreadPoolExecutor() as executor:
-                    # Submit all tasks
-                    future_to_task = {
-                        executor.submit(self.rag_tool.invoke, task[1]["args"]): task 
-                        for task in tool_tasks
-                    }
-                    
-                    # Process results as they complete
-                    for future in as_completed(future_to_task):
-                        i, tool_call = future_to_task[future]
-                        try:
-                            serialized_context, docs = future.result()
-                            
-                            # Store docs
-                            batch_retrieved_docs[i].extend(docs)
-                            
-                            # Add tool result to messages
-                            all_messages[i].append(ToolMessage(
-                                content=serialized_context,
-                                tool_call_id=tool_call["id"]
-                            ))
-                        except Exception as exc:
-                            print(f"Tool execution failed: {exc}")
-                            # Add error message to tool result so the LLM knows it failed
-                            all_messages[i].append(ToolMessage(
-                                content=f"Error: {str(exc)}",
-                                tool_call_id=tool_call["id"]
-                            ))
-
-                # Prepare second batch pass
-                second_pass_indices = indices_to_process
-                
-                # Step 3: Second batch call to LLM for those that used tools
-                if second_pass_indices:
-                    second_pass_messages = [all_messages[i] for i in second_pass_indices]
-                    second_responses = self.llm_with_tools.batch(second_pass_messages)
-                    
-                    for idx, response in zip(second_pass_indices, second_responses):
-                        final_responses[idx] = response.content
+        # Create a connection pool that persists for the agent's lifecycle
+        self.pool = ConnectionPool(conninfo=DB_URI, max_size=20, kwargs={"autocommit": True})
+        self.checkpointer = PostgresSaver(self.pool)
+        
+        # Ensure tables exist
+        self.checkpointer.setup()
             
-        except Exception as e:
-            print(f"Error in agent_call: {e}")
-            if is_batch:
-                return [], [f"Error: {str(e)}"] * len(queries)
-            return [], f"Error: {str(e)}"
+        self.agent = workflow.compile(checkpointer=self.checkpointer)
 
-        # Return results formatted correctly
-        results = []
-        for i in range(len(queries)):
-            results.append((final_responses[i], [doc.page_content for doc in batch_retrieved_docs[i]]))
+    def __del__(self):
+        """Cleanup connection pool on deletion."""
+        if hasattr(self, 'pool'):
+            self.pool.close()
 
-        if is_batch:
-            return results
-        else:
-            return results[0]
-    
     async def chat(
         self,
         query: str,
-        session_id: Optional[str] = None
     ):
-
-        storage = get_storage()
+        config = {"configurable": {"thread_id": self.session_id}}
+        messages = [HumanMessage(content=query)]
         
-        if session_id is None:
-            session_id = str(uuid.uuid4())
+        # Initialize state with token counts
+        initial_state = {
+            "messages": messages,
+            "input_tokens_used": 0,
+            "output_tokens_used": 0
+        }
         
-        yield ChatResponse(status=Status.CREATED, type="chat.created", content="", metadata=Metadata(session_id=session_id, input_tokens_used=0, output_tokens_used=0))
+        # Use ainvoke for async execution
+        final_state = self.agent.invoke(initial_state, config=config)
         
-        input_tokens_used = 0
-        output_tokens_used = 0
-                        
-        SYSTEM_MESSAGE = """You are a helpful assistant with access to a specialized knowledge base. 
-        IMPORTANT: You MUST ALWAYS use the hybrid_RAG_retrieve tool FIRST before answering any question. 
-        Never rely solely on your general knowledge. Always check the knowledge base for relevant information."""
-        
-        messages = storage.load_session(session_id)
-        
-        # Add system message if this is the first message
-        if len(messages) == 0:
-            messages.append({"role": "system", "content": SYSTEM_MESSAGE})
-        
-        messages.append(HumanMessage(content=query))
-        
-        retrieved_docs = []
-        
-        if self.interrupted:
-            yield ChatResponse(status=Status.CANCEL, type="chat.cancel", content="", metadata=Metadata(session_id=session_id, input_tokens_used=input_tokens_used, output_tokens_used=output_tokens_used))
-            return
-        try:
-            response = self.llm_with_tools.invoke(messages)
-            if response.usage_metadata:
-                input_tokens_used += response.usage_metadata.get("input_tokens", 0)
-                output_tokens_used += response.usage_metadata.get("output_tokens", 0)
+        for m in final_state["messages"]:
+            m.pretty_print()
             
-            if response.tool_calls:
-                messages.append(response)
+            # Yield responses to match expected interface if needed, 
+            # but for now just printing as per user's last edit.
+            # We can add back the yielding logic if the user wants it.
+
+            
+
+
+# def call(self, query: Union[str, List[str]]):
+#         # System message
+#         SYSTEM_MESSAGE = """You are a helpful assistant with access to a specialized knowledge base. 
+#         IMPORTANT: You MUST ALWAYS use the hybrid_RAG_retrieve tool FIRST before answering any question. 
+#         Never rely solely on your general knowledge. Always check the knowledge base for relevant information."""
+
+#         # Normalize input to list
+#         is_batch = isinstance(query, list)
+#         queries = query if is_batch else [query]
+
+#         # Initialize chat histories for each query
+#         all_messages = []
+#         for q in queries:
+#             all_messages.append([
+#                 {"role": "system", "content": SYSTEM_MESSAGE},
+#                 HumanMessage(content=q)
+#             ])
+        
+#         # Store retrieved docs for each query
+#         batch_retrieved_docs = [[] for _ in queries]
+#         final_responses = [""] * len(queries)
+        
+#         try:
+#             # Step 1: Initial batch call to LLM
+#             responses = self.llm_with_tools.batch(all_messages)
+            
+#             # Track which indices need a second pass (tool execution)
+#             indices_to_process = []
+            
+#             # Process initial responses
+#             for i, response in enumerate(responses):
+#                 if response.tool_calls:
+#                     # Add the assistant's response with tool calls
+#                     all_messages[i].append(response)
+#                     indices_to_process.append(i)
+#                 else:
+#                     # No tool call, just get the response
+#                     final_responses[i] = response.content
+
+#             # Step 2: Execute tools for those that need it
+#             if indices_to_process:
+#                 # Collect all tool calls that need execution
+#                 tool_tasks = []
+#                 for i in indices_to_process:
+#                     response = responses[i]
+#                     for tool_call in response.tool_calls:
+#                         tool_tasks.append((i, tool_call))
                 
-                for tool_call in response.tool_calls:
-                    print(f"[Calling {tool_call['name']}...]")
-                    yield ChatResponse(status=Status.RESPONSE, type="response.function_call_arguments.done", content=f"{self.rag_tool.name}: {tool_call['args']}", metadata=Metadata(session_id=session_id, input_tokens_used=input_tokens_used, output_tokens_used=output_tokens_used))
+#                 # Execute tool calls in parallel
+#                 with ThreadPoolExecutor() as executor:
+#                     # Submit all tasks
+#                     future_to_task = {
+#                         executor.submit(self.rag_tool.invoke, task[1]["args"]): task 
+#                         for task in tool_tasks
+#                     }
                     
-                    if self.interrupted:
-                        yield ChatResponse(status=Status.CANCEL, type="chat.cancel", content="", metadata=Metadata(session_id=session_id, input_tokens_used=input_tokens_used, output_tokens_used=output_tokens_used))
-                        return
-                    serialized_context, docs = self.rag_tool.invoke(tool_call["args"])
-                    retrieved_docs.extend(docs)
+#                     # Process results as they complete
+#                     for future in as_completed(future_to_task):
+#                         i, tool_call = future_to_task[future]
+#                         try:
+#                             serialized_context, docs = future.result()
+                            
+#                             # Store docs
+#                             batch_retrieved_docs[i].extend(docs)
+                            
+#                             # Add tool result to messages
+#                             all_messages[i].append(ToolMessage(
+#                                 content=serialized_context,
+#                                 tool_call_id=tool_call["id"]
+#                             ))
+#                         except Exception as exc:
+#                             print(f"Tool execution failed: {exc}")
+#                             # Add error message to tool result so the LLM knows it failed
+#                             all_messages[i].append(ToolMessage(
+#                                 content=f"Error: {str(exc)}",
+#                                 tool_call_id=tool_call["id"]
+#                             ))
+
+#                 # Prepare second batch pass
+#                 second_pass_indices = indices_to_process
+                
+#                 # Step 3: Second batch call to LLM for those that used tools
+#                 if second_pass_indices:
+#                     second_pass_messages = [all_messages[i] for i in second_pass_indices]
+#                     second_responses = self.llm_with_tools.batch(second_pass_messages)
                     
-                    messages.append(ToolMessage(
-                        content=serialized_context,
-                        tool_call_id=tool_call["id"]
-                    ))
-
-                    yield ChatResponse(status=Status.FUNCTION, type="function", content=serialized_context, metadata=Metadata(session_id=session_id, input_tokens_used=input_tokens_used, output_tokens_used=output_tokens_used))
-
-
-            # Final response generation (streamed)
-            if self.interrupted:
-                yield ChatResponse(status=Status.CANCEL, type="chat.cancel", content="", metadata=Metadata(session_id=session_id, input_tokens_used=input_tokens_used, output_tokens_used=output_tokens_used))
-                return
-            final_response = ""
-            for chunk in self.llm_with_tools.stream(messages):
-                if chunk.usage_metadata:
-                    input_tokens_used += chunk.usage_metadata.get("input_tokens", 0)
-                    output_tokens_used += chunk.usage_metadata.get("output_tokens", 0)
-                if chunk.content:
-                    yield ChatResponse(status=Status.RESPONSE, type="response.output_text.delta", content=chunk.content, metadata=Metadata(session_id=session_id, input_tokens_used=input_tokens_used, output_tokens_used=output_tokens_used))
-                    final_response += chunk.content
+#                     for idx, response in zip(second_pass_indices, second_responses):
+#                         final_responses[idx] = response.content
             
-            messages.append(AIMessage(content=final_response))
-            response_text = final_response
-            yield ChatResponse(status=Status.RESPONSE, type="response.output_text.done", content=final_response, metadata=Metadata(session_id=session_id, input_tokens_used=input_tokens_used, output_tokens_used=output_tokens_used))
-            
-            # Update session storage
-            storage.save_session(session_id, messages)
+#         except Exception as e:
+#             print(f"Error in agent_call: {e}")
+#             if is_batch:
+#                 return [], [f"Error: {str(e)}"] * len(queries)
+#             return [], f"Error: {str(e)}"
 
-            return
-            
-        except Exception as e:
-            print(f"Error in agent_chat: {e}")
-            import traceback
-            traceback.print_exc()
-            yield ChatResponse(status=Status.ERROR, type="error", content=str(e), metadata=Metadata(session_id=session_id, input_tokens_used=input_tokens_used, output_tokens_used=output_tokens_used))
-            return
-            
+#         # Return results formatted correctly
+#         results = []
+#         for i in range(len(queries)):
+#             results.append((final_responses[i], [doc.page_content for doc in batch_retrieved_docs[i]]))
 
-            
+#         if is_batch:
+#             return results
+#         else:
+#             return results[0]
 
 def create_rag_tool(vector_store, ranker, hyde_generator: Optional[HyDEGenerator]):
     @tool
@@ -351,21 +311,12 @@ def list_sessions() -> List[str]:
 
 
 async def main():
-    config = RAGConfig()
-    agent = RAGAgent(config)
-    query = input("Enter your query: ")
     session_id = str(uuid.uuid4())
-    async for value in agent.chat(query, session_id=session_id):
-        if value.status == Status.RESPONSE:
-            if value.type == "response.output_text.delta":
-                print(value.content, end="")
-            elif value.type == "response.output_text.done":
-                print()
-            elif value.type == "response.function_call_arguments.done":
-                print(f"[Calling {value.content}...]")
-        else:
-            print(f"Received: {value}")
-    clear_session(session_id)
+    config = RAGConfig()
+    agent = RAGAgent(config, session_id=session_id)
+    query = input("Enter your query: ")
+    await agent.chat(query)
 
 if __name__ == "__main__":
     asyncio.run(main())
+    
