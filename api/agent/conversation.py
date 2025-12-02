@@ -67,6 +67,7 @@ async def create_session():
 async def chat_with_agent(request: ChatRequest, agent: RAGAgent = Depends(get_agent)):
     try:
         responses = agent.chat(query=request.query, conversation_id=str(request.conversation_id))
+        print(request.conversation_id)
         async def stream_response():
             async for response in responses:
                 yield response.model_dump_json(indent=None)
