@@ -2,8 +2,9 @@ from enum import Enum
 from pydantic import BaseModel, Field
 from typing import Optional, List, Dict
 import traceback
+from uuid import UUID, uuid4
 
-from src.rag.agent import agent_chat, get_session_history, clear_session, RAGConfig
+from src.rag.agent import RAGAgent
 from fastapi import HTTPException, APIRouter
 from fastapi.responses import StreamingResponse
 
@@ -22,6 +23,9 @@ class Status(Enum):
 class Metadata(BaseModel):
     session_id: str = Field(..., description="Session ID")
     tokens_used: int = Field(..., description="Number of tokens used")
+
+class CreateSessionResponse(BaseModel):
+    conversation_id: UUID = Field(..., description="The conversation ID")
 
 class ChatRequest(BaseModel):
     input: str = Field(..., description="The question to ask the RAG system")
@@ -42,10 +46,26 @@ class ClearSessionResponse(BaseModel):
     message: str = Field(..., description="Status message")
 
 
+@router.get("/create")
+async def create_session():
+    conversation_id: UUID = uuid4()
+    try:
+        return CreateSessionResponse(
+            conversation_id=conversation_id
+        )
+    except Exception as e:
+        print(f"Error in create_session: {e}")
+        traceback.print_exc()
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error creating session: {str(e)}"
+        )
+
 @router.post("/chat", response_model=ChatResponse)
 async def chat_with_agent(request: ChatRequest):
     try:
         
+
         # Call the chat agent
         responses = agent_chat(
             query=request.input,

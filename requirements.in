@@ -51,3 +51,6 @@ chromadb
 pymilvus[model]
 redis
 pydantic
+psycopg[pool]
+sqlmodel
+asyncpg
