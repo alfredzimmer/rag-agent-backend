@@ -99,6 +99,8 @@ class RAGAgent:
         self.checkpointer = checkpointer
         self.agent = workflow.compile(checkpointer=checkpointer)
 
+        self.interrupted = False
+
     @classmethod
     async def create(cls, config: RAGConfig):
         """
@@ -162,7 +164,6 @@ class RAGAgent:
         # Initialize state with token counts
         initial_state = {
             "messages": messages,
-            "interrupted": False,
             "input_tokens_used": 0,
             "output_tokens_used": 0
         }
@@ -173,6 +174,11 @@ class RAGAgent:
         
         # Stream using messages mode - this streams LLM tokens as they're generated
         async for chunk in self.agent.astream(initial_state, config=config, stream_mode="messages"):
+
+            if self.interrupted:
+                self.interrupted = False
+                break
+            
             # chunk is a tuple: (message_chunk, metadata)
             # message_chunk contains individual tokens from the LLM
             msg, metadata = chunk
@@ -235,6 +241,9 @@ class RAGAgent:
                 output_tokens_used=total_output_tokens
             )
         )
+
+    def interrupt(self):
+        self.interrupted = True
 
             
 
@@ -358,7 +367,6 @@ def create_rag_tool(vector_store, ranker, hyde_generator: Optional[HyDEGenerator
         """
         # Retrieve documents using Milvus hybrid search (dense + sparse)
         inputText = hyde_generator.generate(query) if hyde_generator else query
-        print(f"Waiting for Embedding: {inputText[:100]}...") # Log first 100 chars
         
         vs = vector_store.get_vector_store()
         retrieved_docs = vs.similarity_search(inputText, k=30)

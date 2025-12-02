@@ -40,7 +40,7 @@ def create_agent_graph(llm_with_tools, rag_tool):
         messages = [
             SystemMessage(
                 content="You are a helpful assistant with access to a specialized knowledge base. "
-                        "IMPORTANT: You MUST ALWAYS use the hybrid_RAG_retrieve tool FIRST before answering any question. "
+                        "IMPORTANT: You MUST use the hybrid_RAG_retrieve tool before answering any technical question. "
                         "Never rely solely on your general knowledge. Always check the knowledge base for relevant information."
             )
         ] + state["messages"]
