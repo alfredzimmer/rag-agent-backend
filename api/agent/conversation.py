@@ -7,6 +7,8 @@ from uuid import UUID, uuid4
 from src.rag.agent import RAGAgent
 from fastapi import HTTPException, APIRouter
 from fastapi.responses import StreamingResponse
+from fastapi import Depends
+from api.dependency import get_agent
 
 router = APIRouter(
     prefix="/api/agent/conversation"
@@ -29,7 +31,7 @@ class CreateSessionResponse(BaseModel):
 
 class ChatRequest(BaseModel):
     input: str = Field(..., description="The question to ask the RAG system")
-    session_id: Optional[str] = Field(None, description="Session ID to continue a conversation. If None, creates new session.")
+    conversation_id: UUID = Field(..., description="The conversation ID")
 
 class ChatResponse(BaseModel):
     status: Status
@@ -44,6 +46,7 @@ class SessionHistoryResponse(BaseModel):
 class ClearSessionResponse(BaseModel):
     success: bool = Field(..., description="Whether the session was successfully cleared")
     message: str = Field(..., description="Status message")
+
 
 
 @router.get("/create")
@@ -62,15 +65,9 @@ async def create_session():
         )
 
 @router.post("/chat", response_model=ChatResponse)
-async def chat_with_agent(request: ChatRequest):
+async def chat_with_agent(request: ChatRequest, agent: RAGAgent = Depends(get_agent)):
     try:
-        
-
-        # Call the chat agent
-        responses = agent_chat(
-            query=request.input,
-            session_id=request.session_id
-        )
+        responses = agent.chat(query=request.input, session_id=str(request.conversation_id))
 
         async def stream_response():
             async for response in responses:

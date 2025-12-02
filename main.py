@@ -1,13 +1,24 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from contextlib import asynccontextmanager
 from api.agent.conversation import router as conversation_router
 from api.agent.response import router as response_router
 from api.agent.status import router as status_router
+from src.rag.agent import RAGAgent, RAGConfig
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    print("Initializing agent...")
+    app.state.agent = RAGAgent(config=RAGConfig(), session_id="1")
+    yield
+    print("Cleaning up agent...")
+    del app.state.agent
 
 app = FastAPI(
     title="EC Master Agent API",
     description="API for querying the EC Master Agent",
-    version="1.0.0"
+    version="1.0.0",
+    lifespan=lifespan
 )
 
 origins = [
@@ -33,14 +44,5 @@ app.include_router(status_router)
 def read_root():
     return {
         "status": "ok", 
-        "message": "RAG API is running!",
-        "endpoints": {
-            "health": "/health",
-            "model_status": "/api/model-status",
-            "query": "/api/query",
-            "batch_query": "/api/batch-query",
-            "chat": "/api/chat",
-            "chat_history": "/api/chat/history/{session_id}",
-            "chat_clear": "/api/chat/clear/{session_id}"
-        }
+        "message": "API is running!"
     }
