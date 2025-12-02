@@ -4,8 +4,8 @@ from dataclasses import dataclass
 from langchain_core.messages import HumanMessage, AIMessage, ToolMessage, BaseMessage
 from langchain_ollama import ChatOllama
 from langchain_core.tools import tool
-from psycopg_pool import ConnectionPool
-from langgraph.checkpoint.postgres import PostgresSaver
+from psycopg_pool import ConnectionPool, AsyncConnectionPool
+from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
 import uuid
 from enum import Enum
 from pydantic import BaseModel, Field
@@ -31,7 +31,7 @@ class RAGConfig:
     dense_embedding_model: str = "qwen3-embedding:8b"
     sparse_embedding_model: str = "splade" #[splade, bm25, bge]
     llm_model: str = "qwen3:8b"
-    hyde: bool = True
+    hyde: bool = False
 
 class Status(Enum):
    CREATED = "created"
@@ -43,7 +43,7 @@ class Status(Enum):
    ERROR = "error"
 
 class Metadata(BaseModel):
-   session_id: str = Field(..., description="Session ID")
+   conversation_id: str = Field(..., description="Session ID")
    input_tokens_used: int = Field(..., description="Number of input tokens used")
    output_tokens_used: int = Field(..., description="Number of output tokens used")
 
@@ -64,7 +64,14 @@ RANKERS = {
 }
 
 class RAGAgent:
-    def __init__(self, config: RAGConfig):
+    def __init__(self, config: RAGConfig, checkpointer=None):
+        """
+        Initialize RAGAgent synchronously.
+        
+        Args:
+            config: RAG configuration
+            checkpointer: Optional checkpointer (for internal use by create())
+        """
         self.config = config
         store_factory = VECTOR_STORES.get(config.vector_store_type)
         ranker_factory = RANKERS.get(config.ranker_type)
@@ -87,26 +94,69 @@ class RAGAgent:
 
         workflow = create_agent_graph(llm_with_tools, rag_tool)
         
-        # Create a connection pool that persists for the agent's lifecycle
-        self.pool = ConnectionPool(conninfo=DB_URI, max_size=20, kwargs={"autocommit": True})
-        self.checkpointer = PostgresSaver(self.pool)
+        # Compile agent with or without checkpointer
+        self.pool = None
+        self.checkpointer = checkpointer
+        self.agent = workflow.compile(checkpointer=checkpointer)
+
+    @classmethod
+    async def create(cls, config: RAGConfig):
+        """
+        Async factory method to create RAGAgent with checkpointing support.
         
-        # Ensure tables exist
-        self.checkpointer.setup()
+        Usage:
+            agent = await RAGAgent.create(config)
+            async for response in agent.chat(query, conversation_id):
+                ...
+            await agent.close()
+        
+        Args:
+            config: RAG configuration
+            
+        Returns:
+            Initialized RAGAgent with async checkpointer
+        """
+        # Create async pool and checkpointer
+        pool = AsyncConnectionPool(conninfo=DB_URI, max_size=20, kwargs={"autocommit": True})
+        await pool.open()
+        
+        checkpointer = AsyncPostgresSaver(pool)
+        await checkpointer.setup()
+        
+        # Create agent instance with checkpointer
+        agent = cls(config, checkpointer=checkpointer)
+        agent.pool = pool
+        
+        return agent
 
-        self.agent = workflow.compile(checkpointer=self.checkpointer)
+    async def close(self):
+        """Close the async connection pool."""
+        if self.pool:
+            await self.pool.close()
 
-    def __del__(self):
-        """Cleanup connection pool on deletion."""
-        if hasattr(self, 'pool'):
-            self.pool.close()
+    async def __aenter__(self):
+        """Async context manager entry."""
+        return self
+
+    async def __aexit__(self, exc_type, exc_val, exc_tb):
+        """Async context manager exit."""
+        await self.close()
 
     async def chat(
         self,
         query: str,
-        session_id: str
+        conversation_id: str
     ):
-        config = {"configurable": {"thread_id": session_id}}
+        """
+        Stream responses from the agent using stream_mode="messages".
+        
+        Yields ChatResponse objects for:
+        - AI message content (RESPONSE status, type: response.output_text.delta)
+        - Tool calls (RESPONSE status, type: response.function_call_arguments.done)
+        - Tool results (FUNCTION status, type: function)
+        - Completion signal (COMPLETE status)
+        """
+        config = {"configurable": {"thread_id": conversation_id}}
         messages = [HumanMessage(content=query)]
         
         # Initialize state with token counts
@@ -117,15 +167,74 @@ class RAGAgent:
             "output_tokens_used": 0
         }
         
-        # Use ainvoke for async execution
-        final_state = self.agent.invoke(initial_state, config=config)
+        # Track cumulative token usage
+        total_input_tokens = 0
+        total_output_tokens = 0
         
-        for m in final_state["messages"]:
-            m.pretty_print()
+        # Stream using messages mode - this streams LLM tokens as they're generated
+        async for chunk in self.agent.astream(initial_state, config=config, stream_mode="messages"):
+            # chunk is a tuple: (message_chunk, metadata)
+            # message_chunk contains individual tokens from the LLM
+            msg, metadata = chunk
             
-            # Yield responses to match expected interface if needed, 
-            # but for now just printing as per user's last edit.
-            # We can add back the yielding logic if the user wants it.
+            # Handle AI message chunks (tokens from LLM)
+            if isinstance(msg, AIMessage):
+                # Check for tool calls
+                if hasattr(msg, "tool_calls") and msg.tool_calls:
+                    for tool_call in msg.tool_calls:
+                        yield ChatResponse(
+                            status=Status.RESPONSE,
+                            type="response.function_call_arguments.delta",
+                            content=f"Calling {tool_call['name']} with args: {tool_call['args']}",
+                            metadata=Metadata(
+                                conversation_id=conversation_id,
+                                input_tokens_used=total_input_tokens,
+                                output_tokens_used=total_output_tokens
+                            )
+                        )
+                
+                # Stream AI message content chunks (individual tokens)
+                if msg.content:
+                    yield ChatResponse(
+                        status=Status.RESPONSE,
+                        type="response.output_text.delta",
+                        content=msg.content,
+                        metadata=Metadata(
+                            conversation_id=conversation_id,
+                            input_tokens_used=total_input_tokens,
+                            output_tokens_used=total_output_tokens
+                        )
+                    )
+                
+                # Update token usage if available
+                if hasattr(msg, 'usage_metadata') and msg.usage_metadata:
+                    total_input_tokens += msg.usage_metadata.get('input_tokens', 0)
+                    total_output_tokens += msg.usage_metadata.get('output_tokens', 0)
+            
+            # Handle tool messages
+            elif isinstance(msg, ToolMessage):
+                yield ChatResponse(
+                    status=Status.FUNCTION,
+                    type="function",
+                    content=msg.content,
+                    metadata=Metadata(
+                        conversation_id=conversation_id,
+                        input_tokens_used=total_input_tokens,
+                        output_tokens_used=total_output_tokens
+                    )
+                )
+        
+        # Yield completion signal
+        yield ChatResponse(
+            status=Status.COMPLETE,
+            type="completion",
+            content="",
+            metadata=Metadata(
+                conversation_id=conversation_id,
+                input_tokens_used=total_input_tokens,
+                output_tokens_used=total_output_tokens
+            )
+        )
 
             
 
@@ -258,9 +367,6 @@ def create_rag_tool(vector_store, ranker, hyde_generator: Optional[HyDEGenerator
         # The ranker is a BGERanker instance
         k = 3
         reranked_docs = ranker.rerank(query, retrieved_docs, k)
-
-        print(f"Reranked {len(reranked_docs)} docs")
-        print(f"Reranked docs: {reranked_docs}")
         
         # Generate serialized output
         serialized = "\n\n".join(
@@ -272,17 +378,17 @@ def create_rag_tool(vector_store, ranker, hyde_generator: Optional[HyDEGenerator
     return hybrid_RAG_retrieve
 
 
-def get_session_history(session_id: str) -> List[Dict]:
+def get_session_history(conversation_id: str) -> List[Dict]:
     """Get the conversation history for a session.
     
     Args:
-        session_id: The session ID
+        conversation_id: The conversation ID
         
     Returns:
         List of message dictionaries with 'role' and 'content'
     """
     storage = get_storage()
-    messages = storage.load_session(session_id)
+    messages = storage.load_session(conversation_id)
     
     if not messages:
         return []
@@ -301,9 +407,9 @@ def get_session_history(session_id: str) -> List[Dict]:
     return history
 
 
-def clear_session(session_id: str) -> bool:
+def clear_session(conversation_id: str) -> bool:
     storage = get_storage()
-    return storage.delete_session(session_id)
+    return storage.delete_session(conversation_id)
 
 
 def list_sessions() -> List[str]:
@@ -313,9 +419,20 @@ def list_sessions() -> List[str]:
 
 async def main():
     config = RAGConfig()
-    agent = RAGAgent(config)
+    
+    # Use the async factory method to create agent with checkpointing
+    agent = await RAGAgent.create(config)
+    
     query = input("Enter your query: ")
-    await agent.chat(query, session_id=str(2))
+    
+    # Stream responses
+    async for response in agent.chat(query, conversation_id=str(3)):
+        print(f"[{response.status.value}] {response.type}: {response.content}")
+        if response.status == Status.COMPLETE:
+            print(f"\nFinal token usage - Input: {response.metadata.input_tokens_used}, Output: {response.metadata.output_tokens_used}")
+    
+    # Clean up
+    await agent.close()
 
 if __name__ == "__main__":
     asyncio.run(main())
