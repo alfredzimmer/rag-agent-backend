@@ -162,11 +162,10 @@ class RAGAgent:
         config = {"configurable": {"thread_id": conversation_id}}
         messages = [HumanMessage(content=query)]
         
-        # Initialize state with token counts
+        # Initialize state with new message only
+        # Token counts will be maintained by the checkpointer across conversation
         initial_state = {
-            "messages": messages,
-            "input_tokens_used": 0,
-            "output_tokens_used": 0
+            "messages": messages
         }
         
         # Track cumulative token usage
@@ -253,9 +252,10 @@ class RAGAgent:
             )
         else:
             final_state = await self.agent.ainvoke(initial_state, config=config)
-
-            for m in final_state["messages"]:
-                m.pretty_print()
+            
+            # Yield the final state as a single response
+            yield final_state
+            return
 
     def interrupt(self, conversation_id):
         self.interrupted_ids.add(conversation_id)
@@ -410,7 +410,7 @@ def create_rag_tool(vector_store, ranker, hyde_generator: Optional[HyDEGenerator
             (f"Source: {doc.metadata}\nContent: {doc.page_content}")
             for doc in reranked_docs
         )
-        return serialized, reranked_docs
+        return serialized
 
     return hybrid_RAG_retrieve
 
@@ -463,8 +463,21 @@ async def main():
     query = input("Enter your query: ")
 
     # Invoke the agent
-    async for response in agent.chat(query, conversation_id=str(20), stream=False):
-        print(response)
+    async for response in agent.chat(query, conversation_id=str(27), stream=False):
+        print("Messages:")
+        print(response["messages"])
+        print()
+        
+        # Context might not exist if summarization hasn't triggered yet
+        if "context" in response and "running_summary" in response["context"]:
+            print("Summary:")
+            print(response["context"]["running_summary"].summary)
+            print()
+        
+        print(f"Input tokens: {response.get('input_tokens_used', 0)}")
+        print(f"Output tokens: {response.get('output_tokens_used', 0)}")
+
+    
     
     # Stream responses
     # async for response in agent.chat(query, conversation_id=str(20)):
