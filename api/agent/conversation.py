@@ -43,8 +43,8 @@ class InterruptRequest(BaseModel):
     conversation_id: UUID = Field(..., description="The conversation ID")
 
 class InterruptResponse(BaseModel):
-    status: Status
-    content: str = Field(..., description="The content of the response")
+    success: bool = Field(..., description="Whether the chat was interrupted successfully")
+    message: str = Field(..., description="Status message")
 
 class SessionHistoryResponse(BaseModel):
     session_id: str = Field(..., description="The session ID")
@@ -94,11 +94,11 @@ async def chat_with_agent(request: ChatRequest, agent: RAGAgent = Depends(get_ag
 @router.post("/interrupt", response_model=InterruptResponse)
 async def interrupt_chat(request: InterruptRequest, agent: RAGAgent = Depends(get_agent)):
     try:
-        agent.interrupt()
-        return InterruptResponse(
-            success=True,
-            message="Chat interrupted successfully"
-        )
+        if (agent.interrupt(conversation_id=str(request.conversation_id))):
+            return InterruptResponse(
+                success=True,
+                message="Chat interrupted successfully"
+            )
     except Exception as e:
         print(f"Error in interrupt_chat: {e}")
         traceback.print_exc()
