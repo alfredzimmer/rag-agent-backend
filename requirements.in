@@ -55,3 +55,4 @@ langgraph_checkpoint_postgres
 psycopg[pool]
 sqlmodel
 asyncpg
+langmem

@@ -119,7 +119,7 @@ class RAGAgent:
             Initialized RAGAgent with async checkpointer
         """
         # Create async pool and checkpointer
-        pool = AsyncConnectionPool(conninfo=DB_URI, max_size=20, kwargs={"autocommit": True})
+        pool = AsyncConnectionPool(conninfo=DB_URI, max_size=20, kwargs={"autocommit": True}, open=False)
         await pool.open()
         
         checkpointer = AsyncPostgresSaver(pool)
@@ -147,7 +147,8 @@ class RAGAgent:
     async def chat(
         self,
         query: str,
-        conversation_id: str
+        conversation_id: str,
+        stream: bool = True
     ):
         """
         Stream responses from the agent using stream_mode="messages".
@@ -171,48 +172,66 @@ class RAGAgent:
         # Track cumulative token usage
         total_input_tokens = 0
         total_output_tokens = 0
-        
-        # Stream using messages mode - this streams LLM tokens as they're generated
-        async for chunk in self.agent.astream(initial_state, config=config, stream_mode="messages"):
+        if stream:
+            # Stream using messages mode - this streams LLM tokens as they're generated
+            async for chunk in self.agent.astream(initial_state, config=config, stream_mode="messages"):
 
-            if self.is_interrupted(conversation_id):
-                self.interrupted_ids.remove(conversation_id)
-                yield ChatResponse(
-                    status=Status.CANCEL,
-                    type="chat.cancel", 
-                    content="", 
-                    metadata=Metadata(
-                        conversation_id=conversation_id,
-                        input_tokens_used=total_input_tokens,
-                        output_tokens_used=total_output_tokens)
-                )
-                return
-            
-            # chunk is a tuple: (message_chunk, metadata)
-            # message_chunk contains individual tokens from the LLM
-            msg, metadata = chunk
-            
-            # Handle AI message chunks (tokens from LLM)
-            if isinstance(msg, AIMessage):
-                # Check for tool calls
-                if hasattr(msg, "tool_calls") and msg.tool_calls:
-                    for tool_call in msg.tool_calls:
+                if self.is_interrupted(conversation_id):
+                    self.interrupted_ids.remove(conversation_id)
+                    yield ChatResponse(
+                        status=Status.CANCEL,
+                        type="chat.cancel", 
+                        content="", 
+                        metadata=Metadata(
+                            conversation_id=conversation_id,
+                            input_tokens_used=total_input_tokens,
+                            output_tokens_used=total_output_tokens)
+                    )
+                    return
+                
+                # chunk is a tuple: (message_chunk, metadata)
+                # message_chunk contains individual tokens from the LLM
+                msg, metadata = chunk
+                
+                # Handle AI message chunks (tokens from LLM)
+                if isinstance(msg, AIMessage):
+                    # Check for tool calls
+                    if hasattr(msg, "tool_calls") and msg.tool_calls:
+                        for tool_call in msg.tool_calls:
+                            yield ChatResponse(
+                                status=Status.RESPONSE,
+                                type="response.function_call_arguments.delta",
+                                content=f"Calling {tool_call['name']} with args: {tool_call['args']}",
+                                metadata=Metadata(
+                                    conversation_id=conversation_id,
+                                    input_tokens_used=total_input_tokens,
+                                    output_tokens_used=total_output_tokens
+                                )
+                            )
+                    
+                    # Stream AI message content chunks (individual tokens)
+                    if msg.content:
                         yield ChatResponse(
                             status=Status.RESPONSE,
-                            type="response.function_call_arguments.delta",
-                            content=f"Calling {tool_call['name']} with args: {tool_call['args']}",
+                            type="response.output_text.delta",
+                            content=msg.content,
                             metadata=Metadata(
                                 conversation_id=conversation_id,
                                 input_tokens_used=total_input_tokens,
                                 output_tokens_used=total_output_tokens
                             )
                         )
+                    
+                    # Update token usage if available
+                    if hasattr(msg, 'usage_metadata') and msg.usage_metadata:
+                        total_input_tokens += msg.usage_metadata.get('input_tokens', 0)
+                        total_output_tokens += msg.usage_metadata.get('output_tokens', 0)
                 
-                # Stream AI message content chunks (individual tokens)
-                if msg.content:
+                # Handle tool messages
+                elif isinstance(msg, ToolMessage):
                     yield ChatResponse(
-                        status=Status.RESPONSE,
-                        type="response.output_text.delta",
+                        status=Status.FUNCTION,
+                        type="function",
                         content=msg.content,
                         metadata=Metadata(
                             conversation_id=conversation_id,
@@ -220,36 +239,23 @@ class RAGAgent:
                             output_tokens_used=total_output_tokens
                         )
                     )
-                
-                # Update token usage if available
-                if hasattr(msg, 'usage_metadata') and msg.usage_metadata:
-                    total_input_tokens += msg.usage_metadata.get('input_tokens', 0)
-                    total_output_tokens += msg.usage_metadata.get('output_tokens', 0)
             
-            # Handle tool messages
-            elif isinstance(msg, ToolMessage):
-                yield ChatResponse(
-                    status=Status.FUNCTION,
-                    type="function",
-                    content=msg.content,
-                    metadata=Metadata(
-                        conversation_id=conversation_id,
-                        input_tokens_used=total_input_tokens,
-                        output_tokens_used=total_output_tokens
-                    )
+            # Yield completion signal
+            yield ChatResponse(
+                status=Status.COMPLETE,
+                type="completion",
+                content="",
+                metadata=Metadata(
+                    conversation_id=conversation_id,
+                    input_tokens_used=total_input_tokens,
+                    output_tokens_used=total_output_tokens
                 )
-        
-        # Yield completion signal
-        yield ChatResponse(
-            status=Status.COMPLETE,
-            type="completion",
-            content="",
-            metadata=Metadata(
-                conversation_id=conversation_id,
-                input_tokens_used=total_input_tokens,
-                output_tokens_used=total_output_tokens
             )
-        )
+        else:
+            final_state = self.agent.invoke(initial_state, config=config)
+
+            for m in final_state["messages"]:
+                m.pretty_print()
 
     def interrupt(self, conversation_id):
         self.interrupted_ids.add(conversation_id)
@@ -257,6 +263,18 @@ class RAGAgent:
 
     def is_interrupted(self, conversation_id):
         return conversation_id in self.interrupted_ids
+
+    async def get_full_history(self, conversation_id: str):
+        config = {"configurable": {"thread_id": conversation_id}}
+        events = []
+        async for event in self.checkpointer.alist(
+            config=config
+        ):
+            events.append(event)
+
+        return events
+
+        
 
 
 # def call(self, query: Union[str, List[str]]):
@@ -443,12 +461,15 @@ async def main():
     agent = await RAGAgent.create(config)
     
     query = input("Enter your query: ")
+
+    # Invoke the agent
+    response = await agent.chat(query, conversation_id=str(20), stream=False)
     
-    # Stream responses
-    async for response in agent.chat(query, conversation_id=str(20)):
-        print(f"[{response.status.value}] {response.type}: {response.content}")
-        if response.status == Status.COMPLETE:
-            print(f"\nFinal token usage - Input: {response.metadata.input_tokens_used}, Output: {response.metadata.output_tokens_used}")
+    # # Stream responses
+    # async for response in agent.chat(query, conversation_id=str(20)):
+    #     print(f"[{response.status.value}] {response.type}: {response.content}")
+    #     if response.status == Status.COMPLETE:
+    #         print(f"\nFinal token usage - Input: {response.metadata.input_tokens_used}, Output: {response.metadata.output_tokens_used}")
     
     # Clean up
     await agent.close()
