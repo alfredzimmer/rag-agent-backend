@@ -1,28 +1,35 @@
-from typing import Union, List, Optional, Dict
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from dataclasses import dataclass
-from langchain_core.messages import HumanMessage, AIMessage, ToolMessage, BaseMessage
-from langchain_ollama import ChatOllama
-from langchain_core.tools import tool
-from psycopg_pool import ConnectionPool, AsyncConnectionPool
-from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
-import uuid
-from enum import Enum
-from pydantic import BaseModel, Field
-import asyncio
 import os
+import asyncio
+from typing import Union, List, Optional, Dict
+from dataclasses import dataclass
+from enum import Enum
 
+# --- LangChain / LangGraph Imports ---
+from langchain_core.messages import HumanMessage, AIMessage, ToolMessage, BaseMessage
+from langchain_ollama import ChatOllama, OllamaEmbeddings 
+from langchain.tools import tool
+from langchain_core.runnables import RunnableConfig
+
+# --- Database / Store Imports ---
+from psycopg_pool import AsyncConnectionPool
+from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
+from langgraph.store.postgres import AsyncPostgresStore 
+
+# --- Memory Imports ---
+from langmem import create_memory_store_manager 
+
+# --- Local Imports ---
 from .milvus import create_milvus_store
 from .modules.reranker import BGERanker
 from .modules.hyde import HyDEGenerator
-from .graph import create_agent_graph
+from .graph import create_agent_graph # You will need to update this signature
 from .session_storage import get_storage
 
+from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 
 load_dotenv()
-
-DB_URI = os.getenv("DB_URI")
+DB_URI: str = os.getenv("PG_URI") or ""
 
 @dataclass
 class RAGConfig:
@@ -31,7 +38,14 @@ class RAGConfig:
     dense_embedding_model: str = "qwen3-embedding:8b"
     sparse_embedding_model: str = "splade" #[splade, bm25, bge]
     llm_model: str = "qwen3:8b"
+    memory_llm_model: str = "qwen3:8b"
+    memory_embeddings_model: str = "nomic-embed-text"
+    memory_embeddings_dims: int = 768
     hyde: bool = False
+
+@dataclass
+class Context:
+    user_id: str
 
 class Status(Enum):
    CREATED = "created"
@@ -53,7 +67,6 @@ class ChatResponse(BaseModel):
    content: str = Field(..., description="The content of the response")
    metadata: Metadata = Field(..., description="Metadata about the response")
 
-
 # Registry of component creators
 VECTOR_STORES = {
     "milvus": create_milvus_store,
@@ -64,15 +77,13 @@ RANKERS = {
 }
 
 class RAGAgent:
-    def __init__(self, config: RAGConfig, checkpointer=None):
+    def __init__(self, config: RAGConfig, checkpointer=None, store=None):
         """
         Initialize RAGAgent synchronously.
-        
-        Args:
-            config: RAG configuration
-            checkpointer: Optional checkpointer (for internal use by create())
         """
         self.config = config
+
+        # RAG Setup #########################################################
         store_factory = VECTOR_STORES.get(config.vector_store_type)
         ranker_factory = RANKERS.get(config.ranker_type)
         
@@ -81,23 +92,33 @@ class RAGAgent:
             
         vector_store = store_factory(config)
         ranker = ranker_factory()
-        if(config.hyde):
-            hyde_generator = HyDEGenerator()
-        else:
-            hyde_generator = None
+        hyde_generator = HyDEGenerator() if config.hyde else None
 
-        # Create the tool with the specific components
         rag_tool = create_rag_tool(vector_store, ranker, hyde_generator)
         
+        # LLM Setup #########################################################
         llm = ChatOllama(model=config.llm_model, temperature=0)
         llm_with_tools = llm.bind_tools([rag_tool])
 
-        workflow = create_agent_graph(llm_with_tools, rag_tool)
+        # Memory Setup #########################################################
+        memory_llm = ChatOllama(model=config.memory_llm_model, temperature=0)
+        self.memory_manager = create_memory_store_manager(
+            memory_llm,
+            namespace=("memories", "{user_id}")
+        )
+
+        workflow = create_agent_graph(llm_with_tools, rag_tool, self.memory_manager)
         
-        # Compile agent with or without checkpointer
+        # To be initialized by create()
         self.pool = None
         self.checkpointer = checkpointer
-        self.agent = workflow.compile(checkpointer=checkpointer)
+        self.store = store
+        
+        # Graph Compilation ##################################################
+        self.agent = workflow.compile(
+            checkpointer=checkpointer,
+            store=store
+        )
 
         self.interrupted_ids = set()
 
@@ -105,28 +126,28 @@ class RAGAgent:
     async def create(cls, config: RAGConfig):
         """
         Async factory method to create RAGAgent with checkpointing support.
-        
-        Usage:
-            agent = await RAGAgent.create(config)
-            async for response in agent.chat(query, conversation_id):
-                ...
-            await agent.close()
-        
-        Args:
-            config: RAG configuration
-            
-        Returns:
-            Initialized RAGAgent with async checkpointer
         """
-        # Create async pool and checkpointer
+        # Create async pool and checkpointer #####################################
         pool = AsyncConnectionPool(conninfo=DB_URI, max_size=20, kwargs={"autocommit": True}, open=False)
         await pool.open()
         
         checkpointer = AsyncPostgresSaver(pool)
         await checkpointer.setup()
+
+        # Setup AsyncPostgresStore #############################################
+        memory_embeddings = OllamaEmbeddings(model=config.memory_embeddings_model)
+        store = AsyncPostgresStore(
+            pool,
+            index={
+                "dims": config.memory_embeddings_dims,
+                "embed": memory_embeddings,
+                "fields": ["content"]
+            }
+        )
+
+        await store.setup()
         
-        # Create agent instance with checkpointer
-        agent = cls(config, checkpointer=checkpointer)
+        agent = cls(config, checkpointer=checkpointer, store=store)
         agent.pool = pool
         
         return agent
@@ -148,6 +169,7 @@ class RAGAgent:
         self,
         query: str,
         conversation_id: str,
+        user_id: str,
         stream: bool = True
     ):
         """
@@ -159,7 +181,7 @@ class RAGAgent:
         - Tool results (FUNCTION status, type: function)
         - Completion signal (COMPLETE status)
         """
-        config = {"configurable": {"thread_id": conversation_id}}
+        config = {"configurable": {"thread_id": conversation_id, "user_id": user_id}}
         messages = [HumanMessage(content=query)]
         
         # Initialize state with new message only
