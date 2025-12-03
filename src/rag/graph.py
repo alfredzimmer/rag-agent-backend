@@ -70,15 +70,21 @@ def create_agent_graph(llm_with_tools, rag_tool, memory_manager, *, debug: bool 
 
         
         if debug:
-            print(f"Summarized messages: {state['summarized_messages']}")
+            # Debug logging
+            log_content = f"Summarized Messages: {state['summarized_messages']}\n"
             if 'context' in state:
-                print(f"Context: {state['context']}")
-            print(f"System context: {system_context}")
+                log_content += f"Context: {state['context']}"
+            log_debug("AGENT_NODE_INPUT", log_content)
+
+            response = llm_with_tools.invoke(messages)
+
+            # Log response
+            log_debug("AGENT_RESPONSE", f"Response: {response}")
+            log_debug("SYSTEM_CONTEXT", f"System context: {system_context}")
 
         response = await llm_with_tools.ainvoke(messages)
 
         return {
-            "context": state.get("context", {}),
             "messages": [response],
             "context": state.get("context", {}),
             "input_tokens_used": response.usage_metadata.get("input_tokens", 0),
