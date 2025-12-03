@@ -40,12 +40,18 @@ class ChatResponse(BaseModel):
     metadata: Metadata = Field(..., description="Metadata about the response")
 
 class SessionHistoryResponse(BaseModel):
-    session_id: str = Field(..., description="The session ID")
+    conversation_id: UUID = Field(..., description="The conversation ID")
     history: List[Dict[str, str]] = Field(..., description="Conversation history")
 
 class ClearSessionResponse(BaseModel):
     success: bool = Field(..., description="Whether the session was successfully cleared")
     message: str = Field(..., description="Status message")
+
+class ClearSessionRequest(BaseModel):
+    conversation_id: UUID = Field(..., description="The conversation ID")
+
+class SessionHistoryRequest(BaseModel):
+    conversation_id: UUID = Field(..., description="The conversation ID")
 
 
 @router.get("/create")
@@ -86,13 +92,13 @@ async def chat_with_agent(request: ChatRequest, agent: RAGAgent = Depends(get_ag
         )
 
 
-@router.get("/history/{session_id}", response_model=SessionHistoryResponse)
-async def get_session_history(session_id: str):
+@router.get("/history", response_model=SessionHistoryResponse)
+async def get_session_history(request: SessionHistoryRequest, agent: RAGAgent = Depends(get_agent)):
     try:
-        history = get_session_history(session_id)
+        history = await agent.get_full_history(str(request.conversation_id))
         
         return SessionHistoryResponse(
-            session_id=session_id,
+            conversation_id=str(request.conversation_id),
             history=history
         )
     
@@ -104,20 +110,20 @@ async def get_session_history(session_id: str):
             detail=f"Error retrieving chat history: {str(e)}"
         )
 
-@router.delete("/clear/{session_id}", response_model=ClearSessionResponse)
-async def clear_session(session_id: str):
+@router.delete("/clear", response_model=ClearSessionResponse)
+async def clear_session(request: ClearSessionRequest, agent: RAGAgent = Depends(get_agent)):
     try:
-        success = clear_session(session_id)
+        success = await agent.clear_session(str(request.conversation_id))
         
         if success:
             return ClearSessionResponse(
                 success=True,
-                message=f"Session {session_id} cleared successfully"
+                message=f"Session {request.conversation_id} cleared successfully"
             )
         else:
             return ClearSessionResponse(
                 success=False,
-                message=f"Session {session_id} not found"
+                message=f"Session {request.conversation_id} not found"
             )
     
     except Exception as e:

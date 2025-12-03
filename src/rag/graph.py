@@ -13,6 +13,16 @@ import operator
 from langmem.short_term import SummarizationNode, RunningSummary
 from langchain_core.messages.utils import count_tokens_approximately
 from langchain_ollama import ChatOllama
+import datetime
+import json
+
+def log_debug(section: str, content: str):
+    """Helper to log debug info with timestamp and formatting."""
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    with open("debug_graph.log", "a") as f:
+        f.write(f"[{timestamp}] [{section}]\n")
+        f.write(f"{content}\n")
+        f.write("-" * 80 + "\n")
 
 
 summarization_model = ChatOllama(model="qwen3:8b", temperature=0, num_predict=1024)
@@ -47,7 +57,7 @@ def create_agent_graph(llm_with_tools, rag_tool):
         messages = [
             SystemMessage(
                 content="You are a helpful assistant with access to a specialized knowledge base. "
-                "IMPORTANT: You MUST use the hybrid_RAG_retrieve tool before answering any technical question. "
+                "IMPORTANT: You should use the hybrid_RAG_retrieve tool before answering any technical question. "
                 "Never rely solely on your general knowledge. Always check the knowledge base for relevant information."
             )
         ] + state["summarized_messages"]
@@ -61,6 +71,7 @@ def create_agent_graph(llm_with_tools, rag_tool):
 
         return {
             "messages": [response],
+            "context": state.get("context", {}),
             "input_tokens_used": response.usage_metadata.get("input_tokens", 0),
             "output_tokens_used": response.usage_metadata.get("output_tokens", 0)
         }

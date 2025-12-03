@@ -257,6 +257,61 @@ class RAGAgent:
             yield final_state
             return
 
+    def call(self, query: Union[str, List[str]]):
+        """
+        Synchronous call method for single or batch queries using the LangGraph agent.
+        
+        Args:
+            query: Single query string or list of query strings
+            
+        Returns:
+            Single result or list of results.
+            Each result is a tuple: (response_text, list_of_retrieved_docs)
+        """
+        is_batch = isinstance(query, list)
+        queries = query if is_batch else [query]
+        
+        # Prepare inputs for the graph
+        # We use HumanMessage to represent the user query
+        inputs = [{"messages": [HumanMessage(content=q)]} for q in queries]
+        
+        try:
+            # Execute via graph
+            # We use invoke/batch which runs the graph to completion
+            if is_batch:
+                results = self.agent.batch(inputs)
+            else:
+                results = [self.agent.invoke(inputs[0])]
+                
+            final_results = []
+            for state in results:
+                messages = state["messages"]
+                
+                # Extract final response
+                final_message = messages[-1]
+                response_text = final_message.content if isinstance(final_message, AIMessage) else ""
+                
+                # Extract retrieved docs from ToolMessages
+                retrieved_docs = []
+                for msg in messages:
+                    if isinstance(msg, ToolMessage) and msg.artifact:
+                        # We expect the artifact to be the list of documents
+                        if isinstance(msg.artifact, list):
+                            retrieved_docs.extend([doc.page_content for doc in msg.artifact])
+                
+                final_results.append((response_text, retrieved_docs))
+
+            if is_batch:
+                return final_results
+            else:
+                return final_results[0]
+                
+        except Exception as e:
+            print(f"Error in agent_call: {e}")
+            if is_batch:
+                return [], [f"Error: {str(e)}"] * len(queries)
+            return [], f"Error: {str(e)}"
+    
     def interrupt(self, conversation_id):
         self.interrupted_ids.add(conversation_id)
         return True
@@ -266,121 +321,30 @@ class RAGAgent:
 
     async def get_full_history(self, conversation_id: str):
         config = {"configurable": {"thread_id": conversation_id}}
-        events = []
-        async for event in self.checkpointer.alist(
-            config=config
-        ):
-            events.append(event)
+        state = await self.agent.aget_state(config=config)
+        messages = state.values["messages"]
 
-        return events
+        history = []
+        for msg in messages:
+            if isinstance(msg, HumanMessage):
+                history.append({"role": "user", "content": msg.content})
+            elif isinstance(msg, AIMessage):
+                history.append({"role": "assistant", "content": msg.content})
+            elif isinstance(msg, ToolMessage):
+                history.append({"role": "tool", "content": msg.content})
+            elif isinstance(msg, SystemMessage):
+                history.append({"role": "system", "content": msg.content})
+            elif isinstance(msg, BaseMessage):
+                history.append({"role": "Unknown", "content": msg.content})
+    
+        return history
+    
+    async def clear_session(self, conversation_id: str) -> bool:
+        await self.checkpointer.adelete_thread(conversation_id)
+        return True
 
-        
 
 
-# def call(self, query: Union[str, List[str]]):
-#         # System message
-#         SYSTEM_MESSAGE = """You are a helpful assistant with access to a specialized knowledge base. 
-#         IMPORTANT: You MUST ALWAYS use the hybrid_RAG_retrieve tool FIRST before answering any question. 
-#         Never rely solely on your general knowledge. Always check the knowledge base for relevant information."""
-
-#         # Normalize input to list
-#         is_batch = isinstance(query, list)
-#         queries = query if is_batch else [query]
-
-#         # Initialize chat histories for each query
-#         all_messages = []
-#         for q in queries:
-#             all_messages.append([
-#                 {"role": "system", "content": SYSTEM_MESSAGE},
-#                 HumanMessage(content=q)
-#             ])
-        
-#         # Store retrieved docs for each query
-#         batch_retrieved_docs = [[] for _ in queries]
-#         final_responses = [""] * len(queries)
-        
-#         try:
-#             # Step 1: Initial batch call to LLM
-#             responses = self.llm_with_tools.batch(all_messages)
-            
-#             # Track which indices need a second pass (tool execution)
-#             indices_to_process = []
-            
-#             # Process initial responses
-#             for i, response in enumerate(responses):
-#                 if response.tool_calls:
-#                     # Add the assistant's response with tool calls
-#                     all_messages[i].append(response)
-#                     indices_to_process.append(i)
-#                 else:
-#                     # No tool call, just get the response
-#                     final_responses[i] = response.content
-
-#             # Step 2: Execute tools for those that need it
-#             if indices_to_process:
-#                 # Collect all tool calls that need execution
-#                 tool_tasks = []
-#                 for i in indices_to_process:
-#                     response = responses[i]
-#                     for tool_call in response.tool_calls:
-#                         tool_tasks.append((i, tool_call))
-                
-#                 # Execute tool calls in parallel
-#                 with ThreadPoolExecutor() as executor:
-#                     # Submit all tasks
-#                     future_to_task = {
-#                         executor.submit(self.rag_tool.invoke, task[1]["args"]): task 
-#                         for task in tool_tasks
-#                     }
-                    
-#                     # Process results as they complete
-#                     for future in as_completed(future_to_task):
-#                         i, tool_call = future_to_task[future]
-#                         try:
-#                             serialized_context, docs = future.result()
-                            
-#                             # Store docs
-#                             batch_retrieved_docs[i].extend(docs)
-                            
-#                             # Add tool result to messages
-#                             all_messages[i].append(ToolMessage(
-#                                 content=serialized_context,
-#                                 tool_call_id=tool_call["id"]
-#                             ))
-#                         except Exception as exc:
-#                             print(f"Tool execution failed: {exc}")
-#                             # Add error message to tool result so the LLM knows it failed
-#                             all_messages[i].append(ToolMessage(
-#                                 content=f"Error: {str(exc)}",
-#                                 tool_call_id=tool_call["id"]
-#                             ))
-
-#                 # Prepare second batch pass
-#                 second_pass_indices = indices_to_process
-                
-#                 # Step 3: Second batch call to LLM for those that used tools
-#                 if second_pass_indices:
-#                     second_pass_messages = [all_messages[i] for i in second_pass_indices]
-#                     second_responses = self.llm_with_tools.batch(second_pass_messages)
-                    
-#                     for idx, response in zip(second_pass_indices, second_responses):
-#                         final_responses[idx] = response.content
-            
-#         except Exception as e:
-#             print(f"Error in agent_call: {e}")
-#             if is_batch:
-#                 return [], [f"Error: {str(e)}"] * len(queries)
-#             return [], f"Error: {str(e)}"
-
-#         # Return results formatted correctly
-#         results = []
-#         for i in range(len(queries)):
-#             results.append((final_responses[i], [doc.page_content for doc in batch_retrieved_docs[i]]))
-
-#         if is_batch:
-#             return results
-#         else:
-#             return results[0]
 
 def create_rag_tool(vector_store, ranker, hyde_generator: Optional[HyDEGenerator]):
     @tool
@@ -414,46 +378,6 @@ def create_rag_tool(vector_store, ranker, hyde_generator: Optional[HyDEGenerator
 
     return hybrid_RAG_retrieve
 
-
-def get_session_history(conversation_id: str) -> List[Dict]:
-    """Get the conversation history for a session.
-    
-    Args:
-        conversation_id: The conversation ID
-        
-    Returns:
-        List of message dictionaries with 'role' and 'content'
-    """
-    storage = get_storage()
-    messages = storage.load_session(conversation_id)
-    
-    if not messages:
-        return []
-    
-    history = []
-    for msg in messages:
-        if isinstance(msg, dict):
-            history.append(msg)
-        elif isinstance(msg, HumanMessage):
-            history.append({"role": "user", "content": msg.content})
-        elif isinstance(msg, AIMessage):
-            history.append({"role": "assistant", "content": msg.content})
-        elif isinstance(msg, ToolMessage):
-            history.append({"role": "tool", "content": msg.content})
-    
-    return history
-
-
-def clear_session(conversation_id: str) -> bool:
-    storage = get_storage()
-    return storage.delete_session(conversation_id)
-
-
-def list_sessions() -> List[str]:
-    storage = get_storage()
-    return storage.list_sessions() 
-
-
 async def main():
     config = RAGConfig()
     
@@ -463,7 +387,7 @@ async def main():
     query = input("Enter your query: ")
 
     # Invoke the agent
-    async for response in agent.chat(query, conversation_id=str(27), stream=False):
+    async for response in agent.chat(query, conversation_id=str(28), stream=False):
         print("Messages:")
         print(response["messages"])
         print()
@@ -476,8 +400,6 @@ async def main():
         
         print(f"Input tokens: {response.get('input_tokens_used', 0)}")
         print(f"Output tokens: {response.get('output_tokens_used', 0)}")
-
-    
     
     # Stream responses
     # async for response in agent.chat(query, conversation_id=str(20)):
