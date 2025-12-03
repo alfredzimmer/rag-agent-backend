@@ -32,6 +32,7 @@ class CreateSessionResponse(BaseModel):
 class ChatRequest(BaseModel):
     query: str = Field(..., description="The question to ask the RAG system")
     conversation_id: UUID = Field(..., description="The conversation ID")
+    user_id: str = Field(..., description="The user ID")
 
 class ChatResponse(BaseModel):
     status: Status
@@ -73,7 +74,7 @@ async def create_session():
 @router.post("/chat", response_model=ChatResponse)
 async def chat_with_agent(request: ChatRequest, agent: RAGAgent = Depends(get_agent)):
     try:
-        responses = agent.chat(query=request.query, conversation_id=str(request.conversation_id))
+        responses = agent.chat(query=request.query, conversation_id=str(request.conversation_id), user_id=str(request.user_id))
         async def stream_response():
             async for response in responses:
                 yield response.model_dump_json(indent=None)

@@ -9,9 +9,11 @@ from typing import TypedDict, Annotated, Sequence, Literal
 from langchain_core.messages import BaseMessage, AIMessage, ToolMessage, SystemMessage, AnyMessage
 from langgraph.graph import StateGraph, END, MessagesState, START
 from langgraph.prebuilt import ToolNode
+from langgraph.store.base import BaseStore
 import operator
 from langmem.short_term import SummarizationNode, RunningSummary
 from langchain_core.messages.utils import count_tokens_approximately
+from langchain_core.runnables import RunnableConfig
 from langchain_ollama import ChatOllama
 
 
@@ -26,44 +28,58 @@ class LLMInputState(TypedDict):
     summarized_messages: list[AnyMessage]
     context: dict[str, RunningSummary]
 
-def create_agent_graph(llm_with_tools, rag_tool):
-    """
-    Create the LangGraph agent graph.
-    
-    Args:
-        llm_with_tools: LLM instance with tools bound
-        rag_tool: The RAG retrieval tool
-        
-    Returns:
-        Compiled graph ready for invocation
-    """
-    
-    # Define the agent node
-    def agent_node(state: LLMInputState) -> State:
+def create_agent_graph(llm_with_tools, rag_tool, memory_manager, *, debug: bool = False):
+    # Define the agent node ##################################################
+    async def agent_node(state: LLMInputState, config: RunnableConfig) -> State:
         """
         Agent node: LLM decides what to do next.
         Note: This uses invoke() for non-streaming. For streaming, we handle it in the agent.chat() method.
         """
-        messages = [
-            SystemMessage(
-                content="You are a helpful assistant with access to a specialized knowledge base. "
-                "IMPORTANT: You MUST use the hybrid_RAG_retrieve tool before answering any technical question. "
-                "Never rely solely on your general knowledge. Always check the knowledge base for relevant information."
-            )
-        ] + state["summarized_messages"]
 
-        print(f"Summarized messages: {state['summarized_messages']}")
-        if 'context' in state:
-            print(f"Context: {state['context']}")
+        last_message = state["summarized_messages"][-1].content if state["summarized_messages"] else ""
 
+        memories = await memory_manager.asearch(
+            query=last_message,
+            config=config,
+            limit=5
+        )
 
-        response = llm_with_tools.invoke(messages)
+        memory_context = ""
+        if memories:
+            formatted = "\n".join([f"- {m.value}" for m in memories])
+            memory_context = f"\n\nRELEVANT USER FACTS/MEMORIES:\n{formatted}"
+
+        system_context =(
+            "You are a helpful assistant with access to a specialized knowledge base. "
+            "IMPORTANT: You MUST use the hybrid_RAG_retrieve tool before answering any technical question. "
+            "Never rely solely on your general knowledge. Always check the knowledge base for relevant information."
+            f"{memory_context}"
+        )
+
+        messages = [SystemMessage(content=system_context)] + state["summarized_messages"]
+
+        
+        if debug:
+            print(f"Summarized messages: {state['summarized_messages']}")
+            if 'context' in state:
+                print(f"Context: {state['context']}")
+            print(f"System context: {system_context}")
+
+        response = await llm_with_tools.ainvoke(messages)
 
         return {
+            "context": state.get("context", {}),
             "messages": [response],
             "input_tokens_used": response.usage_metadata.get("input_tokens", 0),
             "output_tokens_used": response.usage_metadata.get("output_tokens", 0)
         }
+
+    async def save_memory_node(state: State, config: RunnableConfig):
+        """
+        Save memory node: Save the memory to the memory manager.
+        """
+        await memory_manager.ainvoke({"messages": state["messages"]}, config=config)
+        return {}
     
     # Define the tool node using LangGraph's built-in ToolNode
     tool_node = ToolNode([rag_tool])
@@ -78,7 +94,7 @@ def create_agent_graph(llm_with_tools, rag_tool):
 
     
     # Define the router function
-    def should_continue(state: State) -> Literal["tools", "end"]:
+    def should_continue(state: State) -> Literal["tools", "save_memory"]:
         """
         Router: Decide whether to continue to tools or end.
         """
@@ -90,7 +106,7 @@ def create_agent_graph(llm_with_tools, rag_tool):
             return "tools"
         
         # Otherwise, end
-        return "end"
+        return "save_memory"
     
     # Build the graph
     workflow = StateGraph(State)
@@ -99,7 +115,8 @@ def create_agent_graph(llm_with_tools, rag_tool):
     workflow.add_node("agent", agent_node)
     workflow.add_node("tools", tool_node)
     workflow.add_node("summarize", summarization_node)  
-    
+    workflow.add_node("save_memory", save_memory_node)
+
     # Set entry point
     workflow.add_edge(START, "summarize")
     workflow.add_edge("summarize", "agent")
@@ -110,13 +127,12 @@ def create_agent_graph(llm_with_tools, rag_tool):
         should_continue,
         {
             "tools": "tools",
-            "end": END
+            "save_memory": "save_memory"
         }
     )
     
     # Add edge from tools back to agent
     workflow.add_edge("tools", "summarize")
+    workflow.add_edge("save_memory", END)
     
-    # Compile the graph
-    # Note: We'll add checkpointer and interrupt configuration when compiling in RAGAgent
     return workflow

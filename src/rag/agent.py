@@ -1,28 +1,35 @@
+import os
+import asyncio
 from typing import Union, List, Optional, Dict
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
+from enum import Enum
+
+# --- LangChain / LangGraph Imports ---
 from langchain_core.messages import HumanMessage, AIMessage, ToolMessage, BaseMessage
-from langchain_ollama import ChatOllama
-# from langchain_core.tools import tool
-from langchain.tools import ToolRuntime, tool
+from langchain_ollama import ChatOllama, OllamaEmbeddings 
+from langchain.tools import tool
+from langchain_core.runnables import RunnableConfig
+
+# --- Database / Store Imports ---
 from psycopg_pool import AsyncConnectionPool
 from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
+from langgraph.store.postgres import AsyncPostgresStore 
 
-from enum import Enum
-from pydantic import BaseModel, Field
-import asyncio
+# --- Memory Imports ---
+from langmem import create_memory_store_manager 
 
-
+# --- Local Imports ---
 from .milvus import create_milvus_store
 from .modules.reranker import BGERanker
 from .modules.hyde import HyDEGenerator
-from .graph import create_agent_graph
+from .graph import create_agent_graph # You will need to update this signature
 from .session_storage import get_storage
 
+from pydantic import BaseModel, Field
 from dotenv import load_dotenv
-load_dotenv()
 
-DB_URI = os.getenv("DB_URI")
+load_dotenv()
+DB_URI: str = os.getenv("PG_URI") or ""
 
 @dataclass
 class RAGConfig:
@@ -31,6 +38,9 @@ class RAGConfig:
     dense_embedding_model: str = "qwen3-embedding:8b"
     sparse_embedding_model: str = "splade" #[splade, bm25, bge]
     llm_model: str = "qwen3:8b"
+    memory_llm_model: str = "qwen3:8b"
+    memory_embeddings_model: str = "nomic-embed-text"
+    memory_embeddings_dims: int = 768
     hyde: bool = False
 
 @dataclass
@@ -57,7 +67,6 @@ class ChatResponse(BaseModel):
    content: str = Field(..., description="The content of the response")
    metadata: Metadata = Field(..., description="Metadata about the response")
 
-
 # Registry of component creators
 VECTOR_STORES = {
     "milvus": create_milvus_store,
@@ -68,15 +77,13 @@ RANKERS = {
 }
 
 class RAGAgent:
-    def __init__(self, config: RAGConfig, checkpointer=None):
+    def __init__(self, config: RAGConfig, checkpointer=None, store=None):
         """
         Initialize RAGAgent synchronously.
-        
-        Args:
-            config: RAG configuration
-            checkpointer: Optional checkpointer (for internal use by create())
         """
         self.config = config
+
+        # RAG Setup #########################################################
         store_factory = VECTOR_STORES.get(config.vector_store_type)
         ranker_factory = RANKERS.get(config.ranker_type)
         
@@ -85,23 +92,33 @@ class RAGAgent:
             
         vector_store = store_factory(config)
         ranker = ranker_factory()
-        if(config.hyde):
-            hyde_generator = HyDEGenerator()
-        else:
-            hyde_generator = None
+        hyde_generator = HyDEGenerator() if config.hyde else None
 
-        # Create the tool with the specific components
         rag_tool = create_rag_tool(vector_store, ranker, hyde_generator)
         
+        # LLM Setup #########################################################
         llm = ChatOllama(model=config.llm_model, temperature=0)
         llm_with_tools = llm.bind_tools([rag_tool])
 
-        workflow = create_agent_graph(llm_with_tools, rag_tool)
+        # Memory Setup #########################################################
+        memory_llm = ChatOllama(model=config.memory_llm_model, temperature=0)
+        self.memory_manager = create_memory_store_manager(
+            memory_llm,
+            namespace=("memories", "{user_id}")
+        )
+
+        workflow = create_agent_graph(llm_with_tools, rag_tool, self.memory_manager)
         
-        # Compile agent with or without checkpointer
+        # To be initialized by create()
         self.pool = None
         self.checkpointer = checkpointer
-        self.agent = workflow.compile(checkpointer=checkpointer)
+        self.store = store
+        
+        # Graph Compilation ##################################################
+        self.agent = workflow.compile(
+            checkpointer=checkpointer,
+            store=store
+        )
 
         self.interrupted_ids = set()
 
@@ -109,28 +126,28 @@ class RAGAgent:
     async def create(cls, config: RAGConfig):
         """
         Async factory method to create RAGAgent with checkpointing support.
-        
-        Usage:
-            agent = await RAGAgent.create(config)
-            async for response in agent.chat(query, conversation_id):
-                ...
-            await agent.close()
-        
-        Args:
-            config: RAG configuration
-            
-        Returns:
-            Initialized RAGAgent with async checkpointer
         """
-        # Create async pool and checkpointer
+        # Create async pool and checkpointer #####################################
         pool = AsyncConnectionPool(conninfo=DB_URI, max_size=20, kwargs={"autocommit": True}, open=False)
         await pool.open()
         
         checkpointer = AsyncPostgresSaver(pool)
         await checkpointer.setup()
+
+        # Setup AsyncPostgresStore #############################################
+        memory_embeddings = OllamaEmbeddings(model=config.memory_embeddings_model)
+        store = AsyncPostgresStore(
+            pool,
+            index={
+                "dims": config.memory_embeddings_dims,
+                "embed": memory_embeddings,
+                "fields": ["content"]
+            }
+        )
+
+        await store.setup()
         
-        # Create agent instance with checkpointer
-        agent = cls(config, checkpointer=checkpointer)
+        agent = cls(config, checkpointer=checkpointer, store=store)
         agent.pool = pool
         
         return agent
@@ -152,6 +169,7 @@ class RAGAgent:
         self,
         query: str,
         conversation_id: str,
+        user_id: str,
         stream: bool = True
     ):
         """
@@ -163,7 +181,7 @@ class RAGAgent:
         - Tool results (FUNCTION status, type: function)
         - Completion signal (COMPLETE status)
         """
-        config = {"configurable": {"thread_id": conversation_id}}
+        config = {"configurable": {"thread_id": conversation_id, "user_id": user_id}}
         messages = [HumanMessage(content=query)]
         
         # Initialize state with new message only
@@ -278,113 +296,6 @@ class RAGAgent:
 
         return events
 
-        
-
-
-# def call(self, query: Union[str, List[str]]):
-#         # System message
-#         SYSTEM_MESSAGE = """You are a helpful assistant with access to a specialized knowledge base. 
-#         IMPORTANT: You MUST ALWAYS use the hybrid_RAG_retrieve tool FIRST before answering any question. 
-#         Never rely solely on your general knowledge. Always check the knowledge base for relevant information."""
-
-#         # Normalize input to list
-#         is_batch = isinstance(query, list)
-#         queries = query if is_batch else [query]
-
-#         # Initialize chat histories for each query
-#         all_messages = []
-#         for q in queries:
-#             all_messages.append([
-#                 {"role": "system", "content": SYSTEM_MESSAGE},
-#                 HumanMessage(content=q)
-#             ])
-        
-#         # Store retrieved docs for each query
-#         batch_retrieved_docs = [[] for _ in queries]
-#         final_responses = [""] * len(queries)
-        
-#         try:
-#             # Step 1: Initial batch call to LLM
-#             responses = self.llm_with_tools.batch(all_messages)
-            
-#             # Track which indices need a second pass (tool execution)
-#             indices_to_process = []
-            
-#             # Process initial responses
-#             for i, response in enumerate(responses):
-#                 if response.tool_calls:
-#                     # Add the assistant's response with tool calls
-#                     all_messages[i].append(response)
-#                     indices_to_process.append(i)
-#                 else:
-#                     # No tool call, just get the response
-#                     final_responses[i] = response.content
-
-#             # Step 2: Execute tools for those that need it
-#             if indices_to_process:
-#                 # Collect all tool calls that need execution
-#                 tool_tasks = []
-#                 for i in indices_to_process:
-#                     response = responses[i]
-#                     for tool_call in response.tool_calls:
-#                         tool_tasks.append((i, tool_call))
-                
-#                 # Execute tool calls in parallel
-#                 with ThreadPoolExecutor() as executor:
-#                     # Submit all tasks
-#                     future_to_task = {
-#                         executor.submit(self.rag_tool.invoke, task[1]["args"]): task 
-#                         for task in tool_tasks
-#                     }
-                    
-#                     # Process results as they complete
-#                     for future in as_completed(future_to_task):
-#                         i, tool_call = future_to_task[future]
-#                         try:
-#                             serialized_context, docs = future.result()
-                            
-#                             # Store docs
-#                             batch_retrieved_docs[i].extend(docs)
-                            
-#                             # Add tool result to messages
-#                             all_messages[i].append(ToolMessage(
-#                                 content=serialized_context,
-#                                 tool_call_id=tool_call["id"]
-#                             ))
-#                         except Exception as exc:
-#                             print(f"Tool execution failed: {exc}")
-#                             # Add error message to tool result so the LLM knows it failed
-#                             all_messages[i].append(ToolMessage(
-#                                 content=f"Error: {str(exc)}",
-#                                 tool_call_id=tool_call["id"]
-#                             ))
-
-#                 # Prepare second batch pass
-#                 second_pass_indices = indices_to_process
-                
-#                 # Step 3: Second batch call to LLM for those that used tools
-#                 if second_pass_indices:
-#                     second_pass_messages = [all_messages[i] for i in second_pass_indices]
-#                     second_responses = self.llm_with_tools.batch(second_pass_messages)
-                    
-#                     for idx, response in zip(second_pass_indices, second_responses):
-#                         final_responses[idx] = response.content
-            
-#         except Exception as e:
-#             print(f"Error in agent_call: {e}")
-#             if is_batch:
-#                 return [], [f"Error: {str(e)}"] * len(queries)
-#             return [], f"Error: {str(e)}"
-
-#         # Return results formatted correctly
-#         results = []
-#         for i in range(len(queries)):
-#             results.append((final_responses[i], [doc.page_content for doc in batch_retrieved_docs[i]]))
-
-#         if is_batch:
-#             return results
-#         else:
-#             return results[0]
 
 def create_rag_tool(vector_store, ranker, hyde_generator: Optional[HyDEGenerator]):
     @tool
