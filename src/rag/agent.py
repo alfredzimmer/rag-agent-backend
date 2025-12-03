@@ -22,7 +22,7 @@ from .session_storage import get_storage
 from dotenv import load_dotenv
 load_dotenv()
 
-DB_URI = "postgresql://agent_master:*181nosdunK@localhost:5432/agent_data"
+DB_URI = os.getenv("DB_URI")
 
 @dataclass
 class RAGConfig:
@@ -123,7 +123,7 @@ class RAGAgent:
             Initialized RAGAgent with async checkpointer
         """
         # Create async pool and checkpointer
-        pool = AsyncConnectionPool(conninfo=DB_URI, max_size=20, kwargs={"autocommit": True})
+        pool = AsyncConnectionPool(conninfo=DB_URI, max_size=20, kwargs={"autocommit": True}, open=False)
         await pool.open()
         
         checkpointer = AsyncPostgresSaver(pool)
@@ -151,7 +151,8 @@ class RAGAgent:
     async def chat(
         self,
         query: str,
-        conversation_id: str
+        conversation_id: str,
+        stream: bool = True
     ):
         """
         Stream responses from the agent using stream_mode="messages".
@@ -165,58 +166,75 @@ class RAGAgent:
         config = {"configurable": {"thread_id": conversation_id}}
         messages = [HumanMessage(content=query)]
         
-        # Initialize state with token counts
+        # Initialize state with new message only
+        # Token counts will be maintained by the checkpointer across conversation
         initial_state = {
-            "messages": messages,
-            "input_tokens_used": 0,
-            "output_tokens_used": 0
+            "messages": messages
         }
         
         # Track cumulative token usage
         total_input_tokens = 0
         total_output_tokens = 0
-        
-        # Stream using messages mode - this streams LLM tokens as they're generated
-        async for chunk in self.agent.astream(initial_state, config=config, stream_mode="messages"):
+        if stream:
+            # Stream using messages mode - this streams LLM tokens as they're generated
+            async for chunk in self.agent.astream(initial_state, config=config, stream_mode="messages"):
 
-            if self.is_interrupted(conversation_id):
-                self.interrupted_ids.remove(conversation_id)
-                yield ChatResponse(
-                    status=Status.CANCEL,
-                    type="chat.cancel",
-                    content="",
-                    metadata=Metadata(
-                        conversation_id=conversation_id,
-                        input_tokens_used=total_input_tokens,
-                        output_tokens_used=total_output_tokens)
-                )
-                return
-            
-            # chunk is a tuple: (message_chunk, metadata)
-            # message_chunk contains individual tokens from the LLM
-            msg, metadata = chunk
-            
-            # Handle AI message chunks (tokens from LLM)
-            if isinstance(msg, AIMessage):
-                # Check for tool calls
-                if hasattr(msg, "tool_calls") and msg.tool_calls:
-                    for tool_call in msg.tool_calls:
+                if self.is_interrupted(conversation_id):
+                    self.interrupted_ids.remove(conversation_id)
+                    yield ChatResponse(
+                        status=Status.CANCEL,
+                        type="chat.cancel", 
+                        content="", 
+                        metadata=Metadata(
+                            conversation_id=conversation_id,
+                            input_tokens_used=total_input_tokens,
+                            output_tokens_used=total_output_tokens)
+                    )
+                    return
+                
+                # chunk is a tuple: (message_chunk, metadata)
+                # message_chunk contains individual tokens from the LLM
+                msg, metadata = chunk
+                
+                # Handle AI message chunks (tokens from LLM)
+                if isinstance(msg, AIMessage):
+                    # Check for tool calls
+                    if hasattr(msg, "tool_calls") and msg.tool_calls:
+                        for tool_call in msg.tool_calls:
+                            yield ChatResponse(
+                                status=Status.RESPONSE,
+                                type="response.function_call_arguments.delta",
+                                content=f"Calling {tool_call['name']} with args: {tool_call['args']}",
+                                metadata=Metadata(
+                                    conversation_id=conversation_id,
+                                    input_tokens_used=total_input_tokens,
+                                    output_tokens_used=total_output_tokens
+                                )
+                            )
+                    
+                    # Stream AI message content chunks (individual tokens)
+                    if msg.content:
                         yield ChatResponse(
                             status=Status.RESPONSE,
-                            type="response.function_call_arguments.delta",
-                            content=f"Calling {tool_call['name']} with args: {tool_call['args']}",
+                            type="response.output_text.delta",
+                            content=msg.content,
                             metadata=Metadata(
                                 conversation_id=conversation_id,
                                 input_tokens_used=total_input_tokens,
                                 output_tokens_used=total_output_tokens
                             )
                         )
+                    
+                    # Update token usage if available
+                    if hasattr(msg, 'usage_metadata') and msg.usage_metadata:
+                        total_input_tokens += msg.usage_metadata.get('input_tokens', 0)
+                        total_output_tokens += msg.usage_metadata.get('output_tokens', 0)
                 
-                # Stream AI message content chunks (individual tokens)
-                if msg.content:
+                # Handle tool messages
+                elif isinstance(msg, ToolMessage):
                     yield ChatResponse(
-                        status=Status.RESPONSE,
-                        type="response.output_text.delta",
+                        status=Status.FUNCTION,
+                        type="function",
                         content=msg.content,
                         metadata=Metadata(
                             conversation_id=conversation_id,
@@ -224,36 +242,24 @@ class RAGAgent:
                             output_tokens_used=total_output_tokens
                         )
                     )
-                
-                # Update token usage if available
-                if hasattr(msg, 'usage_metadata') and msg.usage_metadata:
-                    total_input_tokens += msg.usage_metadata.get('input_tokens', 0)
-                    total_output_tokens += msg.usage_metadata.get('output_tokens', 0)
             
-            # Handle tool messages
-            elif isinstance(msg, ToolMessage):
-                yield ChatResponse(
-                    status=Status.FUNCTION,
-                    type="function",
-                    content=msg.content,
-                    metadata=Metadata(
-                        conversation_id=conversation_id,
-                        input_tokens_used=total_input_tokens,
-                        output_tokens_used=total_output_tokens
-                    )
+            # Yield completion signal
+            yield ChatResponse(
+                status=Status.COMPLETE,
+                type="completion",
+                content="",
+                metadata=Metadata(
+                    conversation_id=conversation_id,
+                    input_tokens_used=total_input_tokens,
+                    output_tokens_used=total_output_tokens
                 )
-        
-        # Yield completion signal
-        yield ChatResponse(
-            status=Status.COMPLETE,
-            type="completion",
-            content="",
-            metadata=Metadata(
-                conversation_id=conversation_id,
-                input_tokens_used=total_input_tokens,
-                output_tokens_used=total_output_tokens
             )
-        )
+        else:
+            final_state = await self.agent.ainvoke(initial_state, config=config)
+            
+            # Yield the final state as a single response
+            yield final_state
+            return
 
     def interrupt(self, conversation_id):
         self.interrupted_ids.add(conversation_id)
@@ -262,6 +268,123 @@ class RAGAgent:
     def is_interrupted(self, conversation_id):
         return conversation_id in self.interrupted_ids
 
+    async def get_full_history(self, conversation_id: str):
+        config = {"configurable": {"thread_id": conversation_id}}
+        events = []
+        async for event in self.checkpointer.alist(
+            config=config
+        ):
+            events.append(event)
+
+        return events
+
+        
+
+
+# def call(self, query: Union[str, List[str]]):
+#         # System message
+#         SYSTEM_MESSAGE = """You are a helpful assistant with access to a specialized knowledge base. 
+#         IMPORTANT: You MUST ALWAYS use the hybrid_RAG_retrieve tool FIRST before answering any question. 
+#         Never rely solely on your general knowledge. Always check the knowledge base for relevant information."""
+
+#         # Normalize input to list
+#         is_batch = isinstance(query, list)
+#         queries = query if is_batch else [query]
+
+#         # Initialize chat histories for each query
+#         all_messages = []
+#         for q in queries:
+#             all_messages.append([
+#                 {"role": "system", "content": SYSTEM_MESSAGE},
+#                 HumanMessage(content=q)
+#             ])
+        
+#         # Store retrieved docs for each query
+#         batch_retrieved_docs = [[] for _ in queries]
+#         final_responses = [""] * len(queries)
+        
+#         try:
+#             # Step 1: Initial batch call to LLM
+#             responses = self.llm_with_tools.batch(all_messages)
+            
+#             # Track which indices need a second pass (tool execution)
+#             indices_to_process = []
+            
+#             # Process initial responses
+#             for i, response in enumerate(responses):
+#                 if response.tool_calls:
+#                     # Add the assistant's response with tool calls
+#                     all_messages[i].append(response)
+#                     indices_to_process.append(i)
+#                 else:
+#                     # No tool call, just get the response
+#                     final_responses[i] = response.content
+
+#             # Step 2: Execute tools for those that need it
+#             if indices_to_process:
+#                 # Collect all tool calls that need execution
+#                 tool_tasks = []
+#                 for i in indices_to_process:
+#                     response = responses[i]
+#                     for tool_call in response.tool_calls:
+#                         tool_tasks.append((i, tool_call))
+                
+#                 # Execute tool calls in parallel
+#                 with ThreadPoolExecutor() as executor:
+#                     # Submit all tasks
+#                     future_to_task = {
+#                         executor.submit(self.rag_tool.invoke, task[1]["args"]): task 
+#                         for task in tool_tasks
+#                     }
+                    
+#                     # Process results as they complete
+#                     for future in as_completed(future_to_task):
+#                         i, tool_call = future_to_task[future]
+#                         try:
+#                             serialized_context, docs = future.result()
+                            
+#                             # Store docs
+#                             batch_retrieved_docs[i].extend(docs)
+                            
+#                             # Add tool result to messages
+#                             all_messages[i].append(ToolMessage(
+#                                 content=serialized_context,
+#                                 tool_call_id=tool_call["id"]
+#                             ))
+#                         except Exception as exc:
+#                             print(f"Tool execution failed: {exc}")
+#                             # Add error message to tool result so the LLM knows it failed
+#                             all_messages[i].append(ToolMessage(
+#                                 content=f"Error: {str(exc)}",
+#                                 tool_call_id=tool_call["id"]
+#                             ))
+
+#                 # Prepare second batch pass
+#                 second_pass_indices = indices_to_process
+                
+#                 # Step 3: Second batch call to LLM for those that used tools
+#                 if second_pass_indices:
+#                     second_pass_messages = [all_messages[i] for i in second_pass_indices]
+#                     second_responses = self.llm_with_tools.batch(second_pass_messages)
+                    
+#                     for idx, response in zip(second_pass_indices, second_responses):
+#                         final_responses[idx] = response.content
+            
+#         except Exception as e:
+#             print(f"Error in agent_call: {e}")
+#             if is_batch:
+#                 return [], [f"Error: {str(e)}"] * len(queries)
+#             return [], f"Error: {str(e)}"
+
+#         # Return results formatted correctly
+#         results = []
+#         for i in range(len(queries)):
+#             results.append((final_responses[i], [doc.page_content for doc in batch_retrieved_docs[i]]))
+
+#         if is_batch:
+#             return results
+#         else:
+#             return results[0]
 
 def create_rag_tool(vector_store, ranker, hyde_generator: Optional[HyDEGenerator]):
     @tool
@@ -291,7 +414,7 @@ def create_rag_tool(vector_store, ranker, hyde_generator: Optional[HyDEGenerator
             (f"Source: {doc.metadata}\nContent: {doc.page_content}")
             for doc in reranked_docs
         )
-        return serialized, reranked_docs
+        return serialized
 
     return hybrid_RAG_retrieve
 
@@ -341,12 +464,29 @@ async def main():
     agent = await RAGAgent.create(config)
     
     query = input("Enter your query: ")
+
+    # Invoke the agent
+    async for response in agent.chat(query, conversation_id=str(27), stream=False):
+        print("Messages:")
+        print(response["messages"])
+        print()
+        
+        # Context might not exist if summarization hasn't triggered yet
+        if "context" in response and "running_summary" in response["context"]:
+            print("Summary:")
+            print(response["context"]["running_summary"].summary)
+            print()
+        
+        print(f"Input tokens: {response.get('input_tokens_used', 0)}")
+        print(f"Output tokens: {response.get('output_tokens_used', 0)}")
+
+    
     
     # Stream responses
-    async for response in agent.chat(query, conversation_id=str(20)):
-        print(f"[{response.status.value}] {response.type}: {response.content}")
-        if response.status == Status.COMPLETE:
-            print(f"\nFinal token usage - Input: {response.metadata.input_tokens_used}, Output: {response.metadata.output_tokens_used}")
+    # async for response in agent.chat(query, conversation_id=str(20)):
+    #     print(f"[{response.status.value}] {response.type}: {response.content}")
+    #     if response.status == Status.COMPLETE:
+    #         print(f"\nFinal token usage - Input: {response.metadata.input_tokens_used}, Output: {response.metadata.output_tokens_used}")
     
     # Clean up
     await agent.close()

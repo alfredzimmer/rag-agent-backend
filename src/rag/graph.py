@@ -6,18 +6,25 @@ providing native support for interrupts, checkpointing, and streaming.
 """
 
 from typing import TypedDict, Annotated, Sequence, Literal
-from langchain_core.messages import BaseMessage, AIMessage, ToolMessage, SystemMessage
-from langgraph.graph import StateGraph, END
+from langchain_core.messages import BaseMessage, AIMessage, ToolMessage, SystemMessage, AnyMessage
+from langgraph.graph import StateGraph, END, MessagesState, START
 from langgraph.prebuilt import ToolNode
 import operator
+from langmem.short_term import SummarizationNode, RunningSummary
+from langchain_core.messages.utils import count_tokens_approximately
+from langchain_ollama import ChatOllama
 
 
-class AgentState(TypedDict):
-    """State passed between nodes in the graph."""
-    messages: Annotated[Sequence[BaseMessage], operator.add]
-    input_tokens_used: int
-    output_tokens_used: int
+summarization_model = ChatOllama(model="qwen3:8b", temperature=0, num_predict=1024)
 
+class State(MessagesState):
+    context: dict[str, RunningSummary]  
+    input_tokens_used: Annotated[int, operator.add]
+    output_tokens_used: Annotated[int, operator.add]
+
+class LLMInputState(TypedDict):
+    summarized_messages: list[AnyMessage]
+    context: dict[str, RunningSummary]
 
 def create_agent_graph(llm_with_tools, rag_tool):
     """
@@ -32,7 +39,7 @@ def create_agent_graph(llm_with_tools, rag_tool):
     """
     
     # Define the agent node
-    def agent_node(state: AgentState) -> AgentState:
+    def agent_node(state: LLMInputState) -> State:
         """
         Agent node: LLM decides what to do next.
         Note: This uses invoke() for non-streaming. For streaming, we handle it in the agent.chat() method.
@@ -40,24 +47,38 @@ def create_agent_graph(llm_with_tools, rag_tool):
         messages = [
             SystemMessage(
                 content="You are a helpful assistant with access to a specialized knowledge base. "
-                        "IMPORTANT: You MUST use the hybrid_RAG_retrieve tool before answering any technical question. "
-                        "Never rely solely on your general knowledge. Always check the knowledge base for relevant information."
+                "IMPORTANT: You MUST use the hybrid_RAG_retrieve tool before answering any technical question. "
+                "Never rely solely on your general knowledge. Always check the knowledge base for relevant information."
             )
-        ] + state["messages"]
+        ] + state["summarized_messages"]
+
+        print(f"Summarized messages: {state['summarized_messages']}")
+        if 'context' in state:
+            print(f"Context: {state['context']}")
+
 
         response = llm_with_tools.invoke(messages)
 
         return {
             "messages": [response],
-            "input_tokens_used": state["input_tokens_used"] + response.usage_metadata.get("input_tokens", 0),
-            "output_tokens_used": state["output_tokens_used"] + response.usage_metadata.get("output_tokens", 0)
+            "input_tokens_used": response.usage_metadata.get("input_tokens", 0),
+            "output_tokens_used": response.usage_metadata.get("output_tokens", 0)
         }
     
     # Define the tool node using LangGraph's built-in ToolNode
     tool_node = ToolNode([rag_tool])
+
+    summarization_node = SummarizationNode(  
+        token_counter=count_tokens_approximately,
+        model=summarization_model,
+        max_tokens=4096,  # Increased to fit more messages in summarization context
+        max_tokens_before_summary=2048,  # Trigger summary when conversation exceeds 2048 tokens
+        max_summary_tokens=1024,  # Increased summary size for better context retention
+    )
+
     
     # Define the router function
-    def should_continue(state: AgentState) -> Literal["tools", "end"]:
+    def should_continue(state: State) -> Literal["tools", "end"]:
         """
         Router: Decide whether to continue to tools or end.
         """
@@ -72,14 +93,16 @@ def create_agent_graph(llm_with_tools, rag_tool):
         return "end"
     
     # Build the graph
-    workflow = StateGraph(AgentState)
+    workflow = StateGraph(State)
     
     # Add nodes
     workflow.add_node("agent", agent_node)
     workflow.add_node("tools", tool_node)
+    workflow.add_node("summarize", summarization_node)  
     
     # Set entry point
-    workflow.set_entry_point("agent")
+    workflow.add_edge(START, "summarize")
+    workflow.add_edge("summarize", "agent")
     
     # Add conditional edges
     workflow.add_conditional_edges(
@@ -92,7 +115,7 @@ def create_agent_graph(llm_with_tools, rag_tool):
     )
     
     # Add edge from tools back to agent
-    workflow.add_edge("tools", "agent")
+    workflow.add_edge("tools", "summarize")
     
     # Compile the graph
     # Note: We'll add checkpointer and interrupt configuration when compiling in RAGAgent
