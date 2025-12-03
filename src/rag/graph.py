@@ -12,7 +12,7 @@ from langgraph.prebuilt import ToolNode
 import operator
 from langmem.short_term import SummarizationNode, RunningSummary
 from langchain_core.messages.utils import count_tokens_approximately
-from langchain_community.chat_models import ChatOllama
+from langchain_ollama import ChatOllama
 
 
 summarization_model = ChatOllama(model="qwen3:8b", temperature=0, num_predict=256)

@@ -22,7 +22,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DB_URI = "postgresql://agent_master:*181nosdunK@localhost:5432/agent_data"
+DB_URI = os.getenv("DB_URI")
 
 @dataclass
 class RAGConfig:
@@ -252,7 +252,7 @@ class RAGAgent:
                 )
             )
         else:
-            final_state = self.agent.invoke(initial_state, config=config)
+            final_state = await self.agent.ainvoke(initial_state, config=config)
 
             for m in final_state["messages"]:
                 m.pretty_print()
@@ -463,9 +463,10 @@ async def main():
     query = input("Enter your query: ")
 
     # Invoke the agent
-    response = await agent.chat(query, conversation_id=str(20), stream=False)
+    async for response in agent.chat(query, conversation_id=str(20), stream=False):
+        print(response)
     
-    # # Stream responses
+    # Stream responses
     # async for response in agent.chat(query, conversation_id=str(20)):
     #     print(f"[{response.status.value}] {response.type}: {response.content}")
     #     if response.status == Status.COMPLETE:
