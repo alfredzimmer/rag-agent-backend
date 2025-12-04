@@ -243,18 +243,6 @@ class RAGAgent:
                                 output_tokens_used=total_output_tokens
                             )
                         )
-
-                    if msg.response_metadata and msg.response_metadata.get("done"):
-                        yield ChatResponse(
-                            status=Status.COMPLETE,
-                            type="completion",
-                            content="",
-                            metadata=Metadata(
-                                conversation_id=conversation_id,
-                                input_tokens_used=total_input_tokens,
-                                output_tokens_used=total_output_tokens
-                            )
-                        )
                     
                     # Update token usage if available
                     if hasattr(msg, 'usage_metadata') and msg.usage_metadata:
@@ -273,6 +261,19 @@ class RAGAgent:
                             output_tokens_used=total_output_tokens
                         )
                     )
+
+        
+            yield ChatResponse(
+                status=Status.COMPLETE,
+                type="completion",
+                content="",
+                metadata=Metadata(
+                    conversation_id=conversation_id,
+                    input_tokens_used=total_input_tokens,
+                    output_tokens_used=total_output_tokens
+                )
+            )
+
         else:
             final_state = await self.agent.ainvoke(initial_state, config=config)
             
