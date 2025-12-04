@@ -9,7 +9,7 @@ from src.rag.agent import RAGAgent, RAGConfig
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     print("AGENT:     Initializing agent...")
-    config = RAGConfig()
+    config = RAGConfig(llm_model="qwen3:30b-instruct")
     app.state.agent = await RAGAgent.create(config)
     yield
     print("AGENT:     Cleaning up agent...")

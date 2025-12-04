@@ -16,7 +16,7 @@ from langchain_core.messages.utils import count_tokens_approximately
 from langchain_core.runnables import RunnableConfig
 from langchain_ollama import ChatOllama
 import datetime
-import json
+import asyncio
 
 def log_debug(section: str, content: str):
     """Helper to log debug info with timestamp and formatting."""
@@ -78,7 +78,6 @@ def create_agent_graph(llm_with_tools, rag_tool, memory_manager, *, debug: bool 
         response = await llm_with_tools.ainvoke(messages)
 
         return {
-            "context": state.get("context", {}),
             "messages": [response],
             "context": state.get("context", {}),
             "input_tokens_used": response.usage_metadata.get("input_tokens", 0),
@@ -89,7 +88,13 @@ def create_agent_graph(llm_with_tools, rag_tool, memory_manager, *, debug: bool 
         """
         Save memory node: Save the memory to the memory manager.
         """
-        await memory_manager.ainvoke({"messages": state["messages"]}, config=config)
+        async def _background_save():
+            try:
+                await memory_manager.ainvoke({"messages": state["messages"]}, config=config)
+                print(f"Memory saved successfully for user {config.get('configurable', {}).get('user_id', 'unknown')}") if debug else None
+            except Exception as e:
+                print(f"Error saving memory: {e}")
+        asyncio.create_task(_background_save())
         return {}
     
     # Define the tool node using LangGraph's built-in ToolNode
@@ -103,7 +108,6 @@ def create_agent_graph(llm_with_tools, rag_tool, memory_manager, *, debug: bool 
         max_summary_tokens=1024,  # Increased summary size for better context retention
     )
 
-    
     # Define the router function
     def should_continue(state: State) -> Literal["tools", "save_memory"]:
         """

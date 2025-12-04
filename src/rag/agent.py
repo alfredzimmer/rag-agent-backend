@@ -107,7 +107,7 @@ class RAGAgent:
             namespace=("memories", "{user_id}")
         )
 
-        workflow = create_agent_graph(llm_with_tools, rag_tool, self.memory_manager)
+        workflow = create_agent_graph(llm_with_tools, rag_tool, self.memory_manager, debug=True)
         
         # To be initialized by create()
         self.pool = None

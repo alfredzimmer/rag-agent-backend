@@ -32,7 +32,7 @@ class CreateSessionResponse(BaseModel):
 class ChatRequest(BaseModel):
     query: str = Field(..., description="The question to ask the RAG system")
     conversation_id: UUID = Field(..., description="The conversation ID")
-    user_id: str = Field(..., description="The user ID")
+    user_id: UUID = Field(..., description="The user ID")
 
 class ChatResponse(BaseModel):
     status: Status
