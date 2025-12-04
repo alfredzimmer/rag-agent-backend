@@ -29,7 +29,7 @@ from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 
 load_dotenv()
-DB_URI: str = os.getenv("PG_URI") or ""
+DB_URI: str = os.getenv("PG_URI")
 
 @dataclass
 class RAGConfig:
@@ -209,10 +209,11 @@ class RAGAgent:
                             output_tokens_used=total_output_tokens)
                     )
                     return
-                
+            
                 # chunk is a tuple: (message_chunk, metadata)
                 # message_chunk contains individual tokens from the LLM
                 msg, metadata = chunk
+
                 
                 # Handle AI message chunks (tokens from LLM)
                 if isinstance(msg, AIMessage):
@@ -242,6 +243,18 @@ class RAGAgent:
                                 output_tokens_used=total_output_tokens
                             )
                         )
+
+                    if msg.response_metadata and msg.response_metadata.get("done"):
+                        yield ChatResponse(
+                            status=Status.COMPLETE,
+                            type="completion",
+                            content="",
+                            metadata=Metadata(
+                                conversation_id=conversation_id,
+                                input_tokens_used=total_input_tokens,
+                                output_tokens_used=total_output_tokens
+                            )
+                        )
                     
                     # Update token usage if available
                     if hasattr(msg, 'usage_metadata') and msg.usage_metadata:
@@ -260,18 +273,6 @@ class RAGAgent:
                             output_tokens_used=total_output_tokens
                         )
                     )
-            
-            # Yield completion signal
-            yield ChatResponse(
-                status=Status.COMPLETE,
-                type="completion",
-                content="",
-                metadata=Metadata(
-                    conversation_id=conversation_id,
-                    input_tokens_used=total_input_tokens,
-                    output_tokens_used=total_output_tokens
-                )
-            )
         else:
             final_state = await self.agent.ainvoke(initial_state, config=config)
             
@@ -409,25 +410,25 @@ async def main():
     query = input("Enter your query: ")
 
     # Invoke the agent
-    async for response in agent.chat(query, conversation_id=str(28), stream=False):
-        print("Messages:")
-        print(response["messages"])
-        print()
+    # async for response in agent.chat(query, conversation_id=str(29), stream=False):
+    #     print("Messages:")
+    #     print(response["messages"])
+    #     print()
         
-        # Context might not exist if summarization hasn't triggered yet
-        if "context" in response and "running_summary" in response["context"]:
-            print("Summary:")
-            print(response["context"]["running_summary"].summary)
-            print()
+    #     # Context might not exist if summarization hasn't triggered yet
+    #     if "context" in response and "running_summary" in response["context"]:
+    #         print("Summary:")
+    #         print(response["context"]["running_summary"].summary)
+    #         print()
         
-        print(f"Input tokens: {response.get('input_tokens_used', 0)}")
-        print(f"Output tokens: {response.get('output_tokens_used', 0)}")
+    #     print(f"Input tokens: {response.get('input_tokens_used', 0)}")
+    #     print(f"Output tokens: {response.get('output_tokens_used', 0)}")
     
     # Stream responses
-    # async for response in agent.chat(query, conversation_id=str(20)):
-    #     print(f"[{response.status.value}] {response.type}: {response.content}")
-    #     if response.status == Status.COMPLETE:
-    #         print(f"\nFinal token usage - Input: {response.metadata.input_tokens_used}, Output: {response.metadata.output_tokens_used}")
+    async for response in agent.chat(query, conversation_id=str(29), user_id="1", stream=True):
+        print(f"[{response.status.value}] {response.type}: {response.content}")
+        if response.status == Status.COMPLETE:
+            print(f"\nFinal token usage - Input: {response.metadata.input_tokens_used}, Output: {response.metadata.output_tokens_used}")
     
     # Clean up
     await agent.close()
