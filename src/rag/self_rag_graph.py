@@ -121,11 +121,9 @@ def create_self_rag_graph(
     
     retrieval_grader = doc_grade_prompt | structured_llm_doc_grader
     
-    # RAG generation prompt
     rag_system = """You are an assistant for question-answering tasks. 
-    Use the following pieces of retrieved context to answer the question. 
-    If you don't know the answer, just say that you don't know. 
-    Use three sentences maximum and keep the answer concise."""
+    You are provided with some relevant documents retrieved from a knowledge base that may help you answer the question.
+    If you don't know the answer, just say that you don't know. Keep your answer concise and too the point."""
     
     rag_prompt = ChatPromptTemplate.from_messages([
         ("system", rag_system),
@@ -255,7 +253,7 @@ def create_self_rag_graph(
         })
         
         if debug:
-            log_debug("GENERATE", f"Question: {question}\nGeneration: {generation[:200]}...")
+            log_debug("GENERATE", f"Context: {context}\nQuestion: {question}\nGeneration: {generation[:200]}...")
         
         # Add AI message to conversation
         ai_message = AIMessage(content=generation)

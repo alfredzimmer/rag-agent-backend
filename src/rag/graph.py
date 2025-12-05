@@ -57,7 +57,7 @@ def create_agent_graph(llm_with_tools, rag_tool, memory_manager, training_llm=No
 
         memory_context = ""
         if memories:
-            formatted = "\n".join([f"- {m.value}" for m in memories if m.score > 0.6])
+            formatted = "\n".join([f"- {m.value}" for m in memories if m.score > 0.5])
             memory_context = f"\n\nRELEVANT USER FACTS/MEMORIES:\n{formatted}"
 
         system_context =(
