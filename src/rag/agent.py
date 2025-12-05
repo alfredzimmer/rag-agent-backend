@@ -61,6 +61,7 @@ class Status(Enum):
 class Metadata(BaseModel):
    conversation_id: str = Field(..., description="Session ID")
    rating: float = Field(..., description="Rating result")
+   title: Optional[str] = Field(None, description="Title of the conversation")
    input_tokens_used: int = Field(..., description="Number of input tokens used")
    output_tokens_used: int = Field(..., description="Number of output tokens used")
 
@@ -230,7 +231,8 @@ RULES FOR STORAGE:
                             conversation_id=conversation_id,
                             input_tokens_used=total_input_tokens,
                             output_tokens_used=total_output_tokens,
-                            rating=0.0
+                            rating=0.0,
+                            title=None,
                         )
                     )
                     return
@@ -238,18 +240,23 @@ RULES FOR STORAGE:
                 # chunk is a tuple: (message_chunk, metadata)
                 # message_chunk contains individual tokens from the LLM
                 msg, chunk_metadata = chunk
-                
-                # Skip messages from the evaluator node (not user-facing content)
-                if isinstance(chunk_metadata, dict) and chunk_metadata.get("langgraph_node") == "evaluator":
-                    continue
-                # Skip chunks from the summarization node
-                if chunk_metadata.get("langgraph_node") == "summarize":
+
+                current_node = (
+                    chunk_metadata.get("langgraph_node", "")
+                    if isinstance(chunk_metadata, dict)
+                    else ""
+                )
+
+                skip_nodes = {
+                    "evaluator",
+                    "save_memory",
+                    "summarize"
+                }
+                if current_node in skip_nodes:
                     continue
 
                 
-                # Handle AI message chunks (tokens from LLM)
                 if isinstance(msg, AIMessage):
-                    # Check for tool calls
                     if hasattr(msg, "tool_calls") and msg.tool_calls:
                         for tool_call in msg.tool_calls:
                             yield ChatResponse(
@@ -260,11 +267,11 @@ RULES FOR STORAGE:
                                     conversation_id=conversation_id,
                                     input_tokens_used=total_input_tokens,
                                     output_tokens_used=total_output_tokens,
-                                    rating=0.0
+                                    rating=0.0,
+                                    title=None,
                                 )
                             )
                     
-                    # Stream AI message content chunks (individual tokens)
                     if msg.content:
                         yield ChatResponse(
                             status=Status.RESPONSE,
@@ -274,11 +281,11 @@ RULES FOR STORAGE:
                                 conversation_id=conversation_id,
                                 input_tokens_used=total_input_tokens,
                                 output_tokens_used=total_output_tokens,
-                                rating=0.0
+                                rating=0.0,
+                                title=None,
                             )
                         )
                     
-                    # Update token usage if available
                     if hasattr(msg, 'usage_metadata') and msg.usage_metadata:
                         total_input_tokens += msg.usage_metadata.get('input_tokens', 0)
                         total_output_tokens += msg.usage_metadata.get('output_tokens', 0)
@@ -293,7 +300,8 @@ RULES FOR STORAGE:
                             conversation_id=conversation_id,
                             input_tokens_used=total_input_tokens,
                             output_tokens_used=total_output_tokens,
-                            rating=0.0
+                            rating=0.0,
+                            title=None,
                         )
                     )
 
@@ -301,6 +309,7 @@ RULES FOR STORAGE:
             # Get final state to retrieve the rating from the evaluator
             final_state = await self.agent.aget_state(config)
             rating = final_state.values.get("rating", 0.0)
+            title = final_state.values.get("title", None)
             
             yield ChatResponse(
                 status=Status.COMPLETE,
@@ -310,7 +319,8 @@ RULES FOR STORAGE:
                     conversation_id=conversation_id,
                     input_tokens_used=total_input_tokens,
                     output_tokens_used=total_output_tokens,
-                    rating=rating
+                    rating=rating,
+                    title=title,
                 )
             )
 

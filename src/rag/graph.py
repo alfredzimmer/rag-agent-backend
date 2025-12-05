@@ -35,7 +35,6 @@ def log_debug(section: str, content: str):
 
 summarization_model = ChatOllama(model="qwen3:8b", temperature=0, num_predict=1024)
 
-
 class State(MessagesState):
     context: dict[str, RunningSummary]
     rating: float
@@ -124,7 +123,7 @@ def create_agent_graph(llm_with_tools, rag_tool, memory_manager, training_llm=No
 
     async def save_memory_node(state: State, config: RunnableConfig):
         """
-        Save memory node: Save the memory to the memory manager.
+        Save memory node: Save the memory to the memory manager. (additionally creates a title for the conversation)
         """
         async def _background_save():
             try:
@@ -147,17 +146,38 @@ def create_agent_graph(llm_with_tools, rag_tool, memory_manager, training_llm=No
             }
         
         messages = state["messages"]
-        
-        user_input = ""
-        ai_output = ""
-        
-        # Find the last human message (input) and last AI message (output)
+
+        first_human = first_ai = last_human = last_ai = None
+
+        for msg in messages:
+            if isinstance(msg, HumanMessage) and first_human is None:
+                first_human = msg
+            if isinstance(msg, AIMessage) and first_ai is None:
+                first_ai = msg
         for msg in reversed(messages):
-            if isinstance(msg, AIMessage) and not ai_output:
-                ai_output = msg.content if isinstance(msg.content, str) else str(msg.content)
-            elif isinstance(msg, HumanMessage) and not user_input:
-                user_input = msg.content if isinstance(msg.content, str) else str(msg.content)
-        
+            if isinstance(msg, HumanMessage) and last_human is None:
+                last_human = msg
+            if isinstance(msg, AIMessage) and last_ai is None:
+                last_ai = msg
+
+        # Generate title if short conversation
+        if len(messages) <= 4 and first_human and first_ai:
+            try:
+                title_prompt = f"""Generate a distinct, 3-5 word title for this conversation based on the conversation history:
+                user: {first_human.content}
+                assistant: {first_ai.content}
+                """
+                title_res = await summarization_model.ainvoke(title_prompt)
+                title = title_res.content
+                if debug:
+                    log_debug("TITLE_GENERATION", f"Generated Title: {title}")
+            except Exception as e:
+                log_debug("TITLE_GENERATION", f"Error generating title: {e}")
+
+        # Use last pair for evaluation
+        user_input = last_human.content if last_human else ""
+        ai_output = last_ai.content if last_ai else ""
+
         if not user_input or not ai_output:
             if debug:
                 log_debug("EVALUATOR_NODE", "Skipping evaluation: missing input or output")
@@ -190,27 +210,26 @@ Format all responses as JSON object with the following keys:
             # Use training LLM to evaluate
             eval_response = await training_llm.ainvoke(evaluation_prompt)
             eval_text = eval_response.content if hasattr(eval_response, 'content') else str(eval_response)
-            
-            if debug:
-                log_debug("EVALUATOR_NODE", f"Evaluation response: {eval_text}")
-            
+                    
             eval_json = json.loads(eval_text)
            
             valuable_score = float(eval_json.get("VALUABLE_FOR_TRAINING", 0.0))
             technical_score = float(eval_json.get("TECHNICAL_CONTENT", 0.0))
-            explanation = eval_json.get("EXPLANATION", "")
             
             overall_score = (valuable_score + technical_score) / 2.0
-            
+
             if debug:
-                log_debug("EVALUATOR_NODE", 
-                    f"Valuable Score: {valuable_score}, Technical Score: {technical_score}, "
-                    f"Overall Score: {overall_score}"
-                    f"Explanation: {explanation}")
+                log_debug("EVALUATOR_NODE", f"Evaluation response: {eval_text}\nOverall score: {overall_score}")
             
-            return {
-                "rating": overall_score
-            }
+            if title:
+                return {
+                    "rating": overall_score,
+                    "title": title
+                }
+            else:
+                return {
+                    "rating": overall_score
+                }
             
         except Exception as e:
             if debug:
