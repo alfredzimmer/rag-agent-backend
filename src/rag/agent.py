@@ -41,6 +41,8 @@ class RAGConfig:
     memory_llm_model: str = "qwen3:8b"
     memory_embeddings_model: str = "nomic-embed-text"
     memory_embeddings_dims: int = 768
+    training_mode: bool = False
+    training_llm_model: str = "qwen3:8b"
     hyde: bool = False
 
 @dataclass
@@ -58,6 +60,7 @@ class Status(Enum):
 
 class Metadata(BaseModel):
    conversation_id: str = Field(..., description="Session ID")
+   rating: float = Field(..., description="Rating result")
    input_tokens_used: int = Field(..., description="Number of input tokens used")
    output_tokens_used: int = Field(..., description="Number of output tokens used")
 
@@ -67,7 +70,13 @@ class ChatResponse(BaseModel):
    content: str = Field(..., description="The content of the response")
    metadata: Metadata = Field(..., description="Metadata about the response")
 
-# Registry of component creators
+# Model used for long-term memory
+class CompactMemory(BaseModel):
+    category: str = Field(description="One word category: e.g., 'Technical', 'Personal', 'Preference'")
+    fact: str = Field(description="A concise, single-sentence summary of the new information. Max 15 words.")
+    importance: int = Field(description="1-10 scale of how important this is to remember long-term.")
+
+
 VECTOR_STORES = {
     "milvus": create_milvus_store,
 }
@@ -102,12 +111,26 @@ class RAGAgent:
 
         # Memory Setup #########################################################
         memory_llm = ChatOllama(model=config.memory_llm_model, temperature=0)
+        manager_instructions = """
+You are a memory manager. Your job is to extract LONG-TERM knowledge from the conversation.
+
+RULES FOR STORAGE:
+1. **IGNORE CHIT-CHAT**: Do not store greetings, pleasantries, or temporary context (e.g., "I'm going to lunch now").
+2. **Relevance Filter**: Only store information if it is useful for future tasks (e.g., user preferences, project specs, debugging history).
+3. **COMPACTNESS**: Do not store raw quotes. Summarize the user's intent into the smallest possible sentence.
+4. **No Duplicates**: If a fact already exists in the provided existing memories, do not create a new one.
+"""
         self.memory_manager = create_memory_store_manager(
             memory_llm,
-            namespace=("memories", "{user_id}")
+            namespace=("memories", "{user_id}"),
+            schemas=[CompactMemory],
+            instructions=manager_instructions
         )
 
-        workflow = create_agent_graph(llm_with_tools, rag_tool, self.memory_manager, debug=True)
+        # Training LLM Setup for evaluation ####################################
+        training_llm = ChatOllama(model=config.training_llm_model, temperature=0, format="json") if config.training_mode else None
+
+        workflow = create_agent_graph(llm_with_tools, rag_tool, self.memory_manager, training_llm, debug=True)
         
         # To be initialized by create()
         self.pool = None
@@ -206,14 +229,19 @@ class RAGAgent:
                         metadata=Metadata(
                             conversation_id=conversation_id,
                             input_tokens_used=total_input_tokens,
-                            output_tokens_used=total_output_tokens)
+                            output_tokens_used=total_output_tokens,
+                            rating=0.0
+                        )
                     )
                     return
             
                 # chunk is a tuple: (message_chunk, metadata)
                 # message_chunk contains individual tokens from the LLM
-                msg, metadata = chunk
+                msg, chunk_metadata = chunk
 
+                # Skip messages from the evaluator node (not user-facing content)
+                if isinstance(chunk_metadata, dict) and chunk_metadata.get("langgraph_node") == "evaluator":
+                    continue
                 
                 # Handle AI message chunks (tokens from LLM)
                 if isinstance(msg, AIMessage):
@@ -227,7 +255,8 @@ class RAGAgent:
                                 metadata=Metadata(
                                     conversation_id=conversation_id,
                                     input_tokens_used=total_input_tokens,
-                                    output_tokens_used=total_output_tokens
+                                    output_tokens_used=total_output_tokens,
+                                    rating=0.0
                                 )
                             )
                     
@@ -240,7 +269,8 @@ class RAGAgent:
                             metadata=Metadata(
                                 conversation_id=conversation_id,
                                 input_tokens_used=total_input_tokens,
-                                output_tokens_used=total_output_tokens
+                                output_tokens_used=total_output_tokens,
+                                rating=0.0
                             )
                         )
                     
@@ -258,11 +288,16 @@ class RAGAgent:
                         metadata=Metadata(
                             conversation_id=conversation_id,
                             input_tokens_used=total_input_tokens,
-                            output_tokens_used=total_output_tokens
+                            output_tokens_used=total_output_tokens,
+                            rating=0.0
                         )
                     )
 
         
+            # Get final state to retrieve the rating from the evaluator
+            final_state = await self.agent.aget_state(config)
+            rating = final_state.values.get("rating", 0.0)
+            
             yield ChatResponse(
                 status=Status.COMPLETE,
                 type="completion",
@@ -270,7 +305,8 @@ class RAGAgent:
                 metadata=Metadata(
                     conversation_id=conversation_id,
                     input_tokens_used=total_input_tokens,
-                    output_tokens_used=total_output_tokens
+                    output_tokens_used=total_output_tokens,
+                    rating=rating
                 )
             )
 
