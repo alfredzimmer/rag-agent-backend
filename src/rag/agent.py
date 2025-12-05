@@ -213,6 +213,10 @@ class RAGAgent:
                 # chunk is a tuple: (message_chunk, metadata)
                 # message_chunk contains individual tokens from the LLM
                 msg, metadata = chunk
+                
+                # Skip chunks from the summarization node
+                if metadata.get("langgraph_node") == "summarize":
+                    continue
 
                 
                 # Handle AI message chunks (tokens from LLM)
@@ -367,6 +371,13 @@ class RAGAgent:
         await self.checkpointer.adelete_thread(conversation_id)
         return True
 
+    async def get_state_history(self, conversation_id: str):
+        config = {"configurable": {"thread_id": conversation_id}}
+        history = []
+        async for state in self.agent.aget_state_history(config=config):
+            history.append(state)
+        return history
+
 
 
 
@@ -426,7 +437,7 @@ async def main():
     #     print(f"Output tokens: {response.get('output_tokens_used', 0)}")
     
     # Stream responses
-    async for response in agent.chat(query, conversation_id=str(29), user_id="1", stream=True):
+    async for response in agent.chat(query, conversation_id=str(31), user_id="1", stream=True):
         print(f"[{response.status.value}] {response.type}: {response.content}")
         if response.status == Status.COMPLETE:
             print(f"\nFinal token usage - Input: {response.metadata.input_tokens_used}, Output: {response.metadata.output_tokens_used}")
