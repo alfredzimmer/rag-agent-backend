@@ -65,11 +65,19 @@ def create_agent_graph(llm_with_tools, rag_tool, memory_manager, training_llm=No
         if memories:
             formatted = "\n".join([f"- {m.value}" for m in memories if m.score > 0.5])
             memory_context = f"\n\nRELEVANT USER FACTS/MEMORIES:\n{formatted}"
+            
+            # Debug: log all memories with scores
+            if debug:
+                all_memories_debug = "\n".join([f"Score {m.score:.3f}: {m.value}" for m in memories])
+                log_debug("MEMORIES_WITH_SCORES", all_memories_debug if memories else "No memories found")
 
-        system_context =(
-            "You are a helpful assistant with access to a specialized knowledge base. "
-            "IMPORTANT: You should use the hybrid_RAG_retrieve tool before answering any technical question. "
-            "Never rely solely on your general knowledge. Always check the knowledge base for relevant information."
+        system_context = (
+            "You are a helpful assistant with access to a specialized knowledge base and user memories. "
+            "IMPORTANT INSTRUCTIONS:\n"
+            "1. For technical questions: You MUST use the hybrid_RAG_retrieve tool before answering. "
+            "Never rely solely on your general knowledge for technical content.\n"
+            "2. For personal questions about the user: Check the 'RELEVANT USER FACTS/MEMORIES' section below FIRST. "
+            "If the answer is in the memories, use that information directly. "
             f"{memory_context}"
         )
 
@@ -86,7 +94,6 @@ def create_agent_graph(llm_with_tools, rag_tool, memory_manager, training_llm=No
             if 'context' in state:
                 log_content += f"\nContext: {state['context']}"
             log_debug("AGENT_NODE_INPUT", log_content)
-            log_debug("MEMORIES", f"Memories: {formatted if memories else 'No memories found'}")
             log_debug("AGENT_RESPONSE", f"Response: {response}")
             log_debug("TOKEN_USAGE", f"Input tokens: {response.usage_metadata.get('input_tokens', 0)}, Output tokens: {response.usage_metadata.get('output_tokens', 0)}")
 

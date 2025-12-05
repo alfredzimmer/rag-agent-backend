@@ -7,6 +7,8 @@ import json
 import os
 from pathlib import Path
 from .modules.sparse_embedder import BGEEmbedder, SpladeEmbedder
+from .config import RAGConfig
+
 
 conn = connections.connect(host="127.0.0.1", port=19530)
 
@@ -50,7 +52,7 @@ class MilvusVectorStore():
             auto_id=True,
         )
 
-    def load_chunk_file(path: str) -> list[Document]:
+    def load_chunk_file(self, path: str) -> list[Document]:
         """Convert a JSON chunk file into dicts with content + metadata."""
         chunk_path = Path(path)
         with chunk_path.open("r", encoding="utf-8") as fh:
@@ -70,7 +72,7 @@ class MilvusVectorStore():
         for filename in os.listdir(folder_path):
             if filename.endswith(".json"):
                 chunk_file = os.path.join(folder_path, filename)
-                documents = load_chunk_file(chunk_file)
+                documents = self.load_chunk_file(chunk_file)
 
                 if not documents:
                     raise ValueError(f"No documents parsed from {chunk_file}")
@@ -134,3 +136,7 @@ def create_milvus_store(config) -> MilvusVectorStore:
         embedding_function=embedding_function,
         buildin_function=buildin_function
     )
+
+if __name__ == "__main__":
+    vector_store = create_milvus_store(RAGConfig())
+    vector_store.add_documents("src/evaluation/rag-syn-corpus")

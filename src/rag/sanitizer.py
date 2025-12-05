@@ -126,4 +126,4 @@ def sanitize_all_json_files(inputs_dir: str, outputs_dir: str, batch_size: int =
     print("All files processed!")
     print(f"{'='*60}")
 
-sanitize_all_json_files(inputs_dir="src/rag/outputs/2025", outputs_dir="src/rag/outputs/2025/sanitized", batch_size=10)
+sanitize_all_json_files(inputs_dir="src/rag/outputs/2023-2024", outputs_dir="src/rag/outputs/2023-2024/sanitized", batch_size=10)
