@@ -23,7 +23,12 @@ TokenCounter = Callable[[Iterable[MessageLikeRepresentation]], int]
 DEFAULT_INITIAL_SUMMARY_PROMPT = ChatPromptTemplate.from_messages(
     [
         ("placeholder", "{messages}"),
-        ("user", "Create a summary of the conversation above:"),
+        ("user", "Summarize the conversation above concisely, preserving key facts, decisions, and context:\n"
+            "Focus on:\n"
+            "- Main topics discussed\n"
+            "- Important questions asked and answers given\n"
+            "- Key facts or information shared\n"
+            "- Any decisions or conclusions reached"),
     ]
 )
 
@@ -34,7 +39,7 @@ DEFAULT_EXISTING_SUMMARY_PROMPT = ChatPromptTemplate.from_messages(
         (
             "user",
             "This is summary of the conversation so far: {existing_summary}\n\n"
-            "Extend this summary by taking into account the new messages above:",
+            "Extend this summary by taking into account the new messages above:"
         ),
     ]
 )
@@ -161,7 +166,7 @@ def _preprocess_messages(
     
     # We will use this to ensure that the total number of resulting tokens
     # will fit into max_tokens window.
-    total_n_tokens = token_counter(messages[total_summarized_messages:])
+    total_n_tokens = token_counter(messages[total_summarized_messages:max_summarizable_index])
 
     # Go through messages to count tokens and find cutoff point
     n_tokens = 0
@@ -196,6 +201,7 @@ def _preprocess_messages(
         # still exceed the budget (they'll be summarized in subsequent iterations)
         if (
             n_tokens >= max_tokens_before_summary
+            and total_n_tokens - n_tokens <= max_remaining_tokens
             and not should_summarize
         ):
             n_tokens_to_summarize = n_tokens

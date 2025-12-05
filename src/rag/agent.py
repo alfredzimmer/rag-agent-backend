@@ -250,7 +250,9 @@ RULES FOR STORAGE:
                 # Handle AI message chunks (tokens from LLM)
                 if isinstance(msg, AIMessage):
                     # Check for tool calls
-                    if hasattr(msg, "tool_calls") and msg.tool_calls:
+                    has_tool_calls = hasattr(msg, "tool_calls") and msg.tool_calls
+                    
+                    if has_tool_calls:
                         for tool_call in msg.tool_calls:
                             yield ChatResponse(
                                 status=Status.RESPONSE,
@@ -265,7 +267,8 @@ RULES FOR STORAGE:
                             )
                     
                     # Stream AI message content chunks (individual tokens)
-                    if msg.content:
+                    # Only stream content if there are NO tool calls (to avoid duplicate responses)
+                    if msg.content and not has_tool_calls:
                         yield ChatResponse(
                             status=Status.RESPONSE,
                             type="response.output_text.delta",
