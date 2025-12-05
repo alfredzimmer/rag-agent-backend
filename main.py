@@ -4,13 +4,13 @@ from contextlib import asynccontextmanager
 from api.agent.conversation import router as conversation_router
 from api.agent.response import router as response_router
 from api.agent.status import router as status_router
-from src.rag.agent import RAGAgent, RAGConfig
+from src.rag.self_rag_agent import SelfRAGAgent, RAGConfig
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     print("AGENT:     Initializing agent...")
-    config = RAGConfig(llm_model="qwen3:30b-instruct")
-    app.state.agent = await RAGAgent.create(config)
+    config = RAGConfig(llm_model="qwen3:30b-instruct", training_mode=True)
+    app.state.agent = await SelfRAGAgent.create(config)
     yield
     print("AGENT:     Cleaning up agent...")
     await app.state.agent.close()
