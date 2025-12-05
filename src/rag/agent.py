@@ -257,7 +257,10 @@ RULES FOR STORAGE:
 
                 
                 if isinstance(msg, AIMessage):
-                    if hasattr(msg, "tool_calls") and msg.tool_calls:
+                    # Check for tool calls
+                    has_tool_calls = hasattr(msg, "tool_calls") and msg.tool_calls
+                    
+                    if has_tool_calls:
                         for tool_call in msg.tool_calls:
                             yield ChatResponse(
                                 status=Status.RESPONSE,
@@ -272,7 +275,9 @@ RULES FOR STORAGE:
                                 )
                             )
                     
-                    if msg.content:
+                    # Stream AI message content chunks (individual tokens)
+                    # Only stream content if there are NO tool calls (to avoid duplicate responses)
+                    if msg.content and not has_tool_calls:
                         yield ChatResponse(
                             status=Status.RESPONSE,
                             type="response.output_text.delta",

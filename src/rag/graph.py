@@ -94,25 +94,25 @@ def create_agent_graph(llm_with_tools, rag_tool, memory_manager, training_llm=No
         # If so, clean up ToolMessages before returning
         has_tool_calls = hasattr(response, "tool_calls") and response.tool_calls
         
-        # if not has_tool_calls:
-        #     # Agent is done - clean up all ToolMessages from state before returning
-        #     # This prevents accumulation of tool call data across turns
-        #     from langchain_core.messages import RemoveMessage
+        if not has_tool_calls:
+            # Agent is done - clean up all ToolMessages from state before returning
+            # This prevents accumulation of tool call data across turns
+            from langchain_core.messages import RemoveMessage
             
-        #     # Find all ToolMessages to remove
-        #     tool_messages_to_remove = [
-        #         RemoveMessage(id=msg.id) 
-        #         for msg in state.get("summarized_messages", []) 
-        #         if isinstance(msg, ToolMessage)
-        #     ]
+            # Find all ToolMessages to remove
+            tool_messages_to_remove = [
+                RemoveMessage(id=msg.id) 
+                for msg in state.get("summarized_messages", []) 
+                if isinstance(msg, ToolMessage)
+            ]
             
-        #     # Return removal commands + new response
-        #     return {
-        #         "messages": tool_messages_to_remove + [response],
-        #         "context": state.get("context", {}),
-        #         "input_tokens_used": response.usage_metadata.get("input_tokens", 0),
-        #         "output_tokens_used": response.usage_metadata.get("output_tokens", 0)
-        #     }
+            # Return removal commands + new response
+            return {
+                "messages": tool_messages_to_remove + [response],
+                "context": state.get("context", {}),
+                "input_tokens_used": response.usage_metadata.get("input_tokens", 0),
+                "output_tokens_used": response.usage_metadata.get("output_tokens", 0)
+            }
         
         # Has tool calls - return normally (ToolMessages will be added by tool node)
         return {
@@ -243,10 +243,10 @@ Format all responses as JSON object with the following keys:
 
     summarization_node = SummarizationNode(
         model=summarization_model,
-        max_tokens=2000,
-        max_tokens_before_summary=2000,
+        max_tokens=3000,
+        max_tokens_before_summary=3000,
         keep_last_n_messages=6,
-        max_summary_tokens=1024,
+        max_summary_tokens=512,
     )
 
     # Define the router function
