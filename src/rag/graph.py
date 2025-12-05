@@ -15,19 +15,26 @@ from langmem.short_term import SummarizationNode, RunningSummary
 from langchain_core.messages.utils import count_tokens_approximately
 from langchain_core.runnables import RunnableConfig
 from langchain_ollama import ChatOllama
+from langgraph.graph.message import add_messages
 import datetime
 import asyncio
 import json
+import textwrap
+from .modules.custom_summarization import SummarizationNode
 
 def log_debug(section: str, content: str):
     """Helper to log debug info with timestamp and formatting."""
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     with open("debug_graph.log", "a") as f:
         f.write(f"[{timestamp}] [{section}]\n")
-        f.write(f"{content}\n")
+        # Wrap content if it's too long, but preserve existing newlines
+        wrapper = textwrap.TextWrapper(width=100, break_long_words=False, replace_whitespace=False)
+        formatted_content = "\n".join(wrapper.fill(line) for line in content.splitlines())
+        f.write(f"{formatted_content}\n")
         f.write("-" * 80 + "\n")
 
 summarization_model = ChatOllama(model="qwen3:8b", temperature=0, num_predict=1024)
+
 
 class State(MessagesState):
     context: dict[str, RunningSummary]
@@ -73,14 +80,42 @@ def create_agent_graph(llm_with_tools, rag_tool, memory_manager, training_llm=No
 
         if debug:
             # Debug logging
-            log_content = f"Summarized Messages: {state['summarized_messages']}\n"
+            messages = state['summarized_messages']
+            log_content = f"Summarized Messages ({len(messages)} total):\n"
+            for i, msg in enumerate(messages, 1):
+                log_content += f"  Message {i}: {msg}\n\n"
             if 'context' in state:
-                log_content += f"Context: {state['context']}"
+                log_content += f"\nContext: {state['context']}"
             log_debug("AGENT_NODE_INPUT", log_content)
             log_debug("MEMORIES", f"Memories: {formatted if memories else 'No memories found'}")
             log_debug("AGENT_RESPONSE", f"Response: {response}")
             log_debug("TOKEN_USAGE", f"Input tokens: {response.usage_metadata.get('input_tokens', 0)}, Output tokens: {response.usage_metadata.get('output_tokens', 0)}")
 
+        # Check if this is the final response (no tool calls)
+        # If so, clean up ToolMessages before returning
+        has_tool_calls = hasattr(response, "tool_calls") and response.tool_calls
+        
+        # if not has_tool_calls:
+        #     # Agent is done - clean up all ToolMessages from state before returning
+        #     # This prevents accumulation of tool call data across turns
+        #     from langchain_core.messages import RemoveMessage
+            
+        #     # Find all ToolMessages to remove
+        #     tool_messages_to_remove = [
+        #         RemoveMessage(id=msg.id) 
+        #         for msg in state.get("summarized_messages", []) 
+        #         if isinstance(msg, ToolMessage)
+        #     ]
+            
+        #     # Return removal commands + new response
+        #     return {
+        #         "messages": tool_messages_to_remove + [response],
+        #         "context": state.get("context", {}),
+        #         "input_tokens_used": response.usage_metadata.get("input_tokens", 0),
+        #         "output_tokens_used": response.usage_metadata.get("output_tokens", 0)
+        #     }
+        
+        # Has tool calls - return normally (ToolMessages will be added by tool node)
         return {
             "messages": [response],
             "input_tokens_used": response.usage_metadata.get("input_tokens", 0),
@@ -187,12 +222,12 @@ Format all responses as JSON object with the following keys:
     # Define the tool node using LangGraph's built-in ToolNode
     tool_node = ToolNode([rag_tool])
 
-    summarization_node = SummarizationNode(  
-        token_counter=count_tokens_approximately,
+    summarization_node = SummarizationNode(
         model=summarization_model,
-        max_tokens=4096,  # Increased to fit more messages in summarization context
-        max_tokens_before_summary=2048,  # Trigger summary when conversation exceeds 2048 tokens
-        max_summary_tokens=1024,  # Increased summary size for better context retention
+        max_tokens=2000,
+        max_tokens_before_summary=2000,
+        keep_last_n_messages=6,
+        max_summary_tokens=1024,
     )
 
     # Define the router function
