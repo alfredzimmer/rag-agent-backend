@@ -139,4 +139,4 @@ def create_milvus_store(config) -> MilvusVectorStore:
 
 if __name__ == "__main__":
     vector_store = create_milvus_store(RAGConfig())
-    vector_store.add_documents("src/evaluation/rag-syn-corpus")
+    vector_store.add_documents("src/rag/outputs/2023-2024/sanitized")

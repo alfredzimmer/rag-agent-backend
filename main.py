@@ -23,6 +23,7 @@ app = FastAPI(
 )
 
 origins = [
+    "https://chat.edemi.org",
     "https://pis3.aempro.ca",
     "http://localhost:3000",
     "http://localhost:5173",
