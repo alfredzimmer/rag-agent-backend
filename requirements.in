@@ -47,6 +47,7 @@ python-docx
 pymilvus
 pypdf
 deepeval
+FlagEmbedding
 chromadb
 pymilvus[model]
 redis
