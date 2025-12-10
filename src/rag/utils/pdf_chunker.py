@@ -312,18 +312,22 @@ def remove_headers_footers_configurable(markdown_text: str, config_name: str = "
 
 def truncate_headers_at_colon(markdown_text: str) -> str:
     """
-    Truncate markdown headers at colon symbol to keep only the part before ':'.
+    Truncate markdown headers at colon symbol, moving content after ':' to the next line.
+    
+    This preserves the content after the colon (e.g., definitions) while keeping
+    headers clean and concise.
     
     For example:
         "### 2.1.18 ground-fault protection of equipment: A system intended..."
         becomes:
         "### 2.1.18 ground-fault protection of equipment"
+        "A system intended..."
     
     Args:
         markdown_text: The markdown text with headers
         
     Returns:
-        Markdown text with truncated headers
+        Markdown text with truncated headers and preserved content
     """
     lines = markdown_text.split('\n')
     processed_lines = []
@@ -343,10 +347,20 @@ def truncate_headers_at_colon(markdown_text: str) -> str:
             if len(line) > header_level and line[header_level] == ' ':
                 header_text = line[header_level + 1:]
                 
-                # Truncate at colon if present
+                # Truncate at colon if present and preserve the content after it
                 if ':' in header_text:
-                    header_text = header_text.split(':', 1)[0].strip()
-                    line = '#' * header_level + ' ' + header_text
+                    parts = header_text.split(':', 1)
+                    header_part = parts[0].strip()
+                    content_part = parts[1].strip() if len(parts) > 1 else ""
+                    
+                    # Add the truncated header
+                    processed_lines.append('#' * header_level + ' ' + header_part)
+                    
+                    # Add the content after colon as a new line (if not empty)
+                    if content_part:
+                        processed_lines.append(content_part)
+                    
+                    continue  # Skip the normal append at the end
         
         processed_lines.append(line)
     
@@ -423,7 +437,10 @@ def split_pdf(file: str, config_name: str = "ieee") -> list[Document]:
     filename = os.path.basename(file)          # "{filename}.pdf"
     name_without_ext = os.path.splitext(filename)[0] # "{filename}"
     
-    pathlib.Path(f"src/rag/outputs/{name_without_ext}.md").write_bytes(markdown.encode())
+    # Save markdown file (ensure directory exists)
+    md_output = pathlib.Path(f"src/rag/outputs/{name_without_ext}.md").resolve()
+    md_output.parent.mkdir(parents=True, exist_ok=True)
+    md_output.write_bytes(markdown.encode())
     
     # split raw_splits again with chunk size constraints
     chunk_size = 1024
