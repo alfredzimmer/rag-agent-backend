@@ -1,0 +1,362 @@
+[
+    {
+        "input": "What are the two main parts of Lecture 8 on Fire Alarm System Design, and what key topics are covered in the design section?",
+        "output": "The two main parts of Lecture 8 are Design & Installation and Verification. The design section covers the necessity of fire alarm systems, their applicability in construction projects, system components, applicable codes and standards, types of fire alarm systems, and design methodologies."
+    },
+    {
+        "input": "What is the primary function of a fire alarm system, and how does it differ from fire suppression systems?",
+        "output": "The primary function of a fire alarm system is to detect fires at an early stage and issue alarms to enable prompt evacuation, while fire suppression is handled by separate systems like sprinklers."
+    },
+    {
+        "input": "What is the primary function of the fire alarm system, and how is fire suppression handled in the building?",
+        "output": "The primary function of the fire alarm system is alarming rather than firefighting; fire suppression is handled by the sprinkler system."
+    },
+    {
+        "input": "What are the key functions of the FACP in a fire alarm system, and why is an emergency power supply required?",
+        "output": "The FACP (Fire Alarm Control Panel) processes fire alarm signals, monitors valve status in the sprinkler system via the Super-Way Survey Signal, and detects valve closure in the fire hydrant system using the Triple Signal. An emergency power supply is required to ensure the system remains operational during power failures, maintaining safety and reliability."
+    },
+    {
+        "input": "What is the primary factor considered in determining the battery capacity for a fire alarm system, and how long must the battery support the system in standby mode without a fire?",
+        "output": "The primary factor is the battery's backup time, and it must support the system’s operation for 24 hours in standby mode without a fire."
+    },
+    {
+        "input": "How long must the fire alarm system operate at full load for a high-rise building in the event of a fire?",
+        "output": "The fire alarm system must operate at full load for 2 hours continuously."
+    },
+    {
+        "input": "What are some examples of Initiating Devices in a fire alarm system?",
+        "output": "Examples of Initiating Devices include fire alarm buttons (Pool Stations), heat detectors, smoke detectors, duct smoke detectors, combination detectors, flow switches, pressure switches, control valve tamper switches, VCO for elevators, and shutdown devices for air handling systems."
+    },
+    {
+        "input": "What is the difference between Single-Action and Double-Action Pool Stations in a fire alarm system?",
+        "output": "Single-Action Pool Stations immediately send a fire signal to the Fire Alarm Control Panel (FACP) when pulled down, while Double-Action Pool Stations generate a pre-alarm signal on the first pull and send a fire signal only when fully pulled down."
+    },
+    {
+        "input": "What is the difference between a fixed-temperature heat detector and a rate-of-rise heat detector?",
+        "output": "A fixed-temperature heat detector activates when the temperature reaches a specific threshold, while a rate-of-rise heat detector responds to the speed at which the temperature increases."
+    },
+    {
+        "input": "What type of smoke detector must be installed in the supply air duct of an air conditioning system that serves multiple fire compartments, floors, or units according to regulatory requirements?",
+        "output": "A Hao Yuan photoelectric smoke detector must be installed in the supply air duct."
+    },
+    {
+        "input": "What is the primary difference between the U.S. and Canadian standards for smoke detector installation in HVAC ducts?",
+        "output": "The U.S. standard bases detector installation on air supply capacity (e.g., 2,000 CFM or 15,000 CFM thresholds), while the Canadian standard uses airflow velocity and duct cross-sectional dimensions to determine placement."
+    },
+    {
+        "input": "How does the high-rise, large-scale archive fire detection system work when a fire occurs?",
+        "output": "The system uses transmitters and receivers installed at high levels that continuously emit signals; when smoke from a fire interrupts the signal transmission, it triggers a fire alarm."
+    },
+    {
+        "input": "What types of detectors are typically used for flame detection in oil fields, and why are they suitable for this environment?",
+        "output": "Ultraviolet (UV) and infrared (IR) detectors are typically used for flame detection in oil fields because they monitor flame characteristics, which are produced during ignition even if smoke does not decrease, making them effective for early fire warnings in such high-risk environments."
+    },
+    {
+        "input": "What is the purpose of the control valve temper switch in a sprinkler system?",
+        "output": "The control valve temper switch sends a supervisory signal to the fire alarm control panel when a control valve is manually closed, alerting staff to reopen it promptly to ensure the sprinkler system remains functional."
+    },
+    {
+        "input": "Why are speakers commonly used in high-rise buildings in North America for fire alarm systems?",
+        "output": "Speakers are commonly used in high-rise buildings in North America because they can deliver voice notifications during a fire, which alarm bells or horns/strobes cannot do."
+    },
+    {
+        "input": "What are the primary standards used for fire alarm system design and inspection in Canada, and what do they specify?",
+        "output": "In Canada, fire alarm system design primarily follows the ULC S524 standard, which covers both installation and design requirements. ULC S536 is the annual inspection standard, and ULC S537 specifies testing and verification requirements for new construction or renovation projects."
+    },
+    {
+        "input": "What is the primary standard for fire alarm systems in the US, and how does it relate to standards in Canada?",
+        "output": "The primary standard in the US market is NFPA 72, which is equivalent to Canada’s ULC 524, 536, 537, etc."
+    },
+    {
+        "input": "Why are two-stage fire alarm systems typically used in hospitals and other special facilities?",
+        "output": "Two-stage fire alarm systems are used in hospitals to reduce the risk of false alarms, which could disrupt immobile or treatment-dependent patients, such as those in ICUs or undergoing surgery."
+    },
+    {
+        "input": "What is the primary difference between Class A and Class B fire alarm circuits in terms of wiring structure?",
+        "output": "Class A fire alarm circuits typically use a closed-loop structure, while Class B circuits do not."
+    },
+    {
+        "input": "What is the key difference in system reliability between Class A and Class B fire alarm systems when a circuit is interrupted?",
+        "output": "In a Class A system, both sides can still communicate with the fire alarm control panel even if part of the circuit is disconnected, maintaining system operation and ensuring high reliability; in contrast, a Class B system will cause subsequent sections to cease functioning if the circuit is interrupted midway."
+    },
+    {
+        "input": "According to the Canadian Electrical Code, what type of alarm system is required in bedrooms equipped with sprinkler systems, and why are Class B systems not permitted?",
+        "output": "Class A systems are required in bedrooms equipped with sprinkler systems because they ensure reliable operation during a fire, while Class B systems are not permitted due to their lower reliability and potential for failure in critical situations."
+    },
+    {
+        "input": "What factors influence fire alarm system zoning, and how does it differ from sprinkler system zoning in terms of physical demarcation?",
+        "output": "Fire alarm system zoning follows building codes and considers architectural fire compartments and other factors, while sprinkler system zoning is based on components like flow switches, pressure switches, and smoke detectors; unlike sprinkler zones, fire alarm zones are not visibly demarcated within buildings, making them generally more complex."
+    },
+    {
+        "input": "How do addressable fire alarm systems differ from conventional systems in terms of loop connectivity and fire location identification?",
+        "output": "Addressable systems allow a single loop to connect multiple fire compartments and use address encoding to precisely locate the fire’s origin, while conventional systems use a loop-based design where each loop connects to only one fire compartment and cannot pinpoint the exact location of a fire."
+    },
+    {
+        "input": "What factors determine the type of fire alarm system required in a building according to building codes?",
+        "output": "The type of fire alarm system required is determined by the building’s use and occupancy, as specified by applicable building codes such as the International Building Code or provincial codes like British Columbia’s."
+    },
+    {
+        "input": "What is the primary function of fire door interfaces in the event of a fire, and how do they coordinate with other fire safety systems?",
+        "output": "Fire door interfaces control the open/close status of fire doors in large buildings or emergency stairwells during a fire to prevent the spread of smoke and flames; they must coordinate with the fire sprinkler system to ensure effective fire containment."
+    },
+    {
+        "input": "What is the primary purpose of keeping fire doors closed during a fire, and how does this relate to the fire suppression system?",
+        "output": "The primary purpose of keeping fire doors closed during a fire is to prevent the spread of smoke and flames to other areas, and this design must work in coordination with the fire sprinkler system to enhance overall fire safety."
+    },
+    {
+        "input": "Why are dry pipe sprinkler systems used in unheated areas like underground parking lots?",
+        "output": "Dry pipe systems are used in unheated areas to prevent water in the pipes from freezing during winter temperatures, as they are filled with compressed air instead of water."
+    },
+    {
+        "input": "What must be included in the fire alarm system design to ensure proper detector numbering and system operation during a fire?",
+        "output": "The design must clearly define zoning, indicate the sequence of operation, and specify power supply requirements, including installation methods, in accordance with relevant regulations and standards such as Clause 524."
+    },
+    {
+        "input": "What standard governs the coverage range of smoke detectors and decibel standards for alarm bells or strobe-horn devices in Canada?",
+        "output": "CAN/ULC-S524"
+    },
+    {
+        "input": "What is the primary difference between U.S. and Canadian fire pump monitoring requirements in North America?",
+        "output": "The U.S. requirements are more comprehensive compared to Canada, with fire alarm systems monitoring fire pump status signals rather than directly starting them."
+    },
+    {
+        "input": "How are firefighter elevators prioritized during a fire alarm, and what mechanism ensures this priority?",
+        "output": "Firefighter elevators are prioritized during a fire alarm through Control Mode Relays that interface between the Elevator Controller and the fire alarm system, ensuring they are recalled to designated floors (e.g., Main Floor) while other elevators are taken out of service."
+    },
+    {
+        "input": "What information must HVAC system design drawings include to support smoke detector placement and HVAC shutdown logic during a fire?",
+        "output": "HVAC system design drawings must indicate HVAC unit locations and airflow data (CFM)."
+    },
+    {
+        "input": "Why is relying on a single circuit not feasible for super high-rise or super large-scale buildings in fire protection system design?",
+        "output": "Because these buildings have complex requirements that exceed the capacity and reliability of a single circuit, necessitating more robust and redundant system designs."
+    },
+    {
+        "input": "According to the NIP-90A standard, under what condition must dark smoke detectors be installed in both supply and return air ducts of an L-Handler?",
+        "output": "When the CFM value exceeds 2,000."
+    },
+    {
+        "input": "What is required for fire alarm system controllers in large-scale projects according to building codes?",
+        "output": "Fire alarm system controllers in large-scale projects must establish communication links with third-party monitoring companies or centers certified under ULC561 to provide 24/7 monitoring services."
+    },
+    {
+        "input": "What is the primary purpose of the Fire Alarm Control Panel and Annunciator in large or medium-sized buildings during a fire incident?",
+        "output": "The primary purpose is to provide real-time fire zone localization data, enabling firefighters to quickly identify the exact location of a fire or alarm, such as a pump room on the 5th floor or smoke detectors on the 7th floor, thereby supporting rapid situational awareness and effective command decisions."
+    },
+    {
+        "input": "What is the typical requirement for medium-sized and larger buildings in North America regarding fire alarm systems and who provides the necessary code consulting services?",
+        "output": "Medium-sized and larger buildings in North America typically require a dedicated Code Consultants Report, which is provided by code consultants who are highly familiar with building codes but may lack detailed knowledge of Electrical Code implementation."
+    },
+    {
+        "input": "What are the essential elements that must be included in fire alarm system design drawings according to the text?",
+        "output": "The essential elements include the Layout (floor plan showing detector and panel placement), the Riser Diagram (system diagram), and the Zone Schedule detailing the zoning of the fire alarm system."
+    },
+    {
+        "input": "What information must be included in the floor plan regarding the fire alarm system?",
+        "output": "The floor plan must indicate the installation locations of alarm devices."
+    },
+    {
+        "input": "What is the purpose of a Riser Diagram in fire alarm system design, and why are schematic diagrams used instead of showing all devices in a single circuit?",
+        "output": "The Riser Diagram is used to display floor distribution, equipment configuration, and connection methods in a representative manner. Schematic diagrams are used instead of showing all devices in a single circuit because it is impractical to depict every device—such as 100 devices—on one diagram, so a simplified, illustrative representation is employed."
+    },
+    {
+        "input": "What happens immediately after fire confirmation in the system described in the text?",
+        "output": "Immediately activate building-wide audible and visual alarms (including alarms and speakers) and simultaneously send a signal to the monitoring center, which will relay it to the fire department."
+    },
+    {
+        "input": "What is the recommended method for shutting down the HVAC system when a fire is detected, and why is an alternative approach not recommended?",
+        "output": "The recommended method is not specified in the text, but directly shutting down the corresponding air handling unit (AHU) via hardwired interlock when a duct smoke detector detects a fire is not recommended."
+    },
+    {
+        "input": "What is the most commonly used and reliable method for shutting down an air handling unit (AHU) during a fire, and how does it differ from the other approaches?",
+        "output": "The most reliable method is for the fire alarm system to directly control the AHU’s controller to shut it down, bypassing the building automation system and reducing reliance on multiple system links, unlike the less reliable methods that use hardwired interlocks or indirect signals through the BAS."
+    },
+    {
+        "input": "Why is it critical to activate both positive pressure ventilation and smoke exhaust systems simultaneously in stairwells during a fire?",
+        "output": "To ensure fresh air supply for unobstructed breathing and to expel smoke outdoors, reducing the risk of smoke inhalation, which is the leading cause of fire-related fatalities."
+    },
+    {
+        "input": "What is the purpose of installing fire dampers in ducts that pass through firewalls in a building's ventilation system?",
+        "output": "Fire dampers are installed in ducts passing through firewalls to prevent the spread of fire and smoke between different fire compartments, ensuring that airflow is controlled during a fire and maintaining the integrity of fire barriers."
+    },
+    {
+        "input": "What happens to magnetic locks on fire doors during a power loss, and why is this important during a fire evacuation?",
+        "output": "During a power loss, magnetic locks automatically release, allowing the door to open. This is important during a fire evacuation because it ensures unobstructed and immediate access to evacuation routes."
+    },
+    {
+        "input": "Which manufacturers are mentioned as varying in size and located across different regions?",
+        "output": "Simplex, NOTIFIER by Honeywell, EDWARDS (affiliated with GE), and Mircom."
+    },
+    {
+        "input": "What issue did the speaker encounter after finishing a document, and what steps did they take to resolve it?",
+        "output": "The speaker couldn't find the document after closing it, tried searching for it, but had no success and was unsure what to do next."
+    },
+    {
+        "input": "Why is it necessary to interconnect the air conditioning system with the fire alarm system and install detectors in the air conditioning ducts, and is this practice common in North America?",
+        "output": "Interconnecting the air conditioning system with the fire alarm system and installing detectors in the ducts helps prevent the spread of smoke and fire through the ductwork. This practice is common in North America, particularly in commercial and high-rise buildings, as mandated by building and fire safety codes to enhance life safety and system response during emergencies."
+    },
+    {
+        "input": "Why is strict compliance with code-required measures essential in air conditioning system design, even if it is not commonly adopted in domestic practices?",
+        "output": "Strict compliance is essential because the code mandates it without room for negotiation; neglecting required measures can lead to accountability, unlike domestic practices that often prioritize prevalence over meticulous adherence."
+    },
+    {
+        "input": "Why are smoke detectors installed in the supply or return air ducts of an HVAC system?",
+        "output": "Smoke detectors are installed in HVAC ducts to enable early smoke detection as building air circulates through the system, and to protect HVAC units from fire damage by triggering fire protection signals when smoke is detected."
+    },
+    {
+        "input": "Why must HVAC units shut down during a fire, and what is the consequence of continued operation?",
+        "output": "HVAC units must shut down during a fire because continued operation can supply fresh oxygen to the fire, accelerating its spread. If an HVAC system serves multiple floors and one floor catches fire, ongoing airflow can fuel combustion, making the fire worse."
+    },
+    {
+        "input": "Why do international fire safety standards allow non-emergency lighting systems to remain operational during a fire, unlike the domestic approach?",
+        "output": "International standards prioritize safe evacuation during fires, and keeping non-emergency lighting systems operational ensures sufficient illumination to facilitate rapid and safe evacuation, even though equipment damage is not the primary concern."
+    },
+    {
+        "input": "Under what conditions can an air conditioning system remain operational during a fire according to fire safety standards?",
+        "output": "An air conditioning system can remain operational during a fire if it serves only a single fire compartment, as it does not pose a risk of spreading flames or smoke to other areas; however, if it supplies air to multiple fire compartments, it must be shut down to prevent the spread of fire and smoke."
+    },
+    {
+        "input": "What is the difference between commissioning and inspection in the context of fire protection and alarm systems?",
+        "output": "Commissioning refers to the validation work required after project completion, including testing, validation, and commissioning, while inspection denotes routine annual examinations."
+    },
+    {
+        "input": "What are the key requirements for debugging fire alarm systems according to the text?",
+        "output": "The key requirements for debugging fire alarm systems include submitting specific technical documents, meeting necessary input conditions, clearly defining the instruments and equipment used, specifying testing procedures, and ensuring installation complies with the latest regulatory requirements."
+    },
+    {
+        "input": "Who typically performs the programming and verification of a fire alarm system after installation?",
+        "output": "Manufacturer technicians, such as Level 35 technicians from companies like Siemens, Honeywell, and Johnson Controls, typically perform the programming and verification."
+    },
+    {
+        "input": "What are the key requirements for conducting a cotton inspection according to fire safety regulations?",
+        "output": "A cotton inspection must be performed annually by certified technicians, include a report with inspection results and a defect list identifying malfunctioning equipment, and the report must be submitted to comply with fire safety and municipal regulations."
+    },
+    {
+        "input": "Who is required to conduct Fire Alarm Verification inspections, and why must they be a third party?",
+        "output": "Fire Alarm Verification inspections must be conducted by a third party, not the installer, because the installer is only responsible for installing equipment such as detectors and connecting wires, and a third party ensures impartiality and compliance with safety standards."
+    },
+    {
+        "input": "What are the three main tasks that service providers are required to complete annually during annual inspections of existing buildings or facilities?",
+        "output": "The three main tasks are: (1) annual inspection of the fire alarm system, (2) inspection of subsystems including the evacuation system, and (3) life safety-related inspections."
+    },
+    {
+        "input": "What is the primary role of a third-party commissioning agency in large-scale or government projects?",
+        "output": "The primary role of a third-party commissioning agency is to oversee the verification process, ensure accurate documentation of tests and inspection results, compile them into a report, and submit it to the project owner to guarantee the quality of the contractor’s work."
+    },
+    {
+        "input": "What is the primary responsibility for Integrated System Testing of Fire Protection and Life Safety Systems in Canada, and why is it important for electrical professionals to have knowledge from related fields?",
+        "output": "The primary responsibility for Integrated System Testing falls under the electrical discipline because fire alarm systems are part of the electrical domain and require coordination with other disciplines. Electrical professionals must be familiar with related fields to ensure proper integration, compliance with codes and standards, and effective coordination during testing."
+    },
+    {
+        "input": "What is the role of electrical professionals in the testing and verification process during building commissioning?",
+        "output": "Electrical professionals draft the testing process, including test content and acceptance criteria, verify them, and oversee the execution by contractors, ensuring compliance with correct procedures."
+    },
+    {
+        "input": "What are the key responsibilities during the design and construction phases of a commissioning process?",
+        "output": "During the design phase, key responsibilities include reviewing design documents, identifying potential issues, and participating in design meetings. During the construction phase, responsibilities involve reviewing construction drawings, revising the commissioning plan based on actual conditions, attending construction meetings, chairing commissioning meetings, preparing meeting minutes, overseeing testing activities, and coordinating with the client, consultants, contractors, and suppliers."
+    },
+    {
+        "input": "What are the key steps required during the commissioning phase after system debugging is completed without errors?",
+        "output": "After system debugging is completed without errors, the key steps include providing training for the Operations and Maintenance (O&M) Department, reviewing O&M documents such as the O&M Manual, and preparing the final commissioning deliverables."
+    },
+    {
+        "input": "What equipment is used to simulate smoke during testing of smoke detectors, and why is it necessary?",
+        "output": "A smoke generator is used to simulate smoke during testing of smoke detectors to verify their functionality under realistic conditions, ensuring they can detect smoke and trigger alarms appropriately."
+    },
+    {
+        "input": "How is heat generated in a smoke simulator, and what is the typical ambient noise level range in a standard office environment?",
+        "output": "Heat in a smoke simulator is generated through electric heating powered by batteries, and the typical ambient noise level in a standard office environment ranges between 45 to 50 dB."
+    },
+    {
+        "input": "What is the minimum sound signal level required for a fire alarm system if the ambient noise level is 50 dB?",
+        "output": "The sound signal level should be at least 67 dB."
+    },
+    {
+        "input": "How is the testing procedure performed for a Beam Smoke Detector, and what is the specific application of Wavestar Smoke Detection?",
+        "output": "The testing procedure for a Beam Smoke Detector involves transmitting and receiving signals to detect smoke obstruction. Wavestar Smoke Detection is specifically designed for duct detection."
+    },
+    {
+        "input": "What happens to fire doors when a fire alarm signal is received and power is cut off?",
+        "output": "The electromagnets holding the doors open lose their magnetism, causing the doors to close automatically due to door closers (spring-loaded or motor-controlled)."
+    },
+    {
+        "input": "Why is it necessary to notify a third-party monitoring company in advance during fire alarm system commissioning?",
+        "output": "To avoid false alarms that could trigger unnecessary fire department responses, as the monitoring company relays fire alarm signals to the fire department during normal operation."
+    },
+    {
+        "input": "Why are fire alarm systems in North America subject to more stringent requirements compared to domestic regulations?",
+        "output": "Fire alarm systems in North America are highly regulated with stringent requirements and complex designs, whereas domestic regulations in this area are not yet as detailed."
+    },
+    {
+        "input": "Was the supervisor dispatched by the consulting company or assigned by a third-party agency?",
+        "output": "The text does not specify whether the supervisor was dispatched by the consulting company or assigned by a third-party agency."
+    },
+    {
+        "input": "What is the primary responsibility of the consulting party in North American construction projects, and why is there no separate supervision role?",
+        "output": "In North American construction projects, the consulting party is fully responsible for the design work, and there is no separate supervision role because the design and oversight functions are combined within the consulting team."
+    },
+    {
+        "input": "During the construction drawing phase, who should the contractor submit the drawings to for review in a project where the consulting firm handles all design work?",
+        "output": "The contractor should submit the drawings to the consulting firm for review, as the consulting firm is responsible for all design work and has authority throughout the project lifecycle."
+    },
+    {
+        "input": "Why does the design consultant in North America not outsource construction supervision to external firms?",
+        "output": "Because the consultant remains fully liable for any supervisory errors, and cannot fully trust third-party supervisors to uphold the required accountability, even though they retain responsibility for the project's technical integrity."
+    },
+    {
+        "input": "According to the FIDIC terms, what type of contract is typically signed in the context of an integrated system involving design and construction?",
+        "output": "The FIDIC standard EPC contract is typically signed."
+    },
+    {
+        "input": "Why is the 'design-build integration' model rarely used in construction projects?",
+        "output": "Because the construction process cannot be supervised, eliminating the need for a third-party consultant, which increases risk and reduces oversight."
+    },
+    {
+        "input": "Why is the Design-Build (DB) model rarely used in some construction projects?",
+        "output": "The Design-Build (DB) model is rarely used when the construction process cannot be supervised, as it requires close oversight to ensure quality and adherence to design."
+    },
+    {
+        "input": "Why is it necessary for the design plan to be signed and stamped by a local design institute even when the design is completed by an external party?",
+        "output": "Because local qualification requirements mandate that only locally accredited institutes can formally approve designs, ensuring compliance with regional regulations and standards."
+    },
+    {
+        "input": "Why is assigning only one on-site representative considered ineffective for the project despite positive results in quality control?",
+        "output": "Because the project involves large-scale team collaboration and requires comprehensive oversight beyond what a single representative can provide, especially given the need for phased technical document submission and third-party review of drawings."
+    },
+    {
+        "input": "Why cannot peer review or on-site representation be considered true supervision according to the text?",
+        "output": "Because supervision requires significant effort, while peer review and on-site representation during design and construction phases involve less effort."
+    },
+    {
+        "input": "Why do Chinese engineers graduating from design institutes often lack strong on-site problem-solving skills according to the text?",
+        "output": "Because China has strong contract execution capability, which results in less need for on-site problem-solving compared to situations abroad where issues like line replacement or position adjustment are more common."
+    },
+    {
+        "input": "What role does the local supervision team play in handling on-site issues after the design phase in projects in Algeria?",
+        "output": "The local supervision team, including engineers hired from Spain and Germany, handles most on-site issues during later stages of projects in Algeria, even though design consultants provide 2–3 years of drawing clarification and technical support."
+    },
+    {
+        "input": "What is the purpose of adding a supervision step in the process between you and the consultant?",
+        "output": "The supervision step serves as a bridge to relay information from you to the consultant and ensure feedback is communicated back to you through the supervisor."
+    },
+    {
+        "input": "What is the primary reason for the less detailed design in domestic construction projects compared to international ones?",
+        "output": "The faster construction pace domestically and the limited involvement of architects and consultants in the construction process."
+    },
+    {
+        "input": "What did the speaker realize about fire safety philosophies when they first started working in Algeria?",
+        "output": "The speaker realized there are fundamental differences between fire safety philosophies abroad and those in China."
+    },
+    {
+        "input": "What is the primary focus of international fire safety standards, such as those from NFPA, compared to domestic practices in China?",
+        "output": "The primary focus of international fire safety standards like NFPA is life safety, ensuring people can evacuate safely, while the extent of building damage is not a major concern, in contrast to China's greater emphasis on fire prevention measures such as using low-smoke zero-halogen cables and emergency power cutoff systems."
+    },
+    {
+        "input": "What system do the experts involved in drafting building electrical codes in the country still follow, according to the speaker?",
+        "output": "They still adhere to the system inherited from the former Soviet Union."
+    },
+    {
+        "input": "What is the main reason domestic standards in the country need adjustment according to the text?",
+        "output": "Domestic standards require adjustment because they still follow the system inherited from the former Soviet Union and have not been sufficiently aligned with international standards like those from North America, with only minor improvements made during annual revisions."
+    }
+]
