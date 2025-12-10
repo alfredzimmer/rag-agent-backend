@@ -1,0 +1,46 @@
+[
+    {
+        "input": "What is the scope of Ziyutec Inc.'s federal government engineering projects in Canada?",
+        "output": "Ziyutec Inc.'s federal government engineering projects cover multiple provinces, including Ontario, British Columbia, Saskatchewan, and Manitoba."
+    },
+    {
+        "input": "What are some examples of government projects our company has completed in British Columbia and Manitoba?",
+        "output": "In British Columbia, we completed projects in Prince George and Surrey, including Fire Alarm Upgrading for government office buildings. In Manitoba, we worked on projects in the province, though specific locations were not detailed."
+    },
+    {
+        "input": "What percentage of the evaluation weight is typically assigned to pricing in federal government project bids, and what are the key components of a proposal that carry more weight?",
+        "output": "Pricing accounts for only 10% of the evaluation weight in federal government project bids. The key components that carry more weight include security clearance information, team qualifications, and the project plan and schedule."
+    },
+    {
+        "input": "What is the role of Buyandsell.gc.ca in Canadian government procurement?",
+        "output": "Buyandsell.gc.ca is the platform managed by Public Services and Procurement Canada (PSPC) that oversees the tendering, bidding, and subsequent supervision processes for government projects in Canada."
+    },
+    {
+        "input": "What is the role of BGIS in relation to small and medium-sized capital projects in Canada?",
+        "output": "BGIS has a ten-year Master Agreement with Public Services and Procurement Canada (PSPC) and is responsible for managing most small and medium-sized capital projects across Canada."
+    },
+    {
+        "input": "What are the two management approaches adopted by BGIS for handling bidding opportunities?",
+        "output": "The two management approaches adopted by BGIS are the Standing Offer, where qualified companies sign agreements for access to limited project opportunities, and open tenders, which are publicly available for all interested companies."
+    },
+    {
+        "input": "What standard must be strictly followed when drafting drawings for design projects under the PSPC National CAD Standards?",
+        "output": "All drawings must comply with the PSPC National CAD Standards, a complex and highly detailed Computer-Aided Design and Drafting standard."
+    },
+    {
+        "input": "What is the purpose of the standard specification guidelines included in the design document?",
+        "output": "The standard specification guidelines provide a template requiring all specifications to be written in a prescribed format."
+    },
+    {
+        "input": "What are the two standard contracts typically used for a design project, and which organization's standard did Ziyutec Inc. adopt for the Prince George project?",
+        "output": "The two standard contracts typically used for a design project are not explicitly named, but Ziyutec Inc. adopted the RAIC standard, representing The Royal Architectural Institute of Canada, for the Prince George project."
+    },
+    {
+        "input": "What standard contract template did Ziyutec Inc. adopt for architectural consulting in the Prince George project, and which organization does it represent?",
+        "output": "Ziyutec Inc. adopted the RAIC standard, which stands for The Royal Architectural Institute of Canada, for the architectural consulting contract in the Prince George project."
+    },
+    {
+        "input": "Why does the company need to prepare CCDC contract documents despite primarily providing engineering consulting services?",
+        "output": "The company needs to prepare CCDC contract documents because, when participating in Canadian federal government projects as engineering consultants, they are required to assist BGIS in construction management, which necessitates using CCDC contracts."
+    }
+]

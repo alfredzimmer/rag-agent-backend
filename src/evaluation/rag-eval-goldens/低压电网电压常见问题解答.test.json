@@ -1,0 +1,34 @@
+[
+    {
+        "input": "What is the definition of low voltage according to the Canadian Electrical Code and the National Electrical Code (US)?",
+        "output": "According to the Canadian Electrical Code and the National Electrical Code (US), voltages below 750 volts are defined as low voltage."
+    },
+    {
+        "input": "What is the minimum acceptable working voltage relative to the nominal voltage according to the Canadian Electrical Code (CEC) and the National Electrical Code (NEC)?",
+        "output": "The working voltage should not fall below 95% of the nominal voltage."
+    },
+    {
+        "input": "What is the maximum allowable deviation between working voltage and nameplate voltage, and why is it important to maintain this limit?",
+        "output": "The maximum allowable deviation is 10%. Maintaining this limit is important because excessively high or low working voltages can damage equipment—low voltage can cause motor startup failure and winding overheating, while high voltage can compromise insulation."
+    },
+    {
+        "input": "What are the primary three-phase voltage levels used in North America, and how do their applications differ between the United States and Canada?",
+        "output": "The primary three-phase voltage levels in North America include 120/208V, 277/480V, and 347/600V. 120/208V is used in both the U.S. and Canada. 277/480V is more common in the U.S., while in Canada it is mainly used in industrial sectors like oil fields and semiconductor manufacturing. 347/600V is uncommon in the U.S., where 277/480V is predominantly used."
+    },
+    {
+        "input": "Why do equipment nameplate voltages typically differ from the rated voltages of the power supply system?",
+        "output": "Equipment nameplate voltages are typically about 5% lower than the corresponding rated voltage in the power supply system to ensure that voltage drop does not exceed 5%, in compliance with NEC or CEC requirements."
+    },
+    {
+        "input": "Why can residential appliances labeled for 220V or 230V operate on both 208V and 240V two-phase systems?",
+        "output": "Because these appliances are designed to function within a voltage range that includes both 208V and 240V, making them compatible with different residential power supply systems."
+    },
+    {
+        "input": "What is a mandatory requirement for imported equipment intended for use in Canada?",
+        "output": "Imported equipment must obtain CSA certification."
+    },
+    {
+        "input": "Why is a transformer required when using Chinese-imported equipment in North America?",
+        "output": "A transformer is required because Chinese-imported equipment is typically designed for a 220/380V, 50Hz power system, which differs from North America's 60Hz, 120/240V standard, necessitating voltage conversion for compatibility."
+    }
+]

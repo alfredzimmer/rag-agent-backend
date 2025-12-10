@@ -1,0 +1,134 @@
+[
+    {
+        "input": "What are the key responsibilities of a project manager in a TEI project?",
+        "output": "The project manager is responsible for overseeing all project activities from inception to completion, leading a team of engineers, designers, and coordinators, managing quality, schedule, cost, communication, and change orders, coordinating with stakeholders, and handling resource management and personnel requirements."
+    },
+    {
+        "input": "What are the typical requirements to obtain the PMP certification, and how does it differ from the P.Eng designation?",
+        "output": "To obtain the PMP certification, candidates typically need around 2,000 hours of project management experience and must pass an examination. Unlike the P.Eng designation, which is mandatory for engineers, the PMP is optional and not required to be a successful project manager, though it can be beneficial, especially for early-career professionals."
+    },
+    {
+        "input": "What are the two primary channels through which the company acquires projects, and how do they differ in approach?",
+        "output": "The two primary channels are submitting proposals for public bids and receiving inquiries from professional networks or existing clients. Public bids involve actively searching for opportunities and submitting formal proposals, while client inquiries typically involve responding to requests via email or phone, often with a fee proposal, and may include new or existing clients."
+    },
+    {
+        "input": "What is the purpose of using a standardized template for projects in British Columbia or Alberta?",
+        "output": "The purpose is to provide a consistent and structured approach for project execution, with templates available in two versions: Electrical Only or MEP (Mechanical, Electrical, and Plumbing)."
+    },
+    {
+        "input": "What is the purpose of the MEP template used for projects in British Columbia and Alberta, and how is it applied in public sector projects like Project 2019-007 for Transport Canada?",
+        "output": "The MEP template is designed to encompass comprehensive mechanical, electrical, and plumbing services for projects in British Columbia and Alberta. In public sector projects, such as Project 2019-007 for Transport Canada, the MEP template is used to cover all three disciplines, aligning with the approach taken for large-scale government initiatives."
+    },
+    {
+        "input": "What is the standard procedure for creating a project folder when copying documents from other disciplines?",
+        "output": "The standard procedure is to create a subfolder labeled with the date when copying the input document from other disciplines to a separate folder."
+    },
+    {
+        "input": "What is the standard procedure for creating a project folder when copying an input document from another discipline?",
+        "output": "The standard procedure is to create a subfolder labeled with the date within a separate folder for the input document."
+    },
+    {
+        "input": "What is the first step after confirming the client's existence in the system?",
+        "output": "The first step is to create a customer by completing the form to create a new customer."
+    },
+    {
+        "input": "What steps are required to create a project in QuickBooks and issue a deposit invoice?",
+        "output": "Create a project in QuickBooks, add the project details such as engineering services, BP package options, pricing, and taxes, review the information, and then generate and issue a deposit invoice."
+    },
+    {
+        "input": "What information should be included in the project scope when creating a project profile in QuickBooks?",
+        "output": "The project scope should include the scope of services we provide, which can be copied from the proposal folder, specifically the project understanding section."
+    },
+    {
+        "input": "What information must be completed for additional project details, and when can it be added later?",
+        "output": "Additional project details, including category, sector, type, contract, and whether the owner is Taiwanese, must be completed; this information can be added at a later stage, corresponding to step number eight."
+    },
+    {
+        "input": "What is the first step in the early design stage of the project, and who should be included in the project team contact list?",
+        "output": "The first step is to create a project team contact list, including the client, other consultants, the landlord, and information on contractors or vendors, even though they are not yet involved."
+    },
+    {
+        "input": "What information should be collected during the early design stage, even though contractors or vendors are not yet involved?",
+        "output": "Architectural CAD drawings, including base building mechanical and electrical drawings, and coordination for the first site survey with the landlord or client."
+    },
+    {
+        "input": "What should be done with the collected information after completing a site survey, and how should it be organized for a Tenant Improvement project?",
+        "output": "After completing a site survey, all collected information—including photos, videos, markups, and client-provided data—should be uploaded to the project folder and organized as either hard copies or digital images."
+    },
+    {
+        "input": "What are the key steps a Project Manager must take during the early design stage of a project under $5,000?",
+        "output": "The Project Manager must review all documents, schedule an internal meeting to establish the design basis, archive the project folder, obtain mechanical drawings (often assuming the designer role for small projects), request equipment lists and other client-provided details, and convene a shop meeting after understanding site conditions and architectural drawings."
+    },
+    {
+        "input": "What are three critical responsibilities of a Project Manager in managing documentation and project progress?",
+        "output": "1. Monitor the project database status to ensure timely updates for important issues, 2. Track team progress against budget allocations, and 3. Manage quality from a documentation perspective, relying on engineers or quality control departments for technical quality."
+    },
+    {
+        "input": "What is a recommended practice for managing project communications when handling multiple concurrent projects?",
+        "output": "Maintain separate Outlook project folders for each assignment to prevent inbox clutter and improve efficiency in locating project-specific communications."
+    },
+    {
+        "input": "What should a Project Manager do when a client requests work outside the original scope?",
+        "output": "The Project Manager should respond appropriately to ensure the change is managed effectively, including addressing the request through proper change management procedures."
+    },
+    {
+        "input": "What should be done after a client approves a change order for work outside the original scope?",
+        "output": "Notify the accounting department to update financial records and ensure the project database reflects the change, including recording the total change order amount."
+    },
+    {
+        "input": "Why is it important for the project manager to serve as the single contact point in larger projects?",
+        "output": "It ensures efficient and professional communication by centralizing inquiries, preventing the project manager from being overwhelmed by multiple individual requests, and maintaining consistent information flow."
+    },
+    {
+        "input": "What are the typical responsibilities during Construction Administration for small Tenant Improvement projects?",
+        "output": "Reviewing shop drawings, completing review reports, responding to Requests for Information (RFIs), issuing Site Instructions (SIs), and issuing Contemplated Change Notices (CCNs)."
+    },
+    {
+        "input": "What is the standard procedure in construction when a modification or addition is required, and how is it formally documented?",
+        "output": "When a modification or addition is required, the consultant drafts a Change Control Note (CCN), which the contractor uses to prepare a quotation. After client approval, it becomes a change order, following the standard procedure in construction."
+    },
+    {
+        "input": "What must the Project Manager ensure before closing a project?",
+        "output": "The Project Manager must ensure several key tasks are completed before closing a project."
+    },
+    {
+        "input": "What must be completed before a project can be closed, according to the text?",
+        "output": "Before closing a project, the Project Manager must ensure final payment is received, Schedule CB is issued only after full payment (especially with difficult clients or first-time collaborators), all outstanding items are resolved and archived in the NAS project folder, the project folder status is updated to 'Closed', and all documentation—including project database updates, QuickBooks email folder organization, and hard copy archiving—is completed."
+    },
+    {
+        "input": "What should a project manager do when a project exceeds its budget, according to the text?",
+        "output": "The project manager should document the reasons for the budget overage to ensure transparency and prevent recurrence in future projects."
+    },
+    {
+        "input": "What should be done after project close-out for significant or high-profile projects to support future business development?",
+        "output": "A detailed project description should be prepared to serve as a reference for future proposals."
+    },
+    {
+        "input": "What is the company's policy regarding clients who fail to make timely payments or demand unrealistic deadlines?",
+        "output": "The company's policy is to cease services if payment is not received and to refuse to provide services to clients with a history of poor conduct or unrealistic demands."
+    },
+    {
+        "input": "What is the company's policy regarding addressing client concerns when full payment has not been received?",
+        "output": "The company will not address any client concerns until full payment is received."
+    },
+    {
+        "input": "What are some common challenges project managers face in managing projects within budget and schedule constraints?",
+        "output": "Project managers face challenges such as preventing budget overruns, meeting tight schedules, managing limited resources, dealing with delays caused by external parties like contractors, handling tough AHJs, and adapting to fluctuating client design requirements."
+    },
+    {
+        "input": "What is the difference between a site instruction and a change order in electrical project management?",
+        "output": "A site instruction is the initial step issued for clarification or scope changes, while a change order is generated only if the site instruction impacts the contractor’s scope; otherwise, it remains a clarification."
+    },
+    {
+        "input": "What is the key difference between site instructions and change orders in terms of contractual status and financial impact?",
+        "output": "Site instructions are non-contractual directives, while change orders are contractual and directly affect the contract’s financial terms."
+    },
+    {
+        "input": "What should be done when a contractor submits a request involving commercial or contractual issues?",
+        "output": "Consult the client before responding to ensure the consultant does not overstep their role, as consultants are primarily responsible for technical matters, not financial decisions."
+    },
+    {
+        "input": "Why is it advisable to defer financial decisions to the client in private sector projects?",
+        "output": "To maintain clear boundaries in professional responsibilities and avoid overinvolvement in monetary matters."
+    }
+]
