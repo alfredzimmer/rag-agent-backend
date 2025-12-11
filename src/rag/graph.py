@@ -167,6 +167,9 @@ def create_agent_graph(llm_with_tools, rag_tool, memory_manager, training_llm=No
             if isinstance(msg, AIMessage) and last_ai is None:
                 last_ai = msg
 
+        # Initialize title to None
+        title = None
+        
         # Generate title if short conversation
         if len(messages) <= 4 and first_human and first_ai:
             try:
