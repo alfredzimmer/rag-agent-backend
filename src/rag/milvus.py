@@ -48,8 +48,9 @@ class MilvusVectorStore():
             collection_name=collection_name,
             connection_args={"uri": "http://localhost:19530", "db_name": "milvus_demo"},
             vector_field=["dense", "sparse"],
-            drop_old=False,
+            drop_old=False,  # Don't drop existing collection
             auto_id=True,
+            enable_dynamic_field=True,  # Enable dynamic fields to store all metadata
         )
 
     def load_chunk_file(self, path: str) -> list[Document]:
@@ -62,7 +63,8 @@ class MilvusVectorStore():
         for chunk in raw_chunks:
             metadata = {
                 "char_count": chunk["char_count"],
-                **chunk.get("headers", {}),
+                **chunk.get("metadata", {}),  # Merge metadata if present
+                **chunk.get("headers", {}),    # Merge headers if present
             }
             documents.append(Document(page_content=chunk["content"], metadata=metadata))
 
@@ -79,6 +81,15 @@ class MilvusVectorStore():
 
                 self.vector_store.add_documents(documents=documents)
                 print(f"Stored {len(documents)} chunks from {chunk_file}")
+
+    def add_document(self, chunk_file: str):
+        documents = self.load_chunk_file(chunk_file)
+
+        if not documents:
+            raise ValueError(f"No documents parsed from {chunk_file}")
+
+        self.vector_store.add_documents(documents=documents)
+        print(f"Stored {len(documents)} chunks from {chunk_file}")
 
     def get_vector_store(self):
         return self.vector_store
@@ -115,6 +126,7 @@ def create_milvus_store(config) -> MilvusVectorStore:
     # Assuming config has these fields or we use defaults
     embedding_model = getattr(config, "dense_embedding_model", "qwen3-embedding:8b")
     sparse_model = getattr(config, "sparse_embedding_model", "splade")
+    collection_name = getattr(config, "collection_name", "testing")
     
     dense_emb = OllamaEmbeddings(model=embedding_model)
 
@@ -132,11 +144,11 @@ def create_milvus_store(config) -> MilvusVectorStore:
         embedding_function = dense_emb  # Only dense embedding, BM25 handles sparse
     
     return MilvusVectorStore(
-        collection_name=sparse_model,
+        collection_name=collection_name,
         embedding_function=embedding_function,
         buildin_function=buildin_function
     )
 
 if __name__ == "__main__":
-    vector_store = create_milvus_store(RAGConfig())
-    vector_store.add_documents("src/rag/outputs/2023-2024/sanitized")
+    vector_store = create_milvus_store(RAGConfig(collection_name="HeaderInContentTrial"))
+    vector_store.add_document("src/rag/outputs/30pg_outputs.json")

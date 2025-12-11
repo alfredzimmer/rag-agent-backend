@@ -6,7 +6,8 @@ from dataclasses import dataclass
 
 @dataclass
 class RAGConfig:
-    vector_store_type: str = "milvus"  
+    vector_store_type: str = "milvus" 
+    collection_name: str = "testing" 
     ranker_type: str = "bge"
     dense_embedding_model: str = "qwen3-embedding:8b"
     sparse_embedding_model: str = "splade"  # [splade, bm25, bge]
