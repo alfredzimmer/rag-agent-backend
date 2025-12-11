@@ -63,10 +63,14 @@ class MilvusVectorStore():
         for chunk in raw_chunks:
             metadata = {
                 "char_count": chunk["char_count"],
-                **chunk.get("metadata", {}),  # Merge metadata if present
-                **chunk.get("headers", {}),    # Merge headers if present
+                **chunk.get("metadata", {})  # Merge metadata if present
             }
-            documents.append(Document(page_content=chunk["content"], metadata=metadata))
+            to_append = ""
+            if "to_append" in chunk and chunk["to_append"]: 
+                for key, value in chunk["to_append"].items():
+                    to_append += f"{key}: {value}, "
+            page_content = to_append + chunk["content"]
+            documents.append(Document(page_content=page_content, metadata=metadata))
 
         return documents
     
@@ -150,5 +154,5 @@ def create_milvus_store(config) -> MilvusVectorStore:
     )
 
 if __name__ == "__main__":
-    vector_store = create_milvus_store(RAGConfig(collection_name="HeaderInContentTrial"))
+    vector_store = create_milvus_store(RAGConfig(collection_name="testing"))
     vector_store.add_document("src/rag/outputs/30pg_outputs.json")

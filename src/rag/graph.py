@@ -74,7 +74,7 @@ def create_agent_graph(llm_with_tools, rag_tool, memory_manager, training_llm=No
         system_context = (
             "You are a helpful assistant with access to a specialized knowledge base and user memories. "
             "IMPORTANT INSTRUCTIONS:\n"
-            "1. For technical questions: You MUST use the hybrid_RAG_retrieve tool before answering. "
+            "1. For questions: You MUST ALWAYS use the hybrid_RAG_retrieve tool to retrieve relevant information from the knowledge base before answering. "
             "Never rely solely on your general knowledge for technical content.\n"
             "2. For personal questions about the user: Check the 'RELEVANT USER FACTS/MEMORIES' section below FIRST. "
             "If the answer is in the memories, use that information directly. "
