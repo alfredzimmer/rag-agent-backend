@@ -458,22 +458,37 @@ def split_pdf(file: str, config_name: str = "ieee") -> list[Document]:
 # UTILITY FUNCTIONS
 # ============================================================================
 
-def format_splits_as_list(splits, additional_metadata=None) -> list[dict]:
+def format_splits_as_list(splits, additional_metadata=None, document_name=None) -> list[dict]:
     """
     Format the markdown header splits into a well-structured list of dictionaries.
     
     Args:
         splits: List of Document objects from MarkdownHeaderTextSplitter
+        additional_metadata: Optional additional metadata to include
+        document_name: Optional document name to include in to_append field
         
     Returns:
-        List of dictionaries with headers and content
+        List of dictionaries with to_append, metadata, content, and char_count
     """
     formatted_splits = []
     
     for i, doc in enumerate(splits):
+        # Create to_append field with document name and headers
+        to_append = {}
+        if document_name:
+            to_append["name"] = document_name
+        to_append.update(doc.metadata)
+        
+        # Create metadata field with document name and headers
+        metadata = {}
+        if document_name:
+            metadata["name"] = document_name
+        metadata.update(doc.metadata)
+        
         split_data = {
             "chunk_id": i,
-            "headers": doc.metadata,
+            "to_append": to_append,
+            "metadata": metadata,
             "content": doc.page_content.strip(),
             "char_count": len(doc.page_content)
         }
@@ -497,11 +512,14 @@ if __name__ == "__main__":
     
     print(f"Processing {FILE_PATH} with config: {CONFIG}")
     chunks = split_pdf(FILE_PATH, CONFIG)
-    formatted_list = format_splits_as_list(chunks) # can pass additional_metadata here
+    
+    # Get filename for document name
+    filename = os.path.basename(FILE_PATH)
+    name_without_ext = os.path.splitext(filename)[0]
+    
+    formatted_list = format_splits_as_list(chunks, document_name=name_without_ext) # can pass additional_metadata here
     
     # Save to JSON file
-    filename = os.path.basename(FILE_PATH)          # "{filename}.pdf"
-    name_without_ext = os.path.splitext(filename)[0] # "{filename}"
     import json
     output_file = pathlib.Path(f"src/rag/outputs/{name_without_ext}.json")
     output_file.write_text(json.dumps(formatted_list, indent=2, ensure_ascii=False))

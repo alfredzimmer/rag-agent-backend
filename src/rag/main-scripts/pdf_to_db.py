@@ -55,7 +55,7 @@ def preview_pdf_first_pages(pdf_path: str, config_name: str = "ieee", num_pages:
     
     # Generate chunks from preview PDF
     chunks = split_pdf(str(temp_pdf), config_name)
-    formatted_chunks = format_splits_as_list(chunks)
+    formatted_chunks = format_splits_as_list(chunks, document_name=filename_stem)
     
     # Save markdown
     md_file = preview_dir / f"{filename_stem}.md"
@@ -133,7 +133,7 @@ def process_pdf_to_db(pdf_path: str, collection_name: str = None, config_name: s
     
     # 1. PDF -> chunks
     chunks = split_pdf(str(pdf_file), config_name)
-    formatted = format_splits_as_list(chunks)
+    formatted = format_splits_as_list(chunks, document_name=pdf_file.stem)
     
     # 2. Save intermediate JSON (relative to project root)
     output_json = project_root / "src" / "rag" / "outputs" / f"{pdf_file.stem}.json"
@@ -185,7 +185,7 @@ if __name__ == "__main__":
         print()
         print("Defaults:")
         print(f"  - Config: ieee")
-        print(f"  - Collection: splade (from RAGConfig.sparse_embedding_model)")
+        print(f"  - Collection: {RAGConfig().collection_name}")
         sys.exit(1)
     
     pdf_path = sys.argv[1]
@@ -201,4 +201,3 @@ if __name__ == "__main__":
     print(f"{'='*60}\n")
     
     process_pdf_to_db(pdf_path, collection_name=collection_name, config_name=config_name, preview_mode=True)
-
