@@ -147,8 +147,8 @@ def process_pdf_to_db(pdf_path: str, collection_name: str = None, config_name: s
     
     # Override collection name if provided
     if collection_name:
-        original_sparse_model = config.sparse_embedding_model
-        config.sparse_embedding_model = collection_name
+        original_collection_name = config.collection_name
+        config.collection_name = collection_name
         print(f"Using custom collection name: {collection_name}")
     
     vector_store = create_milvus_store(config)
@@ -157,7 +157,7 @@ def process_pdf_to_db(pdf_path: str, collection_name: str = None, config_name: s
     documents = vector_store.load_chunk_file(str(output_json))
     vector_store.vector_store.add_documents(documents=documents)
     
-    print(f"✓ Stored {len(documents)} chunks to Milvus collection: {config.sparse_embedding_model}")
+    print(f"✓ Stored {len(documents)} chunks to Milvus collection: {config.collection_name}")
     print(f"\n{'='*60}")
     print("Processing complete!")
     print(f"{'='*60}\n")
