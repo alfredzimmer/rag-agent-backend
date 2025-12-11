@@ -14,9 +14,16 @@ from langchain_core.documents import Document
 HEADER_CONFIGS = {
     "ieee": {
         "rules": [
+            # Level 1: Single digit headers (e.g., "1. Overview", "2. Definitions")
+            {
+                "size_range": (10, 14),
+                "pattern": r"^\d+\.\s",
+                "is_bold": True,
+                "level": 1
+            },
             # Level 1: Chapter titles (e.g., "Chapter 2" or "Operating diagrams")
             {
-                "size_range": (13.5, 16),
+                "size_range": (11.5, 16),
                 "is_bold": True,
                 "level": 1
             },
