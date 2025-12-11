@@ -300,17 +300,36 @@ RULES FOR STORAGE:
             rating = final_state.values.get("rating", 0.0)
             title = final_state.values.get("title", None)
             
+            # Log completion metadata for debugging
+            print(f"\n{'='*60}")
+            print(f"COMPLETION METADATA DEBUG")
+            print(f"{'='*60}")
+            print(f"Conversation ID: {conversation_id}")
+            print(f"Final State Keys: {list(final_state.values.keys())}")
+            print(f"Rating: {rating}")
+            print(f"Title: {title}")
+            if title is None:
+                print(f"WARNING: Title is None! Check evaluator_node in graph.py")
+                print(f"Full final state values: {final_state.values}")
+            print(f"Input Tokens: {total_input_tokens}")
+            print(f"Output Tokens: {total_output_tokens}")
+            print(f"{'='*60}\n")
+            
+            completion_metadata = Metadata(
+                conversation_id=conversation_id,
+                input_tokens_used=total_input_tokens,
+                output_tokens_used=total_output_tokens,
+                rating=rating,
+                title=title,
+            )
+            
+            print(f"Completion Metadata Object: {completion_metadata.model_dump()}\n")
+            
             yield ChatResponse(
                 status=Status.COMPLETE,
                 type="completion",
                 content="",
-                metadata=Metadata(
-                    conversation_id=conversation_id,
-                    input_tokens_used=total_input_tokens,
-                    output_tokens_used=total_output_tokens,
-                    rating=rating,
-                    title=title,
-                )
+                metadata=completion_metadata
             )
 
         else:

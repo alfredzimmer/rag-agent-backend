@@ -5,7 +5,7 @@ This module defines the graph structure for the RAG agent using LangGraph,
 providing native support for interrupts, checkpointing, and streaming.
 """
 
-from typing import TypedDict, Annotated, Sequence, Literal
+from typing import TypedDict, Annotated, Sequence, Literal, Optional
 from langchain_core.messages import BaseMessage, AIMessage, ToolMessage, SystemMessage, AnyMessage, HumanMessage
 from langgraph.graph import StateGraph, END, MessagesState, START
 from langgraph.prebuilt import ToolNode
@@ -38,6 +38,7 @@ summarization_model = ChatOllama(model="qwen3:8b", temperature=0, num_predict=10
 class State(MessagesState):
     context: dict[str, RunningSummary]
     rating: float
+    title: Optional[str]
     input_tokens_used: Annotated[int, operator.add]
     output_tokens_used: Annotated[int, operator.add]
 
@@ -231,15 +232,20 @@ Format all responses as JSON object with the following keys:
             if debug:
                 log_debug("EVALUATOR_NODE", f"Evaluation response: {eval_text}\nOverall score: {overall_score}")
             
+            result = {}
+            result["rating"] = overall_score
+            
             if title:
-                return {
-                    "rating": overall_score,
-                    "title": title
-                }
+                result["title"] = title
+                if debug:
+                    log_debug("EVALUATOR_NODE", f"Returning title: {title}")
             else:
-                return {
-                    "rating": overall_score
-                }
+                if debug:
+                    log_debug("EVALUATOR_NODE", f"No title generated (messages count: {len(messages)})")
+            
+            print(f"[EVALUATOR_NODE] Returning: {result}")
+            return result
+            
             
         except Exception as e:
             if debug:
