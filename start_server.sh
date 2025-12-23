@@ -70,19 +70,30 @@ echo "  Auto-reload: $([ -n "$RELOAD" ] && echo "enabled" || echo "disabled")"
 echo ""
 
 # Start the server
-echo "Starting FastAPI server..."
+# Start the server
+echo "Starting FastAPI server in background..."
 echo "API will be available at: http://localhost:$PORT"
 echo "API Documentation: http://localhost:$PORT/docs"
 echo ""
-echo "Press Ctrl+C to stop the server"
-echo ""
+
+# Define log and pid files
+LOG_FILE="server.log"
+PID_FILE="server.pid"
 
 # If funnel is requested, show instructions
 if [ "$SETUP_FUNNEL" = true ]; then
-    echo "📡 Tailscale Funnel will be set up after the server starts."
-    echo "   In a new terminal, run: tailscale funnel $PORT"
+    echo "📡 Tailscale Funnel instructions:"
+    echo "   Run: tailscale funnel $PORT"
     echo ""
 fi
 
-# Start uvicorn
-uvicorn main:app --host $HOST --port $PORT $RELOAD
+# Start uvicorn in background
+nohup uvicorn main:app --host $HOST --port $PORT $RELOAD > "$LOG_FILE" 2>&1 &
+SERVER_PID=$!
+
+# Save PID
+echo $SERVER_PID > "$PID_FILE"
+
+echo "✅ Server started with PID: $SERVER_PID"
+echo "📄 Output redirected to: $LOG_FILE"
+echo "🛑 To stop the server, run: kill \$(cat $PID_FILE)"

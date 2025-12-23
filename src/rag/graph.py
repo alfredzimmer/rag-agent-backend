@@ -158,11 +158,16 @@ def create_agent_graph(llm_with_tools, rag_tool, memory_manager, training_llm=No
         first_human = first_ai = last_human = last_ai = None
 
         for msg in messages:
+            if "Please use the hybrid_RAG_retrieve tool to answer if needed. " in msg.content:
+                msg.content = msg.content.replace("Please use the hybrid_RAG_retrieve tool to answer if needed. ", "", 1)
+
             if isinstance(msg, HumanMessage) and first_human is None:
                 first_human = msg
             if isinstance(msg, AIMessage) and first_ai is None:
                 first_ai = msg
         for msg in reversed(messages):
+            if "Please use the hybrid_RAG_retrieve tool to answer if needed. " in msg.content:
+                msg.content = msg.content.replace("Please use the hybrid_RAG_retrieve tool to answer if needed. ", "", 1)
             if isinstance(msg, HumanMessage) and last_human is None:
                 last_human = msg
             if isinstance(msg, AIMessage) and last_ai is None:
