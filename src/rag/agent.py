@@ -190,7 +190,7 @@ RULES FOR STORAGE:
         - Completion signal (COMPLETE status)
         """
         config = {"configurable": {"thread_id": conversation_id, "user_id": user_id}}
-        messages = [HumanMessage(content=f"Please use the hybrid_RAG_retrieve tool to answer if needed. {query}")]
+        messages = [HumanMessage(content=f"Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. {query}")]
         
         # Initialize state with new message only
         # Token counts will be maintained by the checkpointer across conversation
@@ -448,8 +448,8 @@ def create_rag_tool(vector_store, ranker, hyde_generator: Optional[HyDEGenerator
             Tuple of (Serialized context, List of documents)
         """
         # Retrieve documents using Milvus hybrid search (dense + sparse)
-        if "Please use the hybrid_RAG_retrieve tool to answer if needed. " in query:
-            query = query.replace("Please use the hybrid_RAG_retrieve tool to answer if needed. ", "", 1)
+        if "Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. " in query:
+            query = query.replace("Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. ", "", 1)
         
         inputText = hyde_generator.generate(query) if hyde_generator else query
         
