@@ -1,0 +1,1233 @@
+INFO:     Will watch for changes in these directories: ['/home/andy_liu/pyapi']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [1898941] using WatchFiles
+INFO:     Started server process [1898950]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1898950]
+Process SpawnProcess-2:
+Traceback (most recent call last):
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/home/andy_liu/miniconda3/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/andy_liu/pyapi/main.py", line 4, in <module>
+    from api.agent.conversation import router as conversation_router
+  File "/home/andy_liu/pyapi/api/agent/conversation.py", line 7, in <module>
+    from src.rag.agent import RAGAgent
+  File "/home/andy_liu/pyapi/src/rag/agent.py", line 451
+    if
+      ^
+SyntaxError: invalid syntax
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+Process SpawnProcess-3:
+Traceback (most recent call last):
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/home/andy_liu/miniconda3/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/andy_liu/pyapi/main.py", line 4, in <module>
+    from api.agent.conversation import router as conversation_router
+  File "/home/andy_liu/pyapi/api/agent/conversation.py", line 7, in <module>
+    from src.rag.agent import RAGAgent
+  File "/home/andy_liu/pyapi/src/rag/agent.py", line 451
+    if 
+       ^
+SyntaxError: invalid syntax
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+Process SpawnProcess-4:
+Traceback (most recent call last):
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/home/andy_liu/miniconda3/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/andy_liu/pyapi/main.py", line 4, in <module>
+    from api.agent.conversation import router as conversation_router
+  File "/home/andy_liu/pyapi/api/agent/conversation.py", line 7, in <module>
+    from src.rag.agent import RAGAgent
+  File "/home/andy_liu/pyapi/src/rag/agent.py", line 451
+    if ()
+         ^
+SyntaxError: expected ':'
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+Process SpawnProcess-5:
+Traceback (most recent call last):
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/home/andy_liu/miniconda3/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/andy_liu/pyapi/main.py", line 4, in <module>
+    from api.agent.conversation import router as conversation_router
+  File "/home/andy_liu/pyapi/api/agent/conversation.py", line 7, in <module>
+    from src.rag.agent import RAGAgent
+  File "/home/andy_liu/pyapi/src/rag/agent.py", line 451
+    if (qu)
+           ^
+SyntaxError: expected ':'
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+Process SpawnProcess-6:
+Traceback (most recent call last):
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/home/andy_liu/miniconda3/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/andy_liu/pyapi/main.py", line 4, in <module>
+    from api.agent.conversation import router as conversation_router
+  File "/home/andy_liu/pyapi/api/agent/conversation.py", line 7, in <module>
+    from src.rag.agent import RAGAgent
+  File "/home/andy_liu/pyapi/src/rag/agent.py", line 451
+    if (query.cont)
+                   ^
+SyntaxError: expected ':'
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+Process SpawnProcess-7:
+Traceback (most recent call last):
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/home/andy_liu/miniconda3/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/andy_liu/pyapi/main.py", line 4, in <module>
+    from api.agent.conversation import router as conversation_router
+  File "/home/andy_liu/pyapi/api/agent/conversation.py", line 7, in <module>
+    from src.rag.agent import RAGAgent
+  File "/home/andy_liu/pyapi/src/rag/agent.py", line 451
+    if (query.contains("who"))
+                              ^
+SyntaxError: expected ':'
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+INFO:     Started server process [1899568]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+Process SpawnProcess-9:
+Traceback (most recent call last):
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/home/andy_liu/miniconda3/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/andy_liu/pyapi/main.py", line 4, in <module>
+    from api.agent.conversation import router as conversation_router
+  File "/home/andy_liu/pyapi/api/agent/conversation.py", line 7, in <module>
+    from src.rag.agent import RAGAgent
+  File "/home/andy_liu/pyapi/src/rag/agent.py", line 454
+    inputText = hyde_generator.generate(query) if hyde_generator else query
+    ^^^^^^^^^
+IndentationError: expected an indented block after 'if' statement on line 451
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+Process SpawnProcess-10:
+Traceback (most recent call last):
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/home/andy_liu/miniconda3/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/andy_liu/pyapi/main.py", line 4, in <module>
+    from api.agent.conversation import router as conversation_router
+  File "/home/andy_liu/pyapi/api/agent/conversation.py", line 7, in <module>
+    from src.rag.agent import RAGAgent
+  File "/home/andy_liu/pyapi/src/rag/agent.py", line 454
+    inputText = hyde_generator.generate(query) if hyde_generator else query
+    ^^^^^^^^^
+IndentationError: expected an indented block after 'if' statement on line 451
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+Process SpawnProcess-11:
+Traceback (most recent call last):
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/home/andy_liu/miniconda3/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/andy_liu/pyapi/main.py", line 4, in <module>
+    from api.agent.conversation import router as conversation_router
+  File "/home/andy_liu/pyapi/api/agent/conversation.py", line 7, in <module>
+    from src.rag.agent import RAGAgent
+  File "/home/andy_liu/pyapi/src/rag/agent.py", line 454
+    inputText = hyde_generator.generate(query) if hyde_generator else query
+    ^^^^^^^^^
+IndentationError: expected an indented block after 'if' statement on line 451
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+Process SpawnProcess-12:
+Traceback (most recent call last):
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/home/andy_liu/miniconda3/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/andy_liu/pyapi/main.py", line 4, in <module>
+    from api.agent.conversation import router as conversation_router
+  File "/home/andy_liu/pyapi/api/agent/conversation.py", line 7, in <module>
+    from src.rag.agent import RAGAgent
+  File "/home/andy_liu/pyapi/src/rag/agent.py", line 455
+    inputText = hyde_generator.generate(query) if hyde_generator else query
+    ^^^^^^^^^
+IndentationError: expected an indented block after 'if' statement on line 451
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+INFO:     Started server process [1899860]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+INFO:     Started server process [1899992]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+INFO:     Started server process [1900101]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [1900213]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1900213]
+Process SpawnProcess-17:
+Traceback (most recent call last):
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/home/andy_liu/miniconda3/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/andy_liu/pyapi/main.py", line 4, in <module>
+    from api.agent.conversation import router as conversation_router
+  File "/home/andy_liu/pyapi/api/agent/conversation.py", line 7, in <module>
+    from src.rag.agent import RAGAgent
+  File "/home/andy_liu/pyapi/src/rag/agent.py", line 451
+    if "Please use the hybrid_RAG_retrieve tool to answer if needed.")):
+                                                                     ^
+SyntaxError: unmatched ')'
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+INFO:     Started server process [1900496]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1900496]
+INFO:     Started server process [1900811]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+AGENT:     Initializing agent...
+INFO:     192.168.31.241:65451 - "GET /api/agent/conversation/create HTTP/1.1" 200 OK
+INFO:     192.168.31.241:65451 - "POST /api/agent/conversation/chat HTTP/1.1" 200 OK
+[SUMMARIZATION DEBUG] total_messages=1, max_summarizable_index=0, keep_last_n=6
+[SUMMARIZATION DEBUG] max_tokens_before_summary=3000, max_remaining_tokens=2488
+[SUMMARIZATION DEBUG] total_n_tokens=0
+[SUMMARIZATION DEBUG] should_summarize=False, n_tokens=0
+[EVALUATOR_NODE] Returning: {'rating': 0.2, 'title': '"Hybrid RAG Hello"'}
+
+============================================================
+COMPLETION METADATA DEBUG
+============================================================
+Conversation ID: cca5a027-f7cd-44d7-9f9f-05b41f6f2304
+Final State Keys: ['messages', 'context', 'rating', 'title', 'input_tokens_used', 'output_tokens_used', 'summarized_messages']
+Rating: 0.2
+Title: "Hybrid RAG Hello"
+Input Tokens: 1019
+Output Tokens: 10
+============================================================
+
+Completion Metadata Object: {'conversation_id': 'cca5a027-f7cd-44d7-9f9f-05b41f6f2304', 'rating': 0.2, 'title': '"Hybrid RAG Hello"', 'input_tokens_used': 1019, 'output_tokens_used': 10}
+
+Memory saved successfully for user 06a83a01-a4ce-4d08-81a4-9021a88e0eb1
+INFO:     192.168.31.241:65524 - "POST /api/agent/conversation/chat HTTP/1.1" 200 OK
+You're using a XLMRobertaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1900811]
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+Process SpawnProcess-20:
+Traceback (most recent call last):
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/home/andy_liu/miniconda3/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/andy_liu/pyapi/main.py", line 4, in <module>
+    from api.agent.conversation import router as conversation_router
+  File "/home/andy_liu/pyapi/api/agent/conversation.py", line 7, in <module>
+    from src.rag.agent import RAGAgent
+  File "/home/andy_liu/pyapi/src/rag/agent.py", line 26, in <module>
+    from .graph import create_agent_graph # You will need to update this signature
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/pyapi/src/rag/graph.py", line 161
+    if msg
+          ^
+SyntaxError: expected ':'
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+Process SpawnProcess-21:
+Traceback (most recent call last):
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/home/andy_liu/miniconda3/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/andy_liu/pyapi/main.py", line 4, in <module>
+    from api.agent.conversation import router as conversation_router
+  File "/home/andy_liu/pyapi/api/agent/conversation.py", line 7, in <module>
+    from src.rag.agent import RAGAgent
+  File "/home/andy_liu/pyapi/src/rag/agent.py", line 26, in <module>
+    from .graph import create_agent_graph # You will need to update this signature
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/pyapi/src/rag/graph.py", line 161
+    if 
+       ^
+SyntaxError: invalid syntax
+Process SpawnProcess-22:
+Traceback (most recent call last):
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/home/andy_liu/miniconda3/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/andy_liu/pyapi/main.py", line 4, in <module>
+    from api.agent.conversation import router as conversation_router
+  File "/home/andy_liu/pyapi/api/agent/conversation.py", line 7, in <module>
+    from src.rag.agent import RAGAgent
+  File "/home/andy_liu/pyapi/src/rag/agent.py", line 26, in <module>
+    from .graph import create_agent_graph # You will need to update this signature
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/pyapi/src/rag/graph.py", line 161
+    if 
+       ^
+SyntaxError: invalid syntax
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+Process SpawnProcess-23:
+Traceback (most recent call last):
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/home/andy_liu/miniconda3/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/andy_liu/pyapi/main.py", line 4, in <module>
+    from api.agent.conversation import router as conversation_router
+  File "/home/andy_liu/pyapi/api/agent/conversation.py", line 7, in <module>
+    from src.rag.agent import RAGAgent
+  File "/home/andy_liu/pyapi/src/rag/agent.py", line 26, in <module>
+    from .graph import create_agent_graph # You will need to update this signature
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/pyapi/src/rag/graph.py", line 162
+    query = query.replace("Please use the hybrid_RAG_retrieve tool to answer if needed.", "", 1)
+                                                                                                ^
+IndentationError: unindent does not match any outer indentation level
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+Process SpawnProcess-24:
+Traceback (most recent call last):
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/andy_liu/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/home/andy_liu/miniconda3/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/andy_liu/pyapi/main.py", line 4, in <module>
+    from api.agent.conversation import router as conversation_router
+  File "/home/andy_liu/pyapi/api/agent/conversation.py", line 7, in <module>
+    from src.rag.agent import RAGAgent
+  File "/home/andy_liu/pyapi/src/rag/agent.py", line 26, in <module>
+    from .graph import create_agent_graph # You will need to update this signature
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andy_liu/pyapi/src/rag/graph.py", line 162
+    query = query.replace("Please use the hybrid_RAG_retrieve tool to answer if needed.", "", 1)
+    ^^^^^
+IndentationError: expected an indented block after 'if' statement on line 161
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+INFO:     Started server process [1906038]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+INFO:     Started server process [1906153]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+INFO:     Started server process [1906263]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [1906380]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1906380]
+INFO:     Started server process [1906736]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+AGENT:     Initializing agent...
+INFO:     192.168.31.241:49698 - "GET /api/agent/conversation/create HTTP/1.1" 200 OK
+INFO:     192.168.31.241:49705 - "POST /api/agent/conversation/chat HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1906736]
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+INFO:     Started server process [1907238]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+INFO:     Started server process [1907377]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+INFO:     Started server process [1907491]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+INFO:     Started server process [1907602]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [1907717]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+AGENT:     Initializing agent...
+INFO:     192.168.31.241:49806 - "POST /api/agent/conversation/chat HTTP/1.1" 200 OK
+You're using a XLMRobertaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+[SUMMARIZATION DEBUG] total_messages=3, max_summarizable_index=0, keep_last_n=6
+[SUMMARIZATION DEBUG] max_tokens_before_summary=3000, max_remaining_tokens=2488
+[SUMMARIZATION DEBUG] total_n_tokens=0
+[SUMMARIZATION DEBUG] should_summarize=False, n_tokens=0
+[SUMMARIZATION DEBUG] total_messages=5, max_summarizable_index=0, keep_last_n=6
+[SUMMARIZATION DEBUG] max_tokens_before_summary=3000, max_remaining_tokens=2488
+[SUMMARIZATION DEBUG] total_n_tokens=0
+[SUMMARIZATION DEBUG] should_summarize=False, n_tokens=0
+INFO:     192.168.31.241:49812 - "DELETE /api/agent/conversation/clear HTTP/1.1" 200 OK
+[EVALUATOR_NODE] Returning: {'rating': 0.9}
+
+============================================================
+COMPLETION METADATA DEBUG
+============================================================
+Conversation ID: d4fbf38a-5b67-4a9e-b0a9-2fdf5b2a5cec
+Final State Keys: ['messages', 'context', 'rating', 'title', 'input_tokens_used', 'output_tokens_used', 'summarized_messages']
+Rating: 0.9
+Title: "Morning Greeting Exchange"
+Input Tokens: 2601
+Output Tokens: 296
+============================================================
+
+Completion Metadata Object: {'conversation_id': 'd4fbf38a-5b67-4a9e-b0a9-2fdf5b2a5cec', 'rating': 0.9, 'title': '"Morning Greeting Exchange"', 'input_tokens_used': 2601, 'output_tokens_used': 296}
+
+Memory saved successfully for user 06a83a01-a4ce-4d08-81a4-9021a88e0eb1
+INFO:     192.168.31.241:49818 - "POST /api/agent/conversation/chat HTTP/1.1" 200 OK
+[SUMMARIZATION DEBUG] total_messages=6, max_summarizable_index=0, keep_last_n=6
+[SUMMARIZATION DEBUG] max_tokens_before_summary=3000, max_remaining_tokens=2488
+[SUMMARIZATION DEBUG] total_n_tokens=0
+[SUMMARIZATION DEBUG] should_summarize=False, n_tokens=0
+[SUMMARIZATION DEBUG] total_messages=8, max_summarizable_index=2, keep_last_n=6
+[SUMMARIZATION DEBUG] max_tokens_before_summary=3000, max_remaining_tokens=2488
+[SUMMARIZATION DEBUG] total_n_tokens=23
+[SUMMARIZATION DEBUG] should_summarize=False, n_tokens=23
+[EVALUATOR_NODE] Returning: {'rating': 0.9}
+
+============================================================
+COMPLETION METADATA DEBUG
+============================================================
+Conversation ID: d4fbf38a-5b67-4a9e-b0a9-2fdf5b2a5cec
+Final State Keys: ['messages', 'context', 'rating', 'title', 'input_tokens_used', 'output_tokens_used', 'summarized_messages']
+Rating: 0.9
+Title: "Morning Greeting Exchange"
+Input Tokens: 3574
+Output Tokens: 355
+============================================================
+
+Completion Metadata Object: {'conversation_id': 'd4fbf38a-5b67-4a9e-b0a9-2fdf5b2a5cec', 'rating': 0.9, 'title': '"Morning Greeting Exchange"', 'input_tokens_used': 3574, 'output_tokens_used': 355}
+
+Memory saved successfully for user 06a83a01-a4ce-4d08-81a4-9021a88e0eb1
+INFO:     100.96.227.77:52834 - "GET /api/agent/conversation/create HTTP/1.1" 200 OK
+INFO:     100.96.227.77:52834 - "POST /api/agent/conversation/chat HTTP/1.1" 200 OK
+[SUMMARIZATION DEBUG] total_messages=1, max_summarizable_index=0, keep_last_n=6
+[SUMMARIZATION DEBUG] max_tokens_before_summary=3000, max_remaining_tokens=2488
+[SUMMARIZATION DEBUG] total_n_tokens=0
+[SUMMARIZATION DEBUG] should_summarize=False, n_tokens=0
+[EVALUATOR_NODE] Returning: {'rating': 0.35, 'title': '**Greetings and Assistance**'}
+
+============================================================
+COMPLETION METADATA DEBUG
+============================================================
+Conversation ID: 59c40dc0-1222-4330-adf1-25e2ae20a120
+Final State Keys: ['messages', 'context', 'rating', 'title', 'input_tokens_used', 'output_tokens_used', 'summarized_messages']
+Rating: 0.35
+Title: **Greetings and Assistance**
+Input Tokens: 296
+Output Tokens: 10
+============================================================
+
+Completion Metadata Object: {'conversation_id': '59c40dc0-1222-4330-adf1-25e2ae20a120', 'rating': 0.35, 'title': '**Greetings and Assistance**', 'input_tokens_used': 296, 'output_tokens_used': 10}
+
+Memory saved successfully for user 11cfddf0-abfa-4e61-8b9e-d412cde12bdf
+INFO:     192.168.31.241:49900 - "POST /api/agent/conversation/chat HTTP/1.1" 200 OK
+[SUMMARIZATION DEBUG] total_messages=9, max_summarizable_index=3, keep_last_n=6
+[SUMMARIZATION DEBUG] max_tokens_before_summary=3000, max_remaining_tokens=2488
+[SUMMARIZATION DEBUG] total_n_tokens=44
+[SUMMARIZATION DEBUG] should_summarize=False, n_tokens=44
+[SUMMARIZATION DEBUG] total_messages=11, max_summarizable_index=5, keep_last_n=6
+[SUMMARIZATION DEBUG] max_tokens_before_summary=3000, max_remaining_tokens=2488
+[SUMMARIZATION DEBUG] total_n_tokens=424
+[SUMMARIZATION DEBUG] should_summarize=False, n_tokens=424
+INFO:     192.168.31.241:49909 - "POST /api/agent/conversation/chat HTTP/1.1" 200 OK
+[SUMMARIZATION DEBUG] total_messages=12, max_summarizable_index=6, keep_last_n=6
+[SUMMARIZATION DEBUG] max_tokens_before_summary=3000, max_remaining_tokens=2488
+[SUMMARIZATION DEBUG] total_n_tokens=443
+[SUMMARIZATION DEBUG] should_summarize=False, n_tokens=443
+[EVALUATOR_NODE] Returning: {'rating': 0.95}
+
+============================================================
+COMPLETION METADATA DEBUG
+============================================================
+Conversation ID: d4fbf38a-5b67-4a9e-b0a9-2fdf5b2a5cec
+Final State Keys: ['messages', 'context', 'rating', 'title', 'input_tokens_used', 'output_tokens_used', 'summarized_messages']
+Rating: 0.95
+Title: "Morning Greeting Exchange"
+Input Tokens: 3613
+Output Tokens: 582
+============================================================
+
+Completion Metadata Object: {'conversation_id': 'd4fbf38a-5b67-4a9e-b0a9-2fdf5b2a5cec', 'rating': 0.95, 'title': '"Morning Greeting Exchange"', 'input_tokens_used': 3613, 'output_tokens_used': 582}
+
+[SUMMARIZATION DEBUG] total_messages=14, max_summarizable_index=8, keep_last_n=6
+[SUMMARIZATION DEBUG] max_tokens_before_summary=3000, max_remaining_tokens=2488
+[SUMMARIZATION DEBUG] total_n_tokens=952
+[SUMMARIZATION DEBUG] should_summarize=False, n_tokens=952
+Memory saved successfully for user 06a83a01-a4ce-4d08-81a4-9021a88e0eb1
+[EVALUATOR_NODE] Returning: {'rating': 1.0}
+
+============================================================
+COMPLETION METADATA DEBUG
+============================================================
+Conversation ID: d4fbf38a-5b67-4a9e-b0a9-2fdf5b2a5cec
+Final State Keys: ['messages', 'context', 'rating', 'title', 'input_tokens_used', 'output_tokens_used', 'summarized_messages']
+Rating: 1.0
+Title: "Morning Greeting Exchange"
+Input Tokens: 5093
+Output Tokens: 934
+============================================================
+
+Completion Metadata Object: {'conversation_id': 'd4fbf38a-5b67-4a9e-b0a9-2fdf5b2a5cec', 'rating': 1.0, 'title': '"Morning Greeting Exchange"', 'input_tokens_used': 5093, 'output_tokens_used': 934}
+
+Memory saved successfully for user 06a83a01-a4ce-4d08-81a4-9021a88e0eb1
+INFO:     192.168.31.241:49940 - "POST /api/agent/conversation/chat HTTP/1.1" 200 OK
+[SUMMARIZATION DEBUG] total_messages=15, max_summarizable_index=9, keep_last_n=6
+[SUMMARIZATION DEBUG] max_tokens_before_summary=3000, max_remaining_tokens=2488
+[SUMMARIZATION DEBUG] total_n_tokens=967
+[SUMMARIZATION DEBUG] should_summarize=False, n_tokens=967
+[EVALUATOR_NODE] Returning: {'rating': 0.4}
+
+============================================================
+COMPLETION METADATA DEBUG
+============================================================
+Conversation ID: d4fbf38a-5b67-4a9e-b0a9-2fdf5b2a5cec
+Final State Keys: ['messages', 'context', 'rating', 'title', 'input_tokens_used', 'output_tokens_used', 'summarized_messages']
+Rating: 0.4
+Title: "Morning Greeting Exchange"
+Input Tokens: 3277
+Output Tokens: 15
+============================================================
+
+Completion Metadata Object: {'conversation_id': 'd4fbf38a-5b67-4a9e-b0a9-2fdf5b2a5cec', 'rating': 0.4, 'title': '"Morning Greeting Exchange"', 'input_tokens_used': 3277, 'output_tokens_used': 15}
+
+Memory saved successfully for user 06a83a01-a4ce-4d08-81a4-9021a88e0eb1
+INFO:     192.168.31.241:49964 - "POST /api/agent/conversation/chat HTTP/1.1" 200 OK
+[SUMMARIZATION DEBUG] total_messages=17, max_summarizable_index=11, keep_last_n=6
+[SUMMARIZATION DEBUG] max_tokens_before_summary=3000, max_remaining_tokens=2488
+[SUMMARIZATION DEBUG] total_n_tokens=1683
+[SUMMARIZATION DEBUG] should_summarize=False, n_tokens=1683
+[SUMMARIZATION DEBUG] total_messages=19, max_summarizable_index=13, keep_last_n=6
+[SUMMARIZATION DEBUG] max_tokens_before_summary=3000, max_remaining_tokens=2488
+[SUMMARIZATION DEBUG] total_n_tokens=1761
+[SUMMARIZATION DEBUG] should_summarize=False, n_tokens=1761
+INFO:     192.168.31.241:49975 - "POST /api/agent/conversation/chat HTTP/1.1" 200 OK
+[SUMMARIZATION DEBUG] total_messages=20, max_summarizable_index=14, keep_last_n=6
+[SUMMARIZATION DEBUG] max_tokens_before_summary=3000, max_remaining_tokens=2488
+[SUMMARIZATION DEBUG] total_n_tokens=2806
+[SUMMARIZATION DEBUG] should_summarize=False, n_tokens=2806
+[SUMMARIZATION DEBUG] total_messages=22, max_summarizable_index=16, keep_last_n=6
+[SUMMARIZATION DEBUG] max_tokens_before_summary=3000, max_remaining_tokens=2488
+[SUMMARIZATION DEBUG] total_n_tokens=2832
+[SUMMARIZATION DEBUG] should_summarize=False, n_tokens=2832
+[EVALUATOR_NODE] Returning: {'rating': 0.95}
+
+============================================================
+COMPLETION METADATA DEBUG
+============================================================
+Conversation ID: d4fbf38a-5b67-4a9e-b0a9-2fdf5b2a5cec
+Final State Keys: ['messages', 'context', 'rating', 'title', 'input_tokens_used', 'output_tokens_used', 'summarized_messages']
+Rating: 0.95
+Title: "Morning Greeting Exchange"
+Input Tokens: 8107
+Output Tokens: 650
+============================================================
+
+Completion Metadata Object: {'conversation_id': 'd4fbf38a-5b67-4a9e-b0a9-2fdf5b2a5cec', 'rating': 0.95, 'title': '"Morning Greeting Exchange"', 'input_tokens_used': 8107, 'output_tokens_used': 650}
+
+Memory saved successfully for user 06a83a01-a4ce-4d08-81a4-9021a88e0eb1
+INFO:     192.168.31.241:50068 - "POST /api/agent/conversation/chat HTTP/1.1" 200 OK
+[SUMMARIZATION DEBUG] total_messages=22, max_summarizable_index=16, keep_last_n=6
+[SUMMARIZATION DEBUG] max_tokens_before_summary=3000, max_remaining_tokens=2488
+[SUMMARIZATION DEBUG] total_n_tokens=2832
+[SUMMARIZATION DEBUG] should_summarize=False, n_tokens=2832
+[SUMMARIZATION DEBUG] total_messages=24, max_summarizable_index=18, keep_last_n=6
+[SUMMARIZATION DEBUG] max_tokens_before_summary=3000, max_remaining_tokens=2488
+[SUMMARIZATION DEBUG] total_n_tokens=2903
+[SUMMARIZATION DEBUG] should_summarize=False, n_tokens=2903
+[EVALUATOR_NODE] Returning: {'rating': 0.95}
+
+============================================================
+COMPLETION METADATA DEBUG
+============================================================
+Conversation ID: d4fbf38a-5b67-4a9e-b0a9-2fdf5b2a5cec
+Final State Keys: ['messages', 'context', 'rating', 'title', 'input_tokens_used', 'output_tokens_used', 'summarized_messages']
+Rating: 0.95
+Title: "Morning Greeting Exchange"
+Input Tokens: 7629
+Output Tokens: 319
+============================================================
+
+Completion Metadata Object: {'conversation_id': 'd4fbf38a-5b67-4a9e-b0a9-2fdf5b2a5cec', 'rating': 0.95, 'title': '"Morning Greeting Exchange"', 'input_tokens_used': 7629, 'output_tokens_used': 319}
+
+Memory saved successfully for user 06a83a01-a4ce-4d08-81a4-9021a88e0eb1
+INFO:     192.168.31.241:50262 - "POST /api/agent/conversation/chat HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1907717]
+INFO:     Started server process [1914135]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1914135]
+INFO:     Started server process [1914430]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1914430]
+INFO:     Started server process [1914662]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1914662]
+INFO:     Started server process [1914814]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1914814]
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+INFO:     Started server process [1914957]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+INFO:     Started server process [1915077]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [1915212]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1915212]
+INFO:     Started server process [1915386]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1915386]
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+INFO:     Started server process [1915596]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+INFO:     Started server process [1915713]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/agent.py'. Reloading...
+INFO:     Started server process [1915826]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [1915937]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1915937]
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+INFO:     Started server process [1916085]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Started server process [1916199]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1916199]
+INFO:     Started server process [1916308]
+INFO:     Waiting for application startup.
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+INFO:     Application startup complete.
+INFO:     Started server process [1916427]
+INFO:     Waiting for application startup.
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+INFO:     Application startup complete.
+INFO:     Started server process [1916537]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'src/rag/graph.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1916537]
+INFO:     Started server process [1916793]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+AGENT:     Initializing agent...
+INFO:     192.168.31.241:50573 - "GET /api/agent/conversation/create HTTP/1.1" 200 OK
+INFO:     192.168.31.241:50573 - "POST /api/agent/conversation/chat HTTP/1.1" 200 OK
+You're using a XLMRobertaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+Could not apply patch: can't remove a non-existent object ''
+Could not apply patch: can't remove a non-existent object ''
