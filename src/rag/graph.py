@@ -5,7 +5,7 @@ This module defines the graph structure for the RAG agent using LangGraph,
 providing native support for interrupts, checkpointing, and streaming.
 """
 
-from typing import TypedDict, Annotated, Sequence, Literal
+from typing import TypedDict, Annotated, Sequence, Literal, Optional
 from langchain_core.messages import BaseMessage, AIMessage, ToolMessage, SystemMessage, AnyMessage, HumanMessage
 from langgraph.graph import StateGraph, END, MessagesState, START
 from langgraph.prebuilt import ToolNode
@@ -38,6 +38,7 @@ summarization_model = ChatOllama(model="qwen3:8b", temperature=0, num_predict=10
 class State(MessagesState):
     context: dict[str, RunningSummary]
     rating: float
+    title: Optional[str]
     input_tokens_used: Annotated[int, operator.add]
     output_tokens_used: Annotated[int, operator.add]
 
@@ -74,7 +75,7 @@ def create_agent_graph(llm_with_tools, rag_tool, memory_manager, training_llm=No
         system_context = (
             "You are a helpful assistant with access to a specialized knowledge base and user memories. "
             "IMPORTANT INSTRUCTIONS:\n"
-            "1. For technical questions: You MUST use the hybrid_RAG_retrieve tool before answering. "
+            "1. You MUST ALWAYS use the hybrid_RAG_retrieve tool to retrieve relevant information from the knowledge base before answering. "
             "Never rely solely on your general knowledge for technical content.\n"
             "2. For personal questions about the user: Check the 'RELEVANT USER FACTS/MEMORIES' section below FIRST. "
             "If the answer is in the memories, use that information directly. "
@@ -157,16 +158,24 @@ def create_agent_graph(llm_with_tools, rag_tool, memory_manager, training_llm=No
         first_human = first_ai = last_human = last_ai = None
 
         for msg in messages:
+            if "Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. " in msg.content:
+                msg.content = msg.content.replace("Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. ", "", 1)
+
             if isinstance(msg, HumanMessage) and first_human is None:
                 first_human = msg
             if isinstance(msg, AIMessage) and first_ai is None:
                 first_ai = msg
         for msg in reversed(messages):
+            if "Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. " in msg.content:
+                msg.content = msg.content.replace("Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. ", "", 1)
             if isinstance(msg, HumanMessage) and last_human is None:
                 last_human = msg
             if isinstance(msg, AIMessage) and last_ai is None:
                 last_ai = msg
 
+        # Initialize title to None
+        title = None
+        
         # Generate title if short conversation
         if len(messages) <= 4 and first_human and first_ai:
             try:
@@ -228,15 +237,20 @@ Format all responses as JSON object with the following keys:
             if debug:
                 log_debug("EVALUATOR_NODE", f"Evaluation response: {eval_text}\nOverall score: {overall_score}")
             
+            result = {}
+            result["rating"] = overall_score
+            
             if title:
-                return {
-                    "rating": overall_score,
-                    "title": title
-                }
+                result["title"] = title
+                if debug:
+                    log_debug("EVALUATOR_NODE", f"Returning title: {title}")
             else:
-                return {
-                    "rating": overall_score
-                }
+                if debug:
+                    log_debug("EVALUATOR_NODE", f"No title generated (messages count: {len(messages)})")
+            
+            print(f"[EVALUATOR_NODE] Returning: {result}")
+            return result
+            
             
         except Exception as e:
             if debug:

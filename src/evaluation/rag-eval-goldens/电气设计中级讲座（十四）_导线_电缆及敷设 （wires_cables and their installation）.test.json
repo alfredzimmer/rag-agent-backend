@@ -1,0 +1,134 @@
+[
+    {
+        "input": "What are the four main topics covered in the 14th session of the Intermediate Electrical Design Lecture?",
+        "output": "The session covers the classification of cables and wires, facilities used in installation such as conduits and cable trays, key considerations and professional knowledge during installation, and the relevant codes, standards, and regulations."
+    },
+    {
+        "input": "What is the primary focus of this lecture regarding wires and cables, and what is explicitly excluded from the discussion?",
+        "output": "The lecture primarily focuses on the general introduction and installation of low and medium-voltage wires and cables for electrical consumption applications, excluding high-voltage transmission lines and busbar installations in power plants."
+    },
+    {
+        "input": "What are the three main types of cables and wires based on material composition, and what are their primary applications?",
+        "output": "The three main types are copper, aluminum, and fiber optic. Copper and aluminum are primarily used for power transmission, especially in high-voltage transmission lines, while fiber optic cables are mainly used for low-voltage signal transmission in communication applications."
+    },
+    {
+        "input": "What are the key differences between copper and aluminum wires in terms of weight, conductivity, and cost-effectiveness?",
+        "output": "Copper wires are heavier but offer superior conductivity and lower resistance per unit length, while aluminum wires are lighter, less conductive than copper, but more cost-effective."
+    },
+    {
+        "input": "What type of cable is typically used for fire pump applications and what fire resistance rating must it provide?",
+        "output": "Fire pump cables typically use mineral-insulated (MI) cables and must provide at least two hours of fire resistance."
+    },
+    {
+        "input": "Why are aluminum conductor steel-reinforced (ACSR) cables commonly used in long-distance high-voltage transmission lines?",
+        "output": "ACSR cables are used because the steel core provides high tensile and mechanical strength, compensating for aluminum's lack of strength, while aluminum's lightweight nature reduces tower installation difficulty and the overall cost is optimized compared to using pure aluminum."
+    },
+    {
+        "input": "Why are busbar systems preferred over ordinary cables in large-scale power plants despite the generator terminal voltage being only 10 kilovolts?",
+        "output": "Busbar systems are preferred because the generator's high capacity results in exceptionally high output current, which ordinary cables or conductors cannot handle due to their limited current-carrying capacity."
+    },
+    {
+        "input": "Why are bus ducts preferred over traditional cables in high-rise buildings for power distribution?",
+        "output": "Bus ducts are preferred because they simplify power distribution in high-rise buildings by allowing each floor to draw power via plug-in units, eliminating the need for excessively long cables and reducing reliance on the main circuit for each floor's distribution panel."
+    },
+    {
+        "input": "What is the primary advantage of using bus ducts in high-rise buildings compared to multiple parallel cables?",
+        "output": "Bus ducts require only 2-3 conductors to meet current-carrying demands, significantly reducing the number of conductors needed compared to multiple parallel cables."
+    },
+    {
+        "input": "Why do outdoor cables need UV resistance, and what happens to ordinary cables exposed to sunlight for long periods?",
+        "output": "Outdoor cables need UV resistance because prolonged exposure to sunlight can severely damage the insulation of ordinary cables due to ultraviolet rays, leading to degradation and potential failure."
+    },
+    {
+        "input": "What is the typical wire gauge threshold for using stranded wire versus solid wire in electrical conductors?",
+        "output": "Stranded wire is typically used for AWG #8 or larger conductors, while solid wire (single-core conductors) is used for AWG #10 or smaller conductors."
+    },
+    {
+        "input": "What type of connector is required for use in damp or underwater environments when installing conductors and cables?",
+        "output": "Waterproof or weatherproof connectors are required for use in damp or underwater environments."
+    },
+    {
+        "input": "What are the two main types of PVC conduits, and where are rigid PVC conduits typically used?",
+        "output": "The two main types of PVC conduits are rigid and non-rigid. Rigid PVC conduits are typically used in scenarios requiring high compressive strength, such as inside concrete walls, underground engineering, and road-crossing areas."
+    },
+    {
+        "input": "What are the primary applications of PVC conduits in North America, and how do they differ from their usage in mainland China?",
+        "output": "In North America, PVC conduits are primarily used for underground installation or in damp environments, whereas in mainland China, they were commonly used for above-ground sections in commercial and residential buildings."
+    },
+    {
+        "input": "What is a key advantage of using PVC cable in residential and commercial buildings compared to the EMT conduit system?",
+        "output": "PVC cable is more cost-effective and easier to install than the EMT conduit system."
+    },
+    {
+        "input": "What are some environmental factors that must be considered during conduit installation, and how does the Canadian Electrical Code address them?",
+        "output": "Environmental factors such as waterproofing, explosion-proofing, and other special requirements must be considered during conduit installation. The Canadian Electrical Code provides detailed regulations for installation methods in these special environments, ensuring strict adherence during construction."
+    },
+    {
+        "input": "What are the two main types of cable trays based on ventilation, and how do they differ in design?",
+        "output": "The two main types of cable trays based on ventilation are ventilated and non-ventilated. Ventilated trays, such as those with a perforated design, allow airflow, while non-ventilated trays have a solid structure that does not permit airflow."
+    },
+    {
+        "input": "Under what conditions are cable tray covers necessary, and why are they required in outdoor environments?",
+        "output": "Cable tray covers are necessary in outdoor environments where there is a risk of corrosive liquids dripping or where UV protection for cables is needed, such as in industrial settings like factories in Zhejiang, to protect cables from environmental damage."
+    },
+    {
+        "input": "Under what conditions can high-voltage and low-voltage cables be installed together in the same cable tray?",
+        "output": "High-voltage and low-voltage cables can be installed together in the same cable tray only if an isolation barrier is placed between them, especially when mixing high-voltage cables with low-voltage power cables, which is generally not recommended."
+    },
+    {
+        "input": "What is the primary reason communication cables are highly sensitive to electromagnetic interference (EMI) when installed near power cables?",
+        "output": "Communication cables are highly sensitive to EMI because they can be significantly affected by the electromagnetic fields generated by nearby power cables, especially high-voltage ones, which can disrupt signal integrity and transmission quality."
+    },
+    {
+        "input": "Who typically procures the connection fittings for cable trays, and based on what documents?",
+        "output": "Electrical contractors typically procure the connection fittings for cable trays based on construction drawings."
+    },
+    {
+        "input": "What is the typical support spacing for cable trays in both commercial and industrial projects, and why do industrial projects require more precise load calculations compared to commercial buildings?",
+        "output": "The typical support spacing for cable trays is 6 meters in both commercial and industrial projects. Industrial projects require more precise load calculations because they involve larger cable trays and heavier cables, necessitating involvement from structural engineers and strict compliance with standards like NEMA."
+    },
+    {
+        "input": "What requirements must be met when cable trays pass through fire-rated partitions or firewalls according to the Canadian Electrical Code?",
+        "output": "Cable trays passing through fire-rated partitions or firewalls must be sealed with fireproof sealing materials to maintain the firewall's original fire rating, and firestop sealing is required, typically applied after installation is completed."
+    },
+    {
+        "input": "What is the primary function of an auxiliary gutter in electrical systems, and how does it differ from traditional cable raceways?",
+        "output": "An auxiliary gutter serves as a short-distance connection device, typically used to link distribution panels, meters, or disconnect switches, usually over a distance of two to three meters. Unlike traditional cable raceways that route cables, it is not designed for cable laying but rather for tapping or splitting electrical connections."
+    },
+    {
+        "input": "What is the primary function of Panduit in control panels, and how is it typically used?",
+        "output": "The primary function of Panduit is to neatly arrange multiple wires for easier cabling and troubleshooting, and it is typically applied within control panels to organize wires efficiently."
+    },
+    {
+        "input": "What are the key considerations for outdoor cable installation, particularly regarding UV resistance and protective measures?",
+        "output": "Outdoor cables without protective measures must meet UV resistance rating requirements, and they can be installed using overhead methods, cable trays, or conduits."
+    },
+    {
+        "input": "What are the three main types of underground cable installation methods mentioned in the text, and what is a key advantage of using a duct bank for cable installation?",
+        "output": "The three main types are direct buried cable, duct bank, and cable trench. A key advantage of using a duct bank is its structural strength, which allows it to withstand heavy vehicle loads and protect PVC conduits and conductors, especially during road crossings."
+    },
+    {
+        "input": "What measure is required for underground metal conduits to prevent oxidation corrosion, and why is it particularly important in certain environments?",
+        "output": "Cathodic protection must be implemented for underground metal conduits to prevent oxidation corrosion caused by prolonged metal exposure, especially in environments where moisture or groundwater can accelerate corrosion, such as in underground installations."
+    },
+    {
+        "input": "What is the maximum number of 90-degree bends allowed in BC Hydro’s service entrance without requiring a junction box?",
+        "output": "No more than three 90-degree bends are allowed; if more are needed, a junction box must be installed."
+    },
+    {
+        "input": "What is a critical consideration when cables or conduits need to pass between floors during construction?",
+        "output": "Sleeves must be installed."
+    },
+    {
+        "input": "What factors influence the selection of cable and conductor ratings in building installations according to the Canadian Electrical Code?",
+        "output": "The primary factors include the building's combustibility classification (combustible or non-combustible), the installation environment (such as plenum or combustible spaces), and specific requirements outlined in the Canadian Electrical Code for raceways, cable trays, and conduits."
+    },
+    {
+        "input": "What standards should be consulted for wiring requirements of Fire Alarm Systems and Security Systems in Canada?",
+        "output": "The wiring requirements for Fire Alarm Systems and Security Systems in Canada should be specified in relevant CIC or ULC/CSA standards, in addition to the Canadian Electrical Code."
+    },
+    {
+        "input": "What must be followed during the design process for cable installation in British Columbia, and which organizations provide these standards?",
+        "output": "In British Columbia, the design process for cable installation must follow the standards set by local utility companies; specifically, BC Hydro provides standards for power cables, while Shaw and Telus provide installation standards for communication cables."
+    }
+]

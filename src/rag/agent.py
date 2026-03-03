@@ -190,7 +190,7 @@ RULES FOR STORAGE:
         - Completion signal (COMPLETE status)
         """
         config = {"configurable": {"thread_id": conversation_id, "user_id": user_id}}
-        messages = [HumanMessage(content=query)]
+        messages = [HumanMessage(content=f"Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. {query}")]
         
         # Initialize state with new message only
         # Token counts will be maintained by the checkpointer across conversation
@@ -300,17 +300,36 @@ RULES FOR STORAGE:
             rating = final_state.values.get("rating", 0.0)
             title = final_state.values.get("title", None)
             
+            # Log completion metadata for debugging
+            print(f"\n{'='*60}")
+            print(f"COMPLETION METADATA DEBUG")
+            print(f"{'='*60}")
+            print(f"Conversation ID: {conversation_id}")
+            print(f"Final State Keys: {list(final_state.values.keys())}")
+            print(f"Rating: {rating}")
+            print(f"Title: {title}")
+            if title is None:
+                print(f"WARNING: Title is None! Check evaluator_node in graph.py")
+                print(f"Full final state values: {final_state.values}")
+            print(f"Input Tokens: {total_input_tokens}")
+            print(f"Output Tokens: {total_output_tokens}")
+            print(f"{'='*60}\n")
+            
+            completion_metadata = Metadata(
+                conversation_id=conversation_id,
+                input_tokens_used=total_input_tokens,
+                output_tokens_used=total_output_tokens,
+                rating=rating,
+                title=title,
+            )
+            
+            print(f"Completion Metadata Object: {completion_metadata.model_dump()}\n")
+            
             yield ChatResponse(
                 status=Status.COMPLETE,
                 type="completion",
                 content="",
-                metadata=Metadata(
-                    conversation_id=conversation_id,
-                    input_tokens_used=total_input_tokens,
-                    output_tokens_used=total_output_tokens,
-                    rating=rating,
-                    title=title,
-                )
+                metadata=completion_metadata
             )
 
         else:
@@ -429,6 +448,9 @@ def create_rag_tool(vector_store, ranker, hyde_generator: Optional[HyDEGenerator
             Tuple of (Serialized context, List of documents)
         """
         # Retrieve documents using Milvus hybrid search (dense + sparse)
+        if "Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. " in query:
+            query = query.replace("Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. ", "", 1)
+        
         inputText = hyde_generator.generate(query) if hyde_generator else query
         
         vs = vector_store.get_vector_store()

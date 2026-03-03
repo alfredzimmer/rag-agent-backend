@@ -14,9 +14,16 @@ from langchain_core.documents import Document
 HEADER_CONFIGS = {
     "ieee": {
         "rules": [
+            # Level 1: Single digit headers (e.g., "1. Overview", "2. Definitions")
+            {
+                "size_range": (10, 14),
+                "pattern": r"^\d+\.\s",
+                "is_bold": True,
+                "level": 1
+            },
             # Level 1: Chapter titles (e.g., "Chapter 2" or "Operating diagrams")
             {
-                "size_range": (13.5, 16),
+                "size_range": (11.5, 16),
                 "is_bold": True,
                 "level": 1
             },
@@ -312,18 +319,22 @@ def remove_headers_footers_configurable(markdown_text: str, config_name: str = "
 
 def truncate_headers_at_colon(markdown_text: str) -> str:
     """
-    Truncate markdown headers at colon symbol to keep only the part before ':'.
+    Truncate markdown headers at colon symbol, moving content after ':' to the next line.
+    
+    This preserves the content after the colon (e.g., definitions) while keeping
+    headers clean and concise.
     
     For example:
         "### 2.1.18 ground-fault protection of equipment: A system intended..."
         becomes:
         "### 2.1.18 ground-fault protection of equipment"
+        "A system intended..."
     
     Args:
         markdown_text: The markdown text with headers
         
     Returns:
-        Markdown text with truncated headers
+        Markdown text with truncated headers and preserved content
     """
     lines = markdown_text.split('\n')
     processed_lines = []
@@ -343,10 +354,20 @@ def truncate_headers_at_colon(markdown_text: str) -> str:
             if len(line) > header_level and line[header_level] == ' ':
                 header_text = line[header_level + 1:]
                 
-                # Truncate at colon if present
+                # Truncate at colon if present and preserve the content after it
                 if ':' in header_text:
-                    header_text = header_text.split(':', 1)[0].strip()
-                    line = '#' * header_level + ' ' + header_text
+                    parts = header_text.split(':', 1)
+                    header_part = parts[0].strip()
+                    content_part = parts[1].strip() if len(parts) > 1 else ""
+                    
+                    # Add the truncated header
+                    processed_lines.append('#' * header_level + ' ' + header_part)
+                    
+                    # Add the content after colon as a new line (if not empty)
+                    if content_part:
+                        processed_lines.append(content_part)
+                    
+                    continue  # Skip the normal append at the end
         
         processed_lines.append(line)
     
@@ -423,7 +444,10 @@ def split_pdf(file: str, config_name: str = "ieee") -> list[Document]:
     filename = os.path.basename(file)          # "{filename}.pdf"
     name_without_ext = os.path.splitext(filename)[0] # "{filename}"
     
-    pathlib.Path(f"src/rag/outputs/{name_without_ext}.md").write_bytes(markdown.encode())
+    # Save markdown file (ensure directory exists)
+    md_output = pathlib.Path(f"src/rag/outputs/{name_without_ext}.md").resolve()
+    md_output.parent.mkdir(parents=True, exist_ok=True)
+    md_output.write_bytes(markdown.encode())
     
     # split raw_splits again with chunk size constraints
     chunk_size = 1024
@@ -441,22 +465,37 @@ def split_pdf(file: str, config_name: str = "ieee") -> list[Document]:
 # UTILITY FUNCTIONS
 # ============================================================================
 
-def format_splits_as_list(splits, additional_metadata=None) -> list[dict]:
+def format_splits_as_list(splits, additional_metadata=None, document_name=None) -> list[dict]:
     """
     Format the markdown header splits into a well-structured list of dictionaries.
     
     Args:
         splits: List of Document objects from MarkdownHeaderTextSplitter
+        additional_metadata: Optional additional metadata to include
+        document_name: Optional document name to include in to_append field
         
     Returns:
-        List of dictionaries with headers and content
+        List of dictionaries with to_append, metadata, content, and char_count
     """
     formatted_splits = []
     
     for i, doc in enumerate(splits):
+        # Create to_append field with document name and headers
+        to_append = {}
+        if document_name:
+            to_append["name"] = document_name
+        to_append.update(doc.metadata)
+        
+        # Create metadata field with document name and headers
+        metadata = {}
+        if document_name:
+            metadata["name"] = document_name
+        metadata.update(doc.metadata)
+        
         split_data = {
             "chunk_id": i,
-            "headers": doc.metadata,
+            "to_append": to_append,
+            "metadata": metadata,
             "content": doc.page_content.strip(),
             "char_count": len(doc.page_content)
         }
@@ -480,11 +519,14 @@ if __name__ == "__main__":
     
     print(f"Processing {FILE_PATH} with config: {CONFIG}")
     chunks = split_pdf(FILE_PATH, CONFIG)
-    formatted_list = format_splits_as_list(chunks) # can pass additional_metadata here
+    
+    # Get filename for document name
+    filename = os.path.basename(FILE_PATH)
+    name_without_ext = os.path.splitext(filename)[0]
+    
+    formatted_list = format_splits_as_list(chunks, document_name=name_without_ext) # can pass additional_metadata here
     
     # Save to JSON file
-    filename = os.path.basename(FILE_PATH)          # "{filename}.pdf"
-    name_without_ext = os.path.splitext(filename)[0] # "{filename}"
     import json
     output_file = pathlib.Path(f"src/rag/outputs/{name_without_ext}.json")
     output_file.write_text(json.dumps(formatted_list, indent=2, ensure_ascii=False))

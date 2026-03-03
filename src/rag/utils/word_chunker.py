@@ -60,7 +60,7 @@ def format_splits_as_list(splits) -> list[dict]:
 
 # Debug testing
 if __name__ == "__main__":
-    FOLDER_PATH = "/srv/shared-data/training-datasets/NA-trainings/2023-2024/"
+    FOLDER_PATH = "/srv/shared-data/training-datasets/NA-trainings/English Transcripts from Youtube/"
     for filename in os.listdir(FOLDER_PATH):
         if filename.endswith(".docx"):
             FILE_PATH = os.path.join(FOLDER_PATH, filename)
@@ -72,6 +72,6 @@ if __name__ == "__main__":
             filename = os.path.basename(FILE_PATH)          # "{filename}.pdf"
             name_without_ext = os.path.splitext(filename)[0] # "{filename}"
             import json
-            output_file = pathlib.Path(f"src/rag/outputs/2023-2024/{name_without_ext}.json")
+            output_file = pathlib.Path(f"src/rag/outputs/English Transcripts from Youtube/{name_without_ext}.json")
             output_file.write_text(json.dumps(formatted_list, indent=2, ensure_ascii=False))
             print(f"\nSaved {len(formatted_list)} chunks to {output_file}")
