@@ -1,0 +1,74 @@
+[
+  {
+    "chunk_id": 0,
+    "metadata": {},
+    "content": "Hello everyone, today we will discuss the design of low-voltage motor power supply circuits. Here is the agenda for this lecture:\n\nFirst, we will introduce the applicable codes and standards;\n\nNext, we will analyze the requirements for designing low-voltage motor power supply circuits;\n\nFinally, we will explore how to select the protection device specifications and power supply conductors for low-voltage motors.\n\nNext, we will introduce the design process and use the Canadian Electrical Code as an example for illustration. In Canada, the design of low-voltage motor supply circuits primarily follows the Canadian Electrical Code, involving the following sections:\n\nSelection of motor supply conductors (CEC 28-104 to 112)\n\nSelection of overcurrent protection for motor circuits (CEC 28-200 to 212)\n\nRequirements for motor overload protection (CEC 28-300 to 318)\n\nFinally, we will discuss the necessary conditions for designing low-voltage motor supply circuits.",
+    "char_count": 967
+  },
+  {
+    "chunk_id": 1,
+    "metadata": {},
+    "content": "First, we need to obtain the motor’s specifications, including its power rating (horsepower or kilowatts), phase configuration (single-phase or three-phase), full-load current (FLC), voltage, and service factor. This information is critical for selecting conductors and motor protection circuits.\n\nFull-load current (FLC) can be determined in two ways:  \n1. Based on the motor nameplate data or calculated using formulas;  \n2. Referencing Tables 44 and 45 in the Canadian Electrical Code (CEC). Table 44 applies to three-phase motors, while Table 45 is for single-phase motors. Typically, the values in these code tables are more conservative than the actual motor nameplate data.",
+    "char_count": 680
+  },
+  {
+    "chunk_id": 2,
+    "metadata": {},
+    "content": "Additionally, it must be clarified whether the motor operates independently, in parallel with multiple units, or as part of factory-assembled equipment packages. This affects the selection of power supply circuits and protection circuits.\n\nThe motor’s starting method must also be considered—whether it uses a variable frequency drive (VFD), soft starter, or is directly started (full-voltage or reduced-voltage) via a motor control center (MCC).\n\nFor special applications like hazardous areas, specific requirements are outlined in Section 18 of the CEC. If the motor is used in flammable/explosive environments, this section must be consulted.\n\nFinally, confirmation is needed on whether the motor serves as a fire pump, as it is subject to unique design codes.",
+    "char_count": 763
+  },
+  {
+    "chunk_id": 3,
+    "metadata": {},
+    "content": "Finally, confirmation is needed on whether the motor serves as a fire pump, as it is subject to unique design codes.\n\nHow to design the power supply circuit for low-voltage motors? This involves the selection of conductor cross-sectional area and protective devices. According to the relevant clauses of the Canadian Electrical Code (CEC):\n- Conductor selection refers to CEC 28-112.\n- Overcurrent protection refers to CEC 28-200 to 212.\n- Overload protection refers to CEC 28-300 to 318.\n\nAlthough the code’s wording is somewhat obscure, the principles for motor conductor selection are relatively straightforward:\n- For a single motor, the ampacity should be selected at 125% of the Full Load Amperes (FLA).\n- For multiple motors, the largest motor should be selected at 125% FLA, while the others are sized at 100% FLA.",
+    "char_count": 822
+  },
+  {
+    "chunk_id": 4,
+    "metadata": {},
+    "content": "Low-voltage motor protection primarily involves two methods: fuses and circuit breakers.  \n- If using an Inverse Time Breaker, its rating should be 2.5 times the motor’s FLA.  \n- Fuses are categorized into non-time-delay and time-delay types:  \n- Non-time-delay fuses are selected at 300% of FLA.  \n- Time-delay fuses are selected at 175% of FLA.  \n- Protection calculations for multiple motors will be explained in detail in later examples.  \n\nOverload protection settings depend on the Motor Service Factor (SF):  \n- If the SF ≥ 1.15, set at 125% of FLA.  \n- If the SF < 1.15 or unspecified, set at 115% of FLA.  \nOverload protection devices can be standalone or integrated with overcurrent protection (e.g., using a breaker for both functions). For small motors (e.g., below 1 HP), overload protection is typically not required—refer to CEC 28-308 for specifics.  \n\nIt should be noted that the CEC 2018 edition does not explicitly specify protection standards for circuits with Variable Frequency Drives (VFDs) or Soft Starters.",
+    "char_count": 1031
+  },
+  {
+    "chunk_id": 5,
+    "metadata": {},
+    "content": "The CEC 2018 edition does not explicitly specify protection standards for circuits with Variable Frequency Drives (VFDs) or Soft Starters.\n\nThis is an issue worth discussing. For instance, when using a VFD, the inrush current during motor startup is relatively low, so it may not be necessary to select a breaker or fuse based on 250%, 175%, or 300% ratings. However, the CEC does not specify clear requirements for this scenario.\n\nCurrently, we typically follow the protection device selection standards for conventional motors. This is because, if a VFD with bypass functionality is used and the VFD fails, the system will switch to crossline operation mode. In such cases, protection devices must still be selected based on the 250%, 175%, or 300% standards.",
+    "char_count": 761
+  },
+  {
+    "chunk_id": 6,
+    "metadata": {},
+    "content": "The procedure is as follows: First, obtain the motor’s load current, which can be acquired from the motor nameplate or by referencing data from Tables 44/45 of the Canadian Electrical Code. Additionally, it is necessary to understand the equipment type, such as a single motor, multiple motors, or a packaged unit. Subsequently, use the aforementioned method to calculate the circuit breaker rating, fuse rating, and conductor rating.",
+    "char_count": 434
+  },
+  {
+    "chunk_id": 7,
+    "metadata": {},
+    "content": "It is important to note that when designing power supply for air conditioning systems, the equipment will provide MCA (Minimum Circuit Ampacity) and MOP (Maximum Overcurrent Protection) parameters. MCA is used to select the conductor size, while MOP is used to determine the protection device rating. For such air conditioning equipment, sizing can be directly based on these two parameters, eliminating the need to follow the motor sizing regulations specified in the Canadian Electrical Code.\n\nNext, we will use the Canadian Electrical Code (CEC 2018) as an example to explain the relevant content regarding motor conductor and protective device selection.\n\nNext, let’s examine an example from the Canadian Electrical Code (CEC) regarding conductor and protective device calculations.",
+    "char_count": 786
+  },
+  {
+    "chunk_id": 8,
+    "metadata": {},
+    "content": "Next, let’s examine an example from the Canadian Electrical Code (CEC) regarding conductor and protective device calculations.\n\nThis case involves a 100-horsepower motor, a 30-horsepower motor, and two 7.5-horsepower motors, supplied by a 600-volt three-phase power source, using direct starting without reduced-voltage starting or variable frequency drive (VFD).\n\nAccording to Table 44, the Full Load Amperage (FLA) of each motor and its 125% calculated value can be referenced. Conductor selection is relatively straightforward, with the final main feeder selection based on: 125% of the largest motor’s FLA current-carrying capacity, plus the load current-carrying capacity of all other motors, yielding a calculated result of 174A. Accordingly, the conductor size is selected as 2/0 AWG.\n\nOverload protection is calculated per Rule 28-306. Assuming a service factor of 1.15, the overload protection value for each motor can be determined.",
+    "char_count": 942
+  },
+  {
+    "chunk_id": 9,
+    "metadata": {},
+    "content": "Overload protection is calculated per Rule 28-306. Assuming a service factor of 1.15, the overload protection value for each motor can be determined.\n\nOvercurrent protection is divided into three types:  \n1. Time-delay fuse  \n2. Non-time-delay fuse  \n3. Inverse-time circuit breaker  \n\nFor time-delay fuse protection, the largest motor (100 hp) multiplied by 175% equals 174 A, plus the load current of other motors, yielding a final calculated value of 224 A. Thus, a 200 A fuse is selected.  \n\nFor non-time-delay fuse protection, the largest motor (99 hp) multiplied by 300% equals 297 A, plus the load current of other motors, yielding a final calculated value of 347 A. This is rounded down to select a 300 A fuse.  \n\nIf circuit breaker protection is used, the load current multiplied by 250% equals 248 A, plus the load current of other motors, yielding a total of 298 A. This is rounded down to select a 250 A circuit breaker.",
+    "char_count": 932
+  },
+  {
+    "chunk_id": 10,
+    "metadata": {},
+    "content": "If circuit breaker protection is used, the load current multiplied by 250% equals 248A, plus the load current of other motors, yielding a total of 298A. This is rounded down to select a 250A circuit breaker.\n\nFor the uppermost protection device and conductor selection in a multi-motor system where motors share circuits with other loads (e.g., lighting):\n- Conductor selection: 125% of the motor load current plus the current of other loads, with the total determining the conductor size.\n- Protection device selection: The motor load current multiplied by the applicable coefficient (175%, 300%, or 250%, depending on the protection device type), plus the current of other loads, determines the protection device rating.",
+    "char_count": 722
+  },
+  {
+    "chunk_id": 11,
+    "metadata": {},
+    "content": "The above is the explanation of this case. In addition, the selection of conductors for the motor power supply circuit, the setting of protective devices, and the determination of specifications also need to comprehensively consider other factors. For specific details, please refer to the relevant codes and standards, as this article only provides a brief description. The design method for low-voltage motor power supply circuits is generally as described above.\n\nThis concludes today’s lecture, which serves as a brief introduction. We plan to conduct a detailed interpretation of the standards in the future, where we will provide comprehensive explanations. We hope today’s session has been helpful to you. If you enjoyed the lecture, please subscribe and share the channel. Thank you for watching, and see you in the next program.",
+    "char_count": 837
+  }
+]

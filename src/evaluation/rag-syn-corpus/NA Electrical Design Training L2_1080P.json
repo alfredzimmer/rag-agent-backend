@@ -1,0 +1,590 @@
+[
+  {
+    "chunk_id": 0,
+    "metadata": {},
+    "content": "After the last session, several questions were raised, and I will now address them. The first question concerns the proper air supply for fire pumps and fire fans. This topic will be covered in detail in a future specialized session on fire alarm systems and equipment coordination, but I’ll briefly explain it here.\n\nThere are three main methods to start a fire pump:\n1. Via a pressure switch or flow switch;\n2. Automatic activation signal sent by the fire alarm system upon confirming a fire;\n3. Direct coordination through the fire control room.\n\nIt’s worth noting that in North America, there is no dedicated fire control room or full-time personnel on duty. Typically, personnel responsible for overall building maintenance also handle fire safety, building automation, and other tasks. This differs from domestic regulations, which require an independent fire control room staffed 24/7 by dedicated personnel.",
+    "char_count": 915
+  },
+  {
+    "chunk_id": 1,
+    "metadata": {},
+    "content": "The real-time pressure and flow rate variations inside the pipeline are the most authentic data. I believe the North American standards are more reasonable for the following reasons:",
+    "char_count": 182
+  },
+  {
+    "chunk_id": 2,
+    "metadata": {},
+    "content": "The real-time pressure and flow rate variations inside the pipeline are the most authentic data. I believe the North American standards are more reasonable for the following reasons:\n\nFirst, China’s building electrical codes primarily follow the former Soviet system. Compared to North American standards, the former Soviet standards lag in technological sophistication and understanding of building safety. The North American standards approach issues more objectively and comprehensively.",
+    "char_count": 490
+  },
+  {
+    "chunk_id": 3,
+    "metadata": {},
+    "content": "China’s regulatory system remains relatively closed and has long failed to fully incorporate advanced European and North American standards. Particularly in fire protection equipment control, domestic manufacturers’ standard systems are still underdeveloped. In North America, fire protection equipment controllers are subject to specialized standard requirements, and the entire startup control system consists of standardized equipment. The controllers can directly connect to pressure switches for automatic activation—a more rational design.\n\nRegarding smoke exhaust fans and positive pressure ventilation systems, foreign systems use fire alarm linkage control systems for direct activation. Even in the event of a false alarm, changes in air pressure will not affect equipment or evacuation procedures. This system is primarily activated by the Fire Alarm Control System (FACS).",
+    "char_count": 884
+  },
+  {
+    "chunk_id": 4,
+    "metadata": {},
+    "content": "Concerning dual-power supply requirements, North American standards do not mandate that all buildings must adopt a dual-power supply system. Typically, high-rise buildings are required to have emergency generators per building codes, but a dual-power system is not compulsory. Some clients with higher demands may opt for a dual-power configuration.",
+    "char_count": 349
+  },
+  {
+    "chunk_id": 5,
+    "metadata": {},
+    "content": "Party A, such as hospitals or important government office buildings, often adopts dual power supply and supplements it with emergency power sources. Although this practice is not mandatory under national or provincial building codes, the owners still choose this configuration due to their special requirements for power supply reliability. However, the actual implementation cost of dual power supply is extremely high, as it requires drawing power from two independent substations, making it rarely considered domestically. Abroad, engineers conduct a comprehensive cost-benefit evaluation, so ordinary buildings generally do not adopt dual power supply.",
+    "char_count": 656
+  },
+  {
+    "chunk_id": 6,
+    "metadata": {},
+    "content": "The primary purpose of emergency power sources is to supply fire protection loads. In North America, building classifications are detailed, and different building types have clear requirements for fire protection load power supply. Even low-rise or less demanding buildings must be equipped with fire protection load power sources, typically using batteries or generators as backup solutions.\n\nIn addition to diesel generators, backup power sources in North America include natural gas generators and dual-fuel generators. The classification of power supply loads under American standards differs from domestic standards, mainly categorized into Normal Load and Emergency Load, with the latter further subdivided into Life Safety Load, Critical Load, etc. For example, critical equipment in hospitals falls under the Critical Load category.",
+    "char_count": 840
+  },
+  {
+    "chunk_id": 7,
+    "metadata": {},
+    "content": "For critical loads and other important loads such as building automation or security systems required by the owner, emergency power supply must be used, which falls under the category of emergency loads. Some of these requirements are stipulated by building codes, while others are specified by the owner. Electrical codes themselves do not define these requirements; their definitions originate from building codes or owner specifications.",
+    "char_count": 440
+  },
+  {
+    "chunk_id": 8,
+    "metadata": {},
+    "content": "The third issue concerns code updates during the project. If a code update necessitates design changes, the corresponding design modification costs can be claimed from the owner. This is reasonable because the new code may not have been published during the design phase, and the design was executed according to the old code. Once the new code takes effect, the original design must be adjusted to meet the new requirements. However, in North America, code updates typically occur every three to six years, and each update involves relatively minor changes, so design modifications are usually not extensive.\n\nIf there are no further questions, we will proceed to the next lesson. Mr. Pan, let’s move directly to the next lesson.\n\nOkay, Professor Fang, let’s officially begin the content of the second lesson.\n\nToday we will mainly explain the basic introductory knowledge of electrical design in North America.",
+    "char_count": 912
+  },
+  {
+    "chunk_id": 9,
+    "metadata": {},
+    "content": "Today we will mainly explain the basic introductory knowledge of electrical design in North America.\n\nThe fundamental knowledge of North American electrical design for beginners is primarily divided into three parts.\n\nPart One provides an overview of the basic concepts of electrical design; Part Two explains how to complete high-quality electrical designs; Part Three introduces two practical reference books on North American electrical design.\n\nThese books are comprehensive and authoritative. Although they are lengthy and in English, which may pose some reading challenges, they are indeed the most complete and excellent reference materials I have encountered in my career, and thus I highly recommend them.\n\nI will briefly introduce the relevant aspects of electrical design.",
+    "char_count": 783
+  },
+  {
+    "chunk_id": 10,
+    "metadata": {},
+    "content": "I will briefly introduce the relevant aspects of electrical design.\n\nFirst, the scope of electrical design services and specific tasks involved; second, the main phases of electrical design; and finally, an overview of the overall electrical design process.\n\nAdditionally, I will explain the qualification requirements for practicing electrical design in North America, as well as career development paths in this field.",
+    "char_count": 420
+  },
+  {
+    "chunk_id": 11,
+    "metadata": {},
+    "content": "In North America, construction projects are primarily divided into two categories: new construction and renovation of existing buildings. For your company, the main focus is on large-scale new construction projects. In fact, the scale of projects you undertake is often larger than those in North America, as the region’s infrastructure is more developed, with relatively fewer new large-scale infrastructure projects, and its infrastructure has already stabilized. In contrast, developing countries offer more opportunities for such large-scale construction projects.\n\nOur consulting services include the following: for existing buildings, we can conduct condition assessments, produce relevant reports, and perform energy audits, among other tasks.",
+    "char_count": 750
+  },
+  {
+    "chunk_id": 12,
+    "metadata": {},
+    "content": "Our consulting services include the following: for existing buildings, we can conduct condition assessments, produce relevant reports, and perform energy audits, among other tasks.\n\nAuditing is one of the tasks, which also includes technical investigations of existing facilities and report writing. The first two items primarily focus on the evaluation, auditing, or investigation of existing buildings. The following content applies to both existing structures and new projects, such as planning and feasibility analysis, design, etc.\n\nIn North America, obtaining a building permit is typically required. During the bidding phase, we, as electrical engineering consultants, provide support, including Construction Administration and commissioning in the final stage.",
+    "char_count": 768
+  },
+  {
+    "chunk_id": 13,
+    "metadata": {},
+    "content": "In buildings, common electrical and control systems include power distribution systems, lighting and control systems, fire alarm systems, lightning protection and grounding systems, communication systems, security systems, public address systems (PA systems), audio-visual systems (A/V systems), and instrumentation and control systems.",
+    "char_count": 336
+  },
+  {
+    "chunk_id": 14,
+    "metadata": {},
+    "content": "The power distribution system covers normal power, emergency power, and uninterruptible power supplies (UPS), the latter primarily used for large data centers. In recent years, battery energy storage technology has gained popularity, replacing generators as emergency power sources in some scenarios. However, related codes and standards in North America are still being updated. For example, the application of wireless communication in fire alarm systems remains under discussion by code development committees.\n\nAs a traditional system, lighting systems now feature advanced control technologies. In North America, lighting design must prioritize energy efficiency requirements, adhering to standards like IESNA LPD (Lighting Power Density), which sets clear limits on lighting power consumption for various building types.",
+    "char_count": 826
+  },
+  {
+    "chunk_id": 15,
+    "metadata": {},
+    "content": "Fire alarm systems must comply with relevant safety codes. Communication system design, typically handled by electrical consultants for infrastructure components (e.g., grounding, power supply, and cable tray routing), follows the Bixi standard or EIA/TIA standards. Security systems encompass access control, closed-circuit television (CCTV), and intrusion detection systems.\n\nPublic address systems (PA systems) are widely used in airports, shopping malls, and other public spaces for background music or announcements. Audio-visual systems (A/V systems) primarily serve large office buildings or specialized venues like theaters. Instrumentation and control systems include components such as PLCs, DCS, FMCS, and HMIs.\n\n(Note: Technical terms like UPS, IH3, Bixi, EIA/TIA, PLC, DCS, FMCS, and HMI follow industry-standard nomenclature.)",
+    "char_count": 840
+  },
+  {
+    "chunk_id": 16,
+    "metadata": {},
+    "content": "DCS (Distributed Control System) and PLC (Programmable Logic Controller) are common types of control systems. DCS adopts a decentralized digital control architecture, while FMCS (Facility Monitoring and Control System) is used for facility management.\n\nHMI (Human-Machine Interface) is commonly seen in industrial projects. In building projects, Building Automation System (BAS) is typically employed, which can also be referred to as Building Management System (BMS). A detailed explanation of the BAS system will follow later.\n\nAdditionally, there are some specialized information service systems.",
+    "char_count": 599
+  },
+  {
+    "chunk_id": 17,
+    "metadata": {},
+    "content": "In North America, there is an energy-saving and environmental design standard called LEED. Additionally, data center design is often referred to as RCN, which requires RCDD certification. RCDD is a professional qualification in North America for low-voltage systems, particularly in communication design.\n\nOther specialized areas include lighting design for theaters, stadiums, and similar venues, as well as analysis and calculations for power systems. These topics will be covered in detail later, including the use of specialized software. Lighting design involves illuminance calculations, generator selection, and streetlight design, among others.",
+    "char_count": 652
+  },
+  {
+    "chunk_id": 18,
+    "metadata": {},
+    "content": "In the industrial sector, work includes instrumentation and control system design, programming, and commissioning. There are also projects that demand specialized electrical design expertise or experience, such as mythology laboratory design, nuclear energy-related design, and hospital design. These projects have unique requirements that differ significantly from standard office building designs.\n\nThe consulting services we provide have been introduced earlier. Next, I will elaborate on the different stages of the electrical design process and the corresponding tasks.",
+    "char_count": 574
+  },
+  {
+    "chunk_id": 19,
+    "metadata": {},
+    "content": "The consulting services we provide have been introduced earlier. Next, I will elaborate on the different stages of the electrical design process and the corresponding tasks.\n\nFirst, let’s discuss the technical report. This type of report is typically used for renovation projects. When preparing such a report, it is necessary to collect existing technical data, documents, and drawings from the client. Subsequently, a site survey is conducted to identify on-site issues. Based on the site conditions, existing technical data, current codes and standards, as well as client requirements, analysis and research are carried out.",
+    "char_count": 627
+  },
+  {
+    "chunk_id": 20,
+    "metadata": {},
+    "content": "During the analysis, multiple solutions are proposed, with a technical evaluation of the advantages and disadvantages of each option. The implementation costs and timelines are estimated, and a recommended solution is ultimately provided. The above content is compiled into a report and submitted to the client for review. If the client requests revisions, these are incorporated into the report before submitting the final version.\n\nThis is the basic workflow for the design phase.\n\nThese stages are likely familiar to everyone. First is the Conceptual Design phase, which includes planning reports, feasibility analysis reports, and documents like the BOD (Basis of Design), belonging to the early design stage and accounting for approximately 10% to 15%.\n\nNext comes the Schematic Design or Preliminary Design phase, accounting for about 33%. Then there’s the Design Development phase, also known as Detail Design, which accounts for roughly 66%.",
+    "char_count": 949
+  },
+  {
+    "chunk_id": 21,
+    "metadata": {},
+    "content": "Next comes the Schematic Design or Preliminary Design phase, accounting for about 33%. Then there’s the Design Development phase, also known as Detail Design, which accounts for roughly 66%.\n\nAdditionally, there are several critical phases: one is the stage for preparing the Building Permit application; the other is the Construction Development phase, where the design reaches 90% to 100% completion, primarily used for tendering.\n\nDuring the tendering process, contractors may raise questions, and as consultants, we need to address these. The formal document issued for this purpose is called an Addendum, which clarifies omissions or ambiguities in the design documentation.\n\nAfter the tendering phase concludes, consultants must release the IFC (Issue for Construction) drawings, also known as construction drawings. IFC drawings are based on the Issue for Tender drawings, incorporating the clarifications from the Addendum. This outlines the main workflow of the entire design process.",
+    "char_count": 993
+  },
+  {
+    "chunk_id": 22,
+    "metadata": {},
+    "content": "During the bidding process, you need to respond to some questions from the bidding companies, which we refer to as RFI (Request for Information), followed by entering the Tender Phase (Issue for Tender). In this process, some clients may require you to evaluate the bids submitted by vendors.\n\nTypically, a bid includes not only pricing but also related content such as project implementation plans, team qualifications, and company credentials. You will need to draft a recommendation letter specifying which contractors meet the requirements. For example, out of five contractors, three might qualify, but the final decision still rests with the client.\n\nAdditionally, attention must be paid to matters related to the construction management phase.",
+    "char_count": 750
+  },
+  {
+    "chunk_id": 23,
+    "metadata": {},
+    "content": "During the construction management phase, attention must be paid to matters related to construction management.\n\nAs an electrical consultant, the following responsibilities must be fulfilled:\n\nShop Drawing Review  \nVerify the consistency between contractor-submitted manufacturer drawings and design drawings, identify discrepancies, and issue rectification requirements. Approval is granted only after review, allowing manufacturers to proceed with production.\n\nParticipation in Construction Meetings  \nAttend regular on-site coordination meetings.\n\nSite Inspection  \nConduct field inspections and prepare inspection reports.",
+    "char_count": 626
+  },
+  {
+    "chunk_id": 24,
+    "metadata": {},
+    "content": "Participation in Construction Meetings  \nAttend regular on-site coordination meetings.  \n\nSite Inspection  \nConduct field inspections and prepare inspection reports.  \n\nIssuance of Site Instructions  \nProvide clarifications for technical queries raised by contractors. Note:  \nSite Instructions are general guidance documents.  \nChange Orders are triggered only when work falls outside the contract scope.  \n\nProgress Payment Review  \nMonthly review of contractor-submitted Progress Claims, cross-checked against actual on-site progress. Upon verification, issue a Certificate of Payment. Special attention must be paid to matching claimed quantities with actual completed work.  \n\nNote: All work must strictly adhere to contractual responsibilities to avoid unnecessary contract modifications.",
+    "char_count": 794
+  },
+  {
+    "chunk_id": 25,
+    "metadata": {},
+    "content": "If the adjustment plan is reasonable, it can be approved and a Certificate of Payment can be issued, based on which Party A will make the payment. Engineers are not only required to handle technical issues, but also undertake a significant amount of management coordination and paperwork, including matters such as Change Control Notices (CCN).",
+    "char_count": 344
+  },
+  {
+    "chunk_id": 26,
+    "metadata": {},
+    "content": "CCN (Construction Change Notice) is essentially a change notification document. When modifications are identified as necessary, this notice is issued to the contractor. Upon receiving the notice, the contractor must prepare a quotation, which is then returned to the client and subsequently forwarded to the consulting party. The consulting party must review whether the contractor’s quotation aligns reasonably with the scope of changes. If the quoted price is deemed too high, they can provide feedback to the client, who will then negotiate the price with the contractor.",
+    "char_count": 574
+  },
+  {
+    "chunk_id": 27,
+    "metadata": {},
+    "content": "When the project is nearing substantial completion, the consulting party must provide legally binding technical documents, such as the Substantial or Final Site Inspection Report, or issue a Completion Certificate. This signed and stamped certificate serves as the basis for both the contractor and the client. For non-government projects, the client must use this certificate to apply for an Occupancy Certificate from the local municipal authority.\n\nAdditionally, the consulting party is involved in the project commissioning process, selectively observing the commissioning activities and reviewing the Commissioning Report. During the project closeout phase, they must review the Warranty Documents and Operation & Maintenance Manual (O&M Manual) submitted by the contractor, focusing primarily on the completeness and compliance of these documents.",
+    "char_count": 853
+  },
+  {
+    "chunk_id": 28,
+    "metadata": {},
+    "content": "Finally, there is the review of As-built Drawings. Requirements for these drawings may vary by project. Typically, the contractor marks modifications on-site in red, and the consulting party then updates the AutoCAD files accordingly based on these annotations. This sometimes falls within the consultant’s scope of responsibilities and sometimes does not, depending on the terms of the engineer’s agreement. The agreement will clearly specify the relevant requirements, conditions, or specific design elements.",
+    "char_count": 511
+  },
+  {
+    "chunk_id": 29,
+    "metadata": {},
+    "content": "I will elaborate in detail in other lectures. Before designing, it is essential to clarify the client’s design requirements, which are typically outlined in the RFP (Request for Proposal) or RFQ (Request for Quotation). An RFP is a document soliciting design proposals, while an RFQ is a document requesting quotations. These are bidding documents issued by clients to select design consulting firms rather than contractors. Additionally, large clients such as oil companies, Motorola, or Intel often have their own design specifications and requirements for major projects, which also serve as design references.",
+    "char_count": 613
+  },
+  {
+    "chunk_id": 30,
+    "metadata": {},
+    "content": "For the electrical discipline, we also provide services to other disciplines. For example:\n- Architectural Discipline: Power supply for equipment like elevators and coordination with documentation systems\n- Mechanical Discipline: Power supply for kitchen equipment, water supply and drainage, fire sprinkler systems, etc.\n- Landscape Design: Outdoor lighting systems\n- Civil Discipline (referred to as CVO in North America, equivalent to the site planning discipline in China): Responsible for coordinating site pipeline design and road planning, which may include electrical requirements at outdoor junctions\n\nDesigns must also comply with various codes and standards, including building codes, elevator codes, etc. Specialized industries like nuclear power have specific requirements, and local regulations from authorities (e.g., electricity, telecommunications, health, and environmental departments) must be followed.",
+    "char_count": 922
+  },
+  {
+    "chunk_id": 31,
+    "metadata": {},
+    "content": "In North America, the \"net-zero\" building concept emphasizes self-sufficient power supply through renewable energy sources like solar power, aiming to achieve low-carbon and energy-saving objectives. These projects demand higher standards in energy efficiency and environmental protection, requiring careful attention during the design phase.\n\nThe primary technical documents (Deliverables) to be submitted during the design process include:\n- Technical reports\n- Basis of Design\n- Critical drawings\n- Specifications\n\nThree main types of documents in North America require an engineer’s stamp:\n- Building Permit drawings\n- E-Sual Container drawings\n- E-Sual Construction drawings",
+    "char_count": 679
+  },
+  {
+    "chunk_id": 32,
+    "metadata": {},
+    "content": "Building Permit drawings  \nE-Sual Container drawings  \nE-Sual Construction drawings  \n\nSpecifications fall into two categories:  \n1. Join Spec: Specifications are directly annotated on the drawings without a separate document.  \n2. Book Spec: Standalone technical specifications compiled into a booklet. Due to their highly detailed and lengthy content (often hundreds or even thousands of pages), they are referred to as Book Spec in North America.  \n\nDuring the Schematic Design or Detail Design phases, only an Outline (Table of Content) of the specifications is typically provided, listing the framework of each chapter. The complete Specification Package is only required at the Issue for Tender stage or the 99% design completion phase (BP stage).",
+    "char_count": 753
+  },
+  {
+    "chunk_id": 33,
+    "metadata": {},
+    "content": "Small projects are directly handled by electrical consultants, while large-scale projects typically engage professional firms for construction budgeting. Additionally, local authorities in North America require the submission of specific technical and administrative documents, commonly referred to as building schedules, which must be stamped for approval.",
+    "char_count": 357
+  },
+  {
+    "chunk_id": 34,
+    "metadata": {},
+    "content": "During the bidding phase, technical issues such as RFIs (Requests for Information) need to be addressed if they arise. The construction phase requires the submission of technical documents including site reports, change orders, and site instructions. At the project’s conclusion, as-built drawings must be completed.\n\nThe overall process and related methods are roughly as follows:\n\nFirst, it is necessary to collect all design requirements. Second, clarifying the Scope of Work (SOW) for the project is crucial. Additionally, load information for electrical equipment must be obtained from other disciplines or the client, along with drawings from the architectural discipline and the location details of major HVAC equipment. At the same time, specific requirements must be communicated to other disciplines, which will be elaborated on later.",
+    "char_count": 845
+  },
+  {
+    "chunk_id": 35,
+    "metadata": {},
+    "content": "Coordination with local power and telecommunications departments is required for matters such as elevator power supply lines and communication lines, including the necessary space, location, fire protection requirements, door opening dimensions, and cooling requirements for substations (or electrical/telecommunication rooms). These details will be addressed during collaboration with other disciplines.\n\nKey tasks include the drafting and management of Single-Line Diagrams (SLDs) and the preparation of drawings for systems such as fire alarms, telecommunications, and security. Additionally, power system analysis and calculations, including lighting calculations, must be performed.",
+    "char_count": 687
+  },
+  {
+    "chunk_id": 36,
+    "metadata": {},
+    "content": "Next, the floor plan design needs to be completed, including parts such as lightning protection and grounding. Additionally, the Panel Schedule must be prepared, which outlines the circuit distribution scheme for each distribution panel. The Lighting Fixture Schedule also needs to be developed to determine the grade and type of the selected RPC.\n\nThe installation detail drawings involve a substantial and relatively complex workload, and the design depth varies depending on the design institute. Unlike domestic practices, there are no unified standard drawing sets here—only the local power department provides some standard drawings, such as specific requirements for gold wire installation methods. General design institutes do not have such standard drawing sets.\n\nAnother important task is drafting the Specification and preparing the construction budget. In rare cases, the owner may request the design department to provide a Construction Schedule, though such instances are uncommon.",
+    "char_count": 995
+  },
+  {
+    "chunk_id": 37,
+    "metadata": {},
+    "content": "During the design phase, coordination with various design departments, the client, regulatory authorities, and utility companies is required. Specific tasks include conducting site surveys, reviewing technical documents, drawings, and design requirements, as well as undergoing the client's design review. It is also necessary to confirm regulatory and standard requirements with local authorities and negotiate service connections with utility companies.",
+    "char_count": 455
+  },
+  {
+    "chunk_id": 38,
+    "metadata": {},
+    "content": "When designing electrical rooms or substations, technical data must be obtained from equipment suppliers to ensure proper layout of electrical equipment and avoid installation issues due to insufficient space. Simultaneously, cross-disciplinary coordination is required with other specialties such as civil engineering, architecture, and plumbing/HVAC.\n\nThese coordination tasks are extensive and will be further detailed in subsequent collaboration stages.\n\nAnother crucial step is QA/QC. After the design is completed, it must undergo multiple rounds of review. In China, this process is referred to as “审核” or “审定,” while similar procedures exist in North America. The review primarily focuses on the following aspects: whether the design complies with regulations, meets the client’s design requirements, whether the drawing quality adheres to the client’s CAD standards, and whether best practices have been applied.",
+    "char_count": 921
+  },
+  {
+    "chunk_id": 39,
+    "metadata": {},
+    "content": "As engineers, we must balance design quality, budget, and schedule. A design is not necessarily better just because it is safer, nor can the timeline be arbitrarily extended. Every project has a defined budget and deadline—for example, a project with a budget of 50,000 RMB would be unfeasible if it ended up costing 100,000 RMB. At the same time, design quality must be maximized to the greatest extent possible.\n\nTimely submission of drawings is critical. Additionally, all correspondence and design documentation must be properly recorded. Whether communicating with the client, regulatory authorities, or other disciplines, any agreements reached must be systematically backed up and organized. These documents serve as vital evidence in potential disputes or legal conflicts that may arise later. When working in China, this concept was not yet widely adopted, and related practices were relatively lacking.",
+    "char_count": 912
+  },
+  {
+    "chunk_id": 40,
+    "metadata": {},
+    "content": "During the design process, the primary tools and references we utilize include various codes and standards. For drafting tools, the main ones are AutoCAD, REVIT, and MicroStation. Among these, MicroStation is relatively less used, while AutoCAD and REVIT are more prevalent. BIM is not a single software but a systematic framework, widely adopted domestically. Internationally, it is primarily employed for large-scale projects, with limited use in smaller projects. In the industrial sector, SmartPlant and MicroStation are more commonly utilized.",
+    "char_count": 548
+  },
+  {
+    "chunk_id": 41,
+    "metadata": {},
+    "content": "For calculation software, power system analysis frequently employs SKM, ETAP, and EZPOWER, which are widely used in North America. Lighting calculations mainly rely on AGI32. For generator calculations, some major manufacturers like Cummins and Caterpillar provide free calculation software and may even perform calculations based on user-provided single-line diagrams, which is tied to their equipment sales business. Grounding calculations for substation design will be covered in detail in subsequent lectures.",
+    "char_count": 513
+  },
+  {
+    "chunk_id": 42,
+    "metadata": {},
+    "content": "Design reference materials include various design guides (such as the IEEE Color Book), engineering handbooks, and reference books related to low-voltage system design. Additionally, product catalogs from manufacturers or suppliers serve as important references. For specification writing, North America adopts a templated approach: Canada uses the National Master Specification Template (NMS), while the U.S. follows templates developed by the American Institute of Architects. These templates, originally formatted with five-digit numbering, have expanded to six digits and can serve as a foundation for writing specifications. Brief guidelines on specification writing will be introduced later.\n\nOther design resources include custom symbol libraries in AutoCAD databases, various design guides, technical literature, and references from past project experiences.",
+    "char_count": 866
+  },
+  {
+    "chunk_id": 43,
+    "metadata": {},
+    "content": "Other design resources include custom symbol libraries in AutoCAD databases, various design guides, technical literature, and references from past project experiences.\n\nIn North America, if you want to become a Professional Engineer, you need to understand which corporate qualifications are required. In the United States, it is called PE (Professional Engineer), while in Canada, it is referred to as P.Eng. (Professional Engineer), with different abbreviations used. Additionally, there is the LEED certification, which was quite popular in North America a decade ago but has since lost some of its prominence. Another qualification is RCDD (Registered Communications Distribution Designer), a low-voltage design certification issued by BICSI in the U.S.\n\nPMP (Project Management Professional) is a well-known certification in the field of project management. If you are involved in commissioning work, there are also corresponding individual qualifications.",
+    "char_count": 961
+  },
+  {
+    "chunk_id": 44,
+    "metadata": {},
+    "content": "PMP (Project Management Professional) is a well-known certification in the field of project management. If you are involved in commissioning work, there are also corresponding individual qualifications.\n\nNorth America has many professional associations, such as:\n- IEC (International Electrotechnical Commission), a European standardization organization.\n- TIA (Telecommunications Industry Association).\n- EIA (Electronic Industries Alliance).\n- BICSI (Building Industry Consulting Service International).\n- NFPA (National Fire Protection Association).\n- ISA (International Society of Automation).\n\nBecoming a member of these associations offers benefits such as access to lectures, discounts on books (e.g., LEED and BICSI members enjoy 10%-15% discounts), technical exchange events, and regular email updates.\n\nThe first part of today’s session concludes here, covering the qualifications and associations relevant to engineers in North America.",
+    "char_count": 947
+  },
+  {
+    "chunk_id": 45,
+    "metadata": {},
+    "content": "In North America, to become a Professional Engineer (PE), the following requirements must typically be met:",
+    "char_count": 107
+  },
+  {
+    "chunk_id": 46,
+    "metadata": {},
+    "content": "In North America, to become a Professional Engineer (PE), the following requirements must typically be met:\n\nFirst, applicants must hold a bachelor’s degree and have at least four years of relevant professional experience. Second, they must pass two exams and obtain recommendation letters from referees. For the evaluation of foreign degrees, the North American engineering associations have an Academic Credentials Assessment Committee that reviews applicants’ qualifications. If the assessment deems the applicant’s qualifications insufficient, they may need to take additional relevant courses. Local graduates only need to pass two non-technical exams: Engineering Law and Professional Ethics. After obtaining the PE license, engineers can sign engineering documents, though it usually takes over eight years of work experience to gain sufficient confidence.",
+    "char_count": 863
+  },
+  {
+    "chunk_id": 47,
+    "metadata": {},
+    "content": "In North America, without a PE license, one cannot legally use the title “engineer” and must instead be referred to as a designer or technologist. Most degrees from Chinese universities are recognized, but applicants must provide certified copies of their diplomas and other supporting documents. When applying for a PE license in North America, overseas work experience can be credited for up to one year, and applicants must have at least one year of local work experience in North America.\n\nNorth America’s engineer licensing system differs from China’s—it is not nationally unified but managed separately by provincial or state engineering associations. Once licensed in one province or state, it is relatively straightforward to transfer the license to another.\n\nTo create good design, it’s essential to first define what constitutes good design. A good design should be clear and straightforward.",
+    "char_count": 902
+  },
+  {
+    "chunk_id": 48,
+    "metadata": {},
+    "content": "To create good design, it’s essential to first define what constitutes good design. A good design should be clear and straightforward.\n\nNext, we will discuss the following key points:\n- Scope of the design\n- Design based on the contract\n- Definition of the construction scope\n- Compliance with all regulatory requirements\n- Technical optimization\n\nGood design must meet all these criteria.",
+    "char_count": 389
+  },
+  {
+    "chunk_id": 49,
+    "metadata": {},
+    "content": "It is essential to clearly define the project’s scope of work. This will save significant time during subsequent construction design and bidding phases. Domestically, this has not been given enough attention in the past, but in reality, it is absolutely critical. Content outside the scope of work is irrelevant to the project; only what falls within the scope matters. The design drawings will serve as the basis for the technical scope of the bid. If the scope is not clearly defined during the bidding stage, various quality issues will arise later. During construction, numerous changes may be triggered, and some contractors may intentionally avoid pointing out design flaws during bidding, only raising change requests once construction begins. These changes often involve additional costs far exceeding the base price within the normal scope. This is a profit-seeking tactic through changes.",
+    "char_count": 898
+  },
+  {
+    "chunk_id": 50,
+    "metadata": {},
+    "content": "These changes often involve additional costs far exceeding the base price within the normal scope. This is a profit-seeking tactic through changes. Therefore, as an electrical consultant, it is imperative to clearly mark the contractual scope of work in the design drawings.",
+    "char_count": 274
+  },
+  {
+    "chunk_id": 51,
+    "metadata": {},
+    "content": "Second, strict adherence to all applicable codes and standards is mandatory. When designing a project, the following factors must be optimized: the designed system should be high-performing and cost-effective; the construction process should avoid major issues, ensuring ease of future equipment replacement and operational maintenance; the system should be energy-efficient; and the project timeline should be shortened as much as possible. These are all elements that an excellent design should embody.\n\nAs mentioned earlier, defining the scope of design is crucial. As a consultant, one must clearly understand their job responsibilities. If the scope of work is unclear, time may be wasted on irrelevant tasks, leading to inefficiency.",
+    "char_count": 739
+  },
+  {
+    "chunk_id": 52,
+    "metadata": {},
+    "content": "Defining the scope of design is crucial. As a consultant, one must clearly understand their job responsibilities. If the scope of work is unclear, time may be wasted on irrelevant tasks, leading to inefficiency.\n\nFor RFPs, RFQs, and engineering agreements or contracts, design firms must also clarify the terms. For example, if the client requests additional design work, the associated costs should be verified. Therefore, as a project manager or discipline lead, it is essential to clearly define the design scope and properly document and archive it for future reference. In case of disputes with the client, this documentation can be used to clarify the agreed scope. Requests beyond the defined scope can be accommodated but will incur additional charges.",
+    "char_count": 760
+  },
+  {
+    "chunk_id": 53,
+    "metadata": {},
+    "content": "The design scope varies across projects. For renovation or retrofit projects, one cannot design only certain parts while neglecting others; for new construction projects, the firm must undertake the entire design. Large-scale industrial projects involve even more complexity, often requiring collaboration among multiple consultants. As a project manager or discipline lead, it is critical to clearly delineate the responsibilities of each party.\n\nRegarding the system aspects, these have been discussed in detail previously and will not be reiterated here.\n\nRegarding the hospital system, we also need to mention the NOSCO system. We have previously touched upon this part. Here, I would like to particularly emphasize one point.",
+    "char_count": 730
+  },
+  {
+    "chunk_id": 54,
+    "metadata": {},
+    "content": "During the design phase, there are notable differences between Chinese and Western thinking patterns, which stem from cultural disparities between Eastern and Western traditions. Chinese professionals tend to focus directly on the core essence—engineers often contemplate final solutions and challenges to overcome from the project’s outset. In contrast, the Western approach adopts a phased, step-by-step methodology.",
+    "char_count": 418
+  },
+  {
+    "chunk_id": 55,
+    "metadata": {},
+    "content": "For instance, even if a project has an overarching contract, if the current phase only requires conceptual design, efforts remain strictly focused on that. This is because if a project is canceled midway, any work beyond the current phase may not receive compensation. For example, completing 60% of the work while the project terminates at the 30% stage could leave the extra 30% unpaid.\n\nThus, strict adherence to phase-specific requirements is essential: deliverables like drawings and specifications must match the depth required for each stage. Design work is segmented by phases, with payments also structured accordingly, making premature work generally unproductive. However, certain composite evaluations—such as coordinating electrical spaces (e.g., distribution rooms, substations) with other disciplines during preliminary design—require early preparation, which isn’t considered premature work.",
+    "char_count": 907
+  },
+  {
+    "chunk_id": 56,
+    "metadata": {},
+    "content": "Other detailed design elements, such as office outlets or lighting fixtures, need not be finalized too early. Over-advancing such details risks extensive rework if later modifications arise. Take circuit allocation: a single change in the distribution plan could necessitate adjustments across all related designs.\n\nAdditionally, the West enforces a strict “no payment, no work” principle, contrasting with some Chinese clients or contractors who demand “work first, payment later”—a practice often leading to payment disputes. On-site construction similarly follows procedural discipline: no unauthorized work proceeds without approval.\n\nHere, I would like to share with everyone the operational model of this industry in North America. It is particularly important to emphasize why our drawings include content related to HaoYuan and Yangyang Lu.",
+    "char_count": 848
+  },
+  {
+    "chunk_id": 57,
+    "metadata": {},
+    "content": "Clearly defining the construction scope and work content is crucial. This not only reduces issues during the bidding phase, avoids excessive inquiries from contractors—thereby saving significant time for Q&A—but also significantly lowers the occurrence of problems during the construction phase. A well-considered and clearly articulated design plan, though requiring more time in the design phase, can substantially reduce time costs during bidding and construction.",
+    "char_count": 467
+  },
+  {
+    "chunk_id": 58,
+    "metadata": {},
+    "content": "Moreover, a good design effectively prevents construction delays. Problems arising during construction not only require time to resolve but also involve waiting for material approvals and other processes, all of which extend the project timeline. Additionally, unclear designs may lead to an increase in change orders, driving up project costs. Contractors often exploit change orders for profit, resulting in inflated charges. Many projects have fixed budgets, and if design changes cause budget overruns of 20% to 30% or even 50% to 100%, funding shortages may occur. Government projects, in particular, might stall due to the inability to secure additional budgets.",
+    "char_count": 668
+  },
+  {
+    "chunk_id": 59,
+    "metadata": {},
+    "content": "In engineering reports, drawings, and specifications, it is essential to accurately grasp the depth and completeness of each design phase. The more detailed the design drawings, the more convenient the construction process, and the fewer potential issues during costing and construction. However, this requires appropriate balance.",
+    "char_count": 331
+  },
+  {
+    "chunk_id": 60,
+    "metadata": {},
+    "content": "Design drawings must be logically clear and well-organized. When describing the scope of work in drawing specifications, a clear logical sequence—such as top-down or following system workflows—should be adhered to. For example, in an installation system, progression should start from the incoming lines and advance step-by-step to avoid omissions. Avoid jumping between unrelated sections, such as mixing descriptions of lighting, fire alarms, and power distribution systems, as this compromises readability.\n\nAdditionally, differences in Eastern and Western work mentality should be noted: Westerners tend to handle tasks linearly, while Chinese professionals may think about multiple issues in parallel. During collaboration, all relevant standards, codes, and regulations must be followed.",
+    "char_count": 793
+  },
+  {
+    "chunk_id": 61,
+    "metadata": {},
+    "content": "We have emphasized this point many times.\n\nThe following explores how to optimize from both technical and design perspectives.\n\nFirst, a good design has several key elements:\n- Clearly defining the scope of work and signing a contract;\n- Ensuring compliance with all mandatory codes and standards;\n- Addressing technical performance and optimization issues.\n\nRegarding optimization, there is a method abroad called “value engineering.” Regulatory authorities and contractors often overlook this, but owners place great emphasis on it because it directly impacts cost control. During the design phase, a well-executed design can typically save 10% to 20% in construction costs or overall project expenses compared to a poor design. Therefore, owners pay special attention to this aspect, and design modifications are often driven by this goal—how to reduce costs and compare various alternatives.",
+    "char_count": 895
+  },
+  {
+    "chunk_id": 62,
+    "metadata": {},
+    "content": "After clearly defining the scope of work and meeting all code and standard requirements, we must consider the constructability of the design. The design must ensure smooth on-site implementation and avoid construction obstacles. These are mandatory requirements. Additionally, other critical factors must be considered when optimizing the design.\n\nDuring the design process, it is necessary to review whether overkill exists. For instance, if a specification of 100 suffices but 150 is designed, the extra 50 constitutes unnecessary waste. Whether acting as the professional lead or a peer reviewer, one should identify potential cost-saving opportunities, such as oversized equipment selection or redundant system configurations. Certain small-to-medium projects may not require fire alarm systems, and forcibly installing a complete system would clearly qualify as overdesign.",
+    "char_count": 878
+  },
+  {
+    "chunk_id": 63,
+    "metadata": {},
+    "content": "Additionally, there is room for optimization in equipment and material selection. In North America, for example, third-party channels such as China or Southeast Asia could be considered for outsourcing design work, mobilizing construction labor, or importing equipment from China to reduce costs. However, as consultants, it is essential to ensure that imported equipment complies with local certification standards—a trade-off the client must weigh independently.\n\nAlternative solutions are equally worth exploring. For example, in heating system selection, the economic differences between gas boilers and electric heaters should be compared. While this is not directly related to electrical design, as the EPC contractor or lead consulting advisor, coordination with plumbing and architectural teams is necessary for comprehensive evaluation. Such decisions will indirectly influence the electrical design approach.\n\nIn summary, design work must prioritize the following conditions:",
+    "char_count": 985
+  },
+  {
+    "chunk_id": 64,
+    "metadata": {},
+    "content": "In design work, it is essential to first clarify the project scope, then ensure compliance with regulatory standards and client requirements to avoid major on-site errors. For instance, improper handling of construction issues may lead to severe consequences such as the inability to move in equipment, which could negatively impact the company’s reputation, project timeline, and cost control.\n\nAdditionally, the design optimization phase requires solid professional expertise and extensive experience to provide clients or owners with reasonable suggestions, achieving cost savings while enhancing the company’s industry experience.\n\nThis content serves as a general overview, and detailed explanations will follow. Please feel free to raise any questions.",
+    "char_count": 758
+  },
+  {
+    "chunk_id": 65,
+    "metadata": {},
+    "content": "I will introduce two essential reference books for elevator engineering technicians in North America: one is the IEEE Colorbook in the field of high-voltage electrical systems, and the other is Big C’s Design Guide, which falls under the category of low-voltage systems.\n\nRegarding IEEE, after becoming a member, you can participate in related activities and enjoy discounts on book purchases.\n\nColorbook is edited and published by the IEEE Standards Association (formerly IEEE) under its IRC Committee. The book has been updated to a new edition, but the content remains largely unchanged as the power engineering field has seen limited advancements over the past few decades.",
+    "char_count": 677
+  },
+  {
+    "chunk_id": 66,
+    "metadata": {},
+    "content": "The book is available in both hardcover and paperback editions. I purchased a hardcover set priced at approximately $2,000. The complete work spans 13 volumes with over 6,000 pages in total, offering comprehensive yet voluminous content. I primarily use it as a reference book for consultation rather than reading cover to cover.\n\nThis publication is not a mandatory standard but rather a systematic technical guide, providing professional guidance for power engineers.\n\nThe first book is “Red Book: Power Distribution”, which primarily elaborates on power design-related content.\n\nThe second book covers grounding technology.\n\nThe third book focuses on the electrical design of commercial buildings.\n\nThe fourth book discusses relay protection.\n\nThe fifth book encompasses power system analysis and calculations.",
+    "char_count": 813
+  },
+  {
+    "chunk_id": 67,
+    "metadata": {},
+    "content": "The second book covers grounding technology.\n\nThe third book focuses on the electrical design of commercial buildings.\n\nThe fourth book discusses relay protection.\n\nThe fifth book encompasses power system analysis and calculations.\n\nThe sixth book elaborates on emergency power systems. Unlike the NFPA 110 standard, which is a mandatory code, the “Orange Book: Emergency and Standby Power” provides specific implementation methods.\n\nThe seventh book addresses power system reliability.\n\nThe eighth book explains short-circuit current calculations.",
+    "char_count": 548
+  },
+  {
+    "chunk_id": 68,
+    "metadata": {},
+    "content": "The seventh book addresses power system reliability.  \nThe eighth book explains short-circuit current calculations.  \nThe ninth book is a monograph on short-circuit currents.  \nThe tenth book specifically explores electrical design for hospitals.  \nThe eleventh book covers energy management in power systems.  \nThe twelfth book focuses on the maintenance, operation, and safety issues of medium and low-voltage power systems.  \nThe thirteenth book elaborates in detail on the protection mechanisms of low-voltage circuit breakers.  \nThe final book discusses topics related to electronic equipment.  \nThese constitute the IEEE Color Book Series. I have attached the relevant links.  \n\nAfter 2012, IEEE renamed the Color Book to the IEEE 3000 Standards Collection. This standard provides design guidelines and technical specifications for industrial and commercial power systems.  \nNext, I will introduce BIGC.",
+    "char_count": 909
+  },
+  {
+    "chunk_id": 69,
+    "metadata": {},
+    "content": "After 2012, IEEE renamed the Color Book to the IEEE 3000 Standards Collection. This standard provides design guidelines and technical specifications for industrial and commercial power systems.\n\nNext, I will introduce BIGC.\n\nBICSI (Building Industry Consulting Services International) is an academic and technical organization established in the United States with a history of 20 to 30 years. The institution offers various professional certifications, among which RCDD is the most prominent international credential.",
+    "char_count": 518
+  },
+  {
+    "chunk_id": 70,
+    "metadata": {},
+    "content": "The RCDD certification encompasses not only electrical and low-voltage systems but also includes aspects such as cooling systems in data center design, emergency power supply design, and architectural planning (e.g., raised floors), making it a comprehensive design certification. The exam is highly challenging, with study materials spanning 2,000 pages and consisting of 280 questions over four and a half hours. Additionally, in North America, such credentials require renewal every three years through Continuing Education Credits (CECs), mandating certificate holders to attend international conferences and engage in ongoing learning to update their knowledge.\n\nDue to a subsequent career shift into the oil industry, I did not renew or maintain this certification, so I no longer hold it. I obtained this certification between 2008 and 2009.",
+    "char_count": 848
+  },
+  {
+    "chunk_id": 71,
+    "metadata": {},
+    "content": "I obtained this certification between 2008 and 2009. Due to a subsequent career shift into the oil industry, I did not renew or maintain this certification, so I no longer hold it.\n\nBICSI has developed numerous guidelines and standards, with its guidelines being particularly comprehensive. I once purchased a set of these guidelines for approximately $2,000, which were thicker than IEEE standards. These guidelines cover not only communication cabling system design but also fire alarm systems, building automation, security systems (e.g., access control, intrusion detection, and CCTV), and audiovisual (AV) systems, totaling an estimated tens of thousands of pages. In recent years, some standards established by BICSI have been adopted by international standards.\n\nTherefore, this is a rather important institution. As I mentioned earlier, it possesses four sets of manuals along with numerous standards.",
+    "char_count": 909
+  },
+  {
+    "chunk_id": 72,
+    "metadata": {},
+    "content": "Therefore, this is a rather important institution. As I mentioned earlier, it possesses four sets of manuals along with numerous standards.\n\nThis standard has been adopted by the American National Standards Institute (ANSI) and is available in both print and electronic formats. Becoming a BICSI member costs approximately $200 annually, with discounts offered for purchasing materials or attending conferences. You can access related resources through the BICSI Learning Academy link, though they require payment.",
+    "char_count": 514
+  },
+  {
+    "chunk_id": 73,
+    "metadata": {},
+    "content": "This standard is considered the bible for low-voltage engineers, offering comprehensive coverage and clear logic. In contrast, Chinese technical reference books often fall short in technical depth and readability. Chinese references frequently skip steps due to the authors’ fragmented thinking, while English references provide detailed procedures and strong logical flow. As a result, I primarily rely on English reference books, as Chinese ones are noticeably less readable.\n\nThat concludes today’s presentation. If you have any questions, feel free to ask during the remaining twenty minutes.\n\nIf anyone has questions, you can directly ask Teacher Fan in class.",
+    "char_count": 665
+  },
+  {
+    "chunk_id": 74,
+    "metadata": {},
+    "content": "That concludes today’s presentation. If you have any questions, feel free to ask during the remaining twenty minutes.\n\nIf anyone has questions, you can directly ask Teacher Fan in class.\n\nBefore we begin the discussion, I’d like to share some personal insights. As Chinese engineers, we tend to be overly reserved and often remain silent during meetings. However, in North American workplace culture, proactively expressing oneself and showcasing your capabilities is crucial. Persistent silence may not only lead superiors to question your competence but also hinder the improvement of English communication skills.\n\nTherefore, I encourage everyone to speak up and ask questions boldly. Don’t worry about language barriers or imperfect ideas—these are opportunities for growth. Next, I’ll engage with you on topics related to our professional field.",
+    "char_count": 850
+  },
+  {
+    "chunk_id": 75,
+    "metadata": {},
+    "content": "Dear professors, I’d like to ask a question: Is there a standard depth requirement for design drawings at each stage, including technical specifications (spec)?\n\nNext, I will briefly outline the tasks involved in each design phase.\n\nDuring the conceptual design or schematic design phase, the electrical discipline typically only needs to submit a report. By the preliminary design (DDE) stage, system diagrams must be provided along with load calculations to determine cable specifications and wire sizes. For layout plans, only equipment locations need to be marked, without wiring connections or circuit design.\n\nRegarding design specifications, only a table of contents is required before the DDE stage. However, at 99% design completion or the construction drawing (CD/IFT) stage, complete design documents must be submitted.",
+    "char_count": 830
+  },
+  {
+    "chunk_id": 76,
+    "metadata": {},
+    "content": "Regarding design specifications, only a table of contents is required before the DDE stage. However, at 99% design completion or the construction drawing (CD/IFT) stage, complete design documents must be submitted.\n\nIn short, before the schematic design phase, the electrical discipline’s work primarily involves submitting reports, system diagrams, and coordination with the MEP disciplines (electromechanical).\n\nFor example, technical documents such as drawings will only be provided during the DDE phase.\n\nDuring the SD phase, you need to provide drawings such as single-line diagrams, wiring diagrams, and electrical layout diagrams. In the DDE phase, flowcharts and single-line diagrams are required. As for installation details, they can be addressed in later stages; for example, circuit diagrams and other specifics can be refined when the project reaches 99% completion.",
+    "char_count": 879
+  },
+  {
+    "chunk_id": 77,
+    "metadata": {},
+    "content": "Including annotations, including those in the drawings. During the design development phase (DD phase), annotations can be relatively brief; whereas in the construction documents phase (CD phase), annotations need to be more detailed, as the drawings have become richer and more comprehensive at this stage. The two phases complement each other.\n\nProfessor, I’d like to inquire about the H2E specification mentioned earlier. It appears to be quite outdated, with the earliest version dating back to 1990. Has this specification not been updated in recent years?\n\nThe fundamental theories and design standards in the field of high-voltage electrical engineering have remained largely unchanged for many years, whereas low-voltage technologies are updated frequently.",
+    "char_count": 765
+  },
+  {
+    "chunk_id": 78,
+    "metadata": {},
+    "content": "The fundamental theories and design standards in the field of high-voltage electrical engineering have remained largely unchanged for many years, whereas low-voltage technologies are updated frequently.\n\nStandards like H2E usually require payment for access. They may not be available for free browsing on relevant websites.\n\nYou can check it out, there might be a relevant version, but usually it’s quite old. It’s just a design guideline, not a standard, but some of its criteria have been adopted by standards, which is pretty good.\n\nIf any other colleagues have questions, feel free to speak up directly.\n\nI have a problem here,\n\nYou said,",
+    "char_count": 643
+  },
+  {
+    "chunk_id": 79,
+    "metadata": {},
+    "content": "If any other colleagues have questions, feel free to speak up directly.\n\nI have a problem here.\n\nYou said.\n\nCurrently, as an electrical engineer, I frequently encounter issues related to the design of room electrical appliances in residential and hotel projects. Should this type of design be led by electrical engineers, or should interior engineers be responsible for the layout design?\n\nIn North America, we typically have interior designers responsible for providing layout designs. They determine the placement of fixtures, outlets, and other elements based on aesthetic and functional requirements. These design plans are then reviewed by electrical engineers.\n\nWe want to,",
+    "char_count": 679
+  },
+  {
+    "chunk_id": 80,
+    "metadata": {},
+    "content": "If his design and layout comply with relevant electrical codes and standards, we will approve it. If there are any violations, we will request modifications. As electrical engineers, our responsibility is to oversee the power supply design. This is the nature of our collaborative relationship.\n\nIn electrical design, since the interior layout plan frequently changes, even if the design is completed during the GD phase, interior modifications may render the drawings completely incompatible. In such cases, it is usually the responsibility of the electrical engineer to update the drawings or make adjustments during the later F-Build phase.\n\nIn actual projects, inconsistencies in drawings are relatively common.",
+    "char_count": 715
+  },
+  {
+    "chunk_id": 81,
+    "metadata": {},
+    "content": "In actual projects, inconsistencies in drawings are relatively common. This is primarily a coordination issue. For example, the Interior Design and Electrical teams failed to coordinate properly—after the drawings were updated, they did not inform us, and the on-site work was handled by different contractors. As a result, different contractors might be using different versions of the drawings.\n\nIt is recommended to strengthen communication during the design phase and remind relevant parties to promptly notify us of any drawing updates so we can adjust accordingly. If timely communication is not achieved, issues will have to be resolved on-site.",
+    "char_count": 652
+  },
+  {
+    "chunk_id": 82,
+    "metadata": {},
+    "content": "It is recommended to strengthen communication during the design phase and remind relevant parties to promptly notify us of any drawing updates so we can adjust accordingly. If timely communication is not achieved, issues will have to be resolved on-site.\n\nAs an electrical designer, the initial design does not need to be overly detailed, as frequent revisions will lead to significant rework. Instead, request one or two finalized versions of the drawings from the other party and focus on completing them to save time. If every minor revision is followed up on, it will consume excessive effort.\n\nHello, I’d like to ask a question regarding industry construction standards. Since we’re not electrical engineering professionals, I’m curious about the Mass Format you mentioned earlier. How is Mass Format related to the BICSI checklist we encounter in construction projects?",
+    "char_count": 875
+  },
+  {
+    "chunk_id": 83,
+    "metadata": {},
+    "content": "Could you repeat the first word? I didn’t catch it clearly.\n\nHey, right now,\n\nYes, please go ahead.\n\nIn the PPT you just presented, the Mass Format mentioned might be used when writing Stacks. Regarding Mass Format, you mentioned the preparation of the Mass Specification Template.\n\nOh oh oh,\n\nOK,\n\nOh, what’s up? Tell me,\n\nI’m quite curious—in the context of overseas data center economics, are these Stack and Vehicle frameworks authored by Consultants, or are they compiled through other authoritative official documents? Given their remarkably precise alignment and parameter descriptions, I’m deeply intrigued by this Tipoff.",
+    "char_count": 630
+  },
+  {
+    "chunk_id": 84,
+    "metadata": {},
+    "content": "In Canada, there is a template called NMS (National Master Specification). Additionally, the American Institute of Architects (AIA) also has a similar template. These two templates are relatively common in North America.\n\nThe Canadian template is developed by a dedicated team at the National Research Council of Canada (NRC), while the American template is managed by a professional team from the American Institute of Architects. These teams consist of experts from various fields, making the template content highly detailed. Users only need to make modifications based on these templates, as specialized organizations are responsible for their maintenance.\n\nIn projects, the BICSI standards we commonly use are typically overseen by roles like yours abroad.\n\nAre you referring to BICSI materials or something else?\n\nBfq.",
+    "char_count": 824
+  },
+  {
+    "chunk_id": 85,
+    "metadata": {},
+    "content": "The BICSI standards commonly used in projects are typically overseen by roles similar to yours abroad.\n\nWhat you mentioned is not the specification. The specification consists of three parts: general, product, and execution. The general section includes basic overall requirements; the product section covers specific equipment and its technical capability requirements; the execution section involves QA/QC field implementation, such as testing and inspection, etc.\n\nOn the other hand, BOQ or BOM (Building Bill of Material) only lists equipment models and technical requirements, primarily used for quotation. In comparison, the specification covers a broader and more comprehensive scope.\n\nLet me add that I understand the issue raised by this colleague. Please correct me if I’m wrong.",
+    "char_count": 789
+  },
+  {
+    "chunk_id": 86,
+    "metadata": {},
+    "content": "The project is based in the CBD and Alaman areas, with Dar Company serving as the designer and supervisor. Their operational model was such that, in addition to the drawings, the technical documents we received at the time also included a standard technical specification manual. In addition, there is a document serving as a technical annex to the contract, referred to as the “View of Quantity.” BOQ refers to the Bill of Quantities mentioned by our colleague earlier. Clearly, this colleague has a thorough understanding of the technical specifications provided by the design consultant.",
+    "char_count": 590
+  },
+  {
+    "chunk_id": 87,
+    "metadata": {},
+    "content": "BOQ refers to the Bill of Quantities mentioned by our colleague earlier. Clearly, this colleague has a thorough understanding of the technical specifications provided by the design consultant.\n\nRegarding this BOQ, he would like to inquire whether in the North American design process it is provided by the Consultant or handled through other means?\n\nOkay, next is the smallest one. I’m not sure if I understand it correctly.\n\nIs that right?",
+    "char_count": 440
+  },
+  {
+    "chunk_id": 88,
+    "metadata": {},
+    "content": "In small-scale projects, owners sometimes hire consulting firms to provide budgeting services. However, large-scale projects typically require specialized estimating companies to complete the work. The so-called BOQ (Bill of Quantities) is essentially a list of materials and equipment. This part of the work is referred to as Material Takeoff, which involves systematically listing the required materials based on drawings. However, this only includes the quantity list and does not involve pricing.",
+    "char_count": 500
+  },
+  {
+    "chunk_id": 89,
+    "metadata": {},
+    "content": "The work of an estimating company goes beyond listing materials and unit prices to calculate material and equipment costs—it also includes calculating construction expenses. This covers the number of workers, hourly rates, travel expenses, permit fees, and all other related costs, ultimately providing the total project quote. Large projects must be handled by professional estimating companies.\n\nFor small to medium-sized projects, engineers abroad also need to understand these concepts. Compared to domestic engineers, engineers overseas are expected to possess broader knowledge. Domestic engineers working abroad might only score 60 points because they are usually only familiar with design work and lack understanding of other aspects. However, overseas, engineers are required to master all facets of a project.\n\nRegarding the preparation of BOQs, it may be handled by consulting firms or estimating companies.",
+    "char_count": 918
+  },
+  {
+    "chunk_id": 90,
+    "metadata": {},
+    "content": "The specification usually does not explicitly specify quantities but will define performance requirements, i.e., various technical indicator requirements, as well as document submission methods, including the submission process for shop drawings, etc. Additionally, it will detail the specific product requirements and on-site installation during the execution phase, QC acceptance, and other procedures.\n\nThe technical documents provided by the design institute include drawings and specifications, but these are often relatively rough. In practice, most contractors do not rely entirely on the design institute’s BOQ but instead prepare their own.",
+    "char_count": 649
+  },
+  {
+    "chunk_id": 91,
+    "metadata": {},
+    "content": "Taking the CBD project as an example, we received the BOQ document at that time. This document listed all equipment inventories categorized by system, including technical parameters, quantities of equipment, and reference prices for some large-scale equipment.\n\nThis was based on the requirements of cost-limited design. The Design Consultant provided reference prices to demonstrate that their design complied with the budget cap. However, after receiving the document, the contractor did not adopt it directly. Instead, they needed to review the drawings, technical specifications, and BOQ content again, making adjustments based on the final selected product prices to form a new quotation.\n\nThis part belongs to technical documentation but is not used as contractual technical documentation.\n\nOk, got it.\n\nA series of technical documents.",
+    "char_count": 842
+  },
+  {
+    "chunk_id": 92,
+    "metadata": {},
+    "content": "Due to concerns about liability, systems often come with disclaimers stating that the accuracy of the information cannot be guaranteed.\n\nColleagues who haven’t spoken yet, please speak as soon as possible. Today’s discussion has a lot of content and will take a long time.\n\nHello Professor Fang, I’d like to ask a non-technical question: What is the salary range for engineers with four to five years of work experience in North America?",
+    "char_count": 437
+  },
+  {
+    "chunk_id": 93,
+    "metadata": {},
+    "content": "Without a license, one cannot be called an engineer and can only be considered a general designer. Here, engineers are not classified as senior or intermediate; as long as they hold a license, they can sign documents.\n\nTypically, 8 to 10 years of experience qualifies one as a senior engineer, while 4 to 10 years places them at an intermediate level. For unlicensed personnel, the salary is approximately CAD 60,000–70,000.\n\nDue to the impact of COVID-19, prices in North America have risen significantly, and salaries for such positions have increased from around CAD 50,000 to the current level of CAD 60,000–70,000.\n\nIt’s US dollars, right?\n\nCanadian dollars or US dollars, some are even higher. This is just the average. Okay, thank you, teacher.\n\nWell, it’s nothing. / It’s okay.",
+    "char_count": 785
+  },
+  {
+    "chunk_id": 94,
+    "metadata": {},
+    "content": "It’s US dollars, right?\n\nCanadian dollars or US dollars, some are even higher. This is just the average. Okay, thank you, teacher.\n\nWell, it’s nothing. It’s okay.\n\nI have a question for everyone: Is the current course content targeted enough? What suggestions do you have? I can make corresponding adjustments in future courses.\n\nIf you have any questions, please raise them promptly. Feedback after class is also welcome.\n\nThe content of this lesson is relatively general, and we may delve deeper into it later. For now, it’s just a brief introduction, and you may already be familiar with many details in the related process.\n\nFor me, the challenge in teaching lies in how to fully share experience and content while reasonably managing the pace within limited time. Therefore, I’d like to hear your feedback, Professor Wang.",
+    "char_count": 827
+  },
+  {
+    "chunk_id": 95,
+    "metadata": {},
+    "content": "The challenge in teaching, for me, lies in how to fully share experience and content while reasonably managing the pace within limited time. I would like to hear your feedback.\n\nThrough this course, combined with my own work experience, I believe the gains have been substantial. At work, I usually only get to engage with partial segments, but this course has helped me connect the entire system chain, giving me a clearer understanding of the system as a whole. It has been immensely beneficial.\n\nThank you very much. Actually, after discussing with Pan Gong, I compressed the original 50-60 hours of technical content into 15 sessions totaling 30 hours. I have a YouTube channel with more detailed explanations from earlier stages. In today’s session, I skipped many details. I can tailor the content based on your needs, but due to time constraints, it’s impossible to cover everything.",
+    "char_count": 890
+  },
+  {
+    "chunk_id": 96,
+    "metadata": {},
+    "content": "The course syllabus has been developed based on input from colleagues at the Practical Institute and follows a structured sequence that comprehensively covers all aspects of electrical design while systematically integrating fragmented knowledge points. The content will be delivered in accordance with this sequence. After the course ends, further in-depth discussions on specific topics can be arranged if needed.",
+    "char_count": 415
+  },
+  {
+    "chunk_id": 97,
+    "metadata": {},
+    "content": "After the course concludes, if further in-depth discussion on certain topics is needed, we can communicate further.\n\nIt’s getting late today. Thank you very much, Professor Fan, for your careful preparation. Let’s wrap up here for now. After class, I will collect everyone’s feedback and will promptly share it with you if needed. Before the next class, we can arrange a Q&A session.\n\nThank you, Professor Fan, and also to all the colleagues who participated in the training.\n\nGoodbye, Teacher Fan. See you again.",
+    "char_count": 513
+  }
+]

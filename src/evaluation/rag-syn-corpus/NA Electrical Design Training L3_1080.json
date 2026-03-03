@@ -1,0 +1,554 @@
+[
+  {
+    "chunk_id": 0,
+    "metadata": {},
+    "content": "This lesson covers a wide range of topics, which I will briefly outline. The main content includes writing engineering reports, creating and reviewing drawings, matters related to SPAC, as well as considerations for drawing review in North America. Additionally, we will briefly introduce matters pertaining to engineering budgets.\n\nFirst, I will introduce the relevant aspects of engineering reports. As is well known, engineering reports are typically required to be written during the initial design phase, continuing through to the detailed design or engineering stage—specifically, the drawing production or SPAC (Specification and Code) preparation phase. For large-scale projects, report writing is essential, whereas smaller projects often proceed directly to the design phase. This is because large-scale projects involve tasks such as feasibility analysis and scheme evaluation.",
+    "char_count": 888
+  },
+  {
+    "chunk_id": 1,
+    "metadata": {},
+    "content": "In North America, projects under government or public sector jurisdiction usually require report submissions, even for smaller projects, as these reports are necessary for funding applications and project initiation. In contrast, small to medium-sized projects in the private sector generally do not require reports, though large-scale projects still need them. Whether for new construction or renovation projects, engineering reports are necessary, though their focus may differ.",
+    "char_count": 480
+  },
+  {
+    "chunk_id": 2,
+    "metadata": {},
+    "content": "The primary functions of engineering reports include analyzing current issues with facilities, buildings, or plants in existing projects, proposing multiple solutions, and evaluating the pros and cons, costs, and timelines of each option. The reports must also define the scope of work for each solution to assist clients in decision-making. Before project investment, clients need to assess factors such as project value, budget allocation, solution selection, and scheduling—engineering reports provide the analysis and decision-making support for this purpose.",
+    "char_count": 563
+  },
+  {
+    "chunk_id": 3,
+    "metadata": {},
+    "content": "Engineering reports serve to establish the design basis for subsequent design phases. Sometimes, reports must also be submitted as application documents to regulatory authorities. For example, in oil and gas projects in Alberta, Canada—where the province has abundant reserves but limited transportation capacity—large-scale projects like multi-billion-dollar pipeline constructions require approval from the National Energy Board and local government agencies.\n\nThe report must be submitted to the competent authority or local government for review and approval. Such reports are typically voluminous, with some even spanning over ten thousand pages, and the approval process may take up to a year and a half. These reports fall under the category of large-scale public sector projects.\n\nTypes of engineering reports include the following:",
+    "char_count": 840
+  },
+  {
+    "chunk_id": 4,
+    "metadata": {},
+    "content": "Types of engineering reports include the following:\n\nInvestment Analysis Report (IAR): Primarily for new projects, focusing on investment analysis, including cost estimation and evaluation of pros and cons.\n\nInvestigation Report (INR): Falls between investment and technical reports, mainly used for analyzing existing facilities.\n\nFeasibility Study Report: Emphasizes technical feasibility analysis while also meeting financial requirements and budget constraints. Applicable to new or retrofit projects.\n\nBasis of Design (BOD): Suitable for both new and retrofit projects. During the Schematic Design (SD) phase, design documents must be submitted alongside single-line diagrams and other drawings.",
+    "char_count": 700
+  },
+  {
+    "chunk_id": 5,
+    "metadata": {},
+    "content": "Basis of Design (BOD): Suitable for both new and retrofit projects. During the Schematic Design (SD) phase, design documents must be submitted alongside single-line diagrams and other drawings.\n\nFront End Engineering Design (FEED): Primarily used for large-scale industrial projects such as oil, gas, mining, and power, typically involving investments in the billions. FEED is equivalent to the SD phase and requires the submission of extensive drawings and reports. For example, I once participated in a project for Statoil (Norwegian state oil company) where over 20 electrical engineers spent a year completing the FEED work, with a project investment of approximately 2 billion CAD.\n\nDifferent project types and scales correspond to different report formats, with varying content and focus. FEED is primarily a technical report aimed at providing a basis for subsequent detailed design and preliminary design proposals.\n\nWhen preparing a report, the following steps are generally required:",
+    "char_count": 993
+  },
+  {
+    "chunk_id": 6,
+    "metadata": {},
+    "content": "When preparing a report, the following steps are generally required:\n\nFor renovation projects, the first step is to conduct a site survey. The site conditions often stem from feedback or complaints from building occupants. When the property management or owners deem the issue beyond their capability to handle, they will engage a consulting firm and sign an agreement.\n\nThe consultant must conduct an on-site inspection to identify the problems and communicate with the client or operations management to clarify the project objectives and specific requirements, i.e., defining the project scope and needs. At the same time, relevant information and documents must be collected, and input from other disciplines and data are also crucial.",
+    "char_count": 739
+  },
+  {
+    "chunk_id": 7,
+    "metadata": {},
+    "content": "After gathering the necessary information, the on-site issues must be analyzed, technical documents reviewed, and relevant codes and standards consulted based on the site conditions, followed by necessary calculations. After comprehensively considering the client’s needs and on-site conditions, three options are typically proposed, detailing the scope of work, advantages and disadvantages, cost, and timeline for each, along with a recommended solution.\n\nWhen proposing a solution, it is necessary to clarify its principles and rationale for recommendation. After completing the above tasks, the content should be compiled into a formal document, i.e., drafting a report.",
+    "char_count": 674
+  },
+  {
+    "chunk_id": 8,
+    "metadata": {},
+    "content": "When proposing a solution, it is necessary to clarify its principles and rationale for recommendation. After completing the above tasks, the content should be compiled into a formal document, i.e., drafting a report.\n\nA report typically includes a cover page, and some reports require an engineer’s seal. The report content should consist of a table of contents, diagrams, photos, calculation data, and appendices, among other elements. As one of the key documents, the report must be reviewed by an internal senior engineer or lead engineer.\n\nDepending on the project’s scale, complexity, and client requirements, a preliminary report is usually submitted first for client review and feedback. Upon receiving the feedback, the client’s comments must be incorporated into a revised version of the report, which is then resubmitted until final approval is obtained. This is the basic process for drafting an engineering report.",
+    "char_count": 926
+  },
+  {
+    "chunk_id": 9,
+    "metadata": {},
+    "content": "The previous discussion primarily focused on the renovation projects. For both renovation projects and new projects, the BOD report and SDR report generally place more emphasis on fundamental content. In fact, there is little difference between the BOD report and the SDR report—the former is similar to a conceptual design report, while the latter resembles a schematic design report.\n\nThe processes are largely similar, but for renovation projects, additional steps such as site surveys and client information collection are required. The differences in other aspects are minor and will not be elaborated further. Below is a brief overview of the key points for drafting these reports.",
+    "char_count": 687
+  },
+  {
+    "chunk_id": 10,
+    "metadata": {},
+    "content": "For Chinese individuals, writing reports does pose certain difficulties, with the main obstacle being insufficient English writing skills. While listening, speaking, and reading abilities in English may be passable, writing—especially composing well-structured and logically rigorous reports—remains a significant challenge.\n\nThe following example illustrates this point: This is a report on generator replacement for a local residential project recently completed by our company. The report includes a cover page and table of contents, though the loading speed is slightly slow.\n\nThe first step is on-site facility condition observation, known as observation finding.\n\nThere are some photos, collecting some matching stones.",
+    "char_count": 725
+  },
+  {
+    "chunk_id": 11,
+    "metadata": {},
+    "content": "The first step is on-site facility condition observation, known as observation finding.\n\nThere are some photos, collecting some matching stones.\n\nThe existing single-line diagram provides an overview of the distribution room system. Based on this, it is necessary to describe the on-site issues and document the new requirements proposed by the client.\n\nFirst, calculate the existing load conditions, then analyze the impact of adding more loads to the emergency power supply system. Subsequently, propose several solutions, including the budget, project timeline, advantages and disadvantages, and risk assessment for each option.\n\nNext, I will present the template for the schematic design report. Generally speaking.\n\nFor this large-scale project, the electrical discipline is only one component. In the conceptual design report, we are only responsible for one chapter.",
+    "char_count": 873
+  },
+  {
+    "chunk_id": 12,
+    "metadata": {},
+    "content": "The electrical system section includes:\n1. Overview\n2. Basic design\n3. Design requirements\n4. Applicable codes and standards\n\nThe content covers:\n- Electrical metering\n- Power distribution systems\n- Emergency power system design\n- Grounding and equipotential bonding\n- Lighting and controls (including illuminance requirements)\n- Communication and cable TV systems\n\nThis section introduces the layout of the distribution room, including the design of the communication system, alarm system, and security system. Additionally, it will present the specific arrangement.\n\nI don’t have time to explain these details thoroughly. Regarding this report, does anyone have any questions?\n\nIf there are no objections, we will proceed.",
+    "char_count": 724
+  },
+  {
+    "chunk_id": 13,
+    "metadata": {},
+    "content": "I don’t have time to explain these details thoroughly. Regarding this report, does anyone have any questions?\n\nIf there are no objections, we will proceed.\n\nThen let me ask.\n\nThe report usually follows a standard template.\n\nContinue using the template from the previous project to draft similar projects.\n\nIt depends on the specific situation of the client. For small clients or those lacking templates, they need to handle it themselves.\n\nLarge enterprises and government agencies usually provide templates or forms that need to be written according to their specified format, but the content must be filled in by oneself.\n\nGenerally speaking, larger-scale property owners will proactively provide templates, and we only need to refine them based on the templates.",
+    "char_count": 765
+  },
+  {
+    "chunk_id": 14,
+    "metadata": {},
+    "content": "Generally speaking, larger-scale property owners will proactively provide templates, and we only need to refine them based on the templates.  \nNot perfect. Essentially, templates only standardize the format rather than the content.  \nYeah.  \nIt only specifies the format and content requirements, but most of the work still needs to be completed independently. Writing engineering reports typically requires intermediate to senior engineers, as the reports need to be directly signed, equivalent to domestic finalized written documents.  \nSimilar to the way design specifications are written domestically. In reality, our design specifications are relatively concise.  \nOur design specifications are very concise. Next, I will briefly introduce the relevant content of design drawings. This part should be familiar to everyone.",
+    "char_count": 827
+  },
+  {
+    "chunk_id": 15,
+    "metadata": {},
+    "content": "Our design specifications are very concise. Next, I will briefly introduce the relevant content of design drawings. This part should be familiar to everyone.\n\nThis is the most critical design document, required for nearly every design component and project. The design depth correlates with the design phase, which we won’t elaborate on further here.\n\nAdditionally, it’s essential to emphasize the drafting standards. Back in China, CAD standards weren’t taken very seriously—I’m unsure about the current situation. However, many large companies and government agencies abroad have established detailed CAD standards that must be strictly adhered to; otherwise, documents will be rejected. This may differ from practices in China.",
+    "char_count": 730
+  },
+  {
+    "chunk_id": 16,
+    "metadata": {},
+    "content": "Taking the CAD standards as an example, they clearly specify elements such as layer naming, line types, colors, and text heights. Additionally, detailed regulations exist for components like the title block and logos—simply follow the standards. The standards also precisely define the usage rules for paper space and model space.\n\nDrawings typically include abbreviations, legends, symbols, and accompanying notes. These notes differ from the general design specifications; they are specific to each sheet, covering both general remarks and key notes. Key notes are used to highlight particular issues.",
+    "char_count": 603
+  },
+  {
+    "chunk_id": 17,
+    "metadata": {},
+    "content": "When preparing drawings, it is necessary to consider what content to include. Typically, the cover page contains a drawing list (Join List) as well as abbreviations and legends. These drawings are similar to domestic ones but more detailed. Specifically, they include:\n\nSite Drawings, which cover power/lighting plans and coordination with local utility companies. For electrical systems, this mainly involves coding for power supply and communication systems.",
+    "char_count": 460
+  },
+  {
+    "chunk_id": 18,
+    "metadata": {},
+    "content": "Site Drawings, which cover power/lighting plans and coordination with local utility companies. For electrical systems, this mainly involves coding for power supply and communication systems.\n\nFloor Plans, including power/lighting, fire protection, communication, AVPA, and security systems.\n\nEnlarged Layouts, primarily showcasing details related to spaces such as power, communication, generator rooms, or UPS rooms.\n\nSingle Line Diagrams, known as main wiring diagrams domestically. Completing this part accounts for 30% to 40% of the entire project workload, as the main framework and key information are reflected in the single line diagrams.\n\nRiser Diagrams, mainly used for low-voltage systems, referred to as weak current systems domestically.\n\nAdditionally, panel schedules are also included.",
+    "char_count": 800
+  },
+  {
+    "chunk_id": 19,
+    "metadata": {},
+    "content": "Riser diagrams, mainly used for low-voltage systems, referred to as weak current systems domestically.\n\nAdditionally, panel schedules are also included.\n\nFor each distribution board, include the circuit number and its load name, as well as the rated parameters and number of phases of the circuit breakers. The panel schedule should also include the cable specifications.\n\nFor fire alarm drawings, in addition to the system diagram, provide alarm zone information and operational procedures, which describe the working mechanism of domestic alarm systems. Furthermore, include any forms required by the authorities.",
+    "char_count": 615
+  },
+  {
+    "chunk_id": 20,
+    "metadata": {},
+    "content": "For fire alarm drawings, in addition to the system diagram, include alarm zone information and operational procedures describing the working mechanism of domestic alarm systems. Provide any forms required by the authorities.\n\nFor high-demand venues such as theaters, include a lighting control zone schedule, also known as a Zoom Schedule. In offices and schools, specify which doors require access control integration, along with a detailed schedule. If a CCTV system is present, include a camera schedule; similarly, provide a schedule for the burglar alarm system if applicable.\n\nMechanical equipment schedules must be reflected in the drawings. Load calculations must justify the selection of conductor sizes and be presented in tabular form. Large-scale projects may require a complete electrical system analysis report.",
+    "char_count": 825
+  },
+  {
+    "chunk_id": 21,
+    "metadata": {},
+    "content": "Mechanical equipment schedules must also be reflected in the drawings. Load calculations should justify the selection of conductor sizes, presented at least in tabular form. Large-scale projects may require a complete electrical system analysis report.\n\nSequence of operations primarily applies to fire alarms, security systems, and building automation systems, serving as the basis for programming—essentially, the control requirements. While this aspect is often overlooked in domestic electrical engineering, understanding building access control methods and mechanical system operations greatly benefits design and enhances interdisciplinary coordination.\n\nInstallation details are typically based on standardized CAD databases and can be directly referenced. Finally, include the technical specifications.",
+    "char_count": 810
+  },
+  {
+    "chunk_id": 22,
+    "metadata": {},
+    "content": "Installation details are typically based on standardized CAD databases and can be directly referenced. Finally, include the technical specifications.\n\nFor small projects, the entire design can be presented on a single drawing. For large projects, standardized CAD databases are typically used. Next, the types of drawings required at different design stages will be outlined.\n\nThe cover sheet applies to all design phases. Peripheral areas are typically required to be provided at each design stage, including floor plans and layout drawings. During the detailed design phase (66% stage), rough layout drawings of electrical equipment or devices are collected, but circuit allocation is not required. Subsequent phases such as construction drawing design, tender stage, construction phase, and as-built stage all require submission of such drawings.",
+    "char_count": 849
+  },
+  {
+    "chunk_id": 23,
+    "metadata": {},
+    "content": "For socket circuits and similar elements, circuit allocation needs to be completed during the construction drawing design phase. Additionally, enlarged drawings of electrical equipment rooms are usually collected starting from the schematic design phase, as equipment locations must be determined in the initial stage. The design process is as follows: first, perform load calculations, and only after obtaining the results can the single-line diagram (main wiring diagram) be drawn. Once the single-line diagram is finalized, equipment selection is completed, and the electrical equipment room layout can then be designed.\n\nThe single-line diagram follows essentially the same process as described above, starting from the schematic design phase, and sometimes even a preliminary version is required during the conceptual design phase. The panel schedule is typically completed during the construction drawing design phase.",
+    "char_count": 924
+  },
+  {
+    "chunk_id": 24,
+    "metadata": {},
+    "content": "Then for items like Fire alarm zone schedules, lighting fixture schedules, lighting control zone schedules, and door schedules, they are generally issued during the CD (Construction Documents) phase.\n\nLoad calculation is an early-stage task that complements the single line work.\n\nThe Sequence of operation is typically required to be reflected in the drawings during the D (Design Development) phase, with subsequent modifications and more detailed content provided as the design progresses.\n\nInstallation details are usually issued after the CD phase.\n\nSpecifications are generally not required during the preliminary design phase (SD phase) and are only needed at the 66% or 90% completion stages.\n\nRegarding the drawing detail level, there are several key points to note.",
+    "char_count": 775
+  },
+  {
+    "chunk_id": 25,
+    "metadata": {},
+    "content": "The first issue is how to balance design budget with design depth and quality. Overseas, design work is typically divided into phases. For instance, if a project only progresses to the preliminary design stage, there’s no need to delve into subsequent work to avoid resource wastage in case of project cancellation. This is particularly evident in the design industry, especially among private design firms and large enterprises, which enforce strict budget controls. Time costs are acutely reflected in the design sector, as designers are billed by the hour—additional work hours directly translate to extra expenses. Therefore, design depth should align with the project phase, delivering only the necessary technical documentation for that stage.",
+    "char_count": 749
+  },
+  {
+    "chunk_id": 26,
+    "metadata": {},
+    "content": "Secondly, building projects (e.g., offices, schools, government buildings—commercial projects) and industrial projects (e.g., oil fields, mines, power facilities) operate under fundamentally different models. In commercial projects, consulting is usually independent, whereas in industrial projects, consulting and construction are often bundled under EPC (Engineering, Procurement, and Construction) contracts. Additionally, their design budgets differ significantly. Commercial project designs tend to be more schematic with limited budgets, while industrial project designs are highly detailed, with every aspect meticulously considered due to their ample design budgets. For example, in an industrial project, designing a switchgear might allocate 40 hours of work, covering all technical issues and coordination to produce a comprehensive material requisition. In contrast, commercial projects typically simplify this step to drafting specifications before direct procurement.",
+    "char_count": 981
+  },
+  {
+    "chunk_id": 27,
+    "metadata": {},
+    "content": "Industrial project consultants provide exhaustive equipment specifications because they have abundant time. For instance, I once worked on a generator project for an oil company where the generator itself cost $150,000, yet the design fees reached $200,000—highlighting the emphasis on design depth in industrial projects.\n\nWhen executing projects in the commercial sector, costs may range between $20,000 to $40,000, but actual variations can span 5 to 10 times. There is also a notable disparity in design depth between North America and China. Chinese design drawings typically achieve about 66% to 70% of the depth seen in North America, primarily due to faster project timelines, tighter schedules, and lower budgets domestically. Additionally, domestic contractors often possess higher skill levels, with design institutes providing only conceptual plans, leaving detailed implementation to on-site resolution.",
+    "char_count": 916
+  },
+  {
+    "chunk_id": 28,
+    "metadata": {},
+    "content": "Design engineers overseas bear greater technical responsibility, requiring them to deliver comprehensive designs and approve all on-site issues or modifications. As a result, foreign engineers need stronger expertise, extensive experience, and broader knowledge, with design budgets often five times higher than domestic ones.\n\nRegarding project costs, labor, and timelines, overseas figures are typically 5 to 10 times higher than domestic ones. This observation is based on experience working in China two decades ago; domestic costs may have since increased, narrowing the gap.",
+    "char_count": 580
+  },
+  {
+    "chunk_id": 29,
+    "metadata": {},
+    "content": "Regarding project costs, labor, and timelines, overseas figures are typically 5 to 10 times higher than domestic ones. This observation stems from experience working in China two decades ago; domestic costs may have since risen, narrowing the gap.\n\nFor drawing design, it must include nodal explanations such as general notes and critical annotations, and undergo continuous updates across design phases, including adjustments to enlarged details. Circuiting should not be finalized too early to avoid extensive revisions from later adjustments. Installation details are often minimally presented in small projects. Schedules and sequences of operation should also be refined progressively as the design evolves.",
+    "char_count": 712
+  },
+  {
+    "chunk_id": 30,
+    "metadata": {},
+    "content": "Specifications should be as detailed as possible, clearly defining scope and rules to minimize communication gaps and oversights during construction. Rigor in the design phase is particularly critical for overseas projects. These are the fundamentals of drawing design; due to time constraints, no further examples will be provided.  \n\nRegarding the design drawings, does anyone have any questions to raise?  \n\nProfessor Fan, could you please provide us with one or two typical drawings with appropriate graphic representation for reference after class?  \n\nOkay.  \n\nRefer to it for study.",
+    "char_count": 588
+  },
+  {
+    "chunk_id": 31,
+    "metadata": {},
+    "content": "I’m not entirely clear about the specifics of your project design drawings, but they should be roughly similar. In reality, the quality of design institutes varies significantly. Some institutes have higher professional standards, resulting in better-quality drawings, while others are more perfunctory, even containing numerous errors.\n\nInternationally, design firms are liable for compensation if design issues arise, so they typically purchase insurance. Additionally, as professional engineers, signing and stamping the documents means taking full responsibility for the entire project. If problems occur, they may face penalties from the engineering association, with severe cases potentially leading to license revocation.",
+    "char_count": 728
+  },
+  {
+    "chunk_id": 32,
+    "metadata": {},
+    "content": "If there are no issues with the drawings, we can proceed.\n\nNext, we will explain how to write an instruction manual and its related content.\n\nFirst, introduce the overall framework of the instruction manual system in North America, including an overview of the master template and the main components of the manual. Next, explain the coordination with other disciplines. Finally, briefly illustrate the general method for compiling instruction manuals through specific examples.\n\nIt should be emphasized that this discussion primarily focuses on the Book Specification (Book Spec) used for medium and large-scale projects.\n\nIn the public sector, book specs are typically required regardless of project scale. Those responsible for drafting book specs must possess solid technical expertise and extensive experience.",
+    "char_count": 815
+  },
+  {
+    "chunk_id": 33,
+    "metadata": {},
+    "content": "In the public sector, book specs are typically required regardless of project scale. Those responsible for drafting book specs must possess solid technical expertise and extensive experience.\n\nThe book spec primarily supplements detailed technical requirements not shown or inconvenient to illustrate in drawings. This document mainly covers product specifications, installation guidelines, on-site construction requirements (such as shop joints), and quality control standards. Additionally, it must accurately reflect the client’s special requirements.\n\nDrawings and specifications must remain consistent; otherwise, numerous issues may arise during construction. Contractors often raise numerous queries during construction, requiring timely clarification. As time may blur memories, all requirements should be conflict-free during the design phase.",
+    "char_count": 852
+  },
+  {
+    "chunk_id": 34,
+    "metadata": {},
+    "content": "Specs must comply with applicable mandatory codes and standards. NIMS (National Master Specification Template) is a technical specification template developed by the Canadian Academy of Sciences, which also oversees building code formulation. The United States primarily adopts the MasterSpec from the American Institute of Architects. These two specifications are quite similar. Typically, templates are used for operations in projects. Later, I will demonstrate the specific form of this template. The template uses a six-digit numbering system, such as the six-digit codes in NMS. Each specification is called a section, and specifications are first divided into divisions, which are broader categories—for example, there are a total of 44 divisions. Each division contains multiple sections, and each section has a six-digit number and a name.",
+    "char_count": 847
+  },
+  {
+    "chunk_id": 35,
+    "metadata": {},
+    "content": "Relevant information can be found on the NMS website by searching for “National Master Specification.” The website displays the complete list of 44 divisions and their specification catalogs, including all sections.\n\nThe NMS template must be purchased, with the electrical version costing around 2,000 CAD and the full version ranging from 3,000 to 5,000 CAD. This specification is updated periodically.\n\nNext, I will introduce the concept of front end spec.\n\nIn fact, these are some general requirements for bidding. For example, Division 00 covers the bidding process and contract requirements, which are non-technical in nature. Division 01 consists of general requirements, primarily including commissioning, training, project meetings, and QAQC, applicable to all disciplines but not involving contract terms. Division 02 deals with existing conditions and is relevant for the latest projects.",
+    "char_count": 898
+  },
+  {
+    "chunk_id": 36,
+    "metadata": {},
+    "content": "These three Divisions are collectively referred to as Front End Specs. They require coordination across disciplines and must be confirmed with the client, their project management team (PM), and operations and maintenance personnel (O&M) to reflect their specific requirements. The Commissioning Specification section should be handled by a professional commissioning company or agency.\n\nNext are several Divisions related to electrical work:\n- Division 26 covers building electrical systems.\n- Division 27 and 28 address communication and security systems (e.g., security and fire alarm systems), respectively.\n- Division 33 applies not only to electrical work but also includes other disciplines such as plumbing and gas, mainly covering power and communication facilities.",
+    "char_count": 775
+  },
+  {
+    "chunk_id": 37,
+    "metadata": {},
+    "content": "An electrical specification document applies to different contract scopes. For instance, in a project where you serve as the Electrical Consultant, the project may involve multiple electrical contractors responsible for various aspects such as high-voltage systems, low-voltage systems, or utilities.\n\nTherefore, the specification must clearly define the scope of work for each contractor. The High-Voltage Contractor is responsible for grounding, power supply, cable trays, conduits, etc., while the Low-Voltage Contractor is only responsible for wiring, termination, and commissioning.\n\nAdditionally, coordination requirements with other disciplines must also be specified.",
+    "char_count": 675
+  },
+  {
+    "chunk_id": 38,
+    "metadata": {},
+    "content": "When writing each chapter, it is necessary to list other related chapters.\n\nThe coordination content with the Electrical Discipline includes:\n- Wall repair (Painting and patching) in the Architectural Discipline, which involves repairing and repainting walls damaged during the installation of electrical conduits;\n- Firestopping, which requires sealing cable trays or conduits passing through firewalls with fire-resistant materials;\n- And coordination items with the Architectural Discipline such as Elevators.\n\nFor the Mechanical Discipline, the related chapters include:\n- Division 23 (HVAC systems);\n- Division 25 (Plumbing systems), etc.",
+    "char_count": 643
+  },
+  {
+    "chunk_id": 39,
+    "metadata": {},
+    "content": "For the Mechanical Discipline, the related chapters include:  \n- Division 23 (HVAC systems);  \n- Division 25 (Plumbing systems), etc.  \n\nThe mechanical content related to the Electrical Discipline mainly includes:  \n- Electrical heating in Division 14;  \n- HVAC control systems (Electric and Electronic Control System for HVAC);  \n- Building automation systems (BAS), also known as Energy Management Control Systems (EMCS), which are also coordination items.  \n\nWhen referencing, only the chapter number and name need to be cited; specific content does not need to be referenced.  \n\nThe specific method for drafting specifications is typically handled by senior personnel. Although we cannot elaborate in detail here, we can outline the composition of each section. Generally, it is divided into three parts:  \n\nThe first part is General, covering relevant standards and requirements;  \n\nThe second part is Products, specifying technical indicators and product requirements;",
+    "char_count": 974
+  },
+  {
+    "chunk_id": 40,
+    "metadata": {},
+    "content": "The first part is General, covering relevant standards and requirements.\n\nThe second part is Products, specifying technical indicators and product requirements.\n\nThe third part is Execution, involving implementation details such as on-site installation.\n\nAt the start of a project, the first step is to identify the applicable sections, which naturally forms the table of contents for the spec. Subsequently, the specific content of each section is refined based on project needs.\n\nSpecifically, the first step is to remove content irrelevant to the project, retain applicable sections, and modify template content to align with project requirements. If the template lacks certain necessary elements, they should be added independently.",
+    "char_count": 736
+  },
+  {
+    "chunk_id": 41,
+    "metadata": {},
+    "content": "Specifically, the first step is to remove content irrelevant to the project, retain applicable sections, and modify template content to align with project requirements. If the template lacks certain necessary elements, they should be added independently.\n\nAfter completing these adjustments, update the document’s header and footer information, including the project name, date, version number (e.g., 66 or 99), etc. Additionally, add signatures and stamps. Internationally, standardized documents typically require engineer signatures and stamps, with the approval status marked as final. Among these, the IFT, FC, and IFB sections require signatures and stamps, while other sections do not.\n\nOnce all steps are finalized, generate a cover file and save the document in PDF format. Since each selection is an independent file, first modify the Word document, convert it to PDF, and then merge all PDFs into a single file. This ensures clarity for the specification documents required during the design phase.",
+    "char_count": 1009
+  },
+  {
+    "chunk_id": 42,
+    "metadata": {},
+    "content": "For example, the number 12345 might correspond to relevant chapters in other disciplines.\n\nIt can also serve as some reference standards within our electrical engineering specialty. This section outlines the applicable standards while excluding those that are not relevant.\n\nYou can delete the inapplicable content and retain the applicable parts. If there are any omissions, they should be supplemented. If versions or content require modifications, they should be updated promptly.\n\nThis section primarily discusses Submittal Procedures, specifically involving Shop Drawings and the corresponding Section.",
+    "char_count": 607
+  },
+  {
+    "chunk_id": 43,
+    "metadata": {},
+    "content": "This section primarily discusses Submittal Procedures, specifically involving Shop Drawings and the corresponding Section.\n\n01 represents the partition number, which is the general requirements section. It specifies in detail how to submit construction drawings.\n\nThis involves some requirements of Sustainable Design, as well as the finishing work.\n\nThe submission materials are divided into two categories:\n\nOne category is initial orders and product orders, referred to as construction drawings;\n\nThe other category consists of materials submitted at project completion, such as Operation and Maintenance Data (O&M) and Closeout Submittals, which are the contractor’s responsibility.\n\nAdditionally, requirements for delivery, storage, and handling must be met.",
+    "char_count": 763
+  },
+  {
+    "chunk_id": 44,
+    "metadata": {},
+    "content": "Additionally, requirements for delivery, storage, and handling must be met.\n\nHere we refer again to section C01, which specifies in detail the specific requirements for the product during transportation and storage. The second part is dedicated to elaborating on the product-related requirements.\n\nThe following are the specific requirements for this technology: The panel must comply with relevant standards, the specifications of the circuit breaker are not detailed here, and the voltage rating ranges from 250V to 600V. Specific requirements should also remove any inapplicable parts.\n\nRetain the applicable parts, modify the content that needs adjustment, and supplement necessary information to complete. This discussion focuses on the requirements for the Panelboard itself, specifically the relevant specifications for the main enclosure. For circuit breakers, it is necessary to clarify the type to be adopted.",
+    "char_count": 919
+  },
+  {
+    "chunk_id": 45,
+    "metadata": {},
+    "content": "This references another section, which belongs to Chapter 26 of the Electrical Part, covering specific requirements for circuit breakers.\n\nEquipment Identification refers to the labeling methods for circuit breakers and distribution panels.\n\nThe third part is the execution phase, which refers to the workflow after on-site installation. First, an inspection is conducted, followed by the installation, and finally, cleaning and protection work are completed. This section belongs to the concluding chapter, and the above is a brief description of it.\n\nThis section is called the header, which typically contains project information, submit date, and key dates such as DD or CD. The header content is generally fixed. Additionally, the header includes section number, section name, and page number. Sometimes, it is also necessary to add page numbers or company names in the footer.",
+    "char_count": 882
+  },
+  {
+    "chunk_id": 46,
+    "metadata": {},
+    "content": "That concludes the introduction to the specification section. Does anyone have any questions?\n\nI have a question I’d like to consult. Based on my understanding and experience in overseas projects, my perspective might be somewhat one-sided, so please correct me if I’m wrong.\n\nIn my view, during the early project phases, including the CD (Concept Design) and SD (Schematic Design) stages, we typically use the BOD (Basis of Design) report, which is relatively simpler compared to Spec. However, when we reach the IFC (Issued for Construction) stage, or more precisely from the detailed design phase onward to the IFC stage, we then prepare more comprehensive Spec documents.\n\nTo me, the difference between BOD and Spec isn’t particularly significant—the main distinction lies in the level of detail.",
+    "char_count": 800
+  },
+  {
+    "chunk_id": 47,
+    "metadata": {},
+    "content": "The difference between BOD and Spec isn’t particularly significant—the main distinction lies in the level of detail.\n\nBOD is merely a design scheme, design method, or design guideline—it serves as the foundation for design. On the other hand, specifications (spec) are extremely detailed, hence referred to as “bookspec.”\n\nFor instance, in conventional construction projects, a complete bookspec can span hundreds or even thousands of pages. In contrast, a BOD typically requires only around twenty pages, offering a more generalized overview as a design directive—essentially a written finalization. Specifications, however, lay out highly granular requirements for specific products.\n\nThere is a significant distinction between the two.",
+    "char_count": 738
+  },
+  {
+    "chunk_id": 48,
+    "metadata": {},
+    "content": "For conventional commercial projects, the BOD (Basis of Design) is mandatory and must be clearly established during the initial project phase. Similarly, technical specifications (Spec) also need to be finalized in the early stages of the project.\n\nBOD (Basis of Design) only appears during the conceptual or schematic design phase and is typically not used in subsequent stages. Of course, if the client requests continuous updates to the BOD, that is another matter. For example, after the FD (Final Design) stage, the BOD is no longer required, and instead, a highly comprehensive Spec (Specification) is adopted. If issues arise or modifications are needed during this period, corresponding updates are made.\n\nThe BOD should be concise and to the point, serving as an outline document, while the Spec is a more detailed and categorized technical specification.",
+    "char_count": 864
+  },
+  {
+    "chunk_id": 49,
+    "metadata": {},
+    "content": "The BOD should be concise and to the point, serving as an outline document, while the Spec is a more detailed and categorized technical specification.\n\nRegarding the priority between Spec and drawings: When discrepancies arise between the two, there is a defined hierarchy in standard project operations. Generally, when there are discrepancies between standards, the more stringent standard should prevail. During the design phase, it is essential to ensure that both align. If they fail to match due to oversight, the client or consultant typically tends to adopt the strictest standard, while contractors may prefer the most lenient one.\n\nTherefore, it is advisable to include a clause in the drawings or general specifications explicitly stating that the most stringent requirement shall apply in case of deviations. This can be clearly stipulated in the contract to avoid disputes.",
+    "char_count": 886
+  },
+  {
+    "chunk_id": 50,
+    "metadata": {},
+    "content": "In other words, unless specifically stipulated that drawings take precedence, when there is ambiguity between the specifications and drawings regarding the definition of the same technical parameter, the more stringent standard shall be applied. This not only safeguards the interests of the owner but also prevents contractors from adopting the minimum standard to save costs.\n\nIf such issues arise, we genuinely find it difficult to provide conclusive evidence. However, failing to offer an explanation could potentially lead to disputes.\n\nIf not explicitly specified, the contractor may choose materials at their own discretion. If specific requirements are stated in the contract, the contractor shall raise no objections. Next, we will discuss two key stages: design review and project budgeting.\n\nOkay, let’s take a short break. Five minutes or ten minutes?",
+    "char_count": 863
+  },
+  {
+    "chunk_id": 51,
+    "metadata": {},
+    "content": "Okay, let’s take a short break. Five minutes or ten minutes?\n\nWe’ll continue in ten minutes. We’ll be back at 8:20.\n\nAlright, Professor Fang, let’s get started.\n\nI’d like to ask everyone if you have any questions about my mixed Chinese-English expressions? Sometimes I might use English words, or even momentarily struggle to recall the corresponding Chinese terms.\n\nI don’t see any issues because colleagues attending the course have lived abroad for at least one year, demonstrating strong adaptability to English. Moreover, most participants are young people with relatively good English proficiency. Your teaching provides an excellent opportunity to review technical terminology, which serves as a highly effective learning method.\n\nTo all colleagues currently online, may I ask if you’re located domestically or abroad?",
+    "char_count": 825
+  },
+  {
+    "chunk_id": 52,
+    "metadata": {},
+    "content": "To all colleagues currently online, may I ask if you’re located domestically or abroad?\n\nMost colleagues are currently working in Egypt, with no more than five or six remaining in the home country. These colleagues are temporarily staying in the country due to vacation and will return to Egypt once their holidays are over.\n\nAre the online peers all professionals in electrical engineering or related fields?\n\nYes, I noticed Manager Gao Jiquan was also present. He may not have an electrical engineering background, but he’s still part of the architectural design industry.\n\nNext, we will discuss how to review electrical design drawings.\n\nIt was also explained very quickly.",
+    "char_count": 676
+  },
+  {
+    "chunk_id": 53,
+    "metadata": {},
+    "content": "Next, we will discuss how to review electrical design drawings.  \nIt was also explained very quickly.  \nDrawing review is a crucial component of QA/QC. In North America, it is also a legal requirement under the Engineers Act. Professional engineering associations enforce strict management systems for this process, conducting audits every three years to ensure document review procedures comply with the Engineers Act regulations.  \nA well-established drawing review mechanism can effectively reduce design errors and oversights, even prevent legal disputes, thereby lowering project rework costs. I trust all of you have fully grasped these key points.  \nRegarding drawing review and design review, they are actually applicable at every design stage. Design documents for all projects also need to undergo review. Reviews are divided into several types:",
+    "char_count": 855
+  },
+  {
+    "chunk_id": 54,
+    "metadata": {},
+    "content": "Regarding drawing review and design review, they are actually applicable at every design stage. Design documents for all projects also need to undergo review. Reviews are divided into several types:\n\nFirst is internal review, which mainly refers to reviews within the discipline. After designers complete drawings or other design documents, they need to submit them to senior engineers, chief engineers, or lead engineers for review or approval.",
+    "char_count": 445
+  },
+  {
+    "chunk_id": 55,
+    "metadata": {},
+    "content": "Internal review refers to evaluations conducted within a specific discipline. After designers complete drawings or other design documents, they must submit them to senior engineers, chief engineers, or lead engineers for review or approval.\n\nSquad check, known domestically as drawing co-signing, involves joint verification across disciplines to ensure proper coordination. For example, the electrical discipline may require exhaust fans or air conditioning cooling systems in the transformer room (electro room), and the mechanical discipline must verify whether these are reflected in the drawings. Simultaneously, the mechanical discipline confirms whether air handling units and water pumps are properly supplied with power. The electrical discipline must also coordinate with architects on equipment box installation locations, including details such as transformer rooms requiring double doors instead of single doors.",
+    "char_count": 925
+  },
+  {
+    "chunk_id": 56,
+    "metadata": {},
+    "content": "The third type is peer review, typically conducted by external experts. This often occurs when the company lacks expertise in a certain area, and specialists in the relevant field are invited to review the work to avoid major oversights.\n\nFinally, there is client review. Upon completion of each design stage, submissions must be sent to the client for review. The content of the client review depends on the client’s technical capabilities: if the client has a strong technical team, they may provide extensive technical feedback; if the client’s technical capabilities are limited, they might only focus on design requirements, such as the location of power outlets or the installation of electric heaters, without delving into the reliability, accuracy, or safety of the design.",
+    "char_count": 781
+  },
+  {
+    "chunk_id": 57,
+    "metadata": {},
+    "content": "For example, some large enterprises or government departments have in-house design teams, whose responsibilities are similar to yours. They conduct detailed technical reviews of design proposals and raise numerous questions. Therefore, extra caution is required when collaborating with such clients.\n\nAdditionally, there is the Authority Having Jurisdiction (AHJ) review, which primarily evaluates projects from the perspectives of regulatory standards, safety, and local municipal requirements.",
+    "char_count": 495
+  },
+  {
+    "chunk_id": 58,
+    "metadata": {},
+    "content": "Additionally, there is the Authority Having Jurisdiction (AHJ) review, which primarily evaluates projects from the perspectives of regulatory standards, safety, and local municipal requirements.\n\nAnother key point applicable to all disciplines is conducting a holistic review to ensure all relevant specifications, standards, and regulatory requirements are met. Additionally, it is necessary to verify compliance with local power or telecommunications authorities’ regulations, the client’s project requirements, the competent authority’s stipulations, and whether the division of responsibilities among parties is clearly defined within the scope of electrical engineering.\n\nThe following discussion will focus on discipline-specific review items.",
+    "char_count": 749
+  },
+  {
+    "chunk_id": 59,
+    "metadata": {},
+    "content": "The content involves multiple aspects, so I’ll provide a brief overview. First, it’s necessary to verify whether the load calculation is correct. Any errors will affect key parameters such as incoming line voltage and cable specifications. In North America, the increasing adoption of electric vehicles (e.g., EVX) must be factored in. Additionally, there’s a significant difference in load calculations between data centers and regular office buildings—the latter typically estimated at 100 watts per square meter, while the former may require over 2000 watts per square meter.",
+    "char_count": 578
+  },
+  {
+    "chunk_id": 60,
+    "metadata": {},
+    "content": "Power system analysis should include core components such as short-circuit current calculations and power flow analysis, ensuring computational accuracy. Proper selection of electrical equipment is crucial, including the appropriateness of electrical feeder specifications. Feeders refer to the conductors connecting equipment or distribution panels, and their selection must account for various correction factors such as installation environment, voltage level, and outdoor temperature, making the process quite complex.\n\nThe main incoming line specifications must align with both the load calculation results and the power system analysis, while also coordinating with downstream distribution panel parameters. For new high-voltage projects, it’s also necessary to verify the consistency between equipment locations and the floor plan, as well as the electrical space layout.",
+    "char_count": 878
+  },
+  {
+    "chunk_id": 61,
+    "metadata": {},
+    "content": "During the incoming line phase, was a grounding study conducted? Has its accuracy been verified? Is the lightning protection system designed correctly? Does the grounding rods layout appear in the electrical site plan and match the grounding study?\n\nDo the LV riser diagrams correspond with the LV floor plans? Are the circuit allocations in the panel schedules consistent with the power & lighting floor plans?\n\nFurthermore, has the electrical equipment installation height been clearly specified? Do the selected electrical equipment meet the environmental requirements, such as being outdoor-rated, moisture-proof, or explosion-proof (NEMA ratings)? All these factors must be verified one by one during the Electrical Design Review.",
+    "char_count": 735
+  },
+  {
+    "chunk_id": 62,
+    "metadata": {},
+    "content": "Is there sufficient space for operation, maintenance, and safety clearances? Are the installation and replacement spaces adequate? Have other aspects such as lighting fixtures, lighting control zones, fire alarm zones, and scheduling of mechanical equipment been fully covered? Additionally, does the design align with and comply with other systems like shafts and operational sequences as per regulations? Are the annotations on the drawings consistent? For instance, do the drawing numbers correspond with the notes beside the floor plans? Are the operational sequences detailed enough and correctly reflected in the design drawings?",
+    "char_count": 635
+  },
+  {
+    "chunk_id": 63,
+    "metadata": {},
+    "content": "Another often overlooked aspect is low-voltage system equipment, including fire alarm systems (typically categorized under high-voltage), building automation systems (BAS), security systems, public address (PA) systems, and audio-visual (AV) systems. The power requirements for these devices are relatively simple, requiring only a 120V power supply. However, it is essential to clearly define the equipment locations and power needs during the design phase and accurately reflect them in the drawings.\n\nLastly, detailed installation instructions must be provided during the design phase, covering the aforementioned conventional power and lighting systems.\n\nIf an emergency system exists, are all emergency loads powered by the emergency power supply? This involves equipment such as Automatic Transfer Switches (ATS) and generators.",
+    "char_count": 834
+  },
+  {
+    "chunk_id": 64,
+    "metadata": {},
+    "content": "If an emergency system exists, are all emergency loads powered by the emergency power supply? This involves equipment such as Automatic Transfer Switches (ATS) and generators.\n\nAdditionally, fire pumps have special requirements in North American designs. Many senior engineers in North America do not fully understand their correct design, often mistakenly treating them as part of a standard emergency system. In reality, fire pumps are a unique component of emergency design in North America, not just ordinary loads like elevators.\n\nIs the design of elevators reasonable and correct? Do they require backup power? Beyond power supply, are facilities such as lighting and communication inside the elevator cabin adequately provided?\n\nApart from the building’s internal electrical systems, there is also site lighting—such as street lighting and landscape lighting—does it align with the requirements of other disciplines like landscape design and reflect in our plans?",
+    "char_count": 970
+  },
+  {
+    "chunk_id": 65,
+    "metadata": {},
+    "content": "Apart from the building’s internal electrical systems, there is also site lighting—such as street lighting and landscape lighting—does it align with the requirements of other disciplines like landscape design and reflect in our plans?\n\nFurthermore, for special types of buildings, such as biochemical laboratories or nuclear facilities, which have unique requirements, have these been incorporated into the design? Coordination with other disciplines must also be considered.",
+    "char_count": 475
+  },
+  {
+    "chunk_id": 66,
+    "metadata": {},
+    "content": "Whenever other disciplines or clients request modifications, we need to conduct coordination checks to confirm whether the electrical discipline is affected. If impacted, corresponding adjustments must be made. However, sometimes after clients or other disciplines complete modifications, they may not realize the changes could trigger electrical adjustments, thus failing to notify us promptly, leading to on-site construction issues. To prevent such situations, we should proactively inquire with the project manager or design lead about recent modifications—such as whether power supply schemes need adjustments—to avoid losses or construction problems caused by outdated drawings.",
+    "char_count": 684
+  },
+  {
+    "chunk_id": 67,
+    "metadata": {},
+    "content": "When preparing site layout plans, coordination with architecture, plumbing, landscaping, and clients is essential, as this is not solely an electrical discipline issue. The design of electrical equipment rooms also requires close collaboration with other disciplines, primarily architecture, mechanical, and structural. Detailed explanations of cross-disciplinary coordination will be covered in subsequent courses.\n\nAdditionally, when installing cable trays, conduits, or other equipment on firewalls, verify whether fireproof sealing measures (e.g., fire-resistant coatings) have been implemented. Coordination for access control systems with the architectural discipline includes lock types and electric lock installation requirements, typically specified in the Door Schedule provided by architects.",
+    "char_count": 803
+  },
+  {
+    "chunk_id": 68,
+    "metadata": {},
+    "content": "For heavy electrical equipment like generators and transformers installed inside buildings, structural reinforcement design may be required. When pipelines cross foundations, promptly notify the structural discipline and specify requirements. Electrical equipment room design also demands thorough coordination with other disciplines.\n\nIn addition, environmental requirements such as ventilation and cooling must be considered. A standard electrical room typically houses transformers and switchboards, with an ambient temperature requirement of 28 to 30 degrees Celsius. However, stricter conditions apply to electronic equipment like UPS systems, necessitating coordination with the mechanical discipline.",
+    "char_count": 707
+  },
+  {
+    "chunk_id": 69,
+    "metadata": {},
+    "content": "The drawings provided by the mechanical discipline should include the equipment schedule along with detailed parameters such as power and current ratings for each fan, whether the fan is part of the emergency power system, equipment location, and backup configuration (e.g., one standby unit or parallel operation). Coordination is also required for details such as the installation of local disconnect switches and whether the equipment comes with its own control panel. These issues will be discussed in detail during later coordination stages.\n\nThe Reflected Ceiling Plan (RCP) must reflect the layout. For example, in office designs featuring a T-bar ceiling (drop ceiling), coordination is required for the placement of light fixtures, sprinkler heads, detectors, and air conditioning vents. For large-scale projects, such coordination becomes even more critical, though it must account for budget and man-hour constraints.",
+    "char_count": 928
+  },
+  {
+    "chunk_id": 70,
+    "metadata": {},
+    "content": "Coordination is also required for the intersection of electrical conduits with mechanical piping and equipment in electrical rooms or on rooftops. The integration of the fire alarm system with the building equipment system is highly complex and will be covered in detail in a dedicated fire alarm system session. Finally, a review of the specifications is necessary.\n\nJust now, we mainly discussed the standardization issues regarding drawing materials, including the following aspects:\n\nCompleteness of Standards: Check for any omissions or unnecessary sections, ensuring all sections are neatly arranged in numerical order.\n\nTemplate Updates: Confirm whether the latest template has been used.\n\nReference to Standards: Verify if the latest applicable regulations and standards are referenced in the specifications.",
+    "char_count": 816
+  },
+  {
+    "chunk_id": 71,
+    "metadata": {},
+    "content": "Drawing inspection includes checking the drawing frame, title block, LOGO, date and revision information, names of designers, reviewers or approvers, and project address.",
+    "char_count": 170
+  },
+  {
+    "chunk_id": 72,
+    "metadata": {},
+    "content": "Conduct a final review of the drawings.\n\nDrawing inspection includes checking the drawing frame, title block, LOGO, date and revision information, names of designers, reviewers or approvers, and project address.\n\nLayout inspection requires verifying if the scale is correct, annotations are complete, and font sizes are appropriate. Additionally, when creating drawings, it is common practice to fade out the architect’s drawing background to highlight the electrical components—this should be confirmed.\n\nCheck if the drawing list, drawing titles, and numbers on the cover page correspond with each individual drawing, and ensure there are no grammatical or spelling errors in key notes and general notes.\n\nWhether it’s a PDF file or printed paper drawings, they should be arranged in an orderly manner. Finally, an aesthetic review should also be conducted.",
+    "char_count": 859
+  },
+  {
+    "chunk_id": 73,
+    "metadata": {},
+    "content": "Whether it’s a PDF file or printed paper drawings, they should be arranged in an orderly manner. Finally, an aesthetic review should also be conducted.\n\nHow to conduct a design review? If there are no questions from everyone, we will briefly discuss the cost estimation section. This part is relatively concise as it is not the main focus of today’s meeting.\n\nThe project, which was not designed by us, is located in the coastal region of North America.\n\nIn the field of construction cost estimation, small to medium-sized projects are typically handled by consulting firms, while large-scale projects engage specialized construction budgeting companies. The primary purpose is to provide clients with budget prices or tender base prices. For public sector projects, such estimates serve as crucial documentation for funding applications.",
+    "char_count": 838
+  },
+  {
+    "chunk_id": 74,
+    "metadata": {},
+    "content": "In North America, construction cost estimation is generally categorized into several classes: Class D, Class C, Class B, and Class A. Each class has its corresponding margin of error and aligns with different design phase requirements. This information is self-explanatory and requires no further elaboration.\n\nRegarding the information needed to prepare accurate estimates, it primarily includes project feasibility studies, project scale (small/medium or large/medium-sized projects), as well as specific design requirements, among others.",
+    "char_count": 541
+  },
+  {
+    "chunk_id": 75,
+    "metadata": {},
+    "content": "Certainly, the first step is to prepare design documents, including drawings, specifications, or reports. Next, it is necessary to understand the budgeted prices for equipment and materials, which must be obtained from suppliers. Additionally, the current hourly wage standards for workers, including overtime pay calculations, must be known. Other considerations include the materials required by contractors, such as permits, insurance, or bonds, and their associated additional costs. For large-scale projects, equipment rental fees must also be factored in. If the project is located in a remote area, daily allowances, accommodation, and travel expenses for workers must be calculated. Furthermore, a contingency reserve, typically 10% to 20%, should be allocated.",
+    "char_count": 769
+  },
+  {
+    "chunk_id": 76,
+    "metadata": {},
+    "content": "1. First, obtain and review the design documents, conducting a Material Take-Off to itemize the quantities and types of equipment, lengths of materials, etc., from the design files.  \n2. Then, consult suppliers for unit prices of equipment and materials, and gather the latest market rates for workers’ hourly wages.  \n3. Other construction costs must also be considered, such as permits, insurance, project management fees, mobilization and demobilization expenses, as mentioned earlier.  \n4. Additionally, commissioning costs should be included.  \n5. Summing up all these expenses yields the construction cost for the specific discipline. Combining the costs of all disciplines gives the total project cost.",
+    "char_count": 709
+  },
+  {
+    "chunk_id": 77,
+    "metadata": {},
+    "content": "For small to medium-sized projects, cost estimation can be done using Excel, while large projects may require specialized software. For queries regarding material unit prices or labor costs—such as the man-hours needed to install a distribution box or wiring—calculations must be tailored to the specific situation. For example, if the hourly wage is known to be 100 yuan, determining how many workers and man-hours are required to install 30 meters of wiring depends on the engineer’s experience-based judgment.\n\nHere, I have listed real-time updated estimation manuals specifically designed for the construction industry, along with relevant software available for online use. That concludes what I wanted to present.\n\nThat’s all for today’s content. If anyone has questions, feel free to ask.\n\nI have two questions regarding drawing review:",
+    "char_count": 843
+  },
+  {
+    "chunk_id": 78,
+    "metadata": {},
+    "content": "That’s all for today’s content. If anyone has questions, feel free to ask.\n\nI have two questions regarding drawing review:\n\nFirst is the approval process with the local power supply department, specifically AHC drawing review. Domestically, we typically submit an electricity budget and apply for power usage permits during the initial project phase when formulating the power supply plan. I’d like to know if international projects follow the same procedure.\n\nCoordination with the power supply department must be maintained throughout the entire project lifecycle. In the initial phase, it is essential to clarify design parameters such as load demand, wiring methods, protection schemes, metering, capacity configuration, and whether on-site transformers or building substations are required. All these aspects must be coordinated during the design stage.",
+    "char_count": 858
+  },
+  {
+    "chunk_id": 79,
+    "metadata": {},
+    "content": "Collaboration is equally critical during the construction phase, particularly in the commissioning and pre-energization startup stages. However, coordination efforts should ideally begin early in the design phase. The power supply department relies on our drawings to complete their designs, so these drawings must first obtain their approval. Only after mutual agreement can the power supply department finalize their design and schedule construction.\n\nThese costs are typically borne by the owner. Once the power supply department completes its design, their construction unit will provide a quotation, with the expenses ultimately covered by the owner rather than handled internally by the power utility.\n\nThis process is largely similar to the domestic procedure of submitting and reviewing power supply plans with the electricity bureau, including the coordination methods. Although the processes are alike, overseas requirements for details are more stringent.",
+    "char_count": 966
+  },
+  {
+    "chunk_id": 80,
+    "metadata": {},
+    "content": "In the domestic workflow, drawings for each design phase must be submitted to the Drawing Review Center for approval, and only after obtaining approval can the next phase of design work proceed. I would like to ask whether similar government drawing review agencies exist in overseas projects, requiring approval at each design stage?\n\nOverseas countries do not have the phased drawing review and approval process like in China. For clients, especially large enterprises or government departments, they usually establish dedicated technical teams responsible for drawing review. The review process is divided into different stages such as SD (Schematic Design), DD (Design Development), and CD (Construction Documents), with reviews and feedback provided at each stage before proceeding to the next.",
+    "char_count": 799
+  },
+  {
+    "chunk_id": 81,
+    "metadata": {},
+    "content": "The local authorities (typically the municipal government) require submission of an IFB (Issue for Building Permit) application. The government conducts a one-time building permit review. After the applicant submits all materials at once, the authorities will review them. If no issues are raised, the permit is granted directly; if revisions are required, multiple rounds of modifications may be needed before approval is obtained.\n\nIt is important to note that government authorities are only responsible for approving the Building Permit and Electrical Permit. The client’s internal design review involves multiple stages, which is separate from the government approval process.",
+    "char_count": 681
+  },
+  {
+    "chunk_id": 82,
+    "metadata": {},
+    "content": "If you have any questions or feedback, whether technical or otherwise, such as about the content, pace, or focus of the presentation, please feel free to raise them at any time.\n\nI find the course content quite substantial. After each of your lectures, I usually need to spend another day reviewing because the amount of information per session is enormous. Fully digesting all the material during class still poses some difficulty for me.\n\nThis is my personal habit.\n\nSince the content I teach is extremely comprehensive and covers numerous key points, I require company employees to watch my lecture videos on YouTube at least five times.",
+    "char_count": 640
+  },
+  {
+    "chunk_id": 83,
+    "metadata": {},
+    "content": "Since the content I teach is extremely comprehensive and covers numerous key points, I require company employees to watch my lecture videos on YouTube at least five times.\n\nAlthough I only mentioned some conclusive content in the videos, there are extensive reasons and details behind them. Due to time constraints, I couldn’t elaborate on each point and could only provide fundamental concepts. I hope everyone can further deepen their understanding through subsequent work or study.\n\nAny other questions?\n\nIf you have any questions, please raise them promptly. The next two lessons will focus on distribution systems. The first lesson will primarily introduce distribution systems, while the second lesson will emphasize lighting and emerging power technologies. These two sections will reduce procedural introductions and concentrate more on technical details.",
+    "char_count": 863
+  },
+  {
+    "chunk_id": 84,
+    "metadata": {},
+    "content": "We need to conduct a thorough cost estimation, and the next two lessons will focus on this topic.\n\nYou should already be familiar with the design and construction process systems while abroad. I’d like to know, what are the voltage and frequency standards used in Egypt’s electrical power system?\n\nThe municipal power supply is 22,000 volts, which will be directly stepped down to 400 volts upon connection to this project.\n\nIs 4000 the power limit? 380V, 224A, 22380W.\n\nIs this the same as the domestic system?\n\nCurrently, the use of 22,000-volt voltage is relatively rare in China, where 10 kV and 35 kV are primarily adopted. However, Egypt’s municipal medium-voltage system utilizes 22,000-volt voltage.",
+    "char_count": 707
+  },
+  {
+    "chunk_id": 85,
+    "metadata": {},
+    "content": "The use of 22,000-volt voltage is relatively rare in China, where 10 kV and 35 kV are primarily adopted. However, Egypt’s municipal medium-voltage system utilizes 22,000-volt voltage.\n\nThe voltage system in North America is relatively complex, and we will explain it in detail later. In contrast, the voltage system here is simpler—just adjust the high voltage to 380 volts or 220 volts.\n\nYes, the voltage system in North America.\n\nMoreover, this device eliminates the secondary voltage transformation process, achieving direct one-step voltage reduction. In contrast, some domestic projects may adopt a step-down approach due to cost review or equipment selection considerations. For instance, if the municipal grid voltage is 35 kV, it might first be reduced to 10 kV and then further stepped down to 380 V.",
+    "char_count": 809
+  },
+  {
+    "chunk_id": 86,
+    "metadata": {},
+    "content": "However, Egypt’s voltage standard is directly stepped down to 380 volts.\n\nRelatively speaking, the design of the power system is much simpler than in North America. However, the redundancy design here is more comprehensive.\n\nSpecifically, for each individual building, three municipal power sources are actually connected:\n- Two transformers each connect to two municipal power circuits;\n- An additional municipal power circuit is tapped from a neighboring building.\n\nOn top of this, diesel generators are also equipped as backup power sources. Therefore, the power supply reliability of this project is extremely high.",
+    "char_count": 619
+  },
+  {
+    "chunk_id": 87,
+    "metadata": {},
+    "content": "Diesel generators are also equipped as backup power sources, ensuring extremely high power supply reliability for this project.\n\nIf a three-way power supply is adopted, it is common to parallel two utility power sources with a diesel generator. The two utility power sources must meet the minimum connection time requirement, and an additional generator is added. The three-way power supply scheme requires paralleling all three sources, resulting in relatively complex control logic between the incoming lines.\n\nThe logic is relatively more complex. Given that this is the capital, it is reasonable for the reliability to be higher.",
+    "char_count": 633
+  },
+  {
+    "chunk_id": 88,
+    "metadata": {},
+    "content": "Its logic is relatively more complex. Given that this is the capital, it’s reasonable for the reliability to be higher.\n\nIn the field of electrical engineering, most people are quite familiar with high-voltage systems, but relatively less so with low-voltage systems. As electrical engineers, collaboration with other disciplines is crucial, especially with the mechanical engineering field. Lack of understanding of related disciplines can lead to numerous challenges.\n\nFor example, many electrical engineers are unclear about how many power supplies an air conditioning unit requires, how to allocate space, or how to select switches and wiring. Additionally, fire alarm systems and coordination with mechanical engineering, as well as grounding systems (GD), are common pain points for electrical engineers. Even senior engineers may struggle due to the multidisciplinary nature of these tasks.",
+    "char_count": 897
+  },
+  {
+    "chunk_id": 89,
+    "metadata": {},
+    "content": "In North America, there is an “Life Safety Integrated Testing” led by electrical engineers, which primarily involves the coordinated control of fire protection systems in buildings. However, in China, many electrical engineers, including chief engineers, are unfamiliar with this process, mainly due to a lack of understanding of mechanical equipment and systems.\n\nMy familiarity with these areas stems from two factors: first, during my master’s studies in building engineering in Canada, I specialized in the control and characteristics of building mechanical systems; second, I have five years of experience in building automation. To work in building automation, one must understand all building systems. This background has given me a solid grasp of fields beyond electrical engineering.\n\nHave you encountered similar challenges during construction or design? Such issues are indeed quite demanding for electrical engineers.",
+    "char_count": 929
+  },
+  {
+    "chunk_id": 90,
+    "metadata": {},
+    "content": "We have encountered similar challenges during construction and design. Such issues are indeed quite demanding for electrical engineers.\n\nOur professional expertise is primarily focused on the high-voltage electrical field. We have a relatively weak foundation in the setup of HVAC, plumbing, and other systems, including building automation control.\n\nFrom the design phase onward, we face shortcomings, let alone the subsequent commissioning and system integration work. For HVAC and plumbing systems, we only grasp the basic concepts. While we have a general understanding of power distribution requirements, we still rely on HVAC and plumbing engineers to provide technical parameters and guide us in power distribution design.\n\nAs for interconnected control between systems, there is indeed a noticeable gap in our professional capabilities.",
+    "char_count": 844
+  },
+  {
+    "chunk_id": 91,
+    "metadata": {},
+    "content": "As for interconnected control between systems, there is indeed a noticeable gap in our professional capabilities.\n\nI can emphasize these aspects more in future lectures, but this isn’t something that can be achieved overnight.\n\nWe will proceed step by step, and if specific issues arise later, we will organize relevant courses for discussion.\n\nOkay, Professor Fan, today’s class ends here.\n\nOkay, good, thank you everyone.\n\nThank you, Teacher Fan. Goodbye, Teacher Fan.",
+    "char_count": 470
+  }
+]

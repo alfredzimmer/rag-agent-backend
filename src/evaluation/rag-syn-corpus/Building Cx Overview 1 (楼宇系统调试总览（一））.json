@@ -1,0 +1,164 @@
+[
+  {
+    "chunk_id": 0,
+    "metadata": {},
+    "content": "Hello everyone, welcome to the Electrical Experts Forum. I’m your host, Fan George. It’s been a while since my last video recording, as I’ve been occupied with various matters recently.\n\nToday, I’d like to take this opportunity to share practical experiences and insights on building commissioning. In the first section, I’ll begin with an overview of the fundamental concepts of building commissioning. Subsequent parts will delve into the specific commissioning processes for different building systems.\n\nThe main content of today’s lecture is as follows:\n\nFirst, I will introduce the definition of Commissioning and its advantages. In some industrial fields, commissioning is also referred to as trial operation.\n\nNext, I will explain which projects or fields require commissioning, as well as the norms and standards that must be followed during the process.",
+    "char_count": 862
+  },
+  {
+    "chunk_id": 1,
+    "metadata": {},
+    "content": "Projects or fields requiring commissioning, as well as the norms and standards that must be followed during the process, will be explained next.\n\nFollowing that, the organizations, personnel, or companies responsible for commissioning—commonly known as the Commissioning Authority (CxA) or Commissioning Agent (CxA)—will be discussed.\n\nAdditionally, the implementation timeline, required duration, fee structure for related services, and their proportion of the total project investment will be outlined.\n\nIn North America, training for end-users and operation & maintenance personnel is also considered part of commissioning.\n\nThe above constitutes the full content of today’s lecture.",
+    "char_count": 686
+  },
+  {
+    "chunk_id": 2,
+    "metadata": {},
+    "content": "In North America, training for end-users and operation & maintenance personnel is also considered part of commissioning.\n\nThe above constitutes the full content of today’s lecture.\n\nWhat is Building Commissioning? It is defined as the process of verifying and documenting that a building and all its systems and components are planned, designed, installed, tested, operated, and maintained to meet the Owner’s Project Requirements (OPR). It primarily involves mechanical and electrical systems. After these systems are installed in a building, commissioning ensures they operate according to design specifications and owner needs before being handed over to the client—this constitutes the complete commissioning process.",
+    "char_count": 721
+  },
+  {
+    "chunk_id": 3,
+    "metadata": {},
+    "content": "Building commissioning differs from conventional testing in several key ways. Conventional testing typically focuses on individual equipment, components, or subsystems to verify their proper functioning and whether they meet design performance parameters. In contrast, building commissioning has three key distinctions:\n\nScope Difference: Commissioning covers the entire system or project, involving a broader range of aspects;\n\nDocumentation Requirements: Commissioning not only completes the testing work but also requires establishing a comprehensive documentation system, with records starting from the design phase;\n\nQuality Control: Commissioning includes Quality Assurance and Quality Control (QA/QC) functions. The commissioning agent must participate in the project during the design phase, reviewing design documents from the consultant team, including technical specifications and drawings.",
+    "char_count": 901
+  },
+  {
+    "chunk_id": 4,
+    "metadata": {},
+    "content": "From the perspective of debugging and operational maintenance, it is necessary to review design documents to identify deficiencies or areas for improvement. QA/QC requirements already exist during the design phase. Similarly, QA/QC plays a crucial role during the construction and testing/commissioning phases. For example, as the commissioning agent representing the commissioning company, involvement is required even in the early construction stages, such as during the construction drawing review. Not only do consulting advisors participate, but the commissioning agent’s review also evaluates potential issues in the construction drawings from a commissioning perspective.",
+    "char_count": 678
+  },
+  {
+    "chunk_id": 5,
+    "metadata": {},
+    "content": "During the commissioning phase, mechanical and electrical systems must be validated. All potential issues arising from the design and construction phases will surface during commissioning and must be identified and resolved. In the final closeout phase, typical project completion tasks are usually performed. In North America, this involves extensive documentation, such as archiving and recording O&M manuals, as these materials ultimately need to be handed over to the owner or client. As the commissioning agent, you must also prepare the final commissioning manual and review the O&M manuals provided by contractors to ensure compliance.\n\nThe specific scope and activities of the commissioning agent will be explained in greater detail later. The main difference between testing and commissioning is that testing involves less documentation and lacks strict QA/QC inspection requirements, making the process relatively straightforward and simple.",
+    "char_count": 951
+  },
+  {
+    "chunk_id": 6,
+    "metadata": {},
+    "content": "Equipment systems are typically highly complex and vary significantly across different industries. Commissioning work is quite challenging, time-consuming, and demands stricter professional requirements. This video does not cover these aspects, as explaining them requires specialized knowledge and experience, and the processes involved are rather complex.\n\nPersonally, I have commissioning experience in the semiconductor manufacturing industry, but my expertise is limited in sectors like utilities, natural gas, mining, or paper mill pumps. However, I possess extensive experience in building commissioning, which I’ll be sharing with you here.\n\nSo, why is commissioning necessary?",
+    "char_count": 685
+  },
+  {
+    "chunk_id": 7,
+    "metadata": {},
+    "content": "Why is commissioning necessary?\n\nWhat are the benefits of commissioning?\n\nFirst, commissioning can reduce change orders, conflicts, and construction issues. During the commissioning phase, these problems can be identified and resolved. The commissioning agent reviews consultant deliverables during the design stage, addressing any oversights or omissions by the design firm, thereby preventing issues at the design stage itself.\n\nSecond, commissioning verifies the performance of mechanical and electrical systems and equipment. It tests whether the design has flaws, whether construction meets standards, and whether systems operate correctly when integrated. Ultimately, it confirms whether the systems meet the project’s design requirements and the owner’s needs.\n\nThe third point is quality control, which has been discussed previously.",
+    "char_count": 841
+  },
+  {
+    "chunk_id": 8,
+    "metadata": {},
+    "content": "The third point is quality control, which has been discussed previously.\n\nFourth, the involvement of a commissioning agent provides management and coordination support for the entire project’s operation. During the commissioning and project closeout phases, the commissioning agent can share the workload, making project execution more professional and enhancing project management and coordination. Without a commissioning agent, relying solely on a project or construction management team lacking commissioning experience could lead to management and coordination issues.\n\nThe greatest advantage of commissioning lies in its ability to achieve optimal system performance through parameter optimization. For a building’s mechanical and electrical systems, this optimized operation can effectively reduce energy consumption.",
+    "char_count": 824
+  },
+  {
+    "chunk_id": 9,
+    "metadata": {},
+    "content": "The greatest advantage of commissioning lies in its ability to achieve optimal system performance through parameter optimization. For a building’s mechanical and electrical systems, this optimized operation can effectively reduce energy consumption.\n\nFurthermore, thorough commissioning brings multiple benefits to a project. During routine operation and maintenance, when troubleshooting is required, comprehensive commissioning documentation provides significant convenience for maintenance personnel. They can easily access critical information such as equipment manufacturer details, design drawings, technical parameters, and manuals from the operation handbook.\n\nA high-quality commissioning documentation system helps maintenance personnel quickly identify problematic equipment and understand system design specifics, thereby efficiently resolving various issues that arise during actual operation.",
+    "char_count": 906
+  },
+  {
+    "chunk_id": 10,
+    "metadata": {},
+    "content": "The commissioning mentioned earlier is typically mandatory for newly constructed building projects. But is it also necessary for existing buildings? Generally speaking, private sector projects often skip this step, but for government projects or large-scale industrial projects, commissioning is still required if budget permits. There are several key reasons for this:",
+    "char_count": 369
+  },
+  {
+    "chunk_id": 11,
+    "metadata": {},
+    "content": "Improving building performance and reducing energy costs is essential, especially for buildings that have been in use for 20, 30 years or more. These buildings often rely on aging mechanical and electrical systems installed during construction, which may be less energy-efficient. Additionally, the software and hardware of the Building Automation System (BAS) may be outdated and require optimization and upgrades. This necessitates rational commissioning for existing buildings.\n\nBy enhancing operational performance and reducing energy consumption, operational costs can be lowered. Upgrading mechanical systems, electrical systems, and other hardware and software can also improve the comfort of building occupants.",
+    "char_count": 719
+  },
+  {
+    "chunk_id": 12,
+    "metadata": {},
+    "content": "Typically, this type of retrospective re-commissioning is driven by government project requirements. During implementation, the commissioning agent first conducts a comprehensive audit to assess the current system’s operational status, then proposes a complete solution, including specific commissioning steps, upgrade plans, and operational adjustments. These are the primary advantages and application scenarios of commissioning for existing buildings.\n\nAs previously mentioned, new construction projects typically require commissioning. For structurally complex buildings, commissioning is essential. For instance, a small building with only basic lighting and simple HVAC systems usually requires only routine testing without formal commissioning. However, for buildings with complex structures or large-scale projects, commissioning is necessary. Additionally, government projects often require existing building commissioning as well.",
+    "char_count": 940
+  },
+  {
+    "chunk_id": 13,
+    "metadata": {},
+    "content": "Another scenario involves equipment upgrades in existing buildings. Even if it’s not a new project, if mechanical or electrical equipment or a specific system within the building is upgraded, commissioning for the updated equipment or system is required. For example, a Building Automation System (BAS) upgrade was completed for the Canada Revenue Agency office building in Regina, which inherently included commissioning. Similarly, if a building undergoes a full upgrade of its fire alarm system, corresponding commissioning—including fire alarm verification—must be performed.",
+    "char_count": 579
+  },
+  {
+    "chunk_id": 14,
+    "metadata": {},
+    "content": "In special cases, such as applying for LEED certification, dedicated LEED commissioning is required. Recently, there has also been a demand for energy efficiency commissioning in the Vancouver area, where the municipal government requires relevant commissioning documents to ensure the building meets energy efficiency standards upon completion. To my knowledge, this requirement currently applies only to Vancouver, with no specific commissioning mandates for energy efficiency in other regions of BC.\n\nThese are the specific commissioning requirements for various project types and regions.\n\nWhen conducting building commissioning, what standards and specifications do we need to follow? They mainly include the following categories:",
+    "char_count": 735
+  },
+  {
+    "chunk_id": 15,
+    "metadata": {},
+    "content": "When conducting building commissioning, what standards and specifications do we need to follow? They mainly include the following categories:\n\nFirst is CSA Z320 “Building Commissioning Standard and Checklist”; second are two ASHRAE guidelines, namely “Commissioning Process” and “HVAC Commissioning Process”; additionally, there is the Building Commissioning Association’s “Commissioning Handbook,” which contains reference samples and templates.\n\nFor different systems, departments, and projects, there are specific regulations and standards.",
+    "char_count": 543
+  },
+  {
+    "chunk_id": 16,
+    "metadata": {},
+    "content": "For different systems, departments, and projects, there are specific regulations and standards.\n\nFirst, regarding the commissioning requirements for electrical systems and equipment, the actual testing standard is ANSI/NETA ATS. In Canada, fire protection systems have special testing requirements under CAN/ULC S1001-11, which covers Integrated Systems Testing of Fire Protection and Life Safety Systems and Fire Commissioning. This standard primarily addresses the commissioning, verification, and testing requirements for mechanical and electrical fire protection systems, treating them as an integrated system that requires coordination among subsystems. This includes mechanical systems like sprinklers and high-rise building smoke control systems, as well as electrical systems such as fire alarms, emergency lighting, and backup power.",
+    "char_count": 842
+  },
+  {
+    "chunk_id": 17,
+    "metadata": {},
+    "content": "For federal government projects, compliance with PSPC’s Commissioning Manual and Commissioning Guidelines is also required. It should be noted that not all these regulations and standards are mandatory—some are advisory in nature. However, sections related to life safety must be 100% adhered to, while other parts may not be as strictly enforced as design codes.\n\nIn North America, commissioning is typically handled by specialized commissioning authorities or agents. Agents are more common and can be teams, individuals, or companies. Their primary responsibility is to be involved throughout the entire project, from the design phase to final acceptance, overseeing the entire commissioning, testing, and closeout process. The specific scope of responsibilities and deliverables will be detailed in subsequent videos.",
+    "char_count": 821
+  },
+  {
+    "chunk_id": 18,
+    "metadata": {},
+    "content": "The Agent must organize and schedule all commissioning-related activities, managing and coordinating the entire commissioning process, including communication with stakeholders such as the owner, consultants, contractors, and manufacturers.\n\nAs a commissioning agent, are special qualifications required? Indeed, there are relevant certifications available, such as the Building Commissioning Certified Professional offered by ASHRAE and the CCP (Certified Commissioning Professional) issued by the Building Commissioning Associations. While holding these certifications is advantageous, they are not mandatory. Based on my experience in commissioning projects, there is currently no compulsory requirement for such credentials. This differs from the engineering design field, where, for example, practicing design work in the U.S. requires a P.Eng (Professional Engineer) license to obtain stamping authority.",
+    "char_count": 910
+  },
+  {
+    "chunk_id": 19,
+    "metadata": {},
+    "content": "Commissioning agents generally fall into two categories:  \n1. One type is consulting firms that handle both design and commissioning (consultant as commissioning agent);  \n2. The other is independent third-party commissioning agents (third-party commissioning agent), where design and commissioning are performed by separate companies.  \n\nFrom project experience, small federal projects typically adopt the first model—where the same company serves as both consultant and commissioning agent—to streamline the bidding process and post-contract management, thereby reducing administrative costs. For large-scale projects, however, an independent third-party commissioning agent is usually required. Our company, Ziyutec, has participated in projects integrating consulting and commissioning roles, as well as served as an independent third-party commissioning agent.",
+    "char_count": 865
+  },
+  {
+    "chunk_id": 20,
+    "metadata": {},
+    "content": "Next, let’s discuss the scheduling of commissioning work. Commissioning progress is typically based on the overall project timeline or on-site construction progress, such as the completion status of construction work. Generally, commissioning activities commence before substantial completion and must be finalized before the owner or end-user moves in. This is because mechanical systems and electrical systems need to be fully commissioned before being handed over to the client’s operations and maintenance team.",
+    "char_count": 515
+  },
+  {
+    "chunk_id": 21,
+    "metadata": {},
+    "content": "As the commissioning lead, you must thoroughly coordinate with all project stakeholders when planning the commissioning schedule. For new construction projects, this involves aligning with contractors, owners, consultants, and manufacturer representatives to determine the commissioning timeline. For example, if air handling unit commissioning is planned but power is not yet connected, the work cannot proceed. Similarly, pump commissioning cannot begin if the water supply system is not ready.\n\nFor equipment upgrades or system commissioning in existing buildings, additional factors must be considered. For instance, when commissioning base building systems, system startups or shutdowns may disrupt normal operations in other parts of the building. Therefore, extensive coordination with relevant parties is essential to ensure smooth commissioning. These are just a few examples—actual commissioning requires ongoing collaboration with multiple departments.",
+    "char_count": 963
+  },
+  {
+    "chunk_id": 22,
+    "metadata": {},
+    "content": "Now introducing the fee structure for commissioning services. Fees vary significantly, primarily depending on factors such as project cost, project type, client profile, location, project scale, and complexity.\n\nFor example, commissioning fees for some high-end projects can reach up to 8% of the total cost, while those for standard office projects may be as low as 1%. In British Columbia, commissioning fees for residential projects undertaken by certain developers can even be below 1%, approximately around 0.5%.\n\nTherefore, all the above factors must be comprehensively considered when providing a quote.",
+    "char_count": 610
+  },
+  {
+    "chunk_id": 23,
+    "metadata": {},
+    "content": "Therefore, all the above factors must be comprehensively considered when providing a quote.\n\nTraining is a crucial component of the commissioning process and is typically conducted either during or after commissioning. The responsibility for training primarily falls on the contractor or the manufacturer’s representative, with the target audience usually being the owner’s operations and maintenance team or end-users. For example, training on the use of office VAV boxes may include instructions on adjusting temperatures via the thermostat panel, while training for security systems (such as cameras and access control systems) is tailored for relevant operators (e.g., security personnel). The content of training varies across different systems.",
+    "char_count": 750
+  },
+  {
+    "chunk_id": 24,
+    "metadata": {},
+    "content": "The training content varies depending on the project, but it typically covers the following aspects:\n\nDaily Operating Procedures: Standard operating processes for mechanical systems, building automation systems, or electrical systems.",
+    "char_count": 234
+  },
+  {
+    "chunk_id": 25,
+    "metadata": {},
+    "content": "Daily Operating Procedures: Standard operating processes for mechanical systems, building automation systems, or electrical systems.\n\nOperating Parameter Maintenance: Methods to ensure mechanical systems or building automation systems maintain normal operating parameters.\n\nTroubleshooting: Procedures for diagnosing operational faults when system issues arise.\n\nRoutine Inspection Procedures: Annual or monthly inspection processes for life safety systems and equipment (e.g., flow alarms, generators, sprinkler systems).\n\nMaintenance and Disassembly Procedures: Steps for dismantling, replacing, and reinstalling specific systems or equipment when damaged. Such work is usually outsourced by the owner to contractors.\n\nEmergency Operations: Handling measures during emergencies, which are one of the core training contents.",
+    "char_count": 825
+  },
+  {
+    "chunk_id": 26,
+    "metadata": {},
+    "content": "This was a brief introduction to Building Commissioning. Due to the extensive content, I will divide it into two parts for explanation.\n\nThis video is the first part as an overview, and the second part will be continued in the next video. I hope you found this video helpful. If you enjoyed it, feel free to share and subscribe to our channel.\n\nThat concludes today’s lesson. Thank you for watching, and we’ll see you next time.",
+    "char_count": 428
+  }
+]

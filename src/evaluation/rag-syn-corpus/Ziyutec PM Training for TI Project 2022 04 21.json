@@ -1,0 +1,200 @@
+[
+  {
+    "chunk_id": 0,
+    "metadata": {},
+    "content": "This training is specifically for TEI, as government and residential projects differ significantly from TEI projects. Typically, TEI projects are fast-tracked, simpler, and smaller in scale compared to residential and government projects, with streamlined procedures.\n\nProject management is crucial for successful project delivery. The project manager’s general responsibilities include leading a team comprising engineers, designers, project coordinators, and support from the accounting department and office administration. As a PM, you oversee all project activities from inception to completion, coordinating with various stakeholders and managing quality, schedule, cost, communication, and change orders. Effective communication with stakeholders and resource management—determining personnel requirements—are also key responsibilities.",
+    "char_count": 843
+  },
+  {
+    "chunk_id": 1,
+    "metadata": {},
+    "content": "While numerous learning materials on project management are available online, such as YouTube tutorials, this session focuses on practical aspects rather than theoretical foundations. The PMP (Project Management Professional) designation is a globally recognized certification for project managers, though it is not mandatory. Unlike the P.Eng designation for engineers, PMP is optional. To obtain PMP, candidates typically need around 2,000 hours of project coordination and management experience, along with passing an examination. While beneficial, it is not a requirement; many experienced project managers, including myself, have successfully managed hundreds of projects without it. However, for early-career professionals, pursuing PMP can be advantageous.\n\nProject management spans all professions and industries, but our focus here is on engineering project management, which has distinct characteristics compared to other sectors.",
+    "char_count": 940
+  },
+  {
+    "chunk_id": 2,
+    "metadata": {},
+    "content": "Project management spans all professions and industries, but our focus here is on engineering project management, which has distinct characteristics compared to other sectors.\n\nThis concludes our overview of project management. Next, I will discuss the project setup process within our company. Typically, we acquire projects through various channels.\n\nThe first channel involves submitting proposals for public bids, similar to our current practice. We actively search for opportunities, and our proposal team prepares and submits the necessary documentation.\n\nAnother method is through our professional network or existing clients who contact us via email or phone. In such cases, we submit a fee proposal. Occasionally, we receive inquiries from new clients or organizations with whom we have no prior working relationship. Additionally, other consultants may introduce projects to us.",
+    "char_count": 888
+  },
+  {
+    "chunk_id": 3,
+    "metadata": {},
+    "content": "Once a project is secured, the first step is project setup. This involves assembling the internal project team, including designers, project managers, engineers, and reviewers—a process with which you are already familiar.\n\nThe second step is creating a project folder on the server. For instance, when we receive a new project, such as Project 55, we establish the necessary infrastructure to support its execution.\n\nNormally, we access the project folder.\n\nThere is a project template that can be simplified.\n\nIf the project is solely electrical, we provide only electrical engineering services, referred to as “electrical only.”\n\nFor projects located in British Columbia or Alberta, we utilize a standardized template. The template is available in two versions: Electrical Only or MEP (Mechanical, Electrical, and Plumbing).",
+    "char_count": 827
+  },
+  {
+    "chunk_id": 4,
+    "metadata": {},
+    "content": "For projects located in British Columbia or Alberta, we utilize a standardized template. The template is available in two versions: Electrical Only or MEP (Mechanical, Electrical, and Plumbing).\n\nThe MEP version encompasses comprehensive mechanical, electrical, and plumbing services. This template is specifically designed for projects in British Columbia and Alberta.\n\nFor BGIS and public sector projects, which are large-scale government initiatives, we utilize three distinct templates. The first template encompasses all disciplines, similar to our approach for the Prince George office fit-up project. The second template is specific to electrical work, while the third covers mechanical, electrical, and plumbing (MEP) disciplines. For instance, Project 2019-007 for Transport Canada followed the MEP template.",
+    "char_count": 817
+  },
+  {
+    "chunk_id": 5,
+    "metadata": {},
+    "content": "The variation in templates stems from differences in project management methodologies across sectors and regions. Additionally, we manage small projects in provinces like Ontario, Manitoba, and Saskatchewan. In British Columbia, projects adhere to Schedule B or Schedule CB, whereas other provinces employ substantial completion letters or certificates instead of these schedules.\n\nI will copy this and rename it.\n\nHere is the completed document, including the number, city, address, project type, service, and designer. After creating it, I place it here and proceed with two tasks.\n\nFirst, I copy the supporting documents from the proposal folder to this location, as these are essential for the project.\n\nAdditionally, I will copy the input document from other disciplines to a separate folder. When copying, we should create a subfolder labeled with the date. This is our standard procedure for creating a project folder.",
+    "char_count": 925
+  },
+  {
+    "chunk_id": 6,
+    "metadata": {},
+    "content": "Additionally, I will copy the input document from other disciplines to a separate folder. When copying, we should create a subfolder labeled with the date. This is our standard procedure for creating a project folder.\n\nNext, I need to create a project file in QuickBooks and issue an invoice for the deposit. Currently, I handle this task, though it could also be managed by the accounting department.\n\nI demonstrate this process to provide an understanding of how it works. I will now proceed to log in to QuickBooks.\n\nI will create a project for this client, after verifying whether they already exist in our records. Key steps include checking the database to avoid duplicates and ensuring all client details are accurate.\n\nThe process will be streamlined for efficiency, with clear documentation at each stage. Proper verification is essential to maintain data integrity and provide the best service.",
+    "char_count": 904
+  },
+  {
+    "chunk_id": 7,
+    "metadata": {},
+    "content": "The process will be streamlined for efficiency, with clear documentation at each stage. Proper verification is essential to maintain data integrity and provide the best service.\n\nOnce confirmed, the project setup will proceed smoothly, with all necessary resources allocated. Timely communication with the client will ensure transparency and satisfaction throughout the process.\n\nThis is our client’s company.\n\nI will verify its existence in the system.\n\nIf it is existing, no.\n\nFirst, I will create a customer.\n\nComplete this form to create a new customer.\n\nAfter completing that step, proceed to the project section and select “New Project.”\n\nHere is the project name.\n\nI will copy this here and then select a customer.",
+    "char_count": 721
+  },
+  {
+    "chunk_id": 8,
+    "metadata": {},
+    "content": "Here is the project name.\n\nI will copy this here and then select a customer.\n\nThere is a list of existing customers. Once created, it will be displayed here. Select the desired customer and click Save.\n\nThis project will be recorded in QuickBooks, allowing you to log your time. Once I create the project, I can demonstrate the interface to you.\n\nFor this case, I assume it is a newly created project.\n\nThen, open this project in QuickBooks. Here, add it to the project, and you will find the invoice.\n\nHere, you can view all the necessary details, including engineering services, BP package options, pricing, and taxes. Once reviewed, you can proceed to invoice the customer.\n\nCreate a project file in QuickBooks and issue an invoice for the deposit.",
+    "char_count": 751
+  },
+  {
+    "chunk_id": 9,
+    "metadata": {},
+    "content": "Create a project file in QuickBooks and issue an invoice for the deposit.  \nThe next step is to create a project profile in the database.  \nAdd a new project.  \nEnter the project information, including the name, proposal number, location, title, customer details, bidding information, and project scope.  \nFor the project scope, refer to the proposal folder.  \nProceed to the proposal folder.  \nOpen the proposal.  \nCopy the project understanding here.  \nThe scope of services we provide includes:  \nYes, you can copy and paste it here.  \nNext, select the project team.  \nDo we need to provide the contract amount?",
+    "char_count": 614
+  },
+  {
+    "chunk_id": 10,
+    "metadata": {},
+    "content": "Yes, you can copy and paste it here.  \nNext, you select the project team.  \nDo we need to provide the contract amount?  \nThe system will automatically assign hours to each person. This can be modified if needed; otherwise, the default ratio will be applied.  \nYou must complete additional project details, including category, sector, type, contract, and whether the owner is Taiwanese.  \nThis plan, if we focus solely on electrical work, we select the electrical option.  \nThe service we provide includes various options, allowing for the creation of new solutions.  \nPlease note that you can add this information at a later stage. This corresponds to step number eight.",
+    "char_count": 670
+  },
+  {
+    "chunk_id": 11,
+    "metadata": {},
+    "content": "It is completed. I have also created a copy. You can archive the emails related to this project to the designated folder.\n\nSo that concludes the project setup. Next, we will proceed to the early design stage.\n\nThe first step is to create a project team contact list, including the client, other consultants, and the landlord. During the early design stage, contractors or vendors are not yet involved, but their information should still be collected.",
+    "char_count": 450
+  },
+  {
+    "chunk_id": 12,
+    "metadata": {},
+    "content": "Create a project team contact list including the client, other consultants, and the landlord. During the early design stage, contractors or vendors are not yet involved, but their information should still be collected.\n\nAs the project manager, inform the internal project team—designers, reviewers, and engineers—about the allocated budget of 20 hours for this project, which is already documented in the project database.\n\nClearly communicate the project scope to the internal team and confirm the project schedule deadlines for each milestone with the client or prime consultant, such as the architect. Ensure the team is aware of the key deliverables and their respective deadlines.\n\nRequest the necessary architectural CAD drawings, including the base building mechanical and electrical drawings, and coordinate the first site survey with the landlord or client.",
+    "char_count": 866
+  },
+  {
+    "chunk_id": 13,
+    "metadata": {},
+    "content": "Ensure proper preparation before conducting a site survey by completing the checklist, printing the architectural CAD drawings, and bringing the necessary tools.\n\nAfter completing the site survey, upload all collected information—including photos, videos, markups, and client-provided data—to the project folder. For Tenant Improvement (TI) projects, the process is straightforward. For instance, during the DDC replacement project in Regina for CRA, several days were spent reviewing documents such as online manuals. All relevant materials should be organized, either as hard copies or digital images.",
+    "char_count": 603
+  },
+  {
+    "chunk_id": 14,
+    "metadata": {},
+    "content": "Even during the Yellowknife project, I meticulously reviewed all documents to ensure nothing was overlooked. Following the survey, schedule an internal meeting to establish the design basis and archive the project folder. Once you understand the site conditions and have the architectural drawings, convene a shop meeting to discuss project execution.\n\nAs the Project Manager (PM), you must also obtain mechanical drawings. While designers typically handle this, for smaller projects under $5,000, the PM often assumes both roles. Additionally, request equipment lists and other necessary details from the client. This phase marks the early design stage.",
+    "char_count": 654
+  },
+  {
+    "chunk_id": 15,
+    "metadata": {},
+    "content": "During the design phase, tasks will arise periodically and continue until project completion. One critical responsibility is monitoring the NAS project folder to ensure all incoming and outgoing coordination documents, along with milestone deliverables, are properly archived. This documentation management is essential for project managers, especially on large-scale projects.\n\nFor example, on multi-billion dollar projects like oil and gas or semiconductor facilities, the volume of documents and drawings requires dedicated document control teams. These teams manage both hard and soft copies, maintaining records and organization.\n\nAs a Project Manager, it’s crucial to:\n1. Monitor the project database status, ensuring timely updates for important issues\n2. Track team progress against budget allocations\n3. Manage quality from a documentation perspective (technical quality relies on engineers or quality control departments)",
+    "char_count": 931
+  },
+  {
+    "chunk_id": 16,
+    "metadata": {},
+    "content": "Key aspects of project management include:\n- Quality control\n- Budget management\n- Schedule adherence\n- Communication\n- Change management\n- Documentation\n- Resource allocation\n\nFor email organization, maintaining separate Outlook project folders for each assignment is recommended, particularly when managing multiple concurrent projects (some PMs handle 40-50 projects simultaneously). This prevents inbox clutter and improves efficiency in locating project-specific communications.\n\nThis pertains to schedule management. As a Project Manager, you must ensure your team submits milestone deliverables on time. Therefore, you should communicate deadlines well in advance, accounting for the time required for engineer reviews, printing, and delivery.\n\nAlways work backward from the deadline to establish a realistic timeline.",
+    "char_count": 825
+  },
+  {
+    "chunk_id": 17,
+    "metadata": {},
+    "content": "Always work backward from the deadline to establish a realistic timeline.\n\nThe other duties involve routine project management coordination activities. This includes receiving emails from consultants or clients, distributing them internally, and ensuring that all concerns and comments are addressed appropriately by you or your team members.\n\nThese activities encompass emails, meetings, phone calls, and general project management tasks, as well as change and communication management.\n\nFor small Tenant Improvement (TI) projects, changes are typically uncommon. However, in government or larger projects, numerous change orders may arise. As a Project Manager (PM), it is essential to manage these changes effectively.\n\nWhen a client requests work outside the original scope, you should respond:",
+    "char_count": 798
+  },
+  {
+    "chunk_id": 18,
+    "metadata": {},
+    "content": "When a client requests work outside the original scope, you should respond:\n\n“We are happy to accommodate this request. However, it falls outside our original scope and will require a change order. I will provide a quotation for this additional work.”\n\nNext, prepare the necessary paperwork, clearly define the scope of the change, and draft a quotation. If uncertain about the process, consult experienced colleagues or supervisors for guidance.\n\nOnce the change order is approved by the client, notify the accounting department to update financial records and ensure the project database reflects the change. For example, the total change order amount should be recorded and tracked in the system.\n\nIf the original contract value is $52,000 and there is a $1,000 change order, the design budget increases by $1,000. The project database will be updated.",
+    "char_count": 855
+  },
+  {
+    "chunk_id": 19,
+    "metadata": {},
+    "content": "The project database will be updated.\n\nCommunication management is an aspect that many project managers overlook or fail to prioritize. In traditional project execution, the project manager serves as the sole point of contact. However, this approach is not always followed.\n\nFor larger projects, it is essential for the project manager to act as the single contact point, ensuring all communications are channeled through them. Consider a scenario where I am the CT plan checker, and five individuals from Ziyutec contact me via calls or emails with various questions. Given my limited time, I cannot respond to each inquiry individually. A single contact point is not only more professional but also more efficient.",
+    "char_count": 716
+  },
+  {
+    "chunk_id": 20,
+    "metadata": {},
+    "content": "Upon completing the design phase, we transition into Construction Administration. For small Tenant Improvement (TI) projects, the scope of Construction Administration services is typically limited, as defined in the client agreement. This may include reviewing shop drawings, completing review reports, and responding to Requests for Information (RFIs) from contractors requiring clarification from the consultant. Additionally, we issue Site Instructions (SIs) and Contemplated Change Notices (CCNs).",
+    "char_count": 501
+  },
+  {
+    "chunk_id": 21,
+    "metadata": {},
+    "content": "During construction, if the drawings lack detail or clarity, site instructions are provided to elaborate. A Change Control Note (CCN) is issued when modifications or additions are necessary, whether initiated by the contractor or consultant. The consultant drafts the change notice, which the contractor uses to prepare a quotation for client review and approval. Once approved, it becomes a change order—a standard procedure in construction.\n\nProgress claim reviews are less common in small TI projects but essential for government projects. Contractors submit monthly invoices for consultant review. Upon verification, the consultant issues a Certificate of Payment, authorizing the client to release funds.",
+    "char_count": 709
+  },
+  {
+    "chunk_id": 22,
+    "metadata": {},
+    "content": "Before closing a project, the Project Manager must ensure several key tasks are completed.",
+    "char_count": 90
+  },
+  {
+    "chunk_id": 23,
+    "metadata": {},
+    "content": "Before closing a project, the Project Manager (PM) must ensure several key tasks are completed.\n\nFirst, final payment must be received. For Tenant Improvement (TI) projects, Schedule CB is the last deliverable. It should not be issued until full payment is received, particularly when dealing with difficult clients or first-time collaborators. Issuing Schedule CB signifies project completion, and unpaid invoices become difficult to recover. We have encountered such cases previously, so Senior Project Managers (SPMs) should remain vigilant about this.\n\nAll outstanding items must be archived in the NAS project folder, with all issues resolved. The project folder status should be updated to “Closed.” This includes:\n- Project database updates\n- QuickBooks (QB) email folder organization\n- Archiving hard copy project folders (standard practice for our documentation)",
+    "char_count": 871
+  },
+  {
+    "chunk_id": 24,
+    "metadata": {},
+    "content": "For significant projects or those with valuable lessons, consider creating a brief write-up or conducting a lessons-learned meeting. Document any major issues encountered to prevent recurrence in future projects.\n\nBudget reconciliation is another critical responsibility. In larger firms like Stantec, PMs must justify budget variances. While we are a smaller company, we should implement similar tracking. For projects exceeding budget, the PM should document the reasons for the overage.\n\nFinally, ensure proper financial coordination with the accounting department throughout the close-out process.\n\nExpenses such as mileage, meals, parking fees, tickets, accommodation, printing, and delivery should be approved by Ying and myself. In larger companies, the PM should handle these costs and sign on behalf of the project team before the accounting department or executive management team reviews them.",
+    "char_count": 904
+  },
+  {
+    "chunk_id": 25,
+    "metadata": {},
+    "content": "We have already discussed engineering change orders and scope changes. Coordination with the accounting department is necessary when submitting milestone deliverables as per the contract. Each contract includes a payment schedule, so we must inform the accounting department to issue invoices. For clients with delayed payments, we need to collaborate with accounting to follow up. Upon project close-out, the accounting department must be notified to finalize financial records.\n\nNext, we will address business development.\n\nAfter project close-out, for significant or high-profile projects, we should prepare a detailed project description to serve as a reference for future proposals.\n\nAs project managers, maintaining strong relationships with clients is essential. This can be achieved through holiday greetings or regular communication. These relationships may lead to future opportunities.",
+    "char_count": 896
+  },
+  {
+    "chunk_id": 26,
+    "metadata": {},
+    "content": "Maintaining strong relationships with clients is essential for project managers. This can be achieved through holiday greetings or regular communication, which may lead to future opportunities.\n\nAdditionally, maintaining good rapport with architects, consultants, general contractors, and electrical contractors can also yield potential business prospects.\n\nThe next topic addresses handling difficult clients and project management challenges. Our policy for problematic clients is to cease services if payment is not received. We have encountered numerous such cases where clients demand unrealistic deadlines. For clients with a history of poor conduct, we maintain records and may refuse to provide services altogether.",
+    "char_count": 723
+  },
+  {
+    "chunk_id": 27,
+    "metadata": {},
+    "content": "One client failed to pay the full fee even after the BP package was submitted and construction was nearly complete. They unjustly blamed the work quality and raised baseless issues during site visits. Our stance is clear: we will not address any concerns until full payment is received. Similarly, for Schedule CB, we withhold issuance until final payment is received from problematic clients.\n\nProject management presents various challenges, including technical issues. For example, some projects in Hamilton and Toronto were executed based on record drawings without site visits, potentially leading to on-site problems. If issues arise due to our oversight, we promptly resolve them and ensure client satisfaction.",
+    "char_count": 717
+  },
+  {
+    "chunk_id": 28,
+    "metadata": {},
+    "content": "Budget management is another critical aspect. Project managers face greater pressure than technical staff, as they must oversee multiple facets—people, budget, technical issues—while ensuring timely, high-quality project delivery within budget constraints. Challenges include preventing budget overruns, meeting tight schedules, and managing limited resources.\n\nDelays caused by other parties, such as contractors, often result in unwarranted blame on design teams. Additionally, dealing with tough AHJs (Authorities Having Jurisdiction) and clients with fluctuating design requirements adds complexity. These are common challenges project managers must navigate effectively.",
+    "char_count": 675
+  },
+  {
+    "chunk_id": 29,
+    "metadata": {},
+    "content": "This discussion focuses on the coordination between the electrical design team and various stakeholders, including consultants, clients, contractors, and vendors. Additionally, it references several YouTube videos created a few years ago, which provide guidance on managing electrical projects in Canada, primarily targeting electrical contractors.\n\nAre there any questions?\n\nSite instruction and change order are distinct processes. Site instruction is the initial step, issued when a client requests a consultant to address an issue or when a consultant identifies a matter requiring clarification. This instruction can pertain to either clarification or scope changes. If the site instruction impacts the contractor’s scope, a change order is generated. Otherwise, it remains a clarification.",
+    "char_count": 795
+  },
+  {
+    "chunk_id": 30,
+    "metadata": {},
+    "content": "Site instructions are not contractual documents; they are merely directives. In contrast, change orders are contractual and directly related to the contract’s financial terms. These two processes are kept separate.\n\nFirst, we must clarify our agreement with the client regarding engineering services. If these services are not included in our contract, we can charge the client accordingly. This pertains specifically to the relationship between our consultancy and the client.",
+    "char_count": 477
+  },
+  {
+    "chunk_id": 31,
+    "metadata": {},
+    "content": "When addressing contractor inquiries, comments, or change requests—especially those involving commercial or contractual issues—we should consult the client before responding. This ensures we do not overstep our role as consultants, who are primarily responsible for technical matters rather than financial decisions. Establishing a clear communication protocol is essential—whether for change orders, RFIs (Request for Information), or site instructions. We need to determine if formal documentation (RFI, site instruction, change order) is required or if email correspondence suffices. The client’s preference dictates our approach.",
+    "char_count": 633
+  },
+  {
+    "chunk_id": 32,
+    "metadata": {},
+    "content": "In government projects, consultants may have the authority to issue certificates of payment and evaluate contractor quotations. For instance, you might reject an unreasonable quote and request a revision. In such cases, you act on behalf of the government.\n\nFor private sector projects, it is advisable to defer financial decisions to the client to avoid overinvolvement in monetary matters. This approach maintains clear boundaries in our professional responsibilities.\n\nDepending on the situation, similar to most Tenant Improvement projects we handle—particularly for Chinese clients—this is typically not provided. Contractors often attempt to manage it themselves, which has its drawbacks. Despite their perceived experience, contractors may not always adhere to the design specifications.",
+    "char_count": 794
+  }
+]

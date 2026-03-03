@@ -1,0 +1,578 @@
+[
+  {
+    "chunk_id": 0,
+    "metadata": {},
+    "content": "The selection of protective equipment and the calculation of cable conductor cross-sections are the main topics of today’s lesson. The course is divided into three parts, beginning with an introduction to the laying and installation methods of cables and conductors, along with relevant regulations and standards.\n\nCables and wires can be categorized by material into copper, aluminum, composite materials, and optical fibers. By application, they include high-voltage, medium-voltage, and low-voltage cables, signal wires such as control wires, communication cables like Cat-6 and fiber optics, as well as special-purpose wires and cables.\n\nIn Canada, cables are primarily categorized into three types: FT1, FT4, and FT6. These cables are selected based on building classifications, construction types (such as combustible or non-combustible buildings), and the requirements of different zones, utilizing varying cable or conductor types.",
+    "char_count": 939
+  },
+  {
+    "chunk_id": 1,
+    "metadata": {},
+    "content": "Additionally, classified by external protection, cables can be divided into types such as Cat6 twisted pair and armored cables.\n\nSpecial cables include VFD cables, used for anti-interference; Fire Pump cables typically employ mineral fire-resistant cables.\n\nGrounding conductors are divided into bare wire grounding and grounding cables with green insulation.\n\nPower system transmission lines are generally used for medium and high voltage, employing aluminum conductor steel-reinforced (ACSR) cables.\n\nIn addition, we also have devices such as CableBus or BusDuck. BusDuck is a set of grounding devices.\n\nThis is BusDuct, typically used indoors. This type of product is called CableBus, which consists of a set of cables inside and is suitable for industrial or outdoor scenarios. The difference between cables and wires lies in…",
+    "char_count": 830
+  },
+  {
+    "chunk_id": 2,
+    "metadata": {},
+    "content": "This is BusDuct, typically used indoors. This type of product is called CableBus, which consists of a set of cables inside and is suitable for industrial or outdoor scenarios. The difference between cables and wires lies in…\n\nCables typically include a grounding conductor and feature an external protective layer. In terms of insulation performance, cables are similar to wires. However, differences exist in shielding, grounding, and mechanical protection. Additionally, cables are usually equipped with an armored layer. For outdoor installations, cables also have special structures with UV-resistant properties.\n\nWires are categorized into two types: those with conduits and those without. In terms of wire specifications, single-core wires are typically used for No. 8 AWG and above, while stranded wires are more common for sizes below No. 8, especially below No. 10 AWG.",
+    "char_count": 878
+  },
+  {
+    "chunk_id": 3,
+    "metadata": {},
+    "content": "Connections between cables can be made using adapters, with attention to whether they are waterproof. When used in explosive environments, they must also meet special explosion-proof requirements.\n\nThe specific methods for wire selection will be explained in detail in Part 2 of the PPT. Additionally, cables generally do not require conduit installation, whereas wires need to be installed inside conduits.\n\nConduit can be classified into several types. One type is called EMT (Electrical Metallic Tubing), and another is referred to as Metallic Conduit, which includes both Rigid and Non-Rigid varieties. Generally, EMT offers less compressive or mechanical protection compared to metallic conduit, with the latter providing superior performance.\n\nPVC materials were once used indoors in China, but they are typically suitable for outdoor, underground, or humid environments abroad.",
+    "char_count": 884
+  },
+  {
+    "chunk_id": 4,
+    "metadata": {},
+    "content": "PVC materials were once used indoors in China, but they are typically suitable for outdoor, underground, or humid environments abroad.\n\nThis type of conduit also includes flexible metal conduits, commonly referred to as BS cable conduits, which are used internally for wiring. Additionally, this conduit is equipped with corresponding fittings, connections, and is supported at regular intervals with supports.\n\nDuring the installation of wiring conduits, specific requirements must be met for special environments such as explosion-proof or waterproof conditions.\n\nThis is a Cable Tray, which is divided into ventilated and non-ventilated types, with two structural designs: ladder-type and wire-mesh type, clearly distinguishable from the photos. Additionally, there are metal material and fireproof glass material options, as well as types with covers and without covers.",
+    "char_count": 874
+  },
+  {
+    "chunk_id": 5,
+    "metadata": {},
+    "content": "In cable tray systems, different types of cables may require the use of sleeves. Additionally, accessories such as ladder connectors, reducers, and elbows are needed for connecting cable trays.\n\nFor support, cable trays require support structures installed at specific intervals, typically using steel structures or low-profile supports. In North America, the standard module for cable trays is 6 meters, but this does not mean the support spacing must be 6 meters.\n\nAccording to code requirements, cable tray systems must undergo equipotential bonding and grounding. When cables and cable trays pass through firewalls, firestop measures must be implemented.\n\nFurthermore, there are other types of electrical pathways, such as wireways and other smaller-sized cable routing systems.\n\nIn addition, whether it’s called a gutter or a splitter, it is a type of wire-splitting device.",
+    "char_count": 879
+  },
+  {
+    "chunk_id": 6,
+    "metadata": {},
+    "content": "In addition, whether it’s called a gutter or a splitter, it is a type of wire-splitting device.\n\nInside the control panel, there is usually a small wiring device used for arranging small control distribution circuits, called Panduit, which is typically installed within the control panel.\n\nIn indoor environments, cables and wires can be installed in various ways. Engineer Pan may have already gone to the site, so let’s proceed to discuss the wall section. Wires and cables can be installed in different environments, such as indoors or in free air. Many communication cables are secured using J-hooks, requiring minimal protection, and can be laid directly in the air or within cable trays.",
+    "char_count": 693
+  },
+  {
+    "chunk_id": 7,
+    "metadata": {},
+    "content": "The concept of plenum (plenum space) might be relatively new and less understood domestically. It specifically refers to certain designated spaces, such as above office drop ceilings or within air ducts. Since these areas are used for ventilation, they can easily become pathways for fire spread during emergencies. Therefore, the fire resistance rating requirements for cables or wires installed in such environments differ from those in ordinary indoor spaces.\n\nCables can be installed in cable trays, plenum spaces, or under floors. Underfloor wiring is primarily used in data centers. Additionally, cables can also be fixed directly along walls, ceilings, or floors without using trays.\n\nIn wiring systems, raceway typically refers to conduits and cable trays. Conduits mainly house wires, while cable trays are primarily used for cables. These are the general categories of wiring methods in indoor environments.",
+    "char_count": 917
+  },
+  {
+    "chunk_id": 8,
+    "metadata": {},
+    "content": "In wiring systems, raceway typically refers to conduits and cable trays. Conduits mainly house wires, while cable trays are primarily used for cables. These are the general categories of wiring methods in indoor environments.\n\nFreeair, such as our processing lines and general Freeair radiation cables. Additionally, there are sections where wires run through conduits and buried portions. The buried portions come in various forms, including direct burial, duct banks, and cable trenches, among other cable laying mechanisms.\n\nIn special areas such as flammable and explosive environments, the installation of cables, cable trays, or wires has specific requirements, often necessitating sealing treatment to prevent batteries from triggering explosions.",
+    "char_count": 754
+  },
+  {
+    "chunk_id": 9,
+    "metadata": {},
+    "content": "In special areas such as flammable and explosive environments, the installation of cables, cable trays, or wires has specific requirements, often necessitating sealing treatment to prevent batteries from triggering explosions.\n\nIn damp, low-lying, or water-exposed environments like underwater locations, waterproof and anti-corrosion measures must be adopted. Additionally, cathodic protection technology is commonly used in industrial fields.\n\nThe following issues must be considered in cable radiation design:\n\nFor conduit windows or oversized cable cross-sections, the bending radius is typically 8 to 12 times the diameter, with 10 times recommended.\n\nCompliance with local utility regulations is required—for example, no more than 30 ninety-degree bends for a single cable.\n\nRandom cutting and splicing of cable joints is prohibited, especially for trunk cables running from distribution rooms to regional power supplies.",
+    "char_count": 927
+  },
+  {
+    "chunk_id": 10,
+    "metadata": {},
+    "content": "Random cutting and splicing of cable joints is prohibited, especially for trunk cables running from distribution rooms to regional power supplies.\n\nWhen laying large conduit windows and cable trays, coordination with other utility pipelines (e.g., water pipes, air ducts) is necessary to avoid spatial conflicts.\n\nDomestic and international standards clearly specify the matching of conduit window diameters and conductors, which must be strictly followed.\n\nPay attention to connection issues between CableTree and Countwave.",
+    "char_count": 525
+  },
+  {
+    "chunk_id": 11,
+    "metadata": {},
+    "content": "Regarding the application standards for wires and cables, the Building Code in North America first specifies the building type, such as combustible or non-combustible construction. Based on the building type, the Building Code also defines the fire resistance rating of cables, such as FT4 or FT6.\n\nWithin the same building category, different environments like plenum spaces or concrete walls also correspond to specific cable type requirements. The electrical code is primarily used to calculate the cross-sectional area of cables and conductors, and it details the methods for cable installation.\n\nAdditionally, it includes installation requirements for electrical conduits, such as regulations for concrete and metal conduits. These standards involve Canadian certifications like ULC and CSA.",
+    "char_count": 796
+  },
+  {
+    "chunk_id": 12,
+    "metadata": {},
+    "content": "This section primarily elaborates on the installation requirements for wiring and conduits in fire alarm systems, as well as the cable installation specifications for security systems. TIA/EIA/BICSI represents the U.S. standards for communication cables and wiring installation, which also include technical requirements for cable tray installation.\n\nAdditionally, manufacturer standards or NEMA standards typically address environmental adaptability requirements, covering special working conditions such as indoor/outdoor installation, flammable and explosive environments, and dusty locations. These standards mainly apply to exposed cable installations, such as cable trays and busways.",
+    "char_count": 690
+  },
+  {
+    "chunk_id": 13,
+    "metadata": {},
+    "content": "It is also essential to note and strictly comply with any special regulations imposed by local power authorities or telecommunications regulatory agencies.\n\nThis section provides a basic introduction to wires, cables, and their conduit installation through bridge frames. I’ll give a brief overview—please feel free to ask if you have any questions. If there are no issues, we’ll proceed to the next segment.\n\nNext, we will briefly discuss how to select the cross-section of wires and cables. The explanation is based on the Canadian Electrical Code, but there is little difference between the Canadian Electrical Code and the American National Electrical Code.",
+    "char_count": 661
+  },
+  {
+    "chunk_id": 14,
+    "metadata": {},
+    "content": "This standard primarily involves NEC, CEC, and IEEE 835. IEEE 835 specifically addresses the selection of cables for special environments or large cross-sections, such as calculation methods for underground installation of large cross-section cables, and provides corresponding calculation guidelines.\n\nBefore selecting cables and conductors, it is essential to identify the load type of the power supply target. Loads can be categorized as inductive loads, general loads, or complete equipment (such as machinery, air conditioning systems, etc.).\n\nFirst, calculate the rated current of the load and determine whether its power supply method is single-phase or three-phase. Additionally, specific equipment must comply with relevant regulatory requirements.",
+    "char_count": 757
+  },
+  {
+    "chunk_id": 15,
+    "metadata": {},
+    "content": "In North America, cable installation methods include aerial radiation, conduit wiring, or cable trays, each corresponding to different calculation formulas or table lookup methods. Temperature factors must be considered. When multiple cables are laid side by side in a cable tray, a corresponding multiplier must be applied. Voltage drop is another critical concern, with calculations involving various tables. Separate tables are required for copper wires and aluminum wires, and underground installations also have specific table lookup methods. Tables for copper and aluminum wire installations must be used accordingly.",
+    "char_count": 623
+  },
+  {
+    "chunk_id": 16,
+    "metadata": {},
+    "content": "The ambient temperature correction factor must be adjusted based on the actual outdoor temperature. For example, if the standard table is based on 30°C but the actual ambient temperature reaches 40°C, the current-carrying capacity must be reduced accordingly. For cables in trays, no multiplier is needed if the spacing is 100%; the smaller the spacing and the greater the number of cables, the larger the required multiplier. Specific multipliers also apply when single conductors are laid side by side with multiple conductors.\n\nCable selection for dry-type transformers may not apply to 380V/220V systems, as such systems typically do not require intermediate transformers. Transformer applications are more common in North America. Furthermore, if long-distance power transmission results in a voltage drop exceeding the specified range (e.g., 5%), the conductor cross-sectional area must be increased to reduce the drop.\n\nThe rules for conductor selection are as follows: First, the load current must be calculated.",
+    "char_count": 1020
+  },
+  {
+    "chunk_id": 17,
+    "metadata": {},
+    "content": "The rules for conductor selection are as follows: First, the load current must be calculated.\n\nFor motor loads, the cross-sectional area of the conductor should be 1.25 times the load current. The selected conductor or cable must be capable of carrying 125% of the load current. The same applies to low-voltage transformers.\n\nFor multiple motor loads, if a single cable supplies power to multiple motor loads connected to the same busbar, the cable’s cross-sectional area only needs to be calculated based on 125% of the largest motor’s load current, while the remaining motors can be considered at their rated current.\n\nFor packaged equipment, conductors are typically selected based on the technical data (such as MCA or MOP) provided by the supplier. MCA refers to the Minimum Capacity Amperage, and conductor selection should be based on this value. MOP will be explained later.",
+    "char_count": 882
+  },
+  {
+    "chunk_id": 18,
+    "metadata": {},
+    "content": "During this process, the conductors may be exposed to various radiation environments, including scenarios such as underground burial, outdoor, rooftop, and indoor installations. All operating conditions must be comprehensively considered during design, with the most stringent scenario serving as the basis for conductor cross-section selection.\n\nAdditionally, various correction factors must be accounted for, such as the influence of ambient temperature on current-carrying capacity. Specific expressions will be presented later. Meanwhile, it is essential to ensure the voltage drop complies with regulatory requirements.\n\nUltimately, the conductor specifications should be determined based on the maximum operating current and the most severe operating conditions.",
+    "char_count": 768
+  },
+  {
+    "chunk_id": 19,
+    "metadata": {},
+    "content": "Ultimately, the conductor specifications should be determined based on the maximum operating current and the most severe operating conditions.\n\nThis is an example regarding current compounding. In reality, if you use a compounded current of 100A, such as with No. 4 or No. 2 gauge wires, the 100A rated current may not be applicable.\n\nFor instance, if the ampacity of No. 4 wire is 100A, then a compounded current of 100A cannot use No. 4 wire. Typically, the current needs to be increased to 125% for calculation.\n\nUnder normal conditions, voltage drop and temperature coefficients do not require additional consideration, and no coefficients need to be introduced in capacity calculations. However, if a coefficient of 0.8 must be applied in a 40°C environment, further calculations are necessary.\n\nFor specific details, refer to relevant standards such as Table 5A or Tables 5B/5C/5D.",
+    "char_count": 887
+  },
+  {
+    "chunk_id": 20,
+    "metadata": {},
+    "content": "For specific details, refer to relevant standards such as Table 5A or Tables 5B/5C/5D.\n\nFirst, it is necessary to calculate the steady-state current under different composite conditions. Subsequently, use the aforementioned formula to compute the current required for all installation methods. Select the maximum current value among them and verify whether the voltage drop meets the requirements. If it does, adopt the current conductor size; if not, increase the conductor cross-sectional area to satisfy the voltage drop requirement. It should be noted that addressing voltage drop issues is not limited to increasing the conductor cross-sectional area; methods such as adjusting voltage tap settings can also be employed, though these will not be discussed in detail here.",
+    "char_count": 776
+  },
+  {
+    "chunk_id": 21,
+    "metadata": {},
+    "content": "For example, for a single cable, the latest standard of Detail 1 should be referenced. Different installation methods correspond to different tables, and the current-carrying capacity should be determined based on the cable type.\n\nUnderground installation methods have dedicated table classifications, such as the Yamato and Danbu standards, which clearly specify the installation methods and corresponding tables. Additionally, underground installations must comply with the requirements of Article 441.\n\nFor overhead installations, the selection standards for conductors and cables must be followed.",
+    "char_count": 601
+  },
+  {
+    "chunk_id": 22,
+    "metadata": {},
+    "content": "For overhead installations, the selection standards for conductors and cables must be followed.\n\nFor example, the maximum capacity of the 14 AWG wire in North America can reach up to 2000. Its cross-sectional area previously lacked a corresponding standard, but now it can be referenced accordingly.\n\nThe current-carrying capacity varies under different temperatures, such as 90°C. Currently, 90°C is typically selected as the permissible temperature for conductor heating. Taking the 8 AWG wire as an example, a single copper conductor can transmit 80 amps of current at 90°C.\n\nTable 2 involves three types of copper conductors, such as the current-carrying capacity of the 8 AWG wire at 90°C.\n\nThe actual current transmitted is only 55 amps. Table 3 shows the temperature line for a single conductor, while Table 4 displays the temperature line for three or more conductors. Table 5A provides the outdoor temperature correction factor.",
+    "char_count": 937
+  },
+  {
+    "chunk_id": 23,
+    "metadata": {},
+    "content": "When the ambient temperature exceeds 30 degrees Celsius and reaches 35 degrees Celsius, a correction factor of 0.96 should be applied for cables with a 90-degree insulation rating. Specific values can be referenced in Table 5A.\n\nThe correction factors in Table 5B apply to single-run cables, whether coaxial or other types. When the number of cables is two, three, or four, multiply by the corresponding factors respectively.\n\nTable 5C corresponds to the content of Tables 2 and 4, where one factor is used for 1 to 3 cables, and another factor is multiplied for 4 to 6 cables.\n\nTable 5D specifies the calculation method for correction factors when cables are installed in cable trays.\n\nIn other words, you need to consider multiple wires or multi-layer wiring.",
+    "char_count": 761
+  },
+  {
+    "chunk_id": 24,
+    "metadata": {},
+    "content": "Table 5D specifies the calculation method for correction factors when cables are installed in cable trays.  \nIn other words, you need to consider multiple wires or multi-layer wiring.  \nThe quantity of horizontally laid conductors is determined by “Number of Horizontally”. The corresponding correction factor is determined based on the number of laying layers (such as single-layer or double-layer). This is similar to the domestic selection method, but the considerations are more detailed. The cross-section of the conductor or cable is selected based on these conditions.  \nNext, we will discuss how to select protective devices and their configurations.  \nI mainly introduce low-voltage electrical appliances.",
+    "char_count": 714
+  },
+  {
+    "chunk_id": 25,
+    "metadata": {},
+    "content": "Next, we will discuss how to select protective devices and their configurations.\n\nI mainly introduce low-voltage electrical appliances.\n\nThe medium-voltage system is somewhat related to our work, while the high-voltage system is largely irrelevant. For the current project requirements, we primarily focus on the selection of low-voltage protection equipment. First, I will introduce the classification of low-voltage circuit breakers.\n\nNext, I will introduce its application methods.\n\nSubsequently, I will explain the application of fuses (commonly known as “保险丝” in China).\n\nThen, I will elaborate on the application scenarios of isolating switches.\n\nFinally, I will explain the relevant standards and specifications.\n\nRegarding the classification of low-voltage circuit breakers, there are different naming conventions.",
+    "char_count": 822
+  },
+  {
+    "chunk_id": 26,
+    "metadata": {},
+    "content": "Finally, I will explain the relevant standards and specifications.\n\nRegarding the classification of low-voltage circuit breakers, there are different naming conventions.\n\nI will provide everyone with a macro-level introduction and overall concept. Here are some commonly used terms:\n\nMCCB (Molded Case Circuit Breaker) refers to a device where the circuit breaker is enclosed within a housing. Another less common type is the Low Voltage Power Circuit Breaker, typically used in larger switchgear, while MCCBs are more commonly employed in distribution panels or standalone applications.\n\nCircuit breakers can be categorized into magnetic type, thermal type, and combined magnetic-thermal type. Installation methods include bolt-on, plug-in, and draw-out, with the latter usually used in high-voltage switchgear.",
+    "char_count": 812
+  },
+  {
+    "chunk_id": 27,
+    "metadata": {},
+    "content": "Circuit breakers can be categorized into magnetic type, thermal type, and combined magnetic-thermal type. Installation methods include bolt-on, plug-in, and draw-out, with the latter usually used in high-voltage switchgear.\n\nIn terms of protection settings, they can be classified as Full Rated or Series Rated based on system requirements. Ratings are further divided into 100% rated and 80% rated: an 80% rating means a 100-amp breaker can only be used for circuits of 80 amps or below, while a 100% rating allows it to protect a 100-amp circuit.\n\nDepending on their application, circuit breakers can be general-purpose, circuit protection type, or specifically designed for air conditioning equipment. These are all typical circuit breaker applications.\n\nWe can see this one doesn’t have an Electronic Trip Unit, while the other one does. Therefore, the latter allows for more complex designs.\n\nEarlier I mentioned the difference between Full Rated and Series Rated.",
+    "char_count": 969
+  },
+  {
+    "chunk_id": 28,
+    "metadata": {},
+    "content": "We can see this one doesn’t have an Electronic Trip Unit, while the other one does. Therefore, the latter allows for more complex designs.\n\nEarlier I mentioned the difference between Full Rated and Series Rated.\n\nFull Rated refers to the selectivity of protection. For example, consider a circuit breaker here with a 100-ampere rating and 65kA breaking capacity. If a short circuit occurs downstream and the short-circuit current at both breakers is around 60kA, both breakers will trip.\n\nIn contrast, Series Rated works differently. For instance, the upstream breaker may have a 65kA rating while the downstream one is rated at 22kA. When the downstream short-circuit current is 20kA, only the downstream breaker trips. However, if the short-circuit current reaches 60kA, the downstream breaker’s insufficient breaking capacity will cause the upstream breaker to trip, resulting in poorer protection selectivity.",
+    "char_count": 913
+  },
+  {
+    "chunk_id": 29,
+    "metadata": {},
+    "content": "The advantage of a Series Rated system lies in cost savings. There is a significant price difference between 20kA and 65kA breakers, and higher-capacity breakers also occupy more physical space. Adopting a Full Rated solution to meet selectivity requirements often necessitates a substantial increase in panelboard dimensions.\n\nCircuit breaker trip mechanisms come in various types, and their breaking capacity and physical size directly impact system design and cost. Selecting a solution requires balancing protection selectivity and economic efficiency.\n\nFor example, thermal-magnetic tripping and electronic tripping. Generally, electronic tripping is suitable for applications with currents of 400A or higher. Electronic tripping offers better selectivity and can provide multiple protection functions.",
+    "char_count": 807
+  },
+  {
+    "chunk_id": 30,
+    "metadata": {},
+    "content": "Thermal-magnetic tripping and electronic tripping. Generally, electronic tripping is suitable for applications with currents of 400A or higher. Electronic tripping offers better selectivity and can provide multiple protection functions.\n\nIn contrast, non-electronic tripping devices usually only have fixed values or limited adjustment ranges, making it impossible to achieve multiple protection settings. Additionally, electronic tripping devices also feature replaceability.\n\nCircuit breakers can actually be used as a switching method in daily maintenance operations.\n\nIt can provide overcurrent protection, namely short-circuit protection, as well as overload protection. The protected equipment or materials include downstream feeders (Feeder) and various devices, such as motors and lighting systems.",
+    "char_count": 806
+  },
+  {
+    "chunk_id": 31,
+    "metadata": {},
+    "content": "It can provide overcurrent protection, namely short-circuit protection, as well as overload protection. The protected equipment or materials include downstream feeders and various devices, such as motors and lighting systems.\n\nFor motors and lighting systems, it primarily offers overload protection. If a short circuit occurs in the circuit, short-circuit protection is also required. The protection for medium-voltage or high-voltage systems is more complex and will not be detailed here.\n\nMotor protection measures include ground fault protection, overcurrent protection, and overload protection. These measures are relatively simplified in low-voltage systems because low-voltage motors have smaller capacities. High-voltage or large-capacity motors, due to their higher value and stringent production requirements, have more comprehensive protection measures. Commercial-use motors are typically smaller in power, generally below 100 kilowatts, and thus have relatively relaxed protection requirements.",
+    "char_count": 1007
+  },
+  {
+    "chunk_id": 32,
+    "metadata": {},
+    "content": "The size of circuit breakers (Breaker) varies depending on manufacturer specifications. For example, in North America, circuit breakers range from 15 amps to 6000 amps and are categorized into single-pole, double-pole, and triple-pole types. Full-pole (Full Pro) circuit breakers refer to the four-pole type, used to disconnect the neutral line. However, such circuit breakers are relatively rare and usually appear in automatic transfer switch (ATS) systems.\n\nA crucial parameter of circuit breakers is their interrupting capacity. In North America, the minimum standard for interrupting capacity is 10kA (10,000 amperes), with a maximum reaching 65kA—typically sufficient for low-voltage applications.",
+    "char_count": 703
+  },
+  {
+    "chunk_id": 33,
+    "metadata": {},
+    "content": "A crucial parameter of circuit breakers is their interrupting capacity. In North America, the minimum standard for interrupting capacity is 10kA (10,000 amperes), with a maximum reaching 65kA—typically sufficient for low-voltage applications.\n\nProtection types or protection levels can be categorized as follows: instantaneous protection, short-time delay protection, long-time delay protection, ground fault protection, and overload protection. Multi-pole protection is usually configured at the main switch position, characterized by higher capacity and equipped with an electronic tripping unit, while also providing backup protection for downstream loads. This combination of protections is referred to as LSIG, representing long-time delay, short-time delay, instantaneous, and ground fault protection.",
+    "char_count": 807
+  },
+  {
+    "chunk_id": 34,
+    "metadata": {},
+    "content": "Beyond protection functions, circuit breakers also feature auxiliary control characteristics, such as:\n\n1. Shunt Trip: The breaker incorporates a built-in relay (e.g., a G-type relay) that automatically triggers tripping upon receiving a signal. This function is commonly used in high-voltage systems (more complex in low-voltage systems), with typical applications including generator or load shedding. For instance, when the capacity of an emergency generator bus is limited, a signal can trigger the breaker to trip and shed loads during emergencies.\n\n2. Auxiliary Switch: Monitors the open/closed status of the breaker and outputs signals for system monitoring.\n\n3. Under Voltage Release: Provides low-voltage protection, often used in Automatic Transfer Switches (ATS) to monitor switching signals between system voltage and generator voltage.\n\n4. Alarm Switch: Outputs alarm signals under abnormal conditions.",
+    "char_count": 915
+  },
+  {
+    "chunk_id": 35,
+    "metadata": {},
+    "content": "3. Under Voltage Release: Provides low-voltage protection, often used in Automatic Transfer Switches (ATS) to monitor switching signals between system voltage and generator voltage.  \n4. Alarm Switch: Outputs alarm signals under abnormal conditions.  \n5. Mechanical Interlock: In dual power supply systems (commonly referred to as “Min-Tai-Min”), mechanical interlocks ensure that two switches cannot close simultaneously, maintaining a one-open-one-closed state.",
+    "char_count": 463
+  },
+  {
+    "chunk_id": 36,
+    "metadata": {},
+    "content": "This interlocking can be achieved mechanically or electronically, such as through Kirk-Lock. Typically, circuit breakers are categorized into different types based on their application scenarios. For example, breakers used in switchgear, switchboards, or motor control centers (MCCs) belong to different categories from those used in ordinary distribution panels. Thus, this classification exhibits clear distinctions.\n\nRegarding circuit breaker selection, feeders are typically sized at 125% of the load rating, which also applies to dry-type transformers. For non-motor loads, the standard sizing is 125%; whereas for motor loads, 250% is generally required to account for the impact of equipment starting currents.",
+    "char_count": 717
+  },
+  {
+    "chunk_id": 37,
+    "metadata": {},
+    "content": "When circuit breakers are used to protect circuits consisting of Variable Frequency Drives (VFDs) and motors, specifications often lack detailed guidance. Based on experience, there are two scenarios:\n\n1. With a VFD, since starting current issues are resolved, the current is significantly reduced, allowing breaker selection at 125% of the load value.  \n2. If the VFD has a bypass function, the system will switch to bypass operation during VFD failure. In this case, sizing at only 125% without VFD involvement may cause the breaker to trip during motor startup.\n\nThus, specific analysis is required: 125% can be used when there is no bypass function, but with bypass functionality, 250% sizing is recommended.\n\nIf the circuit breaker is used for equipment protection, it must be selected based on the Maximum Overcurrent Protection (MOP) value. Equipment manufacturers usually provide relevant data, and breaker selection should follow MOP parameters—for example, when protecting devices like FARPump.",
+    "char_count": 1004
+  },
+  {
+    "chunk_id": 38,
+    "metadata": {},
+    "content": "The selection is typically based on 600% of the composite current, primarily to avoid locked-rotor current and starting current. This equipment does not have fire pump functionality. As mentioned earlier, it does not provide overload protection, only short-circuit protection, i.e., overcurrent protection.\n\nRegarding the application scenarios for ground fault protection, Canadian standards are largely consistent with North American standards. The specific regulations are as follows:\n- For 208V voltage level circuits, ground fault protection must be implemented at 2000 amperes;\n- For 600V circuits, ground fault protection is required at 1000 amperes.",
+    "char_count": 656
+  },
+  {
+    "chunk_id": 39,
+    "metadata": {},
+    "content": "Concerning the LSIG function, it mainly includes long-time delay, short-time delay, instantaneous, and ground fault protection. Typically, circuit breakers rated 400 amperes and above are equipped with an Electronic Trip Unit, and such breakers are all rated at 100%. Circuit breakers rated 400 amperes and above are generally used for applications with a 100-ampere rating, while those rated below 250 amperes mostly adopt an 80% rating.",
+    "char_count": 438
+  },
+  {
+    "chunk_id": 40,
+    "metadata": {},
+    "content": "When selecting a circuit breaker, multiple factors need to be considered. The main difference between a circuit breaker and an isolating switch lies in its short-circuit protection capability, which allows it to interrupt short-circuit currents. In North America, the calculation method for short-circuit currents typically involves manual estimation for small systems, while large systems require specialized calculation software. The next lecture will provide a detailed explanation of how to use Singular software for modeling, calculate the short-circuit current values at each node through the software, and then select the appropriate circuit breaker capacity based on the results.",
+    "char_count": 687
+  },
+  {
+    "chunk_id": 41,
+    "metadata": {},
+    "content": "When choosing the type and specifications of a circuit breaker, it is necessary to comprehensively consider different operating conditions such as overload, short-circuit, and grounding, as well as protection characteristics like long-time delay and short-time delay. The selection criteria for main switches, intermediate-level switches, and end switches vary and should be reasonably chosen based on their installation location, specifications, and functions.\n\nIn drawings, the common TA (Trip Current Setting) indicates the adjustable setting of a circuit breaker. For example, an 800A circuit breaker can have its protection current set to 400A, 500A, or 600A via an electronic trip unit. There are significant differences in the protection characteristics between circuit breakers and fuses, with circuit breakers offering superior functionality and selectivity.",
+    "char_count": 867
+  },
+  {
+    "chunk_id": 42,
+    "metadata": {},
+    "content": "Circuit breakers are primarily used for protection, while contactors are mainly for control and can only interrupt load currents, not short-circuit currents. Isolating switches are solely for maintenance operations and cannot be used for control, which must be achieved by devices such as contactors.\n\nSelective coordination is crucial and is typically analyzed using time-current curves. Power system analysis software can assist in coordination calculations, and adjustments are required if the results do not meet the requirements. The next topic will discuss the selection and application of fuses.\n\nFuses can provide both overload protection and short-circuit protection, and are categorized into short-delay and long-delay types. Overall, their functionality is significantly weaker than that of circuit breakers.",
+    "char_count": 819
+  },
+  {
+    "chunk_id": 43,
+    "metadata": {},
+    "content": "Fuses can provide both overload protection and short-circuit protection, and are categorized into short-delay and long-delay types. Overall, their functionality is significantly weaker than that of circuit breakers.\n\nFuses are used in both low-voltage and high-voltage systems, especially in control panels where they are commonly employed for overcurrent or overload protection. The time-delay range of fuses includes fast-acting and time-delay types, with the specific choice depending on the application scenario.\n\nFor example, in electric shock load protection, if a combination of fuses and disconnects is used, the setting value for fast-acting fuses is typically lower, while that for long-delay fuses is relatively higher. The selection of fuses must be determined based on specific protection requirements.",
+    "char_count": 815
+  },
+  {
+    "chunk_id": 44,
+    "metadata": {},
+    "content": "125%. However, there are significant differences in motor loads. For example, circuit breakers may be set at 250% or 225%.\n\nIt should be noted that the ratings may be slightly adjusted with revisions to electrical codes.\n\nRegarding selectivity curves, the settings for Variable Frequency Drives (VFDs) are essentially the same as those for fire pumps, and their characteristics are roughly identical to those of circuit breakers.\n\nWe’ll take a 10-minute break and continue shortly.\n\nAlright.\n\nNext, we will continue with the explanation. Does anyone have any questions at the moment? We have plenty of time today.\n\nIf you have any questions, please feel free to ask. Let’s keep moving forward.\n\nHello Professor Fan, I have a question I’d like to ask you.",
+    "char_count": 754
+  },
+  {
+    "chunk_id": 45,
+    "metadata": {},
+    "content": "Hello Professor Fan, I have a question I’d like to ask.\n\nIn the CPD project, when selecting cables and circuit breakers, the circuit breakers are chosen at 1.25 times the rated current of the cables.\n\nWhen selecting cables, we use a calculation table with a 1.2 times coefficient, which means 1.25 times the cable’s rated current.\n\nYou can certainly choose the larger size, but in reality, 1.25 times is sufficient.\n\nYou didn’t apply the 1.2x magnification processing on your end, right?\n\nNo.",
+    "char_count": 492
+  },
+  {
+    "chunk_id": 46,
+    "metadata": {},
+    "content": "Both cables and circuit breakers can be selected at 1.25 times the rated value, which is generally applicable except for motor loads. Okay, understood. Thank you, Professor Xie.\n\nIt should be noted that the selection of cables or wires is typically required to be more than 1.25 times the calculated value. This is because voltage drop and the installation coefficient in cable trays must be taken into account.\n\nIn indoor environments, there is no need to consider the temperature coefficient, so a larger specification is usually required. Under ideal conditions, when a single cable is installed in open air at temperatures below 30°C, the voltage drop can be calculated directly.",
+    "char_count": 683
+  },
+  {
+    "chunk_id": 47,
+    "metadata": {},
+    "content": "However, if cables are installed underground, in conduits, or laid side by side in cable trays, a much larger coefficient—far exceeding 1.2 times—must be considered.\n\nThese solubility reduction coefficients have all been taken into account, but an additional factor of 1.25 was multiplied during the calculation.\n\nIs this 1.2 multiplied by an additional 1.2 something we decided on our own, or was it a requirement proposed by your consultants Hao Yuan or Liu Hongkai?\n\nAfter I arrived, I directly applied the calculation sheet from another section. Seeing the value of 1.2 on the sheet, I continued to use it accordingly.\n\nNo investigation was conducted into its origin. Therefore, a question arises today: if there are no relevant regulations or requirements, we will no longer build the 1.2 system. Next, observe the manufacturers’ response.",
+    "char_count": 844
+  },
+  {
+    "chunk_id": 48,
+    "metadata": {},
+    "content": "No investigation was conducted into its origin. Therefore, a question arises today: if there are no relevant regulations or requirements, we will no longer build the 1.2 system. Next, observe the manufacturers’ response.\n\nIn addition, other requirements must be met. For instance, in the economic evaluation of cables, it is necessary to comprehensively consider the impact of radiation, high temperatures, or other factors on voltage drop.\n\nYes, I understand perfectly.\n\nDoes anyone have any other questions?\n\nHold on, hold on.\n\nTeacher Fang.\n\nCoincidentally, our colleague also mentioned the value of 1.25, and I have the same question.\n\nExactly.\n\nThis is certainly possible, possibly 1.25 times the American NEMA standard. Because on AEC, it might be 1.0, meaning two standards.",
+    "char_count": 781
+  },
+  {
+    "chunk_id": 49,
+    "metadata": {},
+    "content": "Exactly.\n\nThis is certainly possible, possibly 1.25 times the American NEMA standard. Because on AEC, it might be 1.0, meaning two standards.\n\nAecaecaec should also be around 1.25 times.\n\nAccording to the IEC 60364 standard, the current-carrying capacity of the cable should be greater than the rated current of the circuit breaker, and the rated current of the circuit breaker should be greater than or equal to the calculated current of the equipment. These three values must satisfy a sequentially greater-than-or-equal-to relationship.\n\nIt should be noted that the switch capacity must be greater than the rated current of the load. At the same time, the current-carrying capacity of the wire should be greater than or equal to the protection capacity of the switch.",
+    "char_count": 770
+  },
+  {
+    "chunk_id": 50,
+    "metadata": {},
+    "content": "It should be noted that the switch capacity must be greater than the rated current of the load. At the same time, the current-carrying capacity of the wire should be greater than or equal to the protection capacity of the switch.\n\nFor motor loads, the protection settings are different due to the need to consider the impact of starting current. In other load scenarios, the current-carrying capacity of the wire must still meet the requirement of being greater than or equal to the protection capacity of the switch.\n\nAs for overload protection, that is another matter.\n\nYes, because all three coefficients are 1.0, indicating a linear relationship with a 1.0x multiplier between them. However, based on the analysis from the previous section, I personally believe the actual value reaches 125%. Does this mean that in North America, due to better economic conditions, we can use cables with larger cross-sections? Yes.",
+    "char_count": 920
+  },
+  {
+    "chunk_id": 51,
+    "metadata": {},
+    "content": "The quantity and size of cables are not always better when more or larger. Except in ideal scenarios, during actual installation processes, factors such as voltage drop must be considered, which may result in the cable’s cross-sectional area reaching 100% to 200% of the theoretical value. If precise calculations are performed, these coefficients must all be taken into account.\n\nThe aforementioned coefficients have all been taken into account.\n\nOther temperature coefficients or degree coefficients have already been taken into account.\n\nAfterwards, from my personal understanding, these values have become coefficients. This is because the current we calculated might already be the maximum value for the equipment group.",
+    "char_count": 725
+  },
+  {
+    "chunk_id": 52,
+    "metadata": {},
+    "content": "Afterwards, from my personal understanding, these values have become coefficients. This is because the current we calculated might already be the maximum value for the equipment group.\n\nYeah.\n\nMy personal understanding of this might be somewhat one-sided, so we can discuss it together.\n\nWell, alright.\n\nAlright, I don’t have NEMA documentation on hand, but there shouldn’t be much difference between NEMA and CSA. I’ll double-check later.\n\nIf I get a chance, I’ll send it to you too.",
+    "char_count": 484
+  },
+  {
+    "chunk_id": 53,
+    "metadata": {},
+    "content": "Now we will continue with the explanation of disconnect switches. Disconnect switches are primarily used for operation and maintenance rather than equipment protection, with their main function being to interrupt load current. The selection of disconnect switches must consider voltage and phase count factors; they are less commonly used for currents above 800 amps and are more suitable for lower current applications.\n\nCompared to circuit breakers, disconnect switches are bulkier, especially in the 600-800 amp range. However, they remain widely used in North America. In contrast, enclosed circuit breakers are relatively less common.",
+    "char_count": 639
+  },
+  {
+    "chunk_id": 54,
+    "metadata": {},
+    "content": "Disconnect switches are bulkier than circuit breakers, particularly in the 600-800 amp range, but they remain widely used in North America. Enclosed circuit breakers are relatively less common in comparison.\n\nDisconnect switches are categorized into general-purpose and heavy-duty types, with heavy-duty switches suitable for frequent operations. Protection ratings differ by region: North America uses the NEMA standard, while Europe uses the IP rating system. NEMA, developed by the National Electrical Manufacturers Association in the U.S., classifies protection levels from NEMA1 to NEMA12 (or NEMA11), with enclosure types designed for specific environmental conditions. For example:\n- Indoor environments typically use NEMA1 or NEMA3\n- NEMA3 is suitable for damp environments\n- NEMA4 is used for outdoor, rainproof, and dustproof applications",
+    "char_count": 848
+  },
+  {
+    "chunk_id": 55,
+    "metadata": {},
+    "content": "Disconnect switches can be equipped with fuses. Without fuses, they only provide isolation functionality; with fuses added, they also offer protection. Additionally, there are special types such as waterproof and explosion-proof variants, which are common knowledge and will not be elaborated here.\n\nThe selection principles for fuses inside disconnect switches have been previously explained.\n\nIn North American standards, there are relatively few current ratings, primarily including 30A, 60A, 100A, 200A, 400A, 600A, and 800A. These ratings correspond to specific frame sizes.\n\nFor example, a 400A disconnect switch can be fitted with 200A, 250A, or 300A fuses. Therefore, although the disconnect switch is rated for 400A, if a 250A fuse is installed, the actual usable capacity becomes 250A.\n\nThis principle also applies to the configuration of equipment such as fire pumps.",
+    "char_count": 878
+  },
+  {
+    "chunk_id": 56,
+    "metadata": {},
+    "content": "Disconnect switches with fuses are used for the protection of fire pumps. The NEC and CEC cover the usage, selection, and installation requirements of disconnect switches. NFPA 20 primarily addresses the selection of fused disconnect switches for fire pumps. Additionally, the CSANEMA standard should also be referenced.\n\nNEMA requirements primarily focus on enclosures and protection equipment-related short circuit studies and protection coordination issues.",
+    "char_count": 460
+  },
+  {
+    "chunk_id": 57,
+    "metadata": {},
+    "content": "NEMA requirements primarily focus on enclosures (Inclosure) and protection equipment-related short circuit studies and protection coordination issues.\n\nThree IEEE standard manuals are particularly useful:\n1. The first is IEEE Std 551-2006 The Violet Book-Short-Circuit Currents, which mainly introduces calculation methods for short-circuit currents;\n2. The second is IEEE Std 242-2001 The Buff Book-Protection and Coordination, covering protection and coordination in detail, with substantial content;\n3. The third is IEEE Std 1015-2006 The Blue Book-Low-Voltage Circuit Breakers, which elaborates on the characteristics and applications of low-voltage circuit breakers.\n\nThese three manuals serve as valuable references for related work.\n\nThat concludes today’s presentation. If you have any questions, feel free to ask.",
+    "char_count": 822
+  },
+  {
+    "chunk_id": 58,
+    "metadata": {},
+    "content": "These three manuals serve as valuable references for related work.\n\nThat concludes today’s presentation. If you have any questions, feel free to ask.\n\nToday’s lesson is the sixth session. If you have any questions about the previous six lessons, feel free to ask. Additionally, you can also raise any issues encountered in actual project work at any time. I will share my understanding based on personal experience.\n\nCurrently, are we strictly following American standards, or do we also need to comply with local Egyptian standards?\n\nI noticed that when selecting a low-voltage circuit breaker, you set the rated operating current of the fire pump at 600%.\n\nYeah.\n\nI noticed that when selecting a low-voltage circuit breaker, you set the rated operating current of the fire pump at 600%.",
+    "char_count": 788
+  },
+  {
+    "chunk_id": 59,
+    "metadata": {},
+    "content": "The rated operating current of the fire pump is set at 600%. Currently, there appear to be issues with the design. The rated operating current of the equipment may range between 300 to 400 amperes. However, the low-voltage circuit breaker is installed on the busbar from the transformer to the low-voltage cabinet, and the busbar is also equipped with a plug-in box. The breaking current of this plug-in box is selected as 630A, which I believe might pose potential issues.",
+    "char_count": 473
+  },
+  {
+    "chunk_id": 60,
+    "metadata": {},
+    "content": "Hmm.\n\nThe breaking current of this plug-in box is selected as 630A, which I believe might pose potential issues.\n\nYeah.\n\nWhat is the combined current? Over three hundred. The rated current of the upstream circuit breaker is six hundred amps, only twice the value. This means a current of over two hundred amps represents approximately 200% overload. The selection of six hundred amps primarily considers the locked-rotor current issue. If choosing just over two hundred amps, it might only clear the starting current. Clearing the starting current is essential.\n\nRegarding fire pumps, the key understanding lies in avoiding short circuits. Once a short circuit occurs, voltage drop will render the fire pump inoperable. Therefore, simply ensuring no short circuits occur allows the fire pump to continue running—even if overloaded or burned out—as this aligns with its intended design purpose.",
+    "char_count": 893
+  },
+  {
+    "chunk_id": 61,
+    "metadata": {},
+    "content": "Motor locked-rotor current is typically five to six times the rated current, which sometimes also needs to be cleared. Based on my understanding, the current setting may only clear the starting current. However, it’s uncertain whether it complies with the latest NEC code. NEC requirements for fire pumps may have been revised, necessitating a review of the most recent NFPA standards. Both NEC and CEC are updated every three years; the six-hundred-amp standard was still in place two years ago, but recent changes may exist.\n\nGenerally, is the power supply for fire pumps taken directly from the transformer’s output terminals, or can it be connected to the low-voltage switchgear?\n\nIt is prohibited to draw power from the low-voltage cabinet. Specifically, switches directly connected to the busbar of the low-voltage cabinet are not allowed to pass through the low-voltage cabinet.",
+    "char_count": 885
+  },
+  {
+    "chunk_id": 62,
+    "metadata": {},
+    "content": "It is prohibited to draw power from the low-voltage cabinet. Specifically, switches directly connected to the busbar of the low-voltage cabinet are not allowed to pass through the low-voltage cabinet.\n\nIs it not allowed to pass through the main circuit breaker of the low-voltage cabinet?\n\nGo down directly without passing through the main circuit breaker.\n\nHowever, it can also be combined with low-voltage cabinets to form an integrated unit, or operate independently without passing through the low-voltage cabinet, equivalent to being on the same level as the main circuit breaker of the low-voltage cabinet.\n\nOkay.\n\nIs it possible to set up the low-voltage circuit breaker this way?",
+    "char_count": 687
+  },
+  {
+    "chunk_id": 63,
+    "metadata": {},
+    "content": "Yes, as long as it doesn’t pass through the low-voltage circuit breaker, otherwise the settings cannot be configured. Additionally, if set according to six times or other multiples, the operation will become more complex.\n\nIn the Bahamas project, the fire pump cabinet shares the same enclosure with the MDB (Main Distribution Board), but the power supply bypasses the main switch of the low-voltage circuit breaker, placing them at a peer-level relationship.\n\nIn the Egypt project, the drawings indicate that the connection from the low-voltage circuit breaker to the MDB uses busbars and is labeled with a plug-in box. Therefore, it is currently uncertain how to determine the installation position of this device.",
+    "char_count": 716
+  },
+  {
+    "chunk_id": 64,
+    "metadata": {},
+    "content": "From a system perspective, such a configuration can meet basic requirements. However, a more rigorous approach would be to draw independent busbars from the low voltage breaker, completely isolating them from the low-voltage distribution cabinet to achieve physical separation of the busbar system. This independent configuration is the most ideal solution.\n\nIf another technical solution is adopted, where power is drawn from the low voltage breaker to the low voltage busbar, then connected via the low voltage busbar to the fire pump starting device, and finally integrated into the fire pump system, this is also technically feasible. However, considering the special nature of fire protection systems—which typically require independence from other systems—it is recommended to adopt a dedicated power distribution scheme for greater reliability.",
+    "char_count": 851
+  },
+  {
+    "chunk_id": 65,
+    "metadata": {},
+    "content": "We have previously performed reactive power compensation calculations and need to calculate the total capacity of the low-voltage main circuit breaker. Should fire protection loads, such as fire pumps, be included in the total load?\n\nIt depends on the system settings. If in China, after cutting off normal loads in case of fire, there is no need to calculate fire protection loads. If in North American power distribution system design, when fire protection loads need to be calculated together with other loads, then the fire protection loads must be included in the calculation scope.",
+    "char_count": 587
+  },
+  {
+    "chunk_id": 66,
+    "metadata": {},
+    "content": "But I was referring to the situation mentioned by the colleague just now, where the fire pump load is directly tapped from the busbar of the Main Distribution Board (MDB). When calculating the total load of the MDB, the fire load must be taken into account.\n\nIncluding reactive power compensation in the calculation is not incorrect, but in practice, reactive power compensation is typically applicable to steady-state operation, whereas fire-fighting loads fall under emergency operation. During emergencies, power factor issues are not a primary consideration.\n\nCurrent standards do not provide detailed regulations on such specifics. Whether a power factor of 0.8, 0.7, or 0.9 is considered in the design, the practical impact is minimal, as such scenarios are relatively rare.",
+    "char_count": 780
+  },
+  {
+    "chunk_id": 67,
+    "metadata": {},
+    "content": "Current standards do not provide detailed regulations on such specifics. Whether a power factor of 0.8, 0.7, or 0.9 is considered in the design, the practical impact is minimal, as such scenarios are relatively rare.\n\nWhile adding reactive power compensation equipment is feasible, it is not strictly necessary, given that fire incidents are short-lived, and local power authorities generally do not impose stringent power factor requirements during emergencies. To my knowledge, current standards have yet to specify this in detail, making it more a topic for discussion.\n\nFor added precaution, including this calculation would not significantly increase the K-value.\n\nThe power factor of the fire pump is relatively high, reaching 0.9.\n\nThen you actually can’t use it.\n\nWe just need to calibrate it to 0.95.\n\nYes, the local requirement is to achieve a power factor of 0.95.",
+    "char_count": 875
+  },
+  {
+    "chunk_id": 68,
+    "metadata": {},
+    "content": "Oh, then you actually can’t use it.  \nWe just need to calibrate it to 0.95.  \nYes, the local requirement is to achieve a power factor of 0.95.  \nYes, here in Egypt, we correct the power factor to 0.95.  \nCurrently, the extensive use of nonlinear loads, such as LED lights and computers, has led to two major issues: one is power quality problems, manifested as excessive harmonic content; the other is power factor issues.  \nUnlike traditional industrial settings where the widespread use of inductive loads like motors resulted in low power factors, modern equipment typically exhibits higher power factors. In North America, reactive power compensation devices are rarely incorporated into contemporary power distribution system designs.",
+    "char_count": 739
+  },
+  {
+    "chunk_id": 69,
+    "metadata": {},
+    "content": "For new projects, power system studies are usually conducted, which include load flow analysis, allowing direct calculation of the power factor. If the results meet the requirements, no additional reactive power compensation devices need to be designed.\n\nOverall, modern power distribution systems demonstrate significantly improved power factors compared to traditional systems.\n\nRegarding the power factor of the electric vehicle charging pile, the data we’ve checked shows it to be 0.99.\n\nAs I mentioned earlier, these nonlinear composite charging devices, such as UPS, VFD, LED, and computers, indeed have a higher power factor than inductive motor loads.",
+    "char_count": 659
+  },
+  {
+    "chunk_id": 70,
+    "metadata": {},
+    "content": "Currently, EV charging stations are still considered emerging technologies in North America. According to existing standards, the load calculation for charging stations typically requires 100% capacity consideration without applying any demand factors. However, in Canada, if an Energy Management System (EVMS) is installed to enable automatic load distribution, demand factors may be applied.",
+    "char_count": 393
+  },
+  {
+    "chunk_id": 71,
+    "metadata": {},
+    "content": "There is a significant difference in power levels among charging stations—for instance, Level 2 and Level 3 chargers have different power requirements. In North America, a 40-amp Level 2 charger typically requires 7–8 hours for a full charge. Calculating all chargers at full 40-amp capacity without applying demand factors would result in an excessively oversized power capacity design. Utility companies often report that such designs far exceed actual demand.\n\nThis involves planning for future development: while current EV adoption may be around 10%, it could rise to 50% within a decade. As a result, planning authorities in Canada and the U.S. mandate that new projects reserve 100% capacity for charging infrastructure. For example, a parking lot with 100 spaces must be designed to accommodate 100 charging stations, significantly increasing power supply requirements.",
+    "char_count": 877
+  },
+  {
+    "chunk_id": 72,
+    "metadata": {},
+    "content": "The solution lies in adopting an EVMS Energy Management System. This system allows grouping 2-4 charging stations together, reducing the load by half or even down to 20%, thereby effectively lowering the required incoming power capacity. This is currently the mainstream design approach in North America, particularly in energy-conscious regions like Vancouver, where EV adoption rates hover around 20%-30%.\n\nEgypt has relatively few charging parking spaces designed. Currently, I am in charge of a project in the Maldives, which has 20 charging parking spaces with a power distribution capacity of approximately 900 kilowatts.\n\nThat’s quite a lot, over twenty parking spaces. Are they regular parking spots or part of an external parking lot?\n\nThe parking building is equipped with 40 parking spaces, primarily featuring dual-gun charging piles. We have completed the design according to fast-charging standards.",
+    "char_count": 913
+  },
+  {
+    "chunk_id": 73,
+    "metadata": {},
+    "content": "The parking building is equipped with 40 parking spaces, primarily featuring dual-gun charging piles. We have completed the design according to fast-charging standards.\n\nLevel 2 charging stations typically operate within a current range of 40A to 80A, while those exceeding 80A fall into the Level 3 fast charging category. Their charging mechanisms also differ.\n\nTaking 40 parking spaces as an example, the total power capacity can reach 900 kilowatts, which is equivalent to residential electricity consumption. As charging station technology emerged relatively late, relevant regulations are still being refined, with updates occurring approximately every three to four years, and a complete standardized system has yet to be established. Industry professionals are currently in the process of familiarizing themselves with these specifications.",
+    "char_count": 848
+  },
+  {
+    "chunk_id": 74,
+    "metadata": {},
+    "content": "A key future focus will be exploring how to properly assess the proportion of charging station energy consumption in load calculations—a topic worthy of in-depth research.\n\nSince the initial project design only included one transformer without considering additional loads such as charging piles, we need to install an additional transformer along with supporting equipment like cable trays and cables.\n\nYes, that’s right.\n\nI’m out of it here.\n\nI have another question: VFD cables are being used more and more widely, but I’m not entirely clear about their specific advantages.\n\nDue to the complex internal signals of VFDs, they may generate significant harmonics. If dedicated VFD cables are not used, it may lead to equipment operation failures. Therefore, it is generally recommended to equip VFDs with dedicated cables.",
+    "char_count": 823
+  },
+  {
+    "chunk_id": 75,
+    "metadata": {},
+    "content": "Due to the complex internal signals of VFDs, they may generate significant harmonics. If dedicated VFD cables are not used, it may lead to equipment operation failures. Therefore, it is generally recommended to equip VFDs with dedicated cables.\n\nRegarding building automation systems, security systems, and communication systems, may I ask whether these systems are currently under your responsibility or managed by another company?\n\nIn the field of low-voltage systems, we usually work directly with manufacturers, but they may not necessarily be involved in the design phase.\n\nThe low-voltage system you mentioned should not include FUSE.\n\nAh, OK.",
+    "char_count": 649
+  },
+  {
+    "chunk_id": 76,
+    "metadata": {},
+    "content": "The low-voltage system should not include FUSE.\n\nHaving friends counts too, right.\n\nAh, OK.\n\nRegarding the integrated cabling system, as well as the access control and other systems, apart from lighting equipment accessories, most other components require manufacturer coordination. On our Edison side, many of the drawings need to be stamped and confirmed by the manufacturers during the design phase.\n\nOh, okay.\n\nI have two questions. The first one might not be very well-formed: for example, a fan is controlled by a VFD.\n\nYeah.\n\nHowever, we did not equip it with a VFD (Variable Frequency Drive), but instead directly used motor control. What impact will this have?",
+    "char_count": 669
+  },
+  {
+    "chunk_id": 77,
+    "metadata": {},
+    "content": "Yeah.\n\nHowever, we did not equip it with a VFD (Variable Frequency Drive), but instead directly used motor control. What impact will this have?\n\nThis has significant implications. VFDs (Variable Frequency Drives) and non-VFD equipment are not categorized under electrical engineering abroad but fall under mechanical engineering, as the operational methods and requirements for fans or pumps should be specified by the mechanical discipline.",
+    "char_count": 441
+  },
+  {
+    "chunk_id": 78,
+    "metadata": {},
+    "content": "If VFD control is adopted, zoning adjustments for air conditioning systems can be achieved. Each room can be equipped with a thermostat to regulate air distribution based on the temperature demands of specific zones or rooms. Each zone or room is fitted with a Variable Air Volume control box (VVBox), supplied by a central air handling unit serving multiple VVBoxes. Each VVBox dynamically adjusts the damper opening based on temperature needs, thereby modulating airflow to control room temperature.",
+    "char_count": 501
+  },
+  {
+    "chunk_id": 79,
+    "metadata": {},
+    "content": "Since airflow adjustment alters damper openings, the upstream fan must correspondingly adapt its discharge pressure. If a constant-speed fan is used, its fixed airflow and pressure cannot meet dynamic regulation demands. Here, a VFD becomes essential: A pressure sensor installed two-thirds downstream of the fan monitors real-time pressure, comparing it with the setpoint. The VFD controller then adjusts the fan speed—increasing it when pressure falls below the setpoint or decreasing it when pressure exceeds the setpoint—to maintain system pressure stability. Thus, VFDs are indispensable for achieving such precise regulation.\n\nThis pressure sensor should be used in conjunction with the variable frequency control system.",
+    "char_count": 727
+  },
+  {
+    "chunk_id": 80,
+    "metadata": {},
+    "content": "This pressure sensor should be used in conjunction with the variable frequency control system.\n\nThe components don’t necessarily come as a complete set, with a controller in between. For example, here’s a VFD, here’s a pressure sensor, and there’s also a controller in between, typically implemented via DBC for functionality. There are complete equipment sets available, but they may be supplied by different manufacturers.\n\nFor simpler systems, the fan might come with its own controller. After connecting an external pressure sensor directly, this is referred to as standalone control, as opposed to centralized control. Centralized control refers to an entire building’s system, employing a programmable controller that allows full programmability. The logic for standalone control is usually hardwired into the manufacturer-provided controller and lacks open programmability.",
+    "char_count": 880
+  },
+  {
+    "chunk_id": 81,
+    "metadata": {},
+    "content": "Coordination between the electrical and mechanical disciplines is crucial. The mechanical team should clearly communicate to the electrical team which motors, fans, or pumps require control—this is an area where oversights often occur. For example, the electrical team should confirm with the mechanical team whether a fan requires a variable frequency drive (VFD). A VFD is a controller with multiple input signals: an analog output (AO) signal for speed control, a digital input (DI) signal indicating normal operation, and a digital output (DO) signal for start-stop control. These signals are managed by the building automation system, forming a closed loop that is largely independent of the electrical side. The electrical team is responsible only for supplying power to the VFD controller.",
+    "char_count": 796
+  },
+  {
+    "chunk_id": 82,
+    "metadata": {},
+    "content": "If a motor isn’t equipped with a VFD, the electrical team must address this via a motor control center (MCC). An MCC is an assembly of motor starters, including typical HOA switches (Hand-Off-Auto) for manually shutting down the motor. The manual operation mode is referred to as Hand, while the remote control mode is called Auto. The system includes contactors and control circuits. To control the start/stop of a fan, the HOA switch must be set to Auto mode to receive remote control signals. The design and installation of MCCs and motor starters are typically handled by the electrical discipline.",
+    "char_count": 602
+  },
+  {
+    "chunk_id": 83,
+    "metadata": {},
+    "content": "Under North American standards, each motor or piece of equipment must be equipped with a local disconnect switch. For example, during maintenance of a rooftop fan, relying solely on the electrical room switch for power isolation poses safety risks and operational inefficiencies. Without a local disconnect switch, there is a risk of accidental energization by others, leading to potential hazards. The responsibility for providing this switch must be clearly defined to prevent omissions. Coordination with the mechanical discipline is recommended to ensure that equipment is supplied with built-in local disconnect switches.\n\nRegarding control panels, in addition to motor starters and variable frequency drives (VFDs), mechanical equipment often includes built-in control panels. It is essential to verify whether these panels already incorporate protective fuses or disconnect switches— if they do, no additional configuration is necessary. Packaged mechanical equipment typically comes with pre-installed control panels, requiring cross-disciplinary coordination to confirm the presence and adequacy of protective devices.",
+    "char_count": 1127
+  },
+  {
+    "chunk_id": 84,
+    "metadata": {},
+    "content": "The responsibility for providing and installing Variable Frequency Drives (VFDs) must be clarified. North American practice delegates VFD provision to the mechanical discipline, while the electrical discipline handles installation and wiring. Additionally, North American standards prefer manufacturers to complete as much work as possible.\n\nIn North America, labor costs are relatively high, which significantly increases the expenses for on-site installation. In contrast, prefabrication in factories proves to be more cost-effective.\n\nProfessor, I have another question that might not be fully formed. You just mentioned the coordination between CB, FUSE, and FLA, but I’d like to understand the cable requirements. Do modern cables have specific coefficient requirements for their velocity of propagation, such as 1.2 or 1.25?",
+    "char_count": 830
+  },
+  {
+    "chunk_id": 85,
+    "metadata": {},
+    "content": "It must be emphasized that the cable and conventional protective equipment should be mutually compatible, and even the cable specifications should slightly exceed the requirements of the protective equipment.\n\nCables and fuses.\n\nIt’s still FUSE BREAKER, this should be a match. However, BREAKER has special requirements for motor load starting because it needs to withstand the starting current.\n\nOther composites will suffice.\n\nIt only needs to be the same as its rated coefficient, without considering the FLA rated current, and should be 1.25 times the composite current.\n\n1.25x is still available.\n\nProfessor Kuang, I’d like to consult you on a question. Regarding the starting current of electric motors, is the so-called starting current typically 7 times the rated current?",
+    "char_count": 780
+  },
+  {
+    "chunk_id": 86,
+    "metadata": {},
+    "content": "1.25x is still available.\n\nFor directly started motors, the starting current is generally 6 to 7 times the rated current. Additionally, you mentioned the motor’s instantaneous trip current being 2.5%, but in conventional domestic designs, the instantaneous trip current should be greater than the starting current.\n\nThe exact value of the rated current hasn’t been determined yet. If we select 250%, it will affect the subsequent cable selection.\n\nThe selection of cables should always be designed based on 1.25 times the load current, whether it’s for motor loads or other types of loads. It’s important to note that this calculation is under ideal working conditions, and other influencing factors must be considered in practical applications.",
+    "char_count": 745
+  },
+  {
+    "chunk_id": 87,
+    "metadata": {},
+    "content": "The selection of motor switches and fuses is another independent design process.\n\nI understand that a larger specification needs to be selected for the fuse. Taking circuit breaker selection as an example, assuming the 55 kW motor mentioned by our teacher operates at 400V, its rated working current is approximately 100A.\n\nIf following my previous practice, I might have opted for a LOWVOLTAGEBREAKER rated at 150A or 160A. Companies like Schneider typically provide relevant data directly, making it convenient for motor switchgear selection.\n\nHowever, based on today’s lesson content, I would choose the 250A specification instead.\n\nThe circuit breaker has a rated current of 250A. According to the code requirements, for example, if a motor’s rated current (i.e., FLA) is 100A, the conductor should be designed for safety at 125A.",
+    "char_count": 834
+  },
+  {
+    "chunk_id": 88,
+    "metadata": {},
+    "content": "The rated current of this circuit breaker is 22.5A. It is necessary to confirm whether its type is motor protection type or standard type.\n\nThe discussion here focuses on the frame size and rated current of low-voltage circuit breakers. For instance, a rated current of 250A ensures safe operation.\n\nThe circuit breaker is equipped with multiple protection functions, including overload protection and short-circuit protection. It should be noted that short-circuit protection is not directly related to motor starting.\n\nOverload protection typically employs motor-protection circuit breakers, with a short-circuit protection range of 10 to 12 times the rated current.",
+    "char_count": 668
+  },
+  {
+    "chunk_id": 89,
+    "metadata": {},
+    "content": "Overload protection typically employs motor-protection circuit breakers, with a short-circuit protection range of 10 to 12 times the rated current.\n\nShort-circuit protection and the motor’s own 250A overload protection should be treated differently. For example, using a 250A circuit breaker can provide protection against a 2500A short-circuit current, representing a 10-fold relationship. Similarly, a 100A circuit breaker can also offer short-circuit protection at 8 to 10 times its rated current.\n\nIt is important to note that short-circuit current is distinct from the starting current of a motor or elevator. For a Frame Size Breaker, a 250A model should be selected, but its short-circuit current interrupting capacity may be set at 2500A. This means the breaker will trip only when the short-circuit current reaches 2500A, whereas actual short-circuit currents often exceed 10kA (i.e., 10,000 amperes).",
+    "char_count": 910
+  },
+  {
+    "chunk_id": 90,
+    "metadata": {},
+    "content": "There is a significant gap between domestic data and North American power distribution system design standards.\n\nThis situation has always existed. Take the fuse mentioned earlier as an example—I can’t quite recall its exact specifications. Here it shows the fuse follows the 225 standard, meaning it adopts the 225 specification when protecting motors.\n\nWhen starting a motor, a fuse must be used, so the specification needs to be larger, usually 2.5 times or more than the rated current.\n\nI understand this design principle, but if a circuit breaker is used, a motor protection type product must be selected, and its trip curve should be set to a low value or 10 to 12 times the rated current.",
+    "char_count": 695
+  },
+  {
+    "chunk_id": 91,
+    "metadata": {},
+    "content": "I understand this design principle, but if a circuit breaker is used, a motor protection type product must be selected, and its trip curve should be set to a low value or 10 to 12 times the rated current.\n\nThere may be special models of products domestically, but that falls into a different category. We’re discussing general-purpose circuit breakers, not models specifically designed for motors. If such special products exist domestically, that’s another matter entirely.\n\nHowever, we have currently adopted a two-stage design. To avoid this issue, we deliberately selected a higher-grade low-voltage circuit breaker for the main distribution cabinet.\n\nThe main withdrawal cabinet does not need to be oversized, it only needs to meet the requirements of a single circuit.",
+    "char_count": 774
+  },
+  {
+    "chunk_id": 92,
+    "metadata": {},
+    "content": "The main withdrawal cabinet does not need to be oversized, it only needs to meet the requirements of a single circuit.\n\nFor motor protection circuits:\n- If it is a single circuit, use 125A conductors and a 250A circuit breaker;\n- If it is a group of circuits, base the selection on 150A or 125A, according to the rated current of the largest motor.\n\nSpecifically, the selection of switches and conductors should be based on the rated current of the largest motor plus the sum of the rated currents of the other motors, but the other motors do not need to reach 125A. Switch selection also follows this principle.\n\nHowever, due to the large capacity of the motors currently in use, a single-circuit single-motor configuration is typically adopted.\n\nFor a single circuit, a motor only requires configuration with 125-amp wiring and a 250-amp switch.",
+    "char_count": 847
+  },
+  {
+    "chunk_id": 93,
+    "metadata": {},
+    "content": "For a single circuit, a motor only requires configuration with 125-amp wiring and a 250-amp switch.\n\nHowever, the previous episode does not meet the requirements of this low-voltage circuit breaker, making it no longer applicable.\n\nThe low-voltage circuit breaker at the higher level does not need to consider the magnification factor anymore, as it already has the simultaneous use coefficient.\n\nOkay, thank you. If there are any specific issues, we can discuss them later. Let’s call it a day for now.\n\nThere are two minutes left. Does anyone have any questions? Your CBD project is now basically installed. Has it entered the debugging phase?\n\nCurrently, it might be in the debugging phase, and the specific work arrangements for some colleagues are still unclear. I plan to visit next week to get a better understanding.",
+    "char_count": 824
+  },
+  {
+    "chunk_id": 94,
+    "metadata": {},
+    "content": "Currently, it might be in the debugging phase, and the specific work arrangements for some colleagues are still unclear. I plan to visit next week to get a better understanding.\n\nMy main focus is on the switch selection during motor startup, and I’m not particularly concerned about cable selection. Additionally, the choice of forge furnace gas also requires careful consideration.\n\nAs for the large motor startup process, since methods like reduced-voltage starting are employed, the starting current is relatively controllable, which actually makes it less of a concern.\n\nAs previously mentioned, when using a variable frequency drive, the switch does not need to be selected according to the 250-amp standard.\n\nYes.",
+    "char_count": 719
+  },
+  {
+    "chunk_id": 95,
+    "metadata": {},
+    "content": "As previously mentioned, when using a variable frequency drive, the switch does not need to be selected according to the 250-amp standard.\n\nYes.\n\nIf there are no further questions, today’s meeting will conclude here. Engineer Pan sent a message saying there’s an urgent matter to attend to. Thank you all for your participation, and we appreciate the instructor’s guidance. You’re welcome. Alright, goodbye.\n\nGoodbye.",
+    "char_count": 417
+  }
+]

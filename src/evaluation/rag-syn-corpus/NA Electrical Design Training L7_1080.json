@@ -1,0 +1,518 @@
+[
+  {
+    "chunk_id": 0,
+    "metadata": {},
+    "content": "Today is the seventh lecture. Before delving into electrical calculations, I’ll briefly introduce some issues concerning low-voltage power grids in North America. This session primarily focuses on topics related to low-voltage grids, and I will elaborate on several specific problems.\n\nFirst, introduce the definition of North American low-voltage power grids and provide an overview of their systems. Next, explore the relationship between set voltage and equipment rated voltage. Finally, explain the certification process required for importing equipment from overseas to North America.",
+    "char_count": 589
+  },
+  {
+    "chunk_id": 1,
+    "metadata": {},
+    "content": "The definition of voltage varies across different fields. In the electrical engineering domain, the classification of low voltage differs by standards. For the general public, low voltage typically refers to below 36 volts or 24 volts. However, in the Canadian Electrical Code (CEC) and the U.S. National Electrical Code (NEC), low voltage is generally defined as below 750 volts, sometimes even below 1000 volts. The International Electrotechnical Commission (IEC) considers voltages below 600 volts as low voltage.",
+    "char_count": 516
+  },
+  {
+    "chunk_id": 2,
+    "metadata": {},
+    "content": "There is a distinction between system rated voltage and equipment operating voltage. For instance, the system rated voltage is usually 380 volts or 220 volts, but the rated voltage of electrical equipment may differ. In North America, the system rated voltage is 120 volts or 208 volts, while single-phase equipment is typically rated at 110 volts. Similar discrepancies exist for motor-driven equipment, such as 600-volt systems corresponding to 575-volt equipment, and 480-volt systems corresponding to 460-volt equipment.\n\nIn actual operation, the operating voltage at the equipment end is often lower than the system rated voltage due to voltage drop. Generally, equipment can still function normally within a range of ±10% deviation from the rated voltage, but the optimal range is ±5%. Therefore, the NEC and CEC stipulate that voltage drop should generally not exceed 5%.",
+    "char_count": 878
+  },
+  {
+    "chunk_id": 3,
+    "metadata": {},
+    "content": "Both excessively high and low voltages can impact equipment. High voltage accelerates insulation aging and shortens equipment lifespan, while low voltage reduces the luminous efficiency of lighting devices and may prevent motors from starting. Additionally, motors operating under low voltage can experience winding overheating issues.\n\nNorth American low-voltage systems encompass multiple voltage levels.\n\nIn Canada and North America, common voltage levels include 120/208 volts, 277/480 volts, and 347/600 volts. Among these, 277/480 volts is primarily used in the United States, while Canada’s industrial sector also widely adopts this voltage level due to the import of many devices from the U.S., where the 347/600-volt standard is not employed. The 347/600-volt system is mainly utilized in Canada’s commercial and residential sectors. These voltage levels are equivalent to China’s 220/380-volt system, which is why dry-type transformers are frequently used in North American buildings.",
+    "char_count": 994
+  },
+  {
+    "chunk_id": 4,
+    "metadata": {},
+    "content": "The phase voltage is 120 volts, while the line voltage is 208 volts. Additionally, there are voltage levels of 277 to 480 volts and 600 volts.",
+    "char_count": 142
+  },
+  {
+    "chunk_id": 5,
+    "metadata": {},
+    "content": "The phase voltage is 120 volts, while the line voltage is 208 volts. Additionally, there are voltage levels of 277 to 480 volts and 600 volts.\n\nThis configuration is called the Split Face system, where the phase voltage remains 120 volts, but the line voltage is actually 240 volts. For domestic counterparts, this concept might be harder to grasp—the author also took considerable time to fully understand it initially.\n\nNorth America’s low-voltage systems are indeed more complex than those in China, primarily due to two different wiring methods: YGD and DIRTWGD. It’s important to note that when using imported equipment in North America, corresponding certification qualifications must be obtained.\n\nIn Canada, equipment must be certified by CSA or an equivalent standard; in the United States, it must comply with NEC or UL certification requirements. Additionally, North America operates on a 60Hz power system.",
+    "char_count": 918
+  },
+  {
+    "chunk_id": 6,
+    "metadata": {},
+    "content": "In Canada, equipment must be certified by CSA or an equivalent standard; in the United States, it must comply with NC or UL certification requirements. Additionally, North America operates on a 60Hz power system.\n\nFor importing equipment from China, the following conditions must be met:  \n1. It must obtain CSA certification or U.S. NC/UL certification;  \n2. The equipment must be compatible with the 60Hz industrial power supply system;  \n3. Voltage standards also differ.\n\nThese are the technical requirements that must be considered when undertaking projects in North America. This concludes the discussion on this topic, and we will now move on to other matters.\n\nIn the previous lesson, there were some questions about the protection circuit and power supply circuit of the DIR motor.\n\nI will elaborate in greater detail here.",
+    "char_count": 832
+  },
+  {
+    "chunk_id": 7,
+    "metadata": {},
+    "content": "In the previous lesson, there were some questions about the protection circuit and power supply circuit of the DIR motor.  \nI will elaborate in greater detail here.  \nThe design method for DIR motor circuits is detailed in electrical codes. Below are excerpts from the Canadian Electrical Code regarding the selection of feeder conductors, overcurrent protection devices, and overload protection devices for motors. For motor circuits, all three parameters must be properly selected.  \nBefore designing an electric motor, the following basic information needs to be understood: the motor’s power (HP or KW), phase count (single-phase, two-phase, or three-phase), full load current (FLA), voltage, and service factor. These parameters directly influence the selection of circuit breakers or wire specifications.",
+    "char_count": 810
+  },
+  {
+    "chunk_id": 8,
+    "metadata": {},
+    "content": "The most critical information on a motor’s nameplate is the FLA and Service Factor. If manufacturer nameplate data is unavailable during the design phase, refer to Tables 44 (single-phase) and 45 (three-phase) in the Canadian Electrical Code (CEC). The FLA values provided in these standards are typically more conservative than actual nameplate data.\n\nWhen designing motor power supply and protection circuits, consider whether it involves a single motor, multiple motors operating in parallel, or a manufacturer’s package unit. Package units are common in pump sets or air handling units, where the power input may include multiple motors, compressors, electric heaters, or other diverse loads.\n\nSpecial consideration must be given to the selection of variable frequency drives (VFDs), soft starters, motor control centers (MCCs), and reduced-voltage starting methods. Additionally, verify whether the motor is located in a hazardous area or serves special applications like fire pumps.",
+    "char_count": 988
+  },
+  {
+    "chunk_id": 9,
+    "metadata": {},
+    "content": "In my over twenty years of overseas career, I have not used any other methods. Variable Frequency Drives (VFDs) or Soft Starters are typically employed. The method for selecting the conductor cross-section in motor power supply circuits is as follows:",
+    "char_count": 251
+  },
+  {
+    "chunk_id": 10,
+    "metadata": {},
+    "content": "Regarding motor protection selection, 125% of the rated current (FLA) serves as the fundamental sizing criterion. If the motor is located far away or the power supply circuit is lengthy, voltage drop must be considered. For circuits in high-temperature environments, temperature adjustments are required. If cables are installed in cable trays, an additional derating factor must be applied. Thus, 125% is merely the baseline value, and actual sizing must account for voltage drop, cable tray coefficients, and temperature factors.\n\nOvercurrent protection (i.e., short-circuit protection) is typically achieved via circuit breakers (Breakers) or fuses, with specific provisions referenced in the Canadian Electrical Code (CEC). For overload protection, sizing depends on the motor’s Service Factor (SF): if SF ≥ 1.15, overload protection is set at 125% of FLA; if SF < 1.15, it is set at 115% of FLA.",
+    "char_count": 900
+  },
+  {
+    "chunk_id": 11,
+    "metadata": {},
+    "content": "Overload protection devices may be standalone or integrated into breakers (e.g., for low-voltage, small-capacity motors). Exemptions apply in certain scenarios, such as:  \n1. Calculated current (FLA × 125% or 115%) being below 15A;  \n2. Motors under 0.5 hp (e.g., bathroom exhaust fans), where a standard lighting switch suffices.  \n\nNote: The Canadian Electrical Code (CEC) and the National Electrical Code (NEC) previously lacked explicit rules for sizing protection devices (e.g., breakers or fuses) for variable frequency drives (VFDs) or soft starters.  \n\n(Note: Terminology corrections: Original “FRA” should be “FLA” (Full Load Ampere); “过流保护” corrected to “过流保护” (Overcurrent Protection); “capotray” corrected to “Cable Tray”; “Science” corrected to “Sizing.”)",
+    "char_count": 768
+  },
+  {
+    "chunk_id": 12,
+    "metadata": {},
+    "content": "In the previous lesson, I emphasized that for Variable Frequency Drives (VFDs) without Bypass configuration, it is recommended to select switches or fuses based on 125% of the rated current. If other factors are present, a selection criterion of 200% may need to be considered.\n\nIf the circuit breaker is directly connected to the motor without a VFD in between, it should be selected based on 2.5 times the rated current.\n\nThe specific selection process is as follows:  \nFirst, obtain the motor’s Full Load Amperage (FLA) information, which can be acquired by referring to standard tables or directly reading the motor nameplate data.",
+    "char_count": 635
+  },
+  {
+    "chunk_id": 13,
+    "metadata": {},
+    "content": "The specific selection process is as follows:  \nFirst, obtain the motor’s Full Load Amperage (FLA) information, which can be acquired by referring to standard tables or directly reading the motor nameplate data.  \n\nWhen calculating the specifications of circuit breakers and fuses, the specifications of the power supply conductors must also be considered. For packaged equipment such as air conditioners, water pumps, or compressors of other devices, the MCA (Minimum Circuit Ampacity) and MOP (Maximum Overcurrent Protection) parameters provided by the manufacturer should be used to select the circuit breakers and fuses.  \n\nHere, the MCA is used to determine the conductor specifications, while the MOP is used to determine the specifications of the circuit breakers and fuses. Due to time constraints, no examples will be provided here.  \n\nNext, we will discuss the issue of voltage drop.",
+    "char_count": 893
+  },
+  {
+    "chunk_id": 14,
+    "metadata": {},
+    "content": "Next, we will discuss the issue of voltage drop.\n\nBriefly introduce the voltage drop requirements and solutions in North America. Typically, voltage drop requirements include two scenarios: steady-state voltage drop and transient voltage drop.\n\nSteady-state voltage drop typically refers to the voltage drop requirement of a system under stable conditions. The NEC and CEC standards are largely consistent, stipulating that the feeder voltage drop from the service entrance to the distribution panel should not exceed 3%, and from the service entrance to the load end should not exceed 5%. These are steady-state requirements.",
+    "char_count": 626
+  },
+  {
+    "chunk_id": 15,
+    "metadata": {},
+    "content": "For transient voltage drop during motor startup, taking fire pumps as an example, the starting of large motors can cause a significant drop in bus voltage. The transient voltage drop for fire pumps must not exceed 15%; otherwise, the motor may fail to start. Most discussions on voltage drop focus on steady-state conditions, with less consideration given to transient effects. Transient voltage drop has minimal impact on loads like lighting and heating but significantly affects motor loads.\n\nIn generator selection abroad, special attention must be paid to the voltage drop issue of fire pumps. Large industrial projects also require motor starting calculations to assess whether excessive voltage drop could prevent motor startup. The solution is to ensure that the transformer and generator capacities meet the requirements, guaranteeing that bus voltage drop remains within permissible limits during large motor startup.",
+    "char_count": 926
+  },
+  {
+    "chunk_id": 16,
+    "metadata": {},
+    "content": "Relevant standards mainly include NEC and CEC, which primarily specify steady-state voltage drop requirements.\n\nIn the design codes of Canada and the United States, emergency power supply systems have clear requirements for transient voltage drop. Specifically, for the fire pump section, the NFPA 20 standard specifies the transient voltage drop limit during fire pump startup.\n\nThe specific calculation method depends on the project scale: small-scale projects can generally use manual calculations. This is relatively simple and small-scale, only capable of calculating steady-state voltage drop. For large projects or situations requiring transient voltage drop calculations, power system calculation software must be used.",
+    "char_count": 727
+  },
+  {
+    "chunk_id": 17,
+    "metadata": {},
+    "content": "This is relatively simple and small-scale, only capable of calculating steady-state voltage drop. For large projects or situations requiring transient voltage drop calculations, power system calculation software must be used.\n\nNext, I will provide a detailed introduction to this type of software. It is typically suitable for large, complex systems. Additionally, during power flow calculations, the software will compute transient voltage drops; similarly, during motor starting studies, it will also calculate transient voltage drops.\n\nHere are several methods for reducing voltage drop that require attention: The primary consideration is adopting a higher voltage level.",
+    "char_count": 675
+  },
+  {
+    "chunk_id": 18,
+    "metadata": {},
+    "content": "In long-distance power transmission, using 600-volt voltage instead of 208 volts can significantly improve transmission efficiency. Additionally, the tap settings of transformers can be adjusted. For example, when voltage is stepped down from 600V to 208V, the secondary side tap can be increased by 2.5% or 5% (standard configuration). A 5% increase would raise the voltage by approximately 10 volts, resulting in a secondary output voltage of around 218V.",
+    "char_count": 457
+  },
+  {
+    "chunk_id": 19,
+    "metadata": {},
+    "content": "Increasing conductor cross-sectional area is suitable for power supply scenarios beyond one kilometer to reduce voltage drop. However, this method leads to significant cost escalation and construction challenges under heavy loads, making it non-recommended unless necessary. Alternatively, voltage regulators (also called voltage conditioners) can be installed at load terminals for voltage adjustment, though they come with higher costs.\n\nLastly, improving power factor through reactive power compensation is a common practice widely used in power systems but relatively limited in distributed energy resources (DER) applications. These are several typical solutions available—feel free to ask if any questions arise.\n\nIf you have any questions, please feel free to ask. If there are no issues, we will proceed. As today’s content is quite substantial, we will now move on to explain the relevant calculations required for electrical appliance design.",
+    "char_count": 952
+  },
+  {
+    "chunk_id": 20,
+    "metadata": {},
+    "content": "This course is titled Power System Analysis and Calculation. Strictly speaking, this name is not entirely accurate, as power system typically refers to large-scale power grids. However, a more appropriate Chinese expression has yet to be found. Next, I will introduce the various types of calculations required in electrical design.\n\nIt is primarily divided into the following categories:\n\nFirst is Power Study, which includes power flow calculation, steady-state calculation, short-circuit calculation, protection device setting calculation and analysis, ArcFlash analysis, NotaStathing analysis, as well as harmonic analysis.\n\nNext is Grounding Study. Additionally, it covers how to select generators for illumination calculations.",
+    "char_count": 733
+  },
+  {
+    "chunk_id": 21,
+    "metadata": {},
+    "content": "During the preliminary design phase, equipment selection and capacity determination are crucial. Power system analysis and calculations are highly specialized tasks that require practitioners to possess solid theoretical foundations and professional knowledge. These designs and calculations must strictly adhere to relevant codes and standards. Currently, manual calculations are relatively rare, with professional software being predominantly used for computations.",
+    "char_count": 467
+  },
+  {
+    "chunk_id": 22,
+    "metadata": {},
+    "content": "The calculation process does not begin directly; instead, it requires establishing a preliminary single model or simple system design first, followed by calculations and modeling. The calculation results are then fed back into the design phase, forming an iterative optimization process. This process demands substantial knowledge of power system theory, fundamental concepts, and engineering common sense.\n\nIt’s noteworthy that one should not blindly rely on software calculation results. Modeling errors or incorrect input of basic data may lead to deviations in calculation results, potentially causing serious issues. Therefore, it’s essential to maintain a cautious attitude toward every step of the calculation process.\n\nNext, we will focus on discussing Power System Analysis and Calculations (Power System Study).",
+    "char_count": 821
+  },
+  {
+    "chunk_id": 23,
+    "metadata": {},
+    "content": "Here I mentioned about six studies, one of which is the load flow study. This part is relatively fundamental and won’t be elaborated in detail here, as each item will be thoroughly explained later.\n\nIn North America, the commonly used calculation software mainly falls into three categories: ETAP, SKM, and EasyPower. These software packages are quite expensive, with basic versions typically costing tens of thousands of US dollars. Additionally, the fees increase based on the system scale (i.e., the number of bus nodes). If additional functional modules or plugins are required, they also incur extra charges.\n\nThe load flow study primarily follows electrical codes, as well as guidelines and standards such as IEEE 399, but the core still adheres to electrical codes.",
+    "char_count": 772
+  },
+  {
+    "chunk_id": 24,
+    "metadata": {},
+    "content": "The purpose is to determine whether the calculated load matches the capacity of the selected electrical equipment (such as transformers, distribution cabinets, etc.) after completing the modeling based on the single-line diagram. The calculation results must ensure that the selected equipment capacity is not less than the actual demand value. Additionally, voltage drop calculations are required to meet regulatory standards, feeder specifications must be determined, and power factor evaluation is needed to assess whether reactive power compensation is necessary.",
+    "char_count": 567
+  },
+  {
+    "chunk_id": 25,
+    "metadata": {},
+    "content": "The modeling process should be based on the preliminary single-line diagram, accurately reflecting each equipment parameter in the software. Since the design has not yet been verified through calculations, preliminary modeling must first be completed by inputting the proposed baseline data.\n\nThis includes the basic information of the equipment or the basic information of the cables. Typically, these software programs are fully functional and come with extensive built-in library resources. For example, you can select a No. 10 cable or other specifications, or choose motors with different power ratings. During modeling, it is necessary to consider the operating mode. For instance, in the case of redundantly configured equipment (such as dual submersible pumps or drainage pumps), only one unit needs to be accounted for in the calculations.",
+    "char_count": 848
+  },
+  {
+    "chunk_id": 26,
+    "metadata": {},
+    "content": "Once the modeling is completed, you can proceed with the calculations. This is an iterative process: the initial calculation results may indicate that adjustments are needed to the preliminary design’s single line diagram, such as lengthening or thickening the conductors, increasing the switch capacity, or adding loads. The preliminary report might reveal issues like unacceptable voltage drop or insufficient power factor, necessitating modifications to the single line diagram—such as adding reactive power compensation, increasing conductor cross-sections, or adjusting transformer tap settings. After making these changes, rerun the calculations to generate a new report. If the results still do not meet the requirements, repeat the modeling and calculation process until they do.\n\nNext is the short-circuit current analysis calculation, which is also an essential step.",
+    "char_count": 877
+  },
+  {
+    "chunk_id": 27,
+    "metadata": {},
+    "content": "The standards and specifications followed are typically HV395 and ANSI C37. Of course, the NEC and CEC also contain relevant requirements, but their stipulations are not as detailed as those for steady-state calculations. Specific details still need to refer to these standards. The purpose is to calculate the maximum symmetrical component of short-circuit current. In practice, the short-circuit current at various points throughout the system is computed.",
+    "char_count": 458
+  },
+  {
+    "chunk_id": 28,
+    "metadata": {},
+    "content": "For students specializing in power systems, the concept of short-circuit current is relatively clear. Short-circuit current includes symmetrical and asymmetrical components, and their sum represents the maximum short-circuit current. However, in short-circuit current calculations and analysis, the maximum symmetrical component of short-circuit current is typically used for comparison. For example, if the symmetrical short-circuit current at point A is 15 kA, but the selected circuit breaker’s rating is only 10 kA, then a circuit breaker with a rating of 20 kA or 22 kA must be chosen instead.\n\nAdditionally, the sum of the symmetrical and asymmetrical components is the peak fault duty, which is used to verify the peak rating of low-voltage electrical equipment. For medium- and high-voltage equipment, their closing and latching ratings are verified.",
+    "char_count": 858
+  },
+  {
+    "chunk_id": 29,
+    "metadata": {},
+    "content": "The main types of short circuits include: 1. Three-phase fault 2. Single phase to ground 3. Line to line 4. Line to line to ground\n\nAmong these, the three-phase fault generates the highest current.\n\nNormally, three-phase short-circuit current is the largest, but in some cases, single-phase ground short-circuit current may also exceed the three-phase short-circuit current, so specific analysis is required.\n\nThis software has taken various scenarios into account during calculation and outputs the maximum value. These topics fall under the domain of power system engineering, which may be less frequently encountered in industrial automation.",
+    "char_count": 645
+  },
+  {
+    "chunk_id": 30,
+    "metadata": {},
+    "content": "This software has taken various scenarios into account during calculation and outputs the maximum value. These topics fall under the domain of power system engineering, which may be less frequently encountered in industrial automation.\n\nShort-circuit current analysis is based on single-line diagram (SLD) modeling, which involves diverse operating modes. For example, under minimum operating conditions (min time in), a configuration with two incoming lines and one central circuit breaker can be adopted.\n\nIn addition, if emergency generators are installed, different operating modes need to be considered, as these modes do not run simultaneously. For example, when there are two sites, their short-circuit capacities may differ—one larger and the other smaller. The calculation should be based on the larger short-circuit capacity.",
+    "char_count": 835
+  },
+  {
+    "chunk_id": 31,
+    "metadata": {},
+    "content": "Protection Coordination Study, also known as protection device setting analysis, is a complex process that constitutes a specialized course in system automation. However, it is comparatively simpler for DR systems. The primary standards followed are IEEE-399 and IEEE-242.\n\nThe main objectives of this study include:\n\nLife Safety: Ensuring that protection devices can interrupt short-circuit currents. When a short circuit occurs in the system, the upstream circuit breaker or fuse must promptly disconnect the fault current, isolating the faulty section and allowing the rest of the system to operate normally.",
+    "char_count": 611
+  },
+  {
+    "chunk_id": 32,
+    "metadata": {},
+    "content": "Equipment Protection: When selecting protection devices, the following requirements must be met:\n\nCapability to interrupt the maximum short-circuit current.\n\nFor medium- and high-voltage systems, thermal and dynamic stability must also be considered. Protection devices must withstand the thermal and electromagnetic force effects generated by short-circuit currents. This issue does not exist in low-voltage systems. Equipment such as busbars also requires dynamic stability verification.\n\nSelectivity: When a short circuit occurs at a certain point in the system, only the nearest protection device should operate, while upstream devices remain functional. This is achieved through time-current curves, requiring that the operating characteristic curve of the protection device lies above or to the right of the equipment damage curve.\n\nNote: Technical terms have been standardized based on the provided corpus, such as correcting “HV399” to “IEEE-399” and “242” to “IEEE-242.”",
+    "char_count": 979
+  },
+  {
+    "chunk_id": 33,
+    "metadata": {},
+    "content": "Under short-circuit conditions, the entire system should not trip entirely; instead, efforts should be made to minimize the scope of fault removal. This is known as selective protection. A single-line diagram must be used during modeling.\n\nIt is based on the calculation results of short-circuit current analysis and requires input data of various protective devices, such as fuses and circuit breakers. These data are not design parameters but rather the actual specifications of the equipment being used.",
+    "char_count": 506
+  },
+  {
+    "chunk_id": 34,
+    "metadata": {},
+    "content": "During the design phase, load flow studies, short-circuit studies, or motor starting studies can be conducted. However, when performing a protection coordination study, the specific models of the selected protective devices must be clearly defined because the data required for modeling and analysis must match the actual protective devices in use, which is closely tied to the manufacturer’s specifications. Therefore, this analysis can only be performed after the design is finalized and before the system is commissioned.\n\nAdditionally, the operating mode is a critical factor. As mentioned in the short-circuit analysis, other considerations such as ground fault protection and adjacent protections must also be taken into account. The overall process is similar to the first two studies. The report must highlight the time-current curves (TCC), which are typically included in such reports.\n\nNext, we will discuss the motor starting study.",
+    "char_count": 944
+  },
+  {
+    "chunk_id": 35,
+    "metadata": {},
+    "content": "This involves the IEEE 399 and NEMA MG-1 standards. NEMA stands for the National Electrical Manufacturers Association.\n\nThe MG-1 standard established by this association specifies clear requirements for motor starting and acceleration processes, with a particular focus on the motor terminal voltage drop limits. The purpose of this requirement is to verify whether the system design can support the normal starting of the selected motor.\n\nAdditionally, by analyzing motor terminal voltage and current data, the starting time of the motor can be calculated. Similarly, this analysis needs to be modeled based on a single-line diagram.",
+    "char_count": 634
+  },
+  {
+    "chunk_id": 36,
+    "metadata": {},
+    "content": "By analyzing motor terminal voltage and current data, the starting time of the motor can be calculated. Similarly, this analysis needs to be modeled based on a single-line diagram.\n\nAs the foundation of modeling, another key factor is the motor starting method. For example, full voltage starting (Full Voltage), commonly referred to as direct starting (Cross Line), means no variable frequency drive (VFD) or soft starter is used. Additionally, there are reduced-voltage starting methods, such as star-delta starting (Star-Delta), part-winding starting (Part Winding), or auto-transformer starting (Auto Transformer). The starting method for each motor must be clearly specified.",
+    "char_count": 680
+  },
+  {
+    "chunk_id": 37,
+    "metadata": {},
+    "content": "In low-voltage systems, for large motors, it is advisable to use variable frequency drives or soft starters and employ a higher voltage level. For instance, a 500-horsepower motor operating at 600V not only experiences significant voltage drop during startup but also requires uneconomically large conductor cross-sections. Therefore, it is common practice to use a higher voltage level, such as 6000V.\n\nThe entire calculation process is similar to the aforementioned steps, ultimately generating a report known as the Arc Flash Study.\n\nIn North America, this is a mandatory requirement. Upon project completion, it is necessary to assess the arc energy generated by short circuits and quantify its potential hazards to personnel safety. The applicable standards and specifications include:",
+    "char_count": 790
+  },
+  {
+    "chunk_id": 38,
+    "metadata": {},
+    "content": "In North America, this is a mandatory requirement. Upon project completion, it is necessary to assess the arc energy generated by short circuits and quantify its potential hazards to personnel safety. The applicable standards and specifications include:\n\nNFPA 70E Standard for Electrical Safety in the Workplace – Applicable to high and low voltage electrical equipment sites such as power plants and substations\n\nIEEE Standard 1584 Guide for Performing Arc-Flash Hazard Calculations\n\nCSA Z462 Workplace Electrical Safety\n\nArc flash studies typically categorize hazards into four levels based on the magnitude of energy released. After calculations, each piece of equipment is labeled with its hazard level (e.g., Level 2, Level 4, etc.). Workers must wear corresponding Personal Protective Equipment (PPE), including specialized protective clothing and other specific gear, according to the hazard level of the area—not just standard safety shoes or helmets.",
+    "char_count": 959
+  },
+  {
+    "chunk_id": 39,
+    "metadata": {},
+    "content": "The study process is based on short-circuit and protective device coordination studies and serves as a critical step between design and construction/commissioning. A unique aspect is the requirement to create arc flash labels for each piece of equipment, indicating:\n- Hazard level\n- Incident energy value\n- Hazard category\n\nNext, we will discuss the necessity of harmonic analysis.\n\nIn traditional power grids four or five decades ago, there were fewer nonlinear load devices. Today, electronic loads such as UPS, computers, BFD, and electric vehicle charging piles all fall under the category of nonlinear loads. These loads generate significant harmonics, polluting the power grid.",
+    "char_count": 684
+  },
+  {
+    "chunk_id": 40,
+    "metadata": {},
+    "content": "Ideally, alternating current should exhibit a standard sinusoidal waveform. However, harmonics cause waveform distortion, which can disrupt the normal operation of electrical equipment, potentially leading to overheating, reduced lifespan, or even impaired functionality. Therefore, harmonic analysis is necessary to develop appropriate filtering solutions.\n\nAdditionally, power operation departments impose clear requirements on users. For example, the power factor must be at least 0.9%. In North America, there are also upper limits set for the total harmonic distortion (THD). If these requirements cannot be met, measures such as adding harmonic filters must be implemented.\n\nThe second aspect involves verifying resonance issues in existing or factory systems, as harmonics can trigger resonance. The third aspect entails calculating the degree of voltage and current distortion caused by harmonics.",
+    "char_count": 905
+  },
+  {
+    "chunk_id": 41,
+    "metadata": {},
+    "content": "The second aspect involves verifying resonance issues in existing or factory systems, as harmonics can trigger resonance. The third aspect entails calculating the degree of voltage and current distortion caused by harmonics.\n\nHarmonics can cause multifaceted impacts. Firstly, higher-order harmonics can lead to equipment overheating and generate noise. Secondly, harmonics can cause disturbances in motor operation. Additionally, harmonics increase copper losses and create magnetic losses in electromagnetic fields.\n\nRegarding insulation, harmonics also have adverse effects. For example, when the neutral line is overloaded, its current may reach 1.7 times the rated value, causing circuit breakers to malfunction. Harmonics can also severely interfere with low-voltage systems.\n\nRequired documentation includes items such as Single Line Diagrams.\n\nShort-circuit current capacity, rotating area, and its subtransient reactance.",
+    "char_count": 930
+  },
+  {
+    "chunk_id": 42,
+    "metadata": {},
+    "content": "Required documentation includes items such as Single Line Diagrams.\n\nShort-circuit current capacity, rotating area, and its subtransient reactance.\n\nAdditionally, steady-state composite data, including parameters such as the impedance of cables or transmission lines, is generally not critical for harmonic analysis, so we will not elaborate further. We have been explaining for an hour and suggest taking a short break.\n\nNext, we will continue with the explanation. Engineer Pan, I didn’t catch what you just said. Professor Deng, has the sound quality improved now?\n\nAh, feeling better now.\n\nYou say,\n\nWe’ll take a five-minute break now. If any colleagues have questions, you can raise them later.\n\nOK, alright.\n\nLet’s take a five-minute break first.",
+    "char_count": 752
+  },
+  {
+    "chunk_id": 43,
+    "metadata": {},
+    "content": "We’ll take a five-minute break now. If any colleagues have questions, you can raise them later.\n\nOK, alright.\n\nLet’s take a five-minute break first.\n\nOkay.\n\nOkay.\n\nOkay, does anyone have any questions?\n\nTeacher Fan has arrived. I have already finished the discussion with President Liu. Please use your mobile phone for communication, otherwise the other party won’t be able to hear your voice.\n\nOh, hey.\n\nHey, President Liu, hello there.\n\nHello, Professor Fan. I’m currently facing an issue: the grounding system for a 90-kilowatt motor needs to be designed.\n\nSince at this voltage level, the rated current may reach 170 amperes.\n\nHmm,",
+    "char_count": 636
+  },
+  {
+    "chunk_id": 44,
+    "metadata": {},
+    "content": "Since at this voltage level, the rated current may reach 170 amperes,  \nI have two scenarios to consider. Currently, if no frequency converter is installed, the selection of the front-end protective circuit breaker must follow a 2.5 times standard.  \nThus, 2.5 times the rated current of 170 would be approximately 400 to 450 amperes. Therefore, a circuit breaker with a 500-ampere rating should be selected. This is the choice under direct starting conditions.  \nWhen starting directly, a 500A MCCB should be selected for the circuit breaker.  \nThe selection of conductors is based on the 500 or 450 standard, or calculated as 170 multiplied by 2.5 times.  \nMultiply by 120.",
+    "char_count": 675
+  },
+  {
+    "chunk_id": 45,
+    "metadata": {},
+    "content": "The selection of conductors is based on the 500 or 450 standard, or calculated as 170 multiplied by 2.5 times.  \nMultiply by 120.  \nThe rated current of the switch is approximately 160 multiplied by 25, which equals 40 amperes, and the total current-carrying capacity is about 210 amperes. Therefore, a wire or cable with a current-carrying capacity of 210 amperes should be selected.  \nHowever, there is currently an issue: the setting value of the switch may be less than the current-carrying capacity of the cable, meaning the cable’s current-carrying capacity is lower than the switch’s rated current. Generally, the cable’s current-carrying capacity should be greater than the switch’s rated current.  \nOnly for motor compounding is an exception.",
+    "char_count": 751
+  },
+  {
+    "chunk_id": 46,
+    "metadata": {},
+    "content": "Only for motor compounding is an exception.\n\nThis motor combination is an exception and can be started directly. Additionally, if the subsequent motor is equipped with a frequency converter, it is necessary to consider whether the converter has a bypass function.\n\nAssume not to bring it.\n\nThe circuit breaker can be selected according to 125 amps.\n\nYes, since it is equipped with a Variable Frequency Drive (VFD), there is usually no need to consider the issue of starting current limitation, as the VFD itself has the capability to limit the starting current.\n\nAt this point, there is no starting current, only a very small residual current. It is recommended to select based on 125% of the rated value.\n\nThis guide and switch can be matched.",
+    "char_count": 744
+  },
+  {
+    "chunk_id": 47,
+    "metadata": {},
+    "content": "At this point, there is no starting current, only a very small residual current. It is recommended to select based on 125% of the rated value.\n\nThis guide and switch can be matched.\n\nAlright, I understand. Please send the relevant specifications and requirements, including these pages, to our team’s Pan Gong in an appropriate format. It’s not limited to the coding section you mentioned—since I have limited access to North American standards, I’d like to obtain more comprehensive information.\n\nIs the data section under your responsibility? These pages contain equipment with variable frequency drives (VFDs), please confirm whether VFDs are included.\n\nCurrently, the content related to Variable Frequency Drives (VFDs) is not included, but the part about direct starting has been covered.",
+    "char_count": 793
+  },
+  {
+    "chunk_id": 48,
+    "metadata": {},
+    "content": "It has no impact on direct starting methods, but for frequency converter starting, star-delta starting, or other pressure-starting methods, these devices need to be equipped with corresponding protective measures.\n\nAs I mentioned before, the older method of pressure-based startup is rarely used in North America anymore, especially after the introduction of variable frequency drive technology.\n\nSoft starting is primarily used for high-capacity motors in large-scale industrial projects.\n\nThe soft starter adopts the 1.1.5 specification.",
+    "char_count": 539
+  },
+  {
+    "chunk_id": 49,
+    "metadata": {},
+    "content": "Soft starting is primarily used for high-capacity motors in large-scale industrial projects.  \nThe soft starter adopts the 1.1.5 specification.  \nSoft starters are somewhat similar to Variable Frequency Drives (VFDs), but there are certain differences between them. VFDs are more powerful and feature control functions, making the starting process smoother. The primary role of soft starters is to replace traditional reduced-voltage starting methods.  \nGiven the current situation, should we proceed directly, or does anyone have other questions to discuss?  \nAre there any other questions? If not, let’s move on.",
+    "char_count": 614
+  },
+  {
+    "chunk_id": 50,
+    "metadata": {},
+    "content": "Next, I will introduce the relevant content of grounding analysis. Grounding analysis is primarily applicable to medium- and high-voltage systems and is generally not required for low-voltage systems. Even in North America, grounding analysis is only necessary for medium- and high-voltage systems. It is important to note that North American grounding standards differ from Chinese electrical codes. Chinese electrical codes specify only the grounding resistance requirements, whereas North American standards focus more on personal safety, evaluating the safety of grounding systems through step voltage and touch voltage.",
+    "char_count": 624
+  },
+  {
+    "chunk_id": 51,
+    "metadata": {},
+    "content": "Under North American standards, isolated grounding or grounding for electronic equipment typically requires a grounding resistance of less than 1 Ω or 0.5 Ω. However, for high-power systems, there is no explicit grounding resistance requirement. Instead, step voltage and touch voltage are used as evaluation criteria. The standards provide corresponding tables listing permissible voltage values for different grounding configurations. During grounding analysis, these voltage values must be calculated. If they meet the standard requirements, the design is approved; otherwise, the grounding system must be redesigned—for example, by increasing the number of grounding electrodes or adopting more effective grounding methods.",
+    "char_count": 727
+  },
+  {
+    "chunk_id": 52,
+    "metadata": {},
+    "content": "The National Electrical Code (NEC) in the U.S. has similar provisions. Additionally, IEEE has established a series of grounding-related standards: IEEE Standard 142 offers general guidelines, while IEEE 80 specifically addresses substation grounding systems, detailing calculation methods, design principles, and technical aspects such as soil sampling and resistivity measurement. Since substations typically involve medium- and high-voltage systems, the requirements for grounding analysis are more stringent.\n\nFor low-voltage systems, professional grounding analysis is rarely conducted. Although software like ETAP, SKM, and EVPower can perform basic grounding analysis, their capabilities are limited. Professional grounding analysis software is expensive, often costing tens of thousands of dollars. Due to its infrequent use, ETAP or SKM usually suffices for basic needs. These tools can create models and calculate parameters such as grounding resistance.",
+    "char_count": 963
+  },
+  {
+    "chunk_id": 53,
+    "metadata": {},
+    "content": "Does the step voltage or touch voltage meet the requirements? If it meets the requirements, no adjustment is needed. However, during the modeling process, it is necessary to first determine the proposed grounding layout, including the number and distribution of grounding electrodes.\n\nAfter the calculation is completed, the system will generate a grounding layout based on the calculation results and determine whether the existing results meet the requirements. If the requirements are not met, the system will provide a grounding layout that meets the requirements.\n\nIt is worth noting that this modeling process does not require a single line diagram.\n\nIn the electrical grounding design of substations, it is necessary to provide a Grounding Plan or Layout, while also considering the soil conductivity data around the substation.",
+    "char_count": 835
+  },
+  {
+    "chunk_id": 54,
+    "metadata": {},
+    "content": "In the electrical grounding design of substations, it is necessary to provide a Grounding Plan or Layout, while also considering the soil conductivity data around the substation.\n\nThe main grounding methods are categorized as follows:\n1. Use of grounding electrodes, such as galvanized steel pipes commonly used domestically. Here, similar considerations apply, primarily focusing on anti-corrosion factors, with the need to determine the burial depth (typically 3 meters) and quantity.\n2. Use of grounding plates or grounding grids, which involve directly burying metal plates.\n3. Utilization of metal structures within buildings, such as steel reinforcement, for grounding purposes.",
+    "char_count": 684
+  },
+  {
+    "chunk_id": 55,
+    "metadata": {},
+    "content": "Grounding effectiveness is closely related to soil characteristics. In areas with moist soil, high salt content, or abundant minerals, grounding performance is better. Conversely, in sandy, gravel, or rocky salt areas, grounding effectiveness is poorer, requiring an increase in the number of grounding electrodes. If necessary, methods such as adding saltwater can be employed to improve grounding performance. Relevant standards provide detailed specifications for grounding requirements.\n\nThe modeling process is largely consistent with the aforementioned content, and a grounding report must ultimately be generated. Grounding requirements are not only based on standards but also must comply with local power utility regulations. For example, in North America, the voltage systems are more complex. In regions like Andre Province, projects above 44 kV require a Building Study for grounding, while projects between 15 kV and 44 kV may not necessarily require one.",
+    "char_count": 968
+  },
+  {
+    "chunk_id": 56,
+    "metadata": {},
+    "content": "Additionally, generator grounding calculations must also be performed.\n\nThe applied standards include NEC and CEC, but the requirements of these standards are not very detailed. The primary references are two specific standards for emergency power: CSA-282 in Canada and NFPA 110 in the United States. However, the CEC does not provide very specific requirements and merely cites these two standards.",
+    "char_count": 400
+  },
+  {
+    "chunk_id": 57,
+    "metadata": {},
+    "content": "The main purpose of generator calculation is to determine the generator capacity. The calculation must be based on a single-line diagram, clearly identifying the characteristics and capacity of the loads connected to the generator bus. The selection of the operation mode is crucial, as it directly affects the determination of the generator capacity. Adopting a staging strategy can optimize the generator capacity. For example, lighting loads can be grouped into the first stage, while fire protection equipment and elevators are assigned to different stages. By implementing staged startup, simultaneous activation of all loads can be avoided, thereby preventing excessive generator capacity requirements and significantly reducing the generator size.",
+    "char_count": 754
+  },
+  {
+    "chunk_id": 58,
+    "metadata": {},
+    "content": "The overall calculation process is similar to the aforementioned method, but generator capacity calculations typically lack support from commercial software. In North America, generator suppliers usually provide dedicated calculation software and offer technical support to consulting engineers. Users can submit the single-line diagram to the supplier, who will then use their software to determine the required generator capacity and type. If self-calculation is necessary, it was previously possible using free software, but now it can be done through online tools. Given the complexity of generator equipment, it is recommended to communicate project requirements directly with the supplier to ensure the correct selection of generator capacity.\n\nRegarding lighting calculations,",
+    "char_count": 783
+  },
+  {
+    "chunk_id": 59,
+    "metadata": {},
+    "content": "In small to medium-sized projects, illuminance calculation is not commonly applied. Typically, designs are based on experience unless specifically requested by the client. Conducting illuminance calculations for every room would be highly time-consuming in practice.\n\nUnlike domestic practices, international consulting services are billed hourly, resulting in higher labor costs. For instance, if a project originally estimated at 100 hours requires an additional 50 hours due to added illuminance calculations, the extra cost becomes difficult to absorb unless the client agrees to increase the budget.\n\nIlluminance calculations usually require specialized software. Commercial tools like AGI32 are popular in North America, operating on a subscription model with relatively high costs. Alternatively, free software such as Dialux offers basic functionalities sufficient for most needs.",
+    "char_count": 888
+  },
+  {
+    "chunk_id": 60,
+    "metadata": {},
+    "content": "When performing illuminance calculations, an initial lighting layout design is required first. Fixture positions are input into the software to verify whether target illuminance levels (e.g., 500LX, 1000LX, or 300LX) are met. If not, the number of fixtures must be adjusted.\n\nIlluminance calculations also involve multiple metrics, including average illuminance, illuminance uniformity, and glare control. For illuminance design, preparation includes fixture layout drawings, room-specific illuminance requirements, and photometric data of the fixtures. Many reputable lighting manufacturers integrate fixture libraries into their calculation software, allowing direct access to relevant data.\n\nThe lighting calculation software can generate calculation result reports, with the overall process being consistent with the aforementioned. Next, I will demonstrate several sample styles of calculation reports to everyone.",
+    "char_count": 919
+  },
+  {
+    "chunk_id": 61,
+    "metadata": {},
+    "content": "First, let’s discuss composite calculations. For such small-scale composite calculations, like the dominant calculation in the example, Excel is usually sufficient to complete the task without the need for specialized SKM tools.\n\nDue to the lack of detailed information and the absence of complex software calculations, the load calculation here is primarily used to determine the required power supply line specifications for residential buildings.\n\nAnother issue is the specifications of the service entrance for each household. This table is strictly formulated in accordance with the Canadian Electrical Code.",
+    "char_count": 613
+  },
+  {
+    "chunk_id": 62,
+    "metadata": {},
+    "content": "Another issue is the specifications of the service entrance for each household. This table is strictly formulated in accordance with the Canadian Electrical Code.\n\nThe calculation method in the United States is similar. Taking a residential unit as an example, the base load for the first 45 square meters is 3,500 watts, which includes electricity demands such as lighting and outlets. Among these, an electric stove requires a load of 6,000 watts, while the load is counted as zero if there is no electric water heater. The washing machine and dryer are calculated as independent loads.\n\nThe standard specifies that the heating load is calculated separately and included in the total load at 100%. Heating equipment includes two types: electric baseboard heaters and heat pumps. For residential units smaller than 45 square meters, the total electrical load is calculated according to the standard.",
+    "char_count": 900
+  },
+  {
+    "chunk_id": 63,
+    "metadata": {},
+    "content": "The power supply adopts a 120/208V single-phase three-wire system. When calculating the current, an 80% coefficient must be considered, so the main power line can be chosen as either 100A or 125A. For residential units under 60 square meters, the first 45 square meters are calculated according to the above standard, while the area exceeding 45 square meters is calculated separately.\n\nFor every additional fixed area, there is a corresponding numerical value, with all other conditions being equal. The final calculation results show that for apartment sizes below 60 square meters, the composite current is a specific value, while for 75-square-meter apartments, it varies depending on different types.\n\nThe entire incoming line capacity calculation method is as follows: Taking 14,050 households as an example, the basic load (Basic Load) is first considered.",
+    "char_count": 863
+  },
+  {
+    "chunk_id": 64,
+    "metadata": {},
+    "content": "Taking 14,050 households as an example, the basic load (Basic Load) is first considered.\n\nIn heating load calculations, the first household is calculated at 100% of the maximum user capacity, while the remaining users are calculated at corresponding proportions.\n\nThe remaining portion is calculated based on the maximum load. For example:\n\nA single household is calculated at 100%;\n\nThe next two households at 65%;\n\nThe following two households at 40%;\n\nThe subsequent 15 households all at 25%;\n\nBeyond 20 households, a uniform rate of 10% applies.\n\nThus, the final coefficient obtained is relatively large. This constitutes the total base load.\n\nAdditionally, the following must be calculated:\n- Heating load;\n- Electric vehicle charging load;\n- Load for public areas.\n\nTotal load is the sum of the base load, heating load, electric vehicle charging load, and public area load.",
+    "char_count": 879
+  },
+  {
+    "chunk_id": 65,
+    "metadata": {},
+    "content": "For example, corridors, parking lots, building ventilation systems, and elevator air conditioning systems all fall under building loads. By summing up these four types of loads, the total load can be obtained.\n\nIf a three-phase incoming line is used with a voltage of 347/600V, the calculated current is relatively high, and the standard service capacity is 1600A, so 1600A is ultimately selected. This is an example of load calculation using Excel.\n\nNext, I will introduce a relatively simple electrical study case.",
+    "char_count": 516
+  },
+  {
+    "chunk_id": 66,
+    "metadata": {},
+    "content": "This report focuses on the project of adding electric vehicle charging stations at gas stations, covering four types of power system analyses: load flow calculation and short circuit analysis, coordination, and up flash. The report includes a table of contents, an executive summary, an introduction describing the purpose and background of the project, the scope outlining the work covered in the study, as well as applicable codes and standards. Additionally, the report contains a simple single-line diagram showing the circuit connections from the utility power supply to the transformer.",
+    "char_count": 592
+  },
+  {
+    "chunk_id": 67,
+    "metadata": {},
+    "content": "This is a single-line diagram (Single Line Model) in ETAP, which differs from the ones we typically draw. The diagram includes a transformer and a main switch. The current flows through the switch to a distribution panel (Panel), with an output of 600 volts. Since the EV charging equipment operates at 480 volts, a transformer is required to step down the voltage from 600 volts to 480 volts. The 480-volt bus is connected to another distribution panel, which contains a circuit breaker (Breaker) to supply power to the charging equipment.",
+    "char_count": 540
+  },
+  {
+    "chunk_id": 68,
+    "metadata": {},
+    "content": "The power factor of this EV charger is 0.96. The high-voltage side voltage is 25 kV, though the exact value has not been confirmed—it could be either 12.5 or 25 kV. Additionally, the specific measurement voltage on the secondary side needs to be clarified. Finally, the parameters of the XR Ratio Utility Transformer are involved.",
+    "char_count": 330
+  },
+  {
+    "chunk_id": 69,
+    "metadata": {},
+    "content": "The impedance coefficient and impedance voltage values of the Utility transformer are used for short-circuit current calculations at a frequency of 60Hz.\n\nThe report includes a summary section presenting the results of the voltage drop analysis, listing various voltage drop data, with the final integrated voltage drop being 0.7.\n\nFor each circuit, it is necessary to consider cable specifications (Cable Size), material (copper or aluminum), maximum load, cable length (Max Cable Length), and the final calculated voltage drop (Voltage Drop Calculation). These parameters must comply with the Canadian Electrical Code requirements that the voltage drop does not exceed 5% (Percentage Drop).\n\nNext, a short circuit analysis (Short Circuit Study) is required, which is part of the three-phase system.",
+    "char_count": 800
+  },
+  {
+    "chunk_id": 70,
+    "metadata": {},
+    "content": "Next, a short circuit analysis (Short Circuit Study) is required, which is part of the three-phase system.\n\nIt considers the most severe three-phase short-circuit scenario and provides a summarized result here. Later, I will present this report to everyone.\n\nThe report generated by the software includes the following contents:\n\nFirst, it provides an analysis of symmetrical and asymmetrical components, where the Peak value is the sum of both. Next, the report lists voltage values.\n\nThe fifth section covers Protective Device Coordination, which refers to the previously mentioned current-time curves. The sixth section is the Arc Flash Study, categorizing the energy generated during short circuits into four levels and providing relevant parameters.\n\nAdditionally, the report includes disclaimers and assumptions.",
+    "char_count": 818
+  },
+  {
+    "chunk_id": 71,
+    "metadata": {},
+    "content": "Additionally, the report includes disclaimers and assumptions.\n\nDuring the calculation process, several key conditions must be taken into account. Additionally, the power flow calculation results for each load must be clearly displayed, including the actual power values of the transformers.\n\nThen at this point, what is the current? What is the power factor? It mainly includes these aspects. You can see the voltage drop here, which is 600 volts.\n\nThe actual voltage is 597 volts, which meets the requirements. The 480-volt voltage is slightly lower, so each point has its corresponding actual power.\n\nBoth composite current and power factor are included, making it clear at a glance. This is an automatically generated report by the calculation software.",
+    "char_count": 757
+  },
+  {
+    "chunk_id": 72,
+    "metadata": {},
+    "content": "Both composite current and power factor are included, making it clear at a glance. This is an automatically generated report by the calculation software.\n\nShort-circuit current calculation provides the short-circuit current value at each point with detailed data. Additionally, relevant parameters for coordination studies are also included.\n\nPractical current curves display the parameters of each circuit breaker, including long-time delay, short-time delay, and instantaneous trip ratings. It can be seen that these are current-time curves plotted for actual short-circuit currents at each point. These curves are used in scenarios such as transformer protection.",
+    "char_count": 666
+  },
+  {
+    "chunk_id": 73,
+    "metadata": {},
+    "content": "The circuit protection device within this panel must be located at its upper right. This means the short-circuit current rating should always exceed the actual value to ensure proper protection coordination is achieved. Additionally, the ArcFlash parameters will display their classification levels, which are all calculated results. The specific style of the ArcFlash label will be shown later.\n\nThis is the appearance style of the ArcFlash label, which indicates the protection level of the PPE.\n\nIt uses Boundary to evaluate the magnitude of generated energy. The final key point is Lighting Calculation, which refers to the red-line requirements for outdoor lighting planning.",
+    "char_count": 680
+  },
+  {
+    "chunk_id": 74,
+    "metadata": {},
+    "content": "It uses Boundary to evaluate the magnitude of generated energy. The final key point is Lighting Calculation, which refers to the red-line requirements for outdoor lighting planning.\n\nPreserving privacy means that the illuminance of luminaires installed within the project’s redline boundary, i.e., Property Line, must not exceed this area. Therefore, the illuminance at all points is 0. Additionally, the illuminance requirements within the Facade or Site must be met.\n\nAfter calculation via software, the results can be imported into CAD drawings and submitted to the client. This is an example of illuminance calculation, which includes relevant options.",
+    "char_count": 656
+  },
+  {
+    "chunk_id": 75,
+    "metadata": {},
+    "content": "After calculation via software, the results can be imported into CAD drawings and submitted to the client. This is an example of illuminance calculation, which includes relevant options.\n\nSome models and technical specifications from the authorities are essentially a summary of illuminance and should be implemented in accordance with the City Standard or other relevant requirements. Additionally, Generator was a project we participated in, requiring manufacturer assistance for completion. This project involved Emergency Generators for residential buildings, for which we provided corresponding support.\n\nAfter entering specific parameters in a single line, the software calculates and generates a report containing detailed parameters for each item.\n\nThe basic situation is as follows. I’d like to show everyone what it looks like.\n\nThat’s all I have to share today. Mr. Pang, does anyone have any questions?",
+    "char_count": 914
+  },
+  {
+    "chunk_id": 76,
+    "metadata": {},
+    "content": "The basic situation is as follows. I’d like to show everyone what it looks like.\n\nThat’s all I have to share today. Mr. Pang, does anyone have any questions?\n\nProfessor Fang, I have a question: The calculation document you just presented is part of the design deliverables provided during the Design Consultant phase, correct?\n\nThis Lighting Calculation is located near the Lighting area. The Generator calculation is for Consulting purposes only and is generally not provided.\n\nDuring the issue phase, we only mark Single line and Generator size on the drawings. However, the Power study report must be provided, which belongs to the Consultant phase.\n\nAdditionally, the Load Calculation Excel sheet will ultimately be embedded as part of the drawings.\n\nOK, other calculations such as ArcFlash analysis and relay protection setting analysis are not part of the standard delivery content.",
+    "char_count": 888
+  },
+  {
+    "chunk_id": 77,
+    "metadata": {},
+    "content": "OK, other calculations such as ArcFlash analysis and relay protection setting analysis are not part of the standard delivery content.\n\nDeliverable. We conducted a Power study for this project. Please note the seal beside it, which is our official seal.\n\nI saw an envelope with a seal on the left side, which should be yours.\n\nMy computer runs extremely slow when opening this PDF file, especially the original chapter section on the left side that was just mentioned.\n\nThe original chapter on the first page of the split skin.\n\nThis is the engineer’s seal, which becomes effective upon use.\n\nIs this seal your personal one? Yes, it’s my personal seal. In North America, the production of such seals must be completed by qualified personnel.",
+    "char_count": 740
+  },
+  {
+    "chunk_id": 78,
+    "metadata": {},
+    "content": "Is this seal your personal one? Yes, it’s my personal seal. In North America, the production of such seals must be completed by qualified personnel.\n\nOf course, if you are a Professional Engineer, known as PE in the United States, in Canada it is referred to as PENG, or P.E.N.G., just a different abbreviation.\n\nOK, got it.\n\nAs long as these calculation sheets are approved by you and formally submitted, they will serve as legitimate technical documents for the DELIVERY project. We do not mandate the use of specialized software, as some calculations can be adequately performed using just Excel spreadsheets.\n\nNo, this is the result calculated through ETAP. ETAP is a professional calculation software, and the client usually specifies its use. If not specified, Excel spreadsheets can be used for calculations.",
+    "char_count": 815
+  },
+  {
+    "chunk_id": 79,
+    "metadata": {},
+    "content": "Yes, this is the result calculated through ETAP. ETAP is a professional calculation software, and the client usually specifies its use. If not specified, Excel spreadsheets can be used for calculations.\n\nIt’s also okay.\n\nYes, it depends on your position. If you’re a consultant, you need to follow the requirements of the client or the main document department (AHG). If you’re a contractor, you must balance the needs of all three parties: the client, the consultant, and the main document department.\n\nHmm,\n\nTypically, consultants impose the most demands on contractors.\n\nUh-huh, uh-huh,\n\nBecause you need to carry out the construction according to the construction plan provided by the consultant.",
+    "char_count": 700
+  },
+  {
+    "chunk_id": 80,
+    "metadata": {},
+    "content": "Because you need to carry out the construction according to the construction plan provided by the consultant.\n\nThe projects we are currently responsible for include the CBD project, primarily undertaking the detailed design work in the later stages. During this process, we frequently coordinate with the supervision engineers and are required to provide load calculations as specified.\n\nThis composite calculation does not refer to the compounding of electricity consumption, but rather a fixed composite calculation based on substituting the actual values of the product. The design phase has already been completed and delivered. If there are changes in product selection, a new composite calculation must be performed on this basis.\n\nWe will need to provide the relevant information.",
+    "char_count": 787
+  },
+  {
+    "chunk_id": 81,
+    "metadata": {},
+    "content": "We will need to provide the relevant information.\n\nThe supervisor goes to review.\n\nHowever, during this process, perhaps due to distrust of the Chinese or other reasons, most situations we encountered in Egypt required the involvement of a third party. Whether it was the manufacturer or a third-party certification agency, professional software had to be used to issue calculation reports.\n\nI don’t have any other questions at the moment. Do any other colleagues have any questions?\n\nCurrently, the computational tools you are using are mostly manual calculations or Excel spreadsheets, lacking the support of professional software.",
+    "char_count": 633
+  },
+  {
+    "chunk_id": 82,
+    "metadata": {},
+    "content": "Currently, the computational tools you are using are mostly manual calculations or Excel spreadsheets, lacking the support of professional software.\n\nBasically, there is no need to use software for calculations. If it is indeed necessary, we usually delegate the task to the manufacturer. We do not purchase software or perform related computations ourselves.\n\nFor a smaller company like ours, software usage costs are high and requirements are stringent. Manually calculated submission data is simply not acceptable. Therefore, the report I’m presenting to you fully complies with North American standards, which are extremely rigorous. The report must demonstrate professionalism and systematic rigor—it cannot be casually handwritten.",
+    "char_count": 737
+  },
+  {
+    "chunk_id": 83,
+    "metadata": {},
+    "content": "It’s evident that the calculations provided are both comprehensive and professional, and I find them truly outstanding. However, this involves the application of multiple specialized software programs.\n\nThis is a software.\n\nA single software can complete these calculations.\n\nETAB and SKM are power system analysis software primarily used for calculations. Apart from Motor Studying and Hamari’s design, all other functions are covered.\n\nWhat I just heard was an analysis about short circuits or grounding, which usually requires professional software to complete.",
+    "char_count": 564
+  },
+  {
+    "chunk_id": 84,
+    "metadata": {},
+    "content": "We did not purchase the software because it is primarily designed for medium and high voltage substation projects, whereas we mostly undertake small and medium-sized projects that do not require such functionality. Additionally, the local power utility has specific requirements for voltage systems.\n\nFor instance, in Ontario, before stepping down to 600 volts, the voltage system includes multiple levels such as 12.5 kV, 25 kV, 44 kV, and 69 kV. If the primary side voltage of the incoming line exceeds 40 kV, grounding analysis is required; however, this is not necessary for 15 kV or 25 kV systems.",
+    "char_count": 602
+  },
+  {
+    "chunk_id": 85,
+    "metadata": {},
+    "content": "Currently, we use ETAP and SKM software to prepare reports. While these tools include grounding analysis capabilities, they are not as specialized as dedicated software. Nevertheless, for standard projects, the existing software’s functionality is entirely sufficient.\n\nAlright, since everyone seems to be in low spirits today, probably due to the schedule adjustment, we’ll end today’s class here. Teacher Fan.\n\nNext, we will proceed to the explanation of low-voltage systems. The content of the next three lessons will focus on weak current systems.\n\nThe next class is still scheduled for next Saturday.\n\nOK, got it.\n\nOkay.\n\nThank you, Teacher Fan. Goodbye.",
+    "char_count": 659
+  }
+]
