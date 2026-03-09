@@ -23,7 +23,7 @@ from .config import RAGConfig, Context
 from .milvus import create_milvus_store
 from .modules.reranker import BGERanker
 from .modules.hyde import HyDEGenerator
-from .graph import create_agent_graph # You will need to update this signature
+from .graph import create_agent_graph 
 from .session_storage import get_storage
 
 from pydantic import BaseModel, Field
@@ -31,7 +31,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 DB_URI: str = os.getenv("PG_URI")
-
 
 class Status(Enum):
    CREATED = "created"
@@ -61,7 +60,7 @@ class CompactMemory(BaseModel):
     fact: str = Field(description="A concise, single-sentence summary of the new information. Max 15 words.")
     importance: int = Field(description="1-10 scale of how important this is to remember long-term.")
 
-
+# Register available stores and rankers
 VECTOR_STORES = {
     "milvus": create_milvus_store,
 }
@@ -77,7 +76,7 @@ class RAGAgent:
         """
         self.config = config
 
-        # RAG Setup #########################################################
+        # RAG Setup
         store_factory = VECTOR_STORES.get(config.vector_store_type)
         ranker_factory = RANKERS.get(config.ranker_type)
         
@@ -90,39 +89,59 @@ class RAGAgent:
 
         rag_tool = create_rag_tool(vector_store, ranker, hyde_generator)
         
-        # LLM Setup #########################################################
+        # LLM Setup and tool schema binding
+        if not config.llm_model:
+            raise ValueError("LLM model not specified")
         llm = ChatOllama(model=config.llm_model, temperature=0)
         llm_with_tools = llm.bind_tools([rag_tool])
 
-        # Memory Setup #########################################################
-        memory_llm = ChatOllama(model=config.memory_llm_model, temperature=0)
-        manager_instructions = """
-You are a memory manager. Your job is to extract LONG-TERM knowledge from the conversation.
+        # Memory Setup
+        if config.memory_llm_model and config.manager_instructions:
+            memory_llm = ChatOllama(model=config.memory_llm_model, temperature=0)
+            memory_manager = create_memory_store_manager(
+                memory_llm,
+                namespace=("memories", "{user_id}"),
+                schemas=[CompactMemory],
+                instructions=config.manager_instructions
+            )
+        else:
+            memory_manager = None
+        
+        # Summarization Setup
+        if config.summarization_model:
+            summarization_llm = ChatOllama(model=config.summarization_model, temperature=0, num_predict=1024)
+        else:
+            summarization_llm = None
 
-RULES FOR STORAGE:
-1. **IGNORE CHIT-CHAT**: Do not store greetings, pleasantries, or temporary context (e.g., "I'm going to lunch now").
-2. **Relevance Filter**: Only store information if it is useful for future tasks (e.g., user preferences, project specs, debugging history).
-3. **COMPACTNESS**: Do not store raw quotes. Summarize the user's intent into the smallest possible sentence.
-4. **No Duplicates**: If a fact already exists in the provided existing memories, do not create a new one.
-"""
-        self.memory_manager = create_memory_store_manager(
-            memory_llm,
-            namespace=("memories", "{user_id}"),
-            schemas=[CompactMemory],
-            instructions=manager_instructions
+        # Training LLM Setup for evaluation
+        if config.training_llm_model:
+            training_llm = ChatOllama(model=config.training_llm_model, temperature=0, format="json")
+        else:
+            training_llm = None
+
+        # Title LLM Setup
+        if config.title_llm_model:
+            title_llm = ChatOllama(model=config.title_llm_model, temperature=0, num_predict=100)
+        else:
+            title_llm = None
+
+        # Constucting actual agent
+        workflow = create_agent_graph(
+            llm_with_tools=llm_with_tools, 
+            rag_tool=rag_tool, 
+            memory_manager=memory_manager, 
+            summarization_llm=summarization_llm,
+            training_llm=training_llm,
+            title_llm=title_llm,
+            debug=True
         )
-
-        # Training LLM Setup for evaluation ####################################
-        training_llm = ChatOllama(model=config.training_llm_model, temperature=0, format="json") if config.training_mode else None
-
-        workflow = create_agent_graph(llm_with_tools, rag_tool, self.memory_manager, training_llm, debug=True)
         
         # To be initialized by create()
         self.pool = None
         self.checkpointer = checkpointer
         self.store = store
         
-        # Graph Compilation ##################################################
+        # Graph Compilation
         self.agent = workflow.compile(
             checkpointer=checkpointer,
             store=store
@@ -135,14 +154,14 @@ RULES FOR STORAGE:
         """
         Async factory method to create RAGAgent with checkpointing support.
         """
-        # Create async pool and checkpointer #####################################
+        # Create async pool and checkpointer
         pool = AsyncConnectionPool(conninfo=DB_URI, max_size=20, kwargs={"autocommit": True}, open=False)
         await pool.open()
         
         checkpointer = AsyncPostgresSaver(pool)
         await checkpointer.setup()
 
-        # Setup AsyncPostgresStore #############################################
+        # Setup AsyncPostgresStore
         memory_embeddings = OllamaEmbeddings(model=config.memory_embeddings_model)
         store = AsyncPostgresStore(
             pool,
@@ -494,7 +513,7 @@ async def main():
     #     print(f"Output tokens: {response.get('output_tokens_used', 0)}")
     
     # Stream responses
-    async for response in agent.chat(query, conversation_id=str(31), user_id="1", stream=True):
+    async for response in agent.chat(query, conversation_id=str(777), user_id="1", stream=True):
         print(f"[{response.status.value}] {response.type}: {response.content}")
         if response.status == Status.COMPLETE:
             print(f"\nFinal token usage - Input: {response.metadata.input_tokens_used}, Output: {response.metadata.output_tokens_used}")

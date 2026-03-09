@@ -14,7 +14,7 @@ fi
 
 # Default values
 HOST="0.0.0.0"
-PORT=8000
+PORT=9229
 RELOAD="--reload"
 
 # Parse command line arguments
@@ -77,8 +77,9 @@ echo "API Documentation: http://localhost:$PORT/docs"
 echo ""
 
 # Define log and pid files
-LOG_FILE="server.log"
-PID_FILE="server.pid"
+TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+LOG_FILE="logs/server_$TIMESTAMP.log"
+PID_FILE="logs/server_$TIMESTAMP.pid"
 
 # If funnel is requested, show instructions
 if [ "$SETUP_FUNNEL" = true ]; then

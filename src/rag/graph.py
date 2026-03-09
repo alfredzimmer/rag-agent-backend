@@ -22,19 +22,6 @@ import json
 import textwrap
 from .modules.custom_summarization import SummarizationNode
 
-def log_debug(section: str, content: str):
-    """Helper to log debug info with timestamp and formatting."""
-    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    with open("debug_graph.log", "a") as f:
-        f.write(f"[{timestamp}] [{section}]\n")
-        # Wrap content if it's too long, but preserve existing newlines
-        wrapper = textwrap.TextWrapper(width=100, break_long_words=False, replace_whitespace=False)
-        formatted_content = "\n".join(wrapper.fill(line) for line in content.splitlines())
-        f.write(f"{formatted_content}\n")
-        f.write("-" * 80 + "\n")
-
-summarization_model = ChatOllama(model="qwen3:8b", temperature=0, num_predict=1024)
-
 class State(MessagesState):
     context: dict[str, RunningSummary]
     rating: float
@@ -46,25 +33,38 @@ class LLMInputState(TypedDict):
     summarized_messages: list[AnyMessage]
     context: dict[str, RunningSummary]
 
-def create_agent_graph(llm_with_tools, rag_tool, memory_manager, training_llm=None, *, debug: bool = False):
-    # Define the agent node ##################################################
-    async def agent_node(state: LLMInputState, config: RunnableConfig):
+def create_agent_graph(
+    llm_with_tools,
+    rag_tool,
+    memory_manager=None,
+    summarization_llm=None,
+    training_llm=None,
+    title_llm=None,
+    *,
+    debug: bool = False
+):
+
+    # Define the agent node
+    async def agent_node(state: dict, config: RunnableConfig):
         """
         Agent node: LLM decides what to do next.
         Note: This uses invoke() for non-streaming. For streaming, we handle it in the agent.chat() method.
         """
 
-        last_message = state["summarized_messages"][-1].content if state["summarized_messages"] else ""
+        active_messages = state.get("summarized_messages", state.get("messages", []))
+        last_message = active_messages[-1].content if active_messages else ""
 
-        memories = await memory_manager.asearch(
-            query=last_message,
-            config=config,
-            limit=5
-        )
+        memories = []
+        if memory_manager:
+            memories = await memory_manager.asearch(
+                query=last_message,
+                config=config,
+                limit=5
+            )
 
         memory_context = ""
         if memories:
-            formatted = "\n".join([f"- {m.value}" for m in memories if m.score > 0.5])
+            formatted = "\n".join([f"- {m.value}" for m in memories if m.score is not None and m.score > 0.5])
             memory_context = f"\n\nRELEVANT USER FACTS/MEMORIES:\n{formatted}"
             
             # Debug: log all memories with scores
@@ -82,15 +82,14 @@ def create_agent_graph(llm_with_tools, rag_tool, memory_manager, training_llm=No
             f"{memory_context}"
         )
 
-        messages = [SystemMessage(content=system_context)] + state["summarized_messages"]
+        messages = [SystemMessage(content=system_context)] + active_messages
 
         response = await llm_with_tools.ainvoke(messages)
 
         if debug:
             # Debug logging
-            messages = state['summarized_messages']
-            log_content = f"Summarized Messages ({len(messages)} total):\n"
-            for i, msg in enumerate(messages, 1):
+            log_content = f"Active Messages ({len(active_messages)} total):\n"
+            for i, msg in enumerate(active_messages, 1):
                 log_content += f"  Message {i}: {msg}\n\n"
             if 'context' in state:
                 log_content += f"\nContext: {state['context']}"
@@ -110,7 +109,7 @@ def create_agent_graph(llm_with_tools, rag_tool, memory_manager, training_llm=No
             # Find all ToolMessages to remove
             tool_messages_to_remove = [
                 RemoveMessage(id=msg.id) 
-                for msg in state.get("summarized_messages", []) 
+                for msg in active_messages
                 if isinstance(msg, ToolMessage)
             ]
             
@@ -131,8 +130,11 @@ def create_agent_graph(llm_with_tools, rag_tool, memory_manager, training_llm=No
 
     async def save_memory_node(state: State, config: RunnableConfig):
         """
-        Save memory node: Save the memory to the memory manager. (additionally creates a title for the conversation)
+        Save memory node: Save the memory to the memory manager.
         """
+        if not memory_manager:
+            return {}
+            
         async def _background_save():
             try:
                 await memory_manager.ainvoke({"messages": state["messages"]}, config=config)
@@ -142,57 +144,73 @@ def create_agent_graph(llm_with_tools, rag_tool, memory_manager, training_llm=No
         asyncio.create_task(_background_save())
         return {}
 
+    async def title_node(state: State, config: RunnableConfig):
+        """
+        Title generation node: Generate a title for the conversation.
+        """
+        messages = state["messages"]
+        first_human = first_ai = None
+        
+        first_human_content = ""
+        first_ai_content = ""
+        
+        for msg in messages:
+            content = msg.content
+            if isinstance(content, str) and "Please use the hybrid_RAG_retrieve tool" in content:
+                content = content.replace("Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. ", "", 1)
+            
+            if isinstance(msg, HumanMessage) and first_human is None:
+                first_human = msg
+                first_human_content = content
+            if isinstance(msg, AIMessage) and first_ai is None:
+                first_ai = msg
+                first_ai_content = content
+
+        if len(messages) <= 4 and first_human and first_ai:
+            try:
+                title_prompt = f"""Generate a distinct, 3-5 word title for this conversation based on the conversation history:
+                user: {first_human_content}
+                assistant: {first_ai_content}
+                """
+                title_res = await title_llm.ainvoke(title_prompt)
+                title = title_res.content
+                if debug:
+                    log_debug("TITLE_GENERATION", f"Generated Title: {title}")
+                return {"title": title}
+            except Exception as e:
+                if debug:
+                    log_debug("TITLE_GENERATION", f"Error generating title: {e}")
+                return {}
+        return {}
+
     async def evaluator_node(state: State, config: RunnableConfig):
         """
         Evaluator node: Evaluate the input and output quality.
         Checks if the response contains valuable information for training and involves technical content.
         Sets evaluation=True if threshold is reached.
         """
-        if not training_llm:
-            return {
-                "rating": 0.0
-            }
-        
         messages = state["messages"]
 
-        first_human = first_ai = last_human = last_ai = None
+        last_human = last_ai = None
+        
+        last_human_content = ""
+        last_ai_content = ""
 
-        for msg in messages:
-            if "Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. " in msg.content:
-                msg.content = msg.content.replace("Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. ", "", 1)
-
-            if isinstance(msg, HumanMessage) and first_human is None:
-                first_human = msg
-            if isinstance(msg, AIMessage) and first_ai is None:
-                first_ai = msg
         for msg in reversed(messages):
-            if "Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. " in msg.content:
-                msg.content = msg.content.replace("Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. ", "", 1)
+            content = msg.content
+            if isinstance(content, str) and "Please use the hybrid_RAG_retrieve tool" in content:
+                content = content.replace("Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. ", "", 1)
+            
             if isinstance(msg, HumanMessage) and last_human is None:
                 last_human = msg
+                last_human_content = content
             if isinstance(msg, AIMessage) and last_ai is None:
                 last_ai = msg
-
-        # Initialize title to None
-        title = None
-        
-        # Generate title if short conversation
-        if len(messages) <= 4 and first_human and first_ai:
-            try:
-                title_prompt = f"""Generate a distinct, 3-5 word title for this conversation based on the conversation history:
-                user: {first_human.content}
-                assistant: {first_ai.content}
-                """
-                title_res = await summarization_model.ainvoke(title_prompt)
-                title = title_res.content
-                if debug:
-                    log_debug("TITLE_GENERATION", f"Generated Title: {title}")
-            except Exception as e:
-                log_debug("TITLE_GENERATION", f"Error generating title: {e}")
+                last_ai_content = content
 
         # Use last pair for evaluation
-        user_input = last_human.content if last_human else ""
-        ai_output = last_ai.content if last_ai else ""
+        user_input = last_human_content if last_human else ""
+        ai_output = last_ai_content if last_ai else ""
 
         if not user_input or not ai_output:
             if debug:
@@ -237,20 +255,10 @@ Format all responses as JSON object with the following keys:
             if debug:
                 log_debug("EVALUATOR_NODE", f"Evaluation response: {eval_text}\nOverall score: {overall_score}")
             
-            result = {}
-            result["rating"] = overall_score
-            
-            if title:
-                result["title"] = title
-                if debug:
-                    log_debug("EVALUATOR_NODE", f"Returning title: {title}")
-            else:
-                if debug:
-                    log_debug("EVALUATOR_NODE", f"No title generated (messages count: {len(messages)})")
+            result = {"rating": overall_score}
             
             print(f"[EVALUATOR_NODE] Returning: {result}")
             return result
-            
             
         except Exception as e:
             if debug:
@@ -262,18 +270,47 @@ Format all responses as JSON object with the following keys:
     # Define the tool node using LangGraph's built-in ToolNode
     tool_node = ToolNode([rag_tool])
 
-    summarization_node = SummarizationNode(
-        model=summarization_model,
-        max_tokens=3000,
-        max_tokens_before_summary=3000,
-        keep_last_n_messages=6,
-        max_summary_tokens=512,
-    )
+    summarization_node = None
+    if summarization_llm:
+        summarization_node = SummarizationNode(
+            model=summarization_llm,
+            max_tokens=3000,
+            max_tokens_before_summary=3000,
+            keep_last_n_messages=6,
+            max_summary_tokens=512,
+        )
+
+    # Check for optional component availability
+    use_summarize = summarization_llm is not None
+    use_evaluator = training_llm is not None
+    use_save_memory = memory_manager is not None
+    use_title = title_llm is not None
+
+    # Helper to get next node in chain dynamically
+    post_agent_nodes = []
+    if use_title:
+        post_agent_nodes.append("title")
+    if use_evaluator:
+        post_agent_nodes.append("evaluator")
+    if use_save_memory:
+        post_agent_nodes.append("save_memory")
+        
+    def get_next_step(current_step: str) -> str:
+        if current_step == "agent":
+            return post_agent_nodes[0] if post_agent_nodes else END
+            
+        try:
+            idx = post_agent_nodes.index(current_step)
+            if idx + 1 < len(post_agent_nodes):
+                return post_agent_nodes[idx + 1]
+            return END
+        except ValueError:
+            return END
 
     # Define the router function
-    def should_continue(state: State) -> Literal["tools", "evaluator"]:
+    def should_continue(state: State) -> Literal["tools", "next"]:
         """
-        Router: Decide whether to continue to tools or go to evaluator.
+        Router: Decide whether to continue to tools or move to the next phase.
         """
         messages = state["messages"]
         last_message = messages[-1]
@@ -282,36 +319,57 @@ Format all responses as JSON object with the following keys:
         if isinstance(last_message, AIMessage) and hasattr(last_message, "tool_calls") and last_message.tool_calls:
             return "tools"
         
-        return "evaluator"
+        return "next"
     
     # Build the graph
     workflow = StateGraph(State)
     
-    # Add nodes
+    # Add Core Nodes
     workflow.add_node("agent", agent_node)
     workflow.add_node("tools", tool_node)
-    workflow.add_node("summarize", summarization_node)
-    workflow.add_node("evaluator", evaluator_node)
-    workflow.add_node("save_memory", save_memory_node)
 
-    # Set entry point
-    workflow.add_edge(START, "summarize")
-    workflow.add_edge("summarize", "agent")
+    # Entry point and Loop logic
+    if use_summarize:
+        workflow.add_node("summarize", summarization_node)
+        workflow.add_edge(START, "summarize")
+        workflow.add_edge("summarize", "agent")
+        workflow.add_edge("tools", "summarize") # loop back through summarize
+    else:
+        workflow.add_edge(START, "agent")
+        workflow.add_edge("tools", "agent") # loop back directly to agent
     
-    # Add conditional edges
+    # Post-Agent branching
     workflow.add_conditional_edges(
         "agent",
         should_continue,
         {
             "tools": "tools",
-            "evaluator": "evaluator"
+            "next": get_next_step("agent")
         }
     )
     
-    # Add edge from tools back to agent
-    workflow.add_edge("tools", "summarize")
-    # Add edge from evaluator to save_memory (always run evaluator before completion)
-    workflow.add_edge("evaluator", "save_memory")
-    workflow.add_edge("save_memory", END)
+    # Optional nodes in the final chain
+    if use_title:
+        workflow.add_node("title", title_node)
+        workflow.add_edge("title", get_next_step("title"))
+        
+    if use_evaluator:
+        workflow.add_node("evaluator", evaluator_node)
+        workflow.add_edge("evaluator", get_next_step("evaluator"))
+    
+    if use_save_memory:
+        workflow.add_node("save_memory", save_memory_node)
+        workflow.add_edge("save_memory", get_next_step("save_memory"))
     
     return workflow
+
+def log_debug(section: str, content: str):
+    """Helper to log debug info with timestamp and formatting."""
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    with open("debug_graph.log", "a") as f:
+        f.write(f"[{timestamp}] [{section}]\n")
+        # Wrap content if it's too long, but preserve existing newlines
+        wrapper = textwrap.TextWrapper(width=100, break_long_words=False, replace_whitespace=False)
+        formatted_content = "\n".join(wrapper.fill(line) for line in content.splitlines())
+        f.write(f"{formatted_content}\n")
+        f.write("-" * 80 + "\n")

@@ -46,7 +46,7 @@ class MilvusVectorStore():
             embedding_function=embedding_function,
             builtin_function=buildin_function,
             collection_name=collection_name,
-            connection_args={"uri": "http://localhost:19530", "db_name": "milvus_demo"},
+            connection_args={"uri": "http://localhost:19530", "db_name": "rag1"},
             vector_field=["dense", "sparse"],
             drop_old=False,  # Don't drop existing collection
             auto_id=True,
