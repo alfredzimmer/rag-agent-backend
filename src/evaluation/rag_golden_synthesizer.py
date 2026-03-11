@@ -1,22 +1,27 @@
 from pathlib import Path
 import sys
-
-src_dir = Path('/home/frank_shan/dev/python/pyapi/src')
-sys.path.insert(0, str(src_dir))
-
 import json
-from pathlib import Path
 from langchain_ollama import ChatOllama
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
 from pydantic import BaseModel, Field
 from tqdm import tqdm
 
-# Define paths
-corpus_dir = Path("src/evaluation/rag-syn-corpus")
-output_dir = Path("src/evaluation/rag-eval-goldens")
-output_dir.mkdir(exist_ok=True)
+# Define base paths
+SCRIPT_DIR = Path(__file__).parent.absolute()
+PROJECT_ROOT = SCRIPT_DIR.parent.parent
+SRC_DIR = PROJECT_ROOT / "src"
 
+# Add src to path if not already there
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
+
+# Define data paths
+corpus_dir = PROJECT_ROOT / "data" / "eval-data" / "rag-syn-corpus"
+output_dir = PROJECT_ROOT / "data" / "eval-data" / "rag-eval-goldens"
+output_dir.mkdir(parents=True, exist_ok=True)
+
+print(f"✓ Project root: {PROJECT_ROOT}")
 print("✓ Imports and paths configured")
 
 class QAPair(BaseModel):

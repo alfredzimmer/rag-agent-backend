@@ -4,5 +4,5 @@
 venv/
 pycache/
 __pycache__/
-outputs
-2025/
+outputs/
+data/

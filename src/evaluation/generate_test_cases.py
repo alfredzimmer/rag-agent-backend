@@ -3,11 +3,18 @@ import json
 from pathlib import Path
 from tqdm import tqdm
 
-# Add parent directory to path to allow imports from rag module
-sys.path.insert(0, str(Path(__file__).parent.parent))
+# Define base paths
+SCRIPT_DIR = Path(__file__).parent.absolute()
+PROJECT_ROOT = SCRIPT_DIR.parent.parent
+SRC_DIR = PROJECT_ROOT / "src"
 
+# Add src to path if not already there
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
+
+# TODO: rag.agent has been refactored, agent_call method was depricated. Need new method
+# for evaluation
 from rag.agent import agent_call, RAGConfig
-
 
 def generate_test_cases_from_goldens(batch: int = 10):
     """Generate test cases from all golden files and save them to rag-testcases.
@@ -15,12 +22,11 @@ def generate_test_cases_from_goldens(batch: int = 10):
     Args:
         batch: Batch size for processing multiple inputs at once. Default is 10.
     """
-    script_dir = Path(__file__).parent
-    goldens_dir = script_dir / 'rag-eval-goldens'
-    testcases_dir = script_dir / 'rag-testcases'
+    goldens_dir = PROJECT_ROOT / 'data' / 'eval-data' / 'rag-eval-goldens'
+    testcases_dir = PROJECT_ROOT / 'data' / 'eval-data' / 'rag-testcases'
 
     # Ensure testcases directory exists
-    testcases_dir.mkdir(exist_ok=True)
+    testcases_dir.mkdir(parents=True, exist_ok=True)
 
     # Get all JSON files from rag-eval-goldens
     golden_files = list(goldens_dir.glob('*.test.json'))

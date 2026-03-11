@@ -3,8 +3,14 @@ import sys
 import json
 from pathlib import Path
 
-# Add parent directory to path to allow imports from rag module
-sys.path.insert(0, str(Path(__file__).parent.parent))
+# Define base paths
+SCRIPT_DIR = Path(__file__).parent.absolute()
+PROJECT_ROOT = SCRIPT_DIR.parent.parent
+SRC_DIR = PROJECT_ROOT / "src"
+
+# Add src to path if not already there
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
 
 from deepeval import evaluate
 from deepeval.test_case import LLMTestCase
@@ -67,8 +73,7 @@ def load_test_cases_from_json(file_path):
 
 def run_evals():
     """Run end-to-end evaluations on pre-generated test cases."""
-    script_dir = Path(__file__).parent
-    testcases_dir = script_dir / 'rag-testcases'
+    testcases_dir = PROJECT_ROOT / 'data' / 'eval-data' / 'rag-testcases'
 
     # Get all test case files
     testcase_files = list(testcases_dir.glob('*.test.json'))
