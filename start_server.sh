@@ -77,15 +77,24 @@ echo "API Documentation: http://localhost:$PORT/docs"
 echo ""
 
 # Define log and pid files
-TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-LOG_FILE="logs/server_$TIMESTAMP.log"
-PID_FILE="logs/server_$TIMESTAMP.pid"
+RUNTIME_DIR=".runtime"
+mkdir -p "$RUNTIME_DIR"
+
+LOG_FILE="$RUNTIME_DIR/server.log"
+PID_FILE="$RUNTIME_DIR/server.pid"
 
 # If funnel is requested, show instructions
 if [ "$SETUP_FUNNEL" = true ]; then
     echo "📡 Tailscale Funnel instructions:"
     echo "   Run: tailscale funnel $PORT"
     echo ""
+fi
+
+# Check for already running server
+if [ -f "$PID_FILE" ] && kill -0 "$(cat "$PID_FILE")" 2>/dev/null; then
+    echo "❌ Server is already running with PID: $(cat "$PID_FILE")"
+    echo "🛑 Stop it first with: kill \$(cat $PID_FILE)"
+    exit 1
 fi
 
 # Start uvicorn in background
