@@ -2,13 +2,14 @@ import sys
 import os
 from pathlib import Path
 
-# Add project root to Python path
+# Add src package root to Python path when this utility is run directly.
 project_root = Path(__file__).resolve().parent.parent.parent.parent
-sys.path.insert(0, str(project_root))
+src_root = project_root / "src"
+sys.path.insert(0, str(src_root))
 
-from src.rag.utils.pdf_chunker import load_pdf_as_markdown, split_pdf, format_splits_as_list
-from src.rag.milvus import create_milvus_store
-from src.rag.config import RAGConfig
+from rag.dataset.pdf_chunker import load_pdf_as_markdown, split_pdf, format_splits_as_list
+from rag.milvus import create_milvus_store
+from rag.config import RAGConfig
 import json
 import pathlib
 import pymupdf

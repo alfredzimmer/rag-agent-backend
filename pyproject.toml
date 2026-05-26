@@ -1,0 +1,81 @@
+[project]
+name = "pyapi"
+version = "0.1.0"
+description = "FastAPI microservice endpoint for the EC Master Agent."
+readme = "readme.md"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "a2wsgi",
+    "accelerate",
+    "annotated-doc",
+    "asyncpg",
+    "bitsandbytes",
+    "chromadb",
+    "deepeval",
+    "docx2txt",
+    "fastapi",
+    "FlagEmbedding",
+    "hf-xet",
+    "httpx[http2]",
+    "huggingface-hub",
+    "langchain",
+    "langchain-classic",
+    "langchain-community",
+    "langchain-milvus",
+    "langchain-ollama",
+    "langchain-openai",
+    "langchain-qdrant",
+    "langchain-text-splitters",
+    "langgraph",
+    "langgraph-checkpoint",
+    "langgraph-checkpoint-postgres",
+    "langgraph-prebuilt",
+    "langgraph-sdk",
+    "langmem",
+    "langsmith",
+    "numpy",
+    "ollama",
+    "onnxruntime",
+    "openai",
+    "pandas",
+    "peft",
+    "psycopg[pool]",
+    "pydantic",
+    "pymilvus[model]",
+    "pymupdf",
+    "pymupdf4llm",
+    "pypdf",
+    "python-docx",
+    "python-dotenv",
+    "pyyaml",
+    "qdrant-client<1.16.0",
+    "redis",
+    "requests",
+    "scikit-learn",
+    "scipy",
+    "sqlmodel",
+    "tiktoken",
+    "torch",
+    "tqdm",
+    "transformers",
+    "trl",
+    "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git",
+    "uvicorn[standard]",
+    "websockets",
+]
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pyapi", "src/rag"]
+
+[tool.uv]
+package = true
+prerelease = "allow"
+index-strategy = "unsafe-best-match"
+
+[[tool.uv.index]]
+name = "pytorch-nightly-cu128"
+url = "https://download.pytorch.org/whl/nightly/cu128"

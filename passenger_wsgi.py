@@ -14,7 +14,7 @@ if VENV_PATH not in sys.path:
 from a2wsgi import ASGIMiddleware
 
 # Import your FastAPI app
-from main import app
+from pyapi.main import app
 
 # This is the correct way to wrap your ASGI app for a WSGI server
 # Passenger will now talk to 'application', which translates

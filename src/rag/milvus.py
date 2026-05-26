@@ -10,7 +10,18 @@ from .modules.sparse_embedder import BGEEmbedder, SpladeEmbedder
 from .config import RAGConfig
 
 
-conn = connections.connect(host="127.0.0.1", port=19530)
+def milvus_uri() -> str:
+    return os.getenv("MILVUS_URI", "http://localhost:19530")
+
+
+def milvus_db_name() -> str:
+    return os.getenv("MILVUS_DB", "rag1")
+
+
+def connect_milvus():
+    host = os.getenv("MILVUS_HOST", "localhost")
+    port = os.getenv("MILVUS_PORT", "19530")
+    return connections.connect(host=host, port=port)
 
 # vector_store = Milvus(
 #     embedding_function=OllamaEmbeddings(model="qwen3-embedding:8b"),
@@ -46,7 +57,7 @@ class MilvusVectorStore():
             embedding_function=embedding_function,
             builtin_function=buildin_function,
             collection_name=collection_name,
-            connection_args={"uri": "http://localhost:19530", "db_name": "rag1"},
+            connection_args={"uri": milvus_uri(), "db_name": milvus_db_name()},
             vector_field=["dense", "sparse"],
             drop_old=False,  # Don't drop existing collection
             auto_id=True,
@@ -100,6 +111,7 @@ class MilvusVectorStore():
 
 
 def create_db(db_name):
+    connect_milvus()
     try:
         existing_databases = db.list_database()
         if db_name in existing_databases:

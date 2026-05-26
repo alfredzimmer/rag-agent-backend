@@ -4,11 +4,11 @@ from typing import List, Dict
 import traceback
 from uuid import UUID, uuid4
 
-from src.rag.agent import RAGAgent
+from rag.agent import RAGAgent
 from fastapi import HTTPException, APIRouter
 from fastapi.responses import StreamingResponse
 from fastapi import Depends
-from api.dependency import get_agent
+from pyapi.api.dependency import get_agent
 
 router = APIRouter(
     prefix="/api/agent/conversation"

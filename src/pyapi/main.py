@@ -1,15 +1,19 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
-from api.agent.conversation import router as conversation_router
-from api.agent.response import router as response_router
-from api.agent.status import router as status_router
-from src.rag.agent import RAGAgent, RAGConfig
+from pyapi.api.agent.conversation import router as conversation_router
+from pyapi.api.agent.response import router as response_router
+from pyapi.api.agent.status import router as status_router
+from rag.agent import RAGAgent, RAGConfig
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     print("AGENT:     Initializing agent...")
-    config = RAGConfig(llm_model="qwen3:30b-instruct", training_mode=True, collection_name="HeaderInContentTrial")
+    config = RAGConfig(
+        llm_model=os.getenv("RAG_LLM_MODEL", "qwen3:30b-instruct"),
+        collection_name=os.getenv("RAG_COLLECTION_NAME", "HeaderInContentTrial"),
+    )
     app.state.agent = await RAGAgent.create(config)
     yield
     print("AGENT:     Cleaning up agent...")

@@ -1,5 +1,8 @@
 .env
+infra/.env
+infra/*.env
 .venv
+.uv-cache/
 .DS_Store
 venv/
 pycache/
@@ -9,3 +12,4 @@ data/
 
 .runtime/
 *.pid
+*.log

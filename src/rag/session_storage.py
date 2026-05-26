@@ -64,7 +64,7 @@ class RedisStorage(SessionStorage):
             import redis
         except ImportError:
             raise ImportError(
-                "Redis is not installed. Install it with: pip install redis"
+                "Redis is not installed in this environment. Run: uv sync"
             )
         
         self.redis_client = redis.Redis(

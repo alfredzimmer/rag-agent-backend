@@ -38,7 +38,7 @@ python src/rag/main-scripts/pdf_to_db.py src/rag/public/IEEE1584-2018-31-36.pdf 
 
 ### Programmatic Usage (Python)
 ```python
-from src.rag.main_scripts.pdf_to_db import process_pdf_to_db
+from rag.main_scripts.pdf_to_db import process_pdf_to_db
 
 # With preview mode (default)
 process_pdf_to_db(
@@ -190,7 +190,7 @@ python src/rag/main-scripts/pdf_to_db.py \
 
 ### Example 4: Skip Preview Mode (Programmatic)
 ```python
-from src.rag.main_scripts.pdf_to_db import process_pdf_to_db
+from rag.main_scripts.pdf_to_db import process_pdf_to_db
 
 process_pdf_to_db(
     pdf_path="src/rag/public/IEEE1584-2018-31-36.pdf",

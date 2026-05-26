@@ -1,0 +1,111 @@
+name: pyapi-prod
+
+services:
+  pyapi:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      milvus:
+        condition: service_started
+      ollama:
+        condition: service_started
+    environment:
+      PG_URI: ${PG_URI}
+      MILVUS_URI: ${MILVUS_URI:-http://milvus:19530}
+      MILVUS_HOST: ${MILVUS_HOST:-milvus}
+      MILVUS_PORT: ${MILVUS_PORT:-19530}
+      MILVUS_DB: ${MILVUS_DB:-rag1}
+      OLLAMA_HOST: ${OLLAMA_HOST:-http://ollama:11434}
+      RAG_COLLECTION_NAME: ${RAG_COLLECTION_NAME:-HeaderInContentTrial}
+      RAG_LLM_MODEL: ${RAG_LLM_MODEL:-qwen3:30b-instruct}
+    ports:
+      - "${PYAPI_PORT:-9229}:9229"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:9229/"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+
+  postgres:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-pyapi}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-pyapi}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  etcd:
+    image: quay.io/coreos/etcd:v3.5.5
+    restart: unless-stopped
+    command:
+      - etcd
+      - --advertise-client-urls=http://0.0.0.0:2379
+      - --listen-client-urls=http://0.0.0.0:2379
+      - --data-dir=/etcd
+    environment:
+      ETCD_AUTO_COMPACTION_MODE: revision
+      ETCD_AUTO_COMPACTION_RETENTION: "1000"
+      ETCD_QUOTA_BACKEND_BYTES: "4294967296"
+      ETCD_SNAPSHOT_COUNT: "50000"
+    volumes:
+      - etcd_data:/etcd
+
+  minio:
+    image: minio/minio:RELEASE.2023-03-20T20-16-18Z
+    restart: unless-stopped
+    command: minio server /minio_data
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    volumes:
+      - minio_data:/minio_data
+
+  milvus:
+    image: milvusdb/milvus:v2.6.6
+    restart: unless-stopped
+    command: ["milvus", "run", "standalone"]
+    depends_on:
+      - etcd
+      - minio
+    environment:
+      ETCD_ENDPOINTS: etcd:2379
+      MINIO_ADDRESS: minio:9000
+      MINIO_ACCESS_KEY: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_SECRET_KEY: ${MINIO_ROOT_PASSWORD}
+    volumes:
+      - milvus_data:/var/lib/milvus
+
+  ollama:
+    image: ollama/ollama:latest
+    restart: unless-stopped
+    volumes:
+      - ollama_data:${OLLAMA_MODELS:-/root/.ollama}
+
+  attu:
+    image: zilliz/attu:latest
+    profiles: ["tools"]
+    restart: unless-stopped
+    depends_on:
+      - milvus
+    environment:
+      MILVUS_URL: milvus:19530
+    ports:
+      - "3030:3000"
+
+volumes:
+  postgres_data:
+  etcd_data:
+  minio_data:
+  milvus_data:
+  ollama_data:

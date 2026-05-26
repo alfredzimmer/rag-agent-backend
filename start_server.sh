@@ -7,8 +7,8 @@ echo "🚀 Starting RAG API Server..."
 echo ""
 
 # Check if we're in the right directory
-if [ ! -f "main.py" ]; then
-    echo "❌ Error: main.py not found. Please run this script from the pyapi directory."
+if [ ! -f "src/pyapi/main.py" ]; then
+    echo "❌ Error: src/pyapi/main.py not found. Please run this script from the pyapi directory."
     exit 1
 fi
 
@@ -36,7 +36,7 @@ while [[ $# -gt 0 ]]; do
             echo "Usage: ./start_server.sh [OPTIONS]"
             echo ""
             echo "Options:"
-            echo "  --port PORT       Port to run the server on (default: 8000)"
+            echo "  --port PORT       Port to run the server on (default: 9229)"
             echo "  --no-reload       Disable auto-reload on code changes"
             echo "  --funnel          Set up Tailscale Funnel after starting server"
             echo "  --help            Show this help message"
@@ -55,10 +55,10 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-# Check if uvicorn is installed
-if ! command -v uvicorn &> /dev/null; then
-    echo "❌ Error: uvicorn not found. Please install it:"
-    echo "   pip install uvicorn"
+# Check if uv is installed
+if ! command -v uv &> /dev/null; then
+    echo "❌ Error: uv not found. Please install uv:"
+    echo "   https://docs.astral.sh/uv/getting-started/installation/"
     exit 1
 fi
 
@@ -69,7 +69,6 @@ echo "  Port: $PORT"
 echo "  Auto-reload: $([ -n "$RELOAD" ] && echo "enabled" || echo "disabled")"
 echo ""
 
-# Start the server
 # Start the server
 echo "Starting FastAPI server in background..."
 echo "API will be available at: http://localhost:$PORT"
@@ -97,8 +96,8 @@ if [ -f "$PID_FILE" ] && kill -0 "$(cat "$PID_FILE")" 2>/dev/null; then
     exit 1
 fi
 
-# Start uvicorn in background
-nohup uvicorn main:app --host $HOST --port $PORT $RELOAD > "$LOG_FILE" 2>&1 &
+# Start uvicorn in background via uv so dependencies come from uv.lock
+nohup uv run --frozen uvicorn pyapi.main:app --host $HOST --port $PORT $RELOAD > "$LOG_FILE" 2>&1 &
 SERVER_PID=$!
 
 # Save PID
