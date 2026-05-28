@@ -1,21 +1,23 @@
 """
 Configuration classes for the RAG system.
 """
+import os
 from dataclasses import dataclass
 
 
 @dataclass
 class RAGConfig:
     vector_store_type: str = "milvus" 
-    collection_name: str = "HeaderInContentTrial" 
-    ranker_type: str = "bge"
-    dense_embedding_model: str = "qwen3-embedding:8b"
-    sparse_embedding_model: str = "splade"  # [splade, bm25, bge]
-    llm_model: str = "qwen3.5:35b"
-    summarization_model: str = "qwen3:8b"
-    memory_llm_model: str = "qwen3:8b"
-    title_llm_model: str = "qwen3:8b"
-    memory_embeddings_model: str = "nomic-embed-text"
+    collection_name: str = "HeaderInContentTrial_Dense" 
+    ranker_type: str = "none"
+    dense_embedding_model: str = os.getenv("DENSE_EMBEDDING_MODEL", "nomic-embed-text:latest")
+    sparse_embedding_model: str = "none"  # [splade, bm25, bge, none]
+    llm_model: str = os.getenv("RAG_LLM_MODEL", "qwen3.6:latest")
+    llm_num_predict: int = int(os.getenv("RAG_LLM_NUM_PREDICT", "1024"))
+    summarization_model: str = os.getenv("SUMMARIZATION_MODEL", "qwen3.6:latest")
+    memory_llm_model: str = os.getenv("MEMORY_LLM_MODEL", "qwen3.6:latest")
+    title_llm_model: str = os.getenv("TITLE_LLM_MODEL", "qwen3.6:latest")
+    memory_embeddings_model: str = os.getenv("MEMORY_EMBEDDINGS_MODEL", "nomic-embed-text:latest")
     memory_embeddings_dims: int = 768
     manager_instructions = """
 You are a memory manager. Your job is to extract LONG-TERM knowledge from the conversation.
@@ -26,7 +28,8 @@ RULES FOR STORAGE:
 3. **COMPACTNESS**: Do not store raw quotes. Summarize the user's intent into the smallest possible sentence.
 4. **No Duplicates**: If a fact already exists in the provided existing memories, do not create a new one.
 """
-    training_llm_model: str = "qwen3:8b"
+
+    training_llm_model: str = os.getenv("TRAINING_LLM_MODEL", "qwen3.6:latest")
     hyde: bool = False
 
 

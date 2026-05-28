@@ -11,7 +11,6 @@ from langgraph.graph import StateGraph, END, MessagesState, START
 from langgraph.prebuilt import ToolNode
 from langgraph.store.base import BaseStore
 import operator
-from langmem.short_term import SummarizationNode, RunningSummary
 from langchain_core.messages.utils import count_tokens_approximately
 from langchain_core.runnables import RunnableConfig
 from langchain_ollama import ChatOllama
@@ -20,7 +19,7 @@ import datetime
 import asyncio
 import json
 import textwrap
-from .modules.custom_summarization import SummarizationNode
+from .modules.custom_summarization import SummarizationNode, RunningSummary
 
 class State(MessagesState):
     context: dict[str, RunningSummary]
@@ -52,6 +51,9 @@ def create_agent_graph(
         """
 
         active_messages = state.get("summarized_messages", state.get("messages", []))
+        print(f"[AGENT NODE DEBUG] Running agent node. active_messages count: {len(active_messages)}")
+        for idx, m in enumerate(active_messages):
+            print(f"  [{idx}] Type: {type(m).__name__}, ID: {getattr(m, 'id', None)}, Content: {str(m.content)[:100]}")
         last_message = active_messages[-1].content if active_messages else ""
 
         memories = []
@@ -72,10 +74,29 @@ def create_agent_graph(
                 all_memories_debug = "\n".join([f"Score {m.score:.3f}: {m.value}" for m in memories])
                 log_debug("MEMORIES_WITH_SCORES", all_memories_debug if memories else "No memories found")
 
+        latest_user_index = next(
+            (
+                idx
+                for idx in range(len(active_messages) - 1, -1, -1)
+                if isinstance(active_messages[idx], HumanMessage)
+            ),
+            None,
+        )
+        latest_turn_has_tool_result = (
+            latest_user_index is not None
+            and any(isinstance(msg, ToolMessage) for msg in active_messages[latest_user_index + 1:])
+        )
+        retrieval_instruction = (
+            "The latest user request already has retrieved context in the messages. "
+            "Do not call hybrid_RAG_retrieve again for this same request; answer using that tool result. "
+            if latest_turn_has_tool_result
+            else "Use the hybrid_RAG_retrieve tool before answering the latest user request. "
+        )
+
         system_context = (
             "You are a helpful assistant with access to a specialized knowledge base and user memories. "
             "IMPORTANT INSTRUCTIONS:\n"
-            "1. You MUST ALWAYS use the hybrid_RAG_retrieve tool to retrieve relevant information from the knowledge base before answering. "
+            f"1. {retrieval_instruction}"
             "Never rely solely on your general knowledge for technical content.\n"
             "2. For personal questions about the user: Check the 'RELEVANT USER FACTS/MEMORIES' section below FIRST. "
             "If the answer is in the memories, use that information directly. "
@@ -84,7 +105,12 @@ def create_agent_graph(
 
         messages = [SystemMessage(content=system_context)] + active_messages
 
-        response = await llm_with_tools.ainvoke(messages)
+        response = None
+        async for chunk in llm_with_tools.astream(messages, config=config):
+            if response is None:
+                response = chunk
+            else:
+                response += chunk
 
         if debug:
             # Debug logging
@@ -102,20 +128,21 @@ def create_agent_graph(
         has_tool_calls = hasattr(response, "tool_calls") and response.tool_calls
         
         if not has_tool_calls:
-            # Agent is done - clean up all ToolMessages from state before returning
-            # This prevents accumulation of tool call data across turns
+            # Agent is done - clean up all ToolMessages and AIMessages with tool_calls from state before returning
+            # This prevents accumulation of tool call data and keeps conversation history valid across turns
             from langchain_core.messages import RemoveMessage
             
-            # Find all ToolMessages to remove
-            tool_messages_to_remove = [
-                RemoveMessage(id=msg.id) 
-                for msg in active_messages
-                if isinstance(msg, ToolMessage)
-            ]
+            # Find all ToolMessages and AIMessages with tool_calls to remove
+            messages_to_remove = []
+            for msg in active_messages:
+                if isinstance(msg, ToolMessage) and msg.id:
+                    messages_to_remove.append(RemoveMessage(id=msg.id))
+                elif isinstance(msg, AIMessage) and hasattr(msg, "tool_calls") and msg.tool_calls and msg.id:
+                    messages_to_remove.append(RemoveMessage(id=msg.id))
             
             # Return removal commands + new response
             return {
-                "messages": tool_messages_to_remove + [response],
+                "messages": messages_to_remove + [response],
                 "context": state.get("context", {}),
                 "input_tokens_used": response.usage_metadata.get("input_tokens", 0),
                 "output_tokens_used": response.usage_metadata.get("output_tokens", 0)
@@ -253,11 +280,9 @@ Format all responses as JSON object with the following keys:
             overall_score = (valuable_score + technical_score) / 2.0
 
             if debug:
-                log_debug("EVALUATOR_NODE", f"Evaluation response: {eval_text}\nOverall score: {overall_score}")
+                    log_debug("EVALUATOR_NODE", f"Evaluation response: {eval_text}\nOverall score: {overall_score}")
             
             result = {"rating": overall_score}
-            
-            print(f"[EVALUATOR_NODE] Returning: {result}")
             return result
             
         except Exception as e:
@@ -278,6 +303,8 @@ Format all responses as JSON object with the following keys:
             max_tokens_before_summary=3000,
             keep_last_n_messages=6,
             max_summary_tokens=512,
+            input_messages_key="messages",
+            output_messages_key="messages",
         )
 
     # Check for optional component availability

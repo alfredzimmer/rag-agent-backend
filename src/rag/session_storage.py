@@ -42,6 +42,32 @@ class SessionStorage(ABC):
         pass
 
 
+
+class InMemoryStorage(SessionStorage):
+    """In-memory session storage (development fallback)."""
+    
+    def __init__(self):
+        self.sessions: Dict[str, List[BaseMessage]] = {}
+        
+    def save_session(self, session_id: str, messages: List[BaseMessage]) -> None:
+        self.sessions[session_id] = messages
+        
+    def load_session(self, session_id: str) -> List[BaseMessage]:
+        return self.sessions.get(session_id, [])
+        
+    def delete_session(self, session_id: str) -> bool:
+        if session_id in self.sessions:
+            del self.sessions[session_id]
+            return True
+        return False
+        
+    def list_sessions(self) -> List[str]:
+        return list(self.sessions.keys())
+        
+    def session_exists(self, session_id: str) -> bool:
+        return session_id in self.sessions
+
+
 class RedisStorage(SessionStorage):
     """Redis-based session storage (production)."""
     
@@ -181,7 +207,8 @@ def get_storage() -> SessionStorage:
             )
             print(f"✓ Using Redis session storage at {redis_host}:{redis_port}")
         except (ImportError, ConnectionError) as e:
-            print(f"⚠ Redis not available ({e})")
+            print(f"⚠ Redis not available ({e}). Falling back to In-Memory session storage.")
+            _storage = InMemoryStorage()
     
     return _storage
 

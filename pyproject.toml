@@ -5,13 +5,10 @@ description = "FastAPI microservice endpoint for the EC Master Agent."
 readme = "readme.md"
 requires-python = ">=3.13,<3.14"
 dependencies = [
-    "a2wsgi",
     "accelerate",
-    "annotated-doc",
     "asyncpg",
     "bitsandbytes",
     "chromadb",
-    "deepeval",
     "docx2txt",
     "fastapi",
     "FlagEmbedding",
@@ -39,7 +36,7 @@ dependencies = [
     "openai",
     "pandas",
     "peft",
-    "psycopg[pool]",
+    "psycopg[binary,pool]",
     "pydantic",
     "pymilvus[model]",
     "pymupdf",
@@ -54,6 +51,7 @@ dependencies = [
     "scikit-learn",
     "scipy",
     "sqlmodel",
+    "streamlit",
     "tiktoken",
     "torch",
     "tqdm",
@@ -64,16 +62,24 @@ dependencies = [
     "websockets",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "deepeval",
+]
+
 [build-system]
 requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/pyapi", "src/rag"]
 
 [tool.uv]
 package = true
-prerelease = "allow"
+prerelease = "disallow"
 index-strategy = "unsafe-best-match"
 
 [[tool.uv.index]]

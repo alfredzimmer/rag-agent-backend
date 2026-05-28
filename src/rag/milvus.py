@@ -58,7 +58,7 @@ class MilvusVectorStore():
             builtin_function=buildin_function,
             collection_name=collection_name,
             connection_args={"uri": milvus_uri(), "db_name": milvus_db_name()},
-            vector_field=["dense", "sparse"],
+            vector_field=["dense", "sparse"] if buildin_function or isinstance(embedding_function, list) else "dense",
             drop_old=False,  # Don't drop existing collection
             auto_id=True,
             enable_dynamic_field=True,  # Enable dynamic fields to store all metadata
@@ -155,9 +155,11 @@ def create_milvus_store(config) -> MilvusVectorStore:
     elif sparse_model == "bge":
         sparse_emb = BGEEmbedder()
         embedding_function = [dense_emb, sparse_emb]
-    else:  # bm25
+    elif sparse_model == "bm25":
         buildin_function = BM25BuiltInFunction(output_field_names="sparse")
-        embedding_function = dense_emb  # Only dense embedding, BM25 handles sparse
+        embedding_function = dense_emb
+    else:
+        embedding_function = dense_emb
     
     return MilvusVectorStore(
         collection_name=collection_name,
