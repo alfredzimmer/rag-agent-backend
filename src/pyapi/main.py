@@ -11,7 +11,7 @@ from rag.agent import RAGAgent, RAGConfig
 async def lifespan(app: FastAPI):
     print("AGENT:     Initializing agent...")
     config = RAGConfig(
-        llm_model=os.getenv("RAG_LLM_MODEL", "qwen3:30b-instruct"),
+        llm_model=os.getenv("RAG_LLM_MODEL", "qwen3.6"),
         collection_name=os.getenv("RAG_COLLECTION_NAME", "HeaderInContentTrial"),
     )
     app.state.agent = await RAGAgent.create(config)

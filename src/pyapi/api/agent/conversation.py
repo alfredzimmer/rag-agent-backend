@@ -1,10 +1,9 @@
-from enum import Enum
-from pydantic import BaseModel, Field
 from typing import List, Dict
 import traceback
 from uuid import UUID, uuid4
+from pydantic import BaseModel
 
-from rag.agent import RAGAgent
+from rag.agent import RAGAgent, ChatResponse, Status, Metadata
 from fastapi import HTTPException, APIRouter
 from fastapi.responses import StreamingResponse
 from fastapi import Depends
@@ -14,52 +13,34 @@ router = APIRouter(
     prefix="/api/agent/conversation"
 )
 
-class Status(Enum):
-    RESPONSE = "response"
-    USAGE = "usage"
-    FUNCTION = "function"
-    COMPLETE = "complete"
-    CANCEL = "cancel"
-    ERROR = "error"
-
-class Metadata(BaseModel):
-    session_id: str = Field(..., description="Session ID")
-    tokens_used: int = Field(..., description="Number of tokens used")
-
 class CreateSessionResponse(BaseModel):
-    conversation_id: UUID = Field(..., description="The conversation ID")
+    conversation_id: UUID
 
 class ChatRequest(BaseModel):
-    query: str = Field(..., description="The question to ask the RAG system")
-    conversation_id: UUID = Field(..., description="The conversation ID")
-    user_id: UUID = Field(..., description="The user ID")
-
-class ChatResponse(BaseModel):
-    status: Status
-    type: str = Field(..., description="The type of response")
-    content: str = Field(..., description="The content of the response")
-    metadata: Metadata = Field(..., description="Metadata about the response")
+    query: str
+    conversation_id: UUID
+    user_id: UUID
 
 class InterruptRequest(BaseModel):
-    conversation_id: UUID = Field(..., description="The conversation ID")
+    conversation_id: UUID
 
 class InterruptResponse(BaseModel):
-    success: bool = Field(..., description="Whether the chat was interrupted successfully")
-    message: str = Field(..., description="Status message")
+    success: bool
+    message: str
 
 class SessionHistoryResponse(BaseModel):
-    conversation_id: UUID = Field(..., description="The conversation ID")
-    history: List[Dict[str, str]] = Field(..., description="Conversation history")
+    conversation_id: UUID
+    history: List[Dict[str, str]]
 
 class ClearSessionResponse(BaseModel):
-    success: bool = Field(..., description="Whether the session was successfully cleared")
-    message: str = Field(..., description="Status message")
+    success: bool
+    message: str
 
 class ClearSessionRequest(BaseModel):
-    conversation_id: UUID = Field(..., description="The conversation ID")
+    conversation_id: UUID
 
 class SessionHistoryRequest(BaseModel):
-    conversation_id: UUID = Field(..., description="The conversation ID")
+    conversation_id: UUID
 
 
 @router.get("/create")
@@ -77,13 +58,12 @@ async def create_session():
             detail=f"Error creating session: {str(e)}"
         )
 
-@router.post("/chat", response_model=ChatResponse)
+@router.post("/chat")
 async def chat_with_agent(request: ChatRequest, agent: RAGAgent = Depends(get_agent)):
     try:
-        responses = agent.chat(query=request.query, conversation_id=str(request.conversation_id), user_id=str(request.user_id))
         async def stream_response():
-            async for response in responses:
-                yield response.model_dump_json(indent=None)
+            async for response in agent.chat(query=request.query, conversation_id=str(request.conversation_id), user_id=str(request.user_id)):
+                yield response.model_dump_json(indent=None) + "\n"
             
         return StreamingResponse(
             content=stream_response(),
@@ -117,12 +97,12 @@ async def interrupt_chat(request: InterruptRequest, agent: RAGAgent = Depends(ge
 
 
 @router.get("/history", response_model=SessionHistoryResponse)
-async def get_session_history(request: SessionHistoryRequest, agent: RAGAgent = Depends(get_agent)):
+async def get_session_history(conversation_id: UUID, agent: RAGAgent = Depends(get_agent)):
     try:
-        history = await agent.get_full_history(str(request.conversation_id))
+        history = await agent.get_full_history(str(conversation_id))
         
         return SessionHistoryResponse(
-            conversation_id=str(request.conversation_id),
+            conversation_id=str(conversation_id),
             history=history
         )
     

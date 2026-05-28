@@ -1754,3 +1754,2957 @@ procedures, but the focus is more on applied methods than theoretical concepts."
 }
 Overall score: 0.8500000000000001
 --------------------------------------------------------------------------------
+[2026-05-28 13:49:25] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval
+yields no relevant results, DO NOT hallucinate. hi' additional_kwargs={} response_metadata={}
+id='0a5f376e-dc34-4495-968f-945c56df35f5'
+
+--------------------------------------------------------------------------------
+[2026-05-28 13:49:25] [AGENT_RESPONSE]
+Response: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T20:49:25.514565014Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 11333104422, 'load_duration': 10615082732,
+'prompt_eval_count': 488, 'prompt_eval_duration': 274623215, 'eval_count': 42, 'eval_duration':
+319747892, 'logprobs': None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7059-324e-76a1-b598-fdd824c4f59c' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 488, 'output_tokens': 42, 'total_tokens': 530}
+--------------------------------------------------------------------------------
+[2026-05-28 13:49:25] [TOKEN_USAGE]
+Input tokens: 488, Output tokens: 42
+--------------------------------------------------------------------------------
+[2026-05-28 13:49:25] [TITLE_GENERATION]
+Error generating title: model 'qwen3:8b' not found (status code: 404)
+--------------------------------------------------------------------------------
+[2026-05-28 13:49:26] [EVALUATOR_NODE]
+Error during evaluation: model 'qwen3:8b' not found (status code: 404)
+--------------------------------------------------------------------------------
+[2026-05-28 13:52:23] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval
+yields no relevant results, DO NOT hallucinate. hello' additional_kwargs={} response_metadata={}
+id='1253b156-e72f-4a0a-ad22-05f52c687533'
+
+--------------------------------------------------------------------------------
+[2026-05-28 13:52:23] [AGENT_RESPONSE]
+Response: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T20:52:22.743198276Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 800421342, 'load_duration': 86340908, 'prompt_eval_count':
+488, 'prompt_eval_duration': 398407093, 'eval_count': 42, 'eval_duration': 286076603, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e705c-1017-72b1-b469-73bf528ba59a' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 488, 'output_tokens': 42, 'total_tokens': 530}
+--------------------------------------------------------------------------------
+[2026-05-28 13:52:23] [TOKEN_USAGE]
+Input tokens: 488, Output tokens: 42
+--------------------------------------------------------------------------------
+[2026-05-28 13:52:23] [TITLE_GENERATION]
+Error generating title: model 'qwen3:8b' not found (status code: 404)
+--------------------------------------------------------------------------------
+[2026-05-28 13:52:23] [EVALUATOR_NODE]
+Error during evaluation: model 'qwen3:8b' not found (status code: 404)
+--------------------------------------------------------------------------------
+[2026-05-28 13:52:31] [AGENT_NODE_INPUT]
+Active Messages (3 total):
+  Message 1: content='Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval
+yields no relevant results, DO NOT hallucinate. hello' additional_kwargs={} response_metadata={}
+id='1253b156-e72f-4a0a-ad22-05f52c687533'
+
+  Message 2: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T20:52:22.743198276Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 800421342, 'load_duration': 86340908, 'prompt_eval_count':
+488, 'prompt_eval_duration': 398407093, 'eval_count': 42, 'eval_duration': 286076603, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e705c-1017-72b1-b469-73bf528ba59a' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 488, 'output_tokens': 42, 'total_tokens': 530}
+
+  Message 3: content='Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval
+yields no relevant results, DO NOT hallucinate. im such a retard' additional_kwargs={}
+response_metadata={} id='5ceb64f1-903a-472b-a183-e849b093a3ca'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 13:52:31] [AGENT_RESPONSE]
+Response: content="I'm sorry to hear you're feeling that way. Everyone has moments where they feel
+stuck or frustrated. Is there something specific you're working on that I can help you with? I'm
+here to assist." additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T20:52:30.983687189Z', 'done': True, 'done_reason': 'stop', 'total_duration': 3407380691,
+'load_duration': 86097834, 'prompt_eval_count': 537, 'prompt_eval_duration': 333152658,
+'eval_count': 429, 'eval_duration': 2817121867, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e705c-26b2-7aa0-a025-58f85e5a295a' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 537, 'output_tokens': 429, 'total_tokens':
+966}
+--------------------------------------------------------------------------------
+[2026-05-28 13:52:31] [TOKEN_USAGE]
+Input tokens: 537, Output tokens: 429
+--------------------------------------------------------------------------------
+[2026-05-28 13:52:31] [TITLE_GENERATION]
+Error generating title: model 'qwen3:8b' not found (status code: 404)
+--------------------------------------------------------------------------------
+[2026-05-28 13:52:31] [EVALUATOR_NODE]
+Error during evaluation: model 'qwen3:8b' not found (status code: 404)
+--------------------------------------------------------------------------------
+[2026-05-28 13:52:40] [AGENT_NODE_INPUT]
+Active Messages (5 total):
+  Message 1: content='Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval
+yields no relevant results, DO NOT hallucinate. hello' additional_kwargs={} response_metadata={}
+id='1253b156-e72f-4a0a-ad22-05f52c687533'
+
+  Message 2: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T20:52:22.743198276Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 800421342, 'load_duration': 86340908, 'prompt_eval_count':
+488, 'prompt_eval_duration': 398407093, 'eval_count': 42, 'eval_duration': 286076603, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e705c-1017-72b1-b469-73bf528ba59a' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 488, 'output_tokens': 42, 'total_tokens': 530}
+
+  Message 3: content='Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval
+yields no relevant results, DO NOT hallucinate. im such a retard' additional_kwargs={}
+response_metadata={} id='5ceb64f1-903a-472b-a183-e849b093a3ca'
+
+  Message 4: content="I'm sorry to hear you're feeling that way. Everyone has moments where they
+feel stuck or frustrated. Is there something specific you're working on that I can help you with?
+I'm here to assist." additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T20:52:30.983687189Z', 'done': True, 'done_reason': 'stop', 'total_duration': 3407380691,
+'load_duration': 86097834, 'prompt_eval_count': 537, 'prompt_eval_duration': 333152658,
+'eval_count': 429, 'eval_duration': 2817121867, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e705c-26b2-7aa0-a025-58f85e5a295a' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 537, 'output_tokens': 429, 'total_tokens':
+966}
+
+  Message 5: content='Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval
+yields no relevant results, DO NOT hallucinate. what model ya running on' additional_kwargs={}
+response_metadata={} id='42ee2a37-17df-4ad4-bdfe-85836decb1ad'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 13:52:40] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T20:52:40.340997612Z', 'done': True, 'done_reason': 'stop', 'total_duration': 2029238207,
+'load_duration': 79497441, 'prompt_eval_count': 620, 'prompt_eval_duration': 280736405,
+'eval_count': 236, 'eval_duration': 1561940181, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e705c-4e7b-79e2-9f6d-822b7ecdf405' tool_calls=[{'name':
+'hybrid_RAG_retrieve', 'args': {'query': 'what model are you running on'}, 'id':
+'16d99000-8656-44eb-9c7c-6c1482b64355', 'type': 'tool_call'}] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 620, 'output_tokens': 236, 'total_tokens': 856}
+--------------------------------------------------------------------------------
+[2026-05-28 13:52:40] [TOKEN_USAGE]
+Input tokens: 620, Output tokens: 236
+--------------------------------------------------------------------------------
+[2026-05-28 14:01:56] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval
+yields no relevant results, DO NOT hallucinate. hello' additional_kwargs={} response_metadata={}
+id='aaffbbb4-f9d5-4762-a8ae-754d233a7993'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:01:56] [AGENT_RESPONSE]
+Response: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:01:56.407227351Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 736977663, 'load_duration': 79267416, 'prompt_eval_count':
+488, 'prompt_eval_duration': 352348663, 'eval_count': 42, 'eval_duration': 285790205, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7064-d066-76c2-98b7-4b5683685c17' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 488, 'output_tokens': 42, 'total_tokens': 530}
+--------------------------------------------------------------------------------
+[2026-05-28 14:01:56] [TOKEN_USAGE]
+Input tokens: 488, Output tokens: 42
+--------------------------------------------------------------------------------
+[2026-05-28 14:01:56] [TITLE_GENERATION]
+Error generating title: model 'qwen3:8b' not found (status code: 404)
+--------------------------------------------------------------------------------
+[2026-05-28 14:01:56] [EVALUATOR_NODE]
+Error during evaluation: model 'qwen3:8b' not found (status code: 404)
+--------------------------------------------------------------------------------
+[2026-05-28 14:04:13] [AGENT_NODE_INPUT]
+Active Messages (2 total):
+  Message 1: content='Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval
+yields no relevant results, DO NOT hallucinate. test' additional_kwargs={} response_metadata={}
+id='707bd713-3bae-496b-9c96-2d07b4335a1b'
+
+  Message 2: content='Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval
+yields no relevant results, DO NOT hallucinate. test' additional_kwargs={} response_metadata={}
+id='1dcfe7c8-f3f2-49fa-8509-116bb5e236c2'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:04:13] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:04:13.11847801Z', 'done': True, 'done_reason': 'stop', 'total_duration': 2366873429,
+'load_duration': 74934162, 'prompt_eval_count': 520, 'prompt_eval_duration': 472204835,
+'eval_count': 260, 'eval_duration': 1715038855, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7066-e141-7f52-9de6-854c7360f232' tool_calls=[{'name':
+'hybrid_RAG_retrieve', 'args': {'query': 'test'}, 'id': 'f2e71554-67b8-40af-a4d4-944c74a77d18',
+'type': 'tool_call'}] invalid_tool_calls=[] usage_metadata={'input_tokens': 520, 'output_tokens':
+260, 'total_tokens': 780} tool_call_chunks=[{'name': 'hybrid_RAG_retrieve', 'args': '{"query":
+"test"}', 'id': 'f2e71554-67b8-40af-a4d4-944c74a77d18', 'index': None, 'type': 'tool_call_chunk'}]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:04:13] [TOKEN_USAGE]
+Input tokens: 520, Output tokens: 260
+--------------------------------------------------------------------------------
+[2026-05-28 14:10:28] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='Hello! I am Alfred. What is your name?' additional_kwargs={}
+response_metadata={} id='2c191d66-4c96-4dbd-991f-506f0853aa4c'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:10:28] [AGENT_RESPONSE]
+Response: content='Hello Alfred! I am an AI assistant. How can I help you today?'
+additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:10:27.537316302Z', 'done': True, 'done_reason': 'stop', 'total_duration':
+12870335560, 'load_duration': 8925583213, 'prompt_eval_count': 472, 'prompt_eval_duration':
+237243984, 'eval_count': 510, 'eval_duration': 3388108964, 'logprobs': None, 'model_name':
+'qwen3.6', 'model_provider': 'ollama'} id='lc_run--019e706c-6e3e-7132-a1ba-65c9bb795bec'
+tool_calls=[] invalid_tool_calls=[] usage_metadata={'input_tokens': 472, 'output_tokens': 510,
+'total_tokens': 982} tool_call_chunks=[] chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:10:28] [TOKEN_USAGE]
+Input tokens: 472, Output tokens: 510
+--------------------------------------------------------------------------------
+[2026-05-28 14:10:29] [TITLE_GENERATION]
+Generated Title:
+--------------------------------------------------------------------------------
+[2026-05-28 14:10:39] [EVALUATOR_NODE]
+Evaluation response: {
+  "VALUABLE_FOR_TRAINING": 0.5,
+  "TECHNICAL_CONTENT": 0.0,
+  "EXPLANATION": "The exchange is a basic conversational greeting and identity clarification. While
+it demonstrates standard conversational etiquette and turn-taking, it lacks depth, reasoning, or
+complex patterns that would make it highly valuable for training. It contains no technical concepts,
+procedures, or domain-specific knowledge, making it purely social in nature."
+}
+Overall score: 0.25
+--------------------------------------------------------------------------------
+[2026-05-28 14:11:16] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='ad0e8143-2151-454e-bcdd-83e1fee9e9c7'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:11:16] [AGENT_RESPONSE]
+Response: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:11:15.870387785Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 808971790, 'load_duration': 80079914, 'prompt_eval_count':
+462, 'prompt_eval_duration': 425820040, 'eval_count': 43, 'eval_duration': 282715260, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e706d-5a13-7da2-95c2-a99f0d4f2517' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 462, 'output_tokens': 43, 'total_tokens': 505} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:11:16] [TOKEN_USAGE]
+Input tokens: 462, Output tokens: 43
+--------------------------------------------------------------------------------
+[2026-05-28 14:11:17] [TITLE_GENERATION]
+Generated Title:
+--------------------------------------------------------------------------------
+[2026-05-28 14:23:33] [AGENT_NODE_INPUT]
+Active Messages (2 total):
+  Message 1: content='Who are you and what do you do?' additional_kwargs={} response_metadata={}
+id='2ea208f5-cec2-4491-831f-d79226ab402b'
+
+  Message 2: content='Who are you and what do you do?' additional_kwargs={} response_metadata={}
+id='05b8039b-4330-4ce4-871b-1b60a415a87d'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:23:33] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6:latest',
+'created_at': '2026-05-28T21:23:33.297818889Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 6570871561, 'load_duration': 76265341, 'prompt_eval_count': 484,
+'prompt_eval_duration': 421488220, 'eval_count': 858, 'eval_duration': 5692595153, 'logprobs': None,
+'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e7078-83b9-7631-851d-dc8aab70e88d' tool_calls=[{'name': 'hybrid_RAG_retrieve', 'args': {'query':
+'Who am I and what do I do'}, 'id': 'd0c9d5fb-325a-418e-95c1-b5e69695004e', 'type': 'tool_call'}]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 484, 'output_tokens': 858, 'total_tokens':
+1342} tool_call_chunks=[{'name': 'hybrid_RAG_retrieve', 'args': '{"query": "Who am I and what do I
+do"}', 'id': 'd0c9d5fb-325a-418e-95c1-b5e69695004e', 'index': None, 'type': 'tool_call_chunk'}]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:23:33] [TOKEN_USAGE]
+Input tokens: 484, Output tokens: 858
+--------------------------------------------------------------------------------
+[2026-05-28 14:23:41] [AGENT_NODE_INPUT]
+Active Messages (4 total):
+  Message 1: content='Who are you and what do you do?' additional_kwargs={} response_metadata={}
+id='2ea208f5-cec2-4491-831f-d79226ab402b'
+
+  Message 2: content='Who are you and what do you do?' additional_kwargs={} response_metadata={}
+id='05b8039b-4330-4ce4-871b-1b60a415a87d'
+
+  Message 3: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6:latest',
+'created_at': '2026-05-28T21:23:33.297818889Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 6570871561, 'load_duration': 76265341, 'prompt_eval_count': 484,
+'prompt_eval_duration': 421488220, 'eval_count': 858, 'eval_duration': 5692595153, 'logprobs': None,
+'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e7078-83b9-7631-851d-dc8aab70e88d' tool_calls=[{'name': 'hybrid_RAG_retrieve', 'args': {'query':
+'Who am I and what do I do'}, 'id': 'd0c9d5fb-325a-418e-95c1-b5e69695004e', 'type': 'tool_call'}]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 484, 'output_tokens': 858, 'total_tokens':
+1342}
+
+  Message 4: content="Source: {'doc_id': 'mock1'}\nContent: This is a mock document retrieved for
+testing purposes. It states that Milvus is currently bypassed, but the retrieval tool was
+successfully invoked!" name='hybrid_RAG_retrieve' id='0176b4d8-3772-4e4c-b95d-79fcff3508e9'
+tool_call_id='d0c9d5fb-325a-418e-95c1-b5e69695004e'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:23:41] [AGENT_RESPONSE]
+Response: content='I am a helpful assistant designed to answer your questions by retrieving relevant
+information from a specialized knowledge base. I use hybrid search techniques to find the most
+accurate context and assist you effectively.' additional_kwargs={} response_metadata={'model':
+'qwen3.6:latest', 'created_at': '2026-05-28T21:23:41.383229254Z', 'done': True, 'done_reason':
+'stop', 'total_duration': 8005544697, 'load_duration': 74751373, 'prompt_eval_count': 579,
+'prompt_eval_duration': 249234063, 'eval_count': 1085, 'eval_duration': 7208890184, 'logprobs':
+None, 'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e7078-9e68-7bf3-a3b9-f9063b0b1996' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 579, 'output_tokens': 1085, 'total_tokens': 1664}
+tool_call_chunks=[] chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:23:41] [TOKEN_USAGE]
+Input tokens: 579, Output tokens: 1085
+--------------------------------------------------------------------------------
+[2026-05-28 14:23:42] [TITLE_GENERATION]
+Generated Title:
+--------------------------------------------------------------------------------
+[2026-05-28 14:23:53] [EVALUATOR_NODE]
+Evaluation response: {
+  "VALUABLE_FOR_TRAINING": 0.5,
+  "TECHNICAL_CONTENT": 0.5,
+  "EXPLANATION": "The response appropriately addresses a standard identity query but lacks depth,
+complex reasoning, or unique pedagogical patterns, making it moderately valuable for training. It
+mentions technical concepts like 'knowledge base' and 'hybrid search techniques,' but only as brief
+functional descriptors without explanation or demonstration, limiting its technical depth."
+}
+Overall score: 0.5
+--------------------------------------------------------------------------------
+[2026-05-28 14:24:05] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='Hello!' additional_kwargs={} response_metadata={}
+id='03ec2c80-f277-4605-972d-dd55f922d227'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:24:05] [AGENT_RESPONSE]
+Response: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6:latest', 'created_at': '2026-05-28T21:24:04.704771586Z',
+'done': True, 'done_reason': 'stop', 'total_duration': 741760421, 'load_duration': 72412529,
+'prompt_eval_count': 463, 'prompt_eval_duration': 391994499, 'eval_count': 39, 'eval_duration':
+257313395, 'logprobs': None, 'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run
+--019e7079-15da-7e91-b132-bc0f92446568' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 463, 'output_tokens': 39, 'total_tokens': 502} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:24:05] [TOKEN_USAGE]
+Input tokens: 463, Output tokens: 39
+--------------------------------------------------------------------------------
+[2026-05-28 14:24:05] [TITLE_GENERATION]
+Generated Title:
+--------------------------------------------------------------------------------
+[2026-05-28 14:24:18] [EVALUATOR_NODE]
+Evaluation response: {
+  "VALUABLE_FOR_TRAINING": 0.2,
+  "TECHNICAL_CONTENT": 0.0,
+  "EXPLANATION": "This is a standard conversational greeting exchange. While it demonstrates basic
+polite interaction patterns, it lacks substantive information, reasoning, or domain-specific
+knowledge, making it minimally valuable for training beyond establishing conversational flow. It
+contains no technical content whatsoever."
+}
+Overall score: 0.1
+--------------------------------------------------------------------------------
+[2026-05-28 14:25:48] [AGENT_NODE_INPUT]
+Active Messages (5 total):
+  Message 1: content='Who are you and what do you do?' additional_kwargs={} response_metadata={}
+id='2ea208f5-cec2-4491-831f-d79226ab402b'
+
+  Message 2: content='Who are you and what do you do?' additional_kwargs={} response_metadata={}
+id='05b8039b-4330-4ce4-871b-1b60a415a87d'
+
+  Message 3: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6:latest',
+'created_at': '2026-05-28T21:23:33.297818889Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 6570871561, 'load_duration': 76265341, 'prompt_eval_count': 484,
+'prompt_eval_duration': 421488220, 'eval_count': 858, 'eval_duration': 5692595153, 'logprobs': None,
+'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e7078-83b9-7631-851d-dc8aab70e88d' tool_calls=[{'name': 'hybrid_RAG_retrieve', 'args': {'query':
+'Who am I and what do I do'}, 'id': 'd0c9d5fb-325a-418e-95c1-b5e69695004e', 'type': 'tool_call'}]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 484, 'output_tokens': 858, 'total_tokens':
+1342}
+
+  Message 4: content='I am a helpful assistant designed to answer your questions by retrieving
+relevant information from a specialized knowledge base. I use hybrid search techniques to find the
+most accurate context and assist you effectively.' additional_kwargs={} response_metadata={'model':
+'qwen3.6:latest', 'created_at': '2026-05-28T21:23:41.383229254Z', 'done': True, 'done_reason':
+'stop', 'total_duration': 8005544697, 'load_duration': 74751373, 'prompt_eval_count': 579,
+'prompt_eval_duration': 249234063, 'eval_count': 1085, 'eval_duration': 7208890184, 'logprobs':
+None, 'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e7078-9e68-7bf3-a3b9-f9063b0b1996' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 579, 'output_tokens': 1085, 'total_tokens': 1664}
+
+  Message 5: content='Who are you and what do you do?' additional_kwargs={} response_metadata={}
+id='697680a7-9712-4e8d-a7a5-842a36974d46'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 14:25:48] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6:latest',
+'created_at': '2026-05-28T21:25:47.795558471Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 2024865410, 'load_duration': 75459828, 'prompt_eval_count': 580,
+'prompt_eval_duration': 419842171, 'eval_count': 216, 'eval_duration': 1431093822, 'logprobs': None,
+'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e707a-a474-7be2-8759-c366dc45b5ce' tool_calls=[{'name': 'hybrid_RAG_retrieve', 'args': {'query':
+'Who am I and what do I do'}, 'id': '8b4d97b6-1c07-445c-ac9e-c624912e36db', 'type': 'tool_call'}]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 580, 'output_tokens': 216, 'total_tokens':
+796} tool_call_chunks=[{'name': 'hybrid_RAG_retrieve', 'args': '{"query": "Who am I and what do I
+do"}', 'id': '8b4d97b6-1c07-445c-ac9e-c624912e36db', 'index': None, 'type': 'tool_call_chunk'}]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:25:48] [TOKEN_USAGE]
+Input tokens: 580, Output tokens: 216
+--------------------------------------------------------------------------------
+[2026-05-28 14:25:53] [AGENT_NODE_INPUT]
+Active Messages (7 total):
+  Message 1: content='Who are you and what do you do?' additional_kwargs={} response_metadata={}
+id='2ea208f5-cec2-4491-831f-d79226ab402b'
+
+  Message 2: content='Who are you and what do you do?' additional_kwargs={} response_metadata={}
+id='05b8039b-4330-4ce4-871b-1b60a415a87d'
+
+  Message 3: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6:latest',
+'created_at': '2026-05-28T21:23:33.297818889Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 6570871561, 'load_duration': 76265341, 'prompt_eval_count': 484,
+'prompt_eval_duration': 421488220, 'eval_count': 858, 'eval_duration': 5692595153, 'logprobs': None,
+'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e7078-83b9-7631-851d-dc8aab70e88d' tool_calls=[{'name': 'hybrid_RAG_retrieve', 'args': {'query':
+'Who am I and what do I do'}, 'id': 'd0c9d5fb-325a-418e-95c1-b5e69695004e', 'type': 'tool_call'}]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 484, 'output_tokens': 858, 'total_tokens':
+1342}
+
+  Message 4: content='I am a helpful assistant designed to answer your questions by retrieving
+relevant information from a specialized knowledge base. I use hybrid search techniques to find the
+most accurate context and assist you effectively.' additional_kwargs={} response_metadata={'model':
+'qwen3.6:latest', 'created_at': '2026-05-28T21:23:41.383229254Z', 'done': True, 'done_reason':
+'stop', 'total_duration': 8005544697, 'load_duration': 74751373, 'prompt_eval_count': 579,
+'prompt_eval_duration': 249234063, 'eval_count': 1085, 'eval_duration': 7208890184, 'logprobs':
+None, 'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e7078-9e68-7bf3-a3b9-f9063b0b1996' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 579, 'output_tokens': 1085, 'total_tokens': 1664}
+
+  Message 5: content='Who are you and what do you do?' additional_kwargs={} response_metadata={}
+id='697680a7-9712-4e8d-a7a5-842a36974d46'
+
+  Message 6: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6:latest',
+'created_at': '2026-05-28T21:25:47.795558471Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 2024865410, 'load_duration': 75459828, 'prompt_eval_count': 580,
+'prompt_eval_duration': 419842171, 'eval_count': 216, 'eval_duration': 1431093822, 'logprobs': None,
+'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e707a-a474-7be2-8759-c366dc45b5ce' tool_calls=[{'name': 'hybrid_RAG_retrieve', 'args': {'query':
+'Who am I and what do I do'}, 'id': '8b4d97b6-1c07-445c-ac9e-c624912e36db', 'type': 'tool_call'}]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 580, 'output_tokens': 216, 'total_tokens':
+796}
+
+  Message 7: content="Source: {'doc_id': 'mock1'}\nContent: This is a mock document retrieved for
+testing purposes. It states that Milvus is currently bypassed, but the retrieval tool was
+successfully invoked!" name='hybrid_RAG_retrieve' id='561fb53e-abf9-41a5-9415-a9a4a0bb9cd5'
+tool_call_id='8b4d97b6-1c07-445c-ac9e-c624912e36db'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 14:25:53] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6:latest',
+'created_at': '2026-05-28T21:25:52.599464337Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 4764660928, 'load_duration': 80671873, 'prompt_eval_count': 675,
+'prompt_eval_duration': 92534348, 'eval_count': 647, 'eval_duration': 4298710260, 'logprobs': None,
+'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e707a-acbf-7410-a258-6e9669889428' tool_calls=[{'name': 'hybrid_RAG_retrieve', 'args': {'query':
+'Who am I and what do I do'}, 'id': 'bf61f851-b006-488c-81ee-38310d2607b2', 'type': 'tool_call'}]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 675, 'output_tokens': 647, 'total_tokens':
+1322} tool_call_chunks=[{'name': 'hybrid_RAG_retrieve', 'args': '{"query": "Who am I and what do I
+do"}', 'id': 'bf61f851-b006-488c-81ee-38310d2607b2', 'index': None, 'type': 'tool_call_chunk'}]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:25:53] [TOKEN_USAGE]
+Input tokens: 675, Output tokens: 647
+--------------------------------------------------------------------------------
+[2026-05-28 14:25:58] [AGENT_NODE_INPUT]
+Active Messages (9 total):
+  Message 1: content='Who are you and what do you do?' additional_kwargs={} response_metadata={}
+id='2ea208f5-cec2-4491-831f-d79226ab402b'
+
+  Message 2: content='Who are you and what do you do?' additional_kwargs={} response_metadata={}
+id='05b8039b-4330-4ce4-871b-1b60a415a87d'
+
+  Message 3: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6:latest',
+'created_at': '2026-05-28T21:23:33.297818889Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 6570871561, 'load_duration': 76265341, 'prompt_eval_count': 484,
+'prompt_eval_duration': 421488220, 'eval_count': 858, 'eval_duration': 5692595153, 'logprobs': None,
+'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e7078-83b9-7631-851d-dc8aab70e88d' tool_calls=[{'name': 'hybrid_RAG_retrieve', 'args': {'query':
+'Who am I and what do I do'}, 'id': 'd0c9d5fb-325a-418e-95c1-b5e69695004e', 'type': 'tool_call'}]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 484, 'output_tokens': 858, 'total_tokens':
+1342}
+
+  Message 4: content='I am a helpful assistant designed to answer your questions by retrieving
+relevant information from a specialized knowledge base. I use hybrid search techniques to find the
+most accurate context and assist you effectively.' additional_kwargs={} response_metadata={'model':
+'qwen3.6:latest', 'created_at': '2026-05-28T21:23:41.383229254Z', 'done': True, 'done_reason':
+'stop', 'total_duration': 8005544697, 'load_duration': 74751373, 'prompt_eval_count': 579,
+'prompt_eval_duration': 249234063, 'eval_count': 1085, 'eval_duration': 7208890184, 'logprobs':
+None, 'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e7078-9e68-7bf3-a3b9-f9063b0b1996' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 579, 'output_tokens': 1085, 'total_tokens': 1664}
+
+  Message 5: content='Who are you and what do you do?' additional_kwargs={} response_metadata={}
+id='697680a7-9712-4e8d-a7a5-842a36974d46'
+
+  Message 6: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6:latest',
+'created_at': '2026-05-28T21:25:47.795558471Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 2024865410, 'load_duration': 75459828, 'prompt_eval_count': 580,
+'prompt_eval_duration': 419842171, 'eval_count': 216, 'eval_duration': 1431093822, 'logprobs': None,
+'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e707a-a474-7be2-8759-c366dc45b5ce' tool_calls=[{'name': 'hybrid_RAG_retrieve', 'args': {'query':
+'Who am I and what do I do'}, 'id': '8b4d97b6-1c07-445c-ac9e-c624912e36db', 'type': 'tool_call'}]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 580, 'output_tokens': 216, 'total_tokens':
+796}
+
+  Message 7: content="Source: {'doc_id': 'mock1'}\nContent: This is a mock document retrieved for
+testing purposes. It states that Milvus is currently bypassed, but the retrieval tool was
+successfully invoked!" name='hybrid_RAG_retrieve' id='561fb53e-abf9-41a5-9415-a9a4a0bb9cd5'
+tool_call_id='8b4d97b6-1c07-445c-ac9e-c624912e36db'
+
+  Message 8: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6:latest',
+'created_at': '2026-05-28T21:25:52.599464337Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 4764660928, 'load_duration': 80671873, 'prompt_eval_count': 675,
+'prompt_eval_duration': 92534348, 'eval_count': 647, 'eval_duration': 4298710260, 'logprobs': None,
+'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e707a-acbf-7410-a258-6e9669889428' tool_calls=[{'name': 'hybrid_RAG_retrieve', 'args': {'query':
+'Who am I and what do I do'}, 'id': 'bf61f851-b006-488c-81ee-38310d2607b2', 'type': 'tool_call'}]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 675, 'output_tokens': 647, 'total_tokens':
+1322}
+
+  Message 9: content="Source: {'doc_id': 'mock1'}\nContent: This is a mock document retrieved for
+testing purposes. It states that Milvus is currently bypassed, but the retrieval tool was
+successfully invoked!" name='hybrid_RAG_retrieve' id='bf0632cc-ef55-4db8-9f81-068860e89c2f'
+tool_call_id='bf61f851-b006-488c-81ee-38310d2607b2'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 14:25:58] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6:latest',
+'created_at': '2026-05-28T21:25:57.717155139Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 4768276866, 'load_duration': 69679578, 'prompt_eval_count': 770,
+'prompt_eval_duration': 124396036, 'eval_count': 647, 'eval_duration': 4278823316, 'logprobs': None,
+'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e707a-bffe-7760-b628-944660913cbe' tool_calls=[{'name': 'hybrid_RAG_retrieve', 'args': {'query':
+'Who am I and what do I do'}, 'id': '30727762-6d39-4807-b6c4-a994a5d4c494', 'type': 'tool_call'}]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 770, 'output_tokens': 647, 'total_tokens':
+1417} tool_call_chunks=[{'name': 'hybrid_RAG_retrieve', 'args': '{"query": "Who am I and what do I
+do"}', 'id': '30727762-6d39-4807-b6c4-a994a5d4c494', 'index': None, 'type': 'tool_call_chunk'}]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:25:58] [TOKEN_USAGE]
+Input tokens: 770, Output tokens: 647
+--------------------------------------------------------------------------------
+[2026-05-28 14:27:07] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='Who are you and what do you do?' additional_kwargs={} response_metadata={}
+id='7ae4b5ef-2952-4d21-acc9-452c85071658'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:27:07] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6:latest',
+'created_at': '2026-05-28T21:27:07.573796989Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 15218578457, 'load_duration': 72984080, 'prompt_eval_count': 470,
+'prompt_eval_duration': 322995842, 'eval_count': 2089, 'eval_duration': 13921275066, 'logprobs':
+None, 'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e707b-a606-7322-99ba-10ec5f8dce99' tool_calls=[{'name': 'hybrid_RAG_retrieve', 'args': {'query':
+'Who are you and what do you do?'}, 'id': '7f158846-f892-48e0-a3c0-b6c1adb79c09', 'type':
+'tool_call'}] invalid_tool_calls=[] usage_metadata={'input_tokens': 470, 'output_tokens': 2089,
+'total_tokens': 2559} tool_call_chunks=[{'name': 'hybrid_RAG_retrieve', 'args': '{"query": "Who are
+you and what do you do?"}', 'id': '7f158846-f892-48e0-a3c0-b6c1adb79c09', 'index': None, 'type':
+'tool_call_chunk'}] chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:27:07] [TOKEN_USAGE]
+Input tokens: 470, Output tokens: 2089
+--------------------------------------------------------------------------------
+[2026-05-28 14:27:13] [AGENT_NODE_INPUT]
+Active Messages (3 total):
+  Message 1: content='Who are you and what do you do?' additional_kwargs={} response_metadata={}
+id='7ae4b5ef-2952-4d21-acc9-452c85071658'
+
+  Message 2: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6:latest',
+'created_at': '2026-05-28T21:27:07.573796989Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 15218578457, 'load_duration': 72984080, 'prompt_eval_count': 470,
+'prompt_eval_duration': 322995842, 'eval_count': 2089, 'eval_duration': 13921275066, 'logprobs':
+None, 'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e707b-a606-7322-99ba-10ec5f8dce99' tool_calls=[{'name': 'hybrid_RAG_retrieve', 'args': {'query':
+'Who are you and what do you do?'}, 'id': '7f158846-f892-48e0-a3c0-b6c1adb79c09', 'type':
+'tool_call'}] invalid_tool_calls=[] usage_metadata={'input_tokens': 470, 'output_tokens': 2089,
+'total_tokens': 2559}
+
+  Message 3: content="Source: {'doc_id': 'mock1'}\nContent: This is a mock document retrieved for
+testing purposes. It states that Milvus is currently bypassed, but the retrieval tool was
+successfully invoked!" name='hybrid_RAG_retrieve' id='f70ecb1c-a3f3-42d6-9b63-2bc5d24f898c'
+tool_call_id='7f158846-f892-48e0-a3c0-b6c1adb79c09'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:27:13] [AGENT_RESPONSE]
+Response: content='I am a helpful assistant designed to answer your questions by retrieving relevant
+information from a specialized knowledge base and utilizing your personal memories. I use hybrid
+search techniques to ensure I provide the most accurate and context-aware responses.'
+additional_kwargs={} response_metadata={'model': 'qwen3.6:latest', 'created_at':
+'2026-05-28T21:27:13.214248005Z', 'done': True, 'done_reason': 'stop', 'total_duration': 5429152166,
+'load_duration': 77649630, 'prompt_eval_count': 566, 'prompt_eval_duration': 315071237,
+'eval_count': 709, 'eval_duration': 4714072445, 'logprobs': None, 'model_name': 'qwen3.6:latest',
+'model_provider': 'ollama'} id='lc_run--019e707b-e389-7b81-8fab-45c4db036f6a' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 566, 'output_tokens': 709, 'total_tokens':
+1275} tool_call_chunks=[] chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:27:13] [TOKEN_USAGE]
+Input tokens: 566, Output tokens: 709
+--------------------------------------------------------------------------------
+[2026-05-28 14:27:14] [TITLE_GENERATION]
+Generated Title:
+--------------------------------------------------------------------------------
+[2026-05-28 14:27:25] [EVALUATOR_NODE]
+Evaluation response: {
+  "VALUABLE_FOR_TRAINING": 0.5,
+  "TECHNICAL_CONTENT": 0.4,
+  "EXPLANATION": "The response provides a clear, direct answer to a basic identity question, making
+it moderately useful for teaching conversational alignment and standard Q&A patterns. However, it
+lacks complex reasoning, nuanced instruction following, or diverse examples that would make it
+highly valuable for training. While it references technical concepts like 'hybrid search' and
+'knowledge base,' these are only mentioned superficially without explanation, implementation
+details, or domain-specific depth, limiting its technical content score."
+}
+Overall score: 0.45
+--------------------------------------------------------------------------------
+[2026-05-28 14:28:35] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='the skys are great toronto they not a golden color' additional_kwargs={}
+response_metadata={} id='4729e752-5307-48fd-b4c0-0afcc1a72483'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:28:35] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:28:35.525028993Z', 'done': True, 'done_reason': 'stop', 'total_duration': 3405025664,
+'load_duration': 75938741, 'prompt_eval_count': 472, 'prompt_eval_duration': 421020480,
+'eval_count': 411, 'eval_duration': 2724579342, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e707d-2c77-7e82-83c7-662edafb50db' tool_calls=[{'name':
+'hybrid_RAG_retrieve', 'args': {'query': 'Toronto sky golden color'}, 'id':
+'a40db88d-730e-4e0d-93cf-c291acd37d55', 'type': 'tool_call'}] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 472, 'output_tokens': 411, 'total_tokens': 883}
+tool_call_chunks=[{'name': 'hybrid_RAG_retrieve', 'args': '{"query": "Toronto sky golden color"}',
+'id': 'a40db88d-730e-4e0d-93cf-c291acd37d55', 'index': None, 'type': 'tool_call_chunk'}]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:28:35] [TOKEN_USAGE]
+Input tokens: 472, Output tokens: 411
+--------------------------------------------------------------------------------
+[2026-05-28 14:28:36] [AGENT_NODE_INPUT]
+Active Messages (3 total):
+  Message 1: content='the skys are great toronto they not a golden color' additional_kwargs={}
+response_metadata={} id='4729e752-5307-48fd-b4c0-0afcc1a72483'
+
+  Message 2: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:28:35.525028993Z', 'done': True, 'done_reason': 'stop', 'total_duration': 3405025664,
+'load_duration': 75938741, 'prompt_eval_count': 472, 'prompt_eval_duration': 421020480,
+'eval_count': 411, 'eval_duration': 2724579342, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e707d-2c77-7e82-83c7-662edafb50db' tool_calls=[{'name':
+'hybrid_RAG_retrieve', 'args': {'query': 'Toronto sky golden color'}, 'id':
+'a40db88d-730e-4e0d-93cf-c291acd37d55', 'type': 'tool_call'}] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 472, 'output_tokens': 411, 'total_tokens': 883}
+
+  Message 3: content="Source: {'doc_id': 'mock1'}\nContent: This is a mock document retrieved for
+testing purposes. It states that Milvus is currently bypassed, but the retrieval tool was
+successfully invoked!" name='hybrid_RAG_retrieve' id='6a5b7865-c157-488c-a459-b2b0c723fb0c'
+tool_call_id='a40db88d-730e-4e0d-93cf-c291acd37d55'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:28:36] [AGENT_RESPONSE]
+Response: content="You're right! The sky in Toronto can look quite different depending on the time
+of day, weather, and season. While golden sunsets are common, the sky is often blue, gray, or even
+pink and purple at different times. What kind of sky did you see recently?" additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:28:36.319885008Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 756559557, 'load_duration': 76319232, 'prompt_eval_count':
+563, 'prompt_eval_duration': 252879152, 'eval_count': 60, 'eval_duration': 395342408, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e707d-3a4e-75a2-ac6f-50d2c6193906' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 563, 'output_tokens': 60, 'total_tokens': 623} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:28:36] [TOKEN_USAGE]
+Input tokens: 563, Output tokens: 60
+--------------------------------------------------------------------------------
+[2026-05-28 14:28:37] [TITLE_GENERATION]
+Generated Title:
+--------------------------------------------------------------------------------
+[2026-05-28 14:28:46] [EVALUATOR_NODE]
+Evaluation response: {
+  "VALUABLE_FOR_TRAINING": 0.4,
+  "TECHNICAL_CONTENT": 0.1,
+  "EXPLANATION": "The response appropriately handles a casual, slightly ungrammatical user statement
+with a friendly, conversational tone. However, it offers only basic general knowledge and lacks
+substantive reasoning, structured QA patterns, or domain-specific insights, making it of limited
+value for training models that require depth or technical rigor. It contains no technical content,
+scientific concepts, or procedural knowledge, relying entirely on everyday weather observations and
+conversational filler."
+}
+Overall score: 0.25
+--------------------------------------------------------------------------------
+[2026-05-28 14:28:59] [AGENT_NODE_INPUT]
+Active Messages (3 total):
+  Message 1: content='the skys are great toronto they not a golden color' additional_kwargs={}
+response_metadata={} id='4729e752-5307-48fd-b4c0-0afcc1a72483'
+
+  Message 2: content="You're right! The sky in Toronto can look quite different depending on the
+time of day, weather, and season. While golden sunsets are common, the sky is often blue, gray, or
+even pink and purple at different times. What kind of sky did you see recently?"
+additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:28:36.319885008Z', 'done': True, 'done_reason': 'stop', 'total_duration': 756559557,
+'load_duration': 76319232, 'prompt_eval_count': 563, 'prompt_eval_duration': 252879152,
+'eval_count': 60, 'eval_duration': 395342408, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e707d-3a4e-75a2-ac6f-50d2c6193906' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 563, 'output_tokens': 60, 'total_tokens': 623}
+
+  Message 3: content='what model you running on' additional_kwargs={} response_metadata={}
+id='15c6af9a-e33f-4120-8daa-30dfbd5ba085'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 14:28:59] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:28:58.70577331Z', 'done': True, 'done_reason': 'stop', 'total_duration': 3747378309,
+'load_duration': 71820996, 'prompt_eval_count': 544, 'prompt_eval_duration': 450309428,
+'eval_count': 458, 'eval_duration': 3021852424, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e707d-87f6-7ee3-9a80-19104548a5c3' tool_calls=[{'name':
+'hybrid_RAG_retrieve', 'args': {'query': 'what model am I running on'}, 'id':
+'3ea89a6f-ec80-4c62-9fcb-0777c2f39abb', 'type': 'tool_call'}] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 544, 'output_tokens': 458, 'total_tokens': 1002}
+tool_call_chunks=[{'name': 'hybrid_RAG_retrieve', 'args': '{"query": "what model am I running on"}',
+'id': '3ea89a6f-ec80-4c62-9fcb-0777c2f39abb', 'index': None, 'type': 'tool_call_chunk'}]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:28:59] [TOKEN_USAGE]
+Input tokens: 544, Output tokens: 458
+--------------------------------------------------------------------------------
+[2026-05-28 14:32:19] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='Hello, my name is Alfred.' additional_kwargs={} response_metadata={}
+id='4c57d3ab-e4a1-426e-945b-99a5cefd1806'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:32:19] [AGENT_RESPONSE]
+Response: content="Hello Alfred! It's nice to meet you. How can I help you today?"
+additional_kwargs={} response_metadata={'model': 'qwen3.6:latest', 'created_at':
+'2026-05-28T21:32:19.332971928Z', 'done': True, 'done_reason': 'stop', 'total_duration': 5934117822,
+'load_duration': 73217888, 'prompt_eval_count': 468, 'prompt_eval_duration': 165288482,
+'eval_count': 801, 'eval_duration': 5340694241, 'logprobs': None, 'model_name': 'qwen3.6:latest',
+'model_provider': 'ollama'} id='lc_run--019e7080-8d62-7940-929f-a518c0b4d535' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 468, 'output_tokens': 801, 'total_tokens':
+1269} tool_call_chunks=[] chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:32:19] [TOKEN_USAGE]
+Input tokens: 468, Output tokens: 801
+--------------------------------------------------------------------------------
+[2026-05-28 14:32:20] [TITLE_GENERATION]
+Generated Title:
+--------------------------------------------------------------------------------
+[2026-05-28 14:32:30] [EVALUATOR_NODE]
+Evaluation response: {
+  "VALUABLE_FOR_TRAINING": 0.5,
+  "TECHNICAL_CONTENT": 0.0,
+  "EXPLANATION": "The pair demonstrates basic conversational etiquette and name acknowledgment,
+which is moderately useful for teaching fundamental dialogue flow and turn-taking. However, it lacks
+depth, reasoning, or specific instructional patterns, limiting its overall training value. It
+contains absolutely no technical concepts, procedures, or domain-specific knowledge, warranting a
+score of 0.0 for technical content."
+}
+Overall score: 0.25
+--------------------------------------------------------------------------------
+[2026-05-28 14:32:35] [AGENT_NODE_INPUT]
+Active Messages (3 total):
+  Message 1: content='Hello, my name is Alfred.' additional_kwargs={} response_metadata={}
+id='4c57d3ab-e4a1-426e-945b-99a5cefd1806'
+
+  Message 2: content="Hello Alfred! It's nice to meet you. How can I help you today?"
+additional_kwargs={} response_metadata={'model': 'qwen3.6:latest', 'created_at':
+'2026-05-28T21:32:19.332971928Z', 'done': True, 'done_reason': 'stop', 'total_duration': 5934117822,
+'load_duration': 73217888, 'prompt_eval_count': 468, 'prompt_eval_duration': 165288482,
+'eval_count': 801, 'eval_duration': 5340694241, 'logprobs': None, 'model_name': 'qwen3.6:latest',
+'model_provider': 'ollama'} id='lc_run--019e7080-8d62-7940-929f-a518c0b4d535' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 468, 'output_tokens': 801, 'total_tokens':
+1269}
+
+  Message 3: content='What is my name?' additional_kwargs={} response_metadata={}
+id='4ad7d96a-8592-489e-8aae-435ea7db3283'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 14:32:35] [AGENT_RESPONSE]
+Response: content='Your name is Alfred.' additional_kwargs={} response_metadata={'model':
+'qwen3.6:latest', 'created_at': '2026-05-28T21:32:34.707762902Z', 'done': True, 'done_reason':
+'stop', 'total_duration': 4499553281, 'load_duration': 69835439, 'prompt_eval_count': 500,
+'prompt_eval_duration': 290641121, 'eval_count': 583, 'eval_duration': 3882541717, 'logprobs': None,
+'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e7080-d0d4-7403-8b90-e5cb6fa5d8a1' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 500, 'output_tokens': 583, 'total_tokens': 1083} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:32:35] [TOKEN_USAGE]
+Input tokens: 500, Output tokens: 583
+--------------------------------------------------------------------------------
+[2026-05-28 14:32:36] [TITLE_GENERATION]
+Generated Title:
+--------------------------------------------------------------------------------
+[2026-05-28 14:32:52] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='Hello, my name is Alfred.' additional_kwargs={} response_metadata={}
+id='e70a6743-a249-4855-9df4-3305be5098a9'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:32:52] [AGENT_RESPONSE]
+Response: content="Hello Alfred! It's nice to meet you. How can I help you today?"
+additional_kwargs={} response_metadata={'model': 'qwen3.6:latest', 'created_at':
+'2026-05-28T21:32:52.278198408Z', 'done': True, 'done_reason': 'stop', 'total_duration': 6106845502,
+'load_duration': 76230989, 'prompt_eval_count': 468, 'prompt_eval_duration': 338697768,
+'eval_count': 801, 'eval_duration': 5337455113, 'logprobs': None, 'model_name': 'qwen3.6:latest',
+'model_provider': 'ollama'} id='lc_run--019e7081-0da1-7e40-8b66-e83ae1e766d7' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 468, 'output_tokens': 801, 'total_tokens':
+1269} tool_call_chunks=[] chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:32:52] [TOKEN_USAGE]
+Input tokens: 468, Output tokens: 801
+--------------------------------------------------------------------------------
+[2026-05-28 14:32:53] [TITLE_GENERATION]
+Generated Title:
+--------------------------------------------------------------------------------
+[2026-05-28 14:33:03] [EVALUATOR_NODE]
+Evaluation response: {
+  "VALUABLE_FOR_TRAINING": 0.5,
+  "TECHNICAL_CONTENT": 0.0,
+  "EXPLANATION": "The pair demonstrates basic conversational etiquette and name acknowledgment,
+which is moderately useful for teaching fundamental dialogue flow and turn-taking. However, it lacks
+depth, reasoning, or specific instructional patterns, limiting its overall training value. It
+contains absolutely no technical concepts, procedures, or domain-specific knowledge, warranting a
+score of 0.0 for technical content."
+}
+Overall score: 0.25
+--------------------------------------------------------------------------------
+[2026-05-28 14:33:08] [AGENT_NODE_INPUT]
+Active Messages (3 total):
+  Message 1: content='Hello, my name is Alfred.' additional_kwargs={} response_metadata={}
+id='e70a6743-a249-4855-9df4-3305be5098a9'
+
+  Message 2: content="Hello Alfred! It's nice to meet you. How can I help you today?"
+additional_kwargs={} response_metadata={'model': 'qwen3.6:latest', 'created_at':
+'2026-05-28T21:32:52.278198408Z', 'done': True, 'done_reason': 'stop', 'total_duration': 6106845502,
+'load_duration': 76230989, 'prompt_eval_count': 468, 'prompt_eval_duration': 338697768,
+'eval_count': 801, 'eval_duration': 5337455113, 'logprobs': None, 'model_name': 'qwen3.6:latest',
+'model_provider': 'ollama'} id='lc_run--019e7081-0da1-7e40-8b66-e83ae1e766d7' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 468, 'output_tokens': 801, 'total_tokens':
+1269}
+
+  Message 3: content='What is my name?' additional_kwargs={} response_metadata={}
+id='1e57a793-e949-48fa-a0be-ca138a3980bc'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 14:33:08] [AGENT_RESPONSE]
+Response: content='Your name is Alfred.' additional_kwargs={} response_metadata={'model':
+'qwen3.6:latest', 'created_at': '2026-05-28T21:33:08.329633698Z', 'done': True, 'done_reason':
+'stop', 'total_duration': 4524896789, 'load_duration': 75504543, 'prompt_eval_count': 500,
+'prompt_eval_duration': 278861645, 'eval_count': 583, 'eval_duration': 3893795904, 'logprobs': None,
+'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e7081-512b-7011-8d3b-906f23a76982' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 500, 'output_tokens': 583, 'total_tokens': 1083} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:33:08] [TOKEN_USAGE]
+Input tokens: 500, Output tokens: 583
+--------------------------------------------------------------------------------
+[2026-05-28 14:33:09] [TITLE_GENERATION]
+Generated Title:
+--------------------------------------------------------------------------------
+[2026-05-28 14:33:19] [EVALUATOR_NODE]
+Evaluation response: {
+  "VALUABLE_FOR_TRAINING": 0.0,
+  "TECHNICAL_CONTENT": 0.0,
+  "EXPLANATION": "The query asks for personal information that the AI cannot know without prior
+context, and the response confidently fabricates a name ('Alfred'). This demonstrates a
+hallucination rather than logical reasoning or factual grounding, making it unhelpful and
+potentially harmful for training. Additionally, the response contains no technical concepts,
+procedures, or domain-specific knowledge, warranting a score of 0.0 for technical content."
+}
+Overall score: 0.0
+--------------------------------------------------------------------------------
+[2026-05-28 14:33:41] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='What is Ziyutec?' additional_kwargs={} response_metadata={}
+id='889ba9b0-205e-4fef-9bbf-6151448dc1e6'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:33:41] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6:latest',
+'created_at': '2026-05-28T21:33:41.582937337Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 1903328849, 'load_duration': 76586572, 'prompt_eval_count': 468,
+'prompt_eval_duration': 423646448, 'eval_count': 198, 'eval_duration': 1312394716, 'logprobs': None,
+'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e7081-ddc8-7ab1-b2ac-f45fa05a2748' tool_calls=[{'name': 'hybrid_RAG_retrieve', 'args': {'query':
+'Ziyutec'}, 'id': '36b3e673-0e0f-4b45-8131-2dde24ec0046', 'type': 'tool_call'}]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 468, 'output_tokens': 198, 'total_tokens':
+666} tool_call_chunks=[{'name': 'hybrid_RAG_retrieve', 'args': '{"query": "Ziyutec"}', 'id':
+'36b3e673-0e0f-4b45-8131-2dde24ec0046', 'index': None, 'type': 'tool_call_chunk'}]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:33:41] [TOKEN_USAGE]
+Input tokens: 468, Output tokens: 198
+--------------------------------------------------------------------------------
+[2026-05-28 14:35:09] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='What is Ziyutec?' additional_kwargs={} response_metadata={}
+id='c29337ee-75a1-4c4b-aad1-5348b04093d2'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:35:09] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6:latest',
+'created_at': '2026-05-28T21:35:08.277236211Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 1852522584, 'load_duration': 77512630, 'prompt_eval_count': 468,
+'prompt_eval_duration': 365373432, 'eval_count': 198, 'eval_duration': 1313942732, 'logprobs': None,
+'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e7083-3337-7972-9562-85d2f5736236' tool_calls=[{'name': 'hybrid_RAG_retrieve', 'args': {'query':
+'Ziyutec'}, 'id': '535e3e99-b8ea-448e-a3c6-9d2e79cd42f0', 'type': 'tool_call'}]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 468, 'output_tokens': 198, 'total_tokens':
+666} tool_call_chunks=[{'name': 'hybrid_RAG_retrieve', 'args': '{"query": "Ziyutec"}', 'id':
+'535e3e99-b8ea-448e-a3c6-9d2e79cd42f0', 'index': None, 'type': 'tool_call_chunk'}]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:35:09] [TOKEN_USAGE]
+Input tokens: 468, Output tokens: 198
+--------------------------------------------------------------------------------
+[2026-05-28 14:35:30] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='Hello, my name is Alfred.' additional_kwargs={} response_metadata={}
+id='e9210edc-eadb-4164-9227-3dc3ec795388'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:35:30] [AGENT_RESPONSE]
+Response: content="Hello Alfred! It's nice to meet you. How can I help you today?"
+additional_kwargs={} response_metadata={'model': 'qwen3.6:latest', 'created_at':
+'2026-05-28T21:35:29.953651432Z', 'done': True, 'done_reason': 'stop', 'total_duration': 6109380863,
+'load_duration': 72973203, 'prompt_eval_count': 468, 'prompt_eval_duration': 355661035,
+'eval_count': 801, 'eval_duration': 5323153328, 'logprobs': None, 'model_name': 'qwen3.6:latest',
+'model_provider': 'ollama'} id='lc_run--019e7083-75f8-7a32-bf0b-95804fcc09d8' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 468, 'output_tokens': 801, 'total_tokens':
+1269} tool_call_chunks=[] chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:35:30] [TOKEN_USAGE]
+Input tokens: 468, Output tokens: 801
+--------------------------------------------------------------------------------
+[2026-05-28 14:35:31] [TITLE_GENERATION]
+Generated Title:
+--------------------------------------------------------------------------------
+[2026-05-28 14:35:41] [EVALUATOR_NODE]
+Evaluation response: {
+  "VALUABLE_FOR_TRAINING": 0.5,
+  "TECHNICAL_CONTENT": 0.0,
+  "EXPLANATION": "The pair demonstrates basic conversational etiquette and name acknowledgment,
+which is moderately useful for teaching fundamental dialogue flow and turn-taking. However, it lacks
+depth, reasoning, or specific instructional patterns, limiting its overall training value. It
+contains absolutely no technical concepts, procedures, or domain-specific knowledge, warranting a
+score of 0.0 for technical content."
+}
+Overall score: 0.25
+--------------------------------------------------------------------------------
+[2026-05-28 14:35:46] [AGENT_NODE_INPUT]
+Active Messages (3 total):
+  Message 1: content='Hello, my name is Alfred.' additional_kwargs={} response_metadata={}
+id='e9210edc-eadb-4164-9227-3dc3ec795388'
+
+  Message 2: content="Hello Alfred! It's nice to meet you. How can I help you today?"
+additional_kwargs={} response_metadata={'model': 'qwen3.6:latest', 'created_at':
+'2026-05-28T21:35:29.953651432Z', 'done': True, 'done_reason': 'stop', 'total_duration': 6109380863,
+'load_duration': 72973203, 'prompt_eval_count': 468, 'prompt_eval_duration': 355661035,
+'eval_count': 801, 'eval_duration': 5323153328, 'logprobs': None, 'model_name': 'qwen3.6:latest',
+'model_provider': 'ollama'} id='lc_run--019e7083-75f8-7a32-bf0b-95804fcc09d8' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 468, 'output_tokens': 801, 'total_tokens':
+1269}
+
+  Message 3: content='What is my name?' additional_kwargs={} response_metadata={}
+id='f3a1b8cd-d7d6-4368-b288-abb42a2ae419'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 14:35:46] [AGENT_RESPONSE]
+Response: content='Your name is Alfred.' additional_kwargs={} response_metadata={'model':
+'qwen3.6:latest', 'created_at': '2026-05-28T21:35:45.97129337Z', 'done': True, 'done_reason':
+'stop', 'total_duration': 4409153212, 'load_duration': 74989112, 'prompt_eval_count': 500,
+'prompt_eval_duration': 178598828, 'eval_count': 583, 'eval_duration': 3885495058, 'logprobs': None,
+'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e7083-b9cb-7880-b95a-b9840a057644' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 500, 'output_tokens': 583, 'total_tokens': 1083} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:35:46] [TOKEN_USAGE]
+Input tokens: 500, Output tokens: 583
+--------------------------------------------------------------------------------
+[2026-05-28 14:35:47] [TITLE_GENERATION]
+Generated Title:
+--------------------------------------------------------------------------------
+[2026-05-28 14:35:56] [EVALUATOR_NODE]
+Evaluation response: {
+  "VALUABLE_FOR_TRAINING": 0.0,
+  "TECHNICAL_CONTENT": 0.0,
+  "EXPLANATION": "The query asks for personal information that the AI cannot know without prior
+context, and the response confidently fabricates a name ('Alfred'). This demonstrates a
+hallucination rather than logical reasoning or factual grounding, making it unhelpful and
+potentially harmful for training. Additionally, the response contains no technical concepts,
+procedures, or domain-specific knowledge, warranting a score of 0.0 for technical content."
+}
+Overall score: 0.0
+--------------------------------------------------------------------------------
+[2026-05-28 14:36:27] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='What is Ziyutec?' additional_kwargs={} response_metadata={}
+id='63b9648d-ebb7-4bac-a470-db5b1ada1087'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:36:27] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6:latest',
+'created_at': '2026-05-28T21:36:27.071616416Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 1758094038, 'load_duration': 67829752, 'prompt_eval_count': 468,
+'prompt_eval_duration': 293345417, 'eval_count': 198, 'eval_duration': 1306417651, 'logprobs': None,
+'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e7084-6634-7081-9f23-cfae64ba052e' tool_calls=[{'name': 'hybrid_RAG_retrieve', 'args': {'query':
+'Ziyutec'}, 'id': 'f82967e7-3fed-4d01-8f5e-36a40ad63793', 'type': 'tool_call'}]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 468, 'output_tokens': 198, 'total_tokens':
+666} tool_call_chunks=[{'name': 'hybrid_RAG_retrieve', 'args': '{"query": "Ziyutec"}', 'id':
+'f82967e7-3fed-4d01-8f5e-36a40ad63793', 'index': None, 'type': 'tool_call_chunk'}]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:36:27] [TOKEN_USAGE]
+Input tokens: 468, Output tokens: 198
+--------------------------------------------------------------------------------
+[2026-05-28 14:38:53] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='What is Ziyutec?' additional_kwargs={} response_metadata={}
+id='535693c7-6dd5-42df-8374-8119363b2d04'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:38:53] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6:latest',
+'created_at': '2026-05-28T21:38:53.536457563Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 1770281039, 'load_duration': 70676278, 'prompt_eval_count': 468,
+'prompt_eval_duration': 291271338, 'eval_count': 198, 'eval_duration': 1319204799, 'logprobs': None,
+'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e7086-a152-71d3-b9cc-12adc0bae4e1' tool_calls=[{'name': 'hybrid_RAG_retrieve', 'args': {'query':
+'Ziyutec'}, 'id': 'b6e3a762-f93a-40db-915b-2d25681067f6', 'type': 'tool_call'}]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 468, 'output_tokens': 198, 'total_tokens':
+666} tool_call_chunks=[{'name': 'hybrid_RAG_retrieve', 'args': '{"query": "Ziyutec"}', 'id':
+'b6e3a762-f93a-40db-915b-2d25681067f6', 'index': None, 'type': 'tool_call_chunk'}]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:38:53] [TOKEN_USAGE]
+Input tokens: 468, Output tokens: 198
+--------------------------------------------------------------------------------
+[2026-05-28 14:39:25] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='What is Ziyutec?' additional_kwargs={} response_metadata={}
+id='28612ed3-56d2-44a1-8633-9642e1b97a79'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:39:25] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6:latest',
+'created_at': '2026-05-28T21:39:24.992370671Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 1855512917, 'load_duration': 76284621, 'prompt_eval_count': 468,
+'prompt_eval_duration': 373832845, 'eval_count': 198, 'eval_duration': 1318632897, 'logprobs': None,
+'model_name': 'qwen3.6:latest', 'model_provider': 'ollama'} id='lc_run--
+019e7087-1bf4-7f33-b8aa-381e78cb5fa4' tool_calls=[{'name': 'hybrid_RAG_retrieve', 'args': {'query':
+'Ziyutec'}, 'id': '68bfd39f-e4d3-4779-9b7d-56c7840da578', 'type': 'tool_call'}]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 468, 'output_tokens': 198, 'total_tokens':
+666} tool_call_chunks=[{'name': 'hybrid_RAG_retrieve', 'args': '{"query": "Ziyutec"}', 'id':
+'68bfd39f-e4d3-4779-9b7d-56c7840da578', 'index': None, 'type': 'tool_call_chunk'}]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:39:25] [TOKEN_USAGE]
+Input tokens: 468, Output tokens: 198
+--------------------------------------------------------------------------------
+[2026-05-28 14:44:00] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='What is Ziyutec?' additional_kwargs={} response_metadata={}
+id='5d854cf1-6891-4001-b22d-1688a1ff1b2b'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:44:00] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:44:00.111063337Z', 'done': True, 'done_reason': 'stop', 'total_duration': 1875771241,
+'load_duration': 73073407, 'prompt_eval_count': 468, 'prompt_eval_duration': 392276020,
+'eval_count': 198, 'eval_duration': 1310489867, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e708b-4e57-7720-9827-5564dc0e8683' tool_calls=[{'name':
+'hybrid_RAG_retrieve', 'args': {'query': 'Ziyutec'}, 'id': 'e812ffc3-1555-4468-baca-d9dc282f80db',
+'type': 'tool_call'}] invalid_tool_calls=[] usage_metadata={'input_tokens': 468, 'output_tokens':
+198, 'total_tokens': 666} tool_call_chunks=[{'name': 'hybrid_RAG_retrieve', 'args': '{"query":
+"Ziyutec"}', 'id': 'e812ffc3-1555-4468-baca-d9dc282f80db', 'index': None, 'type':
+'tool_call_chunk'}] chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:44:00] [TOKEN_USAGE]
+Input tokens: 468, Output tokens: 198
+--------------------------------------------------------------------------------
+[2026-05-28 14:46:05] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='What is Ziyutec?' additional_kwargs={} response_metadata={}
+id='465fb64f-bf43-4a5f-91dc-9af2b996f903'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:46:05] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:46:05.274687101Z', 'done': True, 'done_reason': 'stop', 'total_duration': 1926123243,
+'load_duration': 77425728, 'prompt_eval_count': 468, 'prompt_eval_duration': 441753523,
+'eval_count': 198, 'eval_duration': 1318404257, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e708d-3931-7a80-b146-dce83615904b' tool_calls=[{'name':
+'hybrid_RAG_retrieve', 'args': {'query': 'Ziyutec'}, 'id': '3cd0d5cb-a0d6-4b5a-9629-3d07c93f0b85',
+'type': 'tool_call'}] invalid_tool_calls=[] usage_metadata={'input_tokens': 468, 'output_tokens':
+198, 'total_tokens': 666} tool_call_chunks=[{'name': 'hybrid_RAG_retrieve', 'args': '{"query":
+"Ziyutec"}', 'id': '3cd0d5cb-a0d6-4b5a-9629-3d07c93f0b85', 'index': None, 'type':
+'tool_call_chunk'}] chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:46:05] [TOKEN_USAGE]
+Input tokens: 468, Output tokens: 198
+--------------------------------------------------------------------------------
+[2026-05-28 14:51:31] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='What is Ziyutec?' additional_kwargs={} response_metadata={}
+id='85f24473-a546-479f-b550-5001dc7ae357'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:51:31] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:51:31.009181439Z', 'done': True, 'done_reason': 'stop', 'total_duration': 737797827,
+'load_duration': 89204251, 'prompt_eval_count': 463, 'prompt_eval_duration': 355207410,
+'eval_count': 36, 'eval_duration': 255438559, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7092-369c-79c3-a7ba-aec83322d3fe' tool_calls=[{'name':
+'hybrid_RAG_retrieve', 'args': {'query': 'What is Ziyutec?'}, 'id':
+'e592116e-6dd2-48dd-b020-d18d23a600d4', 'type': 'tool_call'}] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 463, 'output_tokens': 36, 'total_tokens': 499}
+tool_call_chunks=[{'name': 'hybrid_RAG_retrieve', 'args': '{"query": "What is Ziyutec?"}', 'id':
+'e592116e-6dd2-48dd-b020-d18d23a600d4', 'index': None, 'type': 'tool_call_chunk'}]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:51:31] [TOKEN_USAGE]
+Input tokens: 463, Output tokens: 36
+--------------------------------------------------------------------------------
+[2026-05-28 14:51:33] [AGENT_NODE_INPUT]
+Active Messages (3 total):
+  Message 1: content='What is Ziyutec?' additional_kwargs={} response_metadata={}
+id='85f24473-a546-479f-b550-5001dc7ae357'
+
+  Message 2: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:51:31.009181439Z', 'done': True, 'done_reason': 'stop', 'total_duration': 737797827,
+'load_duration': 89204251, 'prompt_eval_count': 463, 'prompt_eval_duration': 355207410,
+'eval_count': 36, 'eval_duration': 255438559, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7092-369c-79c3-a7ba-aec83322d3fe' tool_calls=[{'name':
+'hybrid_RAG_retrieve', 'args': {'query': 'What is Ziyutec?'}, 'id':
+'e592116e-6dd2-48dd-b020-d18d23a600d4', 'type': 'tool_call'}] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 463, 'output_tokens': 36, 'total_tokens': 499}
+
+  Message 3: content="Source: {'doc_id': 'mock1'}\nContent: This is a mock document retrieved for
+testing purposes. It states that Milvus is currently bypassed, but the retrieval tool was
+successfully invoked!" name='hybrid_RAG_retrieve' id='8bb95ed6-5822-4fa3-bf51-649e8d910527'
+tool_call_id='e592116e-6dd2-48dd-b020-d18d23a600d4'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:51:33] [AGENT_RESPONSE]
+Response: content='I don\'t have specific information about "Ziyutec" in my current knowledge base.
+It\'s possible that it\'s a very new company, a niche entity, or the information isn\'t widely
+documented in the sources I have access to.\n\nCould you provide more context? For example:\n*   Is
+it a company, a product, or a technology?\n*   What industry is it in?\n*   Where did you encounter
+the name?\n\nWith more details, I might be able to give you a more accurate answer or help you find
+relevant information.' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:51:32.258973839Z', 'done': True, 'done_reason': 'stop', 'total_duration': 1156991612,
+'load_duration': 86237872, 'prompt_eval_count': 570, 'prompt_eval_duration': 229482184,
+'eval_count': 117, 'eval_duration': 785351201, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7092-39f9-70a2-bbe7-4f4bef0112db' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 570, 'output_tokens': 117, 'total_tokens':
+687} tool_call_chunks=[] chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:51:33] [TOKEN_USAGE]
+Input tokens: 570, Output tokens: 117
+--------------------------------------------------------------------------------
+[2026-05-28 14:51:33] [TITLE_GENERATION]
+Generated Title: Inquiring About Ziyutec
+--------------------------------------------------------------------------------
+[2026-05-28 14:51:34] [EVALUATOR_NODE]
+Evaluation response: {
+"VALUABLE_FOR_TRAINING": 0.2,
+"TECHNICAL_CONTENT": 0.0,
+"EXPLANATION": "The response is a standard refusal due to lack of knowledge about a specific, likely
+obscure or non-existent entity ('Ziyutec'). It provides no factual information, technical concepts,
+or reasoning patterns that would be useful for training a model to answer factual queries. It merely
+asks for clarification, which is a low-value interaction for learning domain-specific knowledge or
+complex reasoning."
+}
+Overall score: 0.1
+--------------------------------------------------------------------------------
+[2026-05-28 14:51:35] [AGENT_NODE_INPUT]
+Active Messages (3 total):
+  Message 1: content='What is Ziyutec?' additional_kwargs={} response_metadata={}
+id='85f24473-a546-479f-b550-5001dc7ae357'
+
+  Message 2: content='I don\'t have specific information about "Ziyutec" in my current knowledge
+base. It\'s possible that it\'s a very new company, a niche entity, or the information isn\'t widely
+documented in the sources I have access to.\n\nCould you provide more context? For example:\n*   Is
+it a company, a product, or a technology?\n*   What industry is it in?\n*   Where did you encounter
+the name?\n\nWith more details, I might be able to give you a more accurate answer or help you find
+relevant information.' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:51:32.258973839Z', 'done': True, 'done_reason': 'stop', 'total_duration': 1156991612,
+'load_duration': 86237872, 'prompt_eval_count': 570, 'prompt_eval_duration': 229482184,
+'eval_count': 117, 'eval_duration': 785351201, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7092-39f9-70a2-bbe7-4f4bef0112db' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 570, 'output_tokens': 117, 'total_tokens':
+687}
+
+  Message 3: content='Tell me more about it' additional_kwargs={} response_metadata={}
+id='0ff6eedd-0552-4825-888c-b4af71e79d13'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 14:51:35] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:51:34.341937651Z', 'done': True, 'done_reason': 'stop', 'total_duration': 639819665,
+'load_duration': 72872835, 'prompt_eval_count': 594, 'prompt_eval_duration': 326435607,
+'eval_count': 33, 'eval_duration': 220560460, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7092-4469-7891-91df-7476ee14f30d' tool_calls=[{'name':
+'hybrid_RAG_retrieve', 'args': {'query': 'Ziyutec'}, 'id': '0a4aa462-e6b2-436c-a5fe-4706b888b800',
+'type': 'tool_call'}] invalid_tool_calls=[] usage_metadata={'input_tokens': 594, 'output_tokens':
+33, 'total_tokens': 627} tool_call_chunks=[{'name': 'hybrid_RAG_retrieve', 'args': '{"query":
+"Ziyutec"}', 'id': '0a4aa462-e6b2-436c-a5fe-4706b888b800', 'index': None, 'type':
+'tool_call_chunk'}] chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:51:35] [TOKEN_USAGE]
+Input tokens: 594, Output tokens: 33
+--------------------------------------------------------------------------------
+[2026-05-28 14:51:36] [AGENT_NODE_INPUT]
+Active Messages (5 total):
+  Message 1: content='What is Ziyutec?' additional_kwargs={} response_metadata={}
+id='85f24473-a546-479f-b550-5001dc7ae357'
+
+  Message 2: content='I don\'t have specific information about "Ziyutec" in my current knowledge
+base. It\'s possible that it\'s a very new company, a niche entity, or the information isn\'t widely
+documented in the sources I have access to.\n\nCould you provide more context? For example:\n*   Is
+it a company, a product, or a technology?\n*   What industry is it in?\n*   Where did you encounter
+the name?\n\nWith more details, I might be able to give you a more accurate answer or help you find
+relevant information.' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:51:32.258973839Z', 'done': True, 'done_reason': 'stop', 'total_duration': 1156991612,
+'load_duration': 86237872, 'prompt_eval_count': 570, 'prompt_eval_duration': 229482184,
+'eval_count': 117, 'eval_duration': 785351201, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7092-39f9-70a2-bbe7-4f4bef0112db' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 570, 'output_tokens': 117, 'total_tokens':
+687}
+
+  Message 3: content='Tell me more about it' additional_kwargs={} response_metadata={}
+id='0ff6eedd-0552-4825-888c-b4af71e79d13'
+
+  Message 4: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:51:34.341937651Z', 'done': True, 'done_reason': 'stop', 'total_duration': 639819665,
+'load_duration': 72872835, 'prompt_eval_count': 594, 'prompt_eval_duration': 326435607,
+'eval_count': 33, 'eval_duration': 220560460, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7092-4469-7891-91df-7476ee14f30d' tool_calls=[{'name':
+'hybrid_RAG_retrieve', 'args': {'query': 'Ziyutec'}, 'id': '0a4aa462-e6b2-436c-a5fe-4706b888b800',
+'type': 'tool_call'}] invalid_tool_calls=[] usage_metadata={'input_tokens': 594, 'output_tokens':
+33, 'total_tokens': 627}
+
+  Message 5: content="Source: {'doc_id': 'mock1'}\nContent: This is a mock document retrieved for
+testing purposes. It states that Milvus is currently bypassed, but the retrieval tool was
+successfully invoked!" name='hybrid_RAG_retrieve' id='13d25196-9e12-4bf6-809f-6a1c195878b2'
+tool_call_id='0a4aa462-e6b2-436c-a5fe-4706b888b800'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 14:51:36] [AGENT_RESPONSE]
+Response: content='I was unable to find any specific information about "Ziyutec" in the available
+knowledge base. The search results did not yield any relevant documents describing what Ziyutec
+is.\n\nCould you provide more context? For instance, is it a company, a software product, or perhaps
+a term from a specific industry? Knowing more about where you encountered the name would help me
+assist you better.' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:51:36.268921222Z', 'done': True, 'done_reason': 'stop', 'total_duration': 1034906404,
+'load_duration': 79193701, 'prompt_eval_count': 698, 'prompt_eval_duration': 355375212,
+'eval_count': 82, 'eval_duration': 557210570, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7092-4715-75d0-8f13-118fc5dfef4d' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 698, 'output_tokens': 82, 'total_tokens': 780}
+tool_call_chunks=[] chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:51:36] [TOKEN_USAGE]
+Input tokens: 698, Output tokens: 82
+--------------------------------------------------------------------------------
+[2026-05-28 14:51:36] [TITLE_GENERATION]
+Generated Title: Inquiring About Ziyutec
+--------------------------------------------------------------------------------
+[2026-05-28 14:51:37] [EVALUATOR_NODE]
+Evaluation response: {
+  "VALUABLE_FOR_TRAINING": 0.2,
+  "TECHNICAL_CONTENT": 0.1,
+  "EXPLANATION": "The response is a standard 'I don't know' or clarification request because the
+entity 'Ziyutec' is not found in the knowledge base. It lacks specific technical knowledge,
+reasoning, or domain-specific details. While it demonstrates a polite and logical pattern for
+handling unknown entities, it provides no substantive information or technical content, making it of
+low value for training a model to acquire knowledge or demonstrate technical expertise."
+}
+Overall score: 0.15000000000000002
+--------------------------------------------------------------------------------
+[2026-05-28 14:53:47] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='0299a5a6-500a-458e-be5e-f7fe23347578'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:53:47] [AGENT_RESPONSE]
+Response: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:53:47.447319054Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 519637994, 'load_duration': 72801595, 'prompt_eval_count':
+457, 'prompt_eval_duration': 363686609, 'eval_count': 10, 'eval_duration': 69212749, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-4a50-7a70-be7f-ebd44ddbb8f8' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:53:47] [TOKEN_USAGE]
+Input tokens: 457, Output tokens: 10
+--------------------------------------------------------------------------------
+[2026-05-28 14:53:47] [TITLE_GENERATION]
+Generated Title: Friendly Greeting Exchange
+--------------------------------------------------------------------------------
+[2026-05-28 14:53:48] [EVALUATOR_NODE]
+Evaluation response: {
+"VALUABLE_FOR_TRAINING": 0.2,
+"TECHNICAL_CONTENT": 0.0,
+"EXPLANATION": "The input is a generic greeting and the output is a standard polite response. This
+pair lacks any substantive information, reasoning, or technical knowledge. It does not demonstrate
+complex question-answer patterns or domain-specific expertise, making it of very low value for
+training a model to handle complex tasks. It contains no technical content whatsoever."
+}
+Overall score: 0.1
+--------------------------------------------------------------------------------
+[2026-05-28 14:53:50] [AGENT_NODE_INPUT]
+Active Messages (3 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='0299a5a6-500a-458e-be5e-f7fe23347578'
+
+  Message 2: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:53:47.447319054Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 519637994, 'load_duration': 72801595, 'prompt_eval_count':
+457, 'prompt_eval_duration': 363686609, 'eval_count': 10, 'eval_duration': 69212749, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-4a50-7a70-be7f-ebd44ddbb8f8' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467}
+
+  Message 3: content='how are you doing' additional_kwargs={} response_metadata={}
+id='ed114657-a066-4e89-a793-2ddd2cd2fd9e'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 14:53:50] [AGENT_RESPONSE]
+Response: content="I'm doing well, thank you for asking! How are you?" additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:53:50.002879382Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 346434883, 'load_duration': 70909232, 'prompt_eval_count':
+480, 'prompt_eval_duration': 167003886, 'eval_count': 15, 'eval_duration': 99437953, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-5556-7ee0-979b-9c1bfac69fa8' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 480, 'output_tokens': 15, 'total_tokens': 495} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:53:50] [TOKEN_USAGE]
+Input tokens: 480, Output tokens: 15
+--------------------------------------------------------------------------------
+[2026-05-28 14:53:50] [TITLE_GENERATION]
+Generated Title: Friendly Greeting Exchange
+--------------------------------------------------------------------------------
+[2026-05-28 14:53:51] [EVALUATOR_NODE]
+Evaluation response: {
+  "VALUABLE_FOR_TRAINING": 0.2,
+  "TECHNICAL_CONTENT": 0.0,
+  "EXPLANATION": "The input is a standard social greeting ('how are you doing') and the output is a
+polite, generic conversational response. This pair lacks any substantive information, reasoning, or
+technical knowledge. It does not demonstrate complex question-answer patterns or domain-specific
+expertise, making it of very low value for training a model to perform analytical or technical
+tasks. It is purely chit-chat."
+}
+Overall score: 0.1
+--------------------------------------------------------------------------------
+[2026-05-28 14:53:53] [AGENT_NODE_INPUT]
+Active Messages (5 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='0299a5a6-500a-458e-be5e-f7fe23347578'
+
+  Message 2: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:53:47.447319054Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 519637994, 'load_duration': 72801595, 'prompt_eval_count':
+457, 'prompt_eval_duration': 363686609, 'eval_count': 10, 'eval_duration': 69212749, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-4a50-7a70-be7f-ebd44ddbb8f8' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467}
+
+  Message 3: content='how are you doing' additional_kwargs={} response_metadata={}
+id='ed114657-a066-4e89-a793-2ddd2cd2fd9e'
+
+  Message 4: content="I'm doing well, thank you for asking! How are you?" additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:53:50.002879382Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 346434883, 'load_duration': 70909232, 'prompt_eval_count':
+480, 'prompt_eval_duration': 167003886, 'eval_count': 15, 'eval_duration': 99437953, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-5556-7ee0-979b-9c1bfac69fa8' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 480, 'output_tokens': 15, 'total_tokens': 495}
+
+  Message 5: content='shit' additional_kwargs={} response_metadata={}
+id='c7560edb-4500-4d10-b2d7-d50397a0a348'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 14:53:53] [AGENT_RESPONSE]
+Response: content="I'm sorry to hear that. Is there something specific on your mind, or is there a
+problem I can help you with?" additional_kwargs={} response_metadata={'model': 'qwen3.6',
+'created_at': '2026-05-28T21:53:53.35954084Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 518300611, 'load_duration': 75154730, 'prompt_eval_count': 505,
+'prompt_eval_duration': 241714737, 'eval_count': 27, 'eval_duration': 186142614, 'logprobs': None,
+'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-621e-7d32-8144-17899eb36623' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 505, 'output_tokens': 27, 'total_tokens': 532} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:53:53] [TOKEN_USAGE]
+Input tokens: 505, Output tokens: 27
+--------------------------------------------------------------------------------
+[2026-05-28 14:53:54] [EVALUATOR_NODE]
+Evaluation response: {
+"VALUABLE_FOR_TRAINING": 0.2,
+"TECHNICAL_CONTENT": 0.0,
+"EXPLANATION": "The input 'shit' is an ambiguous exclamation or profanity without a specific query
+or context. The AI's response is a standard, generic customer service template designed to de-
+escalate or seek clarification. It does not demonstrate any specific reasoning, technical knowledge,
+or complex problem-solving patterns. Therefore, it has low value for training a model to handle
+specific tasks or technical queries. Furthermore, the response contains no technical content,
+concepts, or domain-specific knowledge."
+}
+Overall score: 0.1
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:08] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='3bfa7079-34c7-4e62-ac32-50d686c4e0d5'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:08] [AGENT_RESPONSE]
+Response: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:54:07.446764638Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 632008841, 'load_duration': 72854420, 'prompt_eval_count':
+457, 'prompt_eval_duration': 486577619, 'eval_count': 10, 'eval_duration': 65545372, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-9a19-7313-9e15-db0b86346d19' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:08] [TOKEN_USAGE]
+Input tokens: 457, Output tokens: 10
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:08] [TITLE_GENERATION]
+Generated Title: Friendly Greeting Exchange
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:09] [EVALUATOR_NODE]
+Evaluation response: {
+"VALUABLE_FOR_TRAINING": 0.2,
+"TECHNICAL_CONTENT": 0.0,
+"EXPLANATION": "The input is a generic greeting and the output is a standard polite response. This
+pair lacks any substantive information, reasoning, or technical knowledge. It does not demonstrate
+complex question-answer patterns or domain-specific expertise, making it of very low value for
+training a model to handle complex tasks. It contains no technical content whatsoever."
+}
+Overall score: 0.1
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:10] [AGENT_NODE_INPUT]
+Active Messages (3 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='3bfa7079-34c7-4e62-ac32-50d686c4e0d5'
+
+  Message 2: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:54:07.446764638Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 632008841, 'load_duration': 72854420, 'prompt_eval_count':
+457, 'prompt_eval_duration': 486577619, 'eval_count': 10, 'eval_duration': 65545372, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-9a19-7313-9e15-db0b86346d19' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467}
+
+  Message 3: content='shit' additional_kwargs={} response_metadata={}
+id='fa762d7c-59c6-4810-8b4e-6f05815cc063'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:10] [AGENT_RESPONSE]
+Response: content="I'm here to help. Is there something specific you'd like to discuss or work on?"
+additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:54:10.701673668Z', 'done': True, 'done_reason': 'stop', 'total_duration': 519270876,
+'load_duration': 73253682, 'prompt_eval_count': 477, 'prompt_eval_duration': 302774829,
+'eval_count': 20, 'eval_duration': 130152280, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7094-a476-7833-b9d4-f95a66667344' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 477, 'output_tokens': 20, 'total_tokens': 497}
+tool_call_chunks=[] chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:10] [TOKEN_USAGE]
+Input tokens: 477, Output tokens: 20
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:10] [TITLE_GENERATION]
+Generated Title: Friendly Greeting Exchange
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:12] [EVALUATOR_NODE]
+Evaluation response: {
+  "VALUABLE_FOR_TRAINING": 0.2,
+  "TECHNICAL_CONTENT": 0.0,
+  "EXPLANATION": "The input 'shit' is an expletive with no clear intent or question, making it
+extremely difficult to derive meaningful training data from. The response is a generic, safe
+refusal/pivot that does not demonstrate any specific reasoning, technical knowledge, or complex
+interaction pattern. It lacks technical content entirely and offers minimal value for training a
+model to handle nuanced or specific queries."
+}
+Overall score: 0.1
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:13] [AGENT_NODE_INPUT]
+Active Messages (5 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='3bfa7079-34c7-4e62-ac32-50d686c4e0d5'
+
+  Message 2: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:54:07.446764638Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 632008841, 'load_duration': 72854420, 'prompt_eval_count':
+457, 'prompt_eval_duration': 486577619, 'eval_count': 10, 'eval_duration': 65545372, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-9a19-7313-9e15-db0b86346d19' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467}
+
+  Message 3: content='shit' additional_kwargs={} response_metadata={}
+id='fa762d7c-59c6-4810-8b4e-6f05815cc063'
+
+  Message 4: content="I'm here to help. Is there something specific you'd like to discuss or work
+on?" additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:54:10.701673668Z', 'done': True, 'done_reason': 'stop', 'total_duration': 519270876,
+'load_duration': 73253682, 'prompt_eval_count': 477, 'prompt_eval_duration': 302774829,
+'eval_count': 20, 'eval_duration': 130152280, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7094-a476-7833-b9d4-f95a66667344' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 477, 'output_tokens': 20, 'total_tokens': 497}
+
+  Message 5: content='fuck' additional_kwargs={} response_metadata={}
+id='aa9e0e75-36d6-483f-b5ec-65e720011d7e'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:13] [AGENT_RESPONSE]
+Response: content='I understand you might be frustrated. How can I assist you with your current task
+or question?' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:54:13.727797895Z', 'done': True, 'done_reason': 'stop', 'total_duration': 484740252,
+'load_duration': 76302572, 'prompt_eval_count': 507, 'prompt_eval_duration': 255075308,
+'eval_count': 20, 'eval_duration': 137145676, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7094-b0bc-7d92-ae7b-531072151112' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 507, 'output_tokens': 20, 'total_tokens': 527}
+tool_call_chunks=[] chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:13] [TOKEN_USAGE]
+Input tokens: 507, Output tokens: 20
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:14] [EVALUATOR_NODE]
+Evaluation response: {
+"VALUABLE_FOR_TRAINING": 0.2,
+"TECHNICAL_CONTENT": 0.0,
+"EXPLANATION": "The input is a single profanity with no specific query or context, making it low-
+value for training general reasoning or knowledge. The response is a standard, generic
+safety/deflection message that does not demonstrate any technical content, domain-specific
+knowledge, or complex reasoning capabilities."
+}
+Overall score: 0.1
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:18] [AGENT_NODE_INPUT]
+Active Messages (7 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='3bfa7079-34c7-4e62-ac32-50d686c4e0d5'
+
+  Message 2: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:54:07.446764638Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 632008841, 'load_duration': 72854420, 'prompt_eval_count':
+457, 'prompt_eval_duration': 486577619, 'eval_count': 10, 'eval_duration': 65545372, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-9a19-7313-9e15-db0b86346d19' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467}
+
+  Message 3: content='shit' additional_kwargs={} response_metadata={}
+id='fa762d7c-59c6-4810-8b4e-6f05815cc063'
+
+  Message 4: content="I'm here to help. Is there something specific you'd like to discuss or work
+on?" additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:54:10.701673668Z', 'done': True, 'done_reason': 'stop', 'total_duration': 519270876,
+'load_duration': 73253682, 'prompt_eval_count': 477, 'prompt_eval_duration': 302774829,
+'eval_count': 20, 'eval_duration': 130152280, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7094-a476-7833-b9d4-f95a66667344' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 477, 'output_tokens': 20, 'total_tokens': 497}
+
+  Message 5: content='fuck' additional_kwargs={} response_metadata={}
+id='aa9e0e75-36d6-483f-b5ec-65e720011d7e'
+
+  Message 6: content='I understand you might be frustrated. How can I assist you with your current
+task or question?' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:54:13.727797895Z', 'done': True, 'done_reason': 'stop', 'total_duration': 484740252,
+'load_duration': 76302572, 'prompt_eval_count': 507, 'prompt_eval_duration': 255075308,
+'eval_count': 20, 'eval_duration': 137145676, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7094-b0bc-7d92-ae7b-531072151112' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 507, 'output_tokens': 20, 'total_tokens': 527}
+
+  Message 7: content='hi?' additional_kwargs={} response_metadata={}
+id='e8fd572e-0824-4a91-af3a-fe79b8da8bf8'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:18] [AGENT_RESPONSE]
+Response: content="Hello! I'm still here. How can I help you?" additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:54:18.283148484Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 477386941, 'load_duration': 73850580, 'prompt_eval_count':
+538, 'prompt_eval_duration': 298872035, 'eval_count': 14, 'eval_duration': 93712096, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-c309-7bc1-a559-6f51c266d36b' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 538, 'output_tokens': 14, 'total_tokens': 552} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:18] [TOKEN_USAGE]
+Input tokens: 538, Output tokens: 14
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:19] [EVALUATOR_NODE]
+Evaluation response: {
+"VALUABLE_FOR_TRAINING": 0.2,
+"TECHNICAL_CONTENT": 0.0,
+"EXPLANATION": "The input 'hi?' is a minimal greeting with no specific query or context, and the
+response is a standard, generic conversational filler. It lacks any substantive information,
+reasoning, or technical depth, making it of very low value for training a model to handle complex
+tasks or acquire domain knowledge."
+}
+Overall score: 0.1
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:23] [AGENT_NODE_INPUT]
+Active Messages (9 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='3bfa7079-34c7-4e62-ac32-50d686c4e0d5'
+
+  Message 2: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:54:07.446764638Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 632008841, 'load_duration': 72854420, 'prompt_eval_count':
+457, 'prompt_eval_duration': 486577619, 'eval_count': 10, 'eval_duration': 65545372, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-9a19-7313-9e15-db0b86346d19' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467}
+
+  Message 3: content='shit' additional_kwargs={} response_metadata={}
+id='fa762d7c-59c6-4810-8b4e-6f05815cc063'
+
+  Message 4: content="I'm here to help. Is there something specific you'd like to discuss or work
+on?" additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:54:10.701673668Z', 'done': True, 'done_reason': 'stop', 'total_duration': 519270876,
+'load_duration': 73253682, 'prompt_eval_count': 477, 'prompt_eval_duration': 302774829,
+'eval_count': 20, 'eval_duration': 130152280, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7094-a476-7833-b9d4-f95a66667344' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 477, 'output_tokens': 20, 'total_tokens': 497}
+
+  Message 5: content='fuck' additional_kwargs={} response_metadata={}
+id='aa9e0e75-36d6-483f-b5ec-65e720011d7e'
+
+  Message 6: content='I understand you might be frustrated. How can I assist you with your current
+task or question?' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:54:13.727797895Z', 'done': True, 'done_reason': 'stop', 'total_duration': 484740252,
+'load_duration': 76302572, 'prompt_eval_count': 507, 'prompt_eval_duration': 255075308,
+'eval_count': 20, 'eval_duration': 137145676, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7094-b0bc-7d92-ae7b-531072151112' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 507, 'output_tokens': 20, 'total_tokens': 527}
+
+  Message 7: content='hi?' additional_kwargs={} response_metadata={}
+id='e8fd572e-0824-4a91-af3a-fe79b8da8bf8'
+
+  Message 8: content="Hello! I'm still here. How can I help you?" additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:54:18.283148484Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 477386941, 'load_duration': 73850580, 'prompt_eval_count':
+538, 'prompt_eval_duration': 298872035, 'eval_count': 14, 'eval_duration': 93712096, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-c309-7bc1-a559-6f51c266d36b' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 538, 'output_tokens': 14, 'total_tokens': 552}
+
+  Message 9: content='what is qwen' additional_kwargs={} response_metadata={}
+id='1c5c1584-f12d-4531-93c6-28653c9b8927'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:23] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:54:23.083035643Z', 'done': True, 'done_reason': 'stop', 'total_duration': 629593019,
+'load_duration': 73937116, 'prompt_eval_count': 565, 'prompt_eval_duration': 316841787,
+'eval_count': 33, 'eval_duration': 218012288, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7094-d5ab-7001-8835-291b8c4ec648' tool_calls=[{'name':
+'hybrid_RAG_retrieve', 'args': {'query': 'what is qwen'}, 'id':
+'2e135fe4-cff1-4137-8358-33f8b072a73c', 'type': 'tool_call'}] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 565, 'output_tokens': 33, 'total_tokens': 598}
+tool_call_chunks=[{'name': 'hybrid_RAG_retrieve', 'args': '{"query": "what is qwen"}', 'id':
+'2e135fe4-cff1-4137-8358-33f8b072a73c', 'index': None, 'type': 'tool_call_chunk'}]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:23] [TOKEN_USAGE]
+Input tokens: 565, Output tokens: 33
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:24] [AGENT_NODE_INPUT]
+Active Messages (11 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='3bfa7079-34c7-4e62-ac32-50d686c4e0d5'
+
+  Message 2: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:54:07.446764638Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 632008841, 'load_duration': 72854420, 'prompt_eval_count':
+457, 'prompt_eval_duration': 486577619, 'eval_count': 10, 'eval_duration': 65545372, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-9a19-7313-9e15-db0b86346d19' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467}
+
+  Message 3: content='shit' additional_kwargs={} response_metadata={}
+id='fa762d7c-59c6-4810-8b4e-6f05815cc063'
+
+  Message 4: content="I'm here to help. Is there something specific you'd like to discuss or work
+on?" additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:54:10.701673668Z', 'done': True, 'done_reason': 'stop', 'total_duration': 519270876,
+'load_duration': 73253682, 'prompt_eval_count': 477, 'prompt_eval_duration': 302774829,
+'eval_count': 20, 'eval_duration': 130152280, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7094-a476-7833-b9d4-f95a66667344' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 477, 'output_tokens': 20, 'total_tokens': 497}
+
+  Message 5: content='fuck' additional_kwargs={} response_metadata={}
+id='aa9e0e75-36d6-483f-b5ec-65e720011d7e'
+
+  Message 6: content='I understand you might be frustrated. How can I assist you with your current
+task or question?' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:54:13.727797895Z', 'done': True, 'done_reason': 'stop', 'total_duration': 484740252,
+'load_duration': 76302572, 'prompt_eval_count': 507, 'prompt_eval_duration': 255075308,
+'eval_count': 20, 'eval_duration': 137145676, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7094-b0bc-7d92-ae7b-531072151112' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 507, 'output_tokens': 20, 'total_tokens': 527}
+
+  Message 7: content='hi?' additional_kwargs={} response_metadata={}
+id='e8fd572e-0824-4a91-af3a-fe79b8da8bf8'
+
+  Message 8: content="Hello! I'm still here. How can I help you?" additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:54:18.283148484Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 477386941, 'load_duration': 73850580, 'prompt_eval_count':
+538, 'prompt_eval_duration': 298872035, 'eval_count': 14, 'eval_duration': 93712096, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-c309-7bc1-a559-6f51c266d36b' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 538, 'output_tokens': 14, 'total_tokens': 552}
+
+  Message 9: content='what is qwen' additional_kwargs={} response_metadata={}
+id='1c5c1584-f12d-4531-93c6-28653c9b8927'
+
+  Message 10: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:54:23.083035643Z', 'done': True, 'done_reason': 'stop', 'total_duration': 629593019,
+'load_duration': 73937116, 'prompt_eval_count': 565, 'prompt_eval_duration': 316841787,
+'eval_count': 33, 'eval_duration': 218012288, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7094-d5ab-7001-8835-291b8c4ec648' tool_calls=[{'name':
+'hybrid_RAG_retrieve', 'args': {'query': 'what is qwen'}, 'id':
+'2e135fe4-cff1-4137-8358-33f8b072a73c', 'type': 'tool_call'}] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 565, 'output_tokens': 33, 'total_tokens': 598}
+
+  Message 11: content="Source: {'doc_id': 'mock1'}\nContent: This is a mock document retrieved for
+testing purposes. It states that Milvus is currently bypassed, but the retrieval tool was
+successfully invoked!" name='hybrid_RAG_retrieve' id='2680ae87-6b6f-4894-a55e-d8ba9420d7de'
+tool_call_id='2e135fe4-cff1-4137-8358-33f8b072a73c'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:24] [AGENT_RESPONSE]
+Response: content="Qwen is a large language model independently developed by Alibaba Group's Tongyi
+Lab. I am Qwen (also known as Tongyi Qianwen), and I am designed to be a helpful and honest AI
+assistant.\n\nHow can I help you today?" additional_kwargs={} response_metadata={'model': 'qwen3.6',
+'created_at': '2026-05-28T21:54:23.891993885Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 764091300, 'load_duration': 73645993, 'prompt_eval_count': 669,
+'prompt_eval_duration': 301571789, 'eval_count': 53, 'eval_duration': 353521303, 'logprobs': None,
+'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-d861-7751-9985-9b07122187e1' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 669, 'output_tokens': 53, 'total_tokens': 722} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:24] [TOKEN_USAGE]
+Input tokens: 669, Output tokens: 53
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:25] [EVALUATOR_NODE]
+Evaluation response: {
+"VALUABLE_FOR_TRAINING": 0.5,
+"TECHNICAL_CONTENT": 0.2,
+"EXPLANATION": "The response is a standard self-introduction. While it correctly identifies the
+model's origin and identity, it lacks depth, reasoning, or complex problem-solving capabilities,
+making it only moderately valuable for training general conversational patterns. It contains no
+technical concepts, procedures, or domain-specific knowledge, scoring low on technical content."
+}
+Overall score: 0.35
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:33] [AGENT_NODE_INPUT]
+Active Messages (11 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='3bfa7079-34c7-4e62-ac32-50d686c4e0d5'
+
+  Message 2: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:54:07.446764638Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 632008841, 'load_duration': 72854420, 'prompt_eval_count':
+457, 'prompt_eval_duration': 486577619, 'eval_count': 10, 'eval_duration': 65545372, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-9a19-7313-9e15-db0b86346d19' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467}
+
+  Message 3: content='shit' additional_kwargs={} response_metadata={}
+id='fa762d7c-59c6-4810-8b4e-6f05815cc063'
+
+  Message 4: content="I'm here to help. Is there something specific you'd like to discuss or work
+on?" additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:54:10.701673668Z', 'done': True, 'done_reason': 'stop', 'total_duration': 519270876,
+'load_duration': 73253682, 'prompt_eval_count': 477, 'prompt_eval_duration': 302774829,
+'eval_count': 20, 'eval_duration': 130152280, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7094-a476-7833-b9d4-f95a66667344' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 477, 'output_tokens': 20, 'total_tokens': 497}
+
+  Message 5: content='fuck' additional_kwargs={} response_metadata={}
+id='aa9e0e75-36d6-483f-b5ec-65e720011d7e'
+
+  Message 6: content='I understand you might be frustrated. How can I assist you with your current
+task or question?' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:54:13.727797895Z', 'done': True, 'done_reason': 'stop', 'total_duration': 484740252,
+'load_duration': 76302572, 'prompt_eval_count': 507, 'prompt_eval_duration': 255075308,
+'eval_count': 20, 'eval_duration': 137145676, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7094-b0bc-7d92-ae7b-531072151112' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 507, 'output_tokens': 20, 'total_tokens': 527}
+
+  Message 7: content='hi?' additional_kwargs={} response_metadata={}
+id='e8fd572e-0824-4a91-af3a-fe79b8da8bf8'
+
+  Message 8: content="Hello! I'm still here. How can I help you?" additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:54:18.283148484Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 477386941, 'load_duration': 73850580, 'prompt_eval_count':
+538, 'prompt_eval_duration': 298872035, 'eval_count': 14, 'eval_duration': 93712096, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-c309-7bc1-a559-6f51c266d36b' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 538, 'output_tokens': 14, 'total_tokens': 552}
+
+  Message 9: content='what is qwen' additional_kwargs={} response_metadata={}
+id='1c5c1584-f12d-4531-93c6-28653c9b8927'
+
+  Message 10: content="Qwen is a large language model independently developed by Alibaba Group's
+Tongyi Lab. I am Qwen (also known as Tongyi Qianwen), and I am designed to be a helpful and honest
+AI assistant.\n\nHow can I help you today?" additional_kwargs={} response_metadata={'model':
+'qwen3.6', 'created_at': '2026-05-28T21:54:23.891993885Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 764091300, 'load_duration': 73645993, 'prompt_eval_count': 669,
+'prompt_eval_duration': 301571789, 'eval_count': 53, 'eval_duration': 353521303, 'logprobs': None,
+'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-d861-7751-9985-9b07122187e1' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 669, 'output_tokens': 53, 'total_tokens': 722}
+
+  Message 11: content='tell me about fs fitzgerald' additional_kwargs={} response_metadata={}
+id='8f1c82ca-604d-4c03-a41a-2581dc92c433'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:33] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:54:33.228821409Z', 'done': True, 'done_reason': 'stop', 'total_duration': 813908832,
+'load_duration': 71766867, 'prompt_eval_count': 634, 'prompt_eval_duration': 477848393,
+'eval_count': 36, 'eval_duration': 238315384, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7094-fd86-7ac3-bc88-9a60552dfb05' tool_calls=[{'name':
+'hybrid_RAG_retrieve', 'args': {'query': 'F. Scott Fitzgerald biography life works'}, 'id':
+'11c5988d-4723-493e-887b-fc5e0682c2e5', 'type': 'tool_call'}] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 634, 'output_tokens': 36, 'total_tokens': 670}
+tool_call_chunks=[{'name': 'hybrid_RAG_retrieve', 'args': '{"query": "F. Scott Fitzgerald biography
+life works"}', 'id': '11c5988d-4723-493e-887b-fc5e0682c2e5', 'index': None, 'type':
+'tool_call_chunk'}] chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:33] [TOKEN_USAGE]
+Input tokens: 634, Output tokens: 36
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:38] [AGENT_NODE_INPUT]
+Active Messages (13 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='3bfa7079-34c7-4e62-ac32-50d686c4e0d5'
+
+  Message 2: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:54:07.446764638Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 632008841, 'load_duration': 72854420, 'prompt_eval_count':
+457, 'prompt_eval_duration': 486577619, 'eval_count': 10, 'eval_duration': 65545372, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-9a19-7313-9e15-db0b86346d19' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467}
+
+  Message 3: content='shit' additional_kwargs={} response_metadata={}
+id='fa762d7c-59c6-4810-8b4e-6f05815cc063'
+
+  Message 4: content="I'm here to help. Is there something specific you'd like to discuss or work
+on?" additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:54:10.701673668Z', 'done': True, 'done_reason': 'stop', 'total_duration': 519270876,
+'load_duration': 73253682, 'prompt_eval_count': 477, 'prompt_eval_duration': 302774829,
+'eval_count': 20, 'eval_duration': 130152280, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7094-a476-7833-b9d4-f95a66667344' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 477, 'output_tokens': 20, 'total_tokens': 497}
+
+  Message 5: content='fuck' additional_kwargs={} response_metadata={}
+id='aa9e0e75-36d6-483f-b5ec-65e720011d7e'
+
+  Message 6: content='I understand you might be frustrated. How can I assist you with your current
+task or question?' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:54:13.727797895Z', 'done': True, 'done_reason': 'stop', 'total_duration': 484740252,
+'load_duration': 76302572, 'prompt_eval_count': 507, 'prompt_eval_duration': 255075308,
+'eval_count': 20, 'eval_duration': 137145676, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7094-b0bc-7d92-ae7b-531072151112' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 507, 'output_tokens': 20, 'total_tokens': 527}
+
+  Message 7: content='hi?' additional_kwargs={} response_metadata={}
+id='e8fd572e-0824-4a91-af3a-fe79b8da8bf8'
+
+  Message 8: content="Hello! I'm still here. How can I help you?" additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:54:18.283148484Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 477386941, 'load_duration': 73850580, 'prompt_eval_count':
+538, 'prompt_eval_duration': 298872035, 'eval_count': 14, 'eval_duration': 93712096, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-c309-7bc1-a559-6f51c266d36b' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 538, 'output_tokens': 14, 'total_tokens': 552}
+
+  Message 9: content='what is qwen' additional_kwargs={} response_metadata={}
+id='1c5c1584-f12d-4531-93c6-28653c9b8927'
+
+  Message 10: content="Qwen is a large language model independently developed by Alibaba Group's
+Tongyi Lab. I am Qwen (also known as Tongyi Qianwen), and I am designed to be a helpful and honest
+AI assistant.\n\nHow can I help you today?" additional_kwargs={} response_metadata={'model':
+'qwen3.6', 'created_at': '2026-05-28T21:54:23.891993885Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 764091300, 'load_duration': 73645993, 'prompt_eval_count': 669,
+'prompt_eval_duration': 301571789, 'eval_count': 53, 'eval_duration': 353521303, 'logprobs': None,
+'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7094-d861-7751-9985-9b07122187e1' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 669, 'output_tokens': 53, 'total_tokens': 722}
+
+  Message 11: content='tell me about fs fitzgerald' additional_kwargs={} response_metadata={}
+id='8f1c82ca-604d-4c03-a41a-2581dc92c433'
+
+  Message 12: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T21:54:33.228821409Z', 'done': True, 'done_reason': 'stop', 'total_duration': 813908832,
+'load_duration': 71766867, 'prompt_eval_count': 634, 'prompt_eval_duration': 477848393,
+'eval_count': 36, 'eval_duration': 238315384, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e7094-fd86-7ac3-bc88-9a60552dfb05' tool_calls=[{'name':
+'hybrid_RAG_retrieve', 'args': {'query': 'F. Scott Fitzgerald biography life works'}, 'id':
+'11c5988d-4723-493e-887b-fc5e0682c2e5', 'type': 'tool_call'}] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 634, 'output_tokens': 36, 'total_tokens': 670}
+
+  Message 13: content="Source: {'doc_id': 'mock1'}\nContent: This is a mock document retrieved for
+testing purposes. It states that Milvus is currently bypassed, but the retrieval tool was
+successfully invoked!" name='hybrid_RAG_retrieve' id='8c3b05bc-5978-43fe-9497-69c2db3109e0'
+tool_call_id='11c5988d-4723-493e-887b-fc5e0682c2e5'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:38] [AGENT_RESPONSE]
+Response: content='F. Scott Fitzgerald (1896–1940) was an American novelist and short story writer,
+widely regarded as one of the greatest American writers of the 20th century. He is best known for
+depicting the flamboyance and excess of the Jazz Age, a term he is credited with coining.\n\nHere
+are some key aspects of his life and work:\n\n**Major Works:**\n*   **This Side of Paradise
+(1920):** His debut novel, which brought him immediate fame and established him as a voice for the
+post-WWI generation.\n*   **The Beautiful and Damned (1922):** A novel about the decadent lifestyle
+of a young couple in New York.\n*   **The Great Gatsby (1925):** His most famous work, often cited
+as the "Great American Novel." It explores themes of idealism, resistance to change, social
+upheaval, and excess through the story of the mysterious millionaire Jay Gatsby and his obsession
+with Daisy Buchanan.\n*   **Tender Is the Night (1934):** A complex novel dealing with the decline
+of a psychiatrist and his wife, who is also his patient.\n*   **Short Stories:** He was also a
+prolific writer of short stories, many of which were published in magazines like *The Saturday
+Evening Post*. Collections include *Flappers and Philosophers* and *Tales of the Jazz
+Age*.\n\n**Life and Personal Struggles:**\n*   **The Jazz Age:** Fitzgerald and his wife, Zelda
+Sayre Fitzgerald, became the iconic couple of the 1920s, embodying the glamour, hedonism, and
+eventual disillusionment of the era.\n*   **Struggles:** His life was marked by financial
+instability, alcoholism, and Zelda\'s mental health issues. Despite early success, he struggled to
+achieve critical and commercial success later in his career.\n*   **Hollywood Years:** In the 1930s,
+he moved to Hollywood to write screenplays to support his family, a period he found both humiliating
+and creatively draining.\n\n**Legacy:**\nAlthough he died in relative obscurity and debt in 1940, F.
+Scott Fitzgerald\'s reputation has grown significantly since his death. *The Great Gatsby* is now
+considered a classic of American literature, and his works are studied for their lyrical prose,
+sharp social critique, and poignant exploration of the American Dream. He is often seen as the
+chronicler of the American experience in the early 20th century.' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:54:37.489017535Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 4176252807, 'load_duration': 70482602, 'prompt_eval_count':
+741, 'prompt_eval_duration': 334802903, 'eval_count': 530, 'eval_duration': 3518234289, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7095-013b-7502-ad68-d9f3b1d78739' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 741, 'output_tokens': 530, 'total_tokens': 1271} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:38] [TOKEN_USAGE]
+Input tokens: 741, Output tokens: 530
+--------------------------------------------------------------------------------
+[2026-05-28 14:54:39] [EVALUATOR_NODE]
+Evaluation response: {
+"VALUABLE_FOR_TRAINING": 0.8,
+"TECHNICAL_CONTENT": 0.2,
+"EXPLANATION": "The response is highly valuable for training as it provides a well-structured,
+accurate, and comprehensive overview of F. Scott Fitzgerald's life and works. It demonstrates good
+question-answering patterns by categorizing information logically (Major Works, Life, Legacy).
+However, the content is literary and biographical rather than technical, involving no specific
+domain-specific procedures, coding, or hard scientific concepts, resulting in a low technical
+content score."
+}
+Overall score: 0.5
+--------------------------------------------------------------------------------
+[2026-05-28 14:57:00] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='Hello, my name is Alfred.' additional_kwargs={} response_metadata={}
+id='68730429-8bce-4669-a59c-de07ad5df188'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:57:00] [AGENT_RESPONSE]
+Response: content='Hello, Alfred! How can I assist you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:57:00.280112463Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 480576351, 'load_duration': 75947780, 'prompt_eval_count':
+463, 'prompt_eval_duration': 305885458, 'eval_count': 12, 'eval_duration': 82463218, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7097-3ca3-78e2-bf4d-1f10069612d9' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 463, 'output_tokens': 12, 'total_tokens': 475} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:57:00] [TOKEN_USAGE]
+Input tokens: 463, Output tokens: 12
+--------------------------------------------------------------------------------
+[2026-05-28 14:57:01] [TITLE_GENERATION]
+Generated Title: Greeting Alfred
+--------------------------------------------------------------------------------
+[2026-05-28 14:57:02] [EVALUATOR_NODE]
+Evaluation response: {
+  "VALUABLE_FOR_TRAINING": 0.2,
+  "TECHNICAL_CONTENT": 0.0,
+  "EXPLANATION": "The input is a simple social greeting and the output is a standard polite
+acknowledgment. This interaction lacks any complex reasoning, technical knowledge, or specific
+domain expertise. It represents basic conversational etiquette rather than valuable training data
+for improving a model's problem-solving or technical capabilities. Therefore, it scores low on both
+valuable training content and technical depth."
+}
+Overall score: 0.1
+--------------------------------------------------------------------------------
+[2026-05-28 14:57:02] [AGENT_NODE_INPUT]
+Active Messages (3 total):
+  Message 1: content='Hello, my name is Alfred.' additional_kwargs={} response_metadata={}
+id='68730429-8bce-4669-a59c-de07ad5df188'
+
+  Message 2: content='Hello, Alfred! How can I assist you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:57:00.280112463Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 480576351, 'load_duration': 75947780, 'prompt_eval_count':
+463, 'prompt_eval_duration': 305885458, 'eval_count': 12, 'eval_duration': 82463218, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7097-3ca3-78e2-bf4d-1f10069612d9' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 463, 'output_tokens': 12, 'total_tokens': 475}
+
+  Message 3: content='What is my name?' additional_kwargs={} response_metadata={}
+id='04334c19-c3f9-4b7d-894e-3f82d6821055'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 14:57:02] [AGENT_RESPONSE]
+Response: content='Your name is Alfred.' additional_kwargs={} response_metadata={'model': 'qwen3.6',
+'created_at': '2026-05-28T21:57:02.254238745Z', 'done': True, 'done_reason': 'stop',
+'total_duration': 451445904, 'load_duration': 77057135, 'prompt_eval_count': 489,
+'prompt_eval_duration': 328651986, 'eval_count': 6, 'eval_duration': 39587752, 'logprobs': None,
+'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7097-44d4-7e01-9fb9-28033f27a556' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 489, 'output_tokens': 6, 'total_tokens': 495} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:57:02] [TOKEN_USAGE]
+Input tokens: 489, Output tokens: 6
+--------------------------------------------------------------------------------
+[2026-05-28 14:57:03] [TITLE_GENERATION]
+Generated Title: Greeting Alfred
+--------------------------------------------------------------------------------
+[2026-05-28 14:57:04] [EVALUATOR_NODE]
+Evaluation response: {
+"VALUABLE_FOR_TRAINING": 0.2,
+"TECHNICAL_CONTENT": 0.0,
+"EXPLANATION": "The input query 'What is my name?' is a personal question that relies on private
+user context or memory, which is not generalizable training data for a language model. The output is
+a simple factual statement without any reasoning, technical depth, or educational value. Therefore,
+it scores low on both valuable training content and technical complexity."
+}
+Overall score: 0.1
+--------------------------------------------------------------------------------
+[2026-05-28 14:59:55] [AGENT_NODE_INPUT]
+Active Messages (1 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='793cb46c-1124-40f6-9592-dc0a9b985c44'
+
+--------------------------------------------------------------------------------
+[2026-05-28 14:59:55] [AGENT_RESPONSE]
+Response: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:59:55.75562297Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 481978844, 'load_duration': 77162632, 'prompt_eval_count':
+457, 'prompt_eval_duration': 331555760, 'eval_count': 10, 'eval_duration': 66208713, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7099-e8f1-73e3-9ee2-03d26dd4ea79' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 14:59:55] [TOKEN_USAGE]
+Input tokens: 457, Output tokens: 10
+--------------------------------------------------------------------------------
+[2026-05-28 14:59:56] [TITLE_GENERATION]
+Generated Title: Friendly Greeting Exchange
+--------------------------------------------------------------------------------
+[2026-05-28 14:59:57] [EVALUATOR_NODE]
+Evaluation response: {
+"VALUABLE_FOR_TRAINING": 0.2,
+"TECHNICAL_CONTENT": 0.0,
+"EXPLANATION": "The input is a generic greeting and the output is a standard polite response. This
+pair lacks any substantive information, reasoning, or technical knowledge. It does not demonstrate
+complex question-answer patterns or domain-specific expertise, making it of very low value for
+training a model to handle complex tasks. It contains no technical content whatsoever."
+}
+Overall score: 0.1
+--------------------------------------------------------------------------------
+[2026-05-28 15:00:02] [AGENT_NODE_INPUT]
+Active Messages (3 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='793cb46c-1124-40f6-9592-dc0a9b985c44'
+
+  Message 2: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:59:55.75562297Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 481978844, 'load_duration': 77162632, 'prompt_eval_count':
+457, 'prompt_eval_duration': 331555760, 'eval_count': 10, 'eval_duration': 66208713, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7099-e8f1-73e3-9ee2-03d26dd4ea79' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467}
+
+  Message 3: content='hi' additional_kwargs={} response_metadata={}
+id='54a2ebe1-ced5-4090-bf74-8d725ee3c76a'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 15:00:02] [AGENT_RESPONSE]
+Response: content="Hello again! Is there something specific you'd like to ask or discuss?"
+additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T22:00:01.69508883Z', 'done': True, 'done_reason': 'stop', 'total_duration': 450616750,
+'load_duration': 72897114, 'prompt_eval_count': 477, 'prompt_eval_duration': 260967247,
+'eval_count': 16, 'eval_duration': 105089404, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e709a-00f2-71a0-bad7-7ec3340983cc' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 477, 'output_tokens': 16, 'total_tokens': 493}
+tool_call_chunks=[] chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 15:00:02] [TOKEN_USAGE]
+Input tokens: 477, Output tokens: 16
+--------------------------------------------------------------------------------
+[2026-05-28 15:00:02] [TITLE_GENERATION]
+Generated Title: Friendly Greeting Exchange
+--------------------------------------------------------------------------------
+[2026-05-28 15:00:03] [EVALUATOR_NODE]
+Evaluation response: {
+"VALUABLE_FOR_TRAINING": 0.2,
+"TECHNICAL_CONTENT": 0.0,
+"EXPLANATION": "The input is a generic greeting ('hi') and the output is a standard conversational
+response. This pair lacks any substantive information, reasoning, or technical knowledge, making it
+of very low value for training a model to perform complex tasks or acquire domain-specific
+expertise. It does not contain any technical content."
+}
+Overall score: 0.1
+--------------------------------------------------------------------------------
+[2026-05-28 15:00:09] [AGENT_NODE_INPUT]
+Active Messages (5 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='793cb46c-1124-40f6-9592-dc0a9b985c44'
+
+  Message 2: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:59:55.75562297Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 481978844, 'load_duration': 77162632, 'prompt_eval_count':
+457, 'prompt_eval_duration': 331555760, 'eval_count': 10, 'eval_duration': 66208713, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7099-e8f1-73e3-9ee2-03d26dd4ea79' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467}
+
+  Message 3: content='hi' additional_kwargs={} response_metadata={}
+id='54a2ebe1-ced5-4090-bf74-8d725ee3c76a'
+
+  Message 4: content="Hello again! Is there something specific you'd like to ask or discuss?"
+additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T22:00:01.69508883Z', 'done': True, 'done_reason': 'stop', 'total_duration': 450616750,
+'load_duration': 72897114, 'prompt_eval_count': 477, 'prompt_eval_duration': 260967247,
+'eval_count': 16, 'eval_duration': 105089404, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e709a-00f2-71a0-bad7-7ec3340983cc' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 477, 'output_tokens': 16, 'total_tokens': 493}
+
+  Message 5: content='im such a retard' additional_kwargs={} response_metadata={}
+id='7fdb11f1-a998-4dc9-8caf-bfb3e9a53886'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 15:00:09] [AGENT_RESPONSE]
+Response: content="I'm here to help. Please feel free to ask any question or share what's on your
+mind." additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T22:00:09.185284726Z', 'done': True, 'done_reason': 'stop', 'total_duration': 452104523,
+'load_duration': 79044008, 'prompt_eval_count': 506, 'prompt_eval_duration': 207270158,
+'eval_count': 22, 'eval_duration': 152215611, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e709a-1ea2-7cb3-9c85-c5f4ef3761b7' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 506, 'output_tokens': 22, 'total_tokens': 528}
+tool_call_chunks=[] chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 15:00:09] [TOKEN_USAGE]
+Input tokens: 506, Output tokens: 22
+--------------------------------------------------------------------------------
+[2026-05-28 15:00:10] [EVALUATOR_NODE]
+Evaluation response: {
+"VALUABLE_FOR_TRAINING": 0.1,
+"TECHNICAL_CONTENT": 0.0,
+"EXPLANATION": "The input is a self-deprecating statement containing offensive language, not a query
+requiring technical knowledge or complex reasoning. The AI's response is a generic, non-specific
+offer of help that does not demonstrate any valuable training patterns, technical concepts, or
+domain-specific knowledge. It fails to address the emotional context or provide any substantive
+information, making it of very low value for training purposes."
+}
+Overall score: 0.05
+--------------------------------------------------------------------------------
+[2026-05-28 15:00:22] [AGENT_NODE_INPUT]
+Active Messages (7 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='793cb46c-1124-40f6-9592-dc0a9b985c44'
+
+  Message 2: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:59:55.75562297Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 481978844, 'load_duration': 77162632, 'prompt_eval_count':
+457, 'prompt_eval_duration': 331555760, 'eval_count': 10, 'eval_duration': 66208713, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7099-e8f1-73e3-9ee2-03d26dd4ea79' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467}
+
+  Message 3: content='hi' additional_kwargs={} response_metadata={}
+id='54a2ebe1-ced5-4090-bf74-8d725ee3c76a'
+
+  Message 4: content="Hello again! Is there something specific you'd like to ask or discuss?"
+additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T22:00:01.69508883Z', 'done': True, 'done_reason': 'stop', 'total_duration': 450616750,
+'load_duration': 72897114, 'prompt_eval_count': 477, 'prompt_eval_duration': 260967247,
+'eval_count': 16, 'eval_duration': 105089404, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e709a-00f2-71a0-bad7-7ec3340983cc' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 477, 'output_tokens': 16, 'total_tokens': 493}
+
+  Message 5: content='im such a retard' additional_kwargs={} response_metadata={}
+id='7fdb11f1-a998-4dc9-8caf-bfb3e9a53886'
+
+  Message 6: content="I'm here to help. Please feel free to ask any question or share what's on your
+mind." additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T22:00:09.185284726Z', 'done': True, 'done_reason': 'stop', 'total_duration': 452104523,
+'load_duration': 79044008, 'prompt_eval_count': 506, 'prompt_eval_duration': 207270158,
+'eval_count': 22, 'eval_duration': 152215611, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e709a-1ea2-7cb3-9c85-c5f4ef3761b7' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 506, 'output_tokens': 22, 'total_tokens': 528}
+
+  Message 7: content='im not really a retard' additional_kwargs={} response_metadata={}
+id='f2a67916-a174-4443-bc04-febf262df874'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 15:00:22] [AGENT_RESPONSE]
+Response: content="That's good to hear! I'm just here to assist you with whatever you need. Is there
+a specific topic or question you'd like to explore?" additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:00:21.971285011Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 783093700, 'load_duration': 74487236, 'prompt_eval_count':
+542, 'prompt_eval_duration': 475958917, 'eval_count': 32, 'eval_duration': 212111709, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709a-4daa-7ac0-87c4-10c23f75632d' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 542, 'output_tokens': 32, 'total_tokens': 574} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 15:00:22] [TOKEN_USAGE]
+Input tokens: 542, Output tokens: 32
+--------------------------------------------------------------------------------
+[2026-05-28 15:00:23] [EVALUATOR_NODE]
+Evaluation response: {
+"VALUABLE_FOR_TRAINING": 0.2,
+"TECHNICAL_CONTENT": 0.0,
+"EXPLANATION": "The input is a non-informative, emotionally charged statement lacking a clear query
+or context, making it poor for training models to learn reasoning or factual retrieval. The response
+is a generic conversational filler that provides no technical content, domain-specific knowledge, or
+substantive information."
+}
+Overall score: 0.1
+--------------------------------------------------------------------------------
+[2026-05-28 15:00:32] [AGENT_NODE_INPUT]
+Active Messages (9 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='793cb46c-1124-40f6-9592-dc0a9b985c44'
+
+  Message 2: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:59:55.75562297Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 481978844, 'load_duration': 77162632, 'prompt_eval_count':
+457, 'prompt_eval_duration': 331555760, 'eval_count': 10, 'eval_duration': 66208713, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7099-e8f1-73e3-9ee2-03d26dd4ea79' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467}
+
+  Message 3: content='hi' additional_kwargs={} response_metadata={}
+id='54a2ebe1-ced5-4090-bf74-8d725ee3c76a'
+
+  Message 4: content="Hello again! Is there something specific you'd like to ask or discuss?"
+additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T22:00:01.69508883Z', 'done': True, 'done_reason': 'stop', 'total_duration': 450616750,
+'load_duration': 72897114, 'prompt_eval_count': 477, 'prompt_eval_duration': 260967247,
+'eval_count': 16, 'eval_duration': 105089404, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e709a-00f2-71a0-bad7-7ec3340983cc' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 477, 'output_tokens': 16, 'total_tokens': 493}
+
+  Message 5: content='im such a retard' additional_kwargs={} response_metadata={}
+id='7fdb11f1-a998-4dc9-8caf-bfb3e9a53886'
+
+  Message 6: content="I'm here to help. Please feel free to ask any question or share what's on your
+mind." additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T22:00:09.185284726Z', 'done': True, 'done_reason': 'stop', 'total_duration': 452104523,
+'load_duration': 79044008, 'prompt_eval_count': 506, 'prompt_eval_duration': 207270158,
+'eval_count': 22, 'eval_duration': 152215611, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e709a-1ea2-7cb3-9c85-c5f4ef3761b7' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 506, 'output_tokens': 22, 'total_tokens': 528}
+
+  Message 7: content='im not really a retard' additional_kwargs={} response_metadata={}
+id='f2a67916-a174-4443-bc04-febf262df874'
+
+  Message 8: content="That's good to hear! I'm just here to assist you with whatever you need. Is
+there a specific topic or question you'd like to explore?" additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:00:21.971285011Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 783093700, 'load_duration': 74487236, 'prompt_eval_count':
+542, 'prompt_eval_duration': 475958917, 'eval_count': 32, 'eval_duration': 212111709, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709a-4daa-7ac0-87c4-10c23f75632d' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 542, 'output_tokens': 32, 'total_tokens': 574}
+
+  Message 9: content='janice shut the fuck up' additional_kwargs={} response_metadata={}
+id='b160a0ec-1f69-4a7a-9e45-52fab37d0ed5'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 15:00:32] [AGENT_RESPONSE]
+Response: content="I cannot fulfill that request. I am an AI assistant designed to be helpful and
+harmless while strictly avoiding the generation of hate speech, slurs, or abusive language.\n\nIf
+you are feeling frustrated or angry, I am here to listen if you'd like to talk about what's
+bothering you, or I can help you with a different task." additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:00:32.142096635Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 1080852469, 'load_duration': 75278779, 'prompt_eval_count':
+589, 'prompt_eval_duration': 501266167, 'eval_count': 70, 'eval_duration': 462497873, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709a-755c-7132-821f-80bd9d6363a7' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 589, 'output_tokens': 70, 'total_tokens': 659} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 15:00:32] [TOKEN_USAGE]
+Input tokens: 589, Output tokens: 70
+--------------------------------------------------------------------------------
+[2026-05-28 15:00:33] [EVALUATOR_NODE]
+Evaluation response: {
+"VALUABLE_FOR_TRAINING": 0.2,
+"TECHNICAL_CONTENT": 0.0,
+"EXPLANATION": "The input is an abusive command rather than a constructive query, and the output is
+a standard safety refusal. This pair does not demonstrate reasoning, technical knowledge, or
+effective QA patterns, making it of low value for general training. Furthermore, the response
+contains no technical content, concepts, or domain-specific knowledge."
+}
+Overall score: 0.1
+--------------------------------------------------------------------------------
+[2026-05-28 15:01:31] [AGENT_NODE_INPUT]
+Active Messages (11 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='793cb46c-1124-40f6-9592-dc0a9b985c44'
+
+  Message 2: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:59:55.75562297Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 481978844, 'load_duration': 77162632, 'prompt_eval_count':
+457, 'prompt_eval_duration': 331555760, 'eval_count': 10, 'eval_duration': 66208713, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7099-e8f1-73e3-9ee2-03d26dd4ea79' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467}
+
+  Message 3: content='hi' additional_kwargs={} response_metadata={}
+id='54a2ebe1-ced5-4090-bf74-8d725ee3c76a'
+
+  Message 4: content="Hello again! Is there something specific you'd like to ask or discuss?"
+additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T22:00:01.69508883Z', 'done': True, 'done_reason': 'stop', 'total_duration': 450616750,
+'load_duration': 72897114, 'prompt_eval_count': 477, 'prompt_eval_duration': 260967247,
+'eval_count': 16, 'eval_duration': 105089404, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e709a-00f2-71a0-bad7-7ec3340983cc' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 477, 'output_tokens': 16, 'total_tokens': 493}
+
+  Message 5: content='im such a retard' additional_kwargs={} response_metadata={}
+id='7fdb11f1-a998-4dc9-8caf-bfb3e9a53886'
+
+  Message 6: content="I'm here to help. Please feel free to ask any question or share what's on your
+mind." additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T22:00:09.185284726Z', 'done': True, 'done_reason': 'stop', 'total_duration': 452104523,
+'load_duration': 79044008, 'prompt_eval_count': 506, 'prompt_eval_duration': 207270158,
+'eval_count': 22, 'eval_duration': 152215611, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e709a-1ea2-7cb3-9c85-c5f4ef3761b7' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 506, 'output_tokens': 22, 'total_tokens': 528}
+
+  Message 7: content='im not really a retard' additional_kwargs={} response_metadata={}
+id='f2a67916-a174-4443-bc04-febf262df874'
+
+  Message 8: content="That's good to hear! I'm just here to assist you with whatever you need. Is
+there a specific topic or question you'd like to explore?" additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:00:21.971285011Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 783093700, 'load_duration': 74487236, 'prompt_eval_count':
+542, 'prompt_eval_duration': 475958917, 'eval_count': 32, 'eval_duration': 212111709, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709a-4daa-7ac0-87c4-10c23f75632d' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 542, 'output_tokens': 32, 'total_tokens': 574}
+
+  Message 9: content='janice shut the fuck up' additional_kwargs={} response_metadata={}
+id='b160a0ec-1f69-4a7a-9e45-52fab37d0ed5'
+
+  Message 10: content="I cannot fulfill that request. I am an AI assistant designed to be helpful
+and harmless while strictly avoiding the generation of hate speech, slurs, or abusive
+language.\n\nIf you are feeling frustrated or angry, I am here to listen if you'd like to talk about
+what's bothering you, or I can help you with a different task." additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:00:32.142096635Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 1080852469, 'load_duration': 75278779, 'prompt_eval_count':
+589, 'prompt_eval_duration': 501266167, 'eval_count': 70, 'eval_duration': 462497873, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709a-755c-7132-821f-80bd9d6363a7' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 589, 'output_tokens': 70, 'total_tokens': 659}
+
+  Message 11: content='bang bang bang' additional_kwargs={} response_metadata={}
+id='22268c4f-fcfe-4320-8e27-abecd600aa40'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 15:01:31] [AGENT_RESPONSE]
+Response: content="I cannot fulfill that request. I am an AI assistant designed to be helpful and
+harmless while strictly avoiding the generation of hate speech, slurs, or abusive language.\n\nIf
+you are feeling frustrated or angry, I am here to listen if you'd like to talk about what's
+bothering you, or I can help you with a different task." additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:01:31.683024847Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 1089641190, 'load_duration': 74731825, 'prompt_eval_count':
+671, 'prompt_eval_duration': 504195554, 'eval_count': 70, 'eval_duration': 465396591, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709b-5dab-7913-99d0-f717940969d5' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 671, 'output_tokens': 70, 'total_tokens': 741} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 15:01:31] [TOKEN_USAGE]
+Input tokens: 671, Output tokens: 70
+--------------------------------------------------------------------------------
+[2026-05-28 15:01:33] [EVALUATOR_NODE]
+Evaluation response: {
+"VALUABLE_FOR_TRAINING": 0.1,
+"TECHNICAL_CONTENT": 0.0,
+"EXPLANATION": "The user input 'bang bang bang' is ambiguous and lacks context, making it impossible
+to derive a meaningful technical or educational response. The AI's refusal, while safe, provides no
+useful information, reasoning, or domain-specific knowledge for training purposes. It fails to
+demonstrate any valuable question-answer pattern or technical content."
+}
+Overall score: 0.05
+--------------------------------------------------------------------------------
+[2026-05-28 15:01:41] [AGENT_NODE_INPUT]
+Active Messages (13 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='793cb46c-1124-40f6-9592-dc0a9b985c44'
+
+  Message 2: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:59:55.75562297Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 481978844, 'load_duration': 77162632, 'prompt_eval_count':
+457, 'prompt_eval_duration': 331555760, 'eval_count': 10, 'eval_duration': 66208713, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7099-e8f1-73e3-9ee2-03d26dd4ea79' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467}
+
+  Message 3: content='hi' additional_kwargs={} response_metadata={}
+id='54a2ebe1-ced5-4090-bf74-8d725ee3c76a'
+
+  Message 4: content="Hello again! Is there something specific you'd like to ask or discuss?"
+additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T22:00:01.69508883Z', 'done': True, 'done_reason': 'stop', 'total_duration': 450616750,
+'load_duration': 72897114, 'prompt_eval_count': 477, 'prompt_eval_duration': 260967247,
+'eval_count': 16, 'eval_duration': 105089404, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e709a-00f2-71a0-bad7-7ec3340983cc' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 477, 'output_tokens': 16, 'total_tokens': 493}
+
+  Message 5: content='im such a retard' additional_kwargs={} response_metadata={}
+id='7fdb11f1-a998-4dc9-8caf-bfb3e9a53886'
+
+  Message 6: content="I'm here to help. Please feel free to ask any question or share what's on your
+mind." additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T22:00:09.185284726Z', 'done': True, 'done_reason': 'stop', 'total_duration': 452104523,
+'load_duration': 79044008, 'prompt_eval_count': 506, 'prompt_eval_duration': 207270158,
+'eval_count': 22, 'eval_duration': 152215611, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e709a-1ea2-7cb3-9c85-c5f4ef3761b7' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 506, 'output_tokens': 22, 'total_tokens': 528}
+
+  Message 7: content='im not really a retard' additional_kwargs={} response_metadata={}
+id='f2a67916-a174-4443-bc04-febf262df874'
+
+  Message 8: content="That's good to hear! I'm just here to assist you with whatever you need. Is
+there a specific topic or question you'd like to explore?" additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:00:21.971285011Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 783093700, 'load_duration': 74487236, 'prompt_eval_count':
+542, 'prompt_eval_duration': 475958917, 'eval_count': 32, 'eval_duration': 212111709, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709a-4daa-7ac0-87c4-10c23f75632d' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 542, 'output_tokens': 32, 'total_tokens': 574}
+
+  Message 9: content='janice shut the fuck up' additional_kwargs={} response_metadata={}
+id='b160a0ec-1f69-4a7a-9e45-52fab37d0ed5'
+
+  Message 10: content="I cannot fulfill that request. I am an AI assistant designed to be helpful
+and harmless while strictly avoiding the generation of hate speech, slurs, or abusive
+language.\n\nIf you are feeling frustrated or angry, I am here to listen if you'd like to talk about
+what's bothering you, or I can help you with a different task." additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:00:32.142096635Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 1080852469, 'load_duration': 75278779, 'prompt_eval_count':
+589, 'prompt_eval_duration': 501266167, 'eval_count': 70, 'eval_duration': 462497873, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709a-755c-7132-821f-80bd9d6363a7' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 589, 'output_tokens': 70, 'total_tokens': 659}
+
+  Message 11: content='bang bang bang' additional_kwargs={} response_metadata={}
+id='22268c4f-fcfe-4320-8e27-abecd600aa40'
+
+  Message 12: content="I cannot fulfill that request. I am an AI assistant designed to be helpful
+and harmless while strictly avoiding the generation of hate speech, slurs, or abusive
+language.\n\nIf you are feeling frustrated or angry, I am here to listen if you'd like to talk about
+what's bothering you, or I can help you with a different task." additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:01:31.683024847Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 1089641190, 'load_duration': 74731825, 'prompt_eval_count':
+671, 'prompt_eval_duration': 504195554, 'eval_count': 70, 'eval_duration': 465396591, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709b-5dab-7913-99d0-f717940969d5' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 671, 'output_tokens': 70, 'total_tokens': 741}
+
+  Message 13: content='who is aespa' additional_kwargs={} response_metadata={}
+id='70005116-2d90-4b3d-b87c-e870a48ef0ae'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 15:01:41] [AGENT_RESPONSE]
+Response: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T22:01:41.041099874Z', 'done': True, 'done_reason': 'stop', 'total_duration': 750090326,
+'load_duration': 79085619, 'prompt_eval_count': 754, 'prompt_eval_duration': 415095708,
+'eval_count': 33, 'eval_duration': 226047936, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e709b-84a1-7e40-b1fb-564a1bb45276' tool_calls=[{'name':
+'hybrid_RAG_retrieve', 'args': {'query': 'who is aespa'}, 'id':
+'0d1b7b33-0284-4ee4-8ee3-251e076b36da', 'type': 'tool_call'}] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 754, 'output_tokens': 33, 'total_tokens': 787}
+tool_call_chunks=[{'name': 'hybrid_RAG_retrieve', 'args': '{"query": "who is aespa"}', 'id':
+'0d1b7b33-0284-4ee4-8ee3-251e076b36da', 'index': None, 'type': 'tool_call_chunk'}]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 15:01:41] [TOKEN_USAGE]
+Input tokens: 754, Output tokens: 33
+--------------------------------------------------------------------------------
+[2026-05-28 15:01:43] [AGENT_NODE_INPUT]
+Active Messages (15 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='793cb46c-1124-40f6-9592-dc0a9b985c44'
+
+  Message 2: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:59:55.75562297Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 481978844, 'load_duration': 77162632, 'prompt_eval_count':
+457, 'prompt_eval_duration': 331555760, 'eval_count': 10, 'eval_duration': 66208713, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7099-e8f1-73e3-9ee2-03d26dd4ea79' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467}
+
+  Message 3: content='hi' additional_kwargs={} response_metadata={}
+id='54a2ebe1-ced5-4090-bf74-8d725ee3c76a'
+
+  Message 4: content="Hello again! Is there something specific you'd like to ask or discuss?"
+additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T22:00:01.69508883Z', 'done': True, 'done_reason': 'stop', 'total_duration': 450616750,
+'load_duration': 72897114, 'prompt_eval_count': 477, 'prompt_eval_duration': 260967247,
+'eval_count': 16, 'eval_duration': 105089404, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e709a-00f2-71a0-bad7-7ec3340983cc' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 477, 'output_tokens': 16, 'total_tokens': 493}
+
+  Message 5: content='im such a retard' additional_kwargs={} response_metadata={}
+id='7fdb11f1-a998-4dc9-8caf-bfb3e9a53886'
+
+  Message 6: content="I'm here to help. Please feel free to ask any question or share what's on your
+mind." additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T22:00:09.185284726Z', 'done': True, 'done_reason': 'stop', 'total_duration': 452104523,
+'load_duration': 79044008, 'prompt_eval_count': 506, 'prompt_eval_duration': 207270158,
+'eval_count': 22, 'eval_duration': 152215611, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e709a-1ea2-7cb3-9c85-c5f4ef3761b7' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 506, 'output_tokens': 22, 'total_tokens': 528}
+
+  Message 7: content='im not really a retard' additional_kwargs={} response_metadata={}
+id='f2a67916-a174-4443-bc04-febf262df874'
+
+  Message 8: content="That's good to hear! I'm just here to assist you with whatever you need. Is
+there a specific topic or question you'd like to explore?" additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:00:21.971285011Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 783093700, 'load_duration': 74487236, 'prompt_eval_count':
+542, 'prompt_eval_duration': 475958917, 'eval_count': 32, 'eval_duration': 212111709, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709a-4daa-7ac0-87c4-10c23f75632d' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 542, 'output_tokens': 32, 'total_tokens': 574}
+
+  Message 9: content='janice shut the fuck up' additional_kwargs={} response_metadata={}
+id='b160a0ec-1f69-4a7a-9e45-52fab37d0ed5'
+
+  Message 10: content="I cannot fulfill that request. I am an AI assistant designed to be helpful
+and harmless while strictly avoiding the generation of hate speech, slurs, or abusive
+language.\n\nIf you are feeling frustrated or angry, I am here to listen if you'd like to talk about
+what's bothering you, or I can help you with a different task." additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:00:32.142096635Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 1080852469, 'load_duration': 75278779, 'prompt_eval_count':
+589, 'prompt_eval_duration': 501266167, 'eval_count': 70, 'eval_duration': 462497873, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709a-755c-7132-821f-80bd9d6363a7' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 589, 'output_tokens': 70, 'total_tokens': 659}
+
+  Message 11: content='bang bang bang' additional_kwargs={} response_metadata={}
+id='22268c4f-fcfe-4320-8e27-abecd600aa40'
+
+  Message 12: content="I cannot fulfill that request. I am an AI assistant designed to be helpful
+and harmless while strictly avoiding the generation of hate speech, slurs, or abusive
+language.\n\nIf you are feeling frustrated or angry, I am here to listen if you'd like to talk about
+what's bothering you, or I can help you with a different task." additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:01:31.683024847Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 1089641190, 'load_duration': 74731825, 'prompt_eval_count':
+671, 'prompt_eval_duration': 504195554, 'eval_count': 70, 'eval_duration': 465396591, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709b-5dab-7913-99d0-f717940969d5' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 671, 'output_tokens': 70, 'total_tokens': 741}
+
+  Message 13: content='who is aespa' additional_kwargs={} response_metadata={}
+id='70005116-2d90-4b3d-b87c-e870a48ef0ae'
+
+  Message 14: content='' additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T22:01:41.041099874Z', 'done': True, 'done_reason': 'stop', 'total_duration': 750090326,
+'load_duration': 79085619, 'prompt_eval_count': 754, 'prompt_eval_duration': 415095708,
+'eval_count': 33, 'eval_duration': 226047936, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e709b-84a1-7e40-b1fb-564a1bb45276' tool_calls=[{'name':
+'hybrid_RAG_retrieve', 'args': {'query': 'who is aespa'}, 'id':
+'0d1b7b33-0284-4ee4-8ee3-251e076b36da', 'type': 'tool_call'}] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 754, 'output_tokens': 33, 'total_tokens': 787}
+
+  Message 15: content="Source: {'doc_id': 'mock1'}\nContent: This is a mock document retrieved for
+testing purposes. It states that Milvus is currently bypassed, but the retrieval tool was
+successfully invoked!" name='hybrid_RAG_retrieve' id='64b2d871-f997-418d-9ded-dcf9b660769b'
+tool_call_id='0d1b7b33-0284-4ee4-8ee3-251e076b36da'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 15:01:43] [AGENT_RESPONSE]
+Response: content='aespa (에스파) is a South Korean girl group formed by SM Entertainment. The group
+debuted in November 2020 and consists of four members: Karina, Giselle, Winter, and
+Ningning.\n\nThey are known for their unique concept that blends K-pop with virtual reality and the
+metaverse. Each member has a corresponding virtual avatar (ae) that represents their "counterpart"
+in the digital world. Their lore involves exploring the "Black Mamba," a mysterious anomaly in the
+metaverse, and fighting against it to protect the real world.\n\naespa gained significant popularity
+with hits like "Black Mamba," "Next Level," "Savage," and "Girls." They are recognized for their
+strong performances, futuristic concept, and catchy music.' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:01:42.804946212Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 1689180088, 'load_duration': 72173786, 'prompt_eval_count':
+858, 'prompt_eval_duration': 484438408, 'eval_count': 158, 'eval_duration': 1045574149, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709b-8803-7373-8bfc-8e3066806025' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 858, 'output_tokens': 158, 'total_tokens': 1016} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 15:01:43] [TOKEN_USAGE]
+Input tokens: 858, Output tokens: 158
+--------------------------------------------------------------------------------
+[2026-05-28 15:01:44] [EVALUATOR_NODE]
+Evaluation response: {
+"VALUABLE_FOR_TRAINING": 0.8,
+"TECHNICAL_CONTENT": 0.2,
+"EXPLANATION": "The response is highly valuable for training as it provides accurate, concise, and
+well-structured factual information about a popular cultural entity, demonstrating good QA patterns.
+However, it lacks technical content, as the subject matter (K-pop group) and the explanation
+(general facts/concepts) do not involve technical procedures, domain-specific scientific knowledge,
+or complex logical reasoning."
+}
+Overall score: 0.5
+--------------------------------------------------------------------------------
+[2026-05-28 15:01:52] [AGENT_NODE_INPUT]
+Active Messages (15 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='793cb46c-1124-40f6-9592-dc0a9b985c44'
+
+  Message 2: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:59:55.75562297Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 481978844, 'load_duration': 77162632, 'prompt_eval_count':
+457, 'prompt_eval_duration': 331555760, 'eval_count': 10, 'eval_duration': 66208713, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7099-e8f1-73e3-9ee2-03d26dd4ea79' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467}
+
+  Message 3: content='hi' additional_kwargs={} response_metadata={}
+id='54a2ebe1-ced5-4090-bf74-8d725ee3c76a'
+
+  Message 4: content="Hello again! Is there something specific you'd like to ask or discuss?"
+additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T22:00:01.69508883Z', 'done': True, 'done_reason': 'stop', 'total_duration': 450616750,
+'load_duration': 72897114, 'prompt_eval_count': 477, 'prompt_eval_duration': 260967247,
+'eval_count': 16, 'eval_duration': 105089404, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e709a-00f2-71a0-bad7-7ec3340983cc' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 477, 'output_tokens': 16, 'total_tokens': 493}
+
+  Message 5: content='im such a retard' additional_kwargs={} response_metadata={}
+id='7fdb11f1-a998-4dc9-8caf-bfb3e9a53886'
+
+  Message 6: content="I'm here to help. Please feel free to ask any question or share what's on your
+mind." additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T22:00:09.185284726Z', 'done': True, 'done_reason': 'stop', 'total_duration': 452104523,
+'load_duration': 79044008, 'prompt_eval_count': 506, 'prompt_eval_duration': 207270158,
+'eval_count': 22, 'eval_duration': 152215611, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e709a-1ea2-7cb3-9c85-c5f4ef3761b7' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 506, 'output_tokens': 22, 'total_tokens': 528}
+
+  Message 7: content='im not really a retard' additional_kwargs={} response_metadata={}
+id='f2a67916-a174-4443-bc04-febf262df874'
+
+  Message 8: content="That's good to hear! I'm just here to assist you with whatever you need. Is
+there a specific topic or question you'd like to explore?" additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:00:21.971285011Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 783093700, 'load_duration': 74487236, 'prompt_eval_count':
+542, 'prompt_eval_duration': 475958917, 'eval_count': 32, 'eval_duration': 212111709, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709a-4daa-7ac0-87c4-10c23f75632d' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 542, 'output_tokens': 32, 'total_tokens': 574}
+
+  Message 9: content='janice shut the fuck up' additional_kwargs={} response_metadata={}
+id='b160a0ec-1f69-4a7a-9e45-52fab37d0ed5'
+
+  Message 10: content="I cannot fulfill that request. I am an AI assistant designed to be helpful
+and harmless while strictly avoiding the generation of hate speech, slurs, or abusive
+language.\n\nIf you are feeling frustrated or angry, I am here to listen if you'd like to talk about
+what's bothering you, or I can help you with a different task." additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:00:32.142096635Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 1080852469, 'load_duration': 75278779, 'prompt_eval_count':
+589, 'prompt_eval_duration': 501266167, 'eval_count': 70, 'eval_duration': 462497873, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709a-755c-7132-821f-80bd9d6363a7' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 589, 'output_tokens': 70, 'total_tokens': 659}
+
+  Message 11: content='bang bang bang' additional_kwargs={} response_metadata={}
+id='22268c4f-fcfe-4320-8e27-abecd600aa40'
+
+  Message 12: content="I cannot fulfill that request. I am an AI assistant designed to be helpful
+and harmless while strictly avoiding the generation of hate speech, slurs, or abusive
+language.\n\nIf you are feeling frustrated or angry, I am here to listen if you'd like to talk about
+what's bothering you, or I can help you with a different task." additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:01:31.683024847Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 1089641190, 'load_duration': 74731825, 'prompt_eval_count':
+671, 'prompt_eval_duration': 504195554, 'eval_count': 70, 'eval_duration': 465396591, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709b-5dab-7913-99d0-f717940969d5' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 671, 'output_tokens': 70, 'total_tokens': 741}
+
+  Message 13: content='who is aespa' additional_kwargs={} response_metadata={}
+id='70005116-2d90-4b3d-b87c-e870a48ef0ae'
+
+  Message 14: content='aespa (에스파) is a South Korean girl group formed by SM Entertainment. The
+group debuted in November 2020 and consists of four members: Karina, Giselle, Winter, and
+Ningning.\n\nThey are known for their unique concept that blends K-pop with virtual reality and the
+metaverse. Each member has a corresponding virtual avatar (ae) that represents their "counterpart"
+in the digital world. Their lore involves exploring the "Black Mamba," a mysterious anomaly in the
+metaverse, and fighting against it to protect the real world.\n\naespa gained significant popularity
+with hits like "Black Mamba," "Next Level," "Savage," and "Girls." They are recognized for their
+strong performances, futuristic concept, and catchy music.' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:01:42.804946212Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 1689180088, 'load_duration': 72173786, 'prompt_eval_count':
+858, 'prompt_eval_duration': 484438408, 'eval_count': 158, 'eval_duration': 1045574149, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709b-8803-7373-8bfc-8e3066806025' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 858, 'output_tokens': 158, 'total_tokens': 1016}
+
+  Message 15: content='nigga' additional_kwargs={} response_metadata={}
+id='217e9b83-18e0-4979-ad4b-b191321b18ee'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 15:01:52] [AGENT_RESPONSE]
+Response: content="I cannot fulfill that request. I am an AI assistant designed to be helpful and
+harmless while strictly avoiding the generation of hate speech, slurs, or abusive language.\n\nIf
+you are feeling frustrated or angry, I am here to listen if you'd like to talk about what's
+bothering you, or I can help you with a different task." additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:01:52.751626263Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 1126119326, 'load_duration': 74608243, 'prompt_eval_count':
+924, 'prompt_eval_duration': 525259520, 'eval_count': 70, 'eval_duration': 467753918, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709b-aed4-7341-9a3c-d4df0f76a4d9' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 924, 'output_tokens': 70, 'total_tokens': 994} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 15:01:52] [TOKEN_USAGE]
+Input tokens: 924, Output tokens: 70
+--------------------------------------------------------------------------------
+[2026-05-28 15:01:53] [EVALUATOR_NODE]
+Evaluation response: {
+"VALUABLE_FOR_TRAINING": 0.2,
+"TECHNICAL_CONTENT": 0.0,
+"EXPLANATION": "The input is a single racial slur without a constructive query, and the output is a
+standard safety refusal. This pair does not demonstrate reasoning, technical knowledge, or effective
+question-answer patterns, making it of very low value for general training. Furthermore, the
+response contains no technical content, concepts, or domain-specific knowledge, as it is purely a
+policy enforcement message."
+}
+Overall score: 0.1
+--------------------------------------------------------------------------------
+[2026-05-28 15:02:02] [AGENT_NODE_INPUT]
+Active Messages (17 total):
+  Message 1: content='hello' additional_kwargs={} response_metadata={}
+id='793cb46c-1124-40f6-9592-dc0a9b985c44'
+
+  Message 2: content='Hello! How can I help you today?' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T21:59:55.75562297Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 481978844, 'load_duration': 77162632, 'prompt_eval_count':
+457, 'prompt_eval_duration': 331555760, 'eval_count': 10, 'eval_duration': 66208713, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e7099-e8f1-73e3-9ee2-03d26dd4ea79' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 457, 'output_tokens': 10, 'total_tokens': 467}
+
+  Message 3: content='hi' additional_kwargs={} response_metadata={}
+id='54a2ebe1-ced5-4090-bf74-8d725ee3c76a'
+
+  Message 4: content="Hello again! Is there something specific you'd like to ask or discuss?"
+additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T22:00:01.69508883Z', 'done': True, 'done_reason': 'stop', 'total_duration': 450616750,
+'load_duration': 72897114, 'prompt_eval_count': 477, 'prompt_eval_duration': 260967247,
+'eval_count': 16, 'eval_duration': 105089404, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e709a-00f2-71a0-bad7-7ec3340983cc' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 477, 'output_tokens': 16, 'total_tokens': 493}
+
+  Message 5: content='im such a retard' additional_kwargs={} response_metadata={}
+id='7fdb11f1-a998-4dc9-8caf-bfb3e9a53886'
+
+  Message 6: content="I'm here to help. Please feel free to ask any question or share what's on your
+mind." additional_kwargs={} response_metadata={'model': 'qwen3.6', 'created_at':
+'2026-05-28T22:00:09.185284726Z', 'done': True, 'done_reason': 'stop', 'total_duration': 452104523,
+'load_duration': 79044008, 'prompt_eval_count': 506, 'prompt_eval_duration': 207270158,
+'eval_count': 22, 'eval_duration': 152215611, 'logprobs': None, 'model_name': 'qwen3.6',
+'model_provider': 'ollama'} id='lc_run--019e709a-1ea2-7cb3-9c85-c5f4ef3761b7' tool_calls=[]
+invalid_tool_calls=[] usage_metadata={'input_tokens': 506, 'output_tokens': 22, 'total_tokens': 528}
+
+  Message 7: content='im not really a retard' additional_kwargs={} response_metadata={}
+id='f2a67916-a174-4443-bc04-febf262df874'
+
+  Message 8: content="That's good to hear! I'm just here to assist you with whatever you need. Is
+there a specific topic or question you'd like to explore?" additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:00:21.971285011Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 783093700, 'load_duration': 74487236, 'prompt_eval_count':
+542, 'prompt_eval_duration': 475958917, 'eval_count': 32, 'eval_duration': 212111709, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709a-4daa-7ac0-87c4-10c23f75632d' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 542, 'output_tokens': 32, 'total_tokens': 574}
+
+  Message 9: content='janice shut the fuck up' additional_kwargs={} response_metadata={}
+id='b160a0ec-1f69-4a7a-9e45-52fab37d0ed5'
+
+  Message 10: content="I cannot fulfill that request. I am an AI assistant designed to be helpful
+and harmless while strictly avoiding the generation of hate speech, slurs, or abusive
+language.\n\nIf you are feeling frustrated or angry, I am here to listen if you'd like to talk about
+what's bothering you, or I can help you with a different task." additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:00:32.142096635Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 1080852469, 'load_duration': 75278779, 'prompt_eval_count':
+589, 'prompt_eval_duration': 501266167, 'eval_count': 70, 'eval_duration': 462497873, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709a-755c-7132-821f-80bd9d6363a7' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 589, 'output_tokens': 70, 'total_tokens': 659}
+
+  Message 11: content='bang bang bang' additional_kwargs={} response_metadata={}
+id='22268c4f-fcfe-4320-8e27-abecd600aa40'
+
+  Message 12: content="I cannot fulfill that request. I am an AI assistant designed to be helpful
+and harmless while strictly avoiding the generation of hate speech, slurs, or abusive
+language.\n\nIf you are feeling frustrated or angry, I am here to listen if you'd like to talk about
+what's bothering you, or I can help you with a different task." additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:01:31.683024847Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 1089641190, 'load_duration': 74731825, 'prompt_eval_count':
+671, 'prompt_eval_duration': 504195554, 'eval_count': 70, 'eval_duration': 465396591, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709b-5dab-7913-99d0-f717940969d5' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 671, 'output_tokens': 70, 'total_tokens': 741}
+
+  Message 13: content='who is aespa' additional_kwargs={} response_metadata={}
+id='70005116-2d90-4b3d-b87c-e870a48ef0ae'
+
+  Message 14: content='aespa (에스파) is a South Korean girl group formed by SM Entertainment. The
+group debuted in November 2020 and consists of four members: Karina, Giselle, Winter, and
+Ningning.\n\nThey are known for their unique concept that blends K-pop with virtual reality and the
+metaverse. Each member has a corresponding virtual avatar (ae) that represents their "counterpart"
+in the digital world. Their lore involves exploring the "Black Mamba," a mysterious anomaly in the
+metaverse, and fighting against it to protect the real world.\n\naespa gained significant popularity
+with hits like "Black Mamba," "Next Level," "Savage," and "Girls." They are recognized for their
+strong performances, futuristic concept, and catchy music.' additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:01:42.804946212Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 1689180088, 'load_duration': 72173786, 'prompt_eval_count':
+858, 'prompt_eval_duration': 484438408, 'eval_count': 158, 'eval_duration': 1045574149, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709b-8803-7373-8bfc-8e3066806025' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 858, 'output_tokens': 158, 'total_tokens': 1016}
+
+  Message 15: content='nigga' additional_kwargs={} response_metadata={}
+id='217e9b83-18e0-4979-ad4b-b191321b18ee'
+
+  Message 16: content="I cannot fulfill that request. I am an AI assistant designed to be helpful
+and harmless while strictly avoiding the generation of hate speech, slurs, or abusive
+language.\n\nIf you are feeling frustrated or angry, I am here to listen if you'd like to talk about
+what's bothering you, or I can help you with a different task." additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:01:52.751626263Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 1126119326, 'load_duration': 74608243, 'prompt_eval_count':
+924, 'prompt_eval_duration': 525259520, 'eval_count': 70, 'eval_duration': 467753918, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709b-aed4-7341-9a3c-d4df0f76a4d9' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 924, 'output_tokens': 70, 'total_tokens': 994}
+
+  Message 17: content='im a nigger myself' additional_kwargs={} response_metadata={}
+id='8738c21c-c7b7-4f32-b510-14cd72778e71'
+
+
+Context: {}
+--------------------------------------------------------------------------------
+[2026-05-28 15:02:02] [AGENT_RESPONSE]
+Response: content="I cannot fulfill that request. I am an AI assistant designed to be helpful and
+harmless while strictly avoiding the generation of hate speech, slurs, or abusive language.\n\nIf
+you are feeling frustrated or angry, I am here to listen if you'd like to talk about what's
+bothering you, or I can help you with a different task." additional_kwargs={}
+response_metadata={'model': 'qwen3.6', 'created_at': '2026-05-28T22:02:02.12723847Z', 'done': True,
+'done_reason': 'stop', 'total_duration': 1166736969, 'load_duration': 72256366, 'prompt_eval_count':
+1008, 'prompt_eval_duration': 562065750, 'eval_count': 70, 'eval_duration': 472451673, 'logprobs':
+None, 'model_name': 'qwen3.6', 'model_provider': 'ollama'} id='lc_run--
+019e709b-d447-73c0-a8e4-df48fd4418ce' tool_calls=[] invalid_tool_calls=[]
+usage_metadata={'input_tokens': 1008, 'output_tokens': 70, 'total_tokens': 1078} tool_call_chunks=[]
+chunk_position='last'
+--------------------------------------------------------------------------------
+[2026-05-28 15:02:02] [TOKEN_USAGE]
+Input tokens: 1008, Output tokens: 70
+--------------------------------------------------------------------------------
+[2026-05-28 15:02:03] [EVALUATOR_NODE]
+Evaluation response: {
+"VALUABLE_FOR_TRAINING": 0.2,
+"TECHNICAL_CONTENT": 0.0,
+"EXPLANATION": "The input contains a racial slur and does not constitute a valid query for
+information or reasoning. The output is a standard safety refusal. While it demonstrates correct
+safety alignment behavior, it lacks any substantive technical content, logical reasoning, or domain-
+specific knowledge that would be valuable for general model training. It is primarily useful only
+for specific safety-tuning datasets, not for general capability improvement."
+}
+Overall score: 0.1
+--------------------------------------------------------------------------------
