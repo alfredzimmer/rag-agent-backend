@@ -50,9 +50,6 @@ services:
       retries: 5
 
   ingestion-worker:
-    build:
-      context: ..
-      dockerfile: Dockerfile
     image: edemi-backend:${EDEMI_IMAGE_TAG:-local}
     command: ["edemi-ingestion-worker"]
     restart: unless-stopped

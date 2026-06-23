@@ -121,10 +121,16 @@ printf 'Ollama is healthy at %s.\n' "$OLLAMA_HEALTH_URL"
 printf 'Pulling updated infrastructure images.\n'
 "${compose[@]}" pull --policy always "${infrastructure_services[@]}"
 
-printf 'Building the application and reconciling the complete stack.\n'
+printf 'Building the application image.\n'
+if ! "${compose[@]}" build api; then
+  printf 'Application build failed.\n' >&2
+  exit 1
+fi
+
+printf 'Reconciling the complete stack.\n'
 if ! "${compose[@]}" up \
   --detach \
-  --build \
+  --no-build \
   --remove-orphans \
   --wait \
   --wait-timeout 600; then
