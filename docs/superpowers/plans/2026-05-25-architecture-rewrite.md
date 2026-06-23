@@ -17,7 +17,7 @@
 **Goal:** Evolve the current C++ ingestor from a "staging" worker to a fully autonomous pipeline that handles Parsing, Chunking, *and* Embedding before writing directly to the final Vector DB.
 
 ### Task 1.1: Integrate C++ Inference Engine for Embeddings
-**Context:** Currently, `pyapi` handles embeddings. We must move this to C++.
+**Context:** Currently, `edemi-backend` handles embeddings. We must move this to C++.
 - [ ] **Step 1: Update CMake configuration**
   Add dependencies for ONNX Runtime (or LibTorch) to support local execution of `qwen3` (dense) and `bge-m3` (sparse) models.
 - [ ] **Step 2: Create `Embedder` interface**
@@ -38,7 +38,7 @@
 
 ---
 
-## Part 2: Python Environment & Foundation (`pyapi` repo)
+## Part 2: Python Environment & Foundation (`edemi-backend` repo)
 
 **Goal:** Modernize the Python environment and establish the database infrastructure for the new LangGraph architecture.
 
@@ -60,7 +60,7 @@
 
 ---
 
-## Part 3: Agentic Runtime Rewrite (`pyapi` repo)
+## Part 3: Agentic Runtime Rewrite (`edemi-backend` repo)
 
 **Goal:** Rebuild `src/rag/graph.py` to utilize a parallel Fan-Out/Fan-In architecture instead of a linear Tool Node approach.
 

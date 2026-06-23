@@ -24,7 +24,7 @@ class LLMModelWrapper(DeepEvalBaseLLM):
         return self.model
 
     def generate(self, prompt: str) -> str:
-        res = self.model.invoke(prompt).content
+        res = self.model.invoke(prompt)
         return res.content
 
     async def a_generate(self, prompt: str) -> str:

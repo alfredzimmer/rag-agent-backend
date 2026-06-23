@@ -1,8 +1,8 @@
 from langchain_ollama import ChatOllama
 
 class HyDEGenerator:
-    def __init__(self):
-        self.llm = ChatOllama(model="qwen3:8b")
+    def __init__(self, model: str = "qwen3:8b"):
+        self.llm = ChatOllama(model=model)
     
     def generate(self, query: str) -> str:
         messages = [

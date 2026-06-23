@@ -183,7 +183,9 @@ def _preprocess_messages(
     for i in range(total_summarized_messages, max_summarizable_index):
         message = messages[i]
         if message.id is None:
-            raise ValueError("Messages are required to have ID field.")
+            import uuid
+            message.id = f"gen-{uuid.uuid4()}"
+
 
         if message.id in summarized_message_ids:
             raise ValueError(

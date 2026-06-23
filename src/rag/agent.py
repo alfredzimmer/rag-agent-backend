@@ -1,12 +1,11 @@
 import os
 import asyncio
-from typing import Union, List, Optional, Dict
-from dataclasses import dataclass
+from typing import Union, List, Optional
 from enum import Enum
 
 # --- LangChain / LangGraph Imports ---
 from langchain_core.messages import HumanMessage, AIMessage, ToolMessage, SystemMessage, BaseMessage
-from langchain_ollama import ChatOllama, OllamaEmbeddings
+from langchain_ollama import ChatOllama
 from langchain.tools import tool
 from langchain_core.runnables import RunnableConfig
 
@@ -21,12 +20,11 @@ from langgraph.store.postgres import AsyncPostgresStore
 # from langmem import create_memory_manager
 
 # --- Local Imports ---
-from .config import RAGConfig, Context
+from .config import RAGConfig
 from .milvus import create_milvus_store
 from .modules.reranker import BGERanker
 from .modules.hyde import HyDEGenerator
 from .graph import create_agent_graph
-from .session_storage import get_storage
 
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
@@ -85,23 +83,22 @@ class RAGAgent:
         if not store_factory:
             raise ValueError("Invalid vector store type in config")
 
-        # Milvus is intentionally bypassed for agent runtime debugging.
-        # The RAG tool returns a mock retrieval result while conversation state
-        # and follow-up behavior are tested through PostgreSQL checkpoints.
-        vector_store = None
+        # Initialize actual Milvus vector store
+        vector_store = store_factory(config)
         ranker = ranker_factory() if ranker_factory else None
-        hyde_generator = HyDEGenerator() if config.hyde else None
+        hyde_generator = HyDEGenerator(model=config.llm_model) if config.hyde else None
 
-        rag_tool = create_rag_tool(vector_store, ranker, hyde_generator)
+        rag_tool = create_rag_tool(vector_store, ranker, hyde_generator, config.similarity_threshold)
 
         # LLM Setup and tool schema binding
         if not config.llm_model:
             raise ValueError("LLM model not specified")
         llm = ChatOllama(
             model=config.llm_model,
-            temperature=0,
+            temperature=0.4,
+            num_ctx=8192,
             streaming=True,
-            reasoning=False,
+            reasoning=True,
             num_predict=config.llm_num_predict,
         )
         llm_with_tools = llm.bind_tools([rag_tool])
@@ -111,24 +108,36 @@ class RAGAgent:
 
         # Summarization Setup
         sum_model = config.summarization_model if (config.summarization_model and config.summarization_model != "qwen3:8b") else config.llm_model
-        summarization_llm = ChatOllama(model=sum_model, temperature=0, reasoning=False, num_predict=1024)
+        summarization_llm = ChatOllama(model=sum_model, temperature=0, num_ctx=8192, reasoning=False, num_predict=1024)
 
-        # Training LLM Setup for evaluation
-        train_model = config.training_llm_model if (config.training_llm_model and config.training_llm_model != "qwen3:8b") else config.llm_model
-        training_llm = ChatOllama(model=train_model, temperature=0, reasoning=False, format="json", num_predict=512)
+        # Training LLM Setup for evaluation - Disabled to optimize speed
+        training_llm = None
 
         # Title LLM Setup
         title_model = config.title_llm_model if (config.title_llm_model and config.title_llm_model != "qwen3:8b") else config.llm_model
-        title_llm = ChatOllama(model=title_model, temperature=0, reasoning=False, num_predict=100)
+        title_llm = ChatOllama(model=title_model, temperature=0, num_ctx=4096, reasoning=False, num_predict=100)
+        self.title_llm = title_llm
+
+        # Exa AI Search setup
+        exa_tool = None
+        if os.getenv("EXA_API_KEY"):
+            try:
+                from langchain_exa import ExaSearchResults
+                exa_tool = ExaSearchResults(num_results=3)
+            except Exception as e:
+                print(f"Warning: Failed to initialize Exa Search: {e}")
 
         # Constucting actual agent
         workflow = create_agent_graph(
+            llm=llm,
             llm_with_tools=llm_with_tools,
             rag_tool=rag_tool,
+            exa_tool=exa_tool,
             memory_manager=memory_manager,
             summarization_llm=summarization_llm,
             training_llm=training_llm,
             title_llm=title_llm,
+            max_context_tokens=config.max_context_tokens,
             debug=True
         )
 
@@ -136,6 +145,7 @@ class RAGAgent:
         self.pool = None
         self.checkpointer = checkpointer
         self.store = store
+        self.vector_store = vector_store
 
         # Graph Compilation
         self.agent = workflow.compile(
@@ -185,7 +195,8 @@ class RAGAgent:
         query: str,
         conversation_id: str,
         user_id: str,
-        stream: bool = True
+        stream: bool = True,
+        enable_exa: bool = False
     ):
         """
         Stream responses from the agent.
@@ -196,8 +207,13 @@ class RAGAgent:
         - Tool results (FUNCTION status, type: function)
         - Completion signal (COMPLETE status)
         """
-        config = {"configurable": {"thread_id": conversation_id, "user_id": user_id}}
-        
+        if self.config.simple_rag:
+            async for chunk in self.simple_rag_flow(query, conversation_id, user_id):
+                yield chunk
+            return
+
+        config = {"configurable": {"thread_id": conversation_id, "user_id": user_id, "enable_exa": enable_exa}}
+
         # Pass the clean query directly to the conversation history to avoid polluting history with instructions.
         initial_state = {
             "messages": [HumanMessage(content=query)]
@@ -206,7 +222,7 @@ class RAGAgent:
         # Track cumulative token usage
         total_input_tokens = 0
         total_output_tokens = 0
-        
+
         if stream:
             # We use astream_events to capture real-time streaming tokens and tool calls from inside graph nodes
             async for event in self.agent.astream_events(initial_state, config=config, version="v2"):
@@ -228,36 +244,52 @@ class RAGAgent:
                     return
 
                 event_type = event["event"]
-                
+
                 if event_type == "on_chat_model_stream":
-                    # Only stream responses from the main agent node to avoid leaking helper outputs (e.g. evaluator, title generation)
+                    # Only stream responses from the synthesizer node to avoid leaking helper outputs (e.g. evaluator, title generation)
                     node_name = event.get("metadata", {}).get("langgraph_node")
-                    if node_name != "agent":
+                    if node_name != "synthesizer":
                         continue
 
                     chunk = event["data"].get("chunk")
-                    if chunk and hasattr(chunk, "content") and chunk.content:
-                        # Extract token delta
-                        content = chunk.content
-                        yield ChatResponse(
-                            status=Status.RESPONSE,
-                            type="response.output_text.delta",
-                            content=content,
-                            metadata=Metadata(
-                                conversation_id=conversation_id,
-                                input_tokens_used=total_input_tokens,
-                                output_tokens_used=total_output_tokens,
-                                rating=0.0,
-                                title=None,
+                    if chunk:
+                        # Extract reasoning if present
+                        reasoning = chunk.additional_kwargs.get("reasoning_content", "")
+                        if reasoning:
+                            yield ChatResponse(
+                                status=Status.RESPONSE,
+                                type="response.reasoning.delta",
+                                content=reasoning,
+                                metadata=Metadata(
+                                    conversation_id=conversation_id,
+                                    input_tokens_used=total_input_tokens,
+                                    output_tokens_used=total_output_tokens,
+                                    rating=0.0,
+                                    title=None,
+                                )
                             )
-                        )
-                        
+
+                        if hasattr(chunk, "content") and chunk.content:
+                            content = chunk.content
+                            yield ChatResponse(
+                                status=Status.RESPONSE,
+                                type="response.output_text.delta",
+                                content=content,
+                                metadata=Metadata(
+                                    conversation_id=conversation_id,
+                                    input_tokens_used=total_input_tokens,
+                                    output_tokens_used=total_output_tokens,
+                                    rating=0.0,
+                                    title=None,
+                                )
+                            )
+
                         # Accumulate tokens if usage metadata exists in chunk
                         if hasattr(chunk, 'usage_metadata') and chunk.usage_metadata:
                             total_input_tokens += chunk.usage_metadata.get('input_tokens', 0)
                             total_output_tokens += chunk.usage_metadata.get('output_tokens', 0)
 
-                
+
                 elif event_type == "on_tool_start":
                     tool_name = event.get("name", "tool")
                     tool_input = event["data"].get("input", "")
@@ -273,7 +305,7 @@ class RAGAgent:
                             title=None,
                         )
                     )
-                    
+
                 elif event_type == "on_tool_end":
                     tool_output = event["data"].get("output", "")
                     # Extract string representation of the output
@@ -284,10 +316,10 @@ class RAGAgent:
                         content_str = str(tool_output.content)
                     else:
                         content_str = str(tool_output)
-                        
+
                     yield ChatResponse(
                         status=Status.FUNCTION,
-                        type="function",
+                        type=event.get("name", "function"),
                         content=content_str,
                         metadata=Metadata(
                             conversation_id=conversation_id,
@@ -326,6 +358,166 @@ class RAGAgent:
             # Yield the final state as a single response
             yield final_state
             return
+
+    async def simple_rag_flow(self, query: str, conversation_id: str, user_id: str):
+        """
+        Stream responses from the agent using a simple direct RAG pipeline:
+        1. Retrieve context once from Milvus.
+        2. Format a system instruction context.
+        3. Stream answers from Ollama.
+        """
+        # Yield Tool Start
+        yield ChatResponse(
+            status=Status.RESPONSE,
+            type="response.function_call_arguments.delta",
+            content=f"Calling hybrid_RAG_retrieve with args: {{'query': '{query}'}}",
+            metadata=Metadata(
+                conversation_id=conversation_id,
+                input_tokens_used=0,
+                output_tokens_used=0,
+                rating=0.0,
+                title=None,
+            )
+        )
+
+        retrieved_context = ""
+        if hasattr(self, "vector_store") and self.vector_store:
+            try:
+                # Retrieve from Milvus using search_documents, filtering by conversation_id or global collection
+                expr = None
+                if self.vector_store.vector_store.collection_name == "ingestion_staging":
+                    expr = f"target_collection == '{conversation_id}' or target_collection == 'HeaderInContentTrial'"
+                docs = self.vector_store.search_documents(query, k=3, expr=expr)
+                if docs:
+                    retrieved_context = "\n\n".join(
+                        f"Source: {doc.metadata}\nContent: {doc.page_content}"
+                        for doc in docs
+                    )
+            except Exception as e:
+                print(f"Simple RAG retrieval error: {e}")
+
+        tool_output = retrieved_context if retrieved_context else "No relevant documents found in the knowledge base."
+
+        # Yield Tool End
+        yield ChatResponse(
+            status=Status.FUNCTION,
+            type="function",
+            content=tool_output,
+            metadata=Metadata(
+                conversation_id=conversation_id,
+                input_tokens_used=0,
+                output_tokens_used=0,
+                rating=0.0,
+                title=None,
+            )
+        )
+
+        # Load existing history messages from checkpointer to maintain context
+        history_messages = []
+        try:
+            config = {"configurable": {"thread_id": conversation_id, "user_id": user_id}}
+            state = await self.agent.aget_state(config=config)
+            if state and "messages" in state.values:
+                # Filter out any old SystemMessages to avoid duplicate system instructions in the context
+                history_messages = [msg for msg in state.values["messages"] if not isinstance(msg, SystemMessage)]
+        except Exception as e:
+            print(f"Error loading history for simple RAG context: {e}")
+
+        # Format system instruction and context
+        system_prompt = f"""You are a helpful assistant. Use the retrieved context below as your primary reference to answer the user's question.
+If the retrieved context does not contain relevant information to answer the question, you may answer using your general knowledge directly.
+
+Retrieved Context:
+{tool_output}"""
+
+        # Construct messages
+        messages = [SystemMessage(content=system_prompt)] + history_messages + [HumanMessage(content=query)]
+
+        # Call the LLM (ChatOllama) to stream response
+        llm = ChatOllama(
+            model=self.config.llm_model,
+            temperature=0.4,
+            num_ctx=8192,
+            streaming=True,
+            reasoning=True,
+            num_predict=self.config.llm_num_predict,
+        )
+
+        total_input_tokens = 0
+        total_output_tokens = 0
+        full_ai_response = ""
+
+        async for chunk in llm.astream(messages):
+            reasoning = chunk.additional_kwargs.get("reasoning_content", "")
+            if reasoning:
+                yield ChatResponse(
+                    status=Status.RESPONSE,
+                    type="response.reasoning.delta",
+                    content=reasoning,
+                    metadata=Metadata(
+                        conversation_id=conversation_id,
+                        input_tokens_used=total_input_tokens,
+                        output_tokens_used=total_output_tokens,
+                        rating=0.0,
+                        title=None,
+                    )
+                )
+
+            content = chunk.content
+            if content:
+                full_ai_response += content
+                yield ChatResponse(
+                    status=Status.RESPONSE,
+                    type="response.output_text.delta",
+                    content=content,
+                    metadata=Metadata(
+                        conversation_id=conversation_id,
+                        input_tokens_used=total_input_tokens,
+                        output_tokens_used=total_output_tokens,
+                        rating=0.0,
+                        title=None,
+                    )
+                )
+
+        # Persist messages to LangGraph checkpointer so history is correctly displayed
+        try:
+            config = {"configurable": {"thread_id": conversation_id, "user_id": user_id}}
+            await self.agent.aupdate_state(
+                config,
+                {
+                    "messages": [
+                        HumanMessage(content=query),
+                        ToolMessage(content=tool_output, name="hybrid_RAG_retrieve", tool_call_id="call_simple_rag"),
+                        AIMessage(content=full_ai_response)
+                    ]
+                },
+                as_node="synthesizer"
+            )
+        except Exception as save_err:
+            print(f"Error saving simple RAG conversation history: {save_err}")
+
+        # Complete turn
+        generated_title = None
+        if hasattr(self, "title_llm") and self.title_llm:
+            try:
+                title_prompt = f"Generate a distinct, 3-5 word title for a conversation starting with this user message. Return ONLY the title itself with no quotes, preamble or extra text: '{query}'"
+                title_res = await self.title_llm.ainvoke(title_prompt)
+                generated_title = title_res.content.strip().strip('"').strip("'").strip()
+            except Exception as e:
+                print(f"Error generating title in simple RAG: {e}")
+
+        yield ChatResponse(
+            status=Status.COMPLETE,
+            type="completion",
+            content="",
+            metadata=Metadata(
+                conversation_id=conversation_id,
+                input_tokens_used=total_input_tokens,
+                output_tokens_used=total_output_tokens,
+                rating=0.0,
+                title=generated_title,
+            )
+        )
 
     def call(self, query: Union[str, List[str]]):
         """
@@ -422,7 +614,7 @@ class RAGAgent:
                 removals = [RemoveMessage(id=msg.id) for msg in state.values["messages"] if msg.id]
                 if removals:
                     await self.agent.aupdate_state(config=config, values={"messages": removals})
-            
+
             # Also try direct checkpointer delete method if it exists
             if hasattr(self.checkpointer, "adelete_thread"):
                 await self.checkpointer.adelete_thread(conversation_id)
@@ -440,18 +632,18 @@ class RAGAgent:
 
 
 
-def create_rag_tool(vector_store, ranker, hyde_generator: Optional[HyDEGenerator]):
+def create_rag_tool(vector_store, ranker, hyde_generator: Optional[HyDEGenerator], similarity_threshold: float = 0.0):
     @tool
-    def hybrid_RAG_retrieve(query: str):
+    def hybrid_RAG_retrieve(query: str, config: Optional[RunnableConfig] = None):
         """
         Retrieve relevant context from the knowledge base using hybrid search (dense + sparse) and reranking.
-        
+
         Uses BM25 sparse search and dense vector search simultaneously, then reranks with BGE for best relevance.
         Falls back to a second pass with expanded query terms if no results are found.
-        
+
         Args:
             query: The search query to find relevant information (raw user intent)
-            
+
         Returns:
             Serialized string with source metadata and content of top-ranked documents
         """
@@ -472,21 +664,29 @@ def create_rag_tool(vector_store, ranker, hyde_generator: Optional[HyDEGenerator
         if not vector_store:
             return "Source: {'doc_id': 'mock1'}\nContent: This is a mock document retrieved for testing purposes. It states that Milvus is currently bypassed, but the retrieval tool was successfully invoked!"
 
-        vs = vector_store.get_vector_store()
+        vs = vector_store
+
+        configurable = config.get("configurable", {}) if config else {}
+        conversation_id = configurable.get("thread_id", "")
+
+        expr = None
+        if vs.vector_store.collection_name == "ingestion_staging" and conversation_id:
+            expr = f"target_collection == '{conversation_id}' or target_collection == 'HeaderInContentTrial'"
+
         all_retrieved = {}
-        
+
         # 2. Hybrid search: use search_documents which invokes BOTH dense and sparse search
         # similarity_search() only uses dense vectors — that's the bug we're fixing
         for q in retrieval_queries:
             try:
-                docs = vs.search_documents(q, k=30)
+                docs = vs.search_documents(q, k=30, expr=expr)
                 for doc in docs:
                     doc_hash = hash(doc.page_content[:128])
                     if doc_hash not in all_retrieved:
                         all_retrieved[doc_hash] = doc
             except Exception:
                 # If search_documents fails, fall back to dense vector search only
-                docs = vs.similarity_search(q, k=30)
+                docs = vs.similarity_search(q, k=30, expr=expr)
                 for doc in docs:
                     doc_hash = hash(doc.page_content[:128])
                     if doc_hash not in all_retrieved:
@@ -501,8 +701,13 @@ def create_rag_tool(vector_store, ranker, hyde_generator: Optional[HyDEGenerator
         k = 3
         if ranker:
             reranked_docs = ranker.rerank(query, retrieved_docs, k)
+            if similarity_threshold > 0.0:
+                reranked_docs = [doc for doc in reranked_docs if doc.metadata.get("rerank_score", 0.0) >= similarity_threshold]
         else:
             reranked_docs = retrieved_docs[:k]
+
+        if not reranked_docs:
+            return "No relevant documents found in the knowledge base."
 
         # 4. Serialize
         serialized = "\n\n".join(

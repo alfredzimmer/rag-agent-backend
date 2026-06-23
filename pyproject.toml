@@ -1,7 +1,7 @@
 [project]
-name = "pyapi"
+name = "edemi-backend"
 version = "0.1.0"
-description = "FastAPI microservice endpoint for the EC Master Agent."
+description = "Backend service and RAG runtime for Edemi."
 readme = "readme.md"
 requires-python = ">=3.13,<3.14"
 dependencies = [
@@ -18,6 +18,7 @@ dependencies = [
     "langchain",
     "langchain-classic",
     "langchain-community",
+    "langchain-exa>=1.1.0",
     "langchain-milvus",
     "langchain-ollama",
     "langchain-openai",
@@ -38,6 +39,7 @@ dependencies = [
     "peft",
     "psycopg[binary,pool]",
     "pydantic",
+    "pyjwt>=2.13.0",
     "pymilvus[model]",
     "pymupdf",
     "pymupdf4llm",
@@ -75,7 +77,16 @@ build-backend = "hatchling.build"
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/pyapi", "src/rag"]
+packages = ["src/edemi_server", "src/rag"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/pyproject.toml",
+    "/readme.md",
+    "/src/edemi_server",
+    "/src/rag",
+    "/src/streamlit_app.py",
+]
 
 [tool.uv]
 package = true

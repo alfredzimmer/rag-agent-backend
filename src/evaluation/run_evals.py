@@ -15,7 +15,7 @@ if str(SRC_DIR) not in sys.path:
 from deepeval import evaluate
 from deepeval.test_case import LLMTestCase
 from deepeval.metrics import FaithfulnessMetric, AnswerRelevancyMetric, ContextualRecallMetric, ContextualRelevancyMetric, ContextualPrecisionMetric
-from ollama_deepeval_wrapper import LLMModelWrapper, EmbeddingModelWrapper
+from ollama_deepeval_wrapper import LLMModelWrapper
 from deepeval.evaluate import AsyncConfig
 from deepeval.evaluate import DisplayConfig
 

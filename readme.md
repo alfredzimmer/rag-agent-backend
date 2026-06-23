@@ -1,10 +1,10 @@
-# Python Backend for RAG-Agent
+# Edemi Backend
 
 This repo contains the FastAPI service and Python RAG runtime for the agent. Read this, this is not ai generated.
 
 ```text
 client
-  -> pyapi FastAPI service
+  -> Edemi FastAPI service
       -> Postgres for LangGraph checkpoints and memory store
       -> Milvus for domain-specific vector search
           -> etcd for Milvus metadata
@@ -26,16 +26,28 @@ We run Ollama models natively on the server due to the sole reason that we want 
 
 That being said, it doesn't hurt to much to document their uses.
 
+Verify that you have pulled the required Ollama models:
 ```bash
 # Set up the containers; run this on server
 docker compose -f infra/docker-compose.yaml up -d
 ```
 
-This compose file should handle port forwarding to your machine automatically.
+and test it on `http://localhost:11434` using whatever method you wish.
 
-The ollama should be up an running as of the time we write this readme.
-
-You will then need to start `ollama serve` on server and forward the port to your machine using
+Synchronize project virtual environment and packages using `uv`:
 ```bash
-ssh -L 11434:localhost:11434 ziyutecc_ai_wsl@ziyutecc-ai
+uv sync
 ```
+
+Spin up the FastAPI service on the default port `9229`:
+```bash
+uv run python src/edemi_server/main.py
+```
+
+In a separate terminal tab, launch the interactive testing interface on port `8501`:
+```bash
+uv run streamlit run src/streamlit_app.py --server.port 8501
+```
+
+## Headsup
+Be duely noted that this is designed to be a working prototype of a project, not one that is production ready. There's non-trivial legacy scaffolds/codes that are not purged; the components are constructed to work cohesively as a whole but not closely examined line-by-line; the error handling logic is basically non-existent and not even close to robust. In other words, this is vibe coded. Please be lenient towards the lack of coding talent in whoever wrote this line that you can spectate in git blame on the side (if you're using an editor to view this readme.md).

@@ -5,61 +5,180 @@ This module defines the graph structure for the RAG agent using LangGraph,
 providing native support for interrupts, checkpointing, and streaming.
 """
 
-from typing import TypedDict, Annotated, Sequence, Literal, Optional
-from langchain_core.messages import BaseMessage, AIMessage, ToolMessage, SystemMessage, AnyMessage, HumanMessage
+from typing import TypedDict, Annotated, Optional
+from langchain_core.messages import AIMessage, SystemMessage, AnyMessage, HumanMessage
 from langgraph.graph import StateGraph, END, MessagesState, START
-from langgraph.prebuilt import ToolNode
-from langgraph.store.base import BaseStore
 import operator
-from langchain_core.messages.utils import count_tokens_approximately
 from langchain_core.runnables import RunnableConfig
-from langchain_ollama import ChatOllama
-from langgraph.graph.message import add_messages
 import datetime
 import asyncio
 import json
 import textwrap
 from .modules.custom_summarization import SummarizationNode, RunningSummary
 
+# Strong references to running background tasks to prevent garbage collection
+BACKGROUND_TASKS: set[asyncio.Task] = set()
+
 class State(MessagesState):
+
     context: dict[str, RunningSummary]
     rating: float
     title: Optional[str]
     input_tokens_used: Annotated[int, operator.add]
     output_tokens_used: Annotated[int, operator.add]
+    tasks: list[str]
+    worker_results: list[dict]
 
 class LLMInputState(TypedDict):
     summarized_messages: list[AnyMessage]
     context: dict[str, RunningSummary]
 
 def create_agent_graph(
+    llm,
     llm_with_tools,
     rag_tool,
+    exa_tool=None,
     memory_manager=None,
     summarization_llm=None,
     training_llm=None,
     title_llm=None,
     *,
+    max_context_tokens: int = 3000,
     debug: bool = False
 ):
 
-    # Define the agent node
-    async def agent_node(state: dict, config: RunnableConfig):
+    async def orchestrator_node(state: dict, config: RunnableConfig):
         """
-        Agent node: LLM decides what to do next.
-        Note: This uses invoke() for non-streaming. For streaming, we handle it in the agent.chat() method.
+        Orchestrator node: Decides what sub-queries/tasks are needed.
         """
-
         active_messages = state.get("summarized_messages", state.get("messages", []))
-        print(f"[AGENT NODE DEBUG] Running agent node. active_messages count: {len(active_messages)}")
-        for idx, m in enumerate(active_messages):
-            print(f"  [{idx}] Type: {type(m).__name__}, ID: {getattr(m, 'id', None)}, Content: {str(m.content)[:100]}")
-        last_message = active_messages[-1].content if active_messages else ""
+        last_user_message = ""
+        for msg in reversed(active_messages):
+            if isinstance(msg, HumanMessage):
+                last_user_message = msg.content
+                break
+
+        if not last_user_message:
+            return {"tasks": []}
+
+        # Clean instruction from user query if present
+        clean_query = last_user_message
+        if "Please use the hybrid_RAG_retrieve tool" in clean_query:
+            clean_query = clean_query.replace("Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. ", "", 1)
+
+        orchestrator_prompt = f"""You are the coordinator/orchestrator of a multi-agent system.
+Your job is to decompose the user's main query into 1 to 3 distinct, specific sub-queries or search tasks that can be executed in parallel to retrieve the necessary facts from a vector database.
+
+Analyze the user's query and generate the sub-queries.
+- If the query is simple, generate just 1 sub-query.
+- If it is multi-faceted, generate 2 or 3 distinct sub-queries targeting different parts of the request.
+- Return ONLY a JSON array of strings containing the sub-queries. Do NOT include any preamble, formatting, or extra text.
+
+User Query: {clean_query}
+
+JSON Response:"""
+
+        try:
+            # Generate tasks with base llm (using ainvoke since orchestrator does not stream output to user)
+            response = await llm.ainvoke(orchestrator_prompt, config=config)
+            content = response.content.strip()
+
+            # Robust parsing of JSON array
+            if "[" in content and "]" in content:
+                content = content[content.find("["):content.rfind("]")+1]
+            tasks = json.loads(content)
+            if not isinstance(tasks, list):
+                tasks = [clean_query]
+        except Exception as e:
+            if debug:
+                print(f"[Orchestrator Error] Failed to parse tasks: {e}. Falling back to main query.")
+            tasks = [clean_query]
+
+        if debug:
+            log_debug("ORCHESTRATOR_NODE", f"Original: {clean_query}\nDecomposed Tasks: {tasks}")
+
+        return {"tasks": tasks}
+
+    async def worker_node(state: dict, config: RunnableConfig):
+        """
+        Worker node: Concurrently runs RAG retrieval for each sub-query.
+        """
+        tasks = state.get("tasks", [])
+        if not tasks:
+            # Fallback if no tasks generated
+            active_messages = state.get("summarized_messages", state.get("messages", []))
+            last_user_message = ""
+            for msg in reversed(active_messages):
+                if isinstance(msg, HumanMessage):
+                    last_user_message = msg.content
+                    break
+            tasks = [last_user_message] if last_user_message else [""]
+
+        async def run_single_worker(sub_query: str):
+            if not sub_query.strip():
+                return {"sub_query": "", "context": "No sub-query specified."}
+
+            # Read enable_exa from config
+            enable_exa = config.get("configurable", {}).get("enable_exa", False)
+
+            async def run_milvus():
+                try:
+                    return await asyncio.to_thread(rag_tool.invoke, {"query": sub_query})
+                except Exception as e:
+                    return f"Error retrieving from Milvus: {e}"
+
+            async def run_exa():
+                if not exa_tool or not enable_exa:
+                    return ""
+                try:
+                    return await asyncio.to_thread(exa_tool.invoke, {"query": sub_query})
+                except Exception as e:
+                    return f"Error retrieving from Exa: {e}"
+
+            # Run Milvus and Exa search in parallel!
+            milvus_res, exa_res = await asyncio.gather(run_milvus(), run_exa())
+
+            # Combine context blocks and explicitly tag the sources
+            combined_context = f"[Source: Milvus (Local Knowledge Base)]\n{milvus_res}\n\n"
+            if exa_res:
+                combined_context += f"[Source: Exa Web Search (Internet)]\n{exa_res}"
+
+            return {
+                "sub_query": sub_query,
+                "context": combined_context
+            }
+
+        # Run all workers in parallel!
+        worker_results = await asyncio.gather(*(run_single_worker(t) for t in tasks))
+
+        if debug:
+            log_content = ""
+            for idx, res in enumerate(worker_results, 1):
+                log_content += f"Worker {idx} Sub-query: {res['sub_query']}\nContext Length: {len(res['context'])} chars\n\n"
+            log_debug("WORKER_NODE", log_content)
+
+        return {"worker_results": worker_results}
+
+    async def synthesizer_node(state: dict, config: RunnableConfig):
+        """
+        Synthesizer node: Combines raw retrieved contexts and generates/streams the final unified answer.
+        """
+        active_messages = state.get("summarized_messages", state.get("messages", []))
+        last_user_message = ""
+        for msg in reversed(active_messages):
+            if isinstance(msg, HumanMessage):
+                last_user_message = msg.content
+                break
+
+        # Clean user query
+        clean_query = last_user_message
+        if "Please use the hybrid_RAG_retrieve tool" in clean_query:
+            clean_query = clean_query.replace("Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. ", "", 1)
 
         memories = []
         if memory_manager:
             memories = await memory_manager.asearch(
-                query=last_message,
+                query=clean_query,
                 config=config,
                 limit=5
             )
@@ -67,92 +186,127 @@ def create_agent_graph(
         memory_context = ""
         if memories:
             formatted = "\n".join([f"- {m.value}" for m in memories if m.score is not None and m.score > 0.5])
-            memory_context = f"\n\nRELEVANT USER FACTS/MEMORIES:\n{formatted}"
-            
-            # Debug: log all memories with scores
-            if debug:
-                all_memories_debug = "\n".join([f"Score {m.score:.3f}: {m.value}" for m in memories])
-                log_debug("MEMORIES_WITH_SCORES", all_memories_debug if memories else "No memories found")
+            memory_context = f"\nRELEVANT USER FACTS/MEMORIES:\n{formatted}\n"
 
-        latest_user_index = next(
-            (
-                idx
-                for idx in range(len(active_messages) - 1, -1, -1)
-                if isinstance(active_messages[idx], HumanMessage)
-            ),
-            None,
-        )
-        latest_turn_has_tool_result = (
-            latest_user_index is not None
-            and any(isinstance(msg, ToolMessage) for msg in active_messages[latest_user_index + 1:])
-        )
-        retrieval_instruction = (
-            "The latest user request already has retrieved context in the messages. "
-            "Do not call hybrid_RAG_retrieve again for this same request; answer using that tool result. "
-            if latest_turn_has_tool_result
-            else "Use the hybrid_RAG_retrieve tool before answering the latest user request. "
+        worker_results = state.get("worker_results", [])
+
+        # Helper to parse chunks from serialized context string
+        def parse_chunks(context_str, aspect_name):
+            chunks = []
+            current_source = "unknown"
+            lines = context_str.split("\n")
+            current_chunk = []
+
+            for line in lines:
+                if line.startswith("[Source: Milvus"):
+                    current_source = "Milvus (Local Knowledge Base)"
+                    continue
+                elif line.startswith("[Source: Exa"):
+                    current_source = "Exa Web Search (Internet)"
+                    continue
+
+                # Check if we are starting a new chunk
+                if line.startswith("Source: {"):
+                    if current_chunk:
+                        chunks.append({
+                            "source": current_source,
+                            "aspect": aspect_name,
+                            "text": "\n".join(current_chunk).strip()
+                        })
+                        current_chunk = []
+                current_chunk.append(line)
+
+            if current_chunk:
+                chunks.append({
+                    "source": current_source,
+                    "aspect": aspect_name,
+                    "text": "\n".join(current_chunk).strip()
+                })
+            return chunks
+
+        # Group chunks by aspect
+        chunks_by_aspect = {}
+        for res in worker_results:
+            aspect = res.get("sub_query", "")
+            chunks = parse_chunks(res.get("context", ""), aspect)
+            chunks_by_aspect[aspect] = chunks
+
+        # Round-robin select chunks across aspects
+        selected_chunks = []
+        max_chunks_len = max(len(lst) for lst in chunks_by_aspect.values()) if chunks_by_aspect else 0
+        for i in range(max_chunks_len):
+            for aspect, chunks in chunks_by_aspect.items():
+                if i < len(chunks):
+                    selected_chunks.append(chunks[i])
+
+        # Budget chunks by token count
+        selected_by_aspect = {}
+        current_tokens = 0
+        for chunk in selected_chunks:
+            chunk_repr = f"[{chunk['source']}]\n{chunk['text']}\n\n"
+            chunk_tokens = count_tokens_approximately([HumanMessage(content=chunk_repr)])
+
+            if current_tokens + chunk_tokens > max_context_tokens:
+                break
+
+            current_tokens += chunk_tokens
+            aspect = chunk['aspect']
+            if aspect not in selected_by_aspect:
+                selected_by_aspect[aspect] = []
+            selected_by_aspect[aspect].append(chunk)
+
+        # Re-build final retrieved_contexts
+        retrieved_contexts = ""
+        for idx, (aspect, chunks) in enumerate(selected_by_aspect.items(), 1):
+            retrieved_contexts += f"--- Retrieved Context for Aspect {idx}: {aspect} ---\n"
+            milvus_chunks = [c for c in chunks if "Milvus" in c["source"]]
+            exa_chunks = [c for c in chunks if "Exa" in c["source"]]
+
+            if milvus_chunks:
+                retrieved_contexts += "[Source: Milvus (Local Knowledge Base)]\n"
+                retrieved_contexts += "\n\n".join(c["text"] for c in milvus_chunks) + "\n\n"
+            if exa_chunks:
+                retrieved_contexts += "[Source: Exa Web Search (Internet)]\n"
+                retrieved_contexts += "\n\n".join(c["text"] for c in exa_chunks) + "\n\n"
+
+        synthesizer_system = (
+            "You are a synthesizer agent in a multi-agent RAG system. "
+            "Your goal is to provide a single, comprehensive, and cohesive response to the user's query.\n"
+            "You are provided with raw retrieved context blocks representing different aspects of the query, "
+            "which contain sources labeled as '[Source: Milvus (Local Knowledge Base)]' and '[Source: Exa Web Search (Internet)]'.\n"
+            "If there is any conflict between the information retrieved from Milvus and the web search results from Exa, "
+            "you MUST prioritize the Milvus retrieval results as the ground truth. "
+            "Be professional, structured, and avoid repeating the same facts multiple times."
         )
 
-        system_context = (
-            "You are a helpful assistant with access to a specialized knowledge base and user memories. "
-            "IMPORTANT INSTRUCTIONS:\n"
-            f"1. {retrieval_instruction}"
-            "Never rely solely on your general knowledge for technical content.\n"
-            "2. For personal questions about the user: Check the 'RELEVANT USER FACTS/MEMORIES' section below FIRST. "
-            "If the answer is in the memories, use that information directly. "
-            f"{memory_context}"
-        )
+        synthesizer_user = f"""User original query: {clean_query}
+{memory_context}
+Retrieved Context Blocks:
+{retrieved_contexts}
 
-        messages = [SystemMessage(content=system_context)] + active_messages
+Generate a clear, polished, and comprehensive response answering the user query based on the retrieved context above."""
+
+        messages = [
+            SystemMessage(content=synthesizer_system),
+            HumanMessage(content=synthesizer_user)
+        ]
 
         response = None
-        async for chunk in llm_with_tools.astream(messages, config=config):
+        # We stream using astream to allow the client to catch live token streams
+        async for chunk in llm.astream(messages, config=config):
             if response is None:
                 response = chunk
             else:
                 response += chunk
 
         if debug:
-            # Debug logging
-            log_content = f"Active Messages ({len(active_messages)} total):\n"
-            for i, msg in enumerate(active_messages, 1):
-                log_content += f"  Message {i}: {msg}\n\n"
-            if 'context' in state:
-                log_content += f"\nContext: {state['context']}"
-            log_debug("AGENT_NODE_INPUT", log_content)
-            log_debug("AGENT_RESPONSE", f"Response: {response}")
-            log_debug("TOKEN_USAGE", f"Input tokens: {response.usage_metadata.get('input_tokens', 0)}, Output tokens: {response.usage_metadata.get('output_tokens', 0)}")
+            log_debug("SYNTHESIZER_NODE", f"Synthesized Response: {response}")
 
-        # Check if this is the final response (no tool calls)
-        # If so, clean up ToolMessages before returning
-        has_tool_calls = hasattr(response, "tool_calls") and response.tool_calls
-        
-        if not has_tool_calls:
-            # Agent is done - clean up all ToolMessages and AIMessages with tool_calls from state before returning
-            # This prevents accumulation of tool call data and keeps conversation history valid across turns
-            from langchain_core.messages import RemoveMessage
-            
-            # Find all ToolMessages and AIMessages with tool_calls to remove
-            messages_to_remove = []
-            for msg in active_messages:
-                if isinstance(msg, ToolMessage) and msg.id:
-                    messages_to_remove.append(RemoveMessage(id=msg.id))
-                elif isinstance(msg, AIMessage) and hasattr(msg, "tool_calls") and msg.tool_calls and msg.id:
-                    messages_to_remove.append(RemoveMessage(id=msg.id))
-            
-            # Return removal commands + new response
-            return {
-                "messages": messages_to_remove + [response],
-                "context": state.get("context", {}),
-                "input_tokens_used": response.usage_metadata.get("input_tokens", 0),
-                "output_tokens_used": response.usage_metadata.get("output_tokens", 0)
-            }
-        
-        # Has tool calls - return normally (ToolMessages will be added by tool node)
+        # In langgraph State update, we return the synthesized AIMessage response to add to `messages`
         return {
             "messages": [response],
-            "input_tokens_used": response.usage_metadata.get("input_tokens", 0),
-            "output_tokens_used": response.usage_metadata.get("output_tokens", 0)
+            "input_tokens_used": response.usage_metadata.get("input_tokens", 0) if hasattr(response, "usage_metadata") and response.usage_metadata else 0,
+            "output_tokens_used": response.usage_metadata.get("output_tokens", 0) if hasattr(response, "usage_metadata") and response.usage_metadata else 0,
         }
 
     async def save_memory_node(state: State, config: RunnableConfig):
@@ -161,15 +315,18 @@ def create_agent_graph(
         """
         if not memory_manager:
             return {}
-            
+
         async def _background_save():
             try:
                 await memory_manager.ainvoke({"messages": state["messages"]}, config=config)
                 print(f"Memory saved successfully for user {config.get('configurable', {}).get('user_id', 'unknown')}") if debug else None
             except Exception as e:
                 print(f"Error saving memory: {e}")
-        asyncio.create_task(_background_save())
+        task = asyncio.create_task(_background_save())
+        BACKGROUND_TASKS.add(task)
+        task.add_done_callback(BACKGROUND_TASKS.discard)
         return {}
+
 
     async def title_node(state: State, config: RunnableConfig):
         """
@@ -177,15 +334,15 @@ def create_agent_graph(
         """
         messages = state["messages"]
         first_human = first_ai = None
-        
+
         first_human_content = ""
         first_ai_content = ""
-        
+
         for msg in messages:
             content = msg.content
             if isinstance(content, str) and "Please use the hybrid_RAG_retrieve tool" in content:
                 content = content.replace("Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. ", "", 1)
-            
+
             if isinstance(msg, HumanMessage) and first_human is None:
                 first_human = msg
                 first_human_content = content
@@ -219,7 +376,7 @@ def create_agent_graph(
         messages = state["messages"]
 
         last_human = last_ai = None
-        
+
         last_human_content = ""
         last_ai_content = ""
 
@@ -227,7 +384,7 @@ def create_agent_graph(
             content = msg.content
             if isinstance(content, str) and "Please use the hybrid_RAG_retrieve tool" in content:
                 content = content.replace("Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. ", "", 1)
-            
+
             if isinstance(msg, HumanMessage) and last_human is None:
                 last_human = msg
                 last_human_content = content
@@ -245,7 +402,7 @@ def create_agent_graph(
             return {
                 "rating": 0.0
             }
-        
+
         # Create evaluation prompt
         evaluation_prompt = f"""You are an expert evaluator for training data quality. Evaluate the following input-output pair.
 Input (User Query):
@@ -271,29 +428,103 @@ Format all responses as JSON object with the following keys:
             # Use training LLM to evaluate
             eval_response = await training_llm.ainvoke(evaluation_prompt)
             eval_text = eval_response.content if hasattr(eval_response, 'content') else str(eval_response)
-                    
+
             eval_json = json.loads(eval_text)
-           
+
             valuable_score = float(eval_json.get("VALUABLE_FOR_TRAINING", 0.0))
             technical_score = float(eval_json.get("TECHNICAL_CONTENT", 0.0))
-            
+
             overall_score = (valuable_score + technical_score) / 2.0
 
             if debug:
-                    log_debug("EVALUATOR_NODE", f"Evaluation response: {eval_text}\nOverall score: {overall_score}")
-            
+                log_debug("EVALUATOR_NODE", f"Evaluation response: {eval_text}\nOverall score: {overall_score}")
+
+            # Run DeepEval evaluation
+            deepeval_score = 0.0
+            try:
+                import sys
+                import langchain_core.messages as core_messages
+                import langchain_core.documents as core_documents
+
+                # Mock langchain.schema to solve deepeval's legacy import issues
+                if 'langchain.schema' not in sys.modules:
+                    class MockSchema:
+                        pass
+                    mock_schema = MockSchema()
+                    mock_schema.Document = core_documents.Document
+                    mock_schema.HumanMessage = core_messages.HumanMessage
+                    mock_schema.AIMessage = core_messages.AIMessage
+                    mock_schema.SystemMessage = core_messages.SystemMessage
+                    mock_schema.BaseMessage = core_messages.BaseMessage
+                    sys.modules['langchain.schema'] = mock_schema
+
+                from deepeval.metrics import AnswerRelevancyMetric
+                from deepeval.test_case import LLMTestCase
+                from deepeval.models import DeepEvalBaseLLM
+
+                import requests
+
+                class OllamaDeepEval(DeepEvalBaseLLM):
+                    def __init__(self, model_name, base_url="http://127.0.0.1:11434"):
+                        self.model_name = model_name
+                        self.base_url = base_url
+                        super().__init__(model_name)
+
+                    def load_model(self):
+                        return None
+
+                    def get_model_name(self) -> str:
+                        return self.model_name
+
+                    def generate(self, prompt: str) -> str:
+                        try:
+                            payload = {
+                                "model": self.model_name,
+                                "prompt": prompt,
+                                "stream": False,
+                                "options": {
+                                    "temperature": 0.0
+                                }
+                            }
+                            res = requests.post(f"{self.base_url}/api/generate", json=payload, timeout=60)
+                            res.raise_for_status()
+                            return res.json().get("response", "")
+                        except Exception as e:
+                            return f"Error during generation: {e}"
+
+                    async def a_generate(self, prompt: str) -> str:
+                        return self.generate(prompt)
+
+                eval_wrapper = OllamaDeepEval(training_llm.model)
+                relevancy_metric = AnswerRelevancyMetric(threshold=0.5, model=eval_wrapper)
+                test_case = LLMTestCase(
+                    input=user_input,
+                    actual_output=ai_output
+                )
+
+                # deepeval metrics have sync measure method. Let's run in executor thread.
+                await asyncio.to_thread(relevancy_metric.measure, test_case)
+                deepeval_score = relevancy_metric.score
+
+                if debug:
+                    log_debug("EVALUATOR_NODE_DEEPEVAL", f"DeepEval Answer Relevancy Score: {deepeval_score}\nReason: {getattr(relevancy_metric, 'reason', 'None')}")
+            except Exception as de_err:
+                if debug:
+                    log_debug("EVALUATOR_NODE_DEEPEVAL_ERROR", f"DeepEval self-evaluation failed: {de_err}")
+
+            # Combine the two metrics (custom training value + deepeval relevancy)
+            if deepeval_score > 0.0:
+                overall_score = (overall_score + deepeval_score) / 2.0
+
             result = {"rating": overall_score}
             return result
-            
+
         except Exception as e:
             if debug:
                 log_debug("EVALUATOR_NODE", f"Error during evaluation: {e}")
             return {
                 "rating": 0.0
             }
-    
-    # Define the tool node using LangGraph's built-in ToolNode
-    tool_node = ToolNode([rag_tool])
 
     summarization_node = None
     if summarization_llm:
@@ -321,11 +552,11 @@ Format all responses as JSON object with the following keys:
         post_agent_nodes.append("evaluator")
     if use_save_memory:
         post_agent_nodes.append("save_memory")
-        
+
     def get_next_step(current_step: str) -> str:
-        if current_step == "agent":
+        if current_step == "synthesizer" or current_step == "agent":
             return post_agent_nodes[0] if post_agent_nodes else END
-            
+
         try:
             idx = post_agent_nodes.index(current_step)
             if idx + 1 < len(post_agent_nodes):
@@ -334,60 +565,42 @@ Format all responses as JSON object with the following keys:
         except ValueError:
             return END
 
-    # Define the router function
-    def should_continue(state: State) -> Literal["tools", "next"]:
-        """
-        Router: Decide whether to continue to tools or move to the next phase.
-        """
-        messages = state["messages"]
-        last_message = messages[-1]
-        
-        # If there are tool calls (only AIMessage can have tool_calls), continue to tools
-        if isinstance(last_message, AIMessage) and hasattr(last_message, "tool_calls") and last_message.tool_calls:
-            return "tools"
-        
-        return "next"
-    
     # Build the graph
     workflow = StateGraph(State)
-    
-    # Add Core Nodes
-    workflow.add_node("agent", agent_node)
-    workflow.add_node("tools", tool_node)
 
-    # Entry point and Loop logic
+    # Add Core Nodes
+    workflow.add_node("orchestrator", orchestrator_node)
+    workflow.add_node("worker", worker_node)
+    workflow.add_node("synthesizer", synthesizer_node)
+
+    # Entry point
     if use_summarize:
         workflow.add_node("summarize", summarization_node)
         workflow.add_edge(START, "summarize")
-        workflow.add_edge("summarize", "agent")
-        workflow.add_edge("tools", "summarize") # loop back through summarize
+        workflow.add_edge("summarize", "orchestrator")
     else:
-        workflow.add_edge(START, "agent")
-        workflow.add_edge("tools", "agent") # loop back directly to agent
-    
-    # Post-Agent branching
-    workflow.add_conditional_edges(
-        "agent",
-        should_continue,
-        {
-            "tools": "tools",
-            "next": get_next_step("agent")
-        }
-    )
-    
+        workflow.add_edge(START, "orchestrator")
+
+    # Workflow chain
+    workflow.add_edge("orchestrator", "worker")
+    workflow.add_edge("worker", "synthesizer")
+
+    # Synthesizer routes to post-agent chain
+    workflow.add_edge("synthesizer", get_next_step("synthesizer"))
+
     # Optional nodes in the final chain
     if use_title:
         workflow.add_node("title", title_node)
         workflow.add_edge("title", get_next_step("title"))
-        
+
     if use_evaluator:
         workflow.add_node("evaluator", evaluator_node)
         workflow.add_edge("evaluator", get_next_step("evaluator"))
-    
+
     if use_save_memory:
         workflow.add_node("save_memory", save_memory_node)
         workflow.add_edge("save_memory", get_next_step("save_memory"))
-    
+
     return workflow
 
 def log_debug(section: str, content: str):

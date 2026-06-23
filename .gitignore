@@ -13,3 +13,7 @@ data/
 .runtime/
 *.pid
 *.log
+
+# Mostly for tests
+scripts/
+scratch/

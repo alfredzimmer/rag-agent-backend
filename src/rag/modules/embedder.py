@@ -1,6 +1,6 @@
 import numpy as np
 import ollama
-from FlagEmbedding import BGEM3FlagModel, FlagModel
+from FlagEmbedding import BGEM3FlagModel
 
 _sparse_model = BGEM3FlagModel('BAAI/bge-m3')
 
