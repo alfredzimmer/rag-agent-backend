@@ -15,7 +15,7 @@ services:
       EDEMI_PORT: "9229"
       DEPLOYMENT_ENVIRONMENT: ${DEPLOYMENT_ENVIRONMENT:-development}
       INGESTION_UPLOAD_DIR: /app/.runtime/uploads
-      PG_URI: postgresql://${POSTGRES_USER:-edemi}:${POSTGRES_PASSWORD:-edemi}@postgres:5432/${POSTGRES_DB:-edemi}
+      PG_URI: ${PG_URI:-postgresql://edemi:edemi@postgres:5432/edemi}
       REDIS_URL: redis://redis:6379/0
       MILVUS_URI: http://milvus:19530
       MILVUS_HOST: milvus
@@ -59,7 +59,7 @@ services:
     environment:
       DEPLOYMENT_ENVIRONMENT: ${DEPLOYMENT_ENVIRONMENT:-development}
       INGESTION_UPLOAD_DIR: /app/.runtime/uploads
-      PG_URI: postgresql://${POSTGRES_USER:-edemi}:${POSTGRES_PASSWORD:-edemi}@postgres:5432/${POSTGRES_DB:-edemi}
+      PG_URI: ${PG_URI:-postgresql://edemi:edemi@postgres:5432/edemi}
       REDIS_URL: redis://redis:6379/0
       MILVUS_URI: http://milvus:19530
       MILVUS_HOST: milvus
@@ -78,6 +78,8 @@ services:
       milvus:
         condition: service_started
     stop_grace_period: 5m
+    healthcheck:
+      disable: true
 
   redis:
     image: redis:8.2.3-alpine

@@ -10,6 +10,7 @@ from uuid import uuid4
 
 from opentelemetry import context, metrics, trace
 from langchain_core.documents import Document
+from redis.exceptions import TimeoutError as RedisTimeoutError
 
 from edemi_server.ingestion.chunker import CHUNKER_VERSION, chunk_sections
 from edemi_server.ingestion.config import IngestionConfig
@@ -88,6 +89,11 @@ class FakePipeline:
                 self.client.xdel(stream, message_id)
                 results.append(None)
         return results
+
+
+class FakeBlockingRedis(FakeRedis):
+    def xreadgroup(self, *_: object, **__: object):
+        raise RedisTimeoutError("idle blocking read")
 
 
 class FakeWorkerQueue:
@@ -259,6 +265,15 @@ class IngestionTests(unittest.TestCase):
             self.assertEqual(state.error, "temporary failure")
             self.assertIn("1-0", fake_redis.acknowledged)
             self.assertIn("1-0", fake_redis.deleted)
+
+    def test_idle_queue_timeout_returns_no_messages(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            queue = IngestionQueue(
+                make_config(Path(directory).resolve()),
+                client=FakeBlockingRedis(),
+            )
+
+            self.assertEqual(queue.read("test-worker"), [])
 
     def test_json_logs_include_structured_context(self) -> None:
         record = logging.LogRecord(

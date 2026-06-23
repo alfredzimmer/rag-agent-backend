@@ -8,7 +8,7 @@ from uuid import uuid4
 
 import redis
 from opentelemetry import propagate
-from redis.exceptions import ResponseError
+from redis.exceptions import ResponseError, TimeoutError as RedisTimeoutError
 
 from .config import IngestionConfig
 from .models import IngestionJob, IngestionJobState, IngestionStatus
@@ -123,13 +123,16 @@ class IngestionQueue:
         pipeline.execute()
 
     def read(self, consumer_name: str, block_ms: int = 5000) -> list[tuple[str, dict[str, str]]]:
-        entries = self.client.xreadgroup(
-            self.config.consumer_group,
-            consumer_name,
-            {self.config.stream_name: ">"},
-            count=1,
-            block=block_ms,
-        )
+        try:
+            entries = self.client.xreadgroup(
+                self.config.consumer_group,
+                consumer_name,
+                {self.config.stream_name: ">"},
+                count=1,
+                block=block_ms,
+            )
+        except RedisTimeoutError:
+            return []
         return self._flatten(entries)
 
     def claim_stale(self, consumer_name: str) -> list[tuple[str, dict[str, str]]]:
