@@ -176,10 +176,6 @@ def _preprocess_messages(
     should_summarize = False
     n_tokens_to_summarize = 0
     
-    print(f"[SUMMARIZATION DEBUG] total_messages={len(messages)}, max_summarizable_index={max_summarizable_index}, keep_last_n={keep_last_n_messages}")
-    print(f"[SUMMARIZATION DEBUG] max_tokens_before_summary={max_tokens_before_summary}, max_remaining_tokens={max_remaining_tokens}")
-    print(f"[SUMMARIZATION DEBUG] total_n_tokens={total_n_tokens}")
-    
     for i in range(total_summarized_messages, max_summarizable_index):
         message = messages[i]
         if message.id is None:
@@ -209,10 +205,6 @@ def _preprocess_messages(
             n_tokens_to_summarize = n_tokens
             should_summarize = True
             idx = i
-            print(f"[SUMMARIZATION DEBUG] WILL SUMMARIZE: n_tokens={n_tokens}, remaining={total_n_tokens - n_tokens}, idx={idx}")
-    
-    print(f"[SUMMARIZATION DEBUG] should_summarize={should_summarize}, n_tokens={n_tokens}")
-
     # Note: we don't return here since we might still need to include the existing summary
     if not should_summarize:
         messages_to_summarize = []

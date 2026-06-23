@@ -3,6 +3,7 @@ import httpx
 import json
 import asyncio
 import requests
+import time
 from uuid import uuid4
 
 st.set_page_config(page_title="RAG Agent", page_icon="🤖", layout="wide")
@@ -57,14 +58,6 @@ def _history_to_messages(history: list[dict]) -> list[dict[str, str]]:
         if role in ("tool", "function"):
             last_tool_content = content
         elif role == "human" or role == "user":
-            # Clean user query if it contains injected file context
-            if "Attached Document Context:" in content and "User Question:" in content:
-                for sep in ("User Question:\n", "User Question:\r\n", "User Question:"):
-                    if sep in content:
-                        parts = content.rsplit(sep, 1)
-                        if len(parts) == 2:
-                            content = parts[1].strip()
-                            break
             messages.append({"role": "user", "content": content})
         elif role in ("ai", "assistant") and content:
             msg = {"role": "assistant", "content": content}
@@ -116,8 +109,6 @@ if "interrupted" not in st.session_state:
     st.session_state["interrupted"] = False
 if "uploader_key" not in st.session_state:
     st.session_state["uploader_key"] = "pdf_uploader_1"
-if "active_file_context" not in st.session_state:
-    st.session_state["active_file_context"] = None
 if "enable_exa" not in st.session_state:
     st.session_state["enable_exa"] = False
 
@@ -468,21 +459,12 @@ section[data-testid="stFileUploaderDropzone"] {
 </style>
 """, unsafe_allow_html=True)
 
-    col_file, col_check = st.columns([3, 1])
-    with col_file:
-        uploaded_file = st.file_uploader(
-            "Attach PDF for Context",
-            type=["pdf"],
-            key=st.session_state["uploader_key"],
-            label_visibility="collapsed"
-        )
-    with col_check:
-        ingest_checkbox = st.checkbox(
-            "Ingest to Milvus (RAG)",
-            value=True,
-            key="ingest_checkbox",
-            help="Enable to parse, chunk, embed, and ingest this document using the C++ ingestor pipeline."
-        )
+    uploaded_file = st.file_uploader(
+        "Attach a document",
+        type=["pdf", "docx", "md", "txt"],
+        key=st.session_state["uploader_key"],
+        label_visibility="collapsed",
+    )
 
     # --- User input ---
     query = st.chat_input("Type your message...", disabled=st.session_state["is_streaming"])
@@ -496,30 +478,45 @@ if query and query.strip() and not st.session_state["is_streaming"]:
                 files = {
                     "file": (uploaded_file.name, uploaded_file.getvalue(), "application/pdf")
                 }
-                data = {
-                    "ingest_to_milvus": str(ingest_checkbox).lower(),
-                    "conversation_id": st.session_state["conversation_id"]
-                }
                 headers = {
                     "Authorization": f"Bearer {st.session_state['auth_token']}"
                 }
 
                 response = requests.post(
-                    f"{st.session_state['base_url']}/api/agent/conversation/upload",
+                    f"{st.session_state['base_url']}/api/ingestion/documents",
                     files=files,
-                    data=data,
+                    params={"conversation_id": st.session_state["conversation_id"]},
                     headers=headers,
                     timeout=60
                 )
 
-                if response.status_code == 200:
+                if response.status_code == 202:
                     res_json = response.json()
-                    st.toast("✅ File uploaded successfully!")
-                    if res_json.get("redis_enqueued"):
-                        st.info(f"📂 **{uploaded_file.name}** successfully enqueued in Redis!")
-                    # Store active file context
-                    st.session_state["active_file_context"] = res_json.get("extracted_text", "")
-                    # Clear uploader programmatically
+                    job_id = res_json["job_id"]
+                    status_placeholder = st.empty()
+                    deadline = time.monotonic() + 300
+                    while time.monotonic() < deadline:
+                        job_response = requests.get(
+                            f"{st.session_state['base_url']}/api/ingestion/jobs/{job_id}",
+                            headers=headers,
+                            timeout=15,
+                        )
+                        job_response.raise_for_status()
+                        job = job_response.json()
+                        job_status = job["status"]
+                        status_placeholder.info(
+                            f"Ingestion {job_status}: {uploaded_file.name}"
+                        )
+                        if job_status in {"completed", "duplicate"}:
+                            status_placeholder.success(
+                                f"Document ready: {job['chunks_written']} chunks indexed."
+                            )
+                            break
+                        if job_status == "failed":
+                            raise RuntimeError(job.get("error") or "Document ingestion failed")
+                        time.sleep(2)
+                    else:
+                        raise TimeoutError("Document ingestion did not finish within five minutes")
                     st.session_state["uploader_key"] = f"pdf_uploader_{uuid4()}"
                 else:
                     detail = response.json().get("detail", "Unknown error")
@@ -556,12 +553,8 @@ if st.session_state["pending_query"] and st.session_state["is_streaming"]:
                 payload = {
                     "query": pending_query,
                     "conversation_id": conv_id,
-                    "user_id": st.session_state["user_id"],
-                    "file_context": st.session_state.get("active_file_context"),
                     "enable_exa": st.session_state.get("enable_exa", False)
                 }
-                # Reset active file context immediately so it does not persist to subsequent turns
-                st.session_state["active_file_context"] = None
                 with requests.post(
                     f"{st.session_state['base_url']}/api/agent/conversation/chat",
                     json=payload,

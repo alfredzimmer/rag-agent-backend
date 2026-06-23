@@ -1,0 +1,179 @@
+name: Verify and deploy
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  UV_VERSION: "0.11.16"
+
+jobs:
+  verify:
+    name: Verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6
+        with:
+          version: ${{ env.UV_VERSION }}
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Synchronize locked environment
+        run: uv sync --locked --no-dev
+
+      - name: Run tests
+        env:
+          OTEL_SDK_DISABLED: "true"
+        run: uv run python -m unittest discover -s tests -v
+
+      - name: Compile Python sources
+        run: uv run python -m compileall -q src tests
+
+      - name: Validate Compose configuration
+        env:
+          EDEMI_ENV_FILE: ${{ github.workspace }}/infra/env.production.example
+        run: |
+          docker compose \
+            --env-file infra/env.production.example \
+            --profile observability \
+            --profile tools \
+            -f infra/docker-compose.yaml \
+            config --quiet
+
+      - name: Validate Dockerfile
+        run: docker build --check .
+
+      - name: Validate deployment script
+        run: bash -n infra/deploy.sh
+
+  deploy:
+    name: Deploy production
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment:
+      name: production
+    concurrency:
+      group: edemi-production
+      cancel-in-progress: false
+    env:
+      DEPLOY_HOST: ${{ secrets.PRODUCTION_HOST }}
+      DEPLOY_USER: ${{ secrets.PRODUCTION_USER }}
+      DEPLOY_PORT: ${{ vars.PRODUCTION_SSH_PORT || '22' }}
+      DEPLOY_PATH: ${{ vars.PRODUCTION_DEPLOY_PATH }}
+      EDEMI_ENV_FILE: ${{ vars.PRODUCTION_ENV_FILE }}
+      OLLAMA_HEALTH_URL: ${{ vars.PRODUCTION_OLLAMA_HEALTH_URL || 'http://127.0.0.1:11434/api/tags' }}
+      SSH_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
+      SSH_KNOWN_HOSTS: ${{ secrets.PRODUCTION_KNOWN_HOSTS }}
+      TS_OAUTH_CLIENT_ID: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+      TS_OAUTH_SECRET: ${{ secrets.TS_OAUTH_SECRET }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Validate deployment configuration
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          test -n "$DEPLOY_HOST"
+          test -n "$DEPLOY_USER"
+          test -n "$DEPLOY_PATH"
+          test -n "$EDEMI_ENV_FILE"
+          test -n "$SSH_KEY"
+          test -n "$SSH_KNOWN_HOSTS"
+          test -n "$TS_OAUTH_CLIENT_ID"
+          test -n "$TS_OAUTH_SECRET"
+          [[ "$DEPLOY_PORT" =~ ^[0-9]+$ ]]
+          [[ "$DEPLOY_PATH" =~ ^/[A-Za-z0-9._/-]+$ ]]
+          [[ "$EDEMI_ENV_FILE" =~ ^/[A-Za-z0-9._/-]+$ ]]
+          [[ "$EDEMI_ENV_FILE" != "$DEPLOY_PATH/"* ]]
+
+      - name: Connect to production network
+        uses: tailscale/github-action@306e68a486fd2350f2bfc3b19fcd143891a4a2d8 # v4.1.2
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+          ping: ${{ env.DEPLOY_HOST }}
+
+      - name: Configure SSH
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          install -d -m 0700 "$HOME/.ssh"
+          printf '%s\n' "$SSH_KEY" >"$HOME/.ssh/edemi_deploy"
+          chmod 0600 "$HOME/.ssh/edemi_deploy"
+          printf '%s\n' "$SSH_KNOWN_HOSTS" >"$HOME/.ssh/known_hosts"
+          chmod 0600 "$HOME/.ssh/known_hosts"
+
+      - name: Prepare production directory
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          ssh \
+            -p "$DEPLOY_PORT" \
+            -i "$HOME/.ssh/edemi_deploy" \
+            -o IdentitiesOnly=yes \
+            -o StrictHostKeyChecking=yes \
+            "$DEPLOY_USER@$DEPLOY_HOST" \
+            bash -s -- "$DEPLOY_PATH" <<'REMOTE'
+          set -Eeuo pipefail
+          install -d -m 0755 "$1"
+          command -v docker >/dev/null
+          command -v curl >/dev/null
+          command -v flock >/dev/null
+          command -v rsync >/dev/null
+          docker compose version
+          REMOTE
+
+      - name: Synchronize source
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          rsync \
+            --archive \
+            --compress \
+            --delete-delay \
+            --exclude=.git/ \
+            --exclude=.env \
+            --exclude=.venv/ \
+            --exclude=.uv-cache/ \
+            --exclude=.runtime/ \
+            --exclude=.deploy/ \
+            --exclude=__pycache__/ \
+            -e "ssh -p $DEPLOY_PORT -i $HOME/.ssh/edemi_deploy -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes" \
+            ./ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/"
+
+      - name: Reconcile production stack
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          ssh \
+            -p "$DEPLOY_PORT" \
+            -i "$HOME/.ssh/edemi_deploy" \
+            -o IdentitiesOnly=yes \
+            -o StrictHostKeyChecking=yes \
+            "$DEPLOY_USER@$DEPLOY_HOST" \
+            bash -s -- "$DEPLOY_PATH" "$EDEMI_ENV_FILE" "$OLLAMA_HEALTH_URL" <<'REMOTE'
+          set -Eeuo pipefail
+          cd "$1"
+          DEPLOY_ROOT="$1" \
+          EDEMI_ENV_FILE="$2" \
+          OLLAMA_HEALTH_URL="$3" \
+          DEPLOYMENT_ENVIRONMENT=production \
+            bash infra/deploy.sh
+          REMOTE

@@ -1,53 +1,92 @@
 # Edemi Backend
 
-This repo contains the FastAPI service and Python RAG runtime for the agent. Read this, this is not ai generated.
+Edemi Backend is the FastAPI, RAG, ingestion, and observability runtime for Edemi.
 
 ```text
-client
-  -> Edemi FastAPI service
-      -> Postgres for LangGraph checkpoints and memory store
-      -> Milvus for domain-specific vector search
-          -> etcd for Milvus metadata
-          -> MinIO for Milvus object storage
-      -> Ollama for local LLM and embedding models
-```
+Frontend
+  -> FastAPI API
+      -> PostgreSQL for users, conversations, and LangGraph checkpoints
+      -> Redis Streams for durable ingestion jobs
+      -> Milvus for scoped document retrieval
+      -> Ollama for chat and embeddings
 
-`src/rag/main-scripts/pdf_to_db.py` is a legacy PDF-to-Milvus pipeline. Consider using the cpp-ingestor if all possible.
+Document upload
+  -> Redis Stream
+      -> Python ingestion worker
+          -> parse -> chunk -> embed -> Milvus
+
+API and worker
+  -> OpenTelemetry Collector
+      -> Tempo traces
+      -> Prometheus metrics
+      -> Loki logs
+      -> Grafana
+```
 
 ## Setup
 
-We feel like explaining the system design decision more than instructing how to use them.
+Copy the environment template and configure its secrets:
 
-We used docker to host Milvus (including minio and etcd) and postgres which makes them easier to manage and the setup proces more straightforward.
-
-We used uv for package management so theres no point in containerizing it. It would make Hot Module Replacement more complicated.
-
-We run Ollama models natively on the server due to the sole reason that we want the want to take advantage of the optimisations using CUDA. We run two models on Ollama concurrently: the main model Qwen3.6 and the embedding model for online database retrieval. If you want a more thorough speed boost consider changing Ollama to vLLM, despite it is allegedly harder to set up.
-
-That being said, it doesn't hurt to much to document their uses.
-
-Verify that you have pulled the required Ollama models:
 ```bash
-# Set up the containers; run this on server
-docker compose -f infra/docker-compose.yaml up -d
-```
-
-and test it on `http://localhost:11434` using whatever method you wish.
-
-Synchronize project virtual environment and packages using `uv`:
-```bash
+cp infra/env.example .env
 uv sync
 ```
 
-Spin up the FastAPI service on the default port `9229`:
+Start the complete application, infrastructure, tools, and observability stack:
+
 ```bash
-uv run python src/edemi_server/main.py
+docker compose \
+  --profile observability \
+  --profile tools \
+  -f infra/docker-compose.yaml \
+  up --build -d
 ```
 
-In a separate terminal tab, launch the interactive testing interface on port `8501`:
-```bash
-uv run streamlit run src/streamlit_app.py --server.port 8501
+The main local endpoints are:
+
+- API: `http://localhost:9229`
+- API schema: `http://localhost:9229/docs`
+- Grafana: `http://localhost:3001`
+- Prometheus: `http://localhost:9090`
+- OpenTelemetry health: `http://localhost:13133`
+
+## Ingestion API
+
+Create a conversation, then upload a document into that conversation's retrieval scope:
+
+```text
+POST /api/ingestion/documents?conversation_id=<uuid>
+GET  /api/ingestion/jobs/<job_id>
 ```
 
-## Headsup
-Be duely noted that this is designed to be a working prototype of a project, not one that is production ready. There's non-trivial legacy scaffolds/codes that are not purged; the components are constructed to work cohesively as a whole but not closely examined line-by-line; the error handling logic is basically non-existent and not even close to robust. In other words, this is vibe coded. Please be lenient towards the lack of coding talent in whoever wrote this line that you can spectate in git blame on the side (if you're using an editor to view this readme.md).
+Supported document types are PDF, DOCX, Markdown, and plain text. Uploads are asynchronous and return `202 Accepted`. The worker uses Redis consumer groups, retries failed jobs, recovers stale pending jobs, and moves terminal failures to the dead-letter stream.
+
+Each Milvus chunk includes a `scope_id`. Retrieval only searches the active conversation scope plus the configured global scope.
+
+## Telemetry
+
+The API and worker export traces, metrics, and logs over OTLP. Logs are JSON on stdout and include `trace_id`, `span_id`, `job_id`, `conversation_id`, and `document_id` when available.
+
+See `skills.md` for the operational debugging workflow and queue commands.
+
+## CI/CD
+
+`.github/workflows/deploy.yml` verifies pull requests and deploys `main` to the protected GitHub `production` environment. It synchronizes the repository to the production host, checks that Ollama is healthy (and attempts to start it when necessary), pulls updated infrastructure images, builds the application image on the server, and reconciles every service in `infra/docker-compose.yaml`.
+
+Configure these GitHub environment secrets:
+
+- `PRODUCTION_HOST`
+- `PRODUCTION_USER`
+- `PRODUCTION_SSH_KEY`
+- `PRODUCTION_KNOWN_HOSTS`
+- `TS_OAUTH_CLIENT_ID`
+- `TS_OAUTH_SECRET`
+
+Configure these GitHub environment variables:
+
+- `PRODUCTION_DEPLOY_PATH`, for example `/opt/edemi-backend`
+- `PRODUCTION_ENV_FILE`, for example `/etc/edemi/edemi.env`
+- `PRODUCTION_SSH_PORT`, default `22`
+- `PRODUCTION_OLLAMA_HEALTH_URL`, default `http://127.0.0.1:11434/api/tags`
+
+Set `PRODUCTION_HOST` to the server's Tailscale address. Configure the Tailscale OAuth client with the `auth_keys` write scope and `tag:ci`. Configure a required reviewer on the `production` environment before enabling the workflow. Create the server environment file from `infra/env.production.example` and keep it outside `PRODUCTION_DEPLOY_PATH` so source synchronization cannot delete it. The deployment user must be able to run Docker, start Ollama, and write to `PRODUCTION_DEPLOY_PATH`; the host also needs `curl`, `flock`, and `rsync`.

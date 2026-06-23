@@ -5,19 +5,17 @@ This module defines the graph structure for the RAG agent using LangGraph,
 providing native support for interrupts, checkpointing, and streaming.
 """
 
-from typing import TypedDict, Annotated, Optional
-from langchain_core.messages import AIMessage, SystemMessage, AnyMessage, HumanMessage
+from typing import Annotated, Optional
+from langchain_core.messages import AIMessage, SystemMessage, HumanMessage
 from langgraph.graph import StateGraph, END, MessagesState, START
 import operator
 from langchain_core.runnables import RunnableConfig
-import datetime
 import asyncio
 import json
-import textwrap
+import logging
 from .modules.custom_summarization import SummarizationNode, RunningSummary
 
-# Strong references to running background tasks to prevent garbage collection
-BACKGROUND_TASKS: set[asyncio.Task] = set()
+logger = logging.getLogger(__name__)
 
 class State(MessagesState):
 
@@ -29,22 +27,14 @@ class State(MessagesState):
     tasks: list[str]
     worker_results: list[dict]
 
-class LLMInputState(TypedDict):
-    summarized_messages: list[AnyMessage]
-    context: dict[str, RunningSummary]
-
 def create_agent_graph(
     llm,
-    llm_with_tools,
     rag_tool,
     exa_tool=None,
-    memory_manager=None,
     summarization_llm=None,
-    training_llm=None,
     title_llm=None,
     *,
     max_context_tokens: int = 3000,
-    debug: bool = False
 ):
 
     async def orchestrator_node(state: dict, config: RunnableConfig):
@@ -89,13 +79,14 @@ JSON Response:"""
             tasks = json.loads(content)
             if not isinstance(tasks, list):
                 tasks = [clean_query]
-        except Exception as e:
-            if debug:
-                print(f"[Orchestrator Error] Failed to parse tasks: {e}. Falling back to main query.")
+        except Exception:
+            logger.exception("Failed to decompose query; using the original query")
             tasks = [clean_query]
 
-        if debug:
-            log_debug("ORCHESTRATOR_NODE", f"Original: {clean_query}\nDecomposed Tasks: {tasks}")
+        logger.debug(
+            "Query decomposition completed",
+            extra={"original_query": clean_query, "tasks": tasks},
+        )
 
         return {"tasks": tasks}
 
@@ -123,7 +114,11 @@ JSON Response:"""
 
             async def run_milvus():
                 try:
-                    return await asyncio.to_thread(rag_tool.invoke, {"query": sub_query})
+                    return await asyncio.to_thread(
+                        rag_tool.invoke,
+                        {"query": sub_query},
+                        config,
+                    )
                 except Exception as e:
                     return f"Error retrieving from Milvus: {e}"
 
@@ -151,11 +146,7 @@ JSON Response:"""
         # Run all workers in parallel!
         worker_results = await asyncio.gather(*(run_single_worker(t) for t in tasks))
 
-        if debug:
-            log_content = ""
-            for idx, res in enumerate(worker_results, 1):
-                log_content += f"Worker {idx} Sub-query: {res['sub_query']}\nContext Length: {len(res['context'])} chars\n\n"
-            log_debug("WORKER_NODE", log_content)
+        logger.debug("Retrieval workers completed")
 
         return {"worker_results": worker_results}
 
@@ -174,19 +165,6 @@ JSON Response:"""
         clean_query = last_user_message
         if "Please use the hybrid_RAG_retrieve tool" in clean_query:
             clean_query = clean_query.replace("Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. ", "", 1)
-
-        memories = []
-        if memory_manager:
-            memories = await memory_manager.asearch(
-                query=clean_query,
-                config=config,
-                limit=5
-            )
-
-        memory_context = ""
-        if memories:
-            formatted = "\n".join([f"- {m.value}" for m in memories if m.score is not None and m.score > 0.5])
-            memory_context = f"\nRELEVANT USER FACTS/MEMORIES:\n{formatted}\n"
 
         worker_results = state.get("worker_results", [])
 
@@ -280,7 +258,6 @@ JSON Response:"""
         )
 
         synthesizer_user = f"""User original query: {clean_query}
-{memory_context}
 Retrieved Context Blocks:
 {retrieved_contexts}
 
@@ -299,8 +276,7 @@ Generate a clear, polished, and comprehensive response answering the user query 
             else:
                 response += chunk
 
-        if debug:
-            log_debug("SYNTHESIZER_NODE", f"Synthesized Response: {response}")
+        logger.debug("Synthesis completed")
 
         # In langgraph State update, we return the synthesized AIMessage response to add to `messages`
         return {
@@ -308,25 +284,6 @@ Generate a clear, polished, and comprehensive response answering the user query 
             "input_tokens_used": response.usage_metadata.get("input_tokens", 0) if hasattr(response, "usage_metadata") and response.usage_metadata else 0,
             "output_tokens_used": response.usage_metadata.get("output_tokens", 0) if hasattr(response, "usage_metadata") and response.usage_metadata else 0,
         }
-
-    async def save_memory_node(state: State, config: RunnableConfig):
-        """
-        Save memory node: Save the memory to the memory manager.
-        """
-        if not memory_manager:
-            return {}
-
-        async def _background_save():
-            try:
-                await memory_manager.ainvoke({"messages": state["messages"]}, config=config)
-                print(f"Memory saved successfully for user {config.get('configurable', {}).get('user_id', 'unknown')}") if debug else None
-            except Exception as e:
-                print(f"Error saving memory: {e}")
-        task = asyncio.create_task(_background_save())
-        BACKGROUND_TASKS.add(task)
-        task.add_done_callback(BACKGROUND_TASKS.discard)
-        return {}
-
 
     async def title_node(state: State, config: RunnableConfig):
         """
@@ -358,173 +315,12 @@ Generate a clear, polished, and comprehensive response answering the user query 
                 """
                 title_res = await title_llm.ainvoke(title_prompt)
                 title = title_res.content
-                if debug:
-                    log_debug("TITLE_GENERATION", f"Generated Title: {title}")
+                logger.debug("Generated conversation title")
                 return {"title": title}
-            except Exception as e:
-                if debug:
-                    log_debug("TITLE_GENERATION", f"Error generating title: {e}")
+            except Exception:
+                logger.exception("Failed to generate conversation title")
                 return {}
         return {}
-
-    async def evaluator_node(state: State, config: RunnableConfig):
-        """
-        Evaluator node: Evaluate the input and output quality.
-        Checks if the response contains valuable information for training and involves technical content.
-        Sets evaluation=True if threshold is reached.
-        """
-        messages = state["messages"]
-
-        last_human = last_ai = None
-
-        last_human_content = ""
-        last_ai_content = ""
-
-        for msg in reversed(messages):
-            content = msg.content
-            if isinstance(content, str) and "Please use the hybrid_RAG_retrieve tool" in content:
-                content = content.replace("Please use the hybrid_RAG_retrieve tool to answer if needed. If retrieval yields no relevant results, DO NOT hallucinate. ", "", 1)
-
-            if isinstance(msg, HumanMessage) and last_human is None:
-                last_human = msg
-                last_human_content = content
-            if isinstance(msg, AIMessage) and last_ai is None:
-                last_ai = msg
-                last_ai_content = content
-
-        # Use last pair for evaluation
-        user_input = last_human_content if last_human else ""
-        ai_output = last_ai_content if last_ai else ""
-
-        if not user_input or not ai_output:
-            if debug:
-                log_debug("EVALUATOR_NODE", "Skipping evaluation: missing input or output")
-            return {
-                "rating": 0.0
-            }
-
-        # Create evaluation prompt
-        evaluation_prompt = f"""You are an expert evaluator for training data quality. Evaluate the following input-output pair.
-Input (User Query):
-{user_input}
-Output (AI Response):
-{ai_output}
-Evaluate this pair on two criteria:
-1. **Valuable for Training**: Does this pair contain valuable information that would be useful for training a model? Consider if it demonstrates clear reasoning, provides technical knowledge, or shows good question-answer patterns.
-2. **Technical Content**: Does the response involve technical content, concepts, procedures, or domain-specific knowledge?
-
-For each criterion, provide a score from 0.0 to 1.0, where:
-- 0.0-0.3: Poor quality, not valuable
-- 0.4-0.6: Moderate quality, somewhat valuable
-- 0.7-0.9: Good quality, valuable
-- 1.0: Excellent quality, highly valuable
-
-Format all responses as JSON object with the following keys:
-"VALUABLE_FOR_TRAINING": [score as float],
-"TECHNICAL_CONTENT": [score as float],
-"EXPLANATION": [brief explanation of your scores as string]
-"""
-        try:
-            # Use training LLM to evaluate
-            eval_response = await training_llm.ainvoke(evaluation_prompt)
-            eval_text = eval_response.content if hasattr(eval_response, 'content') else str(eval_response)
-
-            eval_json = json.loads(eval_text)
-
-            valuable_score = float(eval_json.get("VALUABLE_FOR_TRAINING", 0.0))
-            technical_score = float(eval_json.get("TECHNICAL_CONTENT", 0.0))
-
-            overall_score = (valuable_score + technical_score) / 2.0
-
-            if debug:
-                log_debug("EVALUATOR_NODE", f"Evaluation response: {eval_text}\nOverall score: {overall_score}")
-
-            # Run DeepEval evaluation
-            deepeval_score = 0.0
-            try:
-                import sys
-                import langchain_core.messages as core_messages
-                import langchain_core.documents as core_documents
-
-                # Mock langchain.schema to solve deepeval's legacy import issues
-                if 'langchain.schema' not in sys.modules:
-                    class MockSchema:
-                        pass
-                    mock_schema = MockSchema()
-                    mock_schema.Document = core_documents.Document
-                    mock_schema.HumanMessage = core_messages.HumanMessage
-                    mock_schema.AIMessage = core_messages.AIMessage
-                    mock_schema.SystemMessage = core_messages.SystemMessage
-                    mock_schema.BaseMessage = core_messages.BaseMessage
-                    sys.modules['langchain.schema'] = mock_schema
-
-                from deepeval.metrics import AnswerRelevancyMetric
-                from deepeval.test_case import LLMTestCase
-                from deepeval.models import DeepEvalBaseLLM
-
-                import requests
-
-                class OllamaDeepEval(DeepEvalBaseLLM):
-                    def __init__(self, model_name, base_url="http://127.0.0.1:11434"):
-                        self.model_name = model_name
-                        self.base_url = base_url
-                        super().__init__(model_name)
-
-                    def load_model(self):
-                        return None
-
-                    def get_model_name(self) -> str:
-                        return self.model_name
-
-                    def generate(self, prompt: str) -> str:
-                        try:
-                            payload = {
-                                "model": self.model_name,
-                                "prompt": prompt,
-                                "stream": False,
-                                "options": {
-                                    "temperature": 0.0
-                                }
-                            }
-                            res = requests.post(f"{self.base_url}/api/generate", json=payload, timeout=60)
-                            res.raise_for_status()
-                            return res.json().get("response", "")
-                        except Exception as e:
-                            return f"Error during generation: {e}"
-
-                    async def a_generate(self, prompt: str) -> str:
-                        return self.generate(prompt)
-
-                eval_wrapper = OllamaDeepEval(training_llm.model)
-                relevancy_metric = AnswerRelevancyMetric(threshold=0.5, model=eval_wrapper)
-                test_case = LLMTestCase(
-                    input=user_input,
-                    actual_output=ai_output
-                )
-
-                # deepeval metrics have sync measure method. Let's run in executor thread.
-                await asyncio.to_thread(relevancy_metric.measure, test_case)
-                deepeval_score = relevancy_metric.score
-
-                if debug:
-                    log_debug("EVALUATOR_NODE_DEEPEVAL", f"DeepEval Answer Relevancy Score: {deepeval_score}\nReason: {getattr(relevancy_metric, 'reason', 'None')}")
-            except Exception as de_err:
-                if debug:
-                    log_debug("EVALUATOR_NODE_DEEPEVAL_ERROR", f"DeepEval self-evaluation failed: {de_err}")
-
-            # Combine the two metrics (custom training value + deepeval relevancy)
-            if deepeval_score > 0.0:
-                overall_score = (overall_score + deepeval_score) / 2.0
-
-            result = {"rating": overall_score}
-            return result
-
-        except Exception as e:
-            if debug:
-                log_debug("EVALUATOR_NODE", f"Error during evaluation: {e}")
-            return {
-                "rating": 0.0
-            }
 
     summarization_node = None
     if summarization_llm:
@@ -540,18 +336,12 @@ Format all responses as JSON object with the following keys:
 
     # Check for optional component availability
     use_summarize = summarization_llm is not None
-    use_evaluator = training_llm is not None
-    use_save_memory = memory_manager is not None
     use_title = title_llm is not None
 
     # Helper to get next node in chain dynamically
     post_agent_nodes = []
     if use_title:
         post_agent_nodes.append("title")
-    if use_evaluator:
-        post_agent_nodes.append("evaluator")
-    if use_save_memory:
-        post_agent_nodes.append("save_memory")
 
     def get_next_step(current_step: str) -> str:
         if current_step == "synthesizer" or current_step == "agent":
@@ -593,23 +383,4 @@ Format all responses as JSON object with the following keys:
         workflow.add_node("title", title_node)
         workflow.add_edge("title", get_next_step("title"))
 
-    if use_evaluator:
-        workflow.add_node("evaluator", evaluator_node)
-        workflow.add_edge("evaluator", get_next_step("evaluator"))
-
-    if use_save_memory:
-        workflow.add_node("save_memory", save_memory_node)
-        workflow.add_edge("save_memory", get_next_step("save_memory"))
-
     return workflow
-
-def log_debug(section: str, content: str):
-    """Helper to log debug info with timestamp and formatting."""
-    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    with open("debug_graph.log", "a") as f:
-        f.write(f"[{timestamp}] [{section}]\n")
-        # Wrap content if it's too long, but preserve existing newlines
-        wrapper = textwrap.TextWrapper(width=100, break_long_words=False, replace_whitespace=False)
-        formatted_content = "\n".join(wrapper.fill(line) for line in content.splitlines())
-        f.write(f"{formatted_content}\n")
-        f.write("-" * 80 + "\n")

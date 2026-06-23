@@ -8,33 +8,34 @@ dependencies = [
     "accelerate",
     "asyncpg",
     "bitsandbytes",
-    "chromadb",
-    "docx2txt",
     "fastapi",
     "FlagEmbedding",
     "hf-xet",
     "httpx[http2]",
     "huggingface-hub",
     "langchain",
-    "langchain-classic",
-    "langchain-community",
     "langchain-exa>=1.1.0",
     "langchain-milvus",
     "langchain-ollama",
     "langchain-openai",
-    "langchain-qdrant",
     "langchain-text-splitters",
     "langgraph",
     "langgraph-checkpoint",
     "langgraph-checkpoint-postgres",
     "langgraph-prebuilt",
     "langgraph-sdk",
-    "langmem",
     "langsmith",
     "numpy",
     "ollama",
     "onnxruntime",
     "openai",
+    "opentelemetry-api",
+    "opentelemetry-exporter-otlp-proto-grpc",
+    "opentelemetry-instrumentation-fastapi==0.63b1",
+    "opentelemetry-instrumentation-httpx==0.63b1",
+    "opentelemetry-instrumentation-psycopg==0.63b1",
+    "opentelemetry-instrumentation-redis==0.63b1",
+    "opentelemetry-sdk",
     "pandas",
     "peft",
     "psycopg[binary,pool]",
@@ -42,17 +43,12 @@ dependencies = [
     "pyjwt>=2.13.0",
     "pymilvus[model]",
     "pymupdf",
-    "pymupdf4llm",
-    "pypdf",
     "python-docx",
     "python-dotenv",
-    "pyyaml",
-    "qdrant-client<1.16.0",
     "redis",
     "requests",
     "scikit-learn",
     "scipy",
-    "sqlmodel",
     "streamlit",
     "tiktoken",
     "torch",
@@ -69,6 +65,10 @@ dev = [
     "deepeval",
 ]
 
+[project.scripts]
+edemi-api = "edemi_server.main:run"
+edemi-ingestion-worker = "edemi_server.ingestion.worker:main"
+
 [build-system]
 requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
@@ -83,14 +83,17 @@ packages = ["src/edemi_server", "src/rag"]
 include = [
     "/pyproject.toml",
     "/readme.md",
+    "/skills.md",
+    "/infra",
     "/src/edemi_server",
     "/src/rag",
     "/src/streamlit_app.py",
+    "/tests",
 ]
 
 [tool.uv]
 package = true
-prerelease = "disallow"
+prerelease = "if-necessary-or-explicit"
 index-strategy = "unsafe-best-match"
 
 [[tool.uv.index]]

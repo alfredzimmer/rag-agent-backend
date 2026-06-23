@@ -1,4 +1,5 @@
 .git
+.github
 .venv
 .uv-cache
 __pycache__
@@ -6,8 +7,10 @@ __pycache__
 .DS_Store
 .env
 .runtime
-debug_graph.log
 *.pid
 *.log
 outputs
 data
+infra
+tests
+skills.md

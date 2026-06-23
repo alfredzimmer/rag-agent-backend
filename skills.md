@@ -1,28 +1,111 @@
-# Skills
+# Agent Operations Guide
 
-## Remote Server Development (DO NOT USE LOCAL DOCKER)
+This file is the debugging contract for agents working on Edemi Backend.
 
-**Never** try to run `docker-compose` locally. All services are already running on the remote server.
+## Architecture Rules
 
-### SSH Port Forwarding
+- The API and ingestion worker are separate processes in the same repository.
+- Redis Streams is the only ingestion queue. Do not add Redis lists or in-process background ingestion.
+- Milvus uses one production schema. Do not add staging-collection compatibility branches.
+- Documents are scoped with `scope_id`; retrieval searches the conversation scope and `RAG_GLOBAL_SCOPE`.
+- OpenTelemetry is the primary debugging path. Do not add ad hoc debug files.
+- Do not restore deleted Qdrant, synthetic-data, session fallback, C++ payload, or token compatibility code.
 
-Connect to the server with port forwarding via:
+## Start The System
 
+```bash
+docker compose -f infra/docker-compose.yaml --profile observability up -d
+uv run edemi-api
+uv run edemi-ingestion-worker
 ```
-ssh -N -L 19530:127.0.0.1:19530 -L 5433:127.0.0.1:5433 -L 2379:127.0.0.1:2379 -L 2380:127.0.0.1:2380 -L 9000:127.0.0.1:9000 -L 11434:127.0.0.1:11434 ai-server -f
+
+For code-only tests that should not export telemetry:
+
+```bash
+OTEL_SDK_DISABLED=true uv run python -m unittest discover -s tests
 ```
 
-This forwards:
-- **19530** -> Milvus vector database
-- **5433** -> PostgreSQL
-- **2379/2380** -> etcd
-- **9000** -> MinIO / S3-compatible storage
-- **11434** -> Ollama (LLM inference)
+## Remote Port Forwarding
 
-### Current Agent Debugging Mode
+When services run on `ai-server`, forward the ports you need:
 
-Milvus is intentionally bypassed in `src/rag/agent.py` while debugging conversation/follow-up behavior. Do not re-enable Milvus or investigate vector-store connectivity unless explicitly asked; focus on PostgreSQL checkpointing and Ollama response generation.
+```bash
+ssh -N \
+  -L 19530:127.0.0.1:19530 \
+  -L 5433:127.0.0.1:5433 \
+  -L 6380:127.0.0.1:6380 \
+  -L 11434:127.0.0.1:11434 \
+  -L 4317:127.0.0.1:4317 \
+  -L 13133:127.0.0.1:13133 \
+  -L 3001:127.0.0.1:3001 \
+  -L 9090:127.0.0.1:9090 \
+  ai-server -f
+```
 
-### If Port Forwarding Fails
+## Trace A Request
 
-If testing the connection after running the SSH command yields a failure (e.g., service unreachable, connection refused), **prompt the user to fix the issue** rather than attempting to start a local Docker instance. Do not fall back to local services.
+1. Open Grafana at `http://localhost:3001`.
+2. In Loki, filter by `service_name` and search for `job_id`, `conversation_id`, or `document_id`.
+3. Open the derived `TraceID` link to view the request in Tempo.
+4. Follow spans from `edemi-api` through `ingestion.process_job` in `edemi-ingestion-worker`.
+5. Check Prometheus metrics beginning with `edemi_ingestion_`.
+
+Service names:
+
+- `edemi-api`
+- `edemi-ingestion-worker`
+
+Collector health:
+
+```bash
+curl -fsS http://localhost:13133/
+```
+
+## Debug An Ingestion Job
+
+API status:
+
+```bash
+curl -H "Authorization: Bearer $TOKEN" \
+  http://localhost:9229/api/ingestion/jobs/$JOB_ID
+```
+
+Queue and consumer-group health:
+
+```bash
+redis-cli -p 6380 XINFO GROUPS edemi:ingestion:jobs
+redis-cli -p 6380 XPENDING edemi:ingestion:jobs edemi-ingestion-workers
+redis-cli -p 6380 XRANGE edemi:ingestion:dead-letter - + COUNT 20
+redis-cli -p 6380 GET edemi:ingestion:job:$JOB_ID
+```
+
+Interpretation:
+
+- `queued`: accepted by the API and waiting for a consumer.
+- `processing`: claimed by a worker.
+- `retrying`: a new stream entry was created with an incremented attempt.
+- `completed`: chunks were written to Milvus.
+- `duplicate`: the same document/configuration/scope was already completed.
+- `failed`: retry budget exhausted; inspect the dead-letter stream and correlated trace.
+
+Do not manually acknowledge or delete pending messages until the trace and job state have been inspected. Stale jobs are recovered with `XAUTOCLAIM`.
+
+## Useful Correlation Fields
+
+- `job_id`: ingestion lifecycle
+- `document_id`: SHA-256 of the uploaded document
+- `conversation_id` / `scope_id`: retrieval isolation
+- `user_id`: ownership
+- `trace_id`: cross-service execution
+- `ingestion_job_id`, `chunk_index`, `page`: stored Milvus metadata
+
+## Validation Before Handoff
+
+```bash
+OTEL_SDK_DISABLED=true PYTHONPATH=src .venv/bin/python -m compileall -q src tests
+UV_CACHE_DIR=.uv-cache uv lock --check
+docker compose -f infra/docker-compose.yaml --profile observability config --quiet
+UV_CACHE_DIR=.uv-cache uv build --out-dir /tmp/edemi-backend-build
+```
+
+If external services are unavailable, report exactly which integration test could not run. Do not insert a fallback implementation.

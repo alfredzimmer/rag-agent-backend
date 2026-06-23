@@ -1,13 +1,26 @@
 import os
+import logging
 import socket
 from urllib.parse import urlparse
+
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
+
+load_dotenv()
+
+from edemi_server.observability import configure_telemetry, instrument_fastapi
+
+configure_telemetry("edemi-api")
+
 from edemi_server.api.agent.conversation import router as conversation_router
-from edemi_server.api.agent.status import router as status_router
 from edemi_server.api.auth import router as auth_router, init_auth_db
+from edemi_server.api.ingestion import router as ingestion_router
 from rag.agent import RAGAgent, RAGConfig
+
+logger = logging.getLogger(__name__)
+
 
 def ping_services():
     services = {}
@@ -35,10 +48,21 @@ def ping_services():
     services["Milvus"] = (milvus_host, milvus_port)
 
     # 3. Redis
-    redis_host = os.getenv("REDIS_HOST", "localhost")
+    redis_url = os.getenv("REDIS_URL")
     try:
-        redis_port = int(os.getenv("REDIS_PORT", "6380"))
-    except ValueError:
+        parsed = urlparse(redis_url) if redis_url else None
+        redis_host = (
+            parsed.hostname
+            if parsed and parsed.hostname
+            else os.getenv("REDIS_HOST", "localhost")
+        )
+        redis_port = (
+            parsed.port
+            if parsed and parsed.port
+            else int(os.getenv("REDIS_PORT", "6380"))
+        )
+    except (TypeError, ValueError):
+        redis_host = "localhost"
         redis_port = 6380
     services["Redis"] = (redis_host, redis_port)
 
@@ -54,11 +78,10 @@ def ping_services():
     services["Ollama"] = (ollama_host, ollama_port)
 
     # 5. MinIO
-    services["MinIO"] = ("localhost", 9000)
-
-    print("\n" + "=" * 50)
-    print("      DIAGNOSTICS: PINGING HOSTED SERVICES      ")
-    print("=" * 50)
+    services["MinIO"] = (
+        os.getenv("MINIO_HOST", "localhost"),
+        int(os.getenv("MINIO_PORT", "9000")),
+    )
 
     all_online = True
     for name, (host, port) in services.items():
@@ -69,34 +92,31 @@ def ping_services():
             status = "OFFLINE"
             all_online = False
 
-        print(f" {name:<12} ({host}:{port})".ljust(35) + f": [ {status} ]")
-
-    print("=" * 50)
-    if not all_online:
-        print(" WARNING: Some dependent services are OFFLINE.")
-        print(" Please verify that all Docker containers and Ollama are running.")
-    print("=" * 50 + "\n")
+        logger.log(
+            logging.INFO if status == "ONLINE" else logging.WARNING,
+            "Dependency connectivity check",
+            extra={"dependency": name, "host": host, "port": port, "status": status},
+        )
     return all_online
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Perform port-connectivity diagnostics prior to initializing the agent
     ping_services()
 
-    print("AGENT:     Initializing agent...")
+    logger.info("Initializing RAG agent")
     config = RAGConfig(
         llm_model=os.getenv("RAG_LLM_MODEL", "qwen3.6"),
         collection_name=os.getenv("RAG_COLLECTION_NAME", "HeaderInContentTrial"),
     )
     app.state.agent = await RAGAgent.create(config)
 
-    # Initialize multi-user auth database tables & run migrations
     await init_auth_db(app.state.agent.pool)
 
-
     yield
-    print("AGENT:     Cleaning up agent...")
+    logger.info("Closing RAG agent")
     await app.state.agent.close()
+
 
 app = FastAPI(
     title="Edemi Backend",
@@ -104,13 +124,13 @@ app = FastAPI(
     version="1.0.0",
     lifespan=lifespan
 )
+instrument_fastapi(app)
 
 origins = [
     "https://chat.edemi.org",
     "https://pis3.aempro.ca",
     "http://localhost:3000",
     "http://localhost:5173",
-    "https://chat.edemi.org",
 ]
 
 app.add_middleware(
@@ -123,19 +143,31 @@ app.add_middleware(
 
 app.include_router(auth_router)
 app.include_router(conversation_router)
-# app.include_router(response_router)
-app.include_router(status_router)
+app.include_router(ingestion_router)
 
-@app.get("/")
-def read_root():
+
+@app.get("/health", include_in_schema=False)
+def health():
     return {
         "status": "ok",
-        "message": "API is running!"
+        "service": "edemi-api",
     }
 
-if __name__ == "__main__":
+
+def run() -> None:
     import uvicorn
-    # Retrieve port from env (default to 9229)
+
     port = int(os.getenv("EDEMI_PORT", "9229"))
-    print(f"Starting server on port {port}...")
-    uvicorn.run("edemi_server.main:app", host="0.0.0.0", port=port, reload=True)
+    reload_enabled = os.getenv("EDEMI_RELOAD", "false").lower() == "true"
+    logger.info("Starting Edemi API", extra={"port": port})
+    uvicorn.run(
+        "edemi_server.main:app",
+        host="0.0.0.0",
+        port=port,
+        reload=reload_enabled,
+        log_config=None,
+    )
+
+
+if __name__ == "__main__":
+    run()

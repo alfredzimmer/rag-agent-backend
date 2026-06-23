@@ -16,7 +16,7 @@ from tqdm import tqdm
 # Configure paths
 SCRIPT_DIR = Path(__file__).parent.absolute()
 PROJECT_ROOT = SCRIPT_DIR.parent.parent
-FILES_DIR = Path("/Users/alfred/work/cpp-ingestor/files")
+FILES_DIR = Path(os.getenv("INGESTION_UPLOAD_DIR", ".runtime/uploads")).resolve()
 REPORTS_DIR = PROJECT_ROOT / "data" / "eval-reports"
 
 # Ensure reports directory exists
@@ -460,7 +460,7 @@ def main():
 
 - **Date / Time:** {time.strftime("%Y-%m-%d %H:%M:%S")}
 - **Target Model:** `{MODEL_NAME}`
-- **Test Set size:** {total_cases} random document snippets from `cpp-ingestor/files/`
+- **Test Set size:** {total_cases} random document snippets from the configured ingestion upload directory
 
 ## Executive Summary
 

@@ -1,5 +1,5 @@
 import os
-import asyncio
+import logging
 from typing import Union, List, Optional
 from enum import Enum
 
@@ -12,12 +12,6 @@ from langchain_core.runnables import RunnableConfig
 # --- Database / Store Imports ---
 from psycopg_pool import AsyncConnectionPool
 from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
-from langgraph.store.postgres import AsyncPostgresStore
-
-# --- Memory Imports ---
-# NOTE: langmem has renamed create_memory_store_manager to create_memory_store_enricher.
-# For now, we'll disable memory management until we can refactor the code.
-# from langmem import create_memory_manager
 
 # --- Local Imports ---
 from .config import RAGConfig
@@ -31,6 +25,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 DB_URI: str = os.getenv("PG_URI") or ""
+logger = logging.getLogger(__name__)
 
 class Status(Enum):
    CREATED = "created"
@@ -54,12 +49,6 @@ class ChatResponse(BaseModel):
    content: str = Field(..., description="The content of the response")
    metadata: Metadata = Field(..., description="Metadata about the response")
 
-# Model used for long-term memory
-class CompactMemory(BaseModel):
-    category: str = Field(description="One word category: e.g., 'Technical', 'Personal', 'Preference'")
-    fact: str = Field(description="A concise, single-sentence summary of the new information. Max 15 words.")
-    importance: int = Field(description="1-10 scale of how important this is to remember long-term.")
-
 # Register available stores and rankers
 VECTOR_STORES = {
     "milvus": create_milvus_store,
@@ -70,7 +59,7 @@ RANKERS = {
 }
 
 class RAGAgent:
-    def __init__(self, config: RAGConfig, checkpointer=None, store=None):
+    def __init__(self, config: RAGConfig, checkpointer=None):
         """
         Initialize RAGAgent synchronously.
         """
@@ -101,17 +90,9 @@ class RAGAgent:
             reasoning=True,
             num_predict=config.llm_num_predict,
         )
-        llm_with_tools = llm.bind_tools([rag_tool])
-
-        # Memory Setup
-        memory_manager = None
-
         # Summarization Setup
         sum_model = config.summarization_model if (config.summarization_model and config.summarization_model != "qwen3:8b") else config.llm_model
         summarization_llm = ChatOllama(model=sum_model, temperature=0, num_ctx=8192, reasoning=False, num_predict=1024)
-
-        # Training LLM Setup for evaluation - Disabled to optimize speed
-        training_llm = None
 
         # Title LLM Setup
         title_model = config.title_llm_model if (config.title_llm_model and config.title_llm_model != "qwen3:8b") else config.llm_model
@@ -124,33 +105,27 @@ class RAGAgent:
             try:
                 from langchain_exa import ExaSearchResults
                 exa_tool = ExaSearchResults(num_results=3)
-            except Exception as e:
-                print(f"Warning: Failed to initialize Exa Search: {e}")
+            except Exception:
+                logger.exception("Failed to initialize Exa Search")
 
         # Constucting actual agent
         workflow = create_agent_graph(
             llm=llm,
-            llm_with_tools=llm_with_tools,
             rag_tool=rag_tool,
             exa_tool=exa_tool,
-            memory_manager=memory_manager,
             summarization_llm=summarization_llm,
-            training_llm=training_llm,
             title_llm=title_llm,
             max_context_tokens=config.max_context_tokens,
-            debug=True
         )
 
         # To be initialized by create()
         self.pool = None
         self.checkpointer = checkpointer
-        self.store = store
         self.vector_store = vector_store
 
         # Graph Compilation
         self.agent = workflow.compile(
             checkpointer=checkpointer,
-            store=store
         )
 
         self.interrupted_ids = set()
@@ -167,12 +142,7 @@ class RAGAgent:
         checkpointer = AsyncPostgresSaver(pool)
         await checkpointer.setup()
 
-        # Setup AsyncPostgresStore (index removed because pgvector is not available and memory is disabled)
-        store = AsyncPostgresStore(pool)
-
-        await store.setup()
-
-        agent = cls(config, checkpointer=checkpointer, store=store)
+        agent = cls(config, checkpointer=checkpointer)
         agent.pool = pool
 
         return agent
@@ -383,18 +353,22 @@ class RAGAgent:
         retrieved_context = ""
         if hasattr(self, "vector_store") and self.vector_store:
             try:
-                # Retrieve from Milvus using search_documents, filtering by conversation_id or global collection
-                expr = None
-                if self.vector_store.vector_store.collection_name == "ingestion_staging":
-                    expr = f"target_collection == '{conversation_id}' or target_collection == 'HeaderInContentTrial'"
+                global_scope = os.getenv("RAG_GLOBAL_SCOPE", "global")
+                expr = (
+                    f'scope_id == "{conversation_id}" '
+                    f'or scope_id == "{global_scope}"'
+                )
                 docs = self.vector_store.search_documents(query, k=3, expr=expr)
                 if docs:
                     retrieved_context = "\n\n".join(
                         f"Source: {doc.metadata}\nContent: {doc.page_content}"
                         for doc in docs
                     )
-            except Exception as e:
-                print(f"Simple RAG retrieval error: {e}")
+            except Exception:
+                logger.exception(
+                    "Simple RAG retrieval failed",
+                    extra={"conversation_id": conversation_id},
+                )
 
         tool_output = retrieved_context if retrieved_context else "No relevant documents found in the knowledge base."
 
@@ -420,8 +394,11 @@ class RAGAgent:
             if state and "messages" in state.values:
                 # Filter out any old SystemMessages to avoid duplicate system instructions in the context
                 history_messages = [msg for msg in state.values["messages"] if not isinstance(msg, SystemMessage)]
-        except Exception as e:
-            print(f"Error loading history for simple RAG context: {e}")
+        except Exception:
+            logger.exception(
+                "Failed to load simple RAG history",
+                extra={"conversation_id": conversation_id},
+            )
 
         # Format system instruction and context
         system_prompt = f"""You are a helpful assistant. Use the retrieved context below as your primary reference to answer the user's question.
@@ -493,8 +470,11 @@ Retrieved Context:
                 },
                 as_node="synthesizer"
             )
-        except Exception as save_err:
-            print(f"Error saving simple RAG conversation history: {save_err}")
+        except Exception:
+            logger.exception(
+                "Failed to save simple RAG history",
+                extra={"conversation_id": conversation_id},
+            )
 
         # Complete turn
         generated_title = None
@@ -503,8 +483,11 @@ Retrieved Context:
                 title_prompt = f"Generate a distinct, 3-5 word title for a conversation starting with this user message. Return ONLY the title itself with no quotes, preamble or extra text: '{query}'"
                 title_res = await self.title_llm.ainvoke(title_prompt)
                 generated_title = title_res.content.strip().strip('"').strip("'").strip()
-            except Exception as e:
-                print(f"Error generating title in simple RAG: {e}")
+            except Exception:
+                logger.exception(
+                    "Failed to generate conversation title",
+                    extra={"conversation_id": conversation_id},
+                )
 
         yield ChatResponse(
             status=Status.COMPLETE,
@@ -568,11 +551,9 @@ Retrieved Context:
             else:
                 return final_results[0]
 
-        except Exception as e:
-            print(f"Error in agent_call: {e}")
-            if is_batch:
-                return [], [f"Error: {str(e)}"] * len(queries)
-            return [], f"Error: {str(e)}"
+        except Exception:
+            logger.exception("Synchronous agent call failed")
+            raise
 
     def interrupt(self, conversation_id):
         self.interrupted_ids.add(conversation_id)
@@ -618,8 +599,12 @@ Retrieved Context:
             # Also try direct checkpointer delete method if it exists
             if hasattr(self.checkpointer, "adelete_thread"):
                 await self.checkpointer.adelete_thread(conversation_id)
-        except Exception as e:
-            print(f"Error clearing session: {e}")
+        except Exception:
+            logger.exception(
+                "Failed to clear session",
+                extra={"conversation_id": conversation_id},
+            )
+            return False
         return True
 
     async def get_state_history(self, conversation_id: str):
@@ -661,36 +646,28 @@ def create_rag_tool(vector_store, ranker, hyde_generator: Optional[HyDEGenerator
             if hyde_passage and len(hyde_passage) > 20:
                 retrieval_queries.append(hyde_passage)
 
-        if not vector_store:
-            return "Source: {'doc_id': 'mock1'}\nContent: This is a mock document retrieved for testing purposes. It states that Milvus is currently bypassed, but the retrieval tool was successfully invoked!"
-
         vs = vector_store
 
         configurable = config.get("configurable", {}) if config else {}
         conversation_id = configurable.get("thread_id", "")
 
-        expr = None
-        if vs.vector_store.collection_name == "ingestion_staging" and conversation_id:
-            expr = f"target_collection == '{conversation_id}' or target_collection == 'HeaderInContentTrial'"
+        global_scope = os.getenv("RAG_GLOBAL_SCOPE", "global")
+        expr = (
+            f'scope_id == "{conversation_id}" or scope_id == "{global_scope}"'
+            if conversation_id
+            else f'scope_id == "{global_scope}"'
+        )
 
         all_retrieved = {}
 
         # 2. Hybrid search: use search_documents which invokes BOTH dense and sparse search
         # similarity_search() only uses dense vectors — that's the bug we're fixing
         for q in retrieval_queries:
-            try:
-                docs = vs.search_documents(q, k=30, expr=expr)
-                for doc in docs:
-                    doc_hash = hash(doc.page_content[:128])
-                    if doc_hash not in all_retrieved:
-                        all_retrieved[doc_hash] = doc
-            except Exception:
-                # If search_documents fails, fall back to dense vector search only
-                docs = vs.similarity_search(q, k=30, expr=expr)
-                for doc in docs:
-                    doc_hash = hash(doc.page_content[:128])
-                    if doc_hash not in all_retrieved:
-                        all_retrieved[doc_hash] = doc
+            docs = vs.search_documents(q, k=30, expr=expr)
+            for doc in docs:
+                doc_hash = hash(doc.page_content[:128])
+                if doc_hash not in all_retrieved:
+                    all_retrieved[doc_hash] = doc
 
         retrieved_docs = list(all_retrieved.values())
 
@@ -717,38 +694,3 @@ def create_rag_tool(vector_store, ranker, hyde_generator: Optional[HyDEGenerator
         return serialized
 
     return hybrid_RAG_retrieve
-
-async def main():
-    config = RAGConfig()
-
-    # Use the async factory method to create agent with checkpointing
-    agent = await RAGAgent.create(config)
-
-    query = input("Enter your query: ")
-
-    # Invoke the agent
-    # async for response in agent.chat(query, conversation_id=str(29), stream=False):
-    #     print("Messages:")
-    #     print(response["messages"])
-    #     print()
-
-    #     # Context might not exist if summarization hasn't triggered yet
-    #     if "context" in response and "running_summary" in response["context"]:
-    #         print("Summary:")
-    #         print(response["context"]["running_summary"].summary)
-    #         print()
-
-    #     print(f"Input tokens: {response.get('input_tokens_used', 0)}")
-    #     print(f"Output tokens: {response.get('output_tokens_used', 0)}")
-
-    # Stream responses
-    async for response in agent.chat(query, conversation_id=str(777), user_id="1", stream=True):
-        print(f"[{response.status.value}] {response.type}: {response.content}")
-        if response.status == Status.COMPLETE:
-            print(f"\nFinal token usage - Input: {response.metadata.input_tokens_used}, Output: {response.metadata.output_tokens_used}")
-
-    # Clean up
-    await agent.close()
-
-if __name__ == "__main__":
-    asyncio.run(main())

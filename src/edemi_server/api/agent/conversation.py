@@ -1,15 +1,11 @@
-from typing import List, Dict, Optional
-import traceback
-import os
-import json
-import redis
-import asyncio
+import logging
+from typing import Dict, List
 
 from uuid import UUID, uuid4
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 from rag.agent import RAGAgent, Status
-from fastapi import HTTPException, APIRouter, Depends, status, UploadFile, File, Form
+from fastapi import HTTPException, APIRouter, Depends, status
 from fastapi.responses import StreamingResponse
 from edemi_server.api.dependency import get_agent
 from edemi_server.api.auth import get_current_user
@@ -17,18 +13,21 @@ from edemi_server.api.auth import get_current_user
 router = APIRouter(
     prefix="/api/agent/conversation"
 )
+logger = logging.getLogger(__name__)
+
+
+class StrictRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
 
 class CreateSessionResponse(BaseModel):
     conversation_id: UUID
 
-class ChatRequest(BaseModel):
+class ChatRequest(StrictRequest):
     query: str
     conversation_id: UUID
-    user_id: UUID
-    file_context: Optional[str] = None
-    enable_exa: Optional[bool] = False
+    enable_exa: bool = False
 
-class InterruptRequest(BaseModel):
+class InterruptRequest(StrictRequest):
     conversation_id: UUID
 
 class InterruptResponse(BaseModel):
@@ -43,12 +42,8 @@ class ClearSessionResponse(BaseModel):
     success: bool
     message: str
 
-class ClearSessionRequest(BaseModel):
+class ClearSessionRequest(StrictRequest):
     conversation_id: UUID
-
-class SessionHistoryRequest(BaseModel):
-    conversation_id: UUID
-
 
 @router.get("/create")
 async def create_session(
@@ -68,13 +63,12 @@ async def create_session(
         return CreateSessionResponse(
             conversation_id=conversation_id
         )
-    except Exception as e:
-        print(f"Error in create_session: {e}")
-        traceback.print_exc()
+    except Exception as error:
+        logger.exception("Failed to create conversation", extra={"user_id": user_id})
         raise HTTPException(
             status_code=500,
-            detail=f"Error creating session: {str(e)}"
-        )
+            detail="Failed to create conversation.",
+        ) from error
 
 @router.get("/list", response_model=List[dict])
 async def list_user_sessions(
@@ -103,13 +97,12 @@ async def list_user_sessions(
                         "created_at": row[2].isoformat() if row[2] else ""
                     })
                 return sessions
-    except Exception as e:
-        print(f"Error in list_user_sessions: {e}")
-        traceback.print_exc()
+    except Exception as error:
+        logger.exception("Failed to list conversations", extra={"user_id": user_id})
         raise HTTPException(
             status_code=500,
-            detail=f"Error listing sessions: {str(e)}"
-        )
+            detail="Failed to list conversations.",
+        ) from error
 
 @router.post("/chat")
 async def chat_with_agent(
@@ -134,21 +127,12 @@ async def chat_with_agent(
                             detail="Forbidden: You do not own this chat session."
                         )
                 else:
-                    # If this is a new session, associate it with the authenticated user
-                    await cur.execute(
-                        "INSERT INTO user_sessions (conversation_id, user_id, title) VALUES (%s, %s, %s)",
-                        (request.conversation_id, user_id, "New Chat")
+                    raise HTTPException(
+                        status_code=status.HTTP_404_NOT_FOUND,
+                        detail="Conversation does not exist.",
                     )
 
         user_query = request.query
-        if request.file_context:
-            user_query = (
-                f"Attached Document Context:\n"
-                f"----------------------\n"
-                f"{request.file_context}\n"
-                f"----------------------\n\n"
-                f"User Question:\n{request.query}"
-            )
 
         async def stream_response():
             # Pass the actual authenticated user ID to the agent execution
@@ -167,24 +151,29 @@ async def chat_with_agent(
                                     "UPDATE user_sessions SET title = %s WHERE conversation_id = %s",
                                     (response.metadata.title, request.conversation_id)
                                 )
-                    except Exception as db_err:
-                        print(f"Error updating session title in DB: {db_err}")
+                    except Exception:
+                        logger.exception(
+                            "Failed to update conversation title",
+                            extra={"conversation_id": request.conversation_id},
+                        )
                 yield response.model_dump_json(indent=None) + "\n"
 
         return StreamingResponse(
             content=stream_response(),
-            media_type="text/event-stream"
+            media_type="application/x-ndjson",
         )
 
     except HTTPException:
         raise
-    except Exception as e:
-        print(f"Error in chat_with_agent: {e}")
-        traceback.print_exc()
+    except Exception as error:
+        logger.exception(
+            "Conversation request failed",
+            extra={"conversation_id": request.conversation_id, "user_id": user_id},
+        )
         raise HTTPException(
             status_code=500,
-            detail=f"Error processing chat: {str(e)}"
-        )
+            detail="Failed to process conversation.",
+        ) from error
 
 @router.post("/interrupt", response_model=InterruptResponse)
 async def interrupt_chat(
@@ -202,7 +191,12 @@ async def interrupt_chat(
                     (request.conversation_id,)
                 )
                 row = await cur.fetchone()
-                if row and row[0] != user_id:
+                if row is None:
+                    raise HTTPException(
+                        status_code=status.HTTP_404_NOT_FOUND,
+                        detail="Conversation does not exist.",
+                    )
+                if row[0] != user_id:
                     raise HTTPException(
                         status_code=status.HTTP_403_FORBIDDEN,
                         detail="Forbidden: You do not own this chat session."
@@ -215,137 +209,15 @@ async def interrupt_chat(
             )
     except HTTPException:
         raise
-    except Exception as e:
-        print(f"Error in interrupt_chat: {e}")
-        traceback.print_exc()
+    except Exception as error:
+        logger.exception(
+            "Failed to interrupt conversation",
+            extra={"conversation_id": request.conversation_id, "user_id": user_id},
+        )
         raise HTTPException(
             status_code=500,
-            detail=f"Error interrupting chat: {str(e)}"
-        )
-
-@router.post("/upload")
-async def upload_pdf(
-    file: UploadFile = File(...),
-    ingest_to_milvus: bool = Form(default=False),
-    conversation_id: UUID = Form(...),
-    agent: RAGAgent = Depends(get_agent),
-    current_user: dict = Depends(get_current_user)
-):
-    user_id = current_user["user_id"]
-    try:
-        # Verify ownership of the conversation session
-        async with agent.pool.connection() as conn:
-            async with conn.cursor() as cur:
-                await cur.execute(
-                    "SELECT user_id FROM user_sessions WHERE conversation_id = %s",
-                    (conversation_id,)
-                )
-                row = await cur.fetchone()
-                if row and row[0] != user_id:
-                    raise HTTPException(
-                        status_code=status.HTTP_403_FORBIDDEN,
-                        detail="Forbidden: You do not own this chat session."
-                    )
-    except HTTPException:
-        raise
-    except Exception as e:
-        print(f"Error checking session ownership during upload: {e}")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Database error during session check: {str(e)}"
-        )
-
-    # Restrict to PDF extension only
-    filename = file.filename
-    if not filename.lower().endswith(".pdf"):
-        raise HTTPException(
-            status_code=400,
-            detail="File upload restricted to PDF (.pdf) extension only."
-        )
-
-    # Retrieve upload directory from env
-    upload_dir = os.getenv("INGESTION_UPLOAD_DIR", "/Users/alfred/work/cpp-ingestor/files")
-    os.makedirs(upload_dir, exist_ok=True)
-
-    # Keep filename safe from traversal
-    safe_filename = os.path.basename(filename)
-    dest_path = os.path.join(upload_dir, safe_filename)
-
-    # Save the file to host directory
-    try:
-        # If file exists and is read-only, make it writable before overwriting
-        if os.path.exists(dest_path):
-            try:
-                os.chmod(dest_path, 0o644)
-            except Exception as pe:
-                print(f"Warning: Could not change permissions for {dest_path}: {pe}")
-
-        contents = await file.read()
-        with open(dest_path, "wb") as f:
-            f.write(contents)
-    except Exception as e:
-        print(f"Failed to write uploaded file to {dest_path}: {e}")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Failed to save file: {str(e)}"
-        )
-
-    redis_enqueued = False
-    if ingest_to_milvus:
-        try:
-            redis_host = os.getenv("REDIS_HOST", "localhost")
-            redis_port = int(os.getenv("REDIS_PORT", "6380"))
-
-            # Connect to Redis
-            r = redis.Redis(host=redis_host, port=redis_port, decode_responses=True)
-
-            job_id = str(uuid4())
-            # Path inside the container is /app/files/filename
-            container_pdf_path = f"/app/files/{safe_filename}"
-            target_collection = str(conversation_id)
-
-            payload = {
-                "job_id": job_id,
-                "pdf_path": container_pdf_path,
-                "config_type": "generic",
-                "target_collection": target_collection
-            }
-
-            # Enqueue payload to ingestion:jobs queue
-            r.rpush("ingestion:jobs", json.dumps(payload))
-            redis_enqueued = True
-        except Exception as re:
-            print(f"Failed to enqueue ingestion job to Redis: {re}")
-            raise HTTPException(
-                status_code=500,
-                detail=f"File uploaded, but failed to queue for ingestion in Redis: {str(re)}"
-            )
-
-    # Extract text from PDF for direct injection in the current turn
-    extracted_text = ""
-    try:
-        import pypdf
-        def sync_extract():
-            reader = pypdf.PdfReader(dest_path)
-            # Extract up to first 15 pages to keep prompt context window safe
-            text = ""
-            for page in reader.pages[:15]:
-                text += page.extract_text() or ""
-            return text
-
-        extracted_text = await asyncio.to_thread(sync_extract)
-    except Exception as ext_err:
-        print(f"Warning: Failed to extract text from uploaded PDF: {ext_err}")
-
-
-    return {
-        "success": True,
-        "filename": safe_filename,
-        "ingested": ingest_to_milvus,
-        "redis_enqueued": redis_enqueued,
-        "extracted_text": extracted_text,
-        "message": "File uploaded and enqueued for database ingestion." if redis_enqueued else "File uploaded successfully."
-    }
+            detail="Failed to interrupt conversation.",
+        ) from error
 
 @router.get("/history", response_model=SessionHistoryResponse)
 async def get_session_history(
@@ -370,25 +242,10 @@ async def get_session_history(
                             detail="Forbidden: You do not own this chat session."
                         )
                 else:
-                    # Check if there are checkpoints for this conversation_id
-                    await cur.execute(
-                        "SELECT COUNT(*) FROM checkpoints WHERE thread_id = %s",
-                        (str(conversation_id),)
+                    raise HTTPException(
+                        status_code=status.HTTP_404_NOT_FOUND,
+                        detail="Conversation does not exist.",
                     )
-                    chk_count = (await cur.fetchone())[0]
-                    if chk_count > 0:
-                        # History exists but wasn't registered in user_sessions (e.g. was migrated).
-                        # Let's map it under the authenticated user.
-                        await cur.execute(
-                            "INSERT INTO user_sessions (conversation_id, user_id) VALUES (%s, %s) ON CONFLICT DO NOTHING",
-                            (conversation_id, user_id)
-                        )
-                    else:
-                        # It is a brand new session, just return empty history
-                        return SessionHistoryResponse(
-                            conversation_id=str(conversation_id),
-                            history=[]
-                        )
 
         history = await agent.get_full_history(str(conversation_id))
 
@@ -399,13 +256,15 @@ async def get_session_history(
 
     except HTTPException:
         raise
-    except Exception as e:
-        print(f"Error in get_chat_history: {e}")
-        traceback.print_exc()
+    except Exception as error:
+        logger.exception(
+            "Failed to retrieve conversation history",
+            extra={"conversation_id": conversation_id, "user_id": user_id},
+        )
         raise HTTPException(
             status_code=500,
-            detail=f"Error retrieving chat history: {str(e)}"
-        )
+            detail="Failed to retrieve conversation history.",
+        ) from error
 
 @router.delete("/clear", response_model=ClearSessionResponse)
 async def clear_session(
@@ -423,7 +282,12 @@ async def clear_session(
                     (request.conversation_id,)
                 )
                 row = await cur.fetchone()
-                if row and row[0] != user_id:
+                if row is None:
+                    raise HTTPException(
+                        status_code=status.HTTP_404_NOT_FOUND,
+                        detail="Conversation does not exist.",
+                    )
+                if row[0] != user_id:
                     raise HTTPException(
                         status_code=status.HTTP_403_FORBIDDEN,
                         detail="Forbidden: You do not own this chat session."
@@ -451,10 +315,12 @@ async def clear_session(
 
     except HTTPException:
         raise
-    except Exception as e:
-        print(f"Error in clear_chat_session: {e}")
-        traceback.print_exc()
+    except Exception as error:
+        logger.exception(
+            "Failed to clear conversation",
+            extra={"conversation_id": request.conversation_id, "user_id": user_id},
+        )
         raise HTTPException(
             status_code=500,
-            detail=f"Error clearing chat session: {str(e)}"
-        )
+            detail="Failed to clear conversation.",
+        ) from error
