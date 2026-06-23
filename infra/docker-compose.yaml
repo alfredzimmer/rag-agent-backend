@@ -79,7 +79,15 @@ services:
         condition: service_started
     stop_grace_period: 5m
     healthcheck:
-      disable: true
+      test:
+        - CMD
+        - python
+        - -c
+        - "import os; from pathlib import Path; assert any('edemi-ingestion-worker' in path.read_text(errors='ignore') for path in Path('/proc').glob('[0-9]*/cmdline') if path.parent.name != str(os.getpid()))"
+      interval: 15s
+      timeout: 5s
+      start_period: 30s
+      retries: 3
 
   redis:
     image: redis:8.2.3-alpine

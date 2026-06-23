@@ -86,7 +86,7 @@ start_ollama() {
 
 show_diagnostics() {
   "${compose[@]}" ps || true
-  "${compose[@]}" logs --no-color --tail 200 || true
+  "${compose[@]}" logs --no-color --tail 200 api ingestion-worker || true
 }
 
 require_command curl
