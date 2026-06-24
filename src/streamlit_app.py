@@ -79,24 +79,29 @@ def load_history(base_url: str, conversation_id: str, auth_token: str) -> list[d
     return _history_to_messages(resp.json().get("history", []))
 
 
+def create_conversation(base_url: str, auth_token: str) -> str:
+    response = requests.get(
+        f"{base_url}/api/agent/conversation/create",
+        headers={"Authorization": f"Bearer {auth_token}"},
+        timeout=10,
+    )
+    response.raise_for_status()
+    return response.json()["conversation_id"]
+
+
 # --- State management ---
 if "base_url" not in st.session_state or not st.session_state["base_url"]:
     st.session_state["base_url"] = "http://localhost:9229"
 
-# Load persistent credentials from query parameters if present
-q_token = _query_param("auth_token")
-q_username = _query_param("username")
-q_user_id = _query_param("user_id")
-
 if "auth_token" not in st.session_state:
-    st.session_state["auth_token"] = q_token
+    st.session_state["auth_token"] = None
 if "username" not in st.session_state:
-    st.session_state["username"] = q_username
+    st.session_state["username"] = None
 if "user_id" not in st.session_state:
-    st.session_state["user_id"] = q_user_id
+    st.session_state["user_id"] = None
 
 if "conversation_id" not in st.session_state:
-    st.session_state["conversation_id"] = _query_param("conversation_id") or str(uuid4())
+    st.session_state["conversation_id"] = _query_param("conversation_id")
 if "messages" not in st.session_state:
     st.session_state["messages"] = []
 if "loaded_history_for" not in st.session_state:
@@ -112,14 +117,12 @@ if "uploader_key" not in st.session_state:
 if "enable_exa" not in st.session_state:
     st.session_state["enable_exa"] = False
 
-# Sync query params
-st.query_params["conversation_id"] = st.session_state["conversation_id"]
-if st.session_state["auth_token"]:
-    st.query_params["auth_token"] = st.session_state["auth_token"]
-if st.session_state["username"]:
-    st.query_params["username"] = st.session_state["username"]
-if st.session_state["user_id"]:
-    st.query_params["user_id"] = st.session_state["user_id"]
+for sensitive_parameter in ("auth_token", "username", "user_id"):
+    if sensitive_parameter in st.query_params:
+        del st.query_params[sensitive_parameter]
+
+if st.session_state["conversation_id"]:
+    st.query_params["conversation_id"] = st.session_state["conversation_id"]
 
 # --- Authentication Wall ---
 if st.session_state["auth_token"] is None:
@@ -145,10 +148,9 @@ if st.session_state["auth_token"] is None:
                         st.session_state["auth_token"] = data["token"]
                         st.session_state["username"] = data["username"]
                         st.session_state["user_id"] = data["user_id"]
-
-                        st.query_params["auth_token"] = data["token"]
-                        st.query_params["username"] = data["username"]
-                        st.query_params["user_id"] = data["user_id"]
+                        st.session_state["conversation_id"] = None
+                        st.session_state["messages"] = []
+                        st.session_state["loaded_history_for"] = None
 
                         st.toast(f"Welcome back, {data['username']}!")
                         st.rerun()
@@ -183,6 +185,7 @@ if st.session_state["auth_token"] is None:
 
 # --- Fetch Recent Conversations ---
 recent_chats = []
+conversations_loaded = False
 if st.session_state["auth_token"]:
     try:
         resp = requests.get(
@@ -192,8 +195,26 @@ if st.session_state["auth_token"]:
         )
         if resp.status_code == 200:
             recent_chats = resp.json()
+            conversations_loaded = True
     except Exception as e:
         print(f"Error fetching conversation list: {e}")
+
+if conversations_loaded:
+    conversation_ids = {chat["conversation_id"] for chat in recent_chats}
+    if st.session_state["conversation_id"] not in conversation_ids:
+        try:
+            conversation_id = create_conversation(
+                st.session_state["base_url"],
+                st.session_state["auth_token"],
+            )
+            st.session_state["conversation_id"] = conversation_id
+            st.session_state["messages"] = []
+            st.session_state["loaded_history_for"] = conversation_id
+            st.query_params["conversation_id"] = conversation_id
+            st.rerun()
+        except Exception as error:
+            st.error(f"Could not create a conversation: {error}")
+            st.stop()
 
 # --- Sidebar config ---
 with st.sidebar:
@@ -252,7 +273,6 @@ with st.sidebar:
         logout_button = st.button("Log Out", type="primary", use_container_width=True)
 
 st.query_params["conversation_id"] = st.session_state["conversation_id"]
-st.query_params["user_id"] = st.session_state["user_id"]
 
 conv_id = st.session_state["conversation_id"]
 
@@ -261,19 +281,28 @@ if logout_button:
     st.session_state["auth_token"] = None
     st.session_state["username"] = None
     st.session_state["user_id"] = None
+    st.session_state["conversation_id"] = None
     st.session_state["messages"] = []
     st.session_state["loaded_history_for"] = None
+    st.query_params.clear()
     st.rerun()
 
 # --- Create new session ---
 if new_chat:
-    st.session_state["conversation_id"] = str(uuid4())
-    st.session_state["messages"] = []
-    st.session_state["pending_query"] = None
-    st.session_state["loaded_history_for"] = st.session_state["conversation_id"]
-    st.query_params["conversation_id"] = st.session_state["conversation_id"]
-    st.toast("New conversation started!")
-    st.rerun()
+    try:
+        conversation_id = create_conversation(
+            st.session_state["base_url"],
+            st.session_state["auth_token"],
+        )
+        st.session_state["conversation_id"] = conversation_id
+        st.session_state["messages"] = []
+        st.session_state["pending_query"] = None
+        st.session_state["loaded_history_for"] = conversation_id
+        st.query_params["conversation_id"] = conversation_id
+        st.toast("New conversation started!")
+        st.rerun()
+    except Exception as error:
+        st.error(f"Could not create a conversation: {error}")
 
 # --- Clear session ---
 if clear_session:
