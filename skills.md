@@ -8,6 +8,7 @@ This file is the debugging contract for agents working on Edemi Backend.
 - Redis Streams is the only ingestion queue. Do not add Redis lists or in-process background ingestion.
 - Milvus uses one production schema. Do not add staging-collection compatibility branches.
 - Documents are scoped with `scope_id`; retrieval searches the conversation scope and `RAG_GLOBAL_SCOPE`.
+- Production retrieval uses database `rag1` and collection `HeaderInContentTrial`.
 - OpenTelemetry is the primary debugging path. Do not add ad hoc debug files.
 - Do not restore deleted Qdrant, synthetic-data, session fallback, C++ payload, or token compatibility code.
 
@@ -90,6 +91,22 @@ Interpretation:
 
 Do not manually acknowledge or delete pending messages until the trace and job state have been inspected. Stale jobs are recovered with `XAUTOCLAIM`.
 
+## Legacy Milvus Migration
+
+The C++ ingestor's `default.ingestion_staging` collection was migrated on
+June 24, 2026. The migration produced 838,340 unique global-scope chunks in
+`rag1.HeaderInContentTrial`; 129,860 exact duplicate staging rows were omitted.
+
+The migration checkpoint is stored on the production server at:
+
+```text
+/home/ziyutecc_ai_wsl/edemi-backend/.deploy/legacy-milvus-migration.json
+```
+
+Use `tools/migrate_legacy_milvus.py` only for an intentional rebuild from the
+preserved legacy Docker volumes. It is resumable, requires an empty destination
+or matching checkpoint, and never modifies the source collection.
+
 ## Useful Correlation Fields
 
 - `job_id`: ingestion lifecycle
@@ -102,7 +119,7 @@ Do not manually acknowledge or delete pending messages until the trace and job s
 ## Validation Before Handoff
 
 ```bash
-OTEL_SDK_DISABLED=true PYTHONPATH=src .venv/bin/python -m compileall -q src tests
+OTEL_SDK_DISABLED=true PYTHONPATH=src .venv/bin/python -m compileall -q src tests tools
 UV_CACHE_DIR=.uv-cache uv lock --check
 docker compose -f infra/docker-compose.yaml --profile observability config --quiet
 UV_CACHE_DIR=.uv-cache uv build --out-dir /tmp/edemi-backend-build

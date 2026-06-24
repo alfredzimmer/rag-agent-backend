@@ -89,6 +89,7 @@ include = [
     "/src/rag",
     "/src/streamlit_app.py",
     "/tests",
+    "/tools",
 ]
 
 [tool.uv]
