@@ -233,8 +233,9 @@ class ProductionNetworkUnitTests(unittest.TestCase):
         self.assertIn('PUBLIC_HEALTH_URL="$5"', workflow)
         self.assertIn("command -v tailscale >/dev/null", workflow)
         self.assertIn('test -n "$PUBLIC_HEALTH_URL"', workflow)
+        self.assertIn("health_host=\"$(python3 - <<'PY'", workflow)
         self.assertIn("for attempt in {1..60}; do", workflow)
-        self.assertIn('getent hosts "$health_host"', workflow)
+        self.assertIn('timeout 5 getent hosts "$health_host"', workflow)
         self.assertIn("curl --fail --silent --show-error --max-time 10", workflow)
 
 
