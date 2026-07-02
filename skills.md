@@ -2,6 +2,32 @@
 
 This file is the debugging contract for agents working on Edemi Backend.
 
+## Hardware And Hosting Context
+
+- The main compute host is a private Windows PC with an NVIDIA RTX 5090. It is
+  the intended inference machine for Ollama and is not public-facing.
+- Linux commands and services for this project run through WSL2 on that Windows
+  PC. When instructions mention the production server shell, assume the WSL2
+  Linux environment unless a task explicitly says otherwise.
+- Ollama is expected to run on or alongside the Windows/WSL2 host. From Docker
+  containers, the backend usually reaches host Ollama through
+  `http://host.docker.internal:11434`; from WSL2 or host-run processes, verify
+  the correct `OLLAMA_HOST` before changing code.
+- The company's domain and frontend hosting are on cPanel. Treat cPanel as the
+  place for static/web frontend hosting, not GPU inference, vector search,
+  Redis, Postgres, or long-running backend workers.
+- A cPanel-hosted browser app still needs a browser-reachable HTTPS API origin.
+  Do not assume cPanel can reach the private backend on behalf of the browser.
+- Tailscale is the available VPN/private-network solution. Use it for private
+  admin/deploy access where appropriate, and do not replace it with public
+  inbound exposure unless the user explicitly asks for that tradeoff.
+- The backend host has private network access only. Production access designs
+  must keep backend services bound to localhost/private interfaces and place a
+  reviewed edge, tunnel, or VPN layer in front of any company-facing API.
+- Do not rely on cPanel as an API reverse proxy unless streaming responses,
+  multipart uploads, long-running requests, and custom `Authorization` headers
+  have all been proven to work there.
+
 ## Architecture Rules
 
 - The API and ingestion worker are separate processes in the same repository.
@@ -28,7 +54,8 @@ OTEL_SDK_DISABLED=true uv run python -m unittest discover -s tests
 
 ## Remote Port Forwarding
 
-When services run on `ai-server`, forward the ports you need:
+When services run on `ai-server` (the private Windows/WSL2 GPU host), forward
+the ports you need:
 
 ```bash
 ssh -N \
