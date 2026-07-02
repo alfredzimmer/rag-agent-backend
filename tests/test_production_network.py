@@ -173,6 +173,23 @@ class ProductionNetworkUnitTests(unittest.TestCase):
             with self.subTest(service=service_name):
                 self.assertNotEqual(service.get("profiles"), ["edge"])
 
+    def test_api_and_worker_wait_for_milvus_health(self) -> None:
+        services = load_compose()["services"]
+        milvus = services["milvus"]
+
+        self.assertEqual(
+            milvus["healthcheck"]["test"],
+            ["CMD", "curl", "--fail", "http://127.0.0.1:9091/healthz"],
+        )
+        self.assertEqual(
+            services["api"]["depends_on"]["milvus"],
+            {"condition": "service_healthy"},
+        )
+        self.assertEqual(
+            services["ingestion-worker"]["depends_on"]["milvus"],
+            {"condition": "service_healthy"},
+        )
+
     def test_every_published_port_is_bound_to_loopback(self) -> None:
         services = load_compose()["services"]
         env_values = production_env_values()
