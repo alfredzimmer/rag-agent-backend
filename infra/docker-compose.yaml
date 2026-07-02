@@ -49,17 +49,6 @@ services:
       start_period: 60s
       retries: 5
 
-  cloudflared:
-    image: cloudflare/cloudflared:2026.6.1
-    restart: unless-stopped
-    profiles: ["edge"]
-    command: ["tunnel", "--no-autoupdate", "run"]
-    environment:
-      TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN}
-    depends_on:
-      api:
-        condition: service_healthy
-
   ingestion-worker:
     image: rag-agent-backend:${RAG_AGENT_IMAGE_TAG:-local}
     command: ["rag-agent-ingestion-worker"]

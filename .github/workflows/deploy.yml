@@ -47,7 +47,6 @@ jobs:
         run: |
           docker compose \
             --env-file infra/env.production.example \
-            --profile edge \
             --profile observability \
             --profile tools \
             -f infra/docker-compose.yaml \
@@ -78,7 +77,7 @@ jobs:
       RAG_AGENT_ENV_FILE: ${{ vars.PRODUCTION_ENV_FILE }}
       RAG_AGENT_IMAGE_TAG: ${{ github.sha }}
       OLLAMA_HEALTH_URL: ${{ vars.PRODUCTION_OLLAMA_HEALTH_URL || 'http://127.0.0.1:11434/api/tags' }}
-      PUBLIC_HEALTH_URL: ${{ vars.PRODUCTION_PUBLIC_HEALTH_URL || 'https://api.ziyutec.com/health' }}
+      PUBLIC_HEALTH_URL: ${{ vars.PRODUCTION_PUBLIC_HEALTH_URL }}
       SSH_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
       SSH_KNOWN_HOSTS: ${{ secrets.PRODUCTION_KNOWN_HOSTS }}
       TS_OAUTH_CLIENT_ID: ${{ secrets.TS_OAUTH_CLIENT_ID }}
@@ -142,6 +141,7 @@ jobs:
           command -v curl >/dev/null
           command -v flock >/dev/null
           command -v rsync >/dev/null
+          command -v tailscale >/dev/null
           docker compose version
           REMOTE
 
@@ -173,18 +173,19 @@ jobs:
             -o IdentitiesOnly=yes \
             -o StrictHostKeyChecking=yes \
             "$DEPLOY_USER@$DEPLOY_HOST" \
-            bash -s -- "$DEPLOY_PATH" "$RAG_AGENT_ENV_FILE" "$OLLAMA_HEALTH_URL" "$RAG_AGENT_IMAGE_TAG" <<'REMOTE'
+            bash -s -- "$DEPLOY_PATH" "$RAG_AGENT_ENV_FILE" "$OLLAMA_HEALTH_URL" "$RAG_AGENT_IMAGE_TAG" "$PUBLIC_HEALTH_URL" <<'REMOTE'
           set -Eeuo pipefail
           cd "$1"
           DEPLOY_ROOT="$1" \
           RAG_AGENT_ENV_FILE="$2" \
           OLLAMA_HEALTH_URL="$3" \
           RAG_AGENT_IMAGE_TAG="$4" \
+          PUBLIC_HEALTH_URL="$5" \
           DEPLOYMENT_ENVIRONMENT=production \
             bash infra/deploy.sh
           REMOTE
 
-      - name: Smoke test public edge
+      - name: Smoke test public URL
         shell: bash
         run: |
           set -Eeuo pipefail

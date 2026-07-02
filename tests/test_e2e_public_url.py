@@ -14,9 +14,9 @@ BLOCKED_ORIGIN = os.getenv("RAG_AGENT_E2E_BLOCKED_ORIGIN", "http://localhost:300
 
 @unittest.skipUnless(
     PUBLIC_HEALTH_URL,
-    "set RAG_AGENT_E2E_PUBLIC_HEALTH_URL to run public-edge E2E tests",
+    "set RAG_AGENT_E2E_PUBLIC_HEALTH_URL to run public URL E2E tests",
 )
-class PublicEdgeEndToEndTests(unittest.TestCase):
+class PublicUrlEndToEndTests(unittest.TestCase):
     def test_public_health_endpoint_returns_ok(self) -> None:
         with urlopen(PUBLIC_HEALTH_URL, timeout=15) as response:
             payload = json.loads(response.read().decode("utf-8"))
@@ -25,7 +25,7 @@ class PublicEdgeEndToEndTests(unittest.TestCase):
         self.assertEqual(payload["status"], "ok")
         self.assertEqual(payload["service"], "rag-agent-api")
 
-    def test_public_edge_accepts_chat_origin_preflight(self) -> None:
+    def test_public_url_accepts_chat_origin_preflight(self) -> None:
         request = Request(
             PUBLIC_HEALTH_URL,
             method="OPTIONS",
@@ -41,7 +41,7 @@ class PublicEdgeEndToEndTests(unittest.TestCase):
         self.assertEqual(response.status, 200)
         self.assertEqual(allow_origin, CHAT_ORIGIN)
 
-    def test_public_edge_rejects_localhost_origin_preflight(self) -> None:
+    def test_public_url_rejects_localhost_origin_preflight(self) -> None:
         request = Request(
             PUBLIC_HEALTH_URL,
             method="OPTIONS",

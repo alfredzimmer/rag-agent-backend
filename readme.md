@@ -77,23 +77,35 @@ Run the always-on unit, smoke, and integration tests with:
 OTEL_SDK_DISABLED=true uv run python -m unittest discover -s tests -v
 ```
 
-Public-edge end-to-end tests are opt-in because they require a deployed tunnel:
+Public URL end-to-end tests are opt-in because they require a deployed Tailscale Funnel:
 
 ```bash
-RAG_AGENT_E2E_PUBLIC_HEALTH_URL=https://api.ziyutec.com/health \
-  OTEL_SDK_DISABLED=true uv run python -m unittest tests.test_e2e_public_edge -v
+RAG_AGENT_E2E_PUBLIC_HEALTH_URL=https://<node>.<tailnet>.ts.net/health \
+  OTEL_SDK_DISABLED=true uv run python -m unittest tests.test_e2e_public_url -v
 ```
 
-## Production Edge
+## Production Public Access
 
-Production exposes only the API through Cloudflare Tunnel. The `edge` compose
-profile runs `cloudflared` with `CLOUDFLARE_TUNNEL_TOKEN` from the production
-environment file and forwards the dashboard-managed tunnel for
-`api.ziyutec.com` to the `api` service on the internal Docker network.
+Production keeps cPanel as the DNS and static-site host. The backend compose
+stack publishes the API to host loopback only at `127.0.0.1:9229`, and the
+production host exposes that local port with Tailscale Funnel outside this
+repository:
+
+```bash
+tailscale funnel --bg --yes 9229
+tailscale funnel status
+```
+
+Use the exact HTTPS URL printed by `tailscale funnel status` as the public API
+base URL. It will look like `https://<node>.<tailnet>.ts.net`, where `<node>`
+is the Tailscale machine name and `<tailnet>` is your tailnet DNS name. Do not
+type the angle brackets; replace the whole example with the real URL that
+Tailscale prints. Tailscale Funnel owns that public hostname; there is no tunnel
+service, token, or public reverse proxy container in this app.
 
 ## CI/CD
 
-`.github/workflows/deploy.yml` verifies pull requests and deploys `main` to the protected GitHub `production` environment. It synchronizes the repository to the production host, checks that Ollama is healthy (and attempts to start it when necessary), pulls updated infrastructure images, builds the application image on the server with the git SHA as `RAG_AGENT_IMAGE_TAG`, reconciles every service in `infra/docker-compose.yaml`, and smoke-tests the public edge health URL.
+`.github/workflows/deploy.yml` verifies pull requests and deploys `main` to the protected GitHub `production` environment. It synchronizes the repository to the production host, checks that Ollama is healthy (and attempts to start it when necessary), pulls updated infrastructure images, builds the application image on the server with the git SHA as `RAG_AGENT_IMAGE_TAG`, reconciles every service in `infra/docker-compose.yaml`, and smoke-tests the public health URL.
 
 Configure these GitHub environment secrets:
 
@@ -110,6 +122,6 @@ Configure these GitHub environment variables:
 - `PRODUCTION_ENV_FILE`, for example `/etc/rag-agent/rag-agent.env`
 - `PRODUCTION_SSH_PORT`, default `22`
 - `PRODUCTION_OLLAMA_HEALTH_URL`, default `http://127.0.0.1:11434/api/tags`
-- `PRODUCTION_PUBLIC_HEALTH_URL`, default `https://api.ziyutec.com/health`
+- `PRODUCTION_PUBLIC_HEALTH_URL`, the exact Funnel URL plus `/health`
 
-Set `PRODUCTION_HOST` to the server's Tailscale address. Configure the Tailscale OAuth client with the `auth_keys` write scope and `tag:ci`. Configure a required reviewer on the `production` environment before enabling the workflow. Create the server environment file from `infra/env.production.example` and keep it outside `PRODUCTION_DEPLOY_PATH` so source synchronization cannot delete it. The deployment user must be able to run Docker, start Ollama, and write to `PRODUCTION_DEPLOY_PATH`; the host also needs `curl`, `flock`, and `rsync`.
+Set `PRODUCTION_HOST` to the server's Tailscale address. Configure the Tailscale OAuth client with the `auth_keys` write scope and `tag:ci`. Configure a required reviewer on the `production` environment before enabling the workflow. Create the server environment file from `infra/env.production.example` and keep it outside `PRODUCTION_DEPLOY_PATH` so source synchronization cannot delete it. The deployment user must be able to run Docker, start Ollama, run `tailscale funnel`, and write to `PRODUCTION_DEPLOY_PATH`; the host also needs `curl`, `flock`, and `rsync`.
