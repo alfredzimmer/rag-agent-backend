@@ -13,4 +13,8 @@ outputs
 data
 infra
 tests
-skills.md
+scratch
+docs
+.profiling_venv
+.ruff_cache
+.deploy

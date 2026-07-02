@@ -12,32 +12,18 @@ services:
     env_file:
       - ${RAG_AGENT_ENV_FILE:-../.env}
     environment:
+      # Container networking: Milvus over the compose network, Ollama on the
+      # host. These override any host-oriented values in the env file.
       RAG_AGENT_PORT: "9229"
-      DEPLOYMENT_ENVIRONMENT: ${DEPLOYMENT_ENVIRONMENT:-development}
-      INGESTION_UPLOAD_DIR: /app/.runtime/uploads
-      PG_URI: ${PG_URI:-postgresql://rag_agent:rag_agent@postgres:5432/rag_agent}
-      REDIS_URL: redis://redis:6379/0
       MILVUS_URI: http://milvus:19530
-      MILVUS_HOST: milvus
-      MILVUS_PORT: "19530"
-      MINIO_HOST: minio
-      MINIO_PORT: "9000"
       OLLAMA_HOST: http://host.docker.internal:11434
-      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
     ports:
       - "${RAG_AGENT_HTTP_BIND:-127.0.0.1}:${RAG_AGENT_HTTP_PORT:-9229}:9229"
-    volumes:
-      - ingestion_uploads:/app/.runtime/uploads
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
-      postgres:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
       milvus:
         condition: service_healthy
-    stop_grace_period: 2m
     healthcheck:
       test:
         - CMD
@@ -48,77 +34,6 @@ services:
       timeout: 5s
       start_period: 60s
       retries: 5
-
-  ingestion-worker:
-    image: rag-agent-backend:${RAG_AGENT_IMAGE_TAG:-local}
-    command: ["rag-agent-ingestion-worker"]
-    restart: unless-stopped
-    init: true
-    env_file:
-      - ${RAG_AGENT_ENV_FILE:-../.env}
-    environment:
-      DEPLOYMENT_ENVIRONMENT: ${DEPLOYMENT_ENVIRONMENT:-development}
-      INGESTION_UPLOAD_DIR: /app/.runtime/uploads
-      PG_URI: ${PG_URI:-postgresql://rag_agent:rag_agent@postgres:5432/rag_agent}
-      REDIS_URL: redis://redis:6379/0
-      MILVUS_URI: http://milvus:19530
-      MILVUS_HOST: milvus
-      MILVUS_PORT: "19530"
-      MINIO_HOST: minio
-      MINIO_PORT: "9000"
-      OLLAMA_HOST: http://host.docker.internal:11434
-      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
-    volumes:
-      - ingestion_uploads:/app/.runtime/uploads
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    depends_on:
-      redis:
-        condition: service_healthy
-      milvus:
-        condition: service_healthy
-    stop_grace_period: 5m
-    healthcheck:
-      test:
-        - CMD
-        - python
-        - -c
-        - "import os; from pathlib import Path; assert any('rag-agent-ingestion-worker' in path.read_text(errors='ignore') for path in Path('/proc').glob('[0-9]*/cmdline') if path.parent.name != str(os.getpid()))"
-      interval: 15s
-      timeout: 5s
-      start_period: 30s
-      retries: 3
-
-  redis:
-    image: redis:8.2.3-alpine
-    restart: unless-stopped
-    command: ["redis-server", "--appendonly", "yes"]
-    ports:
-      - "127.0.0.1:6380:6379"
-    volumes:
-      - redis_data:/data
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 10
-
-  postgres:
-    image: pgvector/pgvector:pg17
-    restart: unless-stopped
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER:-rag_agent}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-rag_agent}
-      POSTGRES_DB: ${POSTGRES_DB:-rag_agent}
-    ports:
-      - "127.0.0.1:5433:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
-      interval: 10s
-      timeout: 5s
-      retries: 10
 
   etcd:
     image: quay.io/coreos/etcd:v3.5.5
@@ -143,8 +58,6 @@ services:
     environment:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin}
-    ports:
-      - "127.0.0.1:9000:9000"
     volumes:
       - minio_data:/minio_data
 
@@ -161,6 +74,7 @@ services:
       MINIO_ACCESS_KEY: ${MINIO_ROOT_USER:-minioadmin}
       MINIO_SECRET_KEY: ${MINIO_ROOT_PASSWORD:-minioadmin}
     ports:
+      # Published on loopback so a host-run API (uv run rag-agent-api) can reach it.
       - "127.0.0.1:19530:19530"
     volumes:
       - milvus_data:/var/lib/milvus
@@ -171,91 +85,7 @@ services:
       start_period: 90s
       retries: 30
 
-  attu:
-    image: zilliz/attu:latest
-    restart: unless-stopped
-    profiles: ["tools"]
-    depends_on:
-      - milvus
-    environment:
-      MILVUS_URL: milvus:19530
-    ports:
-      - "127.0.0.1:3030:3000"
-
-  otel-collector:
-    image: otel/opentelemetry-collector-contrib:0.154.0
-    restart: unless-stopped
-    profiles: ["observability"]
-    command: ["--config=/etc/otelcol-contrib/config.yaml"]
-    volumes:
-      - ./observability/otel-collector.yaml:/etc/otelcol-contrib/config.yaml:ro
-    ports:
-      - "127.0.0.1:4317:4317"
-      - "127.0.0.1:4318:4318"
-      - "127.0.0.1:13133:13133"
-    depends_on:
-      - tempo
-      - loki
-
-  prometheus:
-    image: prom/prometheus:v3.12.0
-    restart: unless-stopped
-    profiles: ["observability"]
-    command: ["--config.file=/etc/prometheus/prometheus.yaml"]
-    volumes:
-      - ./observability/prometheus.yaml:/etc/prometheus/prometheus.yaml:ro
-      - prometheus_data:/prometheus
-    ports:
-      - "127.0.0.1:9090:9090"
-
-  tempo:
-    image: grafana/tempo:2.10.7
-    restart: unless-stopped
-    profiles: ["observability"]
-    command: ["-config.file=/etc/tempo.yaml"]
-    volumes:
-      - ./observability/tempo.yaml:/etc/tempo.yaml:ro
-      - tempo_data:/var/tempo
-    ports:
-      - "127.0.0.1:3200:3200"
-
-  loki:
-    image: grafana/loki:3.7.2
-    restart: unless-stopped
-    profiles: ["observability"]
-    command: ["-config.file=/etc/loki/local-config.yaml"]
-    volumes:
-      - ./observability/loki.yaml:/etc/loki/local-config.yaml:ro
-      - loki_data:/loki
-    ports:
-      - "127.0.0.1:3100:3100"
-
-  grafana:
-    image: grafana/grafana:13.0.2
-    restart: unless-stopped
-    profiles: ["observability"]
-    environment:
-      GF_AUTH_ANONYMOUS_ENABLED: "true"
-      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
-      GF_AUTH_DISABLE_LOGIN_FORM: "true"
-    volumes:
-      - ./observability/grafana-datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml:ro
-      - grafana_data:/var/lib/grafana
-    ports:
-      - "127.0.0.1:3001:3000"
-    depends_on:
-      - prometheus
-      - tempo
-      - loki
-
 volumes:
-  ingestion_uploads:
-  redis_data:
-  postgres_data:
   etcd_data:
   minio_data:
   milvus_data:
-  prometheus_data:
-  tempo_data:
-  loki_data:
-  grafana_data:

@@ -1,22 +1,32 @@
-"""
-Configuration classes for the RAG system.
+"""Configuration for the RAG agent.
+
+Every value is read from the environment at instantiation time (after
+load_dotenv has run), so the defaults here describe a plain local setup:
+Milvus and Ollama on localhost.
 """
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
 @dataclass
 class RAGConfig:
-    vector_store_type: str = "milvus"
-    collection_name: str = "HeaderInContentTrial_Dense"
-    ranker_type: str = "none"
-    dense_embedding_model: str = os.getenv("DENSE_EMBEDDING_MODEL", "nomic-embed-text:latest")
-    sparse_embedding_model: str = "none"  # [splade, bm25, bge, none]
-    llm_model: str = os.getenv("RAG_LLM_MODEL", "qwen3.6:latest")
-    llm_num_predict: int = int(os.getenv("RAG_LLM_NUM_PREDICT", "4096"))
-    simple_rag: bool = os.getenv("SIMPLE_RAG", "True").lower() == "true"
-    summarization_model: str = os.getenv("SUMMARIZATION_MODEL", "qwen3.6:latest")
-    title_llm_model: str = os.getenv("TITLE_LLM_MODEL", "qwen3.6:latest")
-    hyde: bool = False
-    similarity_threshold: float = float(os.getenv("RAG_SIMILARITY_THRESHOLD", "0.35"))
-    max_context_tokens: int = int(os.getenv("RAG_MAX_CONTEXT_TOKENS", "3000"))
+    collection_name: str = field(
+        default_factory=lambda: os.getenv("RAG_COLLECTION_NAME", "rag_documents")
+    )
+    llm_model: str = field(
+        default_factory=lambda: os.getenv("RAG_LLM_MODEL", "qwen3.6:latest")
+    )
+    embedding_model: str = field(
+        default_factory=lambda: os.getenv("DENSE_EMBEDDING_MODEL", "nomic-embed-text:latest")
+    )
+    llm_num_predict: int = field(
+        default_factory=lambda: int(os.getenv("RAG_LLM_NUM_PREDICT", "4096"))
+    )
+    top_k: int = field(default_factory=lambda: int(os.getenv("RAG_TOP_K", "4")))
+    milvus_uri: str = field(
+        default_factory=lambda: os.getenv("MILVUS_URI", "http://localhost:19530")
+    )
+    milvus_db: str = field(default_factory=lambda: os.getenv("MILVUS_DB", "default"))
+    ollama_host: str = field(
+        default_factory=lambda: os.getenv("OLLAMA_HOST", "http://localhost:11434")
+    )

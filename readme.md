@@ -1,127 +1,87 @@
 # RAG Agent Backend
 
-RAG Agent Backend is the FastAPI, RAG, ingestion, and observability runtime for RAG Agent.
+A minimal RAG agent: FastAPI serves a streaming chat endpoint, retrieval comes
+from Milvus, and generation (plus embeddings) comes from Ollama. Nothing else.
 
 ```text
 Frontend
-  -> FastAPI API
-      -> PostgreSQL for users, conversations, and LangGraph checkpoints
-      -> Redis Streams for durable ingestion jobs
-      -> Milvus for scoped document retrieval
-      -> Ollama for chat and embeddings
-
-Document upload
-  -> Redis Stream
-      -> Python ingestion worker
-          -> parse -> chunk -> embed -> Milvus
-
-API and worker
-  -> OpenTelemetry Collector
-      -> Tempo traces
-      -> Prometheus metrics
-      -> Loki logs
-      -> Grafana
+  -> FastAPI API (streaming NDJSON)
+      -> Milvus  (dense retrieval, top-k)
+      -> Ollama  (embeddings + chat model)
 ```
 
-## Setup
+Conversation history is kept in memory per conversation id and is lost on
+restart.
 
-Copy the environment template and configure its secrets:
+## Network layout
+
+| From | To | Address |
+| --- | --- | --- |
+| API container | Milvus | `http://milvus:19530` (compose network) |
+| API container | Ollama | `http://host.docker.internal:11434` (host gateway) |
+| Host (dev API, tooling) | Milvus | `http://localhost:19530` (loopback publish) |
+| Host / Funnel | API | `127.0.0.1:9229` (loopback publish) |
+
+The compose file pins `MILVUS_URI` and `OLLAMA_HOST` for the container, so the
+`.env` file only needs host-oriented values. All published ports bind to
+loopback; nothing is exposed publicly by the stack itself.
+
+## Setup
 
 ```bash
 cp infra/env.example .env
 uv sync
+docker compose -f infra/docker-compose.yaml up --build -d
 ```
 
-Start the complete application, infrastructure, tools, and observability stack:
+Ollama must be running on the host with the configured models pulled
+(`RAG_LLM_MODEL`, `DENSE_EMBEDDING_MODEL`).
+
+To run the API on the host instead of in Docker (dev loop):
 
 ```bash
-docker compose \
-  --profile observability \
-  --profile tools \
-  -f infra/docker-compose.yaml \
-  up --build -d
+docker compose -f infra/docker-compose.yaml up -d etcd minio milvus
+uv run rag-agent-api
 ```
 
-The main local endpoints are:
+## API
 
-- API: `http://localhost:9229`
-- API schema: `http://localhost:9229/docs`
-- Grafana: `http://localhost:3001`
-- Prometheus: `http://localhost:9090`
-- OpenTelemetry health: `http://localhost:13133`
+- `GET /health` — returns 503 with per-dependency status when Milvus or Ollama
+  is unreachable.
+- `GET /api/agent/conversation/create` — new conversation id.
+- `GET /api/agent/conversation/list`
+- `POST /api/agent/conversation/chat` — `{query, conversation_id}`, streams
+  NDJSON `ChatResponse` events (retrieval, reasoning, text deltas, completion).
+- `POST /api/agent/conversation/interrupt` — `{conversation_id}`.
+- `GET /api/agent/conversation/history?conversation_id=<uuid>`
+- `DELETE /api/agent/conversation/clear` — `{conversation_id}`.
 
-## Ingestion API
-
-Create a conversation, then upload a document into that conversation's retrieval scope:
-
-```text
-POST /api/ingestion/documents?conversation_id=<uuid>
-GET  /api/ingestion/jobs/<job_id>
-```
-
-Supported document types are PDF, DOCX, Markdown, and plain text. Uploads are asynchronous and return `202 Accepted`. The worker uses Redis consumer groups, retries failed jobs, recovers stale pending jobs, and moves terminal failures to the dead-letter stream.
-
-Each Milvus chunk includes a `scope_id`. Retrieval only searches the active conversation scope plus the configured global scope.
-
-## Telemetry
-
-The API and worker export traces, metrics, and logs over OTLP. Logs are JSON on stdout and include `trace_id`, `span_id`, `job_id`, `conversation_id`, and `document_id` when available.
-
-See `skills.md` for the operational debugging workflow and queue commands.
+Schema: `http://localhost:9229/docs`.
 
 ## Tests
 
-Run the always-on unit, smoke, and integration tests with:
-
 ```bash
-OTEL_SDK_DISABLED=true uv run python -m unittest discover -s tests -v
+uv run python -m unittest discover -s tests -v
 ```
 
-Public URL end-to-end tests are opt-in because they require a deployed Tailscale Funnel:
+## Production
+
+`infra/deploy.sh` validates the env file, checks Ollama health on the host,
+builds the image, reconciles the compose stack, and smoke-tests
+`http://127.0.0.1:9229/health`. Create the server env file from
+`infra/env.production.example` and keep it outside the deploy path.
+
+Public exposure is a one-time host concern, outside this repository:
 
 ```bash
-RAG_AGENT_E2E_PUBLIC_HEALTH_URL=https://<node>.<tailnet>.ts.net/health \
-  OTEL_SDK_DISABLED=true uv run python -m unittest tests.test_e2e_public_url -v
-```
-
-## Production Public Access
-
-Production keeps cPanel as the DNS and static-site host. The backend compose
-stack publishes the API to host loopback only at `127.0.0.1:9229`, and the
-production host exposes that local port with Tailscale Funnel outside this
-repository:
-
-```bash
-tailscale funnel --bg --yes 9229
+tailscale funnel --bg 9229
 tailscale funnel status
 ```
 
-Use the exact HTTPS URL printed by `tailscale funnel status` as the public API
-base URL. It will look like `https://<node>.<tailnet>.ts.net`, where `<node>`
-is the Tailscale machine name and `<tailnet>` is your tailnet DNS name. Do not
-type the angle brackets; replace the whole example with the real URL that
-Tailscale prints. Tailscale Funnel owns that public hostname; there is no tunnel
-service, token, or public reverse proxy container in this app.
+The Funnel configuration persists across deploys and reboots, so the deploy
+script does not manage it. Use the HTTPS URL printed by
+`tailscale funnel status` as the public API base URL.
 
-## CI/CD
-
-`.github/workflows/deploy.yml` verifies pull requests and deploys `main` to the protected GitHub `production` environment. It synchronizes the repository to the production host, checks that Ollama is healthy (and attempts to start it when necessary), pulls updated infrastructure images, builds the application image on the server with the git SHA as `RAG_AGENT_IMAGE_TAG`, reconciles every service in `infra/docker-compose.yaml`, and smoke-tests the public health URL.
-
-Configure these GitHub environment secrets:
-
-- `PRODUCTION_HOST`
-- `PRODUCTION_USER`
-- `PRODUCTION_SSH_KEY`
-- `PRODUCTION_KNOWN_HOSTS`
-- `TS_OAUTH_CLIENT_ID`
-- `TS_OAUTH_SECRET`
-
-Configure these GitHub environment variables:
-
-- `PRODUCTION_DEPLOY_PATH`, for example `/opt/rag-agent-backend`
-- `PRODUCTION_ENV_FILE`, for example `/etc/rag-agent/rag-agent.env`
-- `PRODUCTION_SSH_PORT`, default `22`
-- `PRODUCTION_OLLAMA_HEALTH_URL`, default `http://127.0.0.1:11434/api/tags`
-- `PRODUCTION_PUBLIC_HEALTH_URL`, the exact Funnel URL plus `/health`
-
-Set `PRODUCTION_HOST` to the server's Tailscale address. Configure the Tailscale OAuth client with the `auth_keys` write scope and `tag:ci`. Configure a required reviewer on the `production` environment before enabling the workflow. Create the server environment file from `infra/env.production.example` and keep it outside `PRODUCTION_DEPLOY_PATH` so source synchronization cannot delete it. The deployment user must be able to run Docker, start Ollama, run `tailscale funnel`, and write to `PRODUCTION_DEPLOY_PATH`; the host also needs `curl`, `flock`, and `rsync`.
+`.github/workflows/deploy.yml` verifies pull requests (tests, compose config,
+Dockerfile, deploy script) and deploys `main` over Tailscale SSH, then
+smoke-tests `PRODUCTION_PUBLIC_HEALTH_URL`.

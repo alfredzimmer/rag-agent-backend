@@ -1,151 +1,162 @@
-import os
+"""FastAPI server for the RAG agent."""
 import logging
+import os
 import socket
+from contextlib import asynccontextmanager
 from urllib.parse import urlparse
+from uuid import UUID
 
 from dotenv import load_dotenv
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from contextlib import asynccontextmanager
+from fastapi.responses import JSONResponse, StreamingResponse
+from pydantic import BaseModel, ConfigDict
 
 load_dotenv()
 
-from rag_agent_server.observability import configure_telemetry, instrument_fastapi
-
-configure_telemetry("rag-agent-api")
-
-from rag_agent_server.api.agent.conversation import router as conversation_router
-from rag_agent_server.api.auth import router as auth_router, init_auth_db
-from rag_agent_server.api.ingestion import router as ingestion_router
+from rag.agent import RAGAgent
+from rag.config import RAGConfig
 from rag_agent_server.config import get_cors_origins
-from rag.agent import RAGAgent, RAGConfig
 
+logging.basicConfig(level=os.getenv("LOG_LEVEL", "INFO"))
 logger = logging.getLogger(__name__)
 
 
-def ping_services():
-    services = {}
+def service_targets(config: RAGConfig | None = None) -> dict[str, tuple[str, int]]:
+    """Host/port of each runtime dependency, resolved from the environment."""
+    config = config or RAGConfig()
+    milvus = urlparse(config.milvus_uri)
+    ollama = urlparse(config.ollama_host)
+    return {
+        "milvus": (milvus.hostname or "localhost", milvus.port or 19530),
+        "ollama": (ollama.hostname or "localhost", ollama.port or 11434),
+    }
 
-    # 1. Postgres
-    pg_uri = os.getenv("PG_URI", "postgresql://rag_agent:rag_agent@localhost:5433/rag_agent")
-    try:
-        parsed = urlparse(pg_uri)
-        pg_host = parsed.hostname or "localhost"
-        pg_port = parsed.port or 5433
-    except Exception:
-        pg_host = "localhost"
-        pg_port = 5433
-    services["Postgres"] = (pg_host, pg_port)
 
-    # 2. Milvus
-    milvus_uri = os.getenv("MILVUS_URI", "http://localhost:19530")
-    try:
-        parsed = urlparse(milvus_uri)
-        milvus_host = parsed.hostname or os.getenv("MILVUS_HOST", "localhost")
-        milvus_port = parsed.port or int(os.getenv("MILVUS_PORT", "19530"))
-    except Exception:
-        milvus_host = os.getenv("MILVUS_HOST", "localhost")
-        milvus_port = int(os.getenv("MILVUS_PORT", "19530"))
-    services["Milvus"] = (milvus_host, milvus_port)
-
-    # 3. Redis
-    redis_url = os.getenv("REDIS_URL")
-    try:
-        parsed = urlparse(redis_url) if redis_url else None
-        redis_host = (
-            parsed.hostname
-            if parsed and parsed.hostname
-            else os.getenv("REDIS_HOST", "localhost")
-        )
-        redis_port = (
-            parsed.port
-            if parsed and parsed.port
-            else int(os.getenv("REDIS_PORT", "6380"))
-        )
-    except (TypeError, ValueError):
-        redis_host = "localhost"
-        redis_port = 6380
-    services["Redis"] = (redis_host, redis_port)
-
-    # 4. Ollama
-    ollama_host_env = os.getenv("OLLAMA_HOST", "http://localhost:11434")
-    try:
-        parsed = urlparse(ollama_host_env)
-        ollama_host = parsed.hostname or "localhost"
-        ollama_port = parsed.port or 11434
-    except Exception:
-        ollama_host = "localhost"
-        ollama_port = 11434
-    services["Ollama"] = (ollama_host, ollama_port)
-
-    # 5. MinIO
-    services["MinIO"] = (
-        os.getenv("MINIO_HOST", "localhost"),
-        int(os.getenv("MINIO_PORT", "9000")),
-    )
-
-    all_online = True
-    for name, (host, port) in services.items():
+def check_dependencies(timeout: float = 1.5) -> dict[str, str]:
+    statuses = {}
+    for name, (host, port) in service_targets().items():
         try:
-            with socket.create_connection((host, port), timeout=1.5):
-                status = "ONLINE"
-        except Exception:
-            status = "OFFLINE"
-            all_online = False
-
-        logger.log(
-            logging.INFO if status == "ONLINE" else logging.WARNING,
-            "Dependency connectivity check",
-            extra={"dependency": name, "host": host, "port": port, "status": status},
-        )
-    return all_online
+            with socket.create_connection((host, port), timeout=timeout):
+                statuses[name] = "online"
+        except OSError:
+            statuses[name] = "offline"
+            logger.warning(
+                "Dependency is unreachable",
+                extra={"dependency": name, "host": host, "port": port},
+            )
+    return statuses
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    ping_services()
-
-    logger.info("Initializing RAG agent")
-    config = RAGConfig(
-        llm_model=os.getenv("RAG_LLM_MODEL", "qwen3.6"),
-        collection_name=os.getenv("RAG_COLLECTION_NAME", "HeaderInContentTrial"),
-    )
-    app.state.agent = await RAGAgent.create(config)
-
-    await init_auth_db(app.state.agent.pool)
-
+    statuses = check_dependencies()
+    logger.info("Dependency connectivity", extra={"statuses": statuses})
+    app.state.agent = RAGAgent(RAGConfig())
+    logger.info("RAG agent ready")
     yield
-    logger.info("Closing RAG agent")
-    await app.state.agent.close()
 
 
 app = FastAPI(
     title="RAG Agent Backend",
-    description="API for the RAG Agent and retrieval runtime",
-    version="1.0.0",
-    lifespan=lifespan
+    description="Minimal RAG agent: Milvus retrieval + Ollama generation.",
+    version="2.0.0",
+    lifespan=lifespan,
 )
-instrument_fastapi(app)
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=get_cors_origins(),
     allow_credentials=True,
-    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_methods=["GET", "POST", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
 
-app.include_router(auth_router)
-app.include_router(conversation_router)
-app.include_router(ingestion_router)
+
+def get_agent(request: Request) -> RAGAgent:
+    return request.app.state.agent
+
+
+def require_session(agent: RAGAgent, conversation_id: UUID) -> str:
+    conversation_id = str(conversation_id)
+    if not agent.has_session(conversation_id):
+        raise HTTPException(status_code=404, detail="Conversation does not exist.")
+    return conversation_id
+
+
+class StrictRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+
+class ChatRequest(StrictRequest):
+    query: str
+    conversation_id: UUID
+
+
+class ConversationRequest(StrictRequest):
+    conversation_id: UUID
 
 
 @app.get("/health", include_in_schema=False)
-def health():
+def health() -> JSONResponse:
+    statuses = check_dependencies()
+    ok = all(status == "online" for status in statuses.values())
+    return JSONResponse(
+        status_code=200 if ok else 503,
+        content={
+            "status": "ok" if ok else "degraded",
+            "service": "rag-agent-api",
+            "dependencies": statuses,
+        },
+    )
+
+
+@app.get("/api/agent/conversation/create")
+def create_session(request: Request):
+    return {"conversation_id": get_agent(request).create_session()}
+
+
+@app.get("/api/agent/conversation/list")
+def list_sessions(request: Request):
+    return get_agent(request).list_sessions()
+
+
+@app.post("/api/agent/conversation/chat")
+def chat(body: ChatRequest, request: Request):
+    agent = get_agent(request)
+    conversation_id = require_session(agent, body.conversation_id)
+
+    async def stream():
+        async for response in agent.chat(body.query, conversation_id):
+            yield response.model_dump_json() + "\n"
+
+    return StreamingResponse(stream(), media_type="application/x-ndjson")
+
+
+@app.post("/api/agent/conversation/interrupt")
+def interrupt(body: ConversationRequest, request: Request):
+    agent = get_agent(request)
+    conversation_id = require_session(agent, body.conversation_id)
+    agent.interrupt(conversation_id)
+    return {"success": True, "message": "Chat interrupted successfully"}
+
+
+@app.get("/api/agent/conversation/history")
+def history(conversation_id: UUID, request: Request):
+    agent = get_agent(request)
+    conversation_id = require_session(agent, conversation_id)
     return {
-        "status": "ok",
-        "service": "rag-agent-api",
+        "conversation_id": conversation_id,
+        "history": agent.get_history(conversation_id),
     }
+
+
+@app.delete("/api/agent/conversation/clear")
+def clear(body: ConversationRequest, request: Request):
+    agent = get_agent(request)
+    conversation_id = require_session(agent, body.conversation_id)
+    agent.clear_session(conversation_id)
+    return {"success": True, "message": f"Session {conversation_id} cleared successfully"}
 
 
 def run() -> None:
@@ -159,7 +170,6 @@ def run() -> None:
         host="0.0.0.0",
         port=port,
         reload=reload_enabled,
-        log_config=None,
     )
 
 

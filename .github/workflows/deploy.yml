@@ -31,15 +31,13 @@ jobs:
           cache-dependency-glob: uv.lock
 
       - name: Synchronize locked environment
-        run: uv sync --locked --no-dev
+        run: uv sync --locked
 
-      # - name: Run tests
-      #   env:
-      #     OTEL_SDK_DISABLED: "true"
-      #   run: uv run python -m unittest discover -s tests -v
+      - name: Run tests
+        run: uv run python -m unittest discover -s tests -v
 
       - name: Compile Python sources
-        run: uv run python -m compileall -q src tests tools
+        run: uv run python -m compileall -q src tests
 
       - name: Validate Compose configuration
         env:
@@ -47,8 +45,6 @@ jobs:
         run: |
           docker compose \
             --env-file infra/env.production.example \
-            --profile observability \
-            --profile tools \
             -f infra/docker-compose.yaml \
             config --quiet
 
@@ -173,15 +169,13 @@ jobs:
             -o IdentitiesOnly=yes \
             -o StrictHostKeyChecking=yes \
             "$DEPLOY_USER@$DEPLOY_HOST" \
-            bash -s -- "$DEPLOY_PATH" "$RAG_AGENT_ENV_FILE" "$OLLAMA_HEALTH_URL" "$RAG_AGENT_IMAGE_TAG" "$PUBLIC_HEALTH_URL" <<'REMOTE'
+            bash -s -- "$DEPLOY_PATH" "$RAG_AGENT_ENV_FILE" "$OLLAMA_HEALTH_URL" "$RAG_AGENT_IMAGE_TAG" <<'REMOTE'
           set -Eeuo pipefail
           cd "$1"
           DEPLOY_ROOT="$1" \
           RAG_AGENT_ENV_FILE="$2" \
           OLLAMA_HEALTH_URL="$3" \
           RAG_AGENT_IMAGE_TAG="$4" \
-          PUBLIC_HEALTH_URL="$5" \
-          DEPLOYMENT_ENVIRONMENT=production \
             bash infra/deploy.sh
           REMOTE
 

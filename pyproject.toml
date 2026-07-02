@@ -1,80 +1,30 @@
 [project]
 name = "rag-agent-backend"
 version = "0.1.0"
-description = "Backend service and RAG runtime for RAG Agent."
+description = "Minimal RAG agent: FastAPI + Milvus retrieval + Ollama generation."
 readme = "readme.md"
 requires-python = ">=3.13,<3.14"
 dependencies = [
-    "accelerate",
-    "asyncpg",
-    "bitsandbytes",
     "fastapi",
-    "FlagEmbedding",
-    "hf-xet",
-    "httpx[http2]",
-    "huggingface-hub",
-    "langchain",
-    "langchain-exa>=1.1.0",
     "langchain-milvus",
     "langchain-ollama",
-    "langchain-openai",
-    "langchain-text-splitters",
-    "langgraph",
-    "langgraph-checkpoint",
-    "langgraph-checkpoint-postgres",
-    "langgraph-prebuilt",
-    "langgraph-sdk",
-    "langsmith",
-    "numpy",
-    "ollama",
-    "onnxruntime",
-    "openai",
-    "opentelemetry-api",
-    "opentelemetry-exporter-otlp-proto-grpc",
-    "opentelemetry-instrumentation-fastapi==0.63b1",
-    "opentelemetry-instrumentation-httpx==0.63b1",
-    "opentelemetry-instrumentation-psycopg==0.63b1",
-    "opentelemetry-instrumentation-redis==0.63b1",
-    "opentelemetry-sdk",
-    "pandas",
-    "peft",
-    "psycopg[binary,pool]",
-    "pydantic",
-    "pyjwt>=2.13.0",
-    "pymilvus[model]",
-    "pymupdf",
-    "python-docx",
+    "pymilvus",
     "python-dotenv",
-    "redis",
-    "requests",
-    "scikit-learn",
-    "scipy",
-    "streamlit",
-    "tiktoken",
-    "torch",
-    "tqdm",
-    "transformers",
-    "trl",
-    "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git",
     "uvicorn[standard]",
-    "websockets",
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
-    "deepeval",
+    "httpx",
+    "pyyaml",
 ]
 
 [project.scripts]
 rag-agent-api = "rag_agent_server.main:run"
-rag-agent-ingestion-worker = "rag_agent_server.ingestion.worker:main"
 
 [build-system]
 requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
-
-[tool.hatch.metadata]
-allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/rag_agent_server", "src/rag"]
@@ -83,20 +33,11 @@ packages = ["src/rag_agent_server", "src/rag"]
 include = [
     "/pyproject.toml",
     "/readme.md",
-    "/skills.md",
     "/infra",
     "/src/rag_agent_server",
     "/src/rag",
-    "/src/streamlit_app.py",
     "/tests",
-    "/tools",
 ]
 
 [tool.uv]
 package = true
-prerelease = "if-necessary-or-explicit"
-index-strategy = "unsafe-best-match"
-
-[[tool.uv.index]]
-name = "pytorch-nightly-cu128"
-url = "https://download.pytorch.org/whl/nightly/cu128"
