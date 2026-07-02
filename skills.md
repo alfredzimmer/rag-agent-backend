@@ -1,6 +1,6 @@
 # Agent Operations Guide
 
-This file is the debugging contract for agents working on Edemi Backend.
+This file is the debugging contract for agents working on RAG Agent Backend.
 
 ## Hardware And Hosting Context
 
@@ -42,8 +42,8 @@ This file is the debugging contract for agents working on Edemi Backend.
 
 ```bash
 docker compose -f infra/docker-compose.yaml --profile observability up -d
-uv run edemi-api
-uv run edemi-ingestion-worker
+uv run rag-agent-api
+uv run rag-agent-ingestion-worker
 ```
 
 For code-only tests that should not export telemetry:
@@ -75,13 +75,13 @@ ssh -N \
 1. Open Grafana at `http://localhost:3001`.
 2. In Loki, filter by `service_name` and search for `job_id`, `conversation_id`, or `document_id`.
 3. Open the derived `TraceID` link to view the request in Tempo.
-4. Follow spans from `edemi-api` through `ingestion.process_job` in `edemi-ingestion-worker`.
-5. Check Prometheus metrics beginning with `edemi_ingestion_`.
+4. Follow spans from `rag-agent-api` through `ingestion.process_job` in `rag-agent-ingestion-worker`.
+5. Check Prometheus metrics beginning with `rag_agent_ingestion_`.
 
 Service names:
 
-- `edemi-api`
-- `edemi-ingestion-worker`
+- `rag-agent-api`
+- `rag-agent-ingestion-worker`
 
 Collector health:
 
@@ -101,10 +101,10 @@ curl -H "Authorization: Bearer $TOKEN" \
 Queue and consumer-group health:
 
 ```bash
-redis-cli -p 6380 XINFO GROUPS edemi:ingestion:jobs
-redis-cli -p 6380 XPENDING edemi:ingestion:jobs edemi-ingestion-workers
-redis-cli -p 6380 XRANGE edemi:ingestion:dead-letter - + COUNT 20
-redis-cli -p 6380 GET edemi:ingestion:job:$JOB_ID
+redis-cli -p 6380 XINFO GROUPS rag-agent:ingestion:jobs
+redis-cli -p 6380 XPENDING rag-agent:ingestion:jobs rag-agent-ingestion-workers
+redis-cli -p 6380 XRANGE rag-agent:ingestion:dead-letter - + COUNT 20
+redis-cli -p 6380 GET rag-agent:ingestion:job:$JOB_ID
 ```
 
 Interpretation:
@@ -127,7 +127,7 @@ June 24, 2026. The migration produced 838,340 unique global-scope chunks in
 The migration checkpoint is stored on the production server at:
 
 ```text
-/home/ziyutecc_ai_wsl/edemi-backend/.deploy/legacy-milvus-migration.json
+/home/ziyutecc_ai_wsl/rag-agent-backend/.deploy/legacy-milvus-migration.json
 ```
 
 Use `tools/migrate_legacy_milvus.py` only for an intentional rebuild from the
@@ -149,7 +149,7 @@ or matching checkpoint, and never modifies the source collection.
 OTEL_SDK_DISABLED=true PYTHONPATH=src .venv/bin/python -m compileall -q src tests tools
 UV_CACHE_DIR=.uv-cache uv lock --check
 docker compose -f infra/docker-compose.yaml --profile observability config --quiet
-UV_CACHE_DIR=.uv-cache uv build --out-dir /tmp/edemi-backend-build
+UV_CACHE_DIR=.uv-cache uv build --out-dir /tmp/rag-agent-backend-build
 ```
 
 If external services are unavailable, report exactly which integration test could not run. Do not insert a fallback implementation.

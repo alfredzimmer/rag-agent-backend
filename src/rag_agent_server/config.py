@@ -4,7 +4,7 @@ import os
 
 
 DEFAULT_CORS_ORIGINS = (
-    "https://chat.edemi.org",
+    "https://chat.rag-agent.example",
     "https://pis3.aempro.ca",
     "http://localhost:3000",
     "http://localhost:5173",

@@ -271,12 +271,12 @@ class IngestionQueue:
 
     @staticmethod
     def _state_key(job_id: str) -> str:
-        return f"edemi:ingestion:job:{job_id}"
+        return f"rag-agent:ingestion:job:{job_id}"
 
     @staticmethod
     def _lock_key(fingerprint: str) -> str:
-        return f"edemi:ingestion:lock:{fingerprint}"
+        return f"rag-agent:ingestion:lock:{fingerprint}"
 
     @staticmethod
     def _completed_key(fingerprint: str) -> str:
-        return f"edemi:ingestion:completed:{fingerprint}"
+        return f"rag-agent:ingestion:completed:{fingerprint}"

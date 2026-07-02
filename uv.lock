@@ -487,7 +487,7 @@ wheels = [
 ]
 
 [[package]]
-name = "edemi-backend"
+name = "rag-agent-backend"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

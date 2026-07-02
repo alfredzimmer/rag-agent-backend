@@ -1,1 +1,1 @@
-"""Operational tools for Edemi Backend."""
+"""Operational tools for RAG Agent Backend."""

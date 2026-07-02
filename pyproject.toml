@@ -1,7 +1,7 @@
 [project]
-name = "edemi-backend"
+name = "rag-agent-backend"
 version = "0.1.0"
-description = "Backend service and RAG runtime for Edemi."
+description = "Backend service and RAG runtime for RAG Agent."
 readme = "readme.md"
 requires-python = ">=3.13,<3.14"
 dependencies = [
@@ -66,8 +66,8 @@ dev = [
 ]
 
 [project.scripts]
-edemi-api = "edemi_server.main:run"
-edemi-ingestion-worker = "edemi_server.ingestion.worker:main"
+rag-agent-api = "rag_agent_server.main:run"
+rag-agent-ingestion-worker = "rag_agent_server.ingestion.worker:main"
 
 [build-system]
 requires = ["hatchling>=1.27"]
@@ -77,7 +77,7 @@ build-backend = "hatchling.build"
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/edemi_server", "src/rag"]
+packages = ["src/rag_agent_server", "src/rag"]
 
 [tool.hatch.build.targets.sdist]
 include = [
@@ -85,7 +85,7 @@ include = [
     "/readme.md",
     "/skills.md",
     "/infra",
-    "/src/edemi_server",
+    "/src/rag_agent_server",
     "/src/rag",
     "/src/streamlit_app.py",
     "/tests",

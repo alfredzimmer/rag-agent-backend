@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.testclient import TestClient
 
-from edemi_server.config import DEFAULT_CORS_ORIGINS, get_cors_origins
+from rag_agent_server.config import DEFAULT_CORS_ORIGINS, get_cors_origins
 
 
 def make_client(cors_origins: list[str]) -> TestClient:
@@ -32,13 +32,13 @@ class CorsConfigTests(unittest.TestCase):
 
     def test_configured_origins_are_trimmed(self) -> None:
         self.assertEqual(
-            get_cors_origins(" https://chat.edemi.org, ,https://pis3.aempro.ca "),
-            ["https://chat.edemi.org", "https://pis3.aempro.ca"],
+            get_cors_origins(" https://chat.rag-agent.example, ,https://pis3.aempro.ca "),
+            ["https://chat.rag-agent.example", "https://pis3.aempro.ca"],
         )
 
     def test_production_allowlist_rejects_localhost_preflight(self) -> None:
         client = make_client(
-            get_cors_origins("https://chat.edemi.org,https://pis3.aempro.ca")
+            get_cors_origins("https://chat.rag-agent.example,https://pis3.aempro.ca")
         )
 
         response = client.options(
@@ -54,13 +54,13 @@ class CorsConfigTests(unittest.TestCase):
 
     def test_production_allowlist_accepts_chat_origin(self) -> None:
         client = make_client(
-            get_cors_origins("https://chat.edemi.org,https://pis3.aempro.ca")
+            get_cors_origins("https://chat.rag-agent.example,https://pis3.aempro.ca")
         )
 
         response = client.options(
             "/health",
             headers={
-                "Origin": "https://chat.edemi.org",
+                "Origin": "https://chat.rag-agent.example",
                 "Access-Control-Request-Method": "GET",
             },
         )
@@ -68,7 +68,7 @@ class CorsConfigTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
             response.headers["access-control-allow-origin"],
-            "https://chat.edemi.org",
+            "https://chat.rag-agent.example",
         )
 
 

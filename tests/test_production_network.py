@@ -44,13 +44,13 @@ class ProductionSmokeTests(unittest.TestCase):
 
         self.assertEqual(
             values["CORS_ORIGINS"],
-            "https://chat.edemi.org,https://pis3.aempro.ca",
+            "https://chat.rag-agent.example,https://pis3.aempro.ca",
         )
         self.assertEqual(
             values["CLOUDFLARE_TUNNEL_TOKEN"],
             "replace-with-cloudflare-tunnel-token",
         )
-        self.assertEqual(values["EDEMI_HTTP_BIND"], "127.0.0.1")
+        self.assertEqual(values["RAG_AGENT_HTTP_BIND"], "127.0.0.1")
         self.assertEqual(values["INGESTION_MAX_UPLOAD_BYTES"], "52428800")
 
     def test_deploy_rejects_placeholder_edge_token_before_runtime_work(self) -> None:
@@ -62,7 +62,7 @@ class ProductionSmokeTests(unittest.TestCase):
                 path.chmod(path.stat().st_mode | stat.S_IXUSR)
 
             env = {
-                "EDEMI_ENV_FILE": str(PRODUCTION_ENV_EXAMPLE),
+                "RAG_AGENT_ENV_FILE": str(PRODUCTION_ENV_EXAMPLE),
                 "PATH": f"{fake_bin}:{os.environ.get('PATH', '')}",
             }
             result = subprocess.run(
@@ -108,8 +108,8 @@ class ProductionNetworkUnitTests(unittest.TestCase):
             for port in service.get("ports", []):
                 with self.subTest(service=service_name, port=port):
                     self.assertIsInstance(port, str)
-                    if port.startswith("${EDEMI_HTTP_BIND:-127.0.0.1}:"):
-                        self.assertEqual(env_values["EDEMI_HTTP_BIND"], "127.0.0.1")
+                    if port.startswith("${RAG_AGENT_HTTP_BIND:-127.0.0.1}:"):
+                        self.assertEqual(env_values["RAG_AGENT_HTTP_BIND"], "127.0.0.1")
                         continue
                     self.assertTrue(
                         port.startswith("127.0.0.1:"),
@@ -121,7 +121,7 @@ class ProductionNetworkUnitTests(unittest.TestCase):
 
         self.assertIn("--profile edge", script)
         self.assertIn("cloudflared", script)
-        self.assertIn('export EDEMI_IMAGE_TAG="${EDEMI_IMAGE_TAG:-local}"', script)
+        self.assertIn('export RAG_AGENT_IMAGE_TAG="${RAG_AGENT_IMAGE_TAG:-local}"', script)
         for key in (
             "CLOUDFLARE_TUNNEL_TOKEN",
             "JWT_SECRET_KEY",
@@ -135,9 +135,11 @@ class ProductionNetworkUnitTests(unittest.TestCase):
         workflow = WORKFLOW.read_text()
 
         self.assertIn("--profile edge", workflow)
-        self.assertIn("EDEMI_IMAGE_TAG: ${{ github.sha }}", workflow)
-        self.assertIn("PUBLIC_HEALTH_URL", workflow)
-        self.assertIn("https://api.edemi.org/health", workflow)
+        self.assertIn("RAG_AGENT_IMAGE_TAG: ${{ github.sha }}", workflow)
+        self.assertIn(
+            "PUBLIC_HEALTH_URL: ${{ vars.PRODUCTION_PUBLIC_HEALTH_URL || 'https://api.ziyutec.com/health' }}",
+            workflow,
+        )
         self.assertIn("curl --fail --silent --show-error --max-time 10", workflow)
 
 
@@ -149,7 +151,7 @@ class ProductionNetworkIntegrationTests(unittest.TestCase):
         env = {
             "PATH": os.environ.get("PATH", ""),
             "HOME": os.environ.get("HOME", ""),
-            "EDEMI_ENV_FILE": str(PRODUCTION_ENV_EXAMPLE),
+            "RAG_AGENT_ENV_FILE": str(PRODUCTION_ENV_EXAMPLE),
         }
         result = subprocess.run(
             [

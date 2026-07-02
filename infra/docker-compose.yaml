@@ -1,21 +1,21 @@
-name: edemi-backend
+name: rag-agent-backend
 
 services:
   api:
     build:
       context: ..
       dockerfile: Dockerfile
-    image: edemi-backend:${EDEMI_IMAGE_TAG:-local}
-    command: ["edemi-api"]
+    image: rag-agent-backend:${RAG_AGENT_IMAGE_TAG:-local}
+    command: ["rag-agent-api"]
     restart: unless-stopped
     init: true
     env_file:
-      - ${EDEMI_ENV_FILE:-../.env}
+      - ${RAG_AGENT_ENV_FILE:-../.env}
     environment:
-      EDEMI_PORT: "9229"
+      RAG_AGENT_PORT: "9229"
       DEPLOYMENT_ENVIRONMENT: ${DEPLOYMENT_ENVIRONMENT:-development}
       INGESTION_UPLOAD_DIR: /app/.runtime/uploads
-      PG_URI: ${PG_URI:-postgresql://edemi:edemi@postgres:5432/edemi}
+      PG_URI: ${PG_URI:-postgresql://rag_agent:rag_agent@postgres:5432/rag_agent}
       REDIS_URL: redis://redis:6379/0
       MILVUS_URI: http://milvus:19530
       MILVUS_HOST: milvus
@@ -25,7 +25,7 @@ services:
       OLLAMA_HOST: http://host.docker.internal:11434
       OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
     ports:
-      - "${EDEMI_HTTP_BIND:-127.0.0.1}:${EDEMI_HTTP_PORT:-9229}:9229"
+      - "${RAG_AGENT_HTTP_BIND:-127.0.0.1}:${RAG_AGENT_HTTP_PORT:-9229}:9229"
     volumes:
       - ingestion_uploads:/app/.runtime/uploads
     extra_hosts:
@@ -61,16 +61,16 @@ services:
         condition: service_healthy
 
   ingestion-worker:
-    image: edemi-backend:${EDEMI_IMAGE_TAG:-local}
-    command: ["edemi-ingestion-worker"]
+    image: rag-agent-backend:${RAG_AGENT_IMAGE_TAG:-local}
+    command: ["rag-agent-ingestion-worker"]
     restart: unless-stopped
     init: true
     env_file:
-      - ${EDEMI_ENV_FILE:-../.env}
+      - ${RAG_AGENT_ENV_FILE:-../.env}
     environment:
       DEPLOYMENT_ENVIRONMENT: ${DEPLOYMENT_ENVIRONMENT:-development}
       INGESTION_UPLOAD_DIR: /app/.runtime/uploads
-      PG_URI: ${PG_URI:-postgresql://edemi:edemi@postgres:5432/edemi}
+      PG_URI: ${PG_URI:-postgresql://rag_agent:rag_agent@postgres:5432/rag_agent}
       REDIS_URL: redis://redis:6379/0
       MILVUS_URI: http://milvus:19530
       MILVUS_HOST: milvus
@@ -94,7 +94,7 @@ services:
         - CMD
         - python
         - -c
-        - "import os; from pathlib import Path; assert any('edemi-ingestion-worker' in path.read_text(errors='ignore') for path in Path('/proc').glob('[0-9]*/cmdline') if path.parent.name != str(os.getpid()))"
+        - "import os; from pathlib import Path; assert any('rag-agent-ingestion-worker' in path.read_text(errors='ignore') for path in Path('/proc').glob('[0-9]*/cmdline') if path.parent.name != str(os.getpid()))"
       interval: 15s
       timeout: 5s
       start_period: 30s
@@ -118,9 +118,9 @@ services:
     image: pgvector/pgvector:pg17
     restart: unless-stopped
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-edemi}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-edemi}
-      POSTGRES_DB: ${POSTGRES_DB:-edemi}
+      POSTGRES_USER: ${POSTGRES_USER:-rag_agent}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-rag_agent}
+      POSTGRES_DB: ${POSTGRES_DB:-rag_agent}
     ports:
       - "127.0.0.1:5433:5432"
     volumes:

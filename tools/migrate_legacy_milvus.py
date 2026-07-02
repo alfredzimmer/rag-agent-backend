@@ -28,7 +28,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--checkpoint",
         type=Path,
-        default=Path("/tmp/edemi-milvus-migration.json"),
+        default=Path("/tmp/rag-agent-milvus-migration.json"),
     )
     parser.add_argument("--reset", action="store_true")
     parser.add_argument("--max-batches", type=int)

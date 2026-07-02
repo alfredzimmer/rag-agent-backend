@@ -32,11 +32,11 @@ class IngestionConfig:
 
         return cls(
             redis_url=redis_url,
-            stream_name=os.getenv("INGESTION_STREAM", "edemi:ingestion:jobs"),
-            consumer_group=os.getenv("INGESTION_CONSUMER_GROUP", "edemi-ingestion-workers"),
+            stream_name=os.getenv("INGESTION_STREAM", "rag-agent:ingestion:jobs"),
+            consumer_group=os.getenv("INGESTION_CONSUMER_GROUP", "rag-agent-ingestion-workers"),
             dead_letter_stream=os.getenv(
                 "INGESTION_DEAD_LETTER_STREAM",
-                "edemi:ingestion:dead-letter",
+                "rag-agent:ingestion:dead-letter",
             ),
             upload_dir=Path(os.getenv("INGESTION_UPLOAD_DIR", ".runtime/uploads")).resolve(),
             collection_name=os.getenv("RAG_COLLECTION_NAME", "HeaderInContentTrial"),

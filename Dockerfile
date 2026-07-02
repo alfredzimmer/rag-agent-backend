@@ -27,16 +27,16 @@ FROM python:3.13.11-slim-bookworm@sha256:20080e807bfc404f8450b185cf0fc95d5534626
 RUN apt-get update \
     && apt-get install --yes --no-install-recommends ca-certificates libgomp1 \
     && rm -rf /var/lib/apt/lists/* \
-    && groupadd --gid 10001 edemi \
-    && useradd --uid 10001 --gid edemi --create-home --shell /usr/sbin/nologin edemi \
-    && install -d -o edemi -g edemi /app/.runtime/uploads
+    && groupadd --gid 10001 rag_agent \
+    && useradd --uid 10001 --gid rag_agent --create-home --shell /usr/sbin/nologin rag_agent \
+    && install -d -o rag_agent -g rag_agent /app/.runtime/uploads
 
 COPY --from=builder /opt/venv /opt/venv
 
 WORKDIR /app
 
 ENV PATH="/opt/venv/bin:$PATH" \
-    HOME=/home/edemi \
+    HOME=/home/rag_agent \
     PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1
 
@@ -47,4 +47,4 @@ EXPOSE 9229
 HEALTHCHECK --interval=15s --timeout=5s --start-period=60s --retries=5 \
     CMD ["python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:9229/health', timeout=3)"]
 
-CMD ["edemi-api"]
+CMD ["rag-agent-api"]

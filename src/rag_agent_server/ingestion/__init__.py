@@ -1,4 +1,4 @@
-"""Durable document ingestion for Edemi."""
+"""Durable document ingestion for RAG Agent."""
 
 from .models import IngestionJob, IngestionJobState, IngestionStatus
 from .queue import IngestionQueue

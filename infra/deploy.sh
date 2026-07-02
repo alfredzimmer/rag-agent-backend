@@ -3,7 +3,7 @@
 set -Eeuo pipefail
 
 DEPLOY_ROOT="${DEPLOY_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
-ENV_FILE="${EDEMI_ENV_FILE:?EDEMI_ENV_FILE is required}"
+ENV_FILE="${RAG_AGENT_ENV_FILE:?RAG_AGENT_ENV_FILE is required}"
 OLLAMA_HEALTH_URL="${OLLAMA_HEALTH_URL:-http://127.0.0.1:11434/api/tags}"
 STATE_DIR="$DEPLOY_ROOT/.deploy"
 COMPOSE_FILE="$DEPLOY_ROOT/infra/docker-compose.yaml"
@@ -141,8 +141,8 @@ flock --nonblock 9 || {
 }
 
 export DEPLOYMENT_ENVIRONMENT="${DEPLOYMENT_ENVIRONMENT:-production}"
-export EDEMI_ENV_FILE="$ENV_FILE"
-export EDEMI_IMAGE_TAG="${EDEMI_IMAGE_TAG:-local}"
+export RAG_AGENT_ENV_FILE="$ENV_FILE"
+export RAG_AGENT_IMAGE_TAG="${RAG_AGENT_IMAGE_TAG:-local}"
 
 if ! ollama_healthy && ! start_ollama; then
   printf 'Ollama did not become healthy at %s.\n' "$OLLAMA_HEALTH_URL" >&2

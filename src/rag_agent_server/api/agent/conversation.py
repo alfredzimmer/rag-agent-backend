@@ -7,8 +7,8 @@ from pydantic import BaseModel, ConfigDict
 from rag.agent import RAGAgent, Status
 from fastapi import HTTPException, APIRouter, Depends, status
 from fastapi.responses import StreamingResponse
-from edemi_server.api.dependency import get_agent
-from edemi_server.api.auth import get_current_user
+from rag_agent_server.api.dependency import get_agent
+from rag_agent_server.api.auth import get_current_user
 
 router = APIRouter(
     prefix="/api/agent/conversation"

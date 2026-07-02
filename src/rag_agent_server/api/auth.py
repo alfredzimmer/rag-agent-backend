@@ -7,7 +7,7 @@ from uuid import UUID, uuid4
 import jwt
 from pydantic import BaseModel, ConfigDict, Field
 from fastapi import APIRouter, Depends, HTTPException, Header, status
-from edemi_server.api.dependency import get_agent
+from rag_agent_server.api.dependency import get_agent
 
 logger = logging.getLogger(__name__)
 

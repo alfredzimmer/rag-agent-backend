@@ -13,12 +13,12 @@ from threading import Event
 from opentelemetry import context, metrics, trace
 from opentelemetry.trace import Status, StatusCode
 
-from edemi_server.ingestion.chunker import CHUNKER_VERSION, chunk_sections
-from edemi_server.ingestion.config import IngestionConfig
-from edemi_server.ingestion.models import IngestionJob, IngestionStatus
-from edemi_server.ingestion.parser import parse_document
-from edemi_server.ingestion.queue import IngestionQueue
-from edemi_server.observability import configure_telemetry
+from rag_agent_server.ingestion.chunker import CHUNKER_VERSION, chunk_sections
+from rag_agent_server.ingestion.config import IngestionConfig
+from rag_agent_server.ingestion.models import IngestionJob, IngestionStatus
+from rag_agent_server.ingestion.parser import parse_document
+from rag_agent_server.ingestion.queue import IngestionQueue
+from rag_agent_server.observability import configure_telemetry
 from rag.config import RAGConfig
 from rag.milvus import create_milvus_store
 
@@ -51,15 +51,15 @@ class IngestionWorker:
         self.tracer = trace.get_tracer(__name__)
         meter = metrics.get_meter(__name__)
         self.jobs_counter = meter.create_counter(
-            "edemi.ingestion.jobs",
+            "rag_agent.ingestion.jobs",
             description="Ingestion jobs by terminal or retry status",
         )
         self.chunks_counter = meter.create_counter(
-            "edemi.ingestion.chunks",
+            "rag_agent.ingestion.chunks",
             description="Document chunks written to Milvus",
         )
         self.duration_histogram = meter.create_histogram(
-            "edemi.ingestion.duration",
+            "rag_agent.ingestion.duration",
             unit="s",
             description="End-to-end ingestion processing duration",
         )
@@ -111,10 +111,10 @@ class IngestionWorker:
             with self.tracer.start_as_current_span("ingestion.process_job") as span:
                 span.set_attributes(
                     {
-                        "edemi.ingestion.job_id": str(job.job_id),
-                        "edemi.ingestion.attempt": job.attempt,
-                        "edemi.ingestion.collection": job.collection_name,
-                        "edemi.ingestion.scope_id": str(job.scope_id),
+                        "rag_agent.ingestion.job_id": str(job.job_id),
+                        "rag_agent.ingestion.attempt": job.attempt,
+                        "rag_agent.ingestion.collection": job.collection_name,
+                        "rag_agent.ingestion.scope_id": str(job.scope_id),
                     }
                 )
                 try:
@@ -193,7 +193,7 @@ class IngestionWorker:
             if not documents:
                 raise ValueError("Document produced no chunks")
 
-            span.set_attribute("edemi.ingestion.chunk_count", len(documents))
+            span.set_attribute("rag_agent.ingestion.chunk_count", len(documents))
             self.vector_store.replace_documents(
                 documents,
                 document_id=job.source_sha256,
@@ -262,7 +262,7 @@ def _request_shutdown(*_: object) -> None:
 
 
 def main() -> None:
-    configure_telemetry("edemi-ingestion-worker")
+    configure_telemetry("rag-agent-ingestion-worker")
     signal.signal(signal.SIGTERM, _request_shutdown)
     signal.signal(signal.SIGINT, _request_shutdown)
     IngestionWorker().run()

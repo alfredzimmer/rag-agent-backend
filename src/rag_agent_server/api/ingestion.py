@@ -10,19 +10,19 @@ from uuid import UUID, uuid4
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, status
 from opentelemetry import metrics, trace
 
-from edemi_server.api.auth import get_current_user
-from edemi_server.api.dependency import get_agent
-from edemi_server.ingestion.config import IngestionConfig
-from edemi_server.ingestion.models import IngestionJob, IngestionJobState
-from edemi_server.ingestion.parser import SUPPORTED_EXTENSIONS
-from edemi_server.ingestion.queue import IngestionQueue
+from rag_agent_server.api.auth import get_current_user
+from rag_agent_server.api.dependency import get_agent
+from rag_agent_server.ingestion.config import IngestionConfig
+from rag_agent_server.ingestion.models import IngestionJob, IngestionJobState
+from rag_agent_server.ingestion.parser import SUPPORTED_EXTENSIONS
+from rag_agent_server.ingestion.queue import IngestionQueue
 from rag.agent import RAGAgent
 
 logger = logging.getLogger(__name__)
 tracer = trace.get_tracer(__name__)
 meter = metrics.get_meter(__name__)
 uploads_counter = meter.create_counter(
-    "edemi.ingestion.uploads",
+    "rag_agent.ingestion.uploads",
     description="Documents accepted for asynchronous ingestion",
 )
 
@@ -116,10 +116,10 @@ async def ingest_document(
         )
         span.set_attributes(
             {
-                "edemi.ingestion.job_id": str(job_id),
-                "edemi.ingestion.scope_id": str(conversation_id),
-                "edemi.ingestion.filename": original_filename,
-                "edemi.ingestion.size_bytes": size_bytes,
+                "rag_agent.ingestion.job_id": str(job_id),
+                "rag_agent.ingestion.scope_id": str(conversation_id),
+                "rag_agent.ingestion.filename": original_filename,
+                "rag_agent.ingestion.size_bytes": size_bytes,
             }
         )
 

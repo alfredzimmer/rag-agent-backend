@@ -10,14 +10,14 @@ from contextlib import asynccontextmanager
 
 load_dotenv()
 
-from edemi_server.observability import configure_telemetry, instrument_fastapi
+from rag_agent_server.observability import configure_telemetry, instrument_fastapi
 
-configure_telemetry("edemi-api")
+configure_telemetry("rag-agent-api")
 
-from edemi_server.api.agent.conversation import router as conversation_router
-from edemi_server.api.auth import router as auth_router, init_auth_db
-from edemi_server.api.ingestion import router as ingestion_router
-from edemi_server.config import get_cors_origins
+from rag_agent_server.api.agent.conversation import router as conversation_router
+from rag_agent_server.api.auth import router as auth_router, init_auth_db
+from rag_agent_server.api.ingestion import router as ingestion_router
+from rag_agent_server.config import get_cors_origins
 from rag.agent import RAGAgent, RAGConfig
 
 logger = logging.getLogger(__name__)
@@ -27,7 +27,7 @@ def ping_services():
     services = {}
 
     # 1. Postgres
-    pg_uri = os.getenv("PG_URI", "postgresql://edemi:edemi@localhost:5433/edemi")
+    pg_uri = os.getenv("PG_URI", "postgresql://rag_agent:rag_agent@localhost:5433/rag_agent")
     try:
         parsed = urlparse(pg_uri)
         pg_host = parsed.hostname or "localhost"
@@ -120,8 +120,8 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="Edemi Backend",
-    description="API for the Edemi agent and retrieval runtime",
+    title="RAG Agent Backend",
+    description="API for the RAG Agent and retrieval runtime",
     version="1.0.0",
     lifespan=lifespan
 )
@@ -144,18 +144,18 @@ app.include_router(ingestion_router)
 def health():
     return {
         "status": "ok",
-        "service": "edemi-api",
+        "service": "rag-agent-api",
     }
 
 
 def run() -> None:
     import uvicorn
 
-    port = int(os.getenv("EDEMI_PORT", "9229"))
-    reload_enabled = os.getenv("EDEMI_RELOAD", "false").lower() == "true"
-    logger.info("Starting Edemi API", extra={"port": port})
+    port = int(os.getenv("RAG_AGENT_PORT", "9229"))
+    reload_enabled = os.getenv("RAG_AGENT_RELOAD", "false").lower() == "true"
+    logger.info("Starting RAG Agent API", extra={"port": port})
     uvicorn.run(
-        "edemi_server.main:app",
+        "rag_agent_server.main:app",
         host="0.0.0.0",
         port=port,
         reload=reload_enabled,

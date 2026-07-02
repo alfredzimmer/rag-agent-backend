@@ -1,1 +1,0 @@
-"""Edemi backend service package."""

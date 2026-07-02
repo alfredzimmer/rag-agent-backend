@@ -12,13 +12,13 @@ from opentelemetry import context, metrics, trace
 from langchain_core.documents import Document
 from redis.exceptions import TimeoutError as RedisTimeoutError
 
-from edemi_server.ingestion.chunker import CHUNKER_VERSION, chunk_sections
-from edemi_server.ingestion.config import IngestionConfig
-from edemi_server.ingestion.models import IngestionJob, IngestionStatus
-from edemi_server.ingestion.parser import parse_document
-from edemi_server.ingestion.queue import IngestionQueue
-from edemi_server.ingestion.worker import IngestionWorker
-from edemi_server.observability import JsonFormatter
+from rag_agent_server.ingestion.chunker import CHUNKER_VERSION, chunk_sections
+from rag_agent_server.ingestion.config import IngestionConfig
+from rag_agent_server.ingestion.models import IngestionJob, IngestionStatus
+from rag_agent_server.ingestion.parser import parse_document
+from rag_agent_server.ingestion.queue import IngestionQueue
+from rag_agent_server.ingestion.worker import IngestionWorker
+from rag_agent_server.observability import JsonFormatter
 from rag.milvus import MilvusVectorStore
 
 

@@ -34,7 +34,7 @@ class JsonFormatter(logging.Formatter):
             "severity": record.levelname,
             "logger": record.name,
             "message": record.getMessage(),
-            "service": os.getenv("OTEL_SERVICE_NAME", "edemi-backend"),
+            "service": os.getenv("OTEL_SERVICE_NAME", "rag-agent-backend"),
         }
         if span_context.is_valid:
             payload["trace_id"] = format(span_context.trace_id, "032x")
@@ -76,7 +76,7 @@ def configure_telemetry(service_name: str) -> None:
     resource = Resource.create(
         {
             "service.name": service_name,
-            "service.version": os.getenv("EDEMI_VERSION", "0.1.0"),
+            "service.version": os.getenv("RAG_AGENT_VERSION", "0.1.0"),
             "service.instance.id": os.getenv("HOSTNAME", socket.gethostname()),
             "deployment.environment.name": os.getenv("DEPLOYMENT_ENVIRONMENT", "development"),
         }
