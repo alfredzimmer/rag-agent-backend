@@ -69,9 +69,31 @@ The API and worker export traces, metrics, and logs over OTLP. Logs are JSON on 
 
 See `skills.md` for the operational debugging workflow and queue commands.
 
+## Tests
+
+Run the always-on unit, smoke, and integration tests with:
+
+```bash
+OTEL_SDK_DISABLED=true uv run python -m unittest discover -s tests -v
+```
+
+Public-edge end-to-end tests are opt-in because they require a deployed tunnel:
+
+```bash
+EDEMI_E2E_PUBLIC_HEALTH_URL=https://api.edemi.org/health \
+  OTEL_SDK_DISABLED=true uv run python -m unittest tests.test_e2e_public_edge -v
+```
+
+## Production Edge
+
+Production exposes only the API through Cloudflare Tunnel. The `edge` compose
+profile runs `cloudflared` with `CLOUDFLARE_TUNNEL_TOKEN` from the production
+environment file and forwards the dashboard-managed tunnel for
+`api.edemi.org` to the `api` service on the internal Docker network.
+
 ## CI/CD
 
-`.github/workflows/deploy.yml` verifies pull requests and deploys `main` to the protected GitHub `production` environment. It synchronizes the repository to the production host, checks that Ollama is healthy (and attempts to start it when necessary), pulls updated infrastructure images, builds the application image on the server, and reconciles every service in `infra/docker-compose.yaml`.
+`.github/workflows/deploy.yml` verifies pull requests and deploys `main` to the protected GitHub `production` environment. It synchronizes the repository to the production host, checks that Ollama is healthy (and attempts to start it when necessary), pulls updated infrastructure images, builds the application image on the server with the git SHA as `EDEMI_IMAGE_TAG`, reconciles every service in `infra/docker-compose.yaml`, and smoke-tests the public edge health URL.
 
 Configure these GitHub environment secrets:
 
@@ -88,5 +110,6 @@ Configure these GitHub environment variables:
 - `PRODUCTION_ENV_FILE`, for example `/etc/edemi/edemi.env`
 - `PRODUCTION_SSH_PORT`, default `22`
 - `PRODUCTION_OLLAMA_HEALTH_URL`, default `http://127.0.0.1:11434/api/tags`
+- `PRODUCTION_PUBLIC_HEALTH_URL`, default `https://api.edemi.org/health`
 
 Set `PRODUCTION_HOST` to the server's Tailscale address. Configure the Tailscale OAuth client with the `auth_keys` write scope and `tag:ci`. Configure a required reviewer on the `production` environment before enabling the workflow. Create the server environment file from `infra/env.production.example` and keep it outside `PRODUCTION_DEPLOY_PATH` so source synchronization cannot delete it. The deployment user must be able to run Docker, start Ollama, and write to `PRODUCTION_DEPLOY_PATH`; the host also needs `curl`, `flock`, and `rsync`.

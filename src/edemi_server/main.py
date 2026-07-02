@@ -17,6 +17,7 @@ configure_telemetry("edemi-api")
 from edemi_server.api.agent.conversation import router as conversation_router
 from edemi_server.api.auth import router as auth_router, init_auth_db
 from edemi_server.api.ingestion import router as ingestion_router
+from edemi_server.config import get_cors_origins
 from rag.agent import RAGAgent, RAGConfig
 
 logger = logging.getLogger(__name__)
@@ -126,16 +127,9 @@ app = FastAPI(
 )
 instrument_fastapi(app)
 
-origins = [
-    "https://chat.edemi.org",
-    "https://pis3.aempro.ca",
-    "http://localhost:3000",
-    "http://localhost:5173",
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=get_cors_origins(),
     allow_credentials=True,
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],

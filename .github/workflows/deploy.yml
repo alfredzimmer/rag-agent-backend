@@ -47,6 +47,7 @@ jobs:
         run: |
           docker compose \
             --env-file infra/env.production.example \
+            --profile edge \
             --profile observability \
             --profile tools \
             -f infra/docker-compose.yaml \
@@ -75,7 +76,9 @@ jobs:
       DEPLOY_PORT: ${{ vars.PRODUCTION_SSH_PORT || '22' }}
       DEPLOY_PATH: ${{ vars.PRODUCTION_DEPLOY_PATH }}
       EDEMI_ENV_FILE: ${{ vars.PRODUCTION_ENV_FILE }}
+      EDEMI_IMAGE_TAG: ${{ github.sha }}
       OLLAMA_HEALTH_URL: ${{ vars.PRODUCTION_OLLAMA_HEALTH_URL || 'http://127.0.0.1:11434/api/tags' }}
+      PUBLIC_HEALTH_URL: ${{ vars.PRODUCTION_PUBLIC_HEALTH_URL || 'https://api.edemi.org/health' }}
       SSH_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
       SSH_KNOWN_HOSTS: ${{ secrets.PRODUCTION_KNOWN_HOSTS }}
       TS_OAUTH_CLIENT_ID: ${{ secrets.TS_OAUTH_CLIENT_ID }}
@@ -93,6 +96,8 @@ jobs:
           test -n "$DEPLOY_USER"
           test -n "$DEPLOY_PATH"
           test -n "$EDEMI_ENV_FILE"
+          test -n "$EDEMI_IMAGE_TAG"
+          test -n "$PUBLIC_HEALTH_URL"
           test -n "$SSH_KEY"
           test -n "$SSH_KNOWN_HOSTS"
           test -n "$TS_OAUTH_CLIENT_ID"
@@ -168,12 +173,25 @@ jobs:
             -o IdentitiesOnly=yes \
             -o StrictHostKeyChecking=yes \
             "$DEPLOY_USER@$DEPLOY_HOST" \
-            bash -s -- "$DEPLOY_PATH" "$EDEMI_ENV_FILE" "$OLLAMA_HEALTH_URL" <<'REMOTE'
+            bash -s -- "$DEPLOY_PATH" "$EDEMI_ENV_FILE" "$OLLAMA_HEALTH_URL" "$EDEMI_IMAGE_TAG" <<'REMOTE'
           set -Eeuo pipefail
           cd "$1"
           DEPLOY_ROOT="$1" \
           EDEMI_ENV_FILE="$2" \
           OLLAMA_HEALTH_URL="$3" \
+          EDEMI_IMAGE_TAG="$4" \
           DEPLOYMENT_ENVIRONMENT=production \
             bash infra/deploy.sh
           REMOTE
+
+      - name: Smoke test public edge
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          for _ in {1..12}; do
+            if curl --fail --silent --show-error --max-time 10 "$PUBLIC_HEALTH_URL" >/dev/null; then
+              exit 0
+            fi
+            sleep 10
+          done
+          curl --fail --show-error --max-time 10 "$PUBLIC_HEALTH_URL" >/dev/null

@@ -11,12 +11,14 @@ COMPOSE_FILE="$DEPLOY_ROOT/infra/docker-compose.yaml"
 compose=(
   docker compose
   --env-file "$ENV_FILE"
+  --profile edge
   --profile observability
   --profile tools
   -f "$COMPOSE_FILE"
 )
 
 infrastructure_services=(
+  cloudflared
   redis
   postgres
   etcd
@@ -35,6 +37,33 @@ require_command() {
     printf 'Required command is missing: %s\n' "$1" >&2
     exit 1
   }
+}
+
+env_file_value() {
+  local key="$1"
+  local line
+
+  line="$(grep -E "^[[:space:]]*${key}=" "$ENV_FILE" | tail -n 1 || true)"
+  line="${line#*=}"
+  line="${line%$'\r'}"
+  line="${line%\"}"
+  line="${line#\"}"
+  line="${line%\'}"
+  line="${line#\'}"
+  printf '%s' "$line"
+}
+
+require_env_file_value() {
+  local key="$1"
+  local value
+
+  value="$(env_file_value "$key")"
+  case "$value" in
+    ""|replace-*|generate-*|change-me|thisisdifferentontheserver|*replace-with-*|*change-me*)
+      printf 'Production environment file must set a real %s value.\n' "$key" >&2
+      exit 1
+      ;;
+  esac
 }
 
 ollama_healthy() {
@@ -98,6 +127,12 @@ require_command flock
   exit 1
 }
 
+require_env_file_value CLOUDFLARE_TUNNEL_TOKEN
+require_env_file_value JWT_SECRET_KEY
+require_env_file_value POSTGRES_PASSWORD
+require_env_file_value PG_URI
+require_env_file_value MINIO_ROOT_PASSWORD
+
 mkdir -p "$STATE_DIR"
 exec 9>"$STATE_DIR/deploy.lock"
 flock --nonblock 9 || {
@@ -107,6 +142,7 @@ flock --nonblock 9 || {
 
 export DEPLOYMENT_ENVIRONMENT="${DEPLOYMENT_ENVIRONMENT:-production}"
 export EDEMI_ENV_FILE="$ENV_FILE"
+export EDEMI_IMAGE_TAG="${EDEMI_IMAGE_TAG:-local}"
 
 if ! ollama_healthy && ! start_ollama; then
   printf 'Ollama did not become healthy at %s.\n' "$OLLAMA_HEALTH_URL" >&2
