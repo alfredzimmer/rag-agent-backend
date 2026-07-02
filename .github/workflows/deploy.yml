@@ -189,10 +189,23 @@ jobs:
         shell: bash
         run: |
           set -Eeuo pipefail
-          for _ in {1..12}; do
-            if curl --fail --silent --show-error --max-time 10 "$PUBLIC_HEALTH_URL" >/dev/null; then
+          health_host="$(python - <<'PY'
+          import os
+          from urllib.parse import urlparse
+
+          print(urlparse(os.environ["PUBLIC_HEALTH_URL"]).hostname or "")
+          PY
+          )"
+          test -n "$health_host"
+
+          for attempt in {1..60}; do
+            if getent hosts "$health_host" >/dev/null 2>&1 \
+              && curl --fail --silent --show-error --max-time 10 "$PUBLIC_HEALTH_URL" >/dev/null; then
               exit 0
             fi
+            printf 'Waiting for public health URL %s to resolve and return 200 (%s/60).\n' "$PUBLIC_HEALTH_URL" "$attempt"
             sleep 10
           done
+
+          getent hosts "$health_host" || true
           curl --fail --show-error --max-time 10 "$PUBLIC_HEALTH_URL" >/dev/null
