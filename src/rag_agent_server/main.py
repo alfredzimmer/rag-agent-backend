@@ -97,6 +97,16 @@ class ConversationRequest(StrictRequest):
     conversation_id: UUID
 
 
+@app.get("/", include_in_schema=False)
+def root():
+    return {
+        "service": "rag-agent-api",
+        "health": "/health",
+        "docs": "/docs",
+        "api": "/api/agent/conversation",
+    }
+
+
 @app.get("/health", include_in_schema=False)
 def health() -> JSONResponse:
     statuses = check_dependencies()

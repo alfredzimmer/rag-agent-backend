@@ -1,5 +1,10 @@
 # RAG Agent Backend
 
+
+> [!IMPORTANT] 
+> The current deployment pipeline does not seem to be working due to Tailscale configuration issues. It is recommended that you deploy yourself to the ai server using `infra/push-deploy.sh`. I have temporarily disabled the GitHub CI.
+
+
 A minimal RAG agent: FastAPI serves a streaming chat endpoint, retrieval comes
 from Milvus, and generation (plus embeddings) comes from Ollama. Nothing else.
 

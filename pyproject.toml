@@ -18,6 +18,10 @@ dev = [
     "httpx",
     "pyyaml",
 ]
+ui = [
+    "requests",
+    "streamlit",
+]
 
 [project.scripts]
 rag-agent-api = "rag_agent_server.main:run"

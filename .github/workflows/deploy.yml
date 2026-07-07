@@ -1,11 +1,15 @@
 name: Verify and deploy
 
+# CI temporarily disabled (2026-07-07): the Tailscale Funnel public smoke test
+# in the deploy job is failing, so auto-triggers are removed. Deploy manually
+# with infra/push-deploy.sh. Re-enable by restoring the push/pull_request
+# triggers below (and `gh workflow enable "Verify and deploy"`).
 on:
-  pull_request:
-  push:
-    branches:
-      - main
   workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
+  # pull_request:
 
 permissions:
   contents: read

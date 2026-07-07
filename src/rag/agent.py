@@ -185,8 +185,8 @@ class RAGAgent:
                 yield event(Status.RESPONSE, "response.reasoning.delta", reasoning)
 
             if chunk.content:
-                answer += chunk.content
-                yield event(Status.RESPONSE, "response.output_text.delta", chunk.content)
+                answer += str(chunk.content)
+                yield event(Status.RESPONSE, "response.output_text.delta", str(chunk.content))
 
             if chunk.usage_metadata:
                 input_tokens += chunk.usage_metadata.get("input_tokens", 0)
