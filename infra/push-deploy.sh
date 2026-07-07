@@ -132,7 +132,7 @@ DIR="$1"; API_PORT="$2"; ST_PORT="$3"
 cd "$DIR"
 
 # Refresh the host virtualenv so code + deps match the synced tree.
-uv sync
+uv sync --group ui --group ingest --group dev
 
 restart_bg() { # name  port  logfile  launch-cmd...
   local name="$1" port="$2" logf="$3"; shift 3
