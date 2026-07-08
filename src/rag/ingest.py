@@ -8,7 +8,9 @@ The previous ingestor produced line-level fragments polluted with base64 image
 bytes. Here PDFs are parsed to Markdown with either pymupdf4llm or fast
 page-text extraction (real text + headers, not image bytes), TOC/binary/page
 number noise is stripped, and chunks are split on Markdown headers (header path
-kept in metadata AND text).
+kept in metadata AND text). .docx video-transcript compilations get
+structure-aware typed chunks via ingest_docx; other .docx fall back to the
+markdown path.
 
 Run (on the server, where Milvus + Ollama + the documents live):
 
@@ -37,7 +39,7 @@ from dotenv import load_dotenv
 from .config import RAGConfig
 from .milvus import create_milvus_store
 
-SUPPORTED = {".pdf", ".txt", ".md"}
+SUPPORTED = {".pdf", ".txt", ".md", ".docx"}
 SKIP_DIRS = {"parsed", "sample_set"}
 
 _WS = re.compile(r"\s+")
@@ -150,11 +152,27 @@ def process_file(
     fast_pdf_mb: int,
     source_root: Path | None = None,
 ):
-    parsed, parser_used = parse_document(path, pdf_parser=pdf_parser, fast_pdf_mb=fast_pdf_mb)
-    md = clean_markdown(parsed)
-    if looks_unparseable(md, ext=path.suffix.lower()):
-        raise RuntimeError("document parsed to low-quality text (scan/word-soup)")
-    docs = chunk_markdown(md, chunk_size=chunk_size, overlap=overlap)
+    if path.suffix.lower() == ".docx":
+        from . import ingest_docx  # lazy so the api image needn't carry ingest deps
+
+        paras = ingest_docx.read_paragraphs(path)
+        if ingest_docx.is_video_compilation(paras):
+            docs = ingest_docx.chunk_docx(paras, volume=ingest_docx.volume_name(path.stem))
+            parser_used = "docx-structured"
+            if not docs:
+                raise RuntimeError("template docx produced no usable chunks")
+        else:
+            md = clean_markdown(ingest_docx.to_markdown(paras))
+            if looks_unparseable(md, ext=".docx"):
+                raise RuntimeError("document parsed to low-quality text (scan/word-soup)")
+            docs = chunk_markdown(md, chunk_size=chunk_size, overlap=overlap)
+            parser_used = "docx-markdown"
+    else:
+        parsed, parser_used = parse_document(path, pdf_parser=pdf_parser, fast_pdf_mb=fast_pdf_mb)
+        md = clean_markdown(parsed)
+        if looks_unparseable(md, ext=path.suffix.lower()):
+            raise RuntimeError("document parsed to low-quality text (scan/word-soup)")
+        docs = chunk_markdown(md, chunk_size=chunk_size, overlap=overlap)
     source_path = path.name
     if source_root is not None:
         try:
@@ -162,7 +180,6 @@ def process_file(
         except ValueError:
             source_path = str(path)
     for i, d in enumerate(docs):
-        header_meta = {k: v for k, v in d.metadata.items() if k.startswith("Header")}
         d.metadata = {
             "name": path.name,
             "original_filename": path.name,
@@ -173,7 +190,7 @@ def process_file(
             "category": category,
             "chunk_index": i,
             "n_chunks": len(docs),
-            **header_meta,
+            **d.metadata,  # Header path + docx section metadata survive stamping
         }
     return docs
 

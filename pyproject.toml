@@ -25,6 +25,7 @@ ui = [
 ingest = [
     "pymupdf4llm",
     "langchain-text-splitters",
+    "python-docx",
 ]
 
 [project.scripts]
