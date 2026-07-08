@@ -91,6 +91,7 @@ class StrictRequest(BaseModel):
 class ChatRequest(StrictRequest):
     query: str
     conversation_id: UUID
+    reasoning: bool | None = None
 
 
 class ConversationRequest(StrictRequest):
@@ -137,7 +138,7 @@ def chat(body: ChatRequest, request: Request):
     conversation_id = require_session(agent, body.conversation_id)
 
     async def stream():
-        async for response in agent.chat(body.query, conversation_id):
+        async for response in agent.chat(body.query, conversation_id, reasoning=body.reasoning):
             yield response.model_dump_json() + "\n"
 
     return StreamingResponse(stream(), media_type="application/x-ndjson")

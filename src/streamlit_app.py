@@ -11,6 +11,13 @@ CONVERSATION_API = f"{API_URL}/api/agent/conversation"
 st.set_page_config(page_title="RAG Agent", page_icon="🤖", layout="wide")
 
 
+def env_bool(name: str, default: bool = False) -> bool:
+    value = os.getenv(name)
+    if value is None:
+        return default
+    return value.strip().lower() in {"1", "true", "yes", "on"}
+
+
 def api_get(path: str, **params) -> dict | list:
     resp = requests.get(f"{CONVERSATION_API}/{path}", params=params, timeout=15)
     resp.raise_for_status()
@@ -26,10 +33,10 @@ def load_messages(conversation_id: str) -> list[dict]:
     ]
 
 
-def stream_chat(conversation_id: str, query: str):
+def stream_chat(conversation_id: str, query: str, reasoning: bool):
     with requests.post(
         f"{CONVERSATION_API}/chat",
-        json={"query": query, "conversation_id": conversation_id},
+        json={"query": query, "conversation_id": conversation_id, "reasoning": reasoning},
         stream=True,
         timeout=600,
     ) as resp:
@@ -55,6 +62,8 @@ def render_message(message: dict) -> None:
 if "conversation_id" not in st.session_state:
     st.session_state.conversation_id = None
     st.session_state.messages = []
+if "reasoning_enabled" not in st.session_state:
+    st.session_state.reasoning_enabled = env_bool("RAG_LLM_REASONING", False)
 
 with st.sidebar:
     st.title("🤖 RAG Agent")
@@ -70,6 +79,8 @@ with st.sidebar:
     except requests.RequestException:
         st.error(f"API unreachable at {API_URL}", icon="❌")
         st.stop()
+
+    st.toggle("Reasoning", key="reasoning_enabled")
 
     if st.button("➕ New chat", use_container_width=True):
         st.session_state.conversation_id = api_get("create")["conversation_id"]
@@ -116,13 +127,19 @@ if prompt := st.chat_input("Ask about your documents…"):
     with st.chat_message("assistant"):
         status = st.status("Retrieving context…")
         context_box = status.empty()
-        reasoning_box = st.expander("💭 Reasoning").empty()
+        reasoning_box = None
+        if st.session_state.reasoning_enabled:
+            reasoning_box = st.expander("💭 Reasoning").empty()
         answer_box = st.empty()
         context = reasoning = answer = ""
         metadata = {}
 
         try:
-            for event in stream_chat(st.session_state.conversation_id, prompt):
+            for event in stream_chat(
+                st.session_state.conversation_id,
+                prompt,
+                st.session_state.reasoning_enabled,
+            ):
                 kind = event["type"]
                 if kind == "retrieve":
                     context = event["content"]
@@ -130,7 +147,8 @@ if prompt := st.chat_input("Ask about your documents…"):
                     status.update(label="📚 Context retrieved", state="complete")
                 elif kind == "response.reasoning.delta":
                     reasoning += event["content"]
-                    reasoning_box.markdown(reasoning)
+                    if reasoning_box is not None:
+                        reasoning_box.markdown(reasoning)
                 elif kind == "response.output_text.delta":
                     answer += event["content"]
                     answer_box.markdown(answer + "▌")

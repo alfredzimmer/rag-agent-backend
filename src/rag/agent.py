@@ -70,16 +70,22 @@ class RAGAgent:
     def __init__(self, config: RAGConfig | None = None):
         self.config = config or RAGConfig()
         self.vector_store = create_milvus_store(self.config)
-        self.llm = ChatOllama(
-            model=self.config.llm_model,
-            base_url=self.config.ollama_host,
-            temperature=0.15,
-            num_ctx=self.config.llm_num_ctx,
-            reasoning=self.config.llm_reasoning,
-            num_predict=self.config.llm_num_predict,
-        )
+        self._llms: dict[bool, ChatOllama] = {}
+        self.llm = self._llm_for(self.config.llm_reasoning)
         self.sessions: dict[str, Session] = {}
         self._interrupted: set[str] = set()
+
+    def _llm_for(self, reasoning: bool) -> ChatOllama:
+        if reasoning not in self._llms:
+            self._llms[reasoning] = ChatOllama(
+                model=self.config.llm_model,
+                base_url=self.config.ollama_host,
+                temperature=0.15,
+                num_ctx=self.config.llm_num_ctx,
+                reasoning=reasoning,
+                num_predict=self.config.llm_num_predict,
+            )
+        return self._llms[reasoning]
 
     # -- Sessions ----------------------------------------------------------
 
@@ -143,10 +149,13 @@ class RAGAgent:
             return NO_RESULTS
         return "\n\n".join(self.format_source(i, doc) for i, doc in enumerate(docs, 1))
 
-    async def chat(self, query: str, conversation_id: str) -> AsyncIterator[ChatResponse]:
+    async def chat(
+        self, query: str, conversation_id: str, reasoning: bool | None = None
+    ) -> AsyncIterator[ChatResponse]:
         """Stream one conversation turn as ChatResponse events."""
         session = self.sessions[conversation_id]
         self._interrupted.discard(conversation_id)
+        llm = self._llm_for(self.config.llm_reasoning if reasoning is None else reasoning)
 
         def event(status: Status, type_: str, content: str, **metadata) -> ChatResponse:
             return ChatResponse(
@@ -179,7 +188,7 @@ class RAGAgent:
         output_tokens = 0
         answer = ""
 
-        async for chunk in self.llm.astream(messages):
+        async for chunk in llm.astream(messages):
             if conversation_id in self._interrupted:
                 self._interrupted.discard(conversation_id)
                 yield event(
