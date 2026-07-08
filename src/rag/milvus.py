@@ -74,6 +74,9 @@ def create_milvus_store(
         auto_id=True,
         enable_dynamic_field=True,
         drop_old=drop_old,
+        # langchain-milvus defaults HNSW search to ef=10, which starves the
+        # graph traversal and hard-caps k<=10.
+        search_params={"metric_type": "COSINE", "params": {"ef": config.search_ef}},
     )
     if index_params is not None:
         kwargs["index_params"] = index_params

@@ -23,6 +23,7 @@ class RAGConfig:
         default_factory=lambda: int(os.getenv("RAG_LLM_NUM_PREDICT", "4096"))
     )
     top_k: int = field(default_factory=lambda: int(os.getenv("RAG_TOP_K", "4")))
+    search_ef: int = field(default_factory=lambda: int(os.getenv("RAG_SEARCH_EF", "96")))
     milvus_uri: str = field(
         default_factory=lambda: os.getenv("MILVUS_URI", "http://localhost:19530")
     )
