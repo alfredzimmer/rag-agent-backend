@@ -49,20 +49,32 @@ class ConnectedMilvus(Milvus):
         super()._init(*args, **kwargs)
 
 
-def create_milvus_store(config: RAGConfig) -> Milvus:
+def create_milvus_store(
+    config: RAGConfig,
+    *,
+    collection_name: str | None = None,
+    drop_old: bool = False,
+    index_params: dict | None = None,
+) -> Milvus:
+    """Build the shared Milvus store. Retrieval calls this with defaults;
+    ingestion overrides collection_name / drop_old / index_params to (re)build
+    a collection that stays schema-compatible with retrieval."""
     ensure_db_exists(config)
     embeddings = OllamaEmbeddings(
         model=config.embedding_model,
         base_url=config.ollama_host,
     )
-    return ConnectedMilvus(
+    kwargs = dict(
         rag_config=config,
         embedding_function=embeddings,
-        collection_name=config.collection_name,
+        collection_name=collection_name or config.collection_name,
         connection_args={"uri": config.milvus_uri, "db_name": config.milvus_db},
         vector_field="dense",
         text_field="text",
         auto_id=True,
         enable_dynamic_field=True,
-        drop_old=False,
+        drop_old=drop_old,
     )
+    if index_params is not None:
+        kwargs["index_params"] = index_params
+    return ConnectedMilvus(**kwargs)

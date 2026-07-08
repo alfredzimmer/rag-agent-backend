@@ -22,9 +22,14 @@ ui = [
     "requests",
     "streamlit",
 ]
+ingest = [
+    "pymupdf4llm",
+    "langchain-text-splitters",
+]
 
 [project.scripts]
 rag-agent-api = "rag_agent_server.main:run"
+rag-ingest = "rag.ingest:main"
 
 [build-system]
 requires = ["hatchling>=1.27"]

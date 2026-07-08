@@ -216,6 +216,8 @@ Ordered by typical value-to-effort. Each is independent and optional.
    network, with authentication in front.
 6. **Integration hooks.** Expose the API to internal tools (e.g. project software, an
    intranet portal) so answers can be surfaced where staff already work.
+7. **Input Parsing.** Parse/rephrase the input prompt in a standard manner before retrieval 
+   would increase the accurary while be conducive to generation qualities as a whole.
 
 ---
 

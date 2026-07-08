@@ -69,6 +69,12 @@ Schema: `http://localhost:9229/docs`.
 uv run python -m unittest discover -s tests -v
 ```
 
+## Ingestion
+
+Use `uv run --group ingest rag-ingest` on the server to parse, chunk, embed,
+and write source documents into Milvus. The ingestion runbook has the current
+backup, cutover, and connection details: [docs/INGESTION_RUNBOOK.md](docs/INGESTION_RUNBOOK.md).
+
 ## Production
 
 `infra/deploy.sh` validates the env file, checks Ollama health on the host,
