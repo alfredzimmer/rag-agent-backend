@@ -120,3 +120,34 @@ NFPA/NFPA 780-2020.pdf
 NFPA/NFPA 99-2024.pdf
 NFPA/NFPA-25-2020.pdf
 ```
+
+## 2026-07-08 docx ingestion (North America Electrical Design series)
+
+The old `rag1/HeaderInContentTrial` collection carried 95 docx documents
+(707,614 line-level chunks, ~84% of the collection); the 2026-07-07 cutover
+dropped them. This run restores that coverage in the serving collection using
+the structure-aware docx chunker (`src/rag/ingest_docx.py`), appending to the
+existing collection — deliberately **no `--drop-old`**:
+
+```bash
+cd /home/ziyutecc_ai_wsl/rag-agent-backend
+uv sync --group ingest
+uv run --group ingest rag-ingest \
+  --root "$HOME/North-America-Electrical-Design-Series/Deduplicated English Content (for ingestion)" \
+  --db rag2 \
+  --collection rag_documents_v2 \
+  --manifest "$HOME/.config/rag-agent/ingestion/ingest-rag2-docx-20260708.json"
+```
+
+Actual ingestion result:
+
+```text
+Files ingested: 29 (28 .docx + DEDUP_REPORT.md), 0 skipped
+Chunks written: 2,872 (avg 1,316 chars, 0.1% garbage)
+Collection total after append: 34,205 entities (31,333 PDF + 2,872)
+```
+
+Chunks are typed (`section_type`: summary / qa / terminology / transcript /
+body) with a `{volume} › {video summary} › {section}` header in text and
+metadata. To re-do this corpus, delete first with a Milvus expr on
+`source_dir` or `source_ext == ".docx"`, then re-run.
