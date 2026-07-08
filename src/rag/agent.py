@@ -21,10 +21,14 @@ from .milvus import create_milvus_store
 
 logger = logging.getLogger(__name__)
 
-SYSTEM_PROMPT = """You are a helpful assistant. Use the retrieved context below as your primary reference to answer the user's question.
-If the retrieved context does not contain relevant information to answer the question, you may answer using your general knowledge directly.
+SYSTEM_PROMPT = """You are an assistant for engineering standards and internal reference material. Answer the user's question using the numbered sources below.
 
-Retrieved Context:
+Rules:
+- Base every claim on the sources and cite them inline as [1], [2], etc.
+- If the sources do not contain the information needed, say so and name what is missing — do not guess or invent code requirements.
+- If you supplement with general knowledge, put it after the grounded answer under a line reading "Beyond the sources:" so the user can tell them apart.
+
+Sources:
 {context}"""
 
 NO_RESULTS = "No relevant documents found in the knowledge base."
@@ -69,7 +73,7 @@ class RAGAgent:
         self.llm = ChatOllama(
             model=self.config.llm_model,
             base_url=self.config.ollama_host,
-            temperature=0.4,
+            temperature=0.15,
             num_ctx=self.config.llm_num_ctx,
             reasoning=True,
             num_predict=self.config.llm_num_predict,
@@ -121,6 +125,15 @@ class RAGAgent:
 
     # -- RAG ---------------------------------------------------------------
 
+    @staticmethod
+    def format_source(index: int, doc) -> str:
+        """One numbered source: [n] document › header path, then the text."""
+        meta = doc.metadata
+        name = meta.get("name") or meta.get("original_filename") or "unknown"
+        headers = [meta[k] for k in sorted(meta) if k.startswith("Header") and meta[k]]
+        title = " › ".join([str(name), *map(str, headers)])
+        return f"[{index}] {title}\n{doc.page_content}"
+
     async def retrieve(self, query: str) -> str:
         """Search Milvus and serialize the top documents for the prompt."""
         docs = await asyncio.to_thread(
@@ -128,9 +141,7 @@ class RAGAgent:
         )
         if not docs:
             return NO_RESULTS
-        return "\n\n".join(
-            f"Source: {doc.metadata}\nContent: {doc.page_content}" for doc in docs
-        )
+        return "\n\n".join(self.format_source(i, doc) for i, doc in enumerate(docs, 1))
 
     async def chat(self, query: str, conversation_id: str) -> AsyncIterator[ChatResponse]:
         """Stream one conversation turn as ChatResponse events."""
