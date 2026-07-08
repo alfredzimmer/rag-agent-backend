@@ -70,7 +70,7 @@ class RAGAgent:
             model=self.config.llm_model,
             base_url=self.config.ollama_host,
             temperature=0.4,
-            num_ctx=8192,
+            num_ctx=self.config.llm_num_ctx,
             reasoning=True,
             num_predict=self.config.llm_num_predict,
         )
