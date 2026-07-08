@@ -75,7 +75,7 @@ class RAGAgent:
             base_url=self.config.ollama_host,
             temperature=0.15,
             num_ctx=self.config.llm_num_ctx,
-            reasoning=True,
+            reasoning=self.config.llm_reasoning,
             num_predict=self.config.llm_num_predict,
         )
         self.sessions: dict[str, Session] = {}

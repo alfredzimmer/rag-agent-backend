@@ -8,6 +8,13 @@ import os
 from dataclasses import dataclass, field
 
 
+def _env_bool(name: str, default: bool) -> bool:
+    value = os.getenv(name)
+    if value is None:
+        return default
+    return value.strip().lower() in {"1", "true", "yes", "on"}
+
+
 @dataclass
 class RAGConfig:
     collection_name: str = field(
@@ -20,7 +27,10 @@ class RAGConfig:
         default_factory=lambda: os.getenv("DENSE_EMBEDDING_MODEL", "nomic-embed-text:latest")
     )
     llm_num_predict: int = field(
-        default_factory=lambda: int(os.getenv("RAG_LLM_NUM_PREDICT", "4096"))
+        default_factory=lambda: int(os.getenv("RAG_LLM_NUM_PREDICT", "8192"))
+    )
+    llm_reasoning: bool = field(
+        default_factory=lambda: _env_bool("RAG_LLM_REASONING", False)
     )
     llm_num_ctx: int = field(
         default_factory=lambda: int(os.getenv("RAG_LLM_NUM_CTX", "16384"))
