@@ -18,6 +18,7 @@ from pydantic import BaseModel, Field
 
 from .config import RAGConfig
 from .milvus import create_milvus_store
+from .retrieval import Retriever
 
 logger = logging.getLogger(__name__)
 
@@ -72,6 +73,11 @@ class RAGAgent:
         self.vector_store = create_milvus_store(self.config)
         self._llms: dict[bool, ChatOllama] = {}
         self.llm = self._llm_for(self.config.llm_reasoning)
+        # Rerank (when enabled) reuses the resident non-reasoning model rather than
+        # loading a second one onto the single GPU.
+        self.retriever = Retriever(
+            self.vector_store, self.config, llm_factory=lambda: self._llm_for(False)
+        )
         self.sessions: dict[str, Session] = {}
         self._interrupted: set[str] = set()
 
@@ -142,9 +148,7 @@ class RAGAgent:
 
     async def retrieve(self, query: str) -> str:
         """Search Milvus and serialize the top documents for the prompt."""
-        docs = await asyncio.to_thread(
-            self.vector_store.similarity_search, query, self.config.top_k
-        )
+        docs = await asyncio.to_thread(self.retriever.retrieve, query)
         if not docs:
             return NO_RESULTS
         return "\n\n".join(self.format_source(i, doc) for i, doc in enumerate(docs, 1))

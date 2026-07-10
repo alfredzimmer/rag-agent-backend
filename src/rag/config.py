@@ -37,6 +37,16 @@ class RAGConfig:
     )
     top_k: int = field(default_factory=lambda: int(os.getenv("RAG_TOP_K", "10")))
     search_ef: int = field(default_factory=lambda: int(os.getenv("RAG_SEARCH_EF", "96")))
+    # Two-stage retrieval (see rag.retrieval). "none" keeps the original
+    # single-pass dense search; "mmr" and "llm" over-fetch fetch_k candidates
+    # and re-select/reorder down to top_k.
+    rerank_backend: str = field(
+        default_factory=lambda: os.getenv("RAG_RERANK_BACKEND", "none")
+    )
+    fetch_k: int = field(default_factory=lambda: int(os.getenv("RAG_FETCH_K", "40")))
+    mmr_lambda: float = field(
+        default_factory=lambda: float(os.getenv("RAG_MMR_LAMBDA", "0.5"))
+    )
     milvus_uri: str = field(
         default_factory=lambda: os.getenv("MILVUS_URI", "http://localhost:19530")
     )

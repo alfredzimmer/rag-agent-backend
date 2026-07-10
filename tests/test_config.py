@@ -27,6 +27,23 @@ class RagConfigTests(unittest.TestCase):
 
         self.assertEqual(config.llm_num_predict, 2048)
 
+    def test_retrieval_defaults_preserve_single_pass_search(self) -> None:
+        with patch.dict(os.environ, {}, clear=True):
+            config = RAGConfig()
+
+        self.assertEqual(config.rerank_backend, "none")
+        self.assertEqual(config.fetch_k, 40)
+        self.assertEqual(config.mmr_lambda, 0.5)
+
+    def test_rerank_backend_can_be_configured(self) -> None:
+        env = {"RAG_RERANK_BACKEND": "mmr", "RAG_FETCH_K": "60", "RAG_MMR_LAMBDA": "0.7"}
+        with patch.dict(os.environ, env, clear=True):
+            config = RAGConfig()
+
+        self.assertEqual(config.rerank_backend, "mmr")
+        self.assertEqual(config.fetch_k, 60)
+        self.assertEqual(config.mmr_lambda, 0.7)
+
 
 if __name__ == "__main__":
     unittest.main()

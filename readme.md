@@ -11,7 +11,8 @@ from Milvus, and generation (plus embeddings) comes from Ollama. Nothing else.
 ```text
 Frontend
   -> FastAPI API (streaming NDJSON)
-      -> Milvus  (dense retrieval, top-k)
+      -> Milvus  (dense retrieval, over-fetch)
+      -> rerank  (none | mmr | llm)  -> top-k
       -> Ollama  (embeddings + chat model)
 ```
 
@@ -68,6 +69,20 @@ Schema: `http://localhost:9229/docs`.
 ```bash
 uv run python -m unittest discover -s tests -v
 ```
+
+## Retrieval
+
+Retrieval is two-stage: over-fetch a candidate pool from Milvus, then rerank down
+to `RAG_TOP_K`. The backend is set by `RAG_RERANK_BACKEND` and defaults to `none`,
+which is the original single-pass dense search. See
+[docs/RETRIEVAL.md](docs/RETRIEVAL.md) for the trade-offs and how to measure a
+change before enabling it.
+
+| Backend | What it does | Cost |
+| --- | --- | --- |
+| `none` | Single dense search at top_k (baseline) | none |
+| `mmr` | Over-fetch, then Maximal Marginal Relevance drops near-duplicate chunks | one search |
+| `llm` | Over-fetch, then the resident chat model reranks the candidates | one extra generation/query |
 
 ## Ingestion
 
